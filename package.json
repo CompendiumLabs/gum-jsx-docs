@@ -1,0 +1,33 @@
+{
+  "name": "@gum-jsx/docs",
+  "version": "0.1.0",
+  "description": "Documentation and gallery examples for gum.jsx",
+  "type": "module",
+  "author": "Douglas Hanley",
+  "homepage": "https://github.com/CompendiumLabs/gum.jsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CompendiumLabs/gum.jsx"
+  },
+  "license": "MIT",
+  "files": [
+    "src",
+    "docs",
+    "gala"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./meta": "./src/meta.ts",
+    "./dirs": "./src/dirs.ts",
+    "./docs/*": "./docs/*",
+    "./gala/*": "./gala/*",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "typecheck": "bun tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "typescript": "^5.9.3"
+  }
+}
