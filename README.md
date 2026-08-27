@@ -2,9 +2,10 @@
 
 The documentation and gallery examples for [gum.jsx](https://github.com/CompendiumLabs/gum.jsx):
 a `.jsx` example and a Markdown page for every element (`docs/`), plus the showcase figures
-(`gala/`). This package is content — it has no dependencies and renders nothing itself. The
-`gum-jsx` package renders these examples as its test suite and builds the Claude skill out of
-them.
+(`gala/`). This package is content — it has no runtime dependencies and renders nothing itself.
+It also ships the Claude skill for writing gum.jsx (`skills/gum-jsx`, zipped as
+`skills/gum-jsx.skill`), which is generated from these pages by `bun run skill`. The `gum-jsx`
+package renders the examples as its test suite.
 
 ## Install
 

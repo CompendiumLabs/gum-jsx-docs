@@ -13,7 +13,8 @@
   "files": [
     "src",
     "docs",
-    "gala"
+    "gala",
+    "skills/gum-jsx"
   ],
   "exports": {
     ".": "./src/index.ts",
@@ -24,10 +25,12 @@
     "./package.json": "./package.json"
   },
   "scripts": {
+    "skill": "bun ./scripts/skill.ts && cd skills && rm -f gum-jsx.skill && zip -r gum-jsx.skill gum-jsx",
     "typecheck": "bun tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^25.2.3",
+    "commander": "^14.0.3",
     "typescript": "^5.9.3"
   }
 }
