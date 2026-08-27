@@ -1,5 +1,7 @@
 # Bracket
 
+*Category*: math
+
 *Inherits*: [HStack](/docs/HStack) > [Group](/docs/Group) > [Element](/docs/Element)
 
 Wraps a single child in a matched pair of delimiters. The delimiter can be chosen from a preset name or given as a pair to mix left and right shapes.

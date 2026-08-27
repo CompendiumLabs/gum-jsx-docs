@@ -14,6 +14,7 @@
     "src",
     "docs",
     "gala",
+    "prompt",
     "skills/gum-jsx"
   ],
   "exports": {
@@ -21,6 +22,7 @@
     "./meta": "./src/meta.ts",
     "./dirs": "./src/dirs.ts",
     "./docs/*": "./docs/*",
+    "./prompt/*": "./prompt/*",
     "./gala/*": "./gala/*",
     "./package.json": "./package.json"
   },

@@ -1,5 +1,7 @@
 # Colors
 
+*Category*: utilities
+
 There are a few functions designed to manipulate colors in HEX, RGB, and HSL formats.
 
 **Constants**

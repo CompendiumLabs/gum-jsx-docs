@@ -1,5 +1,7 @@
 # Frac
 
+*Category*: math
+
 *Inherits*: [Box](/docs/Box) > [Group](/docs/Group) > [Element](/docs/Element)
 
 Builds a numerator-over-denominator fraction. Pass the numerator and denominator as the two children. By default a horizontal bar is drawn between them, but it can be omitted for binomial-style layouts.

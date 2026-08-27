@@ -1,5 +1,7 @@
 # Slide
 
+*Category*: text
+
 *Inherits*: [Box](/docs/Box) > [Group](/docs/Group) > [Element](/docs/Element)
 
 Create a presentation slide with a title and some content. A slide is a fixed-aspect canvas (16:9 by default) holding a [TitleFrame](/docs/TitleFrame) that fills the canvas inside the margin. The content is a `TextStack` of the children: strings, [Text](/docs/Text), [Bullets](/docs/Bullets), and any other `Element`s are arrayed vertically and the given `wrap` is applied to the text elements.

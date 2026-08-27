@@ -1,5 +1,7 @@
 # Element
 
+*Category*: core
+
 The base class for all Gum objects. You will usually not be working with this object directly unless you are implementing your own custom elements. However, many of the arguments are common to all elements and are documented here.
 
 The position and size of an element are specified in the internal coordinates (`coord`) of its parent, which defaults to the unit square. Rectangles are always specified in `[left, top, right, bottom]` format. Where the element is placed is ultimately determined by its `rect`. However, it is more common to specify the `rect` using one of the convenience parameters below.

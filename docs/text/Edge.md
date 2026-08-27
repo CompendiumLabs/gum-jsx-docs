@@ -1,5 +1,7 @@
 # Edge
 
+*Category*: networks
+
 *Inherits*: [Arrow](/docs/Arrow) > [Group](/docs/Group) > [Element](/docs/Element)
 
 This creates a cubic spline path from one element (typically a [Node](/docs/Node)) to another with optional arrowheads at either or both ends. It is named **Edge** because of its usage in network diagrams with [Network](/docs/Network). The emanation directions are automatically inferred from the relative node positions but can be overriden as well.

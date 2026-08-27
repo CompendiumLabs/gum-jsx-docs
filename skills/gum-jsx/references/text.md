@@ -1,69 +1,5 @@
 # Text Elements
 
-## Text
-
-*Inherits*: **VStack** > **Element**
-
-Displays text and other elements. Note that you will typically not set the font size of the text here, as this will fill the entire space with the provided text. To set the text color, use `color` instead of `fill` or `stroke`.
-
-If `wrap` is specified, the text will be wrapped to the specified width. In either case, single newlines will be respected, though whitespace will be compressed. There are two wrapper elements related to text:
-
-- **TextBox** / **TextFrame** can handle text with a border and background
-- **TextStack** can handle multiple lines of text that are passed in as an array
-
-There are two default fonts that are always provided: `sans = 'IBM Plex Sans'` and `mono ='IBM Plex Mono'`. There are three availabe font weights: `light = 300`, `regular = 400`, and `bold = 700`. The default weight is `light`. You can use these global variables anywhere.
-
-Parameters:
-- `children` — the text to display
-- `wrap` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
-- `spacing` = `0.2` — the spacing between lines of text
-- `justify` = `'left'` — the horizontal justification of the text
-- `color` = `black` — sets the text color using both stroke and fill (this is the usual way)
-- `font-family` = `sans` — the font family (for display and size calculations)
-- `font-weight` = `300` — the font weight (for display and size calculations)
-
-**Example**
-
-Prompt: The text "Hello World! You can mix text and other elements together." with a blue square between "and" and "other". Put it in a rounded frame with padding.
-
-Generated code:
-```jsx
-<TextFrame rounded wrap={10} justify="center">
-  Hello World! You can mix text and <Square rounded fill={blue} /> other elements together.
-</TextFrame>
-```
-
-## TitleFrame
-
-*Inherits*: **Frame** > **Element**
-
-A special type of **Frame** that places a title element in a box centered on the line at the top of the frame. The title element can be either a proper Element or a string, in which case it will be wrapped in a **Text** element.
-
-Parameters:
-- `title` — the text or element to use as the title
-- `title-size` = `0.1` — the size of the title element
-- `adjust` = `true` — whether to adjust the padding and margin to account for the title element
-- `border` = `1` — the outer frame border width to use
-
-Subunits:
-- `title` — the title element
-
-**Example**
-
-Prompt: Various food emojis are arranged in a spaced out grid and framed with the title "Fruits & Veggies". Each emoji is framed by a rounded square
-
-Generated code:
-```jsx
-const emoji = [ '🍇', '🥦', '🍔', '🍉', '🍍', '🌽', '🍩', '🥝', '🍟' ]
-return <TitleFrame title="Fruits & Veggies" margin padding rounded>
-  <Grid rows={3} spacing={0.05}>
-    {emoji.map(e =>
-      <Frame aspect rounded padding><Text>{e}</Text></Frame>
-    )}
-  </Grid>
-</TitleFrame>
-```
-
 ## Bullets
 
 *Inherits*: **VStack** > **Group** > **Element**
@@ -149,4 +85,86 @@ Generated code:
     <Text>The extra vertical space shows the full curve</Text>
   </Bullets>
 </Slide>
+```
+
+## Text
+
+*Inherits*: **VStack** > **Element**
+
+Displays text and other elements. Note that you will typically not set the font size of the text here, as this will fill the entire space with the provided text. To set the text color, use `color` instead of `fill` or `stroke`.
+
+If `wrap` is specified, the text will be wrapped to the specified width. In either case, single newlines will be respected, though whitespace will be compressed. There are two wrapper elements related to text:
+
+- **TextBox** / **TextFrame** can handle text with a border and background
+- **TextStack** can handle multiple lines of text that are passed in as an array
+
+There are two default fonts that are always provided: `sans = 'IBM Plex Sans'` and `mono ='IBM Plex Mono'`. There are three availabe font weights: `light = 300`, `regular = 400`, and `bold = 700`. The default weight is `light`. You can use these global variables anywhere.
+
+Parameters:
+- `children` — the text to display
+- `wrap` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `spacing` = `0.2` — the spacing between lines of text
+- `justify` = `'left'` — the horizontal justification of the text
+- `color` = `black` — sets the text color using both stroke and fill (this is the usual way)
+- `font-family` = `sans` — the font family (for display and size calculations)
+- `font-weight` = `300` — the font weight (for display and size calculations)
+
+**Example**
+
+Prompt: The text "Hello World! You can mix text and other elements together." with a blue square between "and" and "other". Put it in a rounded frame with padding.
+
+Generated code:
+```jsx
+<TextFrame rounded wrap={10} justify="center">
+  Hello World! You can mix text and <Square rounded fill={blue} /> other elements together.
+</TextFrame>
+```
+
+## TextBox
+
+*Inherits*: **Box** > **Group** > **Element**
+
+This is a specialized relative of **Text** that wraps the text in a **Box**. Note that the default padding is non-zero. There is a specialized class called **TextFrame** that defaults to `border = 1`.
+
+Parameters:
+- `padding` = `0.1` — the padding
+
+**Example**
+
+Prompt: draw the word "hello" in a rounded rectangular frame
+
+Generated code:
+```jsx
+<TextBox border rounded margin>hello</TextBox>
+```
+
+## TitleFrame
+
+*Inherits*: **Frame** > **Element**
+
+A special type of **Frame** that places a title element in a box centered on the line at the top of the frame. The title element can be either a proper Element or a string, in which case it will be wrapped in a **Text** element.
+
+Parameters:
+- `title` — the text or element to use as the title
+- `title-size` = `0.1` — the size of the title element
+- `adjust` = `true` — whether to adjust the padding and margin to account for the title element
+- `border` = `1` — the outer frame border width to use
+
+Subunits:
+- `title` — the title element
+
+**Example**
+
+Prompt: Various food emojis are arranged in a spaced out grid and framed with the title "Fruits & Veggies". Each emoji is framed by a rounded square
+
+Generated code:
+```jsx
+const emoji = [ '🍇', '🥦', '🍔', '🍉', '🍍', '🌽', '🍩', '🥝', '🍟' ]
+return <TitleFrame title="Fruits & Veggies" margin padding rounded>
+  <Grid rows={3} spacing={0.05}>
+    {emoji.map(e =>
+      <Frame aspect rounded padding><Text>{e}</Text></Frame>
+    )}
+  </Grid>
+</TitleFrame>
 ```

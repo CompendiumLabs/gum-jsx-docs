@@ -1,5 +1,7 @@
 # Polygon
 
+*Category*: geometry
+
 *Inherits*: **Pointstring** > [Element](/docs/Element)
 
 The `Polygon` element draws a closed polygon through a series of points. It accepts a list of two or more points and connects them with straight line segments, automatically closing the shape by connecting the last point back to the first.

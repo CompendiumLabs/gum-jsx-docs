@@ -1,5 +1,7 @@
 # Stack
 
+*Category*: layout
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 Stack one or more **Element** either vertically or horizontally. There are specialized components **VStack** and **HStack** that don't take the `direc` argument. This element handles child positioning and sizing, so any child `pos`/`size` arguments will be overridden. Proportional spacing between children can be specified with the `spacing` parameter.

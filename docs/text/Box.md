@@ -1,5 +1,7 @@
 # Box
 
+*Category*: layout
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 This is a simple container class allowing you to add padding, margins, and a border to a single **Element**. It's pretty versatile and is often used to set up the outermost positioning of a figure. Mirroring the standard CSS definitions, padding is space inside the border and margin is space outside the border. This has no border by default, but there is a specialized subclass of this called **Frame** that defaults to `border = 1`.

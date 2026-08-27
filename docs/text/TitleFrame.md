@@ -1,5 +1,7 @@
 # TitleFrame
 
+*Category*: text
+
 *Inherits*: [Frame](/docs/Frame) > [Element](/docs/Element)
 
 A special type of [Frame](/docs/Frame) that places a title element in a box centered on the line at the top of the frame. The title element can be either a proper Element or a string, in which case it will be wrapped in a [Text](/docs/Text) element.

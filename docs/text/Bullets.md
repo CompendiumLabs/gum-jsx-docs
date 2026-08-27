@@ -1,5 +1,7 @@
 # Bullets
 
+*Category*: text
+
 *Inherits*: [VStack](/docs/Stack) > [Group](/docs/Group) > [Element](/docs/Element)
 
 A bulleted list. Each child becomes an item: strings and [Text](/docs/Text) elements are wrapped to the list width minus the indent, with a marker placed in the indent level with the first line. Other elements (say a [Latex](/docs/Latex) equation) are placed as-is with a marker beside them. A nested `Bullets` child becomes a sub-list, indented without a marker of its own.

@@ -1,5 +1,7 @@
 # Latex
 
+*Category*: math
+
 *Inherits*: [MathText](/docs/MathText) > [HStack](/docs/HStack) > [Group](/docs/Group) > [Element](/docs/Element)
 
 Parses a LaTeX string with KaTeX and converts it into gum math elements such as [Frac](/docs/Frac), radical layouts, and [Bracket](/docs/Bracket). If parsing fails, the raw source is displayed in red so the error is visible in the output. **Tex** is the same element with `inline` defaulting to `true`, for math set in text style.

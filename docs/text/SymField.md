@@ -1,5 +1,7 @@
 # SymField
 
+*Category*: symbolic
+
 *Inherits*: **Field** > [Group](/docs/Group) > [Element](/docs/Element)
 
 Draws a vector field by cloning a shape at every point of a regular grid and spinning each copy to face a given direction. The other symbolic elements trace out a path through their sample points; **SymField** instead samples the rectangular grid spanned by `xlim` and `ylim` and asks `func` which way to point at each of those points.

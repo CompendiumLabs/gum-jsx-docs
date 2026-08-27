@@ -1,5 +1,7 @@
 # Spline
 
+*Category*: geometry
+
 *Inherits*: **Path** > [Element](/docs/Element)
 
 This creates a smooth cardinal spline curve through a series of points. The tangent at each interior point is computed as the central difference between its neighbors, while endpoints use forward/backward differences. This produces a smooth, natural-looking curve that passes through all specified points.

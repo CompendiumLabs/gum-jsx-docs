@@ -1,5 +1,7 @@
 # Tables
 
+*Category*: utilities
+
 The `loadTable` function reads a CSV file from the host environment and parses it into an array of row objects, making it easy to drive visualizations from external data. It's only available when the host passes a `loadFile` resolver into `evaluate`, so it's typically used when running `gum` against a file on disk rather than a bare snippet.
 
 The first row of the CSV is treated as a header and each subsequent row becomes an object keyed by those column names. Numeric-looking values are automatically coerced to numbers, so `x` and `y` columns come back as numbers rather than strings.

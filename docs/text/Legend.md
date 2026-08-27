@@ -1,5 +1,7 @@
 # Legend
 
+*Category*: plotting
+
 *Inherits*: [Frame](/docs/Frame) > [Group](/docs/Group) > [Element](/docs/Element)
 
 A boxed legend: a column of badges, each beside its label, in a rounded [Frame](/docs/Frame) with a solid background so it can sit over the contents of a [Graph](/docs/Graph) or [Plot](/docs/Plot). Each child is a badge specification carrying a `label`. A badge is either an element (a [Dot](/docs/Points), a dashed [Line](/docs/Line), a coloured [Rect](/docs/Rect), …), which is used as is with its own aspect, or an object of attributes such as `{ stroke: blue, label: 'series' }`, which becomes a short line in that style. Labels are strings, set as text, or elements.

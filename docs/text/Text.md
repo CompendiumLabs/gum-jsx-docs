@@ -1,5 +1,7 @@
 # Text
 
+*Category*: text
+
 *Inherits*: [VStack](/docs/VStack) > [Element](/docs/Element)
 
 Displays text and other elements. Note that you will typically not set the font size of the text here, as this will fill the entire space with the provided text. To set the text color, use `color` instead of `fill` or `stroke`.

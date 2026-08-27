@@ -1,5 +1,7 @@
 # MathArray
 
+*Category*: math
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 Lays out math cells in rows and columns, following LaTeX's `array` metrics: every row gets a strut so short rows still take a full line, columns are as wide as their widest cell and separated by `\arraycolsep`, and the whole array is centered on the math axis. This is what [Latex](/docs/Latex) builds for every tabular environment, from `matrix` and `pmatrix` through `cases`, `aligned` and `array`, with `\hline`/`\hdashline` and the `|`/`:` column separators.

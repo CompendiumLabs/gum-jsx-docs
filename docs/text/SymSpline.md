@@ -1,5 +1,7 @@
 # SymSpline
 
+*Category*: symbolic
+
 *Inherits*: [Spline](/docs/Spline) > **Path** > [Element](/docs/Element)
 
 Flexible interface to generate smooth two-dimensional spline curves symbolically or in combination with fixed inputs. Similar to [SymLine](/docs/SymLine), but produces smooth cardinal splines instead of straight line segments. See [Spline](/docs/Spline) for more details on the `curve` parameter.

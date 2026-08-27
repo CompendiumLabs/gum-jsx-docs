@@ -1,5 +1,7 @@
 # TextMode
 
+*Category*: math
+
 *Inherits*: [MathText](/docs/MathText) > [HStack](/docs/HStack) > [Group](/docs/Group) > [Element](/docs/Element)
 
 Sets plain text inside math, the way `\text{...}` does. String children are shown literally (they are not parsed as LaTeX), upright in the text face composed from `family`, `bold`, and `italic`, with spaces kept. Ordinary gum [Element](/docs/Element) values can be mixed inline as in [MathText](/docs/MathText), which is also how to put math between words.

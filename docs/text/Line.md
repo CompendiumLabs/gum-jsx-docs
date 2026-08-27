@@ -1,5 +1,7 @@
 # Line
 
+*Category*: geometry
+
 *Inherits*: [Element](/docs/Element)
 
 The `Line` element draws line segments through a series of points. It accepts a list of two or more points and connects them with straight line segments.

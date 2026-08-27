@@ -1,5 +1,7 @@
 # Network
 
+*Category*: networks
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 Network diagrams can be created using the [Node](/docs/Node) and [Edge](/docs/Edge) classes. This automatically processes Node and Edge children to create a network diagram. It will also display non-network elements as they would be displayed in a [Graph](/docs/Graph).

@@ -1,5 +1,7 @@
 # Math
 
+*Category*: utilities
+
 Here we collect a variety of global mathematical functions and constants. You can still use the core JavaScript `Math` library as well.
 
 ## Constants

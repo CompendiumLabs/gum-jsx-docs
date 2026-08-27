@@ -1,5 +1,7 @@
 # Scale
 
+*Category*: plotting
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 Draws a row of tick marks: short lines perpendicular to the scale's direction, placed at `locs` along it. It is the building block for the ticks of an [Axis](/docs/Axis) and the lines of a [Mesh](/docs/Mesh). Use **HScale** for ticks spaced along the horizontal axis (which are vertical lines) and **VScale** for ticks spaced along the vertical axis (horizontal lines).

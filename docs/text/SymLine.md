@@ -1,5 +1,7 @@
 # SymLine
 
+*Category*: symbolic
+
 *Inherits*: [Line](/docs/Line) > [Element](/docs/Element)
 
 Flexible interface to generate two-dimensional paths symbolically or in combination with fixed inputs. There are variety of acceptable input combinations, but the most common usage is to specify the range to use for x-values with `xlim` and a function to plot with `fy`. To plot a polygon instead of a line, use [SymPoly](/docs/SymPoly).

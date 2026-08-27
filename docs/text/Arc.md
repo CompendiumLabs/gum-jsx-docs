@@ -1,5 +1,7 @@
 # Arc
 
+*Category*: geometry
+
 *Inherits*: **Path** > [Element](/docs/Element)
 
 This draws an elliptical arc that inscribes its allocated rectangle, like [Ellipse](/docs/Ellipse), but only over a selected angular interval.

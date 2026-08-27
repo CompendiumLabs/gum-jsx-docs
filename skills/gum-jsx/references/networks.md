@@ -1,51 +1,5 @@
 # Networks Elements
 
-## Node
-
-*Inherits*: **Frame** > **Element**
-
-This encloses an element in a **Frame** at a particular position. If the `children` argument is a string, it will be automatically wrapped in a **Text** element. The primary usage of this is in the creation of networks using the **Network** component. You must provide an `id` argument to reference the node in an **Edge** element.
-
-Parameters:
-- `id` — a string to be used as the node identifier
-- `children` — the element or text to be enclosed in the node box
-- `ysize` = `0.2` — the height of the node box (width will adjust to aspect)
-- `padding` = `0.1` — the padding of the node box
-- `border` = `1` — the border width of the node box
-- `rounded` = `0.05` — the radius of the corners of the node box
-- `wrap` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
-- `justify` = `'center'` — the horizontal justification of the text
-
-**Example**
-
-Prompt: A simple connected network where each rounded node contains an emoji icon stacked above a text label. The example shows idea → design → launch.
-
-Generated code:
-```jsx
-<Network aspect={2} node-fill={gray} node-rounded node-padding node-ysize={0.35}>
-  <Node id="idea" pos={[0.2, 0.5]}>
-    <VStack spacing={0.15}>
-      <Text>💡</Text>
-      <Text stack-size={0.25}>Idea</Text>
-    </VStack>
-  </Node>
-  <Node id="design" pos={[0.5, 0.5]}>
-    <VStack spacing={0.15}>
-      <Text>🎨</Text>
-      <Text stack-size={0.25}>Design</Text>
-    </VStack>
-  </Node>
-  <Node id="launch" pos={[0.8, 0.5]}>
-    <VStack spacing={0.15}>
-      <Text>🚀</Text>
-      <Text stack-size={0.25}>Launch</Text>
-    </VStack>
-  </Node>
-  <Edge start="idea" end="design" />
-  <Edge start="design" end="launch" />
-</Network>
-```
-
 ## Edge
 
 *Inherits*: **Arrow** > **Group** > **Element**
@@ -104,5 +58,51 @@ Generated code:
   <Node id="ball" pos={[0.75, 0.75]}><Ellipse aspect={1.5} fill={blue}/></Node>
   <Edge start="hello" end="test" />
   <Edge start="hello" end="ball" start-side="s" />
+</Network>
+```
+
+## Node
+
+*Inherits*: **Frame** > **Element**
+
+This encloses an element in a **Frame** at a particular position. If the `children` argument is a string, it will be automatically wrapped in a **Text** element. The primary usage of this is in the creation of networks using the **Network** component. You must provide an `id` argument to reference the node in an **Edge** element.
+
+Parameters:
+- `id` — a string to be used as the node identifier
+- `children` — the element or text to be enclosed in the node box
+- `ysize` = `0.2` — the height of the node box (width will adjust to aspect)
+- `padding` = `0.1` — the padding of the node box
+- `border` = `1` — the border width of the node box
+- `rounded` = `0.05` — the radius of the corners of the node box
+- `wrap` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `justify` = `'center'` — the horizontal justification of the text
+
+**Example**
+
+Prompt: A simple connected network where each rounded node contains an emoji icon stacked above a text label. The example shows idea → design → launch.
+
+Generated code:
+```jsx
+<Network aspect={2} node-fill={gray} node-rounded node-padding node-ysize={0.35}>
+  <Node id="idea" pos={[0.2, 0.5]}>
+    <VStack spacing={0.15}>
+      <Text>💡</Text>
+      <Text stack-size={0.25}>Idea</Text>
+    </VStack>
+  </Node>
+  <Node id="design" pos={[0.5, 0.5]}>
+    <VStack spacing={0.15}>
+      <Text>🎨</Text>
+      <Text stack-size={0.25}>Design</Text>
+    </VStack>
+  </Node>
+  <Node id="launch" pos={[0.8, 0.5]}>
+    <VStack spacing={0.15}>
+      <Text>🚀</Text>
+      <Text stack-size={0.25}>Launch</Text>
+    </VStack>
+  </Node>
+  <Edge start="idea" end="design" />
+  <Edge start="design" end="launch" />
 </Network>
 ```

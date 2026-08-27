@@ -1,5 +1,7 @@
 # RoundedLine
 
+*Category*: geometry
+
 *Inherits*: **Path** > [Element](/docs/Element)
 
 The `RoundedLine` element draws a polyline through a series of points with rounded corners at each interior vertex. It is most useful for *city-block* (right-angle) routes — for instance, edges in a network diagram that you want to bend cleanly around obstacles rather than curving with [Spline](/docs/Spline). Spline curvature along an otherwise-straight `points` route produces undulating bumps; `RoundedLine` keeps the straight segments straight and only rounds the turns.

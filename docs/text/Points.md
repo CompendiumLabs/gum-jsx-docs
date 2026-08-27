@@ -1,5 +1,7 @@
 # Points
 
+*Category*: layout
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 Place copies of a common shape at various points. Marker size is controlled with `point-size`, while the **Points** element itself can still be laid out with the normal `size`/`xsize`/`ysize` element parameters. The default shape is a black dot.

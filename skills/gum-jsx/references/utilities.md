@@ -1,58 +1,5 @@
 # Utilities Elements
 
-## Math
-
-Here we collect a variety of global mathematical functions and constants. You can still use the core JavaScript `Math` library as well.
-
-## Constants
-
-- `e` — the base of the natural logarithm (e)
-- `pi` — the geometric constant (π)
-- `phi` — the golden ratio (φ)
-- `r2d` — the conversion factor between radians and degrees (180/π)
-- `d2r` — the conversion factor between degrees and radians (π/180)
-
-## Functions
-
-- `exp(x)` — the exponential function
-- `log(x)` — the natural logarithm
-- `log10(x)` — the base 10 logarithm
-- `sin(x)` — the sine function
-- `cos(x)` — the cosine function
-- `tan(x)` — the tangent function
-- `abs(x)` — the absolute value
-- `pow(x, y)` — the power function
-- `sqrt(x)` — the square root function
-- `sign(x)` — the sign function
-- `floor(x)` — the floor function
-- `ceil(x)` — the ceiling function
-- `round(x)` — the rounding function
-- `clamp(x, lim=[0, 1])` — clamp `x` to the range `lim`
-- `rescale(x, lim=[0, 1])` — linearly rescale `x` to the range `lim`
-- `polar(theta, radius=1, center=[0, 0])` — convert polar coordinates (`theta` in radians, `radius` scalar or size vector) to a 2D point around `center`
-- `polard(angle, radius=1, center=[0, 0])` — same as `polar` but takes `angle` in degrees
-
-Angles use gum's usual screen-space convention: `0` points right and `90` points down.
-
-**Example**
-
-Prompt: draw a spirograph in a box for a set of example parameters
-
-Generated code:
-```jsx
-const [R, r, d, k] = [10, 7, 4, 7]
-const fx = t => (R - r) * cos(t) + d * cos(((R - r) / r) * t)
-const fy = t => (R - r) * sin(t) - d * sin(((R - r) / r) * t)
-return <TitleFrame title="Spirograph" padding={0.2} margin rounded>
-  <Graph aspect coord={[-R, -R, R, R]}>
-    <Circle pos={[0, 0]} rad={R} stroke={darkgray} stroke-dasharray={10} />
-    <Circle pos={[0, 0]} rad={R - r} stroke-dasharray={5} />
-    <SymSpline fx={fx} fy={fy} tlim={[0, 2*pi*k]} stroke={blue} stroke-width={2} />
-  </Graph>
-  <Span pos={[0.5, 1.1]} ysize={0.05} font-family={mono}>R = 10 | r = 7 | d = 4</Span>
-</TitleFrame>
-```
-
 ## Arrays
 
 There are a number of functions designed to make working with arrays easier. They largely mimic similar functions found in core Python or the `numpy` library.
@@ -131,6 +78,82 @@ return <Plot xlim={[0, 2*pi]} ylim={[-1, 1]} aspect={1.5} xanchor={0} xaxis-tick
 </Plot>
 ```
 
+## Images
+
+The `LoadImage` element loads a PNG file from the host environment and embeds it as a base64 data URL. It's a thin wrapper around **PngImage** that defers the file read to the host's `loadFile` resolver, so it's only available when `gum` is run against a file on disk (not bare snippets piped in via stdin).
+
+Because it extends `PngImage`, it accepts all the standard image attributes (sizing, positioning, opacity, etc.) in addition to the `id` used to locate the file.
+
+Parameters:
+- `id` — path to the PNG file, resolved relative to the current `.jsx` file
+- additional attributes are forwarded to the underlying `PngImage`
+
+**Example**
+
+Prompt: load "image.png" and display a 2x1 clip from the center
+
+Generated code:
+```jsx
+<Box rounded clip>
+  <Group aspect={2}>
+    <LoadImage id="image.png" xrect={[0, 1]} />
+  </Group>
+</Box>
+```
+
+## Math
+
+Here we collect a variety of global mathematical functions and constants. You can still use the core JavaScript `Math` library as well.
+
+## Constants
+
+- `e` — the base of the natural logarithm (e)
+- `pi` — the geometric constant (π)
+- `phi` — the golden ratio (φ)
+- `r2d` — the conversion factor between radians and degrees (180/π)
+- `d2r` — the conversion factor between degrees and radians (π/180)
+
+## Functions
+
+- `exp(x)` — the exponential function
+- `log(x)` — the natural logarithm
+- `log10(x)` — the base 10 logarithm
+- `sin(x)` — the sine function
+- `cos(x)` — the cosine function
+- `tan(x)` — the tangent function
+- `abs(x)` — the absolute value
+- `pow(x, y)` — the power function
+- `sqrt(x)` — the square root function
+- `sign(x)` — the sign function
+- `floor(x)` — the floor function
+- `ceil(x)` — the ceiling function
+- `round(x)` — the rounding function
+- `clamp(x, lim=[0, 1])` — clamp `x` to the range `lim`
+- `rescale(x, lim=[0, 1])` — linearly rescale `x` to the range `lim`
+- `polar(theta, radius=1, center=[0, 0])` — convert polar coordinates (`theta` in radians, `radius` scalar or size vector) to a 2D point around `center`
+- `polard(angle, radius=1, center=[0, 0])` — same as `polar` but takes `angle` in degrees
+
+Angles use gum's usual screen-space convention: `0` points right and `90` points down.
+
+**Example**
+
+Prompt: draw a spirograph in a box for a set of example parameters
+
+Generated code:
+```jsx
+const [R, r, d, k] = [10, 7, 4, 7]
+const fx = t => (R - r) * cos(t) + d * cos(((R - r) / r) * t)
+const fy = t => (R - r) * sin(t) - d * sin(((R - r) / r) * t)
+return <TitleFrame title="Spirograph" padding={0.2} margin rounded>
+  <Graph aspect coord={[-R, -R, R, R]}>
+    <Circle pos={[0, 0]} rad={R} stroke={darkgray} stroke-dasharray={10} />
+    <Circle pos={[0, 0]} rad={R - r} stroke-dasharray={5} />
+    <SymSpline fx={fx} fy={fy} tlim={[0, 2*pi*k]} stroke={blue} stroke-width={2} />
+  </Graph>
+  <Span pos={[0.5, 1.1]} ysize={0.05} font-family={mono}>R = 10 | r = 7 | d = 4</Span>
+</TitleFrame>
+```
+
 ## Tables
 
 The `loadTable` function reads a CSV file from the host environment and parses it into an array of row objects, making it easy to drive visualizations from external data. It's only available when the host passes a `loadFile` resolver into `evaluate`, so it's typically used when running `gum` against a file on disk rather than a bare snippet.
@@ -155,27 +178,4 @@ return <Graph aspect coord={[0, 0, 10, 10]}>
     <Dot pos={[x, y]} size={0.5} fill={blue} />
   )}
 </Graph>
-```
-
-## Images
-
-The `LoadImage` element loads a PNG file from the host environment and embeds it as a base64 data URL. It's a thin wrapper around **PngImage** that defers the file read to the host's `loadFile` resolver, so it's only available when `gum` is run against a file on disk (not bare snippets piped in via stdin).
-
-Because it extends `PngImage`, it accepts all the standard image attributes (sizing, positioning, opacity, etc.) in addition to the `id` used to locate the file.
-
-Parameters:
-- `id` — path to the PNG file, resolved relative to the current `.jsx` file
-- additional attributes are forwarded to the underlying `PngImage`
-
-**Example**
-
-Prompt: load "image.png" and display a 2x1 clip from the center
-
-Generated code:
-```jsx
-<Box rounded clip>
-  <Group aspect={2}>
-    <LoadImage id="image.png" xrect={[0, 1]} />
-  </Group>
-</Box>
 ```

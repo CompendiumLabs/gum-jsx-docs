@@ -1,5 +1,7 @@
 # Node
 
+*Category*: networks
+
 *Inherits*: [Frame](/docs/Frame) > [Element](/docs/Element)
 
 This encloses an element in a **Frame** at a particular position. If the `children` argument is a string, it will be automatically wrapped in a [Text](/docs/Text) element. The primary usage of this is in the creation of networks using the [Network](/docs/Network) component. You must provide an `id` argument to reference the node in an [Edge](/docs/Edge) element.

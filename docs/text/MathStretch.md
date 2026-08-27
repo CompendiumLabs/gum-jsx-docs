@@ -1,5 +1,7 @@
 # MathStretch
 
+*Category*: math
+
 *Inherits*: **MathShape** > [Group](/docs/Group) > [Element](/docs/Element)
 
 Draws one of the stretchy math decorations: the braces, the stretchy arrow accents (`\overrightarrow`, `\underleftarrow`, `\overleftharpoon`, …), the line segments and groups (`\overlinesegment`, `\overgroup`, `\utilde`), and the extensible arrows (`\xrightarrow`, `\xmapsto`, `\xrightleftharpoons`, `\xlongequal`, …). No font carries stretchable versions of these, so gum draws them from its own shape table, keyed by the KaTeX command name, using KaTeX's heights and minimum widths. The arrows are gum's own [Arrow](/docs/Arrow) and [ArrowHead](/docs/ArrowHead) with barbs matching Computer Modern; the braces are filled outlines.

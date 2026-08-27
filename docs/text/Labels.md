@@ -1,5 +1,7 @@
 # Labels
 
+*Category*: plotting
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 Places a set of **Label** elements along one direction, each at its own `loc`, which is how an [Axis](/docs/Axis) lays out its tick labels. Use **HLabels** for labels spaced along the horizontal axis and **VLabels** for the vertical one. Every child must be a `Label` (or another element with an aspect and a `loc`); each is given a square box at its location, with the group's cross-direction extent on a side, so the labels are sized by the width of a `VLabels` strip or the height of an `HLabels` one. A `justify` on the group is forwarded to every label, which is how an axis right-aligns the labels beside a vertical axis.

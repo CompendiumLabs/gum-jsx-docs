@@ -6,7 +6,7 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { Command } from 'commander'
-import { getDocs, getGala, prepareDocsPage, prepareGalaPage } from '../src/meta'
+import { getDocs, listDocs, getGala, prepareDocsPage, prepareGalaPage } from '../src/meta'
 
 // capitalize a string
 function capitalize(s: string): string {
@@ -22,6 +22,11 @@ const { output = 'skills/gum-jsx' } = program.opts()
 // load the docs and gallery pages (getDocs/getGala default to docs/ and gala/ here)
 const { tags: docs_tags, cats, text: docs_text, code: docs_code } = getDocs()
 const { tags: gala_tags, text: gala_text, code: gala_code } = getGala()
+
+// a page that declares no `*Category*:` line has nowhere to go, so say so rather
+// than dropping it silently
+const stray = listDocs().filter(entry => entry.cat == null).map(entry => entry.name)
+if (stray.length > 0) console.error(`skipping ${stray.length} uncategorized: ${stray.join(', ')}`)
 
 // make reference pages
 

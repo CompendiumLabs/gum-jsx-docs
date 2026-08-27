@@ -1,5 +1,7 @@
 # Mesh
 
+*Category*: plotting
+
 *Inherits*: [Scale](/docs/Scale) > [Group](/docs/Group) > [Element](/docs/Element)
 
 Draws a set of parallel grid lines over its whole box: a [Scale](/docs/Scale) whose ticks span the full cross direction. **HMesh** places vertical lines at positions along the horizontal axis and **VMesh** places horizontal lines at positions along the vertical axis, which is what [Plot](/docs/Plot) draws for `xgrid` and `ygrid`. **Mesh2D** combines the two into a full grid.

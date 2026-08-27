@@ -15,9 +15,13 @@ const docsCodeDir = join(docsDir, 'code')
 const docsTextDir = join(docsDir, 'text')
 const dataDir = join(docsDir, 'data')
 
+// the hand-written prompt pieces the skill is built around, for consumers that
+// assemble their own variant of it
+const promptDir = join(packageRoot, 'prompt')
+
 // gallery: one page per showcase figure
 const galaDir = join(packageRoot, 'gala')
 const galaCodeDir = join(galaDir, 'code')
 const galaTextDir = join(galaDir, 'text')
 
-export { packageRoot, docsDir, docsCodeDir, docsTextDir, dataDir, galaDir, galaCodeDir, galaTextDir }
+export { packageRoot, docsDir, docsCodeDir, docsTextDir, dataDir, galaDir, galaCodeDir, galaTextDir, promptDir }

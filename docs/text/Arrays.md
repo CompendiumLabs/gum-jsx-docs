@@ -1,5 +1,7 @@
 # Arrays
 
+*Category*: utilities
+
 There are a number of functions designed to make working with arrays easier. They largely mimic similar functions found in core Python or the `numpy` library.
 
 ## Functions

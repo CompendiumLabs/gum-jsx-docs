@@ -1,5 +1,7 @@
 # Accent
 
+*Category*: math
+
 *Inherits*: **MathGroup** > [Group](/docs/Group) > [Element](/docs/Element)
 
 Sets an accent glyph over a base, as [Latex](/docs/Latex) does for `\hat{x}`, `\vec{v}`, `\bar{y}`, `\tilde{n}`, `\dot{q}` and the other accent commands. The accent is centered over the base and raised to clear it: it sits at its designed height over an x-height base and is lifted for taller bases, following TeX's accent rule. The accented atom keeps the base's spacing class, so it spaces like the base would on its own.

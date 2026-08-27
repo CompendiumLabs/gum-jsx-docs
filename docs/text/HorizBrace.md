@@ -1,5 +1,7 @@
 # HorizBrace
 
+*Category*: math
+
 *Inherits*: **MathGroup** > [Group](/docs/Group) > [Element](/docs/Element)
 
 Draws a horizontal curly brace over or under its body, with an optional label riding beyond the brace, as [Latex](/docs/Latex) does for `\overbrace{...}^{label}` and `\underbrace{...}_{label}`. The brace is drawn (see [MathStretch](/docs/MathStretch)) to the width of the body, down to a floor so a brace over a single letter does not collapse into a squiggle, and the body keeps its own baseline. The braced atom is an inner atom, so it spaces like a delimited group.

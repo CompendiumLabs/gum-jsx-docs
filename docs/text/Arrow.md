@@ -1,5 +1,7 @@
 # Arrow
 
+*Category*: geometry
+
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
 Draws a straight arrow between two points. This is the straight-line counterpart to [ArrowSpline](/docs/ArrowSpline): it uses `from` and `to` endpoints, but renders a simple [Line](/docs/Line) shaft instead of a curved spline.

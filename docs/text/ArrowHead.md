@@ -1,5 +1,7 @@
 # ArrowHead
 
+*Category*: geometry
+
 *Inherits*: **Path** > [Element](/docs/Element)
 
 Draws a single arrowhead: two barbs meeting at a tip. It is the head used by [Arrow](/docs/Arrow), [Edge](/docs/Edge), and the [Axis](/docs/Axis) arrows, and can be placed on its own with `pos` and `size` like any other element. The head is drawn in its own unit box pointing right, with the tip at the box's right edge, and then rotated to `angle`; the barbs each span half the box, so `size` sets the barb length.

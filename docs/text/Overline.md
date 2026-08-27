@@ -1,5 +1,7 @@
 # Overline
 
+*Category*: math
+
 *Inherits*: **MathGroup** > [Group](/docs/Group) > [Element](/docs/Element)
 
 Draws a rule over its body, spanning the body's full width and clearing its full height, as [Latex](/docs/Latex) does for `\overline`. The companion **Underline** draws the rule beneath the body instead, below its full depth, for `\underline`. Both take the same parameters. The body of an `Overline` is set in the cramped version of `style`, as TeX does for anything with something above it, so its superscripts sit lower; an `Underline` leaves the style alone.
