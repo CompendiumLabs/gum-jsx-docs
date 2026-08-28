@@ -10,8 +10,8 @@ them (`skills/gum-jsx`). Pure content plus a small node-only reader — no runti
   (`scripts/test.ts`).
 - `@gum-jsx/node` (`../gum-jsx-node`): benchmarks against `docs/code/Plot.jsx` and `docs/data`.
 
-While unpublished this is a `link:` dependency (`bun link` here, then `bun install` in the
-consumer); switch to a semver range when publishing.
+Consumers depend on it by semver range (`^1.7.0`, versioned in lockstep with the other
+packages); in the `gum-org` bun workspace that range resolves to this checkout.
 
 ## Layout
 
