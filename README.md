@@ -1,6 +1,6 @@
 # @gum-jsx/docs
 
-The documentation and gallery examples for [gum.jsx](https://github.com/CompendiumLabs/gum.jsx):
+The documentation and gallery examples for [gum.jsx](https://github.com/CompendiumLabs/gum-jsx):
 a `.jsx` example and a Markdown page for every element (`docs/`), plus the showcase figures
 (`gala/`). This package is content — it has no runtime dependencies and renders nothing itself.
 It also ships the Claude skill for writing gum.jsx (`skills/gum-jsx`, zipped as
