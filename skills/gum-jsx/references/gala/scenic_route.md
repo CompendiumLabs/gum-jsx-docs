@@ -1,0 +1,71 @@
+# Scenic Route
+
+This one shows off how far you can push custom arrow-like operators in math mode. The built-in stretchy arrows (`MathStretch` handles everything from `\xrightarrow` to the frankly whimsical `\xhookrightarrow`) are drawn shapes rather than font glyphs, and there is nothing stopping you from drawing your own. Here we build a "scenic route" arrow: a straight shaft with a figure-eight knot tied in the middle, and it drops right into a **MathText** row next to real symbols.
+
+The key trick is that any plain element placed in a `MathText` is treated as a math atom: it gets an advance equal to its aspect ratio and a one-em line box centered on the math axis. So a `Group` with `aspect={w}` and `coord={[0, 0, w, 1]}` is a blank canvas that is exactly `w` ems wide and one em tall, with the shaft height at `0.5` sitting on the axis. Draw in it and you have a math operator.
+
+The knot is a single rope traced by one **Arrow** with a custom `points` path and a spline `curve`: in along the shaft, up and around the right lobe clockwise, backward through the middle, around the left lobe counterclockwise, and out along the shaft again. Passing the path to `Arrow` rather than drawing a bare spline lets it handle the head for us, trimming the shaft by half a stroke so the tip lands cleanly. The lobes are generated as sampled circle arcs (the same `map`-over-angles trick as the other gallery figures), and the connecting diagonals leave each lobe tangentially at 45 degrees, which packs the crossings into the tight central X of the classic flat figure-eight knot. The lobe size hangs off a single `knot` parameter for easy tweaking, and since the geometry is specified in ems relative to the midpoint, the arrow is extensible in the same way the `\x`-arrows are: the shaft stretches with `w` while the knot stays exactly the same size.
+
+**Code**
+
+```jsx
+// The Scenic Route: a custom extensible arrow with a figure-eight knot
+
+// circle arc samples: center (cx, 0), radius r, degrees th0 -> th1 (y up)
+const arc = (cx, r, th0, th1) =>
+  linspace(th0, th1, 7, true).map(th => [cx + r * cos(th * d2r), r * sin(th * d2r)])
+
+// one rope, relative to the knot center: in along the shaft, up and around
+// the right lobe clockwise, back through the middle, around the left lobe
+// counterclockwise, and out along the shaft. The diagonals leave the lobes
+// tangentially at 45 degrees, so the crossings sit in a tight central X
+const ropePath = (w, cx, r) => {
+  const [ run, h ] = [ w / 2, r * sin(45 * d2r) ]
+  const bend = 0.36 * cx
+  const knot = [
+    [ -bend, 0.02 ],
+    ...arc(cx, r, 135, -135),
+    [ 0, 0 ],
+    ...arc(-cx, r, 45, 315),
+    [ bend, -0.02 ],
+  ]
+  const shaft = x => [ [ x, 0 ], [ 2 * x / 3, 0 ], [ x / 3, 0 ] ]
+  const points = [ ...shaft(-run + 0.05), ...knot, ...shaft(run - 0.05).reverse() ]
+  return points.map(([ x, y ]) => [ w / 2 + x, 0.5 - y ])
+}
+
+// the arrow is an ordinary Group posing as a math atom: a plain element in a
+// MathText gets advance = aspect and a 1em line box on the axis; leaving the
+// stroke unset lets it inherit the theme ink like any other element. The
+// knot parameter scales the whole figure eight relative to the shaft
+const ScenicArrow = ({ w = 3, knot = 0.5, color, ...attr }) => {
+  const ink = color != null ? { stroke: color } : {}
+  return <Group aspect={w} coord={[0, 0, w, 1]} {...attr}>
+    <Arrow points={ropePath(w, 0.55 * knot, 0.4 * knot)} curve={0.5} coord={[0, 0, w, 1]} arrow-size={0.3} stroke-width={2.5} stroke-linecap="round" {...ink} />
+  </Group>
+}
+
+//
+// the figure
+//
+
+const CompareRow = ({ children, label }) =>
+  <HStack>
+    <Box>{children}</Box>
+    <Box stack-size={0.4}><Text ysize={0.7}>{label}</Text></Box>
+  </HStack>
+
+return <TitleFrame title="The Scenic Route" title-size={0.15} padding margin rounded>
+  <VStack spacing={0.05}>
+    <CompareRow label="the direct route"><Latex>{"A \\xrightarrow{\\quad\\quad} B"}</Latex></CompareRow>
+    <CompareRow label="the polite detour"><Latex>{"A \\xhookrightarrow{\\quad\\quad} B"}</Latex></CompareRow>
+    <CompareRow label="the scenic route">
+      <MathText strut>
+        <MathSymbol>A</MathSymbol>
+        <ScenicArrow w={2.5} />
+        <MathSymbol>B</MathSymbol>
+      </MathText>
+    </CompareRow>
+  </VStack>
+</TitleFrame>
+```
