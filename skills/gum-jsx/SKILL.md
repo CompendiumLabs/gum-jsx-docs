@@ -410,6 +410,7 @@ There is a gallery of more complex examples available. Each is a single markdown
 - [Plot Manual](references/gala/plot_manual.md): a simple example of a plot manual diagram (**Plot**, **Axis**, **Mesh**)
 - [Polygon Slide](references/gala/polygon_slide.md): a simple example of a polygon slide diagram (**SymPoly**, **Grid**, **Stack**)
 - [Punk Rock](references/gala/punk_rock.md): a logo-style text block (**TextFrame**, **Stack**)
+- [Scenic Route](references/gala/scenic_route.md): a custom extensible math arrow with a figure-eight knot (**MathText**, **Spline**, **MathSpacer**)
 - [Set Theory](references/gala/set_theory.md): a mathematical diagram of nested sets (**Text**, **Frame**, **Group**)
 - [Slick Bars](references/gala/slick_bars.md): a bar chart with a custom plot style (**Plot**, **Bars**, **Span**)
 - [Spline Star](references/gala/spline_star.md): a parameterized star shape (**Spline**, **Frame**)
