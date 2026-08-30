@@ -26,12 +26,15 @@ const ropePath = (w, cx, r) => {
 // the arrow is an ordinary Group posing as a math atom: a plain element in a
 // MathText gets advance = aspect and a 1em line box on the axis; leaving the
 // stroke unset lets it inherit the theme ink like any other element. The
+// MathBox wrapper classes it as a relation so the row gives it real space.
 // knot parameter scales the whole figure eight relative to the shaft
-const ScenicArrow = ({ w = 3, knot = 0.5, color, ...attr }) => {
+const ScenicArrow = ({ w = 3, knot = 0.175, color, ...attr }) => {
   const ink = color != null ? { stroke: color } : {}
-  return <Group aspect={w} coord={[0, 0, w, 1]} {...attr}>
-    <Arrow points={ropePath(w, 0.55 * knot, 0.4 * knot)} curve={0.5} coord={[0, 0, w, 1]} arrow-size={0.6} stroke-width={3.5} stroke-linecap="round" arrow-curve={0.75} {...ink} />
-  </Group>
+  return <MathBox klass="mrel">
+    <Group aspect={w} coord={[0, 0, w, 1]} {...attr}>
+      <Arrow points={ropePath(w, 1.4 * knot, knot)} curve={0.5} coord={[0, 0, w, 1]} arrow-size={0.7} stroke-width={4} stroke-linecap="round" arrow-curve={1} {...ink} />
+    </Group>
+  </MathBox>
 }
 
 //
