@@ -30,8 +30,7 @@ const ropePath = (w, cx, r) => {
 const ScenicArrow = ({ w = 3, knot = 0.5, color, ...attr }) => {
   const ink = color != null ? { stroke: color } : {}
   return <Group aspect={w} coord={[0, 0, w, 1]} {...attr}>
-    <Spline points={ropePath(w, 0.55 * knot, 0.4 * knot)} coord={[0, 0, w, 1]} stroke-width={2.5} stroke-linecap="round" {...ink} />
-    <ArrowHead pos={[w - 0.04, 0.5]} size={0.3} angle={0} stroke-width={2.5} {...ink} />
+    <Arrow points={ropePath(w, 0.55 * knot, 0.4 * knot)} curve={0.5} coord={[0, 0, w, 1]} arrow-size={0.6} stroke-width={3.5} stroke-linecap="round" arrow-curve={0.75} {...ink} />
   </Group>
 }
 
