@@ -1,8 +1,6 @@
-// standalone decorations as math items: a long arrow between two expressions and a double-headed arrow
+// standalone decorations as math items: a long hooked arrow between two expressions
 <MathText>
-  <MathSymbol>f</MathSymbol>
-  <MathStretch label="xrightarrow" advance={2} fill={green} />
-  <MathSymbol>g</MathSymbol>
-  <MathStretch label="xLeftrightarrow" advance={2} fill={blue} />
-  <MathSymbol>h</MathSymbol>
+  <MathSymbol>P</MathSymbol>
+  <MathStretch label="xhookrightarrow" advance={2} />
+  <MathSymbol>Q</MathSymbol>
 </MathText>

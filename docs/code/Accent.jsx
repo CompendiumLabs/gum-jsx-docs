@@ -1,4 +1,4 @@
-// the common accents set over single letters, and a hat over a taller base
+// the common accents set over single letters, and a hat on a capital with a superscript
 <MathText>
   <Accent label="\hat">x</Accent>
   <MathSymbol>+</MathSymbol>
@@ -10,5 +10,5 @@
   <MathSymbol>+</MathSymbol>
   <Accent label="\vec" color={blue}>v</Accent>
   <MathSymbol>+</MathSymbol>
-  <Accent label="\hat">{"A^2"}</Accent>
+  <Accent label="\hat" sup="2">A</Accent>
 </MathText>
