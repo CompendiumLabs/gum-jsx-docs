@@ -60,7 +60,7 @@ const png = rasterizeSvg(svg, {
 writeFileSync('output.png', png)
 ```
 
-The `evaluateGum` function accepts options for theme, size, and extra context variables:
+The `evaluateGum` function accepts options for theme, size, and extra bindings (`bindings: { name: value }`):
 
 ```typescript
 const tree = evaluateGum(code, {

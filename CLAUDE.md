@@ -7,7 +7,7 @@ them (`skills/gum-jsx`). Pure content plus a small node-only reader — no runti
 `.jsx` source; the packages that consume them do the rendering:
 
 - `gum-jsx` (`../gum-jsx`): renders every example in strict mode as its test suite
-  (`scripts/test.ts`).
+  (`test/run.ts`).
 - `@gum-jsx/node` (`../gum-jsx-node`): benchmarks against `docs/code/Plot.jsx` and `docs/data`.
 
 Consumers depend on it by semver range (`^1.7.0`, versioned in lockstep with the other
@@ -67,7 +67,7 @@ bun run skill      # regenerate skills/gum-jsx and zip it to skills/gum-jsx.skil
 runtime dependencies, and only `src`, `docs`, `gala` and `skills/gum-jsx` are published.
 
 There is no test suite here; the examples are rendered in strict mode by `gum-jsx`
-(`cd ../gum-jsx && bun scripts/test.ts`), which is what catches a broken example.
+(`cd ../gum-jsx && bun test/run.ts`), which is what catches a broken example.
 
 ## Adding an example
 
