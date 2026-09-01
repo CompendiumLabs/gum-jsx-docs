@@ -143,6 +143,20 @@ const purple = '#9c27b0'
 const gray = '#f0f0f0'
 ```
 
+The KaTeX math faces are also global variables, for the `font-family` of a `MathSymbol` or `MathOp` (they select the face the way `\mathbf`, `\mathbb`, etc. do in LaTeX):
+```javascript
+const mathrm = 'KaTeX_Main'              // upright roman
+const mathit = 'KaTeX_Main-Italic'       // text italic
+const mathbf = 'KaTeX_Main-Bold'         // bold
+const mathbb = 'KaTeX_AMS'               // blackboard bold
+const mathcal = 'KaTeX_Caligraphic'      // calligraphic
+const mathscr = 'KaTeX_Script'           // script
+const mathfrak = 'KaTeX_Fraktur'         // fraktur
+const mathsf = 'KaTeX_SansSerif'         // sans-serif
+const mathtt = 'KaTeX_Typewriter'        // typewriter
+const boldsymbol = 'KaTeX_Math-BoldItalic' // bold italic
+```
+
 To interpolate colors between color values, you can use these functions:
 ```typescript
 function interp(c1: string, c2: string, x: number): string

@@ -6,11 +6,10 @@
 
 Arranges math items in a horizontal row with automatic inter-atom spacing. Strings and numbers are parsed as LaTeX (as in [Latex](/docs/Latex)), nested **MathText** is flattened, and ordinary gum [Element](/docs/Element) values can be mixed inline as well.
 
-For math-to-math neighbors, spacing is derived from atom classes like `mord`, `mbin`, and `mrel`. For mixed or non-math neighbors, the fallback `spacing` value is used.
+Spacing between neighbors is derived from their atom classes like `mord`, `mbin`, and `mrel`. An ordinary `Element` counts as an ordinary atom (`mord`) with no spacing of its own; wrap it in a [MathBox](/docs/MathBox) to give it padding or another class.
 
 Parameters:
 - `children` — math items, nested arrays of math items, or ordinary `Element`s
-- `spacing` = `0.25` — default spacing used between non-math neighbors and mixed math/non-math neighbors
 - `style` = `text` — TeX style used when parsing string and scalar children
 - `strut` = `false` — reserve a minimum top-level math line box
 - all usual stack layout parameters are also accepted

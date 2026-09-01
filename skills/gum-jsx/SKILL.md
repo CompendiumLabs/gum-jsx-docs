@@ -148,6 +148,20 @@ const purple = '#9c27b0'
 const gray = '#f0f0f0'
 ```
 
+The KaTeX math faces are also global variables, for the `font-family` of a `MathSymbol` or `MathOp` (they select the face the way `\mathbf`, `\mathbb`, etc. do in LaTeX):
+```javascript
+const mathrm = 'KaTeX_Main'              // upright roman
+const mathit = 'KaTeX_Main-Italic'       // text italic
+const mathbf = 'KaTeX_Main-Bold'         // bold
+const mathbb = 'KaTeX_AMS'               // blackboard bold
+const mathcal = 'KaTeX_Caligraphic'      // calligraphic
+const mathscr = 'KaTeX_Script'           // script
+const mathfrak = 'KaTeX_Fraktur'         // fraktur
+const mathsf = 'KaTeX_SansSerif'         // sans-serif
+const mathtt = 'KaTeX_Typewriter'        // typewriter
+const boldsymbol = 'KaTeX_Math-BoldItalic' // bold italic
+```
+
 To interpolate colors between color values, you can use these functions:
 ```typescript
 function interp(c1: string, c2: string, x: number): string
@@ -326,6 +340,8 @@ These are components for creating mathematical expressions. By far the most comm
 **Components**:
 - *Latex*: a single LaTeX equation from a string
 - *MathText*: display a list of math components
+- *MathSymbol*: a single glyph as a math atom, by LaTeX command or literal character, with its face and spacing class
+- *MathOp*: a large operator (`\sum`, `\int`, ...) or an upright named function (`\lim`, `argmax`), sized by style and taking limits
 - *TextMode*: literal upright text inside math, as `\text{...}` (with `family`/`bold`/`italic` faces)
 - *SupSub*: a superscript and/or subscript
 - *Frac*: a fraction (numerator/denominator)
@@ -335,6 +351,7 @@ These are components for creating mathematical expressions. By far the most comm
 - *HorizBrace*: an over/under brace with an optional label
 - *MathStretch*: a drawn stretchy decoration (extensible arrows, braces, segments) of a given width
 - *MathArray*: cells laid out as a matrix or table, with optional rules
+- *MathBox*: any element or math item as a math atom of its own, with padding, a fixed width, and a spacing class
 - *Bracket*: auto-sized brackets (round, square, curly, angle, or custom)
 
 ## Symbolic

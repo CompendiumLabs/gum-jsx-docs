@@ -214,6 +214,97 @@ return <MathText>
 </MathText>
 ```
 
+## MathBox
+
+*Inherits*: **Group** > **Element**
+
+Wraps one item in a math box of its own, with padding, a fixed width, a chosen anchor, and an atom class for spacing. It is the bridge from ordinary gum elements into math. Any **Element** dropped into a **MathText** is already an atom (a box as wide as its aspect and one em tall, centred on the baseline, classed as ordinary, so it butts up against its neighbors), and a **MathBox** is how to say what it should be instead: `klass="mbin"` makes a custom glyph space like `+`, `klass="mrel"` like `=`, which is how the gallery's Scenic Route arrow takes its place in a row. A math child works too, a LaTeX string or a math element, when it needs padding or a fixed width: `\boxed` and `\fbox` are a **MathBox** with a frame drawn around it, and a box with `advance` and `justify` lines terms up in a column.
+
+The box itself draws nothing. It keeps the child's own spacing classes unless `klass` overrides them, and places the child by its ink, so a child that overhangs its layout box (as `\rlap` does) still overhangs.
+
+Parameters:
+- `children` — the one item to box: a LaTeX string, a math element, or any ordinary `Element`
+- `padding` = `0` — padding around the child in em, given as for **Box**: a scalar, `[horizontal, vertical]`, or `[left, top, right, bottom]`
+- `advance` — the width of the inner box in em; defaults to the child's own. In a wider box the child is placed by `justify`
+- `justify` = `center` — where the child sits in a wider box: `left`, `center`, or `right`
+- `vanchor` — where the math axis crosses the box, measured down from its top in em; defaults to keeping the child where it was, so a smaller value hangs the box lower
+- `klass` — the atom class the box takes in a row, one of `mord`, `mop`, `mbin`, `mrel`, `mopen`, `mclose`, `mpunct`, `minner`, or `none`; defaults to the child's own classes, `mord` for an ordinary element
+- `style` = `text` — the TeX style a string child is parsed in
+
+**Example**
+
+Prompt: a blue circle as a custom operator between a and b: dropped in plainly it touches its neighbors, wrapped in a MathBox classed as a binary operator it spaces like a plus, and an arrow boxed as a relation two ems wide spaces like an equals sign
+
+Generated code:
+```jsx
+const op = <Box padding>
+  <Circle fill={blue} />
+</Box>
+return <VStack spacing={0.15}>
+  <MathText>
+    {"a"}
+    {op}
+    {"b = c"}
+  </MathText>
+  <MathText>
+    {"a"}
+    <MathBox klass="mbin">{op}</MathBox>
+    {"b = c"}
+  </MathText>
+  <MathText>
+    {"a"}
+    <MathBox klass="mrel" advance={2}>
+      <Arrow points={[[0, 0.5], [1, 0.5]]} stroke-width={10} arrow-size={0.5} arrow-curve={0.75} />
+    </MathBox>
+    {"b"}
+  </MathText>
+</VStack>
+```
+
+## MathOp
+
+*Inherits*: **MathSymbol** > **MathSpan** > **Span** > **Element**
+
+A large operator or a named function as an Op atom: `\sum`, `\prod`, `\int`, `\bigcup` and the other big operators, or `\lim`, `\sin`, `\log`, `\max` and any other upright name. This is what **Latex** produces for those commands and for `\operatorname{...}`. Symbol operators are glyphs from the KaTeX size fonts centered on the math axis, at the large size in display style and the small one otherwise, so a `\sum` grows in a displayed equation and shrinks inline. Named operators are set as upright text on the baseline; any name works (`argmax`, `softmax`, `tr`), which is `\operatorname`. The operator can be given by command name (`\sum`), by its Unicode glyph (`∑`, `∫`), or as a bare name (`lim`).
+
+In a **MathText** row it is classed as an operator, so a thin space separates it from an ordinary atom on either side (`\sin x`). Wrapped in a **SupSub**, the scripts of an operator that takes limits (`\sum`, `\prod`, `\bigcup`, `\lim`, `\max`, ...) stack above and below it in display style, while `\int` and the function names take side scripts; `limits` overrides the operator's own convention. Limits only ever apply in display style, as in TeX; in text style scripts always go to the side (though **SupSub**'s own `limits` can force them regardless).
+
+Note that `style` defaults to `display` here, so a bare `<MathOp>` comes out at the large size; pass `style="text"` to match the symbols around it in an inline row.
+
+Parameters:
+- `children` — the operator: a command name (`\sum`, `\int`, `\lim`), a Unicode big operator (`∑`, `∏`, `∫`), or a plain name to set upright (`argmax`)
+- `style` = `display` — the TeX math style (`display`, `text`, `script`, or `scriptscript`), which picks the glyph size and whether limits apply
+- `limits` — whether scripts stack as limits in display style; defaults to the operator's own convention
+- `klass` = `mop` — the atom class used for spacing in a row
+- `font-family` — the face for a named operator, one of the face globals (`mathsf`, `mathbf`, ...) as in **MathSymbol**
+- `color` — the colour of the operator
+
+**Example**
+
+Prompt: the same sum, integral and named operator set in display style, with stacked limits and large glyphs, and below it in text style, with side scripts and small ones
+
+Generated code:
+```jsx
+<VStack spacing={0.2}>
+  <MathText>
+    <SupSub sup="n" sub="i=1"><MathOp>\sum</MathOp></SupSub>
+    {"x_i ="}
+    <SupSub sup="1" sub="0"><MathOp>\int</MathOp></SupSub>
+    {"f(x) \\, dx +"}
+    <SupSub sub="\theta"><MathOp>argmax</MathOp></SupSub>
+    {"g(\\theta)"}
+  </MathText>
+  <MathText>
+    <SupSub sup="n" sub="i=1"><MathOp style="text">\sum</MathOp></SupSub>
+    {"x_i ="}
+    <SupSub sup="1" sub="0"><MathOp style="text">\int</MathOp></SupSub>
+    {"f(x) \\, dx +"}
+    <SupSub sub="\theta"><MathOp style="text">argmax</MathOp></SupSub>
+    {"g(\\theta)"}
+  </MathText>
+</VStack>
+```
+
 ## MathStretch
 
 *Inherits*: **MathShape** > **Group** > **Element**
@@ -243,17 +334,51 @@ Generated code:
 </MathText>
 ```
 
+## MathSymbol
+
+*Inherits*: **MathSpan** > **Span** > **Element**
+
+A single glyph as a math atom: the leaf that every other math element is built from, and what **Latex** produces for each letter, digit, and symbol command in a string. The child names the symbol, either as a LaTeX command (`\alpha`, `\times`, `\leq`, `\infty`) or as a literal character (`x`, `2`, `+`, `(`), and is looked up in KaTeX's symbol table for the given `mode`. The table supplies two things: the face the glyph is set in (the italic math face for letters, the upright main face for digits and most symbols, the AMS face for the AMS symbols) and the atom class (ordinary, operator, binary, relation, opener, closer, punctuation), which is what a **MathText** row uses to space its neighbors, so `+` gets medium spaces around it and `=` thick ones. The math box is the glyph's actual ink, with its italic correction (used to place a superscript) and accent skew (used by **Accent**).
+
+Each element holds one symbol: a longer string is not parsed but drawn verbatim as one ordinary atom in the math italic face, so give strings to **MathText** instead. A literal character that is not in the table is set as an ordinary symbol in the default face; a command name that is not (anything starting with a backslash) is a strict-mode error. `mode="text"` looks the symbol up in the text table instead, which is how letters come out upright and how the text-only symbols (`\textdollar`, `\textsterling`, the text accents) are reached.
+
+Parameters:
+- `children` — the symbol: a LaTeX command name (`\alpha`, `\leq`, `\to`) or a single literal character (`x`, `2`, `+`)
+- `mode` = `math` — the symbol table to look the symbol up in, `math` or `text`
+- `klass` — the atom class used for spacing, overriding the table's: one of `mord`, `mop`, `mbin`, `mrel`, `mopen`, `mclose`, `mpunct`, `minner`, or `none`; `left` and `right` set the two sides separately
+- `center` = `false` — center the ink on the math axis rather than sitting it on the baseline, as large operators and delimiters are
+- `font-family` — the face to set the glyph in, the way `\mathbf` and friends do. The faces are global variables named by their commands: `mathbf`, `mathrm`, `mathit`, `mathbb`, `mathcal`, `mathscr`, `mathfrak`, `mathsf`, `mathtt`, and `boldsymbol` (a KaTeX face name string such as `'KaTeX_Main-Bold'` works too). Honoured only where that face has the glyph (`mathbb` has no digits, `mathcal` no lowercase), otherwise the symbol's own face is kept, as in KaTeX
+- `color` — the colour of the glyph
+
+**Example**
+
+Prompt: a row of individual symbols: x in a calligraphic set that is a subset of blackboard-bold R, then a bold vector going to a red infinity
+
+Generated code:
+```jsx
+<MathText>
+  <MathSymbol>x</MathSymbol>
+  <MathSymbol>\in</MathSymbol>
+  <MathSymbol font-family={mathcal}>S</MathSymbol>
+  <MathSymbol>\subset</MathSymbol>
+  <MathSymbol font-family={mathbb}>R</MathSymbol>
+  <MathSymbol>,</MathSymbol>
+  <MathSymbol font-family={mathbf}>v</MathSymbol>
+  <MathSymbol>\to</MathSymbol>
+  <MathSymbol color={red}>\infty</MathSymbol>
+</MathText>
+```
+
 ## MathText
 
 *Inherits*: **HStack** > **Group** > **Element**
 
 Arranges math items in a horizontal row with automatic inter-atom spacing. Strings and numbers are parsed as LaTeX (as in **Latex**), nested **MathText** is flattened, and ordinary gum **Element** values can be mixed inline as well.
 
-For math-to-math neighbors, spacing is derived from atom classes like `mord`, `mbin`, and `mrel`. For mixed or non-math neighbors, the fallback `spacing` value is used.
+Spacing between neighbors is derived from their atom classes like `mord`, `mbin`, and `mrel`. An ordinary `Element` counts as an ordinary atom (`mord`) with no spacing of its own; wrap it in a **MathBox** to give it padding or another class.
 
 Parameters:
 - `children` — math items, nested arrays of math items, or ordinary `Element`s
-- `spacing` = `0.25` — default spacing used between non-math neighbors and mixed math/non-math neighbors
 - `style` = `text` — TeX style used when parsing string and scalar children
 - `strut` = `false` — reserve a minimum top-level math line box
 - all usual stack layout parameters are also accepted
