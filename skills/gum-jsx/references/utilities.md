@@ -154,6 +154,36 @@ return <TitleFrame title="Spirograph" padding={0.2} margin rounded>
 </TitleFrame>
 ```
 
+## Random
+
+These functions draw from a seeded, stateful random stream, so a figure that uses them renders the same way every time. Every evaluation starts from a fresh stream at the default seed of `42`, and you can pick your own seed at the top of the code with `setSeed`. Hosts can also set the seed from outside with the `seed` option when evaluating.
+
+Gum's own internal draws (the ids it generates for clip and mask elements) come from a separate stream, so adding a clipped element to a figure never shifts the random data the figure draws elsewhere.
+
+## Functions
+
+- `setSeed(seed)` — reset the stream to start from integer `seed`
+- `random()` — a uniform draw from `[0, 1)`
+- `uniform(lo=0, hi=1)` — a uniform draw from `[lo, hi)`
+- `normal(mean=0, stdv=1)` — a normal draw with the given mean and standard deviation
+- `integer(lo, hi)` — a uniform integer draw from `lo` to `hi` inclusive (with one argument, from `0` to `lo`)
+
+**Example**
+
+Prompt: a scatter of 200 normally distributed points with a fixed seed, sized at random and colored by distance from the origin
+
+Generated code:
+```jsx
+setSeed(7)
+const pal = palette(blue, red, [0, 2])
+const points = range(200).map(() => [normal(), normal()])
+return <Plot xlim={[-3, 3]} ylim={[-3, 3]} aspect={1} grid margin={0.15}>
+  {points.map(([x, y]) =>
+    <Circle pos={[x, y]} rad={uniform(0.03, 0.1)} fill={pal(sqrt(x*x + y*y))} opacity={0.7} stroke={none} />
+  )}
+</Plot>
+```
+
 ## Tables
 
 The `loadTable` function reads a CSV file from the host environment and parses it into an array of row objects, making it easy to drive visualizations from external data. It's only available when the host passes a `loadFile` resolver into `evaluate`, so it's typically used when running `gum` against a file on disk rather than a bare snippet.
