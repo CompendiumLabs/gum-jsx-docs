@@ -45,11 +45,12 @@ For multi-segment Bézier splines, `Spline` is the way to go. It takes a list of
 
 These are components that can be used to create text elements. `Text` is a fairly sophisticated component that handles text wrapping, line spacing, and other text-related features. You can specify the wrap width (in "ems", that is, in proportion to the line height) with the `wrap` parameter and the alignment with the `justify` parameter. Feel free to intersperse non-text elements with text elements to create more complex layouts.
 
-`TextStack` is a simple component that stacks text elements vertically. Specifying a `wrap` width will cause every child element to be wrapped to the specified width. You can specify the vertical spacing between the elements with the `spacing` parameter. `Bullets` is a bulleted list whose items are wrapped to the same em width, so it sizes consistently with surrounding text. The `TitleFrame` is a `Frame` subclass that automatically adds a boxed title to the top of the frame. Finally, `Slide` is a fixed 16:9 canvas holding a `TitleFrame` filled with a `TextStack` of its children; text size is set by `wrap`, and content that is too tall is shrunk to fit.
+`TextStack` is a simple component that stacks text elements vertically. Specifying a `wrap` width will cause every child element to be wrapped to the specified width. You can specify the vertical spacing between the elements with the `spacing` parameter. `Bullets` is a bulleted list whose items are wrapped to the same em width, so it sizes consistently with surrounding text. `TextBox` wraps a `Text` in a padded `Box`, and `TextFrame` is the same with a border on by default, which is handy for labels and badges. The `TitleFrame` is a `Frame` subclass that automatically adds a boxed title to the top of the frame. Finally, `Slide` is a fixed 16:9 canvas holding a `TitleFrame` filled with a `TextStack` of its children; text size is set by `wrap`, and content that is too tall is shrunk to fit.
 
 **Components**:
 - *Text*: a text element with wrapping
 - *TextStack*: a stack of text elements
+- *TextBox*/*TextFrame*: text wrapped in a padded box, with or without a border
 - *Bullets*: a bulleted list of text items, with optional nested lists
 - *TitleFrame*: a frame with a title
 - *Slide*: a slide with a title and content
@@ -83,13 +84,14 @@ These are components for creating mathematical expressions. By far the most comm
 
 These components allow you to plot functions symbolically. That is, they accept functions as arguments and plot them accordingly. Functions can be specified as [x => y], [y => x], or [t => (x,y)]. You can control the range over which the domain is sampled with the `tlim`/`xlim`/`ylim` parameters. You can also control the number of samples to take with the `N` parameter.
 
-These clearly extend their non-`Sym` counterparts by adding the ability to plot functions symbolically. The only additional element is `SymFill`, which plots a filled area between two functions. For this one, passing a constant to either `fy1` or `fy2` is equivalent to passing a constant function.
+These clearly extend their non-`Sym` counterparts by adding the ability to plot functions symbolically. There are two additional elements. `SymFill` plots a filled area between two functions; passing a constant to either `fy1` or `fy2` is equivalent to passing a constant function. `SymField` draws a vector field: it samples a regular grid over `xlim`/`ylim` and places a copy of a shape (an `Arrow` by default) at each point, spun to the angle in degrees returned by `func(x, y)`.
 
 **Components**:
 - *SymPoints*: plot points functionally
 - *SymLine*/*SymPoly*: plot a curve functionally (possibly closed)
 - *SymSpline*: plot a Bézier spline functionally (possibly closed)
 - *SymFill*: plot a filled area between two functions
+- *SymField*: plot a vector field as a grid of rotated shapes
 
 ## Plotting
 
@@ -126,12 +128,13 @@ These are components for creating network diagrams. The core element is `Network
 
 **File**: [utilities](references/utilities.md)
 
-These are the helper functions that are available in the library. They are not components themselves, but they are useful for creating and manipulating data. Many of them mimic the behavior of their counterparts in Python and `numpy` and are useful for generating `Element` objects from arrays. There are also some commonly used mathematical constants and tools for interpolating colors.
+These are the helper functions that are available in the library. They are not components themselves, but they are useful for creating and manipulating data. Many of them mimic the behavior of their counterparts in Python and `numpy` and are useful for generating `Element` objects from arrays. There are also some commonly used mathematical constants, tools for interpolating colors, and a seeded random stream (`random`, `uniform`, `normal`, `integer`) that makes generative figures repeatable; call `setSeed` to choose the seed.
 
 **Components**:
 - *Math*: mathematical functions
 - *Arrays*: array operations
 - *Colors*: color operations
+- *Random*: seeded random number generation
 - *Tables*: loading data tables from CSV files
 - *Images*: loading images from PNG files
 
@@ -141,20 +144,24 @@ There is a gallery of more complex examples available. Each is a single markdown
 
 - [Atomic Orbitals](references/gala/atomic_orbitals.md): a slide with polar graphs of the s, p, and d atomic orbitals (**Graph**, **SymSpline**)
 - [Axis Arrows](references/gala/axis_arrows.md): a log plot with directed coordinate axes (**Plot**, **SymLine**, **Axis**)
+- [Cell Diagram](references/gala/cell_diagram.md): a labeled textbook diagram of an animal cell built from lumpy splines (**Spline**, **Group**, **Text**, **Line**)
 - [Complex Plot](references/gala/complex_plot.md): a plot of a complex function showing the solutions to a parameterized quadratic equation (**Plot**, **SymSpline**, **Mesh2D**)
 - [Flux Capacitance](references/gala/flux_capacitance.md): a relatively simple line and shaded area plot (**Plot**, **SymLine**, **SymFill**)
 - [Macro Economy](references/gala/macro_economy.md): a diagram of a macro economy (**Network**, **Edge**, **Node**, **Text**)
 - [Metal Grid](references/gala/metal_grid.md): a stylized grid of metal squares (**Grid**, **Spline**, **Frame**)
+- [Neon Rose](references/gala/neon_rose.md): a glowing neon-sign rose made of layered translucent strokes (**Spline**, **Graph**, **Box**)
 - [Particle in a Box](references/gala/particle_box.md): a textbook-style diagram of the eigenfunctions of a particle in a 1D box (**Plot**, **SymSpline**, **Latex**)
 - [Pendulum Physics](references/gala/pendulum_physics.md): a physics diagram of a pendulum (**Arc**, **Arrow**, **Line**, **Latex**)
-- [Plot Manual](references/gala/plot_manual.md): a simple example of a plot manual diagram (**Plot**, **Axis**, **Mesh**)
-- [Polygon Slide](references/gala/polygon_slide.md): a simple example of a polygon slide diagram (**SymPoly**, **Grid**, **Stack**)
+- [Plot Manual](references/gala/plot_manual.md): a plot assembled by hand from a coordinate group, axes, and meshes instead of `Plot` (**Group**, **Axis**, **Mesh**, **SymLine**)
+- [Polygon Slide](references/gala/polygon_slide.md): a slide showing a grid of regular polygons from a reusable component (**SymPoly**, **Grid**, **Stack**)
 - [Punk Rock](references/gala/punk_rock.md): a logo-style text block (**TextFrame**, **Stack**)
 - [Scenic Route](references/gala/scenic_route.md): a custom extensible math arrow with a figure-eight knot (**MathText**, **Arrow**, **Latex**)
 - [Set Theory](references/gala/set_theory.md): a mathematical diagram of nested sets (**Text**, **Frame**, **Group**)
+- [Shape Algebra](references/gala/shape_algebra.md): equations with shapes and swatches as math atoms (**MathText**, **Frac**, **Sqrt**, **Bracket**, **MathArray**)
 - [Slick Bars](references/gala/slick_bars.md): a bar chart with a custom plot style (**Plot**, **Bars**, **Span**)
+- [Space Rose](references/gala/space_rose.md): a backlit sign box with a printed rose floating in a seeded starfield (**Polygon**, **Spline**, **Group**, **Random**)
 - [Spline Star](references/gala/spline_star.md): a parameterized star shape (**Spline**, **Frame**)
-- [Stokes Theorem](references/gala/stokes_theorem.md): a slide depicting Stokes' theorem (**Spline** , **Arrow**, **Latex**)
+- [Stokes Theorem](references/gala/stokes_theorem.md): a slide depicting Stokes' theorem (**Spline**, **Arrow**, **Latex**)
 - [The Nexus](references/gala/the_nexus.md): a plot of damped cosine functions (**Plot**, **SymSpline**)
 - [Transformer](references/gala/transformer.md): a block diagram of a transformer architecture (**VStack**, **Frame**, **Arrow**)
 - [Unit Distance](references/gala/unit_distance.md): a unit-distance graph of a complex integer lattice (**Graph**, **Segments**, **Points**)
