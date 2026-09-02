@@ -472,13 +472,32 @@ echo '<Rectangle rounded fill={blue} />' | gum -o test.png
 
 **CLI options:**
 - `file`: Gum JSX file to render (reads from stdin if not provided)
-- `-t, --theme <theme>`: theme to use (default: light)
-- `-b, --background <color>`: background color (default: white)
-- `-f, --format <format>`: output format: json, svg, png, kitty (default: auto)
+- `-f, --format <format>`: output format: svg, png, kitty, layout, json (default: kitty, or inferred from the output file extension)
 - `-o, --output <output>`: output file (default: stdout)
+- `-z, --zoom <region>`: region to zoom into, as `x0,y0,x1,y1` fractions of the figure between 0 and 1 with the origin at the top left; the region is magnified to fill the normal output size (default: the whole figure)
+- `--depth <levels>`: for the layout format, how many levels below the root to list (default: 4)
+- `--select <text>`: for the layout format, only list elements whose path, type, id, or class contains this text (case insensitive)
 - `-s, --size <size>`: size of the SVG (default: 1000)
-- `-w, --width <width>`: max width of the PNG (default: null)
-- `-h, --height <height>`: max height of the PNG (default: null)
+- `-t, --theme <theme>`: theme to use, light or dark (default: dark)
+- `-b, --background <color>`: background color (default: white for the light theme, none otherwise)
+- `-r, --raster-size <size>`: max size of the rasterized PNG (default: the SVG size)
+- `--strict`: throw on rendering fallbacks instead of drawing them
+- `--seed <seed>`: seed for `random`/`uniform`/`normal`/`integer`
+
+**Inspecting the output:**
+
+Beyond looking at the picture, two options help check placement precisely. `--zoom` crops to a region and magnifies it, so `-z 0,0,0.5,0.5` shows the top left quadrant at double size and `-z 0.4,0.4,0.6,0.6` shows the center at five times. It applies to svg, png, and kitty output. The `layout` format skips the picture and prints one JSON line per element with its path in the tree, type, `rect` (the pixel box it was placed in), `alloc` (the box its parent allocated to it), plus any `id`, `class`, `text`, or `rotate`. This is the quickest way to check overlap, containment, and alignment numerically. `--select` narrows it to matching elements, `--depth` controls how far down the tree it goes, and `--zoom` restricts it to the elements intersecting that region.
+
+```bash
+# zoom into the lower right quadrant
+gum test.jsx -z 0.5,0.5,1,1 -o zoom.png
+
+# where did the axis labels land?
+gum test.jsx -f layout --select Labels
+
+# everything in the top left corner, down to the leaves
+gum test.jsx -f layout -z 0,0,0.25,0.25 --depth 10
+```
 
 # Using Gum in TypeScript
 
