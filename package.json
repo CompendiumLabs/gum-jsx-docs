@@ -18,12 +18,22 @@
     "docs",
     "gala",
     "prompt",
-    "skills/gum-jsx"
+    "skills/gum-jsx",
+    "types"
   ],
   "exports": {
-    ".": "./src/index.ts",
-    "./meta": "./src/meta.ts",
-    "./dirs": "./src/dirs.ts",
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.ts"
+    },
+    "./meta": {
+      "types": "./types/meta.d.ts",
+      "import": "./src/meta.ts"
+    },
+    "./dirs": {
+      "types": "./types/dirs.d.ts",
+      "import": "./src/dirs.ts"
+    },
     "./docs/*": "./docs/*",
     "./prompt/*": "./prompt/*",
     "./gala/*": "./gala/*",
@@ -31,7 +41,9 @@
   },
   "scripts": {
     "skill": "bun ./scripts/skill.ts && cd skills && rm -f gum-jsx.skill && zip -r gum-jsx.skill gum-jsx",
-    "typecheck": "bun tsc --noEmit"
+    "typecheck": "bun tsc --noEmit",
+    "types": "rm -rf types && bun tsc -p tsconfig.types.json",
+    "prepublishOnly": "bun run types"
   },
   "devDependencies": {
     "@types/node": "^25.2.3",

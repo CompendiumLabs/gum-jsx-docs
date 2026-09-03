@@ -56,77 +56,89 @@ gum test.jsx -f layout -z 0,0,0.25,0.25 --depth 10
 
 # Using Gum in TypeScript
 
-There are a couple of ways to use Gum in TypeScript. You can evaluate JSX strings directly, or you can construct Gum components directly. If you want to use Gum components in React, you can use the `react-gum-jsx` package.
+gum.jsx is published as a set of packages. Which one you import from depends on where the code runs:
+
+| Package | What it is | Runs in |
+|---|---|---|
+| `gum-jsx` | Batteries included: re-exports everything below and ships the `gum`, `gum-tex`, and `gum-mark` commands | node / bun only |
+| `@gum-jsx/core` | The evaluator, the elements, the constants and utilities, and the IBM Plex fonts | browser and node |
+| `@gum-jsx/math` | The `math` plugin: `<Latex>`, `<Tex>`, the math layout elements, KaTeX fonts, and standalone `mathToSvg` | browser and node |
+| `@gum-jsx/web` | Browser runtime: font loading and installation, font embedding, canvas rasterization, downloads | browser only |
+| `@gum-jsx/react` | React bindings (`GUM`, `<Gum>`, `createGumRoot`) and the `gum-react` command | browser and node |
+| `@gum-jsx/node` | PNG rasterization with node-canvas and kitty terminal output | node / bun only |
+
+The rule of thumb: in a script or a server, import from `gum-jsx`; in anything that gets bundled for a browser, import only from the `@gum-jsx/*` packages. `gum-jsx` re-exports `@gum-jsx/node`, which imports `child_process` and node-canvas, so a browser build that touches `gum-jsx` fails to bundle. The old `react-gum-jsx` package on npm is abandoned and no longer works with current core; use `@gum-jsx/react`.
 
 ## Evaluating JSX strings
 
-The `evaluateGum` function from `gum-jsx/eval` parses a JSX string and returns an `Svg` element tree. Call `.svg()` on the result to get an SVG string.
+`evaluateGum` parses a string of gum.jsx and returns the root `Svg` element; call `.svg()` on it to get the SVG markup. In node, `gum-jsx/eval` gives you the default Env with the math plugin already applied, and `gum-jsx/render` rasterizes to PNG:
 
 ```typescript
 import { evaluateGum } from 'gum-jsx/eval'
 import { rasterizeSvg } from 'gum-jsx/render'
 import { writeFileSync } from 'fs'
 
-// parse JSX string into element tree, then render to SVG
-const tree = evaluateGum('<Rectangle rounded fill={blue} />')
+// parse the JSX into an element tree, then serialize to SVG
+const tree = evaluateGum('<Rectangle rounded fill={blue} />', { size: 500, theme: 'light' })
 const svg = tree.svg()
 
-// render to PNG buffer
-const png = rasterizeSvg(svg, {
-    size: tree.size,
-    background: 'white',
-})
+// rasterize to a PNG buffer (node only)
+const png = rasterizeSvg(svg, { size: tree.size, background: 'white' })
 writeFileSync('output.png', png)
 ```
 
-The `evaluateGum` function accepts options for theme, size, and extra bindings (`bindings: { name: value }`):
+In a browser, import the same function from `@gum-jsx/core/eval` and apply the math plugin yourself if you need `<Latex>`:
 
 ```typescript
-const tree = evaluateGum(code, {
-    theme: 'light',
-    size: 500,
-})
+import { gum } from '@gum-jsx/core'
+import { evaluateGum } from '@gum-jsx/core/eval'
+import { math } from '@gum-jsx/math'
+gum.use(math)   // once, before evaluating anything with math in it
 ```
+
+Options to `evaluateGum`: `size` (a number or `[width, height]`), `theme` (`light` or `dark`), `bindings` (extra names in scope), `prelude`, `seed`, `strict`, `loadFile`, `debug`, and any `Svg` argument such as `padding` or `unit_size`. The realized size of the output is on the element as `size`.
 
 ## Using components directly
 
-You can also construct Gum components directly by importing them from `gum-jsx` and calling their constructors. Each component takes a single args object.
+The elements are plain classes and can be constructed from TypeScript. Each takes a single args object with props in `snake_case` (`stroke_width`, not `stroke-width`), and `children` is always an array:
 
 ```typescript
-import { Svg, Rectangle, Circle, HStack, Text, blue, red, white } from 'gum-jsx'
+import { Svg, Square, Circle, HStack, Text, blue, red, white } from '@gum-jsx/core'
 
-// create elements by calling constructors directly
 const rect = new Square({ rounded: true, fill: blue })
 const circle = new Circle({ fill: red })
-const label = new Text({ children: ['Hello'], fill: white })
+const label = new Text({ children: ['Hello'], color: white })
 const layout = new HStack({ children: [rect, circle, label], spacing: 0.1 })
 
-// wrap in Svg and render
 const tree = new Svg({ children: [layout], size: 500 })
 const svg = tree.svg()
 ```
 
-When constructing manually, note that:
-- `children` is always passed as an array in the args object
-- Constants like `blue`, `red`, `none`, etc. are exported from `gum-jsx`
-- Utility functions like `range`, `linspace`, `zip` are also available from `gum-jsx`
-- Call `.svg()` on the top-level `Svg` element to get the SVG string output
-- The realized size of the SVG is available on the `Svg` element as `size`
+The constants (`blue`, `red`, `none`, `pi`, ...) and utilities (`range`, `linspace`, `zip`, `palette`, ...) are exported from `@gum-jsx/core` (and re-exported by `gum-jsx`).
 
-## Using in React with `react-gum-jsx`
+## Fonts in the browser
 
-You can use Gum components directly in React components by importing from the `react-gum-jsx` package. This is useful for creating interactive visualizations in React.
+gum measures text with real font metrics, so the faces have to be loaded before anything with text is rendered; otherwise rendering throws `FontNotLoadedError`. In node they are read from disk on first use and nothing is needed. In a browser, await a loader first:
 
-Here's an example of how to use Gum in a React component. It's basically the same as what you would pass to `evaluateGum` but as a default export:
+```typescript
+import { loadWebFonts } from '@gum-jsx/web'
+await loadWebFonts()   // fetch every face the default Env knows and register them with document.fonts
+```
+
+`loadWebFonts` both fetches the bytes core measures with and hands them to the page through the `FontFace` API, so the SVG's `font-family` names resolve without any `@font-face` CSS. Call it once before the first render and again after applying a plugin that brings its own faces (`gum.use(math)` then `await loadWebFonts()`). To keep the initial download small, pass a list of family names (`loadWebFonts([...TEXT_FONTS])` with `TEXT_FONTS` from `@gum-jsx/core`); loading is memoized per file. Figures with no text at all render without loading anything. `@gum-jsx/web` also has `embedFonts` (inline the faces into an SVG so it stands alone as a file), `rasterizeSvg`/`rasterizePixels` (draw on a canvas, same interface as `@gum-jsx/node`), and `downloadSvg`/`downloadFile`.
+
+## Using in React with `@gum-jsx/react`
+
+`GUM` is a proxy that hands out a React component for any gum element name, so a figure is written as ordinary JSX. Props are the same as in gum.jsx code, including hyphenated ones like `stroke-width`. Write the figure as a component with a default export:
 
 ```tsx
-import { blue, red } from 'gum-jsx'
-import { GUM } from 'react-gum-jsx'
+import { blue, red } from '@gum-jsx/core'
+import { GUM } from '@gum-jsx/react'
 const { Frame, HStack, Square, Circle, Text } = GUM
 
 export default function Demo() {
   return <Frame padding margin rounded>
-    <HStack padding>
+    <HStack spacing>
       <Square fill={blue} />
       <Circle fill={red} />
       <Text>Hello</Text>
@@ -135,15 +147,32 @@ export default function Demo() {
 }
 ```
 
-To run this in a CLI setting, just pass a file with a default export to the `gum-react` command that comes with the `react-gum-jsx` package. This takes very similar arguments to the regular `gum` command.
+`GUM` tracks the default Env's element registry, so a plugin's elements appear on it once the plugin is used (`gum.use(math)` then `const { Latex } = GUM`). Components can return fragments and arrays, and can be composed and mapped over like any React component; the reconciler builds gum elements from them and lays them out in one pass.
 
-If you are in a web setting, you'll need to wrap this export in a `<Gum>` component, which takes roughly the same arguments as `evaluateGum`. This would look like:
+To check a component from the command line, pass the file to `gum-react`, which prints SVG to stdout (options: `-s/--size`, `-u/--unit-size`, `-t/--theme`, `-c/--cwd`; the math elements are always registered here):
+
+```bash
+gum-react demo.tsx -s 800 -t dark > demo.svg
+```
+
+In a web page, wrap the component in `<Gum>`, which renders into a `<div>` it owns and re-renders when its children change. It takes `size` (a number or `[width, height]`), `theme`, an optional `env`, `className`/`style` for the host div, and any `Svg` props:
 
 ```tsx
-import { Gum } from 'react-gum-jsx'
-<Gum size={[640, 360]}>
+import { Gum } from '@gum-jsx/react'
+
+<Gum size={[640, 360]} theme="dark" className="my-figure">
   <Demo />
 </Gum>
 ```
 
-If the inner component has an `aspect` it will be embedded inside the given size bounds. If it is aspectless, it will be stretched to fill the given size bounds.
+If the inner component has an `aspect` it is embedded inside the given size; if it is aspectless it stretches to fill it. The SVG is emitted at that pixel size, so for a responsive figure give the host div a rule like `svg { width: 100%; height: auto }`. Fonts follow the same rule as above: gate the first `<Gum>` render with text on `await loadWebFonts()`.
+
+**Typing note.** `GUM` is typed so that core's element names are always present, while a plugin's (such as `Latex` from `@gum-jsx/math`) are only known at runtime and come out as `GumPrimitiveComponent | undefined` under TypeScript's `noUncheckedIndexedAccess`. The proxy always returns a component, so narrow those once where you destructure them:
+
+```typescript
+import { GUM, type GumPrimitiveComponent } from '@gum-jsx/react'
+const { Frame, Plot } = GUM            // core names: typed as present
+const Latex = GUM.Latex!               // plugin names: assert once, after gum.use(math)
+```
+
+**Bundling note.** The `@gum-jsx/*` packages ship TypeScript sources as their runtime (with `.d.ts` declarations alongside for the type checker, so your own `tsconfig` strictness never applies to them), and core's fonts are imported as assets. So a bundler that handles `.ts` and binary imports (bun, Vite, esbuild) is needed, and the fonts land in the build output as separate files, fetched on `loadWebFonts()`.
