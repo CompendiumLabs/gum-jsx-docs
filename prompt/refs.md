@@ -45,15 +45,18 @@ For multi-segment Bézier splines, `Spline` is the way to go. It takes a list of
 
 These are components that can be used to create text elements. `Text` is a fairly sophisticated component that handles text wrapping, line spacing, and other text-related features. You can specify the width (in "ems", that is, in proportion to the line height) with the `width` parameter, or the size relative to the surrounding text with `scale`, and the alignment with the `justify` parameter. Feel free to intersperse non-text elements with text elements to create more complex layouts.
 
-`TextStack` is a simple component that stacks text elements vertically. Specifying a `width` will cause every child element to be wrapped to the specified width, with a formula placed at the text's size and any other element spanning the width. You can specify the vertical spacing between the elements with the `spacing` parameter. `Bullets` is a bulleted list whose items are wrapped to the same em width, so it sizes consistently with surrounding text. `TextBox` wraps a `Text` in a padded `Box`, and `TextFrame` is the same with a border on by default, which is handy for labels and badges. The `TitleFrame` is a `Frame` subclass that automatically adds a boxed title to the top of the frame. Finally, `Slide` is a fixed 16:9 canvas holding a `TitleFrame` filled with a `TextStack` of its children; text size is set by `width`, and content that is too tall is shrunk to fit.
+`TextCol` stacks text blocks vertically: each child is laid out for the column's `width`, a child's `scale` sizes it relative to the column (a heading at `scale={1.5}`, say), a formula is placed at the text's size, and any other element spans the width; `gap` is the space between them in em. `TextRow` puts blocks side by side (children with a size of their own keep it, the rest share the width, or `sizes` splits it), `TextGrid` fills equal columns row by row, and `TextFigure` gives an element a size in em with a caption below it. `Bullets` is a bulleted list whose items are wrapped to the same em width, so it sizes consistently with surrounding text. `TextBox` draws a box around text (or a formula, or a column) with padding in em, and `TextFrame` is the same with a border on by default, which is handy for labels and badges. The `TitleFrame` is a `Frame` subclass that automatically adds a boxed title to the top of the frame. Finally, `Slide` is a fixed 16:9 canvas holding a `TitleFrame` filled with a `TextCol` of its children; text size is set by `em` (a fraction of the slide height) or `width`, and content that is too tall is shrunk to fit, clipped, or an error by `overflow`.
 
 **Components**:
 - *Text*: a text element with wrapping
-- *TextStack*: a stack of text elements
-- *TextBox*/*TextFrame*: text wrapped in a padded box, with or without a border
+- *TextCol*: a column of text blocks, sized by the column's width and their `scale`
+- *TextRow*: text blocks side by side, sharing the width
+- *TextGrid*: text blocks in equal columns
+- *TextFigure*: an element sized in em with a caption
+- *TextBox*/*TextFrame*: text (or a formula, or a column) in a padded box, with or without a border
 - *Bullets*: a bulleted list of text items, with optional nested lists
 - *TitleFrame*: a frame with a title
-- *Slide*: a slide with a title and content
+- *Slide*: a slide with a title and content, its text sized by `em`
 
 ## Math
 
@@ -142,7 +145,7 @@ These are the helper functions that are available in the library. They are not c
 
 There is a gallery of more complex examples available. Each is a single markdown file with a complete `gum.jsx` code example and accompanying text description. These are available in the `references/gala` directory. Here is a brief description of each along with a list of the main elements used:
 
-- [Atomic Orbitals](references/gala/atomic_orbitals.md): a slide with polar graphs of the s, p, and d atomic orbitals (**Graph**, **SymSpline**)
+- [Atomic Orbitals](references/gala/atomic_orbitals.md): a slide with polar graphs of the s, p, and d atomic orbitals in centered rows of figures (**Graph**, **SymSpline**, **TextRow**, **TextFigure**)
 - [Axis Arrows](references/gala/axis_arrows.md): a log plot with directed coordinate axes (**Plot**, **SymLine**, **Axis**)
 - [Cell Diagram](references/gala/cell_diagram.md): a labeled textbook diagram of an animal cell built from lumpy splines (**Spline**, **Group**, **Text**, **Line**)
 - [Complex Plot](references/gala/complex_plot.md): a plot of a complex function showing the solutions to a parameterized quadratic equation (**Plot**, **SymSpline**, **Mesh2D**)
@@ -153,15 +156,16 @@ There is a gallery of more complex examples available. Each is a single markdown
 - [Particle in a Box](references/gala/particle_box.md): a textbook-style diagram of the eigenfunctions of a particle in a 1D box (**Plot**, **SymSpline**, **Latex**)
 - [Pendulum Physics](references/gala/pendulum_physics.md): a physics diagram of a pendulum (**Arc**, **Arrow**, **Line**, **Latex**)
 - [Plot Manual](references/gala/plot_manual.md): a plot assembled by hand from a coordinate group, axes, and meshes instead of `Plot` (**Group**, **Axis**, **Mesh**, **SymLine**)
-- [Polygon Slide](references/gala/polygon_slide.md): a slide showing a grid of regular polygons from a reusable component (**SymPoly**, **Grid**, **Stack**)
-- [Punk Rock](references/gala/punk_rock.md): a logo-style text block (**TextFrame**, **Stack**)
+- [Polygon Slide](references/gala/polygon_slide.md): a slide showing a grid of framed, captioned regular polygons from a reusable component (**SymPoly**, **TextGrid**, **TextFigure**)
+- [Punk Rock](references/gala/punk_rock.md): a logo-style text block (**TextFrame**, **TextRow**)
 - [Scenic Route](references/gala/scenic_route.md): a custom extensible math arrow with a figure-eight knot (**MathText**, **Arrow**, **Latex**)
 - [Set Theory](references/gala/set_theory.md): a mathematical diagram of nested sets (**Text**, **Frame**, **Group**)
 - [Shape Algebra](references/gala/shape_algebra.md): equations with shapes and swatches as math atoms (**MathText**, **Frac**, **Sqrt**, **Bracket**, **MathArray**)
 - [Slick Bars](references/gala/slick_bars.md): a bar chart with a custom plot style (**Plot**, **Bars**, **Span**)
 - [Space Rose](references/gala/space_rose.md): a backlit sign box with a printed rose floating in a seeded starfield (**Polygon**, **Spline**, **Group**, **Random**)
 - [Spline Star](references/gala/spline_star.md): a parameterized star shape (**Spline**, **Frame**)
-- [Stokes Theorem](references/gala/stokes_theorem.md): a slide depicting Stokes' theorem (**Spline**, **Arrow**, **Latex**)
+- [Stokes Theorem](references/gala/stokes_theorem.md): a slide depicting Stokes' theorem, a figure beside a text column (**Spline**, **Arrow**, **Latex**, **TextRow**)
 - [The Nexus](references/gala/the_nexus.md): a plot of damped cosine functions (**Plot**, **SymSpline**)
 - [Transformer](references/gala/transformer.md): a block diagram of a transformer architecture (**VStack**, **Frame**, **Arrow**)
+- [Two Columns](references/gala/two_column.md): a two-column slide, a plot with a caption beside a heading, a paragraph, and a list (**Slide**, **TextRow**, **TextFigure**, **TextCol**)
 - [Unit Distance](references/gala/unit_distance.md): a unit-distance graph of a complex integer lattice (**Graph**, **Segments**, **Points**)

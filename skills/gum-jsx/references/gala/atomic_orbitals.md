@@ -4,7 +4,7 @@ This one brings in a little quantum chemistry. The code is not deriving orbitals
 
 The two main helpers are `OrbitalLobe` and `OrbGraph`. `OrbitalLobe` wraps **SymSpline** and turns a radial profile plus an angular interval into one filled lobe. `OrbGraph` provides a common **Graph** container with fixed coordinates, dashed axes, and a central dot, so each orbital can be built by composing lobes rather than rebuilding the same frame each time.
 
-The final layout is also worth noting. Since the figure really wants an uneven `1 / 3 / 2` arrangement, a rigid grid with spacers would be awkward. Instead the slide uses a **VStack** of **HWrap** rows, and **HWrap**'s aspect-based spacing keeps the square boxes lined up cleanly even though each row has a different number of cells.
+The final layout is also worth noting. Since the figure really wants an uneven `1 / 3 / 2` arrangement, a rigid grid would be awkward. Instead each row is a **TextRow** with `justify="center"`, and each cell a **TextFigure** four ems tall with a **Tex** caption. A figure with a height keeps it in a row, so the rows pack their cells and center them, and the `em` on the **Slide** sets the size of everything at once.
 
 **Code**
 
@@ -90,30 +90,27 @@ const Dz2Orbital = () => <OrbGraph>
   <OrbitalLobe rfn={dz2_r} t0={pi + dz2_zero} t1={2*pi - dz2_zero} sign={false} />
 </OrbGraph>
 
-// labeled orbital cell
+// labeled orbital cell: a figure four ems tall with a math caption
 const Cell = ({ label, children }) =>
-  <VStack spacing={0.02}>
+  <TextFigure height={4} caption={<Tex>{label}</Tex>}>
     <Frame aspect={1} border rounded fill={fill_col}>
       {children}
     </Frame>
-    <Tex stack-size={0.15}>{label}</Tex>
-  </VStack>
+  </TextFigure>
 
-// main slide
-return <Slide title="Atomic Orbitals" title-size={0.08}>
-  <VStack even spacing>
-    <HWrap hspacing={0.2}>
-      <Cell label="1s"><SOrbital /></Cell>
-    </HWrap>
-    <HWrap hspacing={0.2}>
-      <Cell label="2p_x"><PxOrbital /></Cell>
-      <Cell label="2p_y"><PyOrbital /></Cell>
-      <Cell label="2p_z"><PzOrbital /></Cell>
-    </HWrap>
-    <HWrap hspacing={0.2}>
-      <Cell label="3d_{xy}"><DxyOrbital /></Cell>
-      <Cell label="3d_{z^2}"><Dz2Orbital /></Cell>
-    </HWrap>
-  </VStack>
+// main slide: each row is centered, so the 1 / 3 / 2 arrangement lines up
+return <Slide aspect title="Atomic Orbitals" title-size={0.08} em={0.04} gap={0.5}>
+  <TextRow justify="center" gap={1}>
+    <Cell label="1s"><SOrbital /></Cell>
+  </TextRow>
+  <TextRow justify="center" gap={1}>
+    <Cell label="2p_x"><PxOrbital /></Cell>
+    <Cell label="2p_y"><PyOrbital /></Cell>
+    <Cell label="2p_z"><PzOrbital /></Cell>
+  </TextRow>
+  <TextRow justify="center" gap={1}>
+    <Cell label="3d_{xy}"><DxyOrbital /></Cell>
+    <Cell label="3d_{z^2}"><Dz2Orbital /></Cell>
+  </TextRow>
 </Slide>
 ```
