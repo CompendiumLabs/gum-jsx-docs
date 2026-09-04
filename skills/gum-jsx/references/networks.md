@@ -53,8 +53,8 @@ Prompt: A network with a node on the left saying "Hello world" and two nodes on 
 Generated code:
 ```jsx
 <Network aspect={1.5} node-ysize={0.3} node-rounded node-fill={gray} edge-fill={white}>
-  <Node id="hello" pos={[0.25, 0.5]} wrap={3}>Hello world</Node>
-  <Node id="test" pos={[0.75, 0.25]} wrap={6}>This is a test of wrapping capabilities</Node>
+  <Node id="hello" pos={[0.25, 0.5]} width={3}>Hello world</Node>
+  <Node id="test" pos={[0.75, 0.25]} width={6}>This is a test of wrapping capabilities</Node>
   <Node id="ball" pos={[0.75, 0.75]}><Ellipse aspect={1.5} fill={blue}/></Node>
   <Edge start="hello" end="test" />
   <Edge start="hello" end="ball" start-side="s" />
@@ -74,7 +74,7 @@ Parameters:
 - `padding` = `0.1` — the padding of the node box
 - `border` = `1` — the border width of the node box
 - `rounded` = `0.05` — the radius of the corners of the node box
-- `wrap` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `width` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
 - `justify` = `'center'` — the horizontal justification of the text
 
 **Example**

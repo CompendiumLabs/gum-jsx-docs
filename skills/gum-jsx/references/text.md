@@ -4,13 +4,14 @@
 
 *Inherits*: **VStack** > **Group** > **Element**
 
-A bulleted list. Each child becomes an item: strings and **Text** elements are wrapped to the list width minus the indent, with a marker placed in the indent level with the first line. Other elements (say a **Latex** equation) are placed as-is with a marker beside them. A nested `Bullets` child becomes a sub-list, indented without a marker of its own.
+A bulleted list. Each child becomes an item: strings and **Text** elements are wrapped to the list width minus the indent, with a marker placed in the indent level with the first line. A **Latex** equation, or anything else carrying em metrics, is placed at the text's size with a marker beside it; other elements span the item width as they are. A nested `Bullets` child becomes a sub-list, indented without a marker of its own.
 
-All widths are in em, so text in a `Bullets` comes out the same size as a `Text` with the same `wrap`. This makes it fit naturally inside a **Slide**, which sets `wrap` on all of its children.
+All widths are in em, so text in a `Bullets` comes out the same size as a `Text` with the same `width`. This makes it fit naturally inside a **Slide**, which sets `width` on all of its children.
 
 Parameters:
 - `children` — the list items: strings, `Text` elements, other elements, or nested `Bullets`
-- `wrap` = `25` — the total width of the list in ems
+- `width` = `25` — the total width of the list in ems
+- `scale` = `1` — the size of the list's text relative to the surrounding text's em; an item's own `scale` sizes that item, and its marker moves to stay level with its first line
 - `marker` = `'•'` — the marker string or element placed beside each item
 - `indent` = `1.5` — the width of the marker column in ems
 - `gap` = `0.5` — the vertical space between items in ems
@@ -26,7 +27,7 @@ Prompt: A bulleted list of three points about layout, with a nested sub-list und
 Generated code:
 ```jsx
 <Frame padding rounded>
-  <Bullets wrap={22}>
+  <Bullets width={22}>
     <Text>Positions and sizes are proportional to the parent</Text>
     <Text>Layout containers arrange their children</Text>
     <Bullets>
@@ -42,9 +43,9 @@ Generated code:
 
 *Inherits*: **Box** > **Group** > **Element**
 
-Create a presentation slide with a title and some content. A slide is a fixed-aspect canvas (16:9 by default) holding a **TitleFrame** that fills the canvas inside the margin. The content is a `TextStack` of the children: strings, **Text**, **Bullets**, and any other `Element`s are arrayed vertically and the given `wrap` is applied to the text elements.
+Create a presentation slide with a title and some content. A slide is a fixed-aspect canvas (16:9 by default) holding a **TitleFrame** that fills the canvas inside the margin. The content is a `TextStack` of the children: strings, **Text**, **Bullets**, and any other `Element`s are arrayed vertically and the given `width` is applied to the text elements.
 
-Text size follows from `wrap`: the content fills the width of the frame, so one em is the content width divided by `wrap`. A child that sets its own `wrap` keeps it, so `<Text wrap={12}>` makes a heading twice the size of the body text. If the content is too tall for the frame it is shrunk to fit the height instead. The `overflow` property on the resulting element gives the ratio of content height to available height, so a value above `1` means the content was shrunk.
+Text size follows from `width`: the content fills the width of the frame, so one em is the content width divided by `width`. A child that sets its own `width` keeps it, and `scale` is the same thing said the other way round, so `<Text scale={2}>` makes a heading twice the size of the body text. If the content is too tall for the frame it is shrunk to fit the height instead. The `overflow` property on the resulting element gives the ratio of content height to available height, so a value above `1` means the content was shrunk.
 
 Both `margin` and `padding` are given as fractions of the slide height, so they are the same distance in every direction.
 
@@ -52,7 +53,7 @@ Parameters:
 - `children` = `[]` — a list of strings or `Element`s to array vertically
 - `title` — the slide title, a string or `Element`
 - `aspect` = `16/9` — the aspect ratio of the slide canvas
-- `wrap` = `25` — the width (in ems) to wrap the text at
+- `width` = `25` — the width of the content in ems, which sets the text size
 - `margin` = `0.05` — the space between the canvas edge and the frame
 - `padding` = `0.1` — the space between the frame and the content
 - `spacing` = `0.05` — the spacing between content elements
@@ -93,7 +94,11 @@ Generated code:
 
 Displays text and other elements. Note that you will typically not set the font size of the text here, as this will fill the entire space with the provided text. To set the text color, use `color` instead of `fill` or `stroke`.
 
-If `wrap` is specified, the text will be wrapped to the specified width. In either case, single newlines will be respected, though whitespace will be compressed. There are two wrapper elements related to text:
+If `width` is specified, the text will be wrapped to that width. In either case, single newlines will be respected, though whitespace will be compressed.
+
+Text size follows from width: `width` is measured in the text's own em, so a narrower width in the same space makes larger text. `scale` says the same thing the other way round, as a multiple of the surrounding text's em: `scale={2}` inside a **TextStack** is a heading twice the body size, and the text's box comes out `width * scale` wide in the surrounding em. Every text element carries its box in em (width, height, and the position of the first line's math axis), which is how a **MathText** places a text block by its first line and how the text containers size themselves.
+
+There are two wrapper elements related to text:
 
 - **TextBox** / **TextFrame** can handle text with a border and background
 - **TextStack** can handle multiple lines of text that are passed in as an array
@@ -102,7 +107,8 @@ There are two default fonts that are always provided: `sans = 'IBM Plex Sans'` a
 
 Parameters:
 - `children` — the text to display
-- `wrap` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `width` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `scale` = `1` — the size of the text relative to the surrounding text's em
 - `spacing` = `0.2` — the spacing between lines of text
 - `justify` = `'left'` — the horizontal justification of the text
 - `color` = `black` — sets the text color using both stroke and fill (this is the usual way)
@@ -115,7 +121,7 @@ Prompt: The text "Hello World! You can mix text and other elements together." wi
 
 Generated code:
 ```jsx
-<TextFrame rounded wrap={10} justify="center">
+<TextFrame rounded width={10} justify="center">
   Hello World! You can mix text and <Square rounded fill={blue} /> other elements together.
 </TextFrame>
 ```
@@ -127,7 +133,8 @@ Generated code:
 This is a specialized relative of **Text** that wraps the text in a **Box**. Note that the default padding is non-zero. There is a specialized class called **TextFrame** that defaults to `border = 1`.
 
 Parameters:
-- `padding` = `0.1` — the padding
+- `padding` = `0.1` — the padding, the same distance all round (see **Box**)
+- `width`/`scale` — the text size, as for **Text**
 
 **Example**
 

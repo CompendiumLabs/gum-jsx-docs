@@ -22,7 +22,7 @@ const RegularPolygon = ({ n, ...args }) =>
     f={t => polar(t+pi/2*(n-2)/n)}
   />
 
-return <Slide title="Simple Regular Polygons" wrap={25}>
+return <Slide title="Simple Regular Polygons" width={25}>
   <Text>
     A regular polygon has equal side lengths and equal interior angles. Below are examples for
     <Tex>{"n \\in \\{3, \\ldots, 8\\}"}</Tex>

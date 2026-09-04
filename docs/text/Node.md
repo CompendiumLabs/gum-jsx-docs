@@ -13,5 +13,5 @@ Parameters:
 - `padding` = `0.1` — the padding of the node box
 - `border` = `1` — the border width of the node box
 - `rounded` = `0.05` — the radius of the corners of the node box
-- `wrap` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `width` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
 - `justify` = `'center'` — the horizontal justification of the text

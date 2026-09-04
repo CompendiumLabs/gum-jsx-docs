@@ -1,6 +1,6 @@
 // A bulleted list of three points about layout, with a nested sub-list under the second point, all wrapped to 22 ems and framed with padding.
 <Frame padding rounded>
-  <Bullets wrap={22}>
+  <Bullets width={22}>
     <Text>Positions and sizes are proportional to the parent</Text>
     <Text>Layout containers arrange their children</Text>
     <Bullets>

@@ -55,7 +55,7 @@ Generated code:
 ```jsx
 <Frame rounded>
   <Group aspect={2}>
-    <Text pos={[0.2, 0.5]} ysize={0.2} wrap={4} justify="center">Blue Square</Text>
+    <Text pos={[0.2, 0.5]} ysize={0.2} width={4} justify="center">Blue Square</Text>
     <Arrow points={[[0.3, 0.5], [0.6, 0.5]]} />
     <Square pos={[0.75, 0.5]} ysize={0.5} rounded fill={blue} />
   </Group>
