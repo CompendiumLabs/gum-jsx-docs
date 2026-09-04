@@ -16,5 +16,6 @@ Parameters:
 - `children` = `[]` — a list of child elements
 - `aspect` = `null` — the aspect ratio of the group's rectangle (can pass `'auto'` to infer from the children)
 - `coord` = `[0, 0, 1, 1]` — the internal coordinate space to use for child elements (can pass `'auto'` to contain children's rects)
+- `em` — coordinate units per em: a child with metrics (a [Text](/docs/Text), a formula, a text container) placed by `pos` with no size of its own is made its em height times this tall, so labels dropped into the frame share one text size; applies to direct children only, a nested group's coordinates being its own
 - `clip` = `false` — clip children to the group's rectangle if `true` (or a custom shape if specified)
 - `debug` = `false` — show debug boxes for the children

@@ -118,7 +118,7 @@ The `Plot` element in particular is highly customizable, and you can pass argume
 
 **File**: [networks](references/networks.md)
 
-These are components for creating network diagrams. The core element is `Network`, which is a container element that accepts a list of `Node`s and `Edge`s, as well as potentially other elements like labels. A `Node` can specify an `id` to be used to reference it from an `Edge` as either the source (`start`) or destination (`end`). Default values for `Node` and `Edge` arguments can be specified with `node-` and `edge-` prefixed arguments passed to the `Network` element.
+These are components for creating network diagrams. The core element is `Network`, which is a container element that accepts a list of `Node`s and `Edge`s, as well as potentially other elements like labels. A `Node` can specify an `id` to be used to reference it from an `Edge` as either the source (`start`) or destination (`end`). Default values for `Node` and `Edge` arguments can be specified with `node-` and `edge-` prefixed arguments passed to the `Network` element. Give the `Network` an `em` (coordinate units per em) to set one text size for the whole diagram: nodes then size their boxes from their labels (with `padding` and `rounded` in em, and `width` wrapping the label in em), and `Text` labels placed by `pos` are sized to it too, so no `ysize` tuning is needed.
 
 `Edge` is an `Arrow` between two nodes given as `start` and `end`. The side of each node the edge leaves from is inferred from their relative positions but can be set with `start-side`/`end-side`. You can toggle arrowheads on either end with `arrow`/`arrow-start`/`arrow-end`, and shape the path with `curve` (spline curvature) or `rounded` (a city-block route with rounded corners).
 

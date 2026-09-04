@@ -12,4 +12,5 @@ You'll often want to use **Graph** (directly or indirectly) to display mathemati
 
 Parameters:
 - `xlim`/`ylim`/`coord` = `'auto'` — the coordinate system to use for the graph
+- `em` — coordinate units per em, sizing text and formulas placed by `pos` without a size (see [Group](/docs/Group)); sized before the limits are detected, so they count toward them
 - `padding` = `0` — proportional padding to add when limits are auto-detected from children
