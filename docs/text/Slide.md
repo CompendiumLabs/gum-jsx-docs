@@ -8,7 +8,7 @@ Create a presentation slide with a title and some content. A slide is a fixed-as
 
 Text size is set by `em`, the em as a fraction of the slide height, so `em={0.05}` fits twenty lines top to bottom and the content width in em follows from the frame. Without `em`, `width` is the content width in em and the size follows from that. Either way the column spans the content width, and a child's `scale` sizes it relative to the slide's em, so `<Text scale={2}>` is a heading twice the body size.
 
-Content taller than the frame's area is handled by `overflow`: shrunk to fit (the default), clipped, or an error. The `overflow` property on the resulting element is the ratio of the content height to the area's, so a value above `1` means it did not fit. Both `margin` and `padding` are given as fractions of the slide height, so they are the same distance in every direction.
+With a fixed `aspect`, the column is also given the area's height, so a figure with no size of its own (a plot, a framed element, or a [TextFigure](/docs/TextFigure) without a `width` or `height`), alone or beside text in a [TextRow](/docs/TextRow), is sized to the height left after the text rather than spanning the width, and several such figures split it evenly (see [TextCol](/docs/TextCol)). Content taller than the frame's area is handled by `overflow`: shrunk to fit (the default), clipped, or an error. The `overflow` property on the resulting element is the ratio of the content height to the area's, so a value above `1` means it did not fit. Both `margin` and `padding` are given as fractions of the slide height, so they are the same distance in every direction.
 
 Parameters:
 - `children` = `[]` — a list of strings or `Element`s to stack vertically

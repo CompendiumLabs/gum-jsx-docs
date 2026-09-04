@@ -8,9 +8,12 @@ A column of text blocks. Each child is laid out for the column's width and they 
 
 Every text element carries its box in em, so a column can be a child of another column, a [TextRow](/docs/TextRow), a [TextGrid](/docs/TextGrid), or a [TextBox](/docs/TextBox), and a [Slide](/docs/Slide) is a column in a frame. A column with no `width` is as wide as its widest child and hands no width down.
 
+Given a `height` to fill, the children sized by the width (text, lists, formulas) are laid out first, and what is left after them and the gaps is split evenly among the height-flexible children: an element with an aspect and no size of its own, a [TextFigure](/docs/TextFigure) without a `width` or `height`, or a [TextRow](/docs/TextRow) or column holding one. Each is sized to its share (a figure at its aspect, no wider than the column, and placed by `justify`) instead of spanning the width. This is how a [Slide](/docs/Slide) fits a figure to its frame; it is a single pass, so a figure's neighbor in a row can still overrun the height, which the slide's `overflow` then handles.
+
 Parameters:
 - `children` — the blocks to stack: text, lists, formulas, other columns and rows, or any element
 - `width` — the width of the column in em; sets the size of the text in it
+- `height` — the height in em to fill, budgeted to the children without a size of their own
 - `scale` = `1` — the size of the column relative to the surrounding text's em
 - `gap` = `0.5` — the space between children in em
 - `justify` = `'left'` — where a child narrower than the column sits, and the text alignment handed to the children
