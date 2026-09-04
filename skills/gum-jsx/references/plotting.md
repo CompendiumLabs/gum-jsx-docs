@@ -91,6 +91,7 @@ You'll often want to use **Graph** (directly or indirectly) to display mathemati
 
 Parameters:
 - `xlim`/`ylim`/`coord` = `'auto'` — the coordinate system to use for the graph
+- `em` — coordinate units per em, sizing text and formulas placed by `pos` without a size (see **Group**); sized before the limits are detected, so they count toward them
 - `padding` = `0` — proportional padding to add when limits are auto-detected from children
 
 **Example**
@@ -237,6 +238,7 @@ By default, the extent of **Plot** only includes the graphing area itself, not t
 
 Parameters:
 - `xlim`/`ylim` = `[0, 1]` — the range over which to graph
+- `em` — coordinate units per em, sizing text and formulas placed by `pos` without a size (see **Group**)
 - `xanchor`/`yanchor` — the value at which to place the respective axis. Note that the `xanchor` is a y-value and vice versa. Defaults to `xmin`/`ymin`
 - `xticks`/`yticks` = `5` — either an integer for evenly spaced ticks, a list of tick locations, or list of tick `**location, label]` pairs (see [Axis** for more details)
 - `grid`/`xgrid`/`ygrid` = `false` — whether to show a grid in the background. If `true`, the grid lines match the specified ticks. Alternatively, you can pass a list of positions to override this

@@ -47,7 +47,7 @@ Create a presentation slide with a title and some content. A slide is a fixed-as
 
 Text size is set by `em`, the em as a fraction of the slide height, so `em={0.05}` fits twenty lines top to bottom and the content width in em follows from the frame. Without `em`, `width` is the content width in em and the size follows from that. Either way the column spans the content width, and a child's `scale` sizes it relative to the slide's em, so `<Text scale={2}>` is a heading twice the body size.
 
-Content taller than the frame's area is handled by `overflow`: shrunk to fit (the default), clipped, or an error. The `overflow` property on the resulting element is the ratio of the content height to the area's, so a value above `1` means it did not fit. Both `margin` and `padding` are given as fractions of the slide height, so they are the same distance in every direction.
+With a fixed `aspect`, the column is also given the area's height, so a figure with no size of its own (a plot, a framed element, or a **TextFigure** without a `width` or `height`), alone or beside text in a **TextRow**, is sized to the height left after the text rather than spanning the width, and several such figures split it evenly (see **TextCol**). Content taller than the frame's area is handled by `overflow`: shrunk to fit (the default), clipped, or an error. The `overflow` property on the resulting element is the ratio of the content height to the area's, so a value above `1` means it did not fit. Both `margin` and `padding` are given as fractions of the slide height, so they are the same distance in every direction.
 
 Parameters:
 - `children` = `[]` — a list of strings or `Element`s to stack vertically
@@ -164,16 +164,19 @@ Generated code:
 
 *Inherits*: **Group** > **Element**
 
-A column of text blocks. Each child is laid out for the column's width and they stack top to bottom with `gap` em between them; the column is as tall as they come to. A **Text** or **Bullets** child takes the column's width unless it has a `width` of its own, in which case it keeps it and its size and is placed by `justify`. A child's `scale` sets its size relative to the column's em, which is how headings and captions are made. A formula (**Latex**) sits at the text's size, and any other element spans the column at its aspect.
+A column of text blocks. Each child is laid out for the column's width and they stack top to bottom with `gap` em between them; the column is as tall as they come to. A **Text** or **Bullets** child takes the column's width unless it has a `width` of its own, in which case it keeps it and its size and is placed by `justify`, or by its own `align` if it has one (`align="right"` on a figure puts it at the right of a left-justified column). A child's `scale` sets its size relative to the column's em, which is how headings and captions are made. A formula (**Latex**) sits at the text's size, and any other element spans the column at its aspect.
 
 Every text element carries its box in em, so a column can be a child of another column, a **TextRow**, a **TextGrid**, or a **TextBox**, and a **Slide** is a column in a frame. A column with no `width` is as wide as its widest child and hands no width down.
+
+Given a `height` to fill, the children sized by the width (text, lists, formulas) are laid out first, and what is left after them and the gaps is split evenly among the height-flexible children: an element with an aspect and no size of its own, a **TextFigure** without a `width` or `height`, or a **TextRow** or column holding one. Each is sized to its share instead of spanning the width: a bare element at its aspect, no wider than the column, and a **TextFigure** as a box the column's width with the element fit inside it by its own `justify`. This is how a **Slide** fits a figure to its frame; it is a single pass, so a figure's neighbor in a row can still overrun the height, which the slide's `overflow` then handles.
 
 Parameters:
 - `children` — the blocks to stack: text, lists, formulas, other columns and rows, or any element
 - `width` — the width of the column in em; sets the size of the text in it
+- `height` — the height in em to fill, budgeted to the children without a size of their own
 - `scale` = `1` — the size of the column relative to the surrounding text's em
 - `gap` = `0.5` — the space between children in em
-- `justify` = `'left'` — where a child narrower than the column sits, and the text alignment handed to the children
+- `justify` = `'left'` — where a child narrower than the column sits, and the text alignment handed to the children; a child's own `align` overrides it for that child alone
 - `font-family`/`font-weight`/`font-style` — font settings for the text children
 - `text-*` — additional arguments forwarded to the text children
 
@@ -233,7 +236,7 @@ Generated code:
 
 *Inherits*: **Group** > **Element**
 
-A grid of text blocks in `cols` equal columns, filled row by row. Every cell is laid out for the column width, a row is as tall as its tallest cell, and the gaps between columns and rows are in em. A cell narrower than its column (a **TextFigure** with a `height`, say) is placed by `justify`.
+A grid of text blocks in `cols` equal columns, filled row by row. Every cell is laid out for the column width, a row is as tall as its tallest cell, and the gaps between columns and rows are in em. A cell narrower than its column (a **TextFigure** with a `height`, say) is placed by `justify`, or by its own `align` if it has one.
 
 Parameters:
 - `children` — the cells, in row order
@@ -242,7 +245,7 @@ Parameters:
 - `scale` = `1` — the size of the grid relative to the surrounding text's em
 - `gap` = `1` — the space between cells in em, or `[horizontal, vertical]`
 - `valign` = `'top'` — how the cells of a row align vertically: `top`, `anchor`, `center`, or `bottom`
-- `justify` = `'left'` — where a cell narrower than its column sits, and the text alignment handed to the cells
+- `justify` = `'left'` — where a cell narrower than its column sits, and the text alignment handed to the cells; a cell's own `align` overrides it for that cell alone
 - `font-family`/`font-weight`/`font-style` — font settings for the text cells
 - `text-*` — additional arguments forwarded to the text cells
 
@@ -266,17 +269,18 @@ return <TextGrid cols={3} width={24} gap={1} justify="center">
 
 *Inherits*: **Group** > **Element**
 
-A row of text blocks side by side, `gap` em apart. Given a `width`, children that carry a size of their own keep it (a **Text** or **TextCol** with a `width`, a **TextFigure** with a `height`, a formula) and the rest share what is left; or `sizes` splits the width as given. Without a width, the row is as wide as its children laid out at their own sizes.
+A row of text blocks side by side, `gap` em apart. Given a `width`, children that carry a size of their own keep it (a **Text** or **TextCol** with a `width`, a **TextFigure** with a `height`, a formula) and the rest share what is left; or `sizes` splits the width as given. Without a width, the row is as wide as its children laid out at their own sizes. Given a `height` to fill, a child with an aspect but no size of its own (a plot or a framed element, or a **TextFigure** without a `width` or `height`) is made that tall at its aspect, no wider than the row, and keeps that width like a fixed child; a nested row or column is handed the height to budget among its own children. A **Slide** gives its column the height of its content area, so a figure beside text fills the slide's height and the text takes what is left.
 
-Children align by their tops, or by `valign` their anchors (the first line's axis, so two columns of text share a first line), their middles, or their bottoms. A row narrower than its width is placed by `justify`, which is also the text alignment handed to the children.
+Children align by their tops, or by `valign` their anchors (the first line's axis, so two columns of text share a first line), their middles, or their bottoms; a child with an `align` of its own (`align="bottom"` on one text block, say) is placed by that instead. A row narrower than its width is placed by `justify`, which is also the text alignment handed to the children.
 
 Parameters:
 - `children` — the blocks to put side by side
 - `width` — the width of the row in em
+- `height` — the height in em to size figures without a size of their own to
 - `sizes` — the share of the width each child gets, as a list of weights; with it, every child is a flex child
 - `scale` = `1` — the size of the row relative to the surrounding text's em
 - `gap` = `1` — the space between children in em
-- `valign` = `'top'` — how the children align vertically: `top`, `anchor`, `center`, or `bottom`
+- `valign` = `'top'` — how the children align vertically: `top`, `anchor`, `center`, or `bottom`; a child's own `align` overrides it for that child alone
 - `justify` = `'left'` — where a row narrower than its width sits, and the text alignment handed to the children
 - `font-family`/`font-weight`/`font-style` — font settings for the text children
 - `text-*` — additional arguments forwarded to the text children

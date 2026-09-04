@@ -37,9 +37,12 @@ Generated code:
 
 Network diagrams can be created using the **Node** and **Edge** classes. This automatically processes Node and Edge children to create a network diagram. It will also display non-network elements as they would be displayed in a **Graph**.
 
+An `em`, in coordinate units, sets the text size of the whole diagram: it goes to the nodes, which size their boxes from their labels (see **Node**), and, as on any **Group**, to any other child with metrics (a **Text** label, a formula) placed by `pos` without a size of its own, which is made its em height times `em` tall. Without one, node text is fit into boxes of `node-ysize` and labels need a `ysize` each.
+
 You can specify the internal coordinate system using the `coord` argument, which is a 4-element array specifying the position of the bottom left corner and the width and height of the coordinate system. For example, `coord: [0, 0, 1, 1]` specifies the unit square. If `coord` is not specified, it will be inferred from the processed node bounds together with any intermediate edge points.
 
 Parameters:
+- `em` — coordinate units per em, the text size for the nodes and labels
 - `coord` — the internal coordinate system to use
 
 Subunits:
@@ -63,17 +66,23 @@ Generated code:
 
 ## Node
 
-*Inherits*: **Frame** > **Element**
+*Inherits*: **Group** > **Element**
 
-This encloses an element in a **Frame** at a particular position. If the `children` argument is a string, it will be automatically wrapped in a **Text** element. The primary usage of this is in the creation of networks using the **Network** component. You must provide an `id` argument to reference the node in an **Edge** element.
+A framed label at a position, the building block of a **Network**. If the `children` argument is a string, it is wrapped in a **Text** element. You must provide an `id` argument to reference the node in an **Edge** element.
+
+Given an `em` (coordinate units per em, usually set once on the Network), the box is sized from its label: a **TextFrame** hugging the text, or an element with metrics such as a formula or a **TextCol**, with `padding` and `rounded` in em. The node is then its em height times `em` tall, so every node in the network shares one text size and a label wrapped at `width` makes a taller node rather than smaller text. A `ysize` still overrides the height for a single node, and a child without metrics (a shape, a stack) is framed by `ysize` as below.
+
+Without an `em`, the node is a **Frame** of the given `ysize` with the label fit into it, so the text size follows from the box and the number of lines, and `padding` and `rounded` are fractions of the box.
 
 Parameters:
 - `id` — a string to be used as the node identifier
 - `children` — the element or text to be enclosed in the node box
-- `ysize` = `0.2` — the height of the node box (width will adjust to aspect)
-- `padding` = `0.1` — the padding of the node box
+- `em` — coordinate units per em; sizes the box from the label
+- `ysize` = `0.2` — the height of the node box (width will adjust to aspect); with an `em` it follows from the label unless given
+- `padding` = `0.1` — the padding of the node box, as a fraction of it; with an `em` it is in em and defaults to `0.4`
 - `border` = `1` — the border width of the node box
-- `rounded` = `0.05` — the radius of the corners of the node box
+- `rounded` = `0.05` — the radius of the corners of the node box, as a fraction of it; with an `em` it is in em and defaults to `0.3`
+- `fill` — the fill color of the node box
 - `width` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
 - `justify` = `'center'` — the horizontal justification of the text
 
