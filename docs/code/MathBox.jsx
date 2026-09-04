@@ -15,7 +15,7 @@ return <VStack spacing={0.15}>
   </MathText>
   <MathText>
     {"a"}
-    <MathBox klass="mrel" advance={2}>
+    <MathBox klass="mrel" width={2}>
       <Arrow points={[[0, 0.5], [1, 0.5]]} stroke-width={10} arrow-size={0.5} arrow-curve={0.75} />
     </MathBox>
     {"b"}

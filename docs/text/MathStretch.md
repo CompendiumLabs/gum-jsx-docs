@@ -10,7 +10,7 @@ This is the bare decoration. [Latex](/docs/Latex) places it over or under a body
 
 Parameters:
 - `label` = `overbrace` — the decoration to draw, named by its LaTeX command with or without the backslash: one of `overbrace`, `underbrace`, `overrightarrow`, `overleftarrow`, `underrightarrow`, `underleftarrow`, `overleftrightarrow`, `underleftrightarrow`, `Overrightarrow`, `overleftharpoon`, `overrightharpoon`, `overlinesegment`, `underlinesegment`, `overgroup`, `undergroup`, `utilde`, `xrightarrow`, `xleftarrow`, `xleftrightarrow`, `xRightarrow`, `xLeftarrow`, `xLeftrightarrow`, `xlongequal`, `xtwoheadrightarrow`, `xtwoheadleftarrow`, `xrightharpoonup`, `xrightharpoondown`, `xleftharpoonup`, `xleftharpoondown`, `xhookrightarrow`, `xhookleftarrow`, `xmapsto`, `xrightleftharpoons`, `xleftrightharpoons`, `xrightleftarrows`, `xtofrom`, `xrightequilibrium`, `xleftequilibrium`
-- `advance` — the width in em; the decoration's minimum width is used if this is smaller or absent
+- `width` — the width in em; the decoration's minimum width is used if this is smaller or absent
 - `height` — the height in em; defaults to the decoration's natural height
 - `thickness` — the stroke thickness in em; defaults to a TeX rule (`0.04`) for the arrows and lines, and the brace's own band for the braces
 - `fill` — the colour of the shape (`color` is accepted as an alias)
