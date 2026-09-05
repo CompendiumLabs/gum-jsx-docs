@@ -130,7 +130,7 @@ const Rose = (attr) => <Group aspect={1} {...attr}>
   <Spline points={swirl} fill={none} stroke={outline} stroke-width={1.5} stroke-linecap="round" />
 </Group>
 
-return <Frame margin={0.03} rounded={0.02} clip border-stroke="#222">
+return <Frame margin={0.03} rounded={12} clip border-stroke="#222">
   <Group aspect={aspect}>
     {/* night */}
     <Rect fill={night} />

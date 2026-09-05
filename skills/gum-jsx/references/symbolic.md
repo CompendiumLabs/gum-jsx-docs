@@ -25,7 +25,7 @@ Prompt: A vector field showing a function with gradient 100 * x * y. There shoul
 
 Generated code:
 ```jsx
-<Frame rounded={0.02} margin padding={0.075}>
+<Frame rounded={12} margin padding={0.075}>
   <SymField func={(x, y) => 100 * x * y} xlim={[0, 1]} ylim={[0, 1]} N={15} />
 </Frame>
 ```
@@ -107,7 +107,7 @@ Prompt: A plot of a sine wave in blue. There are white pill shaped line markers 
 
 Generated code:
 ```jsx
-const Pill = args => <Rectangle fill={white} rounded={0.3} aspect={2} {...args} />
+const Pill = args => <Rectangle fill={white} rounded={20} aspect={2} {...args} />
 return <Plot xlim={[0, 2*pi]} ylim={[-1.5, 1.5]} grid fill={lightgray} margin={[0.25, 0.1]} aspect="auto">
   <SymLine fy={sin} stroke={blue} stroke-width={2} />
   <SymPoints fy={sin} N={11} point-size={0.25} point-shape={x => <Pill spin={-r2d*atan(cos(x))}/>} />

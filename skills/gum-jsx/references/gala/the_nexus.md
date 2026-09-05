@@ -7,7 +7,7 @@ The visual style comes from a few restrained choices. The axes are turned off (`
 **Code**
 
 ```jsx
-<Frame border={2} rounded={0.02} clip margin>
+<Frame border={2} rounded={12} clip margin>
   <Plot
     aspect={1.5} axis={false} xgrid={31} ygrid={21}
     xlim={[-4*pi, 4*pi]} ylim={[-1.5, 1.5]}

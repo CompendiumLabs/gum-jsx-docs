@@ -26,7 +26,7 @@ Parameters:
 - `background` — the fill color of the whole canvas
 - `border` = `1` — the frame border width
 - `border-stroke` = `'#bbb'` — the frame border color
-- `rounded` = `0.01` — the frame corner rounding
+- `rounded` = `10` — the frame corner radius, in stroke units
 - `title-size` = `0.1` — the size of the title box relative to the frame height
 - `fill` — the fill color of the frame
 

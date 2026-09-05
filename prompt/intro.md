@@ -34,7 +34,7 @@ Let's start with a very simple example that creates a blue circle (`aspect = 1`)
 </Frame>
 ```
 
-Here we used boolean defaults for `padding`, `margin`, and `rounded`. These will get mapped to `padding={0.1}`, `margin={0.1}`, and `rounded={0.1}` respectively. This adds a little bit of a Tailwind-like flavor and is used throughout the library. Adding a `margin` on the outside is usually good so things like borders don't get clipped.
+Here we used boolean defaults for `padding`, `margin`, and `rounded`. These will get mapped to `padding={0.1}`, `margin={0.1}`, and `rounded={10}` respectively. Rectangle rounding uses the same drawing units as `stroke-width`; it stays consistent across different box sizes. These boolean defaults add a little bit of a Tailwind-like flavor and are used throughout the library. Adding a `margin` on the outside is usually good so things like borders don't get clipped.
 
 **Example 2: Symbolic Plot**
 

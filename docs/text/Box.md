@@ -15,8 +15,8 @@ The `adjust` flag controls whether padding/margins are adjusted for the aspect r
 Parameters:
 - `padding` = `0` / `0.1` — the padding to be added (inside border)
 - `margin` = `0` / `0.1` — the margin to be added (outside border)
-- `border` = `0` / `1` — the border width to use (stroke in pixels)
-- `rounded` = `0` / `0.1` — the border rounding to use (proportional to the box size)
+- `border` = `0` / `1` — the border width in stroke units
+- `rounded` = `0` / `10` — corner radius in stroke units, per corner as for [RoundedRect](/docs/RoundedRect); `true` uses `10`
 - `fill` = `null` — the background color to use (default is no fill)
 - `adjust` = `true` — whether to adjust values for aspect ratio
 - `shape` = `Rect` — the shape class to use for the border

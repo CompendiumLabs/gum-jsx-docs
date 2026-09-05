@@ -27,7 +27,7 @@ const Loop = (attr) => (
   </Group>
 )
 
-return <TitleFrame title="Transformer Architecture" rounded={0.025} margin={0.08} padding={0.08} title-size={0.05}>
+return <TitleFrame title="Transformer Architecture" rounded={16} margin={0.08} padding={0.08} title-size={0.05}>
   <VStack>
     <TextBox aspect={8} padding={[0, 0.1]} align="center">Output Probabilities</TextBox>
     <Flow />

@@ -207,10 +207,10 @@ return <Box fill="#bbb" rounded padding margin>
 
 This makes a rectangle. Without any arguments it will fill its entire allocated space. Unless otherwise specified, it has a `null` aspect. Use **Square** for a square with a unit aspect.
 
-Specifying a `rounded` argument will round the borders by the same amount for each corner. This can be either a scalar or a pair of scalars corresponding to the x and y radii of the corners. To specify different roundings for each corner, use the **RoundedRect** element. Rounding is expressed as a fractional value between 0 and 1, where 0 means no rounding and 1 will essentially render an ellipse. Values much greater than 0.1 will start to look a little goofy.
+Specifying a `rounded` argument rounds all four corners. A scalar gives circular corners; a pair gives separate x and y radii for elliptical corners. Radii use the same drawing units as `stroke-width`: `rounded={12}` gives a radius of twelve stroke units regardless of the rectangle's size or aspect. Oversized radii are clamped to fit the box, and negative values become zero. To specify different roundings for each corner, use **RoundedRect**.
 
 Parameters:
-- `rounded` = `null` — proportional border rounding, accepts either scalar or pair of scalars
+- `rounded` = `null` — corner radius in stroke units, either a scalar or an x/y pair; `true` for `10`, `false` for no rounding
 
 **Example**
 
@@ -251,6 +251,59 @@ return <Graph aspect padding>
   <RoundedLine points={points} stroke={blue} stroke-width={2} radius={0.1} />
   <Points points={points} point-size={0.03} />
 </Graph>
+```
+
+## RoundedRect
+
+*Inherits*: **Path** > **Element**
+
+A rectangle with circular corners. It fills its allocated rectangle unless an `aspect` is specified. Unlike **Rect**, it supports separate rounding for each corner.
+
+`rounded` uses the same drawing unit as `stroke-width`: `<RoundedRect rounded={12} border={2} />` has a corner radius of twelve stroke units and a border two units wide. At the root, these are 12 and 2 pixels when the figure's longest dimension equals `Svg.unit-size` (1000 by default). Both scale with the figure, independently of the rectangle's size and aspect. A container that rebases stroke units also rebases rounding.
+
+A pair `[x, y]` specifies the horizontal and vertical corner offsets. The arc stays circular, using the smaller offset. Four entries specify the top-left, top-right, bottom-right, and bottom-left corners; each entry may itself be a pair. For example, `rounded={[12, 0, 12, 0]}` rounds two opposite corners.
+
+If neighboring corner offsets would overlap, all four corners shrink proportionally to fit. Negative radii become zero. Rounding does not change the rectangle's layout size or aspect.
+
+Parameters:
+
+- `rounded` = `0` — a radius, an x/y pair, or four corner values in stroke units; `true` uses the default radius of `10`
+- `border` = `1` — stroke width in the same units; `stroke-width` can override it
+- `fill`, `stroke`, and other drawing attributes — as for **Path**
+
+**Box**, **Frame**, and **TextBox** pass their rounding through to this element. Text frames use the same stroke units for their corners; changing text `scale` alone does not change the radius.
+
+Numeric rectangle rounding previously meant a box fraction, or em in text frames. Existing figures using that convention need their values updated to stroke units.
+
+**Example**
+
+Prompt: Show consistent corner radii across rectangle sizes, including per-corner and elliptical rounding.
+
+Generated code:
+```jsx
+<Svg size={1000} unit-size={1000}>
+  <TextCol width={27} gap={0.8}>
+    <Text scale={1.3}>Rounding in stroke units</Text>
+    <TextRow gap={1}>
+      <TextCol gap={0.4}>
+        <Text>RoundedRect: 12</Text>
+        <TextFigure height={2}><RoundedRect rounded={12} fill={blue} /></TextFigure>
+        <TextFigure height={4}><RoundedRect rounded={12} fill={blue} /></TextFigure>
+      </TextCol>
+      <TextCol gap={0.4}>
+        <Text>[24, 0, 24, 0]</Text>
+        <TextFigure height={2}><RoundedRect rounded={[24, 0, 24, 0]} fill={green} /></TextFigure>
+        <TextFigure height={4}><RoundedRect rounded={[24, 0, 24, 0]} fill={green} /></TextFigure>
+      </TextCol>
+      <TextCol gap={0.4}>
+        <Text>Rect: [24, 8]</Text>
+        <TextFigure height={2}><Rect rounded={[24, 8]} fill={purple} /></TextFigure>
+        <TextFigure height={4}><Rect rounded={[24, 8]} fill={purple} /></TextFigure>
+      </TextCol>
+    </TextRow>
+    <Text scale={0.7}>Each column keeps its corner radii as its boxes change size.</Text>
+  </TextCol>
+</Svg>
 ```
 
 ## Spline

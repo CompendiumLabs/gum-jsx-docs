@@ -94,7 +94,7 @@ const samples = nodes.map(n => n.pos)
 const title = <Latex>{"\\mathbb{Q}(i, \\zeta_3)"}</Latex>
 
 // plot the data
-return <TitleBox border={2} rounded={0.02} clip margin title={title} title-size={0.075}>
+return <TitleBox border={2} rounded={12} clip margin title={title} title-size={0.075}>
   <Graph aspect={1} coord={[-bound, -bound, bound, bound]}>
     <Mesh2D locs={gridLocs} opacity={0.15} />
     <Segments edges={edges} stroke="#2730ff" opacity={0.75} />

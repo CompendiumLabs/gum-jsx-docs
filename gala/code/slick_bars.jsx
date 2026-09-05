@@ -7,6 +7,6 @@ return <Plot
   xticks={enumerate(labs)} yticks={linspace(0, 30, 7)} axis-tick-side="outer" xaxis-line-lim={[0, 7]}
   xaxis-label-spin={-45}
 >
-  <Bars rounded={0.1} width={0.85} data={vals} />
+  <Bars rounded={10} width={0.85} data={vals} />
   {vals.map((s, i) => <Span pos={[i, s+1.3]} ysize={1.5}>{`${s}%`}</Span> )}
 </Plot>

@@ -39,7 +39,7 @@ Let's start with a very simple example that creates a blue circle (`aspect = 1`)
 </Frame>
 ```
 
-Here we used boolean defaults for `padding`, `margin`, and `rounded`. These will get mapped to `padding={0.1}`, `margin={0.1}`, and `rounded={0.1}` respectively. This adds a little bit of a Tailwind-like flavor and is used throughout the library. Adding a `margin` on the outside is usually good so things like borders don't get clipped.
+Here we used boolean defaults for `padding`, `margin`, and `rounded`. These will get mapped to `padding={0.1}`, `margin={0.1}`, and `rounded={10}` respectively. Rectangle rounding uses the same drawing units as `stroke-width`; it stays consistent across different box sizes. These boolean defaults add a little bit of a Tailwind-like flavor and are used throughout the library. Adding a `margin` on the outside is usually good so things like borders don't get clipped.
 
 **Example 2: Symbolic Plot**
 
@@ -255,8 +255,8 @@ The `adjust` flag controls whether padding/margins are adjusted for the aspect r
 Parameters:
 - `padding` = `0` / `0.1` — the padding to be added (inside border)
 - `margin` = `0` / `0.1` — the margin to be added (outside border)
-- `border` = `0` / `1` — the border width to use (stroke in pixels)
-- `rounded` = `0` / `0.1` — the border rounding to use (proportional to the box size)
+- `border` = `0` / `1` — the border width in stroke units
+- `rounded` = `0` / `10` — corner radius in stroke units, per corner as for **RoundedRect**; `true` uses `10`
 - `fill` = `null` — the background color to use (default is no fill)
 - `adjust` = `true` — whether to adjust values for aspect ratio
 - `shape` = `Rect` — the shape class to use for the border
@@ -396,7 +396,7 @@ The `Plot` element in particular is highly customizable, and you can pass argume
 
 **File**: [networks](references/networks.md)
 
-These are components for creating network diagrams. The core element is `Network`, which is a container element that accepts a list of `Node`s and `Edge`s, as well as potentially other elements like labels. A `Node` can specify an `id` to be used to reference it from an `Edge` as either the source (`start`) or destination (`end`). Default values for `Node` and `Edge` arguments can be specified with `node-` and `edge-` prefixed arguments passed to the `Network` element. Give the `Network` an `em` (coordinate units per em) to set one text size for the whole diagram: nodes then size their boxes from their labels (with `padding` and `rounded` in em, and `width` wrapping the label in em), and `Text` labels placed by `pos` are sized to it too, so no `ysize` tuning is needed.
+These are components for creating network diagrams. The core element is `Network`, which is a container element that accepts a list of `Node`s and `Edge`s, as well as potentially other elements like labels. A `Node` can specify an `id` to be used to reference it from an `Edge` as either the source (`start`) or destination (`end`). Default values for `Node` and `Edge` arguments can be specified with `node-` and `edge-` prefixed arguments passed to the `Network` element. Give the `Network` an `em` (coordinate units per em) to set one text size for the whole diagram: nodes then size their boxes from their labels (with `padding` and `width` in em, and `rounded` in stroke units), and `Text` labels placed by `pos` are sized to it too, so no `ysize` tuning is needed.
 
 `Edge` is an `Arrow` between two nodes given as `start` and `end`. The side of each node the edge leaves from is inferred from their relative positions but can be set with `start-side`/`end-side`. You can toggle arrowheads on either end with `arrow`/`arrow-start`/`arrow-end`, and shape the path with `curve` (spline curvature) or `rounded` (a city-block route with rounded corners).
 

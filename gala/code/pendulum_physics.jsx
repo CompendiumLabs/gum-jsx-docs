@@ -28,12 +28,12 @@ return <Box margin={0.06}>
     <Text stack-size={0.075} color={navy}>Simple Pendulum</Text>
 
     {/* Diagram */}
-    <Frame rounded={0.02} fill={cream} clip border={2} aspect={1.25}>
+    <Frame rounded={12} fill={cream} clip border={2} aspect={1.25}>
       {/* Mesh background */}
       <Mesh2D xlocs={25} ylocs={20} stroke={navy} stroke-opacity={0.05} />
 
       {/* Ceiling / support */}
-      <RoundedRect pos={[0.5, 0]} size={[0.6, 0.16]} fill={sand} stroke={navy} stroke-width={1.5} rounded={0.1} />
+      <RoundedRect pos={[0.5, 0]} size={[0.6, 0.16]} fill={sand} stroke={navy} stroke-width={1.5} rounded={8} />
 
       {/* Angle arc */}
       <Arc pos={[pivotX, pivotY]} size={2 * arcRad} start={90} end={rodRot} stroke={rose} stroke-width={2} />

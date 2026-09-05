@@ -74,8 +74,8 @@ const Golgi = (attr) => <Group aspect={1.4} {...attr}>
 </Group>
 
 const Centrioles = (attr) => <Group aspect={1} {...attr}>
-  <Rect pos={[0.35, 0.5]} size={[0.22, 0.8]} rounded={0.3} fill={col.centrioles.fill} stroke={col.centrioles.stroke} />
-  <Rect pos={[0.7, 0.72]} size={[0.6, 0.22]} rounded={0.3} fill={col.centrioles.fill} stroke={col.centrioles.stroke} />
+  <Rect pos={[0.35, 0.5]} size={[0.22, 0.8]} rounded={20} fill={col.centrioles.fill} stroke={col.centrioles.stroke} />
+  <Rect pos={[0.7, 0.72]} size={[0.6, 0.22]} rounded={20} fill={col.centrioles.fill} stroke={col.centrioles.stroke} />
 </Group>
 
 // shapes
@@ -120,7 +120,7 @@ const labels = [
   ['Cytoplasm', 'r', 0.92, [0.85, 0.77]],
 ]
 
-return <TitleFrame title="Anatomy of a Cell" title-size={0.09} margin={0.06} padding={0.03} rounded={0.02} fill={col.frame.fill} border-stroke={col.frame.border}>
+return <TitleFrame title="Anatomy of a Cell" title-size={0.09} margin={0.06} padding={0.03} rounded={12} fill={col.frame.fill} border-stroke={col.frame.border}>
   <Group coord={C} aspect={asp}>
     {/* cell body */}
     <Blob radii={membrane} pos={[0.75, 0.5]} size={[1.08, 0.86]}

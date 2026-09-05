@@ -11,8 +11,9 @@ const HalfSquare = (attr) => <Group aspect={1} {...attr}>
   <Rect />
 </Group>
 
+// MathArray uses an em-sized stroke unit for its contents.
 const Swatch = ({ fill, ...attr }) => <Box padding>
-  <Square rounded fill={fill} {...attr} />
+  <Square rounded={0.05} fill={fill} {...attr} />
 </Box>
 const SwatchMatrix = (colors) => <Bracket delim="square">
   <MathArray ncol={2}>
@@ -52,7 +53,7 @@ const transpose = <MathText>
 </MathText>
 
 // stack 'em up evenly for a slide
-return <TitleFrame title="Shape Algebra" padding margin border={2} title-border={2} rounded={0.02}>
+return <TitleFrame title="Shape Algebra" padding margin border={2} title-border={2} rounded={12}>
   <VStack even spacing>
     {series}
     {radius}

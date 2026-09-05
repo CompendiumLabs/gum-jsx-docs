@@ -65,7 +65,7 @@ Parameters:
 - `background` — the fill color of the whole canvas
 - `border` = `1` — the frame border width
 - `border-stroke` = `'#bbb'` — the frame border color
-- `rounded` = `0.01` — the frame corner rounding
+- `rounded` = `10` — the frame corner radius, in stroke units
 - `title-size` = `0.1` — the size of the title box relative to the frame height
 - `fill` — the fill color of the frame
 
@@ -133,7 +133,7 @@ Generated code:
 
 *Inherits*: **Group** > **Element**
 
-A box drawn around text, or around one element carrying em metrics: a formula, a **TextCol**, a **TextFigure**. The box is as big as its content plus `padding` and `margin`, which are in em, and its corners are rounded in em too, so a badge or a card is the same shape at any size. **TextFrame** is the same with `border = 1`.
+A box drawn around text, or around one element carrying em metrics: a formula, a **TextCol**, a **TextFigure**. The box is as big as its content plus `padding` and `margin`, which are in em. Its border and corner radii use stroke units, so text frames can share the same rounding even with different text sizes or numbers of lines. **TextFrame** is the same with `border = 1`.
 
 Given a `width` (its own, or handed down by a column) the box is that wide and the text wraps inside the padding; `hug` tightens a box whose text fits on one line to that line, so a badge in a column does not span it. An `aspect` widens (or heightens) the box around the content, which is centered in it.
 
@@ -143,7 +143,7 @@ Parameters:
 - `margin` = `0` — the space outside the frame, in em; `true` for `0.4`
 - `border` — the frame's stroke width; `true` for `1`
 - `fill` — the background color
-- `rounded` — the corner radius in em, per corner as for **RoundedRect**; `true` for `0.3`
+- `rounded` — the corner radius in stroke units, per corner as for **RoundedRect**; `true` for `10`
 - `aspect` — an aspect for the box to grow to; `true` for square
 - `hug` = `false` — tighten a one-line box to its line
 - `width`/`scale` — the text size, as for **Text**; `width` is the box's outer width
@@ -314,7 +314,7 @@ Parameters:
 - `title` — the text or element to use as the title
 - `title-size` = `0.1` — the height of the title box as a fraction of the frame's
 - `title-padding` = `[0.6, 0.3]` — the padding inside the title box, in em of the title
-- `title-rounded` = `0.3` — the corner rounding of the title box, in em of the title
+- `title-rounded` = `10` — the corner radius of the title box, in stroke units
 - `adjust` = `true` — whether to adjust the padding and margin to account for the title element
 - `border` = `1` — the outer frame border width to use
 
