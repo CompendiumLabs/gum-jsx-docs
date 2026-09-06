@@ -29,6 +29,12 @@ Last line`}</Text>
 
 Text size follows from width: `width` is measured in the text's own em, so a narrower width in the same space makes larger text. `scale` says the same thing the other way round, as a multiple of the surrounding text's em: `scale={2}` inside a [TextCol](/docs/TextCol) is a heading twice the body size, and the text's box comes out `width * scale` wide in the surrounding em. Every text element carries its box in em (width, height, and the position of the first line's math axis), which is how a [MathText](/docs/MathText) places a text block by its first line and how the text containers size themselves.
 
+The math elements use the same `scale` option, including `MathText`, `Latex`,
+and `Tex`. Nested scales multiply. A scaled `Text` inside another `Text`
+stays a single inline block, aligned by its first line's math axis; give it
+its own `width` if it needs wrapping. Like inline math, it may extend beyond
+the surrounding fixed line height.
+
 There are two wrapper elements related to text:
 
 - [TextBox](/docs/TextBox) / **TextFrame** can handle text with a border and background
