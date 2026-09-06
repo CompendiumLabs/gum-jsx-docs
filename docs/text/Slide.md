@@ -18,7 +18,7 @@ Parameters:
 - `width` = `25` — the width of the content in ems, which sets the text size when `em` is not given
 - `gap` = `0.5` — the space between content elements in em
 - `overflow` = `'shrink'` — what to do with content taller than the frame: `shrink`, `clip`, or `error`
-- `margin` = `0.05` — the space between the canvas edge and the frame
+- `margin` = `0.1` — the space between the canvas edge and the frame
 - `padding` = `0.1` — the space between the frame and the content
 - `justify` = `'left'` — the horizontal justification of the text
 - `valign` = `'center'` — the vertical alignment of the content when it does not fill the frame
