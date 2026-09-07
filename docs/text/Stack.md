@@ -4,22 +4,96 @@
 
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
-Stack one or more **Element** either vertically or horizontally. There are specialized components **VStack** and **HStack** that don't take the `direc` argument. This element handles child positioning and sizing, so any child `pos`/`size` arguments will be overridden. Proportional spacing between children can be specified with the `spacing` parameter.
+`HStack` and `VStack` arrange geometry, text, and math using the same layout
+engine. Dimensions and `gap` are in shared layout units (em when composing
+text). Local drawing coordinates and `pos`/`size` remain separate.
 
-The simplest case is when all children have aspect ratios. In the **HStack** case, the overall aspect ratio of the stack is the sum of the child aspect ratios. Children are allocated space in proportion to their aspect ratios. The **VStack** case is similar, but we need to deal in inverse aspect ratio terms.
+```jsx
+<HStack gap={0.5} valign="anchor" justify="left">
+  <Text>Hello</Text>
+  <Circle height={1} fill={blue}/>
+  <MathText scale={1.5}>x = y + 1</MathText>
+</HStack>
+```
 
-When some children lack aspect ratios, they will be allocated any remaining space evenly. Regardless of whether a child has an aspect ratio or not, it can be given a fixed size with the `stack-size` parameter. This is specified as a fraction between 0 and 1, independent of spacing. A child with both a `stack-size` and an aspect ratio is fit inside its share, so it may not fill it. Such a child only sets the aspect ratio of the stack when nothing else does: if there are children with aspect ratios but no `stack-size`, those determine it (they fill the space left over by the sized children), otherwise the stack is made just long enough for one of the sized children to fill its share exactly, with the rest fitting inside theirs. So two squares with `stack-size` of `0.45` and `0.55` in an **HStack** give a stack in which the larger square fills the height.
+Children with natural measurements keep their relative sizes. An unsized
+shape follows the shared cross dimension: height in a row, width in a column.
+A purely geometric row of aspect-only children stays scale-free; its aspect
+is the sum of theirs. Given width 10, aspects 2 and 0.5 yield widths 8 and 2
+at height 4. Completely flexible geometry shares the remaining space.
 
-A child can opt out of this with `stack-expand = false`, in which case its aspect ratio plays no part in the layout: a sized child is simply a fixed share, and an unsized one gets an even share of the remaining space like a child with no aspect ratio. If no child contributes an aspect ratio, the resulting stack will have no aspect ratio.
+A bounded row packs naturally if it fits. If it is too narrow, reflow-capable
+children without explicit widths share the space left by fixed content and
+wrap. A column supplies its width to its children. Math keeps its em even when
+it overflows; shrinking is a decision for the whole containing stack.
 
-Whenever possible, the aspect ratio of the overall stack is set so that all elements with defined aspect ratios will reach full width (in the **VStack** case) or full height (in the **HStack** case).
+Use `grow` on a child to consume remaining main-axis space, proportionally to
+its weight. Without a finite budget, growth has no effect. `sizes` assigns
+weighted slots to every child when the stack has a main-axis budget.
 
-Child parameters:
-- `stack-size` = `null` — the child's relative share of the available space along the stack axis
-- `stack-expand` = `true` — whether the child's aspect ratio takes part in the layout
+`stack-size` on a child overrides natural sizing with a fraction of the
+stack's main dimension **after gaps are subtracted**. The whole child fits
+its slot while maintaining aspect, including scaling its text or math.
+Children without this override keep their usual measured or aspect-based
+sizing. Unlike `grow`, this deliberately changes the child's content scale.
+Flexible shapes with no aspect fill their allotted rectangle.
+
+`even` is shorthand for equal fractional shares: with two children it is
+equivalent to `stack-size={0.5}` on each, including the way their contents fit.
+Explicit child fractions reserve their shares first, and the others divide
+the remainder equally. Like explicit fractions, `even` takes precedence over
+`sizes` and `grow`. To allocate equal slots while preserving text and math's
+em size, use `sizes={[1, 1]}` with a main-axis budget instead.
+
+```jsx
+<VStack spacing>
+  <Text stack-size={0.075}>Simple Pendulum</Text>
+  <Frame rounded padding><Rect aspect={5} fill={blue}/></Frame>
+  <Text stack-size={0.075}>Exposition Time</Text>
+</VStack>
+```
+
+With a main-axis budget, fractions reserve their shares first; natural children
+and then weighted children use the remainder. Without one, the natural
+children determine the total: their combined length divided by the unreserved
+fraction, plus gaps. If every child has a share, their shapes determine a size
+at which at least one fills the shared cross dimension. Any unassigned
+remainder stays empty.
+
+Fractions must be between zero and one and sum to at most one. Zero draws
+nothing. A total of one leaves no natural remainder; additional natural
+content then requires an explicit main dimension and follows the overflow
+policy. `stack-size` takes precedence over `grow`, `sizes`, and `even` for
+that child. `stack-expand` is no longer used.
+
+Exact `width` and `height` reserve a rectangle. If `aspect` is also specified,
+content fits that aspect inside the rectangle; the unused space remains part
+of the allocation. `max-width` and `max-height` supply budgets without forcing
+a smaller composition to grow. There is no automatic search for a paragraph
+width from a height limit: width is chosen first, then text wraps.
+
+`overflow` defaults to `visible`, preserving layout and ink overhang. `error`
+rejects overflow, `clip` clips to the allocation, and `shrink` uniformly fits
+the entire composition, preserving relative text sizes. Zero dimensions are
+real; missing dimensions are unconstrained. Unsized geometric content uses a
+normalized cross dimension of one when no parent or measured sibling supplies
+one; an entirely geometric composition does not report that as an intrinsic em.
 
 Parameters:
-- `direc` — the direction of stacking: `v` or `h`
-- `spacing` = `0` — total amount of space to add between child elements
-- `justify` = `center` — how to justify children along the stack axis
-- `even` = `false` — whether to distribute sizes evenly (`stack-size = 1 / n`)
+
+- `direc` = `'v'` — stacking direction; fixed by `HStack` / `VStack`
+- `width`, `height` — exact dimensions in layout units
+- `max-width`, `max-height` — available dimensions
+- `gap` — gap between children in layout units
+- `spacing` = `0` — alternative: fraction of the main dimension reserved for all gaps
+- `scale` = `1` — own layout unit relative to the surrounding unit
+- `justify` = `'center'` — horizontal placement and inherited text justification
+- `valign` = `'center'` — row alignment: `'top'`, `'anchor'`, `'center'`, `'bottom'`
+- `even` = `false` — equal fractional shares, fitting the contents
+- `sizes` — weights for allocated slots
+- child `stack-size` — fractional slot, fitting the whole child into it
+- `overflow` = `'visible'` — `'visible'`, `'clip'`, `'shrink'`, or `'error'`
+- `font-*`, `text-*` — inherited typography for reflow-capable children
+
+`TextRow` and `TextCol` are convenience subclasses with text-oriented defaults;
+math rows/columns share the same packing code after resolving their atoms.

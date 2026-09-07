@@ -4,7 +4,7 @@ This is a block diagram of a decoder-only transformer, drawn as a single vertica
 
 Three helpers do almost all of the work. `Block` is a rounded **Frame** with a fixed `aspect` and a centered **Text** label, `Flow` is a one-segment **Arrow** pointing upward, and `tint` lightens each palette color with `interp` so the fills stay pastel. Because every piece declares its own aspect ratio, the enclosing **VStack** can work out all of the heights itself, and the arrows automatically line up with the blocks they connect.
 
-The repeated layer is just a nested **Frame** wrapped around its own **VStack**, which gives the inner group its border and padding for free. The `Loop` arrow beside it is the one place that steps outside the unit box: its points run from `-yside` to `1 + yside`, so the dashed path leaves the layer frame, arcs around the right side, and rejoins below it. Corners are softened with `rounded` rather than drawn as separate segments, and the `× N` label is a **TextBox** with a white fill that sits on top of the path to knock a gap in it.
+The repeated layer is just a nested **Frame** wrapped around its own **VStack**, which gives the inner group its border and padding for free. The `Loop` arrow beside it is the one place that steps outside the unit box: its points run from `-yside` to `1 + yside`, so the dashed path leaves the layer frame, arcs around the right side, and rejoins below it. Corners are softened with `rounded` rather than drawn as separate segments, and the `× N` label is a **Box** with a white fill that sits on top of the path to knock a gap in it.
 
 The `arrow-size` and `arrow-curve` props are also worth noting. These are prefixed attributes that **Arrow** forwards to its **ArrowHead**, which is how the flow arrows and the much longer loop arrow end up with heads of visibly different sizes without defining two separate components.
 
@@ -36,13 +36,13 @@ const Loop = (attr) => (
       points={[[0.5, -yside], [1+xside, -yside], [1+xside, 1+yside], [0.5, 1+yside]]}
       rounded={0.05} arrow-size={0.09} arrow-curve={0.4} line-stroke-dasharray={5}
     />
-    <TextBox pos={[1+xside, 0.5]} ysize={0.15} fill={white} padding={0.3}>× N</TextBox>
+    <Box pos={[1+xside, 0.5]} ysize={0.15} fill={white} padding={0.3}><Text>× N</Text></Box>
   </Group>
 )
 
 return <TitleFrame title="Transformer Architecture" rounded={16} margin={0.08} padding={0.08} title-size={0.05}>
   <VStack>
-    <TextBox aspect={8} padding={[0, 0.1]} align="center">Output Probabilities</TextBox>
+    <Box aspect={8} padding={[0, 0.1]} align="center"><Text>Output Probabilities</Text></Box>
     <Flow />
     <Block label="Softmax" color={red} />
     <Flow />
@@ -63,7 +63,7 @@ return <TitleFrame title="Transformer Architecture" rounded={16} margin={0.08} p
     <Flow aspect={7} />
     <Block label="Token + Positional Embedding" color={purple} />
     <Flow />
-    <TextBox aspect={8} padding={[0, 0.1]} align="center">Input Tokens</TextBox>
+    <Box aspect={8} padding={[0, 0.1]} align="center"><Text>Input Tokens</Text></Box>
   </VStack>
 </TitleFrame>
 ```

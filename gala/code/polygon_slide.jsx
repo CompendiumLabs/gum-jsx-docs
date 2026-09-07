@@ -18,11 +18,11 @@ return <Slide title="Simple Regular Polygons" em={0.045} gap={1}>
   </Text>
   <TextGrid cols={3} gap={[1, 0.75]} justify="center">
     { shapes.map(([n, s]) =>
-      <TextFrame rounded fill padding={0.6}>
+      <Frame stretch rounded fill padding={0.6}>
         <TextFigure height={3.5} caption={`${s} (${n})`}>
           <RegularPolygon n={n} fill={pal(n)} />
         </TextFigure>
-      </TextFrame>
+      </Frame>
     ) }
   </TextGrid>
 </Slide>

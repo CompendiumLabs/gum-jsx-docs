@@ -71,7 +71,7 @@ return <HStack spacing>
 </HStack>
 ```
 
-Note: Because this is two squares (`aspect = 1`) stacked side by side, the `HStack` will have an aspect ratio of `2`. You can also use the `VStack` component to stack elements vertically. If you wish to override aspect-based sizing, you can use the `stack-size` argument to specify the size of the child elements.
+Note: Because this is two squares (`aspect = 1`) stacked side by side, the `HStack` will have an aspect ratio of `2`. You can also use `VStack` to stack vertically. Stacks use natural width and height when available, otherwise aspect. A child's `stack-size` overrides this with a fraction of the space after gaps, fitting the whole child into its slot.
 
 **Example 4: Modular Approach**
 
@@ -183,6 +183,8 @@ There are several convenience parameters that can be used to specify the `rect` 
 The `expand` parameter can be used to control whether the element should be expanded to fully contain its `rect`. This is useful if you have an aspected element with a desired size in one dimension. A very common case is a **Text** element where you specify `pos` and `ysize` and leave the width to be determined by the aspect ratio.
 
 Parameters:
+- `width`, `height` — optional dimensions in shared layout units; one dimension plus aspect determines the other. With both dimensions and an aspect, reserve the rectangle and fit content inside it. Text uses width for wrapping; specialized math dimensions retain their local meaning.
+- `grow` — main-axis weight for consuming remaining space in a stack
 - `aspect` = `null` — the width to height ratio for this element
 - `rect` — a fully specified rectangle to place the child in (takes precedence over other parameters)
 - `pos` — the desired position of the center of the child's rectangle
@@ -195,6 +197,14 @@ Parameters:
 - `spin` — like rotate but will maintain the same size
 - `flex` ­— override to set `aspect = null`
 - `...` = `{}` — additional attributes are applied directly to the resulting SVG
+
+Every element exposes `sizing`, containing optional natural `width`, `height`,
+and `aspect`, and `layout(offer)`, returning `{ elem, em }`: the arranged
+element and its measurements. An offer's `width`/`height` are exact slots;
+`maxWidth`/`maxHeight` are available space. It may also carry inherited
+typography in `attrs`. A custom element that wraps or rearranges content
+overrides `layout` and reports `reflow = true`. Parents do not need to know its
+class. Measurement does not mutate the source; placement clones remain shallow.
 
 **Example**
 
@@ -244,26 +254,87 @@ Generated code:
 
 *Inherits*: **Group** > **Element**
 
-This is a simple container class allowing you to add padding, margins, and a border to a single **Element**. It's pretty versatile and is often used to set up the outermost positioning of a figure. Mirroring the standard CSS definitions, padding is space inside the border and margin is space outside the border. This has no border by default, but there is a specialized subclass of this called **Frame** that defaults to `border = 1`.
+`Box` adds padding, margin, and decoration. `Frame` is the same element with
+`border={1}`. Both accept element children and handle text, math, and geometry
+through the common layout protocol. Wrap prose in `Text`, or use the
+**TextBox and TextFrame** conveniences for bare text.
 
-**Box** can be pretty handly in various situations. It is differentiated from **Group** in that it will adopt the `aspect` of the first child element. This is useful if you want to do something like shift an element up or down by a certain amount while maintaining its aspect ratio. Simply wrap it in a **Box** and set child's `pos` to the desired offset.
+```jsx
+<VStack width={20} gap={0.5}>
+  <Frame stretch padding={0.4} rounded>
+    <Latex>{String.raw`\sin^2\theta + \cos^2\theta = 1`}</Latex>
+  </Frame>
+  <Frame padding={0.4} justify="left">
+    <Text>A paragraph wraps inside its frame.</Text>
+  </Frame>
+  <TextFrame rounded>A compact badge</TextFrame>
+</VStack>
+```
 
-There are multiple ways to specify padding and margins. If given as a scalar, it is constant across all sides. If two values are given, they correspond to the horizontal and vertical sides. If four values are given, they correspond to `[left, top, right, bottom]`.
+A frame around measured content hugs it by default, preserving its natural
+text or math size. Offered dimensions act as wrapping budgets, so a short label
+stays compact and a long paragraph wraps inside the padding.
 
-The `adjust` flag controls whether padding/margins are adjusted for the aspect ratio. If `true`, horizontal and vertical components are scaled so that their ratio is equal to the `child` element's aspect ratio. This yields padding/margins of constant apparent size regardless of aspect ratio. If `false`, the inputs are used as-is.
+`stretch` makes the visible frame fill exact dimensions offered by its parent,
+aligning the content in the remaining room without scaling it. It does not
+force the frame to fill a maximum-only budget. An explicit `width` or `height`
+on the frame always reserves that space, even without `stretch`.
+
+`grow` remains a stack weight: it asks the parent for spare main-axis space.
+Combine `grow` with `stretch` to fill that space with the frame. `expand`
+retains its geometric meaning of covering a rectangle by scaling.
+
+`hug` is still accepted; `hug={false}` is an alias for `stretch`. An explicit
+`stretch` value takes precedence if both are supplied.
+`justify` and `valign` align the content; a child's
+`align` overrides them. `scale` scales the measured frame and its contents
+uniformly, preserving relative sizes and alignment anchors.
+
+An `aspect` supplies a shape for the frame around measured content. Alone, it
+adds room without changing the content's scale. With one dimension it determines
+the other; with both, that shape fits inside the reserved rectangle.
+
+Bare strings are not accepted. A single element such as `Text`, `Verbatim`,
+a formula, or a stack is laid out as a block.
+Use an explicit stack to arrange multiple blocks; other multiple
+children keep their coordinate placements, as in `Group`.
+
+Aspect-only geometry stays scale-free and fits its frame. `fit` explicitly
+chooses that behavior for a finished drawing containing measured elements too:
+the whole composition scales together. Children with their own coordinate
+placement also retain geometric framing. This is useful for panels and diagrams.
+
+Padding is inside the border; margin is outside it. For measured frames both
+are in layout units (em around text). For scale-free frames and `fit`,
+they are proportions, adjusted for aspect by default. A scalar applies to all
+sides, a pair to horizontal/vertical sides, and four values to
+`[left, top, right, bottom]`. `true` means `0.1`; omitted means zero.
+An unconstrained frame encloses ink overhang while preserving layout advance.
+A fixed dimension keeps the border fixed when content overflows; `clip` clips
+to the border shape.
 
 Parameters:
-- `padding` = `0` / `0.1` — the padding to be added (inside border)
-- `margin` = `0` / `0.1` — the margin to be added (outside border)
-- `border` = `0` / `1` — the border width in stroke units
-- `rounded` = `0` / `10` — corner radius in stroke units, per corner as for **RoundedRect**; `true` uses `10`
-- `fill` = `null` — the background color to use (default is no fill)
-- `adjust` = `true` — whether to adjust values for aspect ratio
-- `shape` = `Rect` — the shape class to use for the border
-- `clip` = `false` — whether to clip the contents to the border shape
 
-Subunit names:
-- `border` — keywords to pass to border, such as `stroke` or `stroke-dasharray`
+- `width`, `height` — exact outer dimensions in layout units
+- `max-width`, `max-height` — available dimensions
+- `stretch` = `false` — fill offered dimensions without scaling the contents
+- `hug` = `true` — keep the frame compact; `hug={false}` also enables stretching
+- `fit` = `false` — treat the contents as a whole drawing to scale
+- `scale` = `1` — scale the measured frame and its contents
+- `justify`, `valign` = `'center'` — horizontal and vertical content alignment
+- `padding`, `margin` = `0` — insets; `true` means `0.1`
+- `adjust` = `true` — equalize proportional insets in geometric frames
+- `border` = `0` (`1` for `Frame`) — border width in stroke units
+- `rounded` — corner radii in stroke units; `true` means `10`
+- `fill` — background color
+- `shape` — element to use for the background, border, and clipping shape
+- `clip` = `false` — clip to the frame, or supply a clipping element
+- `border-*`, `fill-*` — attributes for the border and background
+- `font-*`, `text-*` — typography passed to the content
+
+`TextBox` and `TextFrame` turn bare text and mixed inline content into a `Text`
+paragraph, then use this same framing engine. Their defaults are padding
+`0.4` and left justification.
 
 **Example**
 

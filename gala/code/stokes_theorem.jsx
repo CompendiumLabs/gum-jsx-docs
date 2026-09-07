@@ -137,9 +137,9 @@ const SurfaceDiagram = (attr) =>
 
 const MathPanel = (attr) =>
   <TextCol gap={1} {...attr}>
-    <TextFrame padding={[0.8, 0.6]} rounded fill="#f8f4fc" border-stroke="#d0b8e0" justify="center">
+    <Frame padding={[0.8, 0.6]} rounded fill="#f8f4fc" border-stroke="#d0b8e0" justify="center">
       <Latex>{"\\oint_{\\partial S} F \\cdot dr = \\iint_{S} (\\nabla \\times F) \\cdot dS"}</Latex>
-    </TextFrame>
+    </Frame>
     <Text spacing={0.25}>The line integral of a vector field <Tex>F</Tex> around the closed boundary curve <Tex>\delta S</Tex> equals the surface integral of the curl of <Tex>F</Tex> over any oriented surface <Tex>S</Tex> bounded by that curve.</Text>
   </TextCol>
 

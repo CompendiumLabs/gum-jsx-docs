@@ -66,7 +66,7 @@ return <HStack spacing>
 </HStack>
 ```
 
-Note: Because this is two squares (`aspect = 1`) stacked side by side, the `HStack` will have an aspect ratio of `2`. You can also use the `VStack` component to stack elements vertically. If you wish to override aspect-based sizing, you can use the `stack-size` argument to specify the size of the child elements.
+Note: Because this is two squares (`aspect = 1`) stacked side by side, the `HStack` will have an aspect ratio of `2`. You can also use `VStack` to stack vertically. Stacks use natural width and height when available, otherwise aspect. A child's `stack-size` overrides this with a fraction of the space after gaps, fitting the whole child into its slot.
 
 **Example 4: Modular Approach**
 

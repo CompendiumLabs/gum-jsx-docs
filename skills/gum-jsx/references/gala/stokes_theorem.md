@@ -1,6 +1,6 @@
 # Stokes' Theorem
 
-This one mixes a mathematical diagram with a short explanatory panel. The layout is a **TextRow**: a **TextFigure** eleven ems tall on one side and a **TextCol** taking the rest of the width on the other, with the formula in a **TextFrame** and the text wrapped beneath it at the slide's em. The surface drawing itself is doing the real work.
+This one mixes a mathematical diagram with a short explanatory panel. The layout is a **TextRow**: a **TextFigure** eleven ems tall on one side and a **TextCol** taking the rest of the width on the other, with the formula in a **Frame** and the text wrapped beneath it at the slide's em. The surface drawing itself is doing the real work.
 
 The key idea is that the surface is parameterized in `(u, v)` coordinates and then projected into the plane by hand. Once that machinery is in place, the boundary curve, mesh lines, tangent arrows, and normal arrows can all be generated from the same underlying surface data. That is a nice pattern for geometric figures: define the math once, then derive multiple visual layers from it.
 
@@ -148,9 +148,9 @@ const SurfaceDiagram = (attr) =>
 
 const MathPanel = (attr) =>
   <TextCol gap={1} {...attr}>
-    <TextFrame padding={[0.8, 0.6]} rounded fill="#f8f4fc" border-stroke="#d0b8e0" justify="center">
+    <Frame padding={[0.8, 0.6]} rounded fill="#f8f4fc" border-stroke="#d0b8e0" justify="center">
       <Latex>{"\\oint_{\\partial S} F \\cdot dr = \\iint_{S} (\\nabla \\times F) \\cdot dS"}</Latex>
-    </TextFrame>
+    </Frame>
     <Text spacing={0.25}>The line integral of a vector field <Tex>F</Tex> around the closed boundary curve <Tex>\delta S</Tex> equals the surface integral of the curl of <Tex>F</Tex> over any oriented surface <Tex>S</Tex> bounded by that curve.</Text>
   </TextCol>
 

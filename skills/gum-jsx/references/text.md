@@ -97,13 +97,38 @@ Generated code:
 
 Displays text and other elements. Note that you will typically not set the font size of the text here, as this will fill the entire space with the provided text. To set the text color, use `color` instead of `fill` or `stroke`.
 
-If `width` is specified, the text will be wrapped to that width. In either case, single newlines will be respected, though whitespace will be compressed.
+By default, whitespace (including newlines) is collapsed, and `width` sets the wrapping width in em.
+
+Set `whitespace="preserve"` (or `"pre"`) for preformatted plain text: spaces, indentation,
+explicit newlines, and blank lines are preserved, with no automatic wrapping. All lines use
+the same text size. The block is as wide as its widest line; `width` can make it wider but
+does not squeeze long lines. Use `scale` to change its size within a text container.
+Tabs advance to the next `tab-size` column (default 4). CRLF and CR newlines become LF.
+
+Pass source as a string expression or template literal; JSX formatting-only whitespace is
+ignored. String children concatenate exactly in this mode; nested elements are not supported.
+No trimming or dedenting is performed, so a trailing newline adds a final blank line.
+
+```jsx
+<Text whitespace="preserve">{`First line
+    Indented line
+
+Last line`}</Text>
+```
+
+**Verbatim** is the convenience form with preserved whitespace and a monospace font.
 
 Text size follows from width: `width` is measured in the text's own em, so a narrower width in the same space makes larger text. `scale` says the same thing the other way round, as a multiple of the surrounding text's em: `scale={2}` inside a **TextCol** is a heading twice the body size, and the text's box comes out `width * scale` wide in the surrounding em. Every text element carries its box in em (width, height, and the position of the first line's math axis), which is how a **MathText** places a text block by its first line and how the text containers size themselves.
 
+The math elements use the same `scale` option, including `MathText`, `Latex`,
+and `Tex`. Nested scales multiply. A scaled `Text` inside another `Text`
+stays a single inline block, aligned by its first line's math axis; give it
+its own `width` if it needs wrapping. Like inline math, it may extend beyond
+the surrounding fixed line height.
+
 There are two wrapper elements related to text:
 
-- **TextBox** / **TextFrame** can handle text with a border and background
+- **Box** / **Frame** add a border and background around an explicit `Text` child; **TextBox** / **TextFrame** accept bare text directly
 - **TextCol**, **TextRow**, and **TextGrid** lay out text blocks in em, and a **TextFigure** sizes a figure among them
 
 There are two default fonts that are always provided: `sans = 'IBM Plex Sans'` and `mono ='IBM Plex Mono'`. There are three availabe font weights: `light = 300`, `regular = 400`, and `bold = 700`. The default weight is `light`. You can use these global variables anywhere.
@@ -112,6 +137,8 @@ Parameters:
 - `children` — the text to display
 - `width` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
 - `scale` = `1` — the size of the text relative to the surrounding text's em
+- `whitespace` = `'normal'` — collapse whitespace, or `'pre'` / `'preserve'` to preserve it without wrapping
+- `tab-size` = `4` — tab stops in columns for preserved text
 - `spacing` = `0.2` — the spacing between lines of text
 - `justify` = `'left'` — the horizontal justification of the text
 - `color` = `black` — sets the text color using both stroke and fill (this is the usual way)
@@ -124,32 +151,43 @@ Prompt: The text "Hello World! You can mix text and other elements together." wi
 
 Generated code:
 ```jsx
-<TextFrame rounded width={12} justify="center">
-  Hello World! You can mix text and <Square rounded fill={blue} /> other elements together.
-</TextFrame>
+<Frame rounded width={12} justify="center" padding={0.4}>
+  <Text>Hello World! You can mix text and <Square rounded fill={blue} /> other elements together.</Text>
+</Frame>
 ```
 
 ## TextBox
 
-*Inherits*: **Group** > **Element**
+*Inherits*: **Box**
 
-A box drawn around text, or around one element carrying em metrics: a formula, a **TextCol**, a **TextFigure**. The box is as big as its content plus `padding` and `margin`, which are in em. Its border and corner radii use stroke units, so text frames can share the same rounding even with different text sizes or numbers of lines. **TextFrame** is the same with `border = 1`.
+`TextBox` wraps bare text and mixed inline content in a **Text**,
+then frames it with **Box**. `TextFrame` adds `border={1}`.
+Both default to `padding={0.4}` and `justify="left"`. Boolean padding and
+margin also mean `0.4`.
 
-Given a `width` (its own, or handed down by a column) the box is that wide and the text wraps inside the padding; `hug` tightens a box whose text fits on one line to that line, so a badge in a column does not span it. An `aspect` widens (or heightens) the box around the content, which is centered in it.
+These two forms are equivalent:
 
-Parameters:
-- `children` — the text, or one element with metrics
-- `padding` = `0.4` — the space between the content and the frame, in em, as a scalar, `[horizontal, vertical]`, or `[left, top, right, bottom]`; `true` for the default
-- `margin` = `0` — the space outside the frame, in em; `true` for `0.4`
-- `border` — the frame's stroke width; `true` for `1`
-- `fill` — the background color
-- `rounded` — the corner radius in stroke units, per corner as for **RoundedRect**; `true` for `10`
-- `aspect` — an aspect for the box to grow to; `true` for square
-- `hug` = `false` — tighten a one-line box to its line
-- `width`/`scale` — the text size, as for **Text**; `width` is the box's outer width
-- `justify` = `'left'` — the text alignment
-- `border-*`/`fill-*` — arguments for the frame and the background
-- `font-family`/`font-weight`/`font-style` and `text-*` — as for **Text**
+```jsx
+<TextFrame rounded width={12}>Text wraps inside its frame.</TextFrame>
+
+<Frame rounded width={12} padding={0.4} justify="left">
+  <Text>Text wraps inside its frame.</Text>
+</Frame>
+```
+
+Existing element children are passed through to Box, so a sole `Verbatim`,
+formula, or stack keeps its own block layout. Use `Text` explicitly to arrange
+element-only children as an inline paragraph.
+
+`width` includes padding and margin; the paragraph wraps inside them.
+`scale` scales the frame and its contents together. `font-*` and `text-*`
+options style the paragraph, such as `font-family={mono}` or
+`text-whitespace="preserve"` for literal text.
+
+Frames hug their content by default. Use `stretch` to fill a column's offered
+width without enlarging the text, or `fit` when the whole contents should
+scale as a figure. See **Box** for the shared sizing, alignment,
+padding, and decoration options.
 
 **Example**
 
@@ -162,23 +200,16 @@ Generated code:
 
 ## TextCol
 
-*Inherits*: **Group** > **Element**
+*Inherits*: **VStack** > **Stack** > **Group**
 
-A column of text blocks. Each child is laid out for the column's width and they stack top to bottom with `gap` em between them; the column is as tall as they come to. A **Text** or **Bullets** child takes the column's width unless it has a `width` of its own, in which case it keeps it and its size and is placed by `justify`, or by its own `align` if it has one (`align="right"` on a figure puts it at the right of a left-justified column). A child's `scale` sets its size relative to the column's em, which is how headings and captions are made. A formula (**Latex**) sits at the text's size, and any other element spans the column at its aspect.
+A convenience form of `VStack` using `gap=0.5`, `justify="left"`, and
+`valign="top"`. It uses the same measurement and placement engine and accepts
+all **Stack** options. Text, math, and geometry can be mixed directly.
 
-Every text element carries its box in em, so a column can be a child of another column, a **TextRow**, a **TextGrid**, or a **TextBox**, and a **Slide** is a column in a frame. A column with no `width` is as wide as its widest child and hands no width down.
-
-Given a `height` to fill, the children sized by the width (text, lists, formulas) are laid out first, and what is left after them and the gaps is split evenly among the height-flexible children: an element with an aspect and no size of its own, a **TextFigure** without a `width` or `height`, or a **TextRow** or column holding one. Each is sized to its share instead of spanning the width: a bare element at its aspect, no wider than the column, and a **TextFigure** as a box the column's width with the element fit inside it by its own `justify`. This is how a **Slide** fits a figure to its frame; it is a single pass, so a figure's neighbor in a row can still overrun the height, which the slide's `overflow` then handles.
-
-Parameters:
-- `children` — the blocks to stack: text, lists, formulas, other columns and rows, or any element
-- `width` — the width of the column in em; sets the size of the text in it
-- `height` — the height in em to fill, budgeted to the children without a size of their own
-- `scale` = `1` — the size of the column relative to the surrounding text's em
-- `gap` = `0.5` — the space between children in em
-- `justify` = `'left'` — where a child narrower than the column sits, and the text alignment handed to the children; a child's own `align` overrides it for that child alone
-- `font-family`/`font-weight`/`font-style` — font settings for the text children
-- `text-*` — additional arguments forwarded to the text children
+Dimensions and gaps are in em; nested `scale` values multiply. `width` and
+`height` reserve exact space, while `max-width` and `max-height` provide budgets.
+Use `grow` on a child to allocate remaining space. Formulas keep their size;
+`overflow="shrink"` fits the entire composition when necessary.
 
 **Example**
 
@@ -258,32 +289,25 @@ Generated code:
 const shapes = [ [ 'Circle', <Circle fill={blue} /> ], [ 'Square', <Square fill={red} /> ], [ 'Triangle', <Triangle fill={green} /> ] ]
 return <TextGrid cols={3} width={24} gap={1} justify="center">
   { shapes.map(([ name, shape ]) =>
-    <TextFrame rounded padding={0.5}>
+    <Frame stretch rounded padding={0.5}>
       <TextFigure height={3} caption={name}>{shape}</TextFigure>
-    </TextFrame>
+    </Frame>
   ) }
 </TextGrid>
 ```
 
 ## TextRow
 
-*Inherits*: **Group** > **Element**
+*Inherits*: **HStack** > **Stack** > **Group**
 
-A row of text blocks side by side, `gap` em apart. Given a `width`, children that carry a size of their own keep it (a **Text** or **TextCol** with a `width`, a **TextFigure** with a `height`, a formula) and the rest share what is left; or `sizes` splits the width as given. Without a width, the row is as wide as its children laid out at their own sizes. Given a `height` to fill, a child with an aspect but no size of its own (a plot or a framed element, or a **TextFigure** without a `width` or `height`) is made that tall at its aspect, no wider than the row, and keeps that width like a fixed child; a nested row or column is handed the height to budget among its own children. A **Slide** gives its column the height of its content area, so a figure beside text fills the slide's height and the text takes what is left.
+A convenience form of `HStack` using `gap=1`, `justify="left"`, and
+`valign="top"`. It uses the same measurement and placement engine and accepts
+all **Stack** options. Text, math, and geometry can be mixed directly.
 
-Children align by their tops, or by `valign` their anchors (the first line's axis, so two columns of text share a first line), their middles, or their bottoms; a child with an `align` of its own (`align="bottom"` on one text block, say) is placed by that instead. A row narrower than its width is placed by `justify`, which is also the text alignment handed to the children.
-
-Parameters:
-- `children` — the blocks to put side by side
-- `width` — the width of the row in em
-- `height` — the height in em to size figures without a size of their own to
-- `sizes` — the share of the width each child gets, as a list of weights; with it, every child is a flex child
-- `scale` = `1` — the size of the row relative to the surrounding text's em
-- `gap` = `1` — the space between children in em
-- `valign` = `'top'` — how the children align vertically: `top`, `anchor`, `center`, or `bottom`; a child's own `align` overrides it for that child alone
-- `justify` = `'left'` — where a row narrower than its width sits, and the text alignment handed to the children
-- `font-family`/`font-weight`/`font-style` — font settings for the text children
-- `text-*` — additional arguments forwarded to the text children
+Dimensions and gaps are in em; nested `scale` values multiply. `width` and
+`height` reserve exact space, while `max-width` and `max-height` provide budgets.
+Use `grow` on a child to allocate remaining space. Formulas keep their size;
+`overflow="shrink"` fits the entire composition when necessary.
 
 **Example**
 
@@ -335,4 +359,39 @@ return <TitleFrame title="Fruits & Veggies" margin padding rounded>
     )}
   </Grid>
 </TitleFrame>
+```
+
+## Verbatim
+
+*Inherits*: **Text**
+
+Preformatted plain text for code, terminal output, and aligned text. This is `Text` with
+`whitespace="preserve"`, `font-family={mono}`, and `justify="left"` as defaults.
+All can be overridden. Lines stay left-aligned even when a surrounding frame or
+stack centers the block; set `justify` on `Verbatim` to change their alignment.
+
+Pass a string expression or template literal. Spaces and blank lines are preserved,
+tabs advance to the next `tab-size` column (default 4), and lines never wrap automatically.
+All lines share one text size; the widest line determines the natural width.
+`width` adds room if wider than the source, while `scale` changes the size in a text container.
+
+Use `Box` or `Frame` for padding and decoration. `TextCol`, `TextRow`, and `Slide`
+place verbatim blocks using the same em metrics as ordinary text.
+
+Source is not trimmed or dedented. Nested elements and syntax highlighting are not supported.
+See **Text** for the shared font, spacing, alignment, and size options.
+
+**Example**
+
+Prompt: A code block with preserved indentation and a blank line, padded in em.
+
+Generated code:
+```jsx
+<Box fill="#182d3b" rounded={12} padding={0.75}>
+  <Verbatim color="#e8f0f3">{`const square = x => x * x
+
+<Plot grid>
+  <SymLine fy={square} />
+</Plot>`}</Verbatim>
+</Box>
 ```

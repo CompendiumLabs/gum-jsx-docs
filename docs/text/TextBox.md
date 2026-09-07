@@ -2,22 +2,33 @@
 
 *Category*: text
 
-*Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
+*Inherits*: [Box](/docs/Box)
 
-A box drawn around text, or around one element carrying em metrics: a formula, a [TextCol](/docs/TextCol), a [TextFigure](/docs/TextFigure). The box is as big as its content plus `padding` and `margin`, which are in em. Its border and corner radii use stroke units, so text frames can share the same rounding even with different text sizes or numbers of lines. **TextFrame** is the same with `border = 1`.
+`TextBox` wraps bare text and mixed inline content in a [Text](/docs/Text),
+then frames it with [Box](/docs/Box). `TextFrame` adds `border={1}`.
+Both default to `padding={0.4}` and `justify="left"`. Boolean padding and
+margin also mean `0.4`.
 
-Given a `width` (its own, or handed down by a column) the box is that wide and the text wraps inside the padding; `hug` tightens a box whose text fits on one line to that line, so a badge in a column does not span it. An `aspect` widens (or heightens) the box around the content, which is centered in it.
+These two forms are equivalent:
 
-Parameters:
-- `children` — the text, or one element with metrics
-- `padding` = `0.4` — the space between the content and the frame, in em, as a scalar, `[horizontal, vertical]`, or `[left, top, right, bottom]`; `true` for the default
-- `margin` = `0` — the space outside the frame, in em; `true` for `0.4`
-- `border` — the frame's stroke width; `true` for `1`
-- `fill` — the background color
-- `rounded` — the corner radius in stroke units, per corner as for [RoundedRect](/docs/RoundedRect); `true` for `10`
-- `aspect` — an aspect for the box to grow to; `true` for square
-- `hug` = `false` — tighten a one-line box to its line
-- `width`/`scale` — the text size, as for [Text](/docs/Text); `width` is the box's outer width
-- `justify` = `'left'` — the text alignment
-- `border-*`/`fill-*` — arguments for the frame and the background
-- `font-family`/`font-weight`/`font-style` and `text-*` — as for [Text](/docs/Text)
+```jsx
+<TextFrame rounded width={12}>Text wraps inside its frame.</TextFrame>
+
+<Frame rounded width={12} padding={0.4} justify="left">
+  <Text>Text wraps inside its frame.</Text>
+</Frame>
+```
+
+Existing element children are passed through to Box, so a sole `Verbatim`,
+formula, or stack keeps its own block layout. Use `Text` explicitly to arrange
+element-only children as an inline paragraph.
+
+`width` includes padding and margin; the paragraph wraps inside them.
+`scale` scales the frame and its contents together. `font-*` and `text-*`
+options style the paragraph, such as `font-family={mono}` or
+`text-whitespace="preserve"` for literal text.
+
+Frames hug their content by default. Use `stretch` to fill a column's offered
+width without enlarging the text, or `fit` when the whole contents should
+scale as a figure. See [Box](/docs/Box) for the shared sizing, alignment,
+padding, and decoration options.

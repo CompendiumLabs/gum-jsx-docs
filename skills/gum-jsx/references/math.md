@@ -128,12 +128,13 @@ Generated code:
 
 ## Latex
 
-*Inherits*: **MathText** > **HStack** > **Group** > **Element**
+*Inherits*: **MathText** > **MathRow** > **Group** > **Element**
 
 Parses a LaTeX string with KaTeX and converts it into gum math elements such as **Frac**, radical layouts, and **Bracket**. If parsing fails, the raw source is displayed in red so the error is visible in the output. **Tex** is the same element with `inline` defaulting to `true`, for math set in text style.
 
 Parameters:
 - `children` — the LaTeX source string
+- `scale` = `1` — size relative to the surrounding em, as with **Text**; also supported by `Tex`
 - `inline` = `false` — shorthand for selecting `style="text"` when no explicit style is provided
 - `style` — explicit TeX math style; defaults to `display`, or `text` when `inline` is true
 - `strut` = `true` — reserve a minimum top-level math line box
@@ -141,15 +142,15 @@ Parameters:
 
 **Example**
 
-Prompt: There are two latex equations framed by rounded borders arranged vertically. The top one shows a Gaussian integral and the bottom one shows a trigonometric identity.
+Prompt: Stretch the borders to a common width while keeping both equations at the same em.
 
 Generated code:
 ```jsx
 <VStack spacing>
-  <Frame padding rounded border={2}>
+  <Frame stretch padding={0.4} rounded border={2}>
     <Latex>{"\\int_0^{\\infty} \\exp(-x^2) dx = \\sqrt{\\pi}"}</Latex>
   </Frame>
-  <Frame padding rounded border={2}>
+  <Frame stretch padding={0.4} rounded border={2}>
     <Latex>{"\\sin^2(\\theta) + \\cos^2(\\theta) = 1"}</Latex>
   </Frame>
 </VStack>
@@ -371,17 +372,37 @@ Generated code:
 
 ## MathText
 
-*Inherits*: **HStack** > **Group** > **Element**
+*Inherits*: **MathRow** > **Group** > **Element**
 
 Arranges math items in a horizontal row with automatic inter-atom spacing. Strings and numbers are parsed as LaTeX (as in **Latex**), nested **MathText** is flattened, and ordinary gum **Element** values can be mixed inline as well.
 
 Spacing between neighbors is derived from their atom classes like `mord`, `mbin`, and `mrel`. An ordinary `Element` counts as an ordinary atom (`mord`) with no spacing of its own; wrap it in a **MathBox** to give it padding or another class.
 
+`scale` works like **Text**: it multiplies the element's size in the
+surrounding em. This works in text containers, inline text, and other math.
+Nested scales multiply. A scaled fragment stays whole, preserving its internal
+spacing. The math elements share this option, including `Frac`, `Sqrt`,
+`MathSymbol`, `MathRow`, and `MathBox`; dimensions such as padding and width
+are still measured in the element's own em.
+
+```jsx
+<TextCol width={20}>
+  <Text>Twice the surrounding size:</Text>
+  <MathText scale={2}>x + y = z</MathText>
+</TextCol>
+```
+
+As with text, `scale` needs an em layout to establish the surrounding size.
+A standalone formula still fills its rectangle at its aspect ratio. Text
+containers shrink a formula if it is too wide for its slot. Inline math stays
+on the line's math axis and can extend beyond the fixed line height.
+
 Parameters:
 - `children` — math items, nested arrays of math items, or ordinary `Element`s
+- `scale` = `1` — own em relative to the surrounding em
 - `style` = `text` — TeX style used when parsing string and scalar children
 - `strut` = `false` — reserve a minimum top-level math line box
-- all usual stack layout parameters are also accepted
+- usual **Group** placement parameters are also accepted
 
 **Example**
 

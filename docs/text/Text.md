@@ -37,7 +37,7 @@ the surrounding fixed line height.
 
 There are two wrapper elements related to text:
 
-- [TextBox](/docs/TextBox) / **TextFrame** can handle text with a border and background
+- [Box](/docs/Box) / **Frame** add a border and background around an explicit `Text` child; [TextBox](/docs/TextBox) / **TextFrame** accept bare text directly
 - [TextCol](/docs/TextCol), [TextRow](/docs/TextRow), and [TextGrid](/docs/TextGrid) lay out text blocks in em, and a [TextFigure](/docs/TextFigure) sizes a figure among them
 
 There are two default fonts that are always provided: `sans = 'IBM Plex Sans'` and `mono ='IBM Plex Mono'`. There are three availabe font weights: `light = 300`, `regular = 400`, and `bold = 700`. The default weight is `light`. You can use these global variables anywhere.

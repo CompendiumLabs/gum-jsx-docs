@@ -271,7 +271,7 @@ Parameters:
 - `border` = `1` — stroke width in the same units; `stroke-width` can override it
 - `fill`, `stroke`, and other drawing attributes — as for **Path**
 
-**Box**, **Frame**, and **TextBox** pass their rounding through to this element. Text frames use the same stroke units for their corners; changing text `scale` alone does not change the radius.
+**Box and Frame** pass their rounding through to this element. Their corners use the same stroke units around text and geometry; changing text `scale` alone does not change the radius.
 
 Numeric rectangle rounding previously meant a box fraction, or em in text frames. Existing figures using that convention need their values updated to stroke units.
 

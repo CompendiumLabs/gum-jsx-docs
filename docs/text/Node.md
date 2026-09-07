@@ -6,9 +6,9 @@
 
 A framed label at a position, the building block of a [Network](/docs/Network). If the `children` argument is a string, it is wrapped in a [Text](/docs/Text) element. You must provide an `id` argument to reference the node in an [Edge](/docs/Edge) element.
 
-Given an `em` (coordinate units per em, usually set once on the Network), the box is sized from its label: a [TextFrame](/docs/TextFrame) hugging the text, or an element with metrics such as a formula or a [TextCol](/docs/TextCol), with `padding` in em. The node is then its em height times `em` tall, so every node in the network shares one text size and a label wrapped at `width` makes a taller node rather than smaller text. A `ysize` still overrides the height for a single node, and a child without metrics (a shape, a stack) is framed by `ysize` as below.
+Given an `em` (coordinate units per em, usually set once on the Network), the box is sized from its label: a [Frame](/docs/Box) hugging the text, or an element with metrics such as a formula or a [TextCol](/docs/TextCol), with `padding` in em. The node is then its em height times `em` tall, so every node in the network shares one text size and a label wrapped at `width` makes a taller node rather than smaller text. A `ysize` still overrides the height for a single node, and a child without metrics (a shape, a stack) is framed by `ysize` as below.
 
-Without an `em`, the node is a [Frame](/docs/Frame) of the given `ysize` with the label fit into it, so the text size follows from the box and the number of lines, and `padding` is a fraction of the box. In both cases, `rounded` uses stroke units and does not change with the node's size.
+Without an `em`, the node is a [Frame](/docs/Box) of the given `ysize` with the label fit into it, so the text size follows from the box and the number of lines, and `padding` is a fraction of the box. In both cases, `rounded` uses stroke units and does not change with the node's size.
 
 Parameters:
 - `id` — a string to be used as the node identifier

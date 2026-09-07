@@ -23,13 +23,13 @@ const Loop = (attr) => (
       points={[[0.5, -yside], [1+xside, -yside], [1+xside, 1+yside], [0.5, 1+yside]]}
       rounded={0.05} arrow-size={0.09} arrow-curve={0.4} line-stroke-dasharray={5}
     />
-    <TextBox pos={[1+xside, 0.5]} ysize={0.15} fill={white} padding={0.3}>× N</TextBox>
+    <Box pos={[1+xside, 0.5]} ysize={0.15} fill={white} padding={0.3}><Text>× N</Text></Box>
   </Group>
 )
 
 return <TitleFrame title="Transformer Architecture" rounded={16} margin={0.08} padding={0.08} title-size={0.05}>
   <VStack>
-    <TextBox aspect={8} padding={[0, 0.1]} align="center">Output Probabilities</TextBox>
+    <Box aspect={8} padding={[0, 0.1]} align="center"><Text>Output Probabilities</Text></Box>
     <Flow />
     <Block label="Softmax" color={red} />
     <Flow />
@@ -50,6 +50,6 @@ return <TitleFrame title="Transformer Architecture" rounded={16} margin={0.08} p
     <Flow aspect={7} />
     <Block label="Token + Positional Embedding" color={purple} />
     <Flow />
-    <TextBox aspect={8} padding={[0, 0.1]} align="center">Input Tokens</TextBox>
+    <Box aspect={8} padding={[0, 0.1]} align="center"><Text>Input Tokens</Text></Box>
   </VStack>
 </TitleFrame>

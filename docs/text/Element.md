@@ -11,6 +11,8 @@ There are several convenience parameters that can be used to specify the `rect` 
 The `expand` parameter can be used to control whether the element should be expanded to fully contain its `rect`. This is useful if you have an aspected element with a desired size in one dimension. A very common case is a [Text](/docs/Text) element where you specify `pos` and `ysize` and leave the width to be determined by the aspect ratio.
 
 Parameters:
+- `width`, `height` — optional dimensions in shared layout units; one dimension plus aspect determines the other. With both dimensions and an aspect, reserve the rectangle and fit content inside it. Text uses width for wrapping; specialized math dimensions retain their local meaning.
+- `grow` — main-axis weight for consuming remaining space in a stack
 - `aspect` = `null` — the width to height ratio for this element
 - `rect` — a fully specified rectangle to place the child in (takes precedence over other parameters)
 - `pos` — the desired position of the center of the child's rectangle
@@ -23,3 +25,11 @@ Parameters:
 - `spin` — like rotate but will maintain the same size
 - `flex` ­— override to set `aspect = null`
 - `...` = `{}` — additional attributes are applied directly to the resulting SVG
+
+Every element exposes `sizing`, containing optional natural `width`, `height`,
+and `aspect`, and `layout(offer)`, returning `{ elem, em }`: the arranged
+element and its measurements. An offer's `width`/`height` are exact slots;
+`maxWidth`/`maxHeight` are available space. It may also carry inherited
+typography in `attrs`. A custom element that wraps or rearranges content
+overrides `layout` and reports `reflow = true`. Parents do not need to know its
+class. Measurement does not mutate the source; placement clones remain shallow.
