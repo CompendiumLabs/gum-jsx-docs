@@ -6,7 +6,7 @@
 
 A box drawn around text, or around one element carrying em metrics: a formula, a [TextCol](/docs/TextCol), a [TextFigure](/docs/TextFigure). The box is as big as its content plus `padding` and `margin`, which are in em. Its border and corner radii use stroke units, so text frames can share the same rounding even with different text sizes or numbers of lines. **TextFrame** is the same with `border = 1`.
 
-Given a `width` (its own, or handed down by a column) the box is that wide and the text wraps inside the padding; `hug` tightens a box whose text fits on one line to that line, so a badge in a column does not span it. An `aspect` widens (or heightens) the box around the content, which is centered in it.
+Given a `width` (its own, or handed down by a column) the text wraps inside the padding at that width, and a box whose text fits on one line tightens to that line, so a badge in a column does not span it. An `aspect` widens (or heightens) the box around the content, which is centered in it.
 
 Parameters:
 - `children` — the text, or one element with metrics
@@ -16,7 +16,6 @@ Parameters:
 - `fill` — the background color
 - `rounded` — the corner radius in stroke units, per corner as for [RoundedRect](/docs/RoundedRect); `true` for `10`
 - `aspect` — an aspect for the box to grow to; `true` for square
-- `hug` = `false` — tighten a one-line box to its line
 - `width`/`scale` — the text size, as for [Text](/docs/Text); `width` is the box's outer width
 - `justify` = `'left'` — the text alignment
 - `border-*`/`fill-*` — arguments for the frame and the background
