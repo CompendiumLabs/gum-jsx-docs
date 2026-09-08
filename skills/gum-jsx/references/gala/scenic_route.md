@@ -41,7 +41,7 @@ const ScenicArrow = ({ w = 3, knot = 0.175, ...attr }) => {
 const CompareRow = ({ children, label }) =>
   <HStack>
     <Box>{children}</Box>
-    <Box stack-size={0.4}><Text ysize={0.7}>{label}</Text></Box>
+    <Box share={0.4}><Text ysize={0.7}>{label}</Text></Box>
   </HStack>
 
 return <TitleFrame title="From A to B" title-size={0.15} padding margin rounded>

@@ -35,7 +35,7 @@ const Notes = () =>
   </TextCol>
 
 return <Slide title="Damped Oscillation" em={0.05}>
-  <TextRow gap={1.5} sizes={[1, 1]} valign="top">
+  <TextRow gap={1.5} valign="top">
     <Figure />
     <Notes />
   </TextRow>

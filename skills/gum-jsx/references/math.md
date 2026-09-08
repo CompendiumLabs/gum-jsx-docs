@@ -241,7 +241,7 @@ Generated code:
 const op = <Box padding>
   <Circle fill={blue} />
 </Box>
-return <VStack spacing={0.15}>
+return <VStack spacing={0.075}>
   <MathText>
     {"a"}
     {op}

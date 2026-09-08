@@ -194,6 +194,9 @@ Parameters:
 - `rotate` — how much to rotate the child by (degrees counterclockwise)
 - `spin` — like rotate but will maintain the same size
 - `flex` ­— override to set `aspect = null`
+- `width`/`height` — a size of the element's own in em, for a parent that lays it out in em (a **Stack**, a **TextBox**): the box is that size whatever the content does
+- `share` — the element's fraction of a **Stack**'s length along the axis
+- `fit` — scale an element with metrics (text, a formula, a list) to its slot like a figure
 - `...` = `{}` — additional attributes are applied directly to the resulting SVG
 
 **Example**

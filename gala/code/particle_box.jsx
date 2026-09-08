@@ -9,7 +9,7 @@ const ymax = nLevels.length * sp + 0.5
 
 return <Box padding>
   <VStack spacing={0.1}>
-    <Text stack-size={0.075}>Particle in a Box</Text>
+    <Text share={0.075} fit>Particle in a Box</Text>
     <Plot
       aspect={1.5}
       margin={[0, 0, 0, 0.075]}
@@ -50,6 +50,6 @@ return <Box padding>
         <Tex pos={[1.25, (i + 0.5) * sp]} ysize={0.75}>{`E_{${n}}`}</Tex>
       )}
     </Plot>
-    <Tex stack-size={0.075}>{"\\psi_n(x) = \\sqrt{2/L}\\;\\sin(n\\pi x / L)"}</Tex>
+    <Tex share={0.075} fit>{"\\psi_n(x) = \\sqrt{2/L}\\;\\sin(n\\pi x / L)"}</Tex>
   </VStack>
 </Box>

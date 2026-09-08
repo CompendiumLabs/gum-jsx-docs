@@ -2,11 +2,11 @@
 
 *Category*: text
 
-*Inherits*: [VStack](/docs/VStack) > [Element](/docs/Element)
+*Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
-Displays text and other elements. Note that you will typically not set the font size of the text here, as this will fill the entire space with the provided text. To set the text color, use `color` instead of `fill` or `stroke`.
+Displays text and other elements. There is no font size: a text on its own fills the figure, and inside a stack it is set at the stack's em, wrapping to the width it is offered. To set the text color, use `color` instead of `fill` or `stroke`.
 
-By default, whitespace (including newlines) is collapsed, and `width` sets the wrapping width in em.
+By default, whitespace (including newlines) is collapsed, and `width` is the width the text wraps at, in em, and the width of its box. With `fit`, the text is instead set once (on one line, or wrapped at its `width`) and scaled to whatever slot it gets, the way a title in a figure scales with the figure; a `height` on a fitted text makes it that tall.
 
 Set `whitespace="preserve"` (or `"pre"`) for preformatted plain text: spaces, indentation,
 explicit newlines, and blank lines are preserved, with no automatic wrapping. All lines use
@@ -44,11 +44,13 @@ There are two default fonts that are always provided: `sans = 'IBM Plex Sans'` a
 
 Parameters:
 - `children` — the text to display
-- `width` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `width` = `null` — the width in em to wrap the text at, and of its box; without one, a text in a stack wraps to the width it is offered, and on its own it is one line
+- `height` — a height of its own in em; the text sits in the box by its `align`
+- `fit` = `false` — scale the text to its slot like a figure, rather than setting it at the surrounding em
 - `scale` = `1` — the size of the text relative to the surrounding text's em
 - `whitespace` = `'normal'` — collapse whitespace, or `'pre'` / `'preserve'` to preserve it without wrapping
 - `tab-size` = `4` — tab stops in columns for preserved text
-- `spacing` = `0.2` — the spacing between lines of text
+- `spacing` = `0` — extra line spacing, as a fraction of the block
 - `justify` = `'left'` — the horizontal justification of the text
 - `color` = `black` — sets the text color using both stroke and fill (this is the usual way)
 - `font-family` = `sans` — the font family (for display and size calculations)

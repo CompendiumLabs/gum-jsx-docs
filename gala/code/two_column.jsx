@@ -19,12 +19,11 @@ const Notes = () =>
     <Bullets>
       <Text>the envelope <Tex>{"e^{-0.3 t}"}</Tex> bounds every peak</Text>
       <Text>zero crossings stay evenly spaced</Text>
-      <Text scale={0.85}>the dashed lines are the envelope, the solid line the motion</Text>
     </Bullets>
   </TextCol>
 
 return <Slide title="Damped Oscillation" em={0.05}>
-  <TextRow gap={1.5} sizes={[1, 1]} valign="top">
+  <TextRow gap={1.5} valign="top">
     <Figure />
     <Notes />
   </TextRow>

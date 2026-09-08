@@ -23,12 +23,12 @@ const [ midX, midY ] = polard(rodRot, 0.50 * rodLen, [pivotX, pivotY])
 const [ tenX, tenY ] = polard(rodRot, 0.75 * rodLen, [pivotX, pivotY])
 
 return <Box margin={0.06}>
-  <VStack spacing={0.05}>
+  <VStack gap={0.25}>
     {/* Title */}
-    <Text stack-size={0.075} color={navy}>Simple Pendulum</Text>
+    <Text color={navy}>Simple Pendulum</Text>
 
     {/* Diagram */}
-    <Frame rounded={12} fill={cream} clip border={2} aspect={1.25}>
+    <Frame rounded={12} fill={cream} clip border={2} aspect={1.25} height={10}>
       {/* Mesh background */}
       <Mesh2D xlocs={25} ylocs={20} stroke={navy} stroke-opacity={0.05} />
 
@@ -65,6 +65,6 @@ return <Box margin={0.06}>
     </Frame>
 
     {/* Equation of motion */}
-    <Latex stack-size={0.075} color={navy}>{"\\ddot{\\theta} = - (g/\\ell) \\sin(\\theta)"}</Latex>
+    <Latex color={navy}>{"\\ddot{\\theta} = - (g/\\ell) \\sin(\\theta)"}</Latex>
   </VStack>
 </Box>

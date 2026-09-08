@@ -4,22 +4,31 @@
 
 *Inherits*: [Group](/docs/Group) > [Element](/docs/Element)
 
-Stack one or more **Element** either vertically or horizontally. There are specialized components **VStack** and **HStack** that don't take the `direc` argument. This element handles child positioning and sizing, so any child `pos`/`size` arguments will be overridden. Proportional spacing between children can be specified with the `spacing` parameter.
+Stack elements vertically or horizontally. **VStack** and **HStack** are the two directions, and [TextCol](/docs/TextCol) and [TextRow](/docs/TextRow) are the same stack with text's defaults. One stack serves figures, text and math: every child is laid out for its slot in the stack's em (the size of the text in it) by what it is, and the stack reports its own box in em, so stacks nest.
 
-The simplest case is when all children have aspect ratios. In the **HStack** case, the overall aspect ratio of the stack is the sum of the child aspect ratios. Children are allocated space in proportion to their aspect ratios. The **VStack** case is similar, but we need to deal in inverse aspect ratio terms.
+A figure (an element with an aspect) spans a column's width, or takes a row's height when the row has one; text wraps to its slot; a formula keeps its size; an element with neither an aspect nor content (a plot, a bare rectangle) fills what is left. A child with a `width` or `height` of its own, in em, keeps it, and one with a `share` gets that fraction of the stack's length. A child with `fit` is scaled to its slot like a figure, which is how a title is made to scale with the figure under it.
 
-When some children lack aspect ratios, they will be allocated any remaining space evenly. Regardless of whether a child has an aspect ratio or not, it can be given a fixed size with the `stack-size` parameter. This is specified as a fraction between 0 and 1, independent of spacing. A child with both a `stack-size` and an aspect ratio is fit inside its share, so it may not fill it. Such a child only sets the aspect ratio of the stack when nothing else does: if there are children with aspect ratios but no `stack-size`, those determine it (they fill the space left over by the sized children), otherwise the stack is made just long enough for one of the sized children to fill its share exactly, with the rest fitting inside theirs. So two squares with `stack-size` of `0.45` and `0.55` in an **HStack** give a stack in which the larger square fills the height.
+A column hands its width to every child and is as tall as they come to. Given a `height` too, it is a budget: the content (text, formulas) is laid out first, and what is left goes to the children that can use it, a bare element filling it and figures splitting it evenly, each fit inside its share. A column over its budget takes the height out of its figures, never its text. Without a width, the column is as wide as its widest child laid at its own size, and a stack with no `width` of its own hugs its children across the axis: the width offered to it is what they may take, not what the stack is.
 
-A child can opt out of this with `stack-expand = false`, in which case its aspect ratio plays no part in the layout: a sized child is simply a fixed share, and an unsized one gets an even share of the remaining space like a child with no aspect ratio. If no child contributes an aspect ratio, the resulting stack will have no aspect ratio.
+A row gives children with a size of their own their width, sizes figures by its height when it has one, and splits the rest evenly among the others, each clamped to what it can use, so a one-line text takes only its line and a paragraph its share. Given both a width and a height, a figure gives way from the height toward its fair share of the width until the text beside it fits. Without a width, every child is at its natural size for the height. Children align across the row by `valign`, or by an `align` of their own.
 
-Whenever possible, the aspect ratio of the overall stack is set so that all elements with defined aspect ratios will reach full width (in the **VStack** case) or full height (in the **HStack** case).
+`spacing` is space between children as a fraction of the stack's length, the unit of a stack of figures, which stays scale-free; `gap` is space in em. A `Spacer` with neither fills what is left, like a bare element.
 
 Child parameters:
-- `stack-size` = `null` — the child's relative share of the available space along the stack axis
-- `stack-expand` = `true` — whether the child's aspect ratio takes part in the layout
+- `width`/`height` — a size of the child's own, in its em
+- `share` — the child's fraction of the stack's length along the axis (half means half)
+- `fit` — scale the child (text, a formula, a list) to its slot like a figure
+- `align` — where the child sits in its slot, in place of the stack's `justify` or `valign`
+- `scale` — the child's em over the stack's
 
 Parameters:
-- `direc` — the direction of stacking: `v` or `h`
-- `spacing` = `0` — total amount of space to add between child elements
-- `justify` = `center` — how to justify children along the stack axis
-- `even` = `false` — whether to distribute sizes evenly (`stack-size = 1 / n`)
+- `direc` = `'v'` — the direction of stacking: `v` or `h`
+- `width`/`height` — the stack's size in em: what a column offers its children or a row divides; a column's `height` is a budget
+- `gap` = `0` — the space between children in em
+- `spacing` = `0` — the space between children as a fraction of the stack's length; `true` for `0.1`
+- `even` = `false` — give every child an equal share
+- `justify` = `'center'` — where a child narrower than a column sits, or where a row narrower than its width sits along it; also the text alignment handed to the text children
+- `valign` = `'center'` — how a row's children align across it: `top`, `anchor` (their first lines' math axes), `center`, or `bottom`
+- `anchor` = `'first'` — where the stack's own anchor line is: its first child's, or `center` for its middle
+- `scale` = `1` — the size of the stack relative to the surrounding em
+- `font-family`/`font-weight`/`font-style` and `text-*` — settings handed to the text children

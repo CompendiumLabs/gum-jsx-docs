@@ -2,20 +2,19 @@
 
 ## Bullets
 
-*Inherits*: **VStack** > **Group** > **Element**
+*Inherits*: **Stack** > **Group** > **Element**
 
-A bulleted list. Each child becomes an item: strings and **Text** elements are wrapped to the list width minus the indent, with a marker placed in the indent level with the first line. A **Latex** equation, or anything else carrying em metrics, is placed at the text's size with a marker beside it; other elements span the item width as they are. A nested `Bullets` child becomes a sub-list, indented without a marker of its own.
+A bulleted list: a column of rows, each a marker in the indent beside its item, level with the item's first line. Strings and **Text** elements are wrapped to the list width minus the indent. A **Latex** equation, or anything else carrying em metrics, keeps its size beside its marker; any other element takes the item width. A nested `Bullets` child becomes a sub-list, indented without a marker of its own.
 
-All widths are in em, so text in a `Bullets` comes out the same size as a `Text` with the same `width`. This makes it fit naturally inside a **Slide**, which sets `width` on all of its children.
+All widths are in em, so text in a `Bullets` comes out the same size as a `Text` with the same `width`, and a list without a `width` of its own wraps to the width a column offers it. This makes it fit naturally inside a **Slide** or a **TextCol**.
 
 Parameters:
 - `children` — the list items: strings, `Text` elements, other elements, or nested `Bullets`
-- `width` = `25` — the total width of the list in ems
-- `scale` = `1` — the size of the list's text relative to the surrounding text's em; an item's own `scale` sizes that item, and its marker moves to stay level with its first line
+- `width` = `25` — the total width of the list in em, when nothing offers it one
+- `scale` = `1` — the size of the list's text relative to the surrounding text's em; an item's own `scale` sizes that item, and its marker stays level with its first line
 - `marker` = `'•'` — the marker string or element placed beside each item
-- `indent` = `1.5` — the width of the marker column in ems
-- `gap` = `0.5` — the vertical space between items in ems
-- `spacing` — the total stack spacing fraction; overrides `gap` when given
+- `indent` = `0.75` — the width of the marker column in em
+- `gap` = `0.5` — the vertical space between items in em
 - `justify` = `'left'` — the horizontal justification of item text
 - `font-family`/`font-weight`/`font-style` — font settings for the item text
 - `text-*` — additional arguments forwarded to each item's `Text`
@@ -93,11 +92,11 @@ Generated code:
 
 ## Text
 
-*Inherits*: **VStack** > **Element**
+*Inherits*: **Group** > **Element**
 
-Displays text and other elements. Note that you will typically not set the font size of the text here, as this will fill the entire space with the provided text. To set the text color, use `color` instead of `fill` or `stroke`.
+Displays text and other elements. There is no font size: a text on its own fills the figure, and inside a stack it is set at the stack's em, wrapping to the width it is offered. To set the text color, use `color` instead of `fill` or `stroke`.
 
-By default, whitespace (including newlines) is collapsed, and `width` sets the wrapping width in em.
+By default, whitespace (including newlines) is collapsed, and `width` is the width the text wraps at, in em, and the width of its box. With `fit`, the text is instead set once (on one line, or wrapped at its `width`) and scaled to whatever slot it gets, the way a title in a figure scales with the figure; a `height` on a fitted text makes it that tall.
 
 Set `whitespace="preserve"` (or `"pre"`) for preformatted plain text: spaces, indentation,
 explicit newlines, and blank lines are preserved, with no automatic wrapping. All lines use
@@ -135,11 +134,13 @@ There are two default fonts that are always provided: `sans = 'IBM Plex Sans'` a
 
 Parameters:
 - `children` — the text to display
-- `width` = `null` — the width (in ems) to wrap the text at (if `null`, the text will not be wrapped)
+- `width` = `null` — the width in em to wrap the text at, and of its box; without one, a text in a stack wraps to the width it is offered, and on its own it is one line
+- `height` — a height of its own in em; the text sits in the box by its `align`
+- `fit` = `false` — scale the text to its slot like a figure, rather than setting it at the surrounding em
 - `scale` = `1` — the size of the text relative to the surrounding text's em
 - `whitespace` = `'normal'` — collapse whitespace, or `'pre'` / `'preserve'` to preserve it without wrapping
 - `tab-size` = `4` — tab stops in columns for preserved text
-- `spacing` = `0.2` — the spacing between lines of text
+- `spacing` = `0` — extra line spacing, as a fraction of the block
 - `justify` = `'left'` — the horizontal justification of the text
 - `color` = `black` — sets the text color using both stroke and fill (this is the usual way)
 - `font-family` = `sans` — the font family (for display and size calculations)
@@ -160,20 +161,21 @@ Generated code:
 
 *Inherits*: **Group** > **Element**
 
-A box drawn around text, or around one element carrying em metrics: a formula, a **TextCol**, a **TextFigure**. The box is as big as its content plus `padding` and `margin`, which are in em. Its border and corner radii use stroke units, so text frames can share the same rounding even with different text sizes or numbers of lines. **TextFrame** is the same with `border = 1`.
+A box drawn around text, or around one element: a formula, a **TextCol**, a **TextFigure**. The box hugs its content plus `padding` and `margin`, which are in em, so a badge in a column does not span it; given a `width` or `height` of its own it spans that instead, and a row or grid that hands it a slot as its width does the same. Its border and corner radii use stroke units, so text frames can share the same rounding even with different text sizes or numbers of lines. **TextFrame** is the same with `border = 1`.
 
-Given a `width` (its own, or handed down by a column) the text wraps inside the padding at that width, and a box whose text fits on one line tightens to that line, so a badge in a column does not span it. An `aspect` widens (or heightens) the box around the content, which is centered in it.
+Text wraps inside the padding at the width the box has or is offered. An `aspect` widens (or heightens) the box around the content, which is placed in it by `justify`.
 
 Parameters:
-- `children` — the text, or one element with metrics
+- `children` — the text, or one element
 - `padding` = `0.4` — the space between the content and the frame, in em, as a scalar, `[horizontal, vertical]`, or `[left, top, right, bottom]`; `true` for the default
 - `margin` = `0` — the space outside the frame, in em; `true` for `0.4`
 - `border` — the frame's stroke width; `true` for `1`
 - `fill` — the background color
 - `rounded` — the corner radius in stroke units, per corner as for **RoundedRect**; `true` for `10`
 - `aspect` — an aspect for the box to grow to; `true` for square
-- `width`/`scale` — the text size, as for **Text**; `width` is the box's outer width
-- `justify` = `'left'` — the text alignment
+- `width`/`height` — the box's outer size in em, which it spans
+- `scale` — the text size, as for **Text**
+- `justify` = `'left'` — the text alignment, and where content narrower than the box sits
 - `border-*`/`fill-*` — arguments for the frame and the background
 - `font-family`/`font-weight`/`font-style` and `text-*` — as for **Text**
 
@@ -188,16 +190,16 @@ Generated code:
 
 ## TextCol
 
-*Inherits*: **TextStack** > **Group** > **Element**
+*Inherits*: **TextStack** > **Stack** > **Group** > **Element**
 
-A vertical **TextStack**, with a `gap` of half a line. A column of text blocks. Each child is laid out for the column's width and they stack top to bottom with `gap` em between them; the column is as tall as they come to. A **Text** or **Bullets** child takes the column's width unless it has a `width` of its own, in which case it keeps it and its size and is placed by `justify`, or by its own `align` if it has one (`align="right"` on a figure puts it at the right of a left-justified column). A child's `scale` sets its size relative to the column's em, which is how headings and captions are made. A formula (**Latex**) sits at the text's size, and any other element spans the column at its aspect.
+A vertical **Stack** with text's defaults: a column of text blocks, `gap` em apart (half a line) and flush left. Each child is laid out for the column's width and they stack top to bottom; the column is as tall as they come to. A **Text** or **Bullets** child wraps to the column's width unless it has a `width` of its own, in which case it keeps it and sits by `justify`, or by its own `align` (`align="right"` on a figure puts it at the right of a left-justified column; a **TextFigure** sits in the middle by default). A child's `scale` sets its size relative to the column's em, which is how headings and captions are made. A formula (**Latex**) sits at the text's size, a figure spans the column at its aspect, and a bare element (a plot) fills the height the column has to give.
 
-Every text element carries its box in em, so a column can be a child of another column, a **TextRow**, a **TextGrid**, or a **TextBox**, and a **Slide** is a column in a frame. A column with no `width` is as wide as its widest child and hands no width down.
+Every element carries its box in em, so a column can be a child of another column, a **TextRow**, a **TextGrid**, or a **TextBox**, and a **Slide** is a column in a frame. A column with no `width` is as wide as its widest child laid at its own size.
 
-Given a `height` to fill, the children sized by the width (text, lists, formulas) are laid out first, and what is left after them and the gaps is split evenly among the height-flexible children: an element with an aspect and no size of its own, a **TextFigure** without a `width` or `height`, or a **TextRow** or column holding one. Each is sized to its share instead of spanning the width: a bare element at its aspect, no wider than the column, and a **TextFigure** as a box the column's width with the element fit inside it by its own `justify`. This is how a **Slide** fits a figure to its frame; it is a single pass, so a figure's neighbor in a row can still overrun the height, which the slide's `overflow` then handles.
+Given a `height`, it is a budget: the content is laid out first, and what is left after it and the gaps goes to the children that can use it: a bare element fills it, and figures (an element with an aspect, a **TextFigure** without a size, a row holding one) split it evenly, each fit inside its share. A column over its budget takes the height out of those figures, never out of its text. This is how a **Slide** fits a figure to its frame.
 
 Parameters:
-- `children` — the blocks to stack: text, lists, formulas, other columns and rows, or any element
+- `children` — the blocks to stack: text, lists, formulas, figures, other columns and rows, or any element
 - `width` — the width of the column in em; sets the size of the text in it
 - `height` — the height in em to fill, budgeted to the children without a size of their own
 - `scale` = `1` — the size of the column relative to the surrounding text's em
@@ -205,6 +207,7 @@ Parameters:
 - `justify` = `'left'` — where a child narrower than the column sits, and the text alignment handed to the children; a child's own `align` overrides it for that child alone
 - `font-family`/`font-weight`/`font-style` — font settings for the text children
 - `text-*` — additional arguments forwarded to the text children
+- child `width`/`height`/`share`/`fit` — as for **Stack**
 
 **Example**
 
@@ -225,20 +228,21 @@ Generated code:
 
 ## TextFigure
 
-*Inherits*: **Group** > **Element**
+*Inherits*: **Stack** > **Group** > **Element**
 
-An element given a size in em, with an optional caption below it, so a plot or a diagram can sit among text at a known size. A `height` (or a `width`) sets the figure's size, with the other dimension following from the element's aspect. In a **TextCol** the figure takes the column's width with the element fit inside it by its aspect and placed by `justify`; in a **TextRow** a figure with a `height` keeps its size.
+An element with an optional caption below it, as a column, so a plot or a diagram can sit among text with a caption at the text's size. A `height` (or a `width`) sets the element's size in em, with the other dimension following from its aspect, and the figure keeps that size wherever it goes, sitting in the middle of a **TextCol** unless its `align` says otherwise. Without a size, the element spans a column's width at its aspect, or takes the height a budget leaves it, the caption keeping its size; in a **TextRow** with a `height` it is made that tall.
 
 The caption is a string, set as a **Text** as wide as the figure, or an element carrying em metrics, a **Tex** label say. Arguments prefixed `caption-` go to a text caption, so `caption-scale={0.8}` makes it smaller than the surrounding text.
 
 Parameters:
 - `children` — the one element to size
-- `height` — the height of the figure in em
-- `width` — the width of the figure in em
+- `height` — the height of the element in em
+- `width` — the width of the element in em
 - `scale` = `1` — the size of the figure relative to the surrounding text's em
-- `caption` — a string or element placed below the figure
-- `gap` = `0.3` — the space between the figure and its caption in em
-- `justify` = `'center'` — where the element and caption sit in a wider figure
+- `caption` — a string or element placed below the element
+- `gap` = `0.3` — the space between the element and its caption in em
+- `justify` = `'center'` — where the element and the caption sit in the figure's width, and the caption's text alignment
+- `align` = `'center'` — where the figure sits in a column's slot
 - `caption-*` — arguments forwarded to a text caption
 
 **Example**
@@ -262,7 +266,7 @@ Generated code:
 
 *Inherits*: **Group** > **Element**
 
-A grid of text blocks in `cols` equal columns, filled row by row. Every cell is laid out for the column width, a row is as tall as its tallest cell, and the gaps between columns and rows are in em. A cell narrower than its column (a **TextFigure** with a `height`, say) is placed by `justify`, or by its own `align` if it has one.
+A grid of text blocks in `cols` equal columns, filled row by row. Every cell is given the column width as its own, so a text block or a **TextBox** spans its cell; a row is as tall as its tallest cell, and the gaps between columns and rows are in em. Content narrower than its cell (a **TextFigure** with a `height`, say) is placed in it by `justify`, or by its own `align` if it has one. Without a `width`, the grid is laid out for the width it is offered, or its cells are as wide as the widest laid at its own size.
 
 Parameters:
 - `children` — the cells, in row order
@@ -271,7 +275,7 @@ Parameters:
 - `scale` = `1` — the size of the grid relative to the surrounding text's em
 - `gap` = `1` — the space between cells in em, or `[horizontal, vertical]`
 - `valign` = `'top'` — how the cells of a row align vertically: `top`, `anchor`, `center`, or `bottom`
-- `justify` = `'left'` — where a cell narrower than its column sits, and the text alignment handed to the cells; a cell's own `align` overrides it for that cell alone
+- `justify` = `'left'` — where content narrower than its cell sits, and the text alignment handed to the cells; a cell's own `align` overrides it for that cell alone
 - `font-family`/`font-weight`/`font-style` — font settings for the text cells
 - `text-*` — additional arguments forwarded to the text cells
 
@@ -293,9 +297,11 @@ return <TextGrid cols={3} width={24} gap={1} justify="center">
 
 ## TextRow
 
-*Inherits*: **TextStack** > **Group** > **Element**
+*Inherits*: **TextStack** > **Stack** > **Group** > **Element**
 
-A horizontal **TextStack**, with a `gap` of one em. A row of text blocks side by side, `gap` em apart. Given a `width`, children that carry a size of their own keep it (a **Text** or **TextCol** with a `width`, a **TextFigure** with a `height`, a formula) and the rest share what is left; or `sizes` splits the width as given. Without a width, the row is as wide as its children laid out at their own sizes. Given a `height` to fill, a child with an aspect but no size of its own (a plot or a framed element, or a **TextFigure** without a `width` or `height`) is made that tall at its aspect, no wider than the row, and keeps that width like a fixed child; a nested row or column is handed the height to budget among its own children. A **Slide** gives its column the height of its content area, so a figure beside text fills the slide's height and the text takes what is left.
+A horizontal **Stack** with text's defaults: a row of text blocks side by side, `gap` em apart (one em). Given a `width`, children with a size of their own keep it (a **Text** or **TextCol** with a `width`, a **TextFigure** with a `height`, a formula) and the rest split what is left evenly, each clamped to what it can use: a one-line text takes only its line, a paragraph its full share, and a child with a `share` its fraction of the width. Without a width, the row is as wide as its children laid out at their own sizes.
+
+Given a `height`, a figure without a size of its own (a plot with an aspect, a framed element, a **TextFigure** without a `width` or `height`) is made that tall at its aspect, and given a width too it gives way from that toward its fair share of the width until the text beside it fits the height. A nested row or column is handed the height to budget among its own children. A **Slide** gives its column the height of its content area, so a figure beside text fills the slide's height and the text takes what is left.
 
 Children align by their tops, or by `valign` their anchors (the first line's axis, so two columns of text share a first line), their middles, or their bottoms; a child with an `align` of its own (`align="bottom"` on one text block, say) is placed by that instead. A row narrower than its width is placed by `justify`, which is also the text alignment handed to the children.
 
@@ -303,13 +309,13 @@ Parameters:
 - `children` — the blocks to put side by side
 - `width` — the width of the row in em
 - `height` — the height in em to size figures without a size of their own to
-- `sizes` — the share of the width each child gets, as a list of weights; with it, every child is a flex child
 - `scale` = `1` — the size of the row relative to the surrounding text's em
 - `gap` = `1` — the space between children in em
 - `valign` = `'top'` — how the children align vertically: `top`, `anchor`, `center`, or `bottom`; a child's own `align` overrides it for that child alone
 - `justify` = `'left'` — where a row narrower than its width sits, and the text alignment handed to the children
 - `font-family`/`font-weight`/`font-style` — font settings for the text children
 - `text-*` — additional arguments forwarded to the text children
+- child `width`/`height`/`share`/`fit` — as for **Stack**
 
 **Example**
 
@@ -332,35 +338,16 @@ Generated code:
 
 ## TextStack
 
-*Inherits*: **Group** > **Element**
+*Inherits*: **Stack** > **Group** > **Element**
 
-A stack of text blocks in em, vertical (`direc="v"`, the default) or horizontal. Where a **Stack** divides itself between its children in shares of its own size, a text stack lays every child out for its slot in one unit, the em of the text in it, so text, formulas and figures come out at one size, and it reports its own box in em like any measured element, so text stacks nest. **TextCol** and **TextRow** are its two directions with the gap each wants, and the math stacks (a column of formulas, a row of math items) are the same layout with math's spacing.
-
-Each child is laid out for its slot by what it is. A **Text** or **Bullets** takes the slot's width unless it has a `width` of its own, in which case it keeps it. A formula (**Latex**) or a **TextFigure** with a size keeps its size. Any other element spans the slot at its aspect. A child's `scale` sets its size relative to the stack's em, which is how headings and captions are made, and a child's own `align` places it in its slot in place of the stack's `justify` or `valign`.
-
-A column offers its `width` to every child and is as tall as they come to, `gap` em apart. With no width it lays the children out at their own sizes and is as wide as the widest. Given a `height`, it is a budget: the children sized by the width are laid out first, and what is left is split evenly among the height-flexible ones (an element with an aspect and no size of its own, a **TextFigure** without a `width` or `height`, or a nested stack holding one), each sized to its share instead of spanning the width. This is how a **Slide** fits a figure to its frame. The column's box is its content.
-
-A row offers slots along its `width`: children with a size of their own keep it and the rest share what is left, or `sizes` splits the width as given. With no width, every child is at its own size. A `height` is handed down to a nested stack to budget and sizes a bare element to it at its aspect, no wider than the row. The children align across the row by `valign`: their tops, or `anchor` for their anchors (the axis of a text block's first line, or of a formula), their middles, or their bottoms. A row narrower than its width is placed along it by `justify`.
-
-A child with a `stack-size` is that long along the stack in em (tall in a column, wide in a row), spans the stack across, and is fit inside that box by its aspect: a way to give a bare element a size without a **TextFigure**.
-
-Child parameters:
-- `stack-size` = `null` — the child's length along the stack, in em
-- `align` — where the child sits in its slot, in place of `justify` or `valign`
-- `scale` — the child's em over the stack's
+A **Stack** with text's defaults: a column half a line apart with its children flush left, or a row (`direc="h"`) one em apart with its children aligned by their tops. **TextCol** and **TextRow** are its two directions. Everything else, including how figures, formulas and lists are placed, a child's `width`, `height`, `share` and `fit`, and a column's height budget, is as for **Stack**.
 
 Parameters:
-- `children` — the blocks to stack: text, lists, formulas, figures, other stacks, or any element
 - `direc` = `'v'` — the direction of stacking: `v` or `h`
-- `width` — the width in em: what a column offers its children, or the length a row's slots divide; sets the size of the text
-- `height` — the height in em: a column's budget, or what a row hands its children
-- `gap` = `0.5` — the space between children in em
-- `scale` = `1` — the size of the stack relative to the surrounding text's em
-- `justify` = `'left'` — where a child narrower than a column sits, or where a row narrower than its width sits along it; also the text alignment handed to the children
-- `valign` = `'top'` — how a row's children align across it: `top`, `anchor`, `center`, or `bottom`
-- `sizes` — the share of a row's width each child gets, as a list of weights; with it, every child is a flex child
-- `font-family`/`font-weight`/`font-style` — font settings for the text children
-- `text-*` — additional arguments forwarded to the text children
+- `gap` = `0.5` for a column, `1` for a row — the space between children in em
+- `justify` = `'left'` — where a child narrower than a column sits, and the text alignment handed to the children
+- `valign` = `'top'` — how a row's children align across it
+- other parameters as for **Stack**
 
 **Example**
 
