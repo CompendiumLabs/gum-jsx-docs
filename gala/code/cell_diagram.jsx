@@ -109,7 +109,7 @@ const labels = [
   ['Cytoplasm', 'r', 0.92, [0.85, 0.77]],
 ]
 
-return <TitleFrame title="Anatomy of a Cell" margin padding rounded={12} fill={col.frame.fill} border-stroke={col.frame.border}>
+return <TitleFrame title="Anatomy of a Cell" title-scale={0.7} margin padding rounded={12} fill={col.frame.fill} border-stroke={col.frame.border}>
   <Group coord={C} aspect={asp}>
     {/* cell body */}
     <Blob radii={membrane} pos={[0.75, 0.5]} size={[1.08, 0.86]}
@@ -146,7 +146,7 @@ return <TitleFrame title="Anatomy of a Cell" margin padding rounded={12} fill={c
       <Line coord={C} points={[[s == 'l' ? xL + 0.01 : xR - 0.01, y], to]} stroke={col.label.line} stroke-width={1.5} />
     )}
     {labels.map(([t, s, y, to]) =>
-      <Text xrect={s == 'l' ? xL : xR} yrect={[y - th / 2, y + th / 2]} expand
+      <Text pos={[s == 'l' ? xL : xR, y]} ysize={0.045}
         align={s == 'l' ? 'right' : 'left'} font-weight={regular} color={col.label.text}>{t}</Text>
     )}
   </Group>

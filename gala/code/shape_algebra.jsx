@@ -53,8 +53,8 @@ const transpose = <MathText>
 </MathText>
 
 // stack 'em up evenly for a slide
-return <TitleFrame title="Shape Algebra" padding margin border={2} title-border={2} rounded={12}>
-  <VStack even spacing>
+return <TitleFrame title="Shape Algebra" padding={1} margin border={2} title-border={2} rounded={12}>
+  <VStack gap>
     {series}
     {radius}
     {transpose}

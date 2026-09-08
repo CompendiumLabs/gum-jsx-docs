@@ -5,7 +5,7 @@ const tint = c => interp(white, c, 0.25)
 
 // a labeled block with rounded corners and a color fill
 const Block = ({ label, color, ...attr }) => (
-  <Frame rounded={5} aspect={6} padding={[0.4, 0.3]} margin={[1, 0]} fill={tint(color)} {...attr}>
+  <Frame rounded={5} aspect={6} padding={0.15} margin={[1, 0]} fill={tint(color)} {...attr}>
     <Text>{label}</Text>
   </Frame>
 )
@@ -16,7 +16,7 @@ const Flow = ({ aspect = 10, ...attr }) => (
 )
 
 // loop arrow tapping the residual stream above the layer box and rejoining below it
-const [ xside, yside ] = [ 0.2, 0.21 ]
+const [ xside, yside ] = [ 0.15, 0.25 ]
 const Loop = (attr) => (
   <Group {...attr}>
     <Arrow
@@ -27,15 +27,15 @@ const Loop = (attr) => (
   </Group>
 )
 
-return <TitleFrame title="Transformer Architecture" title-scale={0.6} rounded={10} margin padding>
+return <TitleFrame title="Transformer Architecture" title-scale={0.6} title-rounded={10} rounded={10} margin padding={0.8}>
   <VStack>
-    <TextBox aspect={8} padding={[0, 0.1]} align="center">Output Probabilities</TextBox>
+    <TextBox scale={0.8}>Output Probabilities</TextBox>
     <Flow />
     <Block label="Softmax" color={red} />
     <Flow />
     <Block label="Linear" color={red} />
     <Flow aspect={7} />
-    <Frame rounded padding={[0.4, 0.6]} margin={[1, 0]}>
+    <Frame rounded padding={[0, 0.7]} margin={[1, 0]}>
       <VStack>
         <Block label="Add & Norm" color={yellow} />
         <Flow />
@@ -50,6 +50,6 @@ return <TitleFrame title="Transformer Architecture" title-scale={0.6} rounded={1
     <Flow aspect={7} />
     <Block label="Token + Positional Embedding" color={purple} />
     <Flow />
-    <TextBox aspect={8} padding={[0, 0.1]} align="center">Input Tokens</TextBox>
+    <TextBox scale={0.8}>Input Tokens</TextBox>
   </VStack>
 </TitleFrame>

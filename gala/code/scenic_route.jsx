@@ -28,13 +28,13 @@ const ScenicArrow = ({ w = 3, knot = 0.175, ...attr }) => {
 }
 
 const CompareRow = ({ children, label }) =>
-  <HStack>
+  <HStack gap={0.5}>
     <Box>{children}</Box>
     <Box share={0.4}><Text ysize={0.7}>{label}</Text></Box>
   </HStack>
 
-return <TitleFrame title="From A to B" padding margin rounded>
-  <VStack spacing={0.05}>
+return <TitleFrame title="From A to B" title-scale={0.7} padding={0.75} margin rounded>
+  <VStack gap={0.5}>
     <CompareRow label="the direct method">
       <Latex>{"A \\xrightarrow{\\quad\\quad} B"}</Latex>
     </CompareRow>
