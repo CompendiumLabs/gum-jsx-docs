@@ -1,5 +1,5 @@
 // A simple connected network where each rounded node contains an emoji icon stacked above a text label. The example shows idea → design → launch.
-<Network aspect={2} node-fill={gray} node-rounded node-padding={0.25} node-ysize={0.35}>
+<Network aspect={2} node-fill={gray} node-rounded node-padding={0.25} node-ysize={0.4}>
   <Node id="idea" pos={[0.2, 0.5]}>
     <VStack spacing={0.15}>
       <Text>💡</Text>
