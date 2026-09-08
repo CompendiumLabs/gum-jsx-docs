@@ -22,18 +22,18 @@ const RegularPolygon = ({ n, ...args }) =>
     f={t => polar(t+pi/2*(n-2)/n)}
   />
 
-return <Slide title="Simple Regular Polygons" em={0.045} gap={1}>
-  <Text>
+return <Slide title="Simple Regular Polygons" gap={1.5} aspect={1.2} em={0.045}>
+  <Text width={20}>
     A regular polygon has equal side lengths and equal interior angles. Below are examples for
     <Tex>{"n \\in \\{3, \\ldots, 8\\}"}</Tex>
   </Text>
-  <TextGrid cols={3} gap={[1, 0.75]} justify="center">
+  <TextGrid cols={3} gap={[1, 0.75]} align="center">
     { shapes.map(([n, s]) =>
-      <TextFrame rounded fill padding={0.6}>
-        <TextFigure height={3.5} caption={`${s} (${n})`}>
+      <Frame rounded fill padding aspect>
+        <TextFigure caption={`${s} (${n})`}>
           <RegularPolygon n={n} fill={pal(n)} />
         </TextFigure>
-      </TextFrame>
+      </Frame>
     ) }
   </TextGrid>
 </Slide>

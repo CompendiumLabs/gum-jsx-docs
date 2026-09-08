@@ -16,7 +16,7 @@ const col = {
   trade: '#ffb300',
 }
 
-return <Slide title="Macroeconomic Flows">
+return <Slide title="Macroeconomic Flows" justify="center">
   <Network aspect={2} coord={[0, 0, 1.6, 0.8]} node-ysize={0.16} node-rounded={8} node-fill={gray} node-fill-opacity={0.15} edge-stroke-width={1} edge-arrow-size={0.04} edge-stroke="#444" edge-arrow node-text-width={6}>
     <Node id="trade" pos={[0.8, 0.15]} fill={col.trade} border-stroke={col.trade} text-color={col.trade}>Foreign Trade</Node>
     <Node id="prod" pos={[0.3, 0.4]} fill={col.prod} border-stroke={col.prod} text-color={col.prod}>Producers (Firms)</Node>

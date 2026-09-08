@@ -7,12 +7,12 @@ Most of the energy comes from the framing rather than the text itself. The brigh
 **Code**
 
 ```jsx
-<Frame rounded={40} padding margin fill={gray} rotate={-25}>
-  <HStack spacing={0.04} align="left">
-    <TextFrame fill={red} padding={[0.5, 0.3]} rounded={[10, 0, 0, 10]}>Punk</TextFrame>
-    <TextFrame fill={blue} padding={[0.5, 0.3]} rounded={0}>Rock</TextFrame>
-    <TextFrame fill={green} padding={[0.5, 0.3]} rounded={[0, 10, 10, 0]} aspect>→</TextFrame>
-    <Spacer aspect={2} />
+<Frame rounded={25} padding={[0.075, 0.1]} margin fill={gray} aspect={4.2} rotate={-25}>
+  <HStack spacing={0.05} align="left">
+    <TextFrame fill={red} padding={0.25} rounded={[15, 0, 0, 15]}>Punk</TextFrame>
+    <TextFrame fill={blue} padding={0.25} rounded={0}>Rock</TextFrame>
+    <TextFrame fill={green} padding={0.25} rounded={[0, 15, 15, 0]}>→</TextFrame>
+
   </HStack>
 </Frame>
 ```
