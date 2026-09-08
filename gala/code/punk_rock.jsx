@@ -1,4 +1,4 @@
-<Frame rounded={25} padding={[0.075, 0.1]} margin fill={gray} aspect={4.2} rotate={-25}>
+<Frame rounded={25} padding={[0.6, 0.3]} margin fill={gray} aspect={4.2} rotate={-25}>
   <HStack gap={0.5} align="left">
     <TextFrame fill={red} padding={0.25} rounded={[15, 0, 0, 15]}>Punk</TextFrame>
     <TextFrame fill={blue} padding={0.25} rounded={0}>Rock</TextFrame>

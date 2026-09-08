@@ -109,7 +109,7 @@ const labels = [
   ['Cytoplasm', 'r', 0.92, [0.85, 0.77]],
 ]
 
-return <TitleFrame title="Anatomy of a Cell" title-size={0.09} margin={0.06} padding={0.03} rounded={12} fill={col.frame.fill} border-stroke={col.frame.border}>
+return <TitleFrame title="Anatomy of a Cell" margin padding rounded={12} fill={col.frame.fill} border-stroke={col.frame.border}>
   <Group coord={C} aspect={asp}>
     {/* cell body */}
     <Blob radii={membrane} pos={[0.75, 0.5]} size={[1.08, 0.86]}

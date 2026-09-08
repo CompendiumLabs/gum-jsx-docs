@@ -43,7 +43,7 @@ Generated code:
 ```jsx
 const emoji = ['🗻', '🚀', '🐳', '🍉', '🍩']
 const ticks = zip(linspace(0, 1, emoji.length), emoji)
-return <Box padding={[0.5, 1]}>
+return <Box padding={[1, 3]}>
   <HAxis aspect={10} ticks={ticks} tick-side="outer" label-size={1} label-offset={0.25} />
 </Box>
 ```
@@ -165,7 +165,7 @@ Parameters:
 - `children` — the badge specifications, each with a `label`
 - `vspacing` = `0.1` — the vertical spacing between rows
 - `hspacing` = `0.25` — the gap between a badge and its label, relative to the badge
-- `padding` = `0.05` — the padding inside the frame
+- `padding` = `0.4` — the padding inside the frame, in em
 - `rounded` = `10` — the corner radius of the frame, in stroke units
 - `fill` = `white` — the background colour of the frame
 - `justify` = `left` — the horizontal justification of the rows
@@ -189,7 +189,7 @@ Generated code:
     {[
       { stroke: blue, stroke_width: 2, label: 'sine' },
       { stroke: red, stroke_width: 2, stroke_dasharray: 5, label: 'cosine' },
-      <Box padding={0.2} label="samples"><Dot fill={green} /></Box>,
+      <Box padding={2} label="samples"><Dot fill={green} /></Box>,
     ]}
   </Legend>
 </Plot>
@@ -300,10 +300,10 @@ Generated code:
 ```jsx
 // short blue ticks at chosen locations
 <HStack spacing={0.1}>
-  <Frame aspect={2} margin={0.1}>
+  <Frame aspect={2} margin>
     <HScale locs={5} />
   </Frame>
-  <Frame aspect={2} margin={0.1}>
+  <Frame aspect={2} margin>
     <VScale locs={[0.15, 0.35, 0.5, 0.8]} span={[0.4, 0.6]} stroke={blue} stroke-width={2} />
   </Frame>
 </HStack>

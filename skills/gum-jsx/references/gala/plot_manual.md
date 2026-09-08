@@ -9,7 +9,7 @@ That makes it a useful example if you want to understand what **Plot** is abstra
 ```jsx
 const aspect = 2
 const ratio = pi / aspect
-return <Box margin={0.3}>
+return <Box margin={3}>
   <Group coord={[0, 1, 2*pi, -1]} aspect={aspect}>
     <HMesh locs={5} opacity={0.15} />
     <VMesh locs={5} opacity={0.15} />

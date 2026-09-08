@@ -8,7 +8,7 @@
     {[
       { stroke: blue, stroke_width: 2, label: 'sine' },
       { stroke: red, stroke_width: 2, stroke_dasharray: 5, label: 'cosine' },
-      <Box padding={0.2} label="samples"><Dot fill={green} /></Box>,
+      <Box padding={2} label="samples"><Dot fill={green} /></Box>,
     ]}
   </Legend>
 </Plot>

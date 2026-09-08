@@ -159,25 +159,11 @@ Generated code:
 
 ## TextBox
 
-*Inherits*: **Group** > **Element**
+*Inherits*: **Box** > **Group** > **Element**
 
-A box drawn around text, or around one element: a formula, a **TextCol**, a **TextFigure**. The box hugs its content plus `padding` and `margin`, which are in em, so a badge in a column does not span it; given a `width` or `height` of its own it spans that instead, and a row or grid that hands it a slot as its width does the same. Its border and corner radii use stroke units, so text frames can share the same rounding even with different text sizes or numbers of lines. **TextFrame** is the same with `border = 1`.
+A **Box** with the default for a box around text: `padding` of `0.4` em unless given. Everything else is as for **Box**: strings are set as text with the box's font settings; one element (a formula, a **TextCol**, a **TextFigure**) is boxed as it is; the box hugs its content and lays it out for the width it is given, so text wraps inside the padding; and `width`, `height`, `aspect`, `justify` and `scale` work the same way. **TextFrame** is the same with `border = 1`.
 
-Text wraps inside the padding at the width the box has or is offered. An `aspect` widens (or heightens) the box around the content, which is placed in it by `justify`.
-
-Parameters:
-- `children` — the text, or one element
-- `padding` = `0.4` — the space between the content and the frame, in em, as a scalar, `[horizontal, vertical]`, or `[left, top, right, bottom]`; `true` for the default
-- `margin` = `0` — the space outside the frame, in em; `true` for `0.4`
-- `border` — the frame's stroke width; `true` for `1`
-- `fill` — the background color
-- `rounded` — the corner radius in stroke units, per corner as for **RoundedRect**; `true` for `10`
-- `aspect` — an aspect for the box to grow to; `true` for square
-- `width`/`height` — the box's outer size in em, which it spans
-- `scale` — the text size, as for **Text**
-- `justify` = `'left'` — the text alignment, and where content narrower than the box sits
-- `border-*`/`fill-*` — arguments for the frame and the background
-- `font-family`/`font-weight`/`font-style` and `text-*` — as for **Text**
+Parameters: as for **Box**, with `padding` = `0.4` and `margin` = `0` (`true` for `0.4`).
 
 **Example**
 
@@ -368,17 +354,18 @@ Generated code:
 
 ## TitleFrame
 
-*Inherits*: **Frame** > **Element**
+*Inherits*: **Frame** > **Box** > **Element**
 
-A special type of **Frame** that places a title element in a box centered on the line at the top of the frame. The title element can be either a proper Element or a string, in which case it will be wrapped in a **Text** element.
+A **Frame** with a title on its top border: a **TextFrame** at the text size (or `title-scale` times it), centered on the border with the border cut away behind it. The title can be a string or an element. The frame's top margin is at least the title's upper half and its top padding at least the lower half, so the title runs into neither the frame's edge nor its content. **TitleBox** is the same without the border.
 
 Parameters:
 - `title` — the text or element to use as the title
-- `title-size` = `0.1` — the height of the title box as a fraction of the frame's
+- `title-scale` = `1` — the title's em over the frame's
 - `title-padding` = `[0.6, 0.3]` — the padding inside the title box, in em of the title
 - `title-rounded` = `10` — the corner radius of the title box, in stroke units
-- `adjust` = `true` — whether to adjust the padding and margin to account for the title element
-- `border` = `1` — the outer frame border width to use
+- `title-fill` — a background for the title box; the border is cut away behind it regardless
+- `border` = `1` — the frame's border width in stroke units
+- `padding`, `margin`, `rounded`, `fill`, `aspect`, `width`, `height` — as for **Box**
 
 Subunits:
 - `title` — the title element

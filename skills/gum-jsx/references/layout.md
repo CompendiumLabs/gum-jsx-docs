@@ -4,28 +4,32 @@
 
 *Inherits*: **Group** > **Element**
 
-This is a simple container class allowing you to add padding, margins, and a border to a single **Element**. It's pretty versatile and is often used to set up the outermost positioning of a figure. Mirroring the standard CSS definitions, padding is space inside the border and margin is space outside the border. This has no border by default, but there is a specialized subclass of this called **Frame** that defaults to `border = 1`.
+A box around its content: `padding` inside the border and `margin` outside it, both in em, plus an optional border and background. Mirroring CSS, padding is space inside the border and margin is space outside it. **Box** has no border by default; **Frame** is the same with `border = 1`, and **TextBox** and **TextFrame** are the same classes again with a default padding for a box around text.
 
-**Box** differs from **Group** in how it takes its shape. A group fills whatever it is placed in and fits each child into its rect. A box is a container: given a size by its parent (the root, a stack, or another box), it lays its content out for the padded area and takes the shape of what comes back. The content is the first child with no rect of its own. So a figure gives the box its aspect, a bare element fills it, and a column keeps its text size and hugs its height: wrapping something in a box does not change what is inside. With an `aspect` of its own the box fits the size at that aspect, and with `flex` it fills it; content that does not fit the area of such a box is scaled into it, so a label in a fixed-aspect frame shrinks to fit rather than wrapping. Children at a rect of their own are placed by it, as in a group, which is handy for shifting an element while the box keeps the shape of the first child.
+The content is the children with no rect of their own, or, when any child is a string, the text they make (set with the box's `font-*` and `text-*` settings and aligned by `justify`). The box hugs its content plus the padding. Given a size by its parent (the root, a stack, or another box), the content is laid out for the area inside the padding: a column keeps its text size and hugs its height, a figure spans the width, a paragraph wraps to it. So wrapping something in a box does not change what is inside it. A `width` or `height` of its own is the box's outer size, which it spans, the content sitting in the area by `justify` (text to the left, elements centered, by default).
 
-There are multiple ways to specify padding and margins. If given as a scalar, it is constant across all sides. If two values are given, they correspond to the horizontal and vertical sides. If four values are given, they correspond to `[left, top, right, bottom]`.
+An `aspect` makes the box a figure of that shape: sized by what it is offered, with the content fit into the area as any figure's content is (text that does not fit at its size scales down), or grown around its content when nothing is offered. `flex` fills the offer instead. Children at a rect of their own (by `pos`, `rect` and the like) are placed relative to the area inside the padding, as in a **Group**, and a child with metrics placed by `pos` alone sits there at its own size, which is how a **TitleFrame** puts its title on the border.
 
-The `adjust` flag controls whether padding/margins are adjusted for the aspect ratio. If `true`, horizontal and vertical components are scaled so that their ratio is equal to the `child` element's aspect ratio. This yields padding/margins of constant apparent size regardless of aspect ratio. If `false`, the inputs are used as-is.
+Padding and margin take a scalar, `[horizontal, vertical]`, or `[left, top, right, bottom]`; `true` is the default. The border and the corner radii are in stroke units, so boxes of different sizes share one look.
 
 Parameters:
-- `padding` = `0` / `0.1` — the padding to be added (inside border)
-- `margin` = `0` / `0.1` — the margin to be added (outside border)
-- `border` = `0` / `1` — the border width in stroke units
-- `rounded` = `0` / `10` — corner radius in stroke units, per corner as for **RoundedRect**; `true` uses `10`
-- `fill` = `null` — the background color to use (default is no fill)
-- `aspect` — an aspect for the box to fit its size at; by default it takes its content's shape
-- `flex` = `false` — fill the size given instead of taking the content's shape
-- `adjust` = `true` — whether to adjust values for aspect ratio
-- `shape` = `Rect` — the shape class to use for the border
-- `clip` = `false` — whether to clip the contents to the border shape
+- `padding` = `0` — the space between the content and the border, in em; `true` for `0.5`
+- `margin` = `0` — the space outside the border, in em; `true` for `0.5`
+- `border` — the border width in stroke units; `true` for `1` (the **Frame** default)
+- `rounded` — corner radius in stroke units, per corner as for **RoundedRect**; `true` for `10`
+- `fill` — the background color
+- `shape` — the element drawn as the border and background, a rectangle by default
+- `clip` — clip the content to the border shape (`true`), or to an element
+- `aspect` — the shape of the framed box; `true` for square
+- `flex` — fill the size given rather than taking the content's shape
+- `justify` — the text alignment, and where content narrower than the area sits
+- `width`/`height` — the box's outer size in em, which it spans
+- `scale` — the box's em over its parent's, as for **Text**
+- `font-family`/`font-weight`/`font-style` and `text-*` — settings for text content, as for **Text**
 
 Subunit names:
-- `border` — keywords to pass to border, such as `stroke` or `stroke-dasharray`
+- `border` — attributes for the border, such as `stroke` or `stroke-dasharray`
+- `fill` — attributes for the background
 
 **Example**
 

@@ -5,7 +5,7 @@ const tint = c => interp(white, c, 0.25)
 
 // a labeled block with rounded corners and a color fill
 const Block = ({ label, color, ...attr }) => (
-  <Frame rounded={5} aspect={6} padding={[0.2, 0.15]} margin={[0.15, 0]} fill={tint(color)} {...attr}>
+  <Frame rounded={5} aspect={6} padding={[0.4, 0.3]} margin={[1, 0]} fill={tint(color)} {...attr}>
     <Text>{label}</Text>
   </Frame>
 )
@@ -27,7 +27,7 @@ const Loop = (attr) => (
   </Group>
 )
 
-return <TitleFrame title="Transformer Architecture" rounded={10} margin={0.08} padding={0.08} title-size={0.05}>
+return <TitleFrame title="Transformer Architecture" title-scale={0.6} rounded={10} margin padding>
   <VStack>
     <TextBox aspect={8} padding={[0, 0.1]} align="center">Output Probabilities</TextBox>
     <Flow />
@@ -35,7 +35,7 @@ return <TitleFrame title="Transformer Architecture" rounded={10} margin={0.08} p
     <Flow />
     <Block label="Linear" color={red} />
     <Flow aspect={7} />
-    <Frame rounded padding={[0.05, 0.1]} margin={[0.15, 0]}>
+    <Frame rounded padding={[0.4, 0.6]} margin={[1, 0]}>
       <VStack>
         <Block label="Add & Norm" color={yellow} />
         <Flow />

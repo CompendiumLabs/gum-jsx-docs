@@ -25,7 +25,7 @@ Prompt: A vector field showing a function with gradient 100 * x * y. There shoul
 
 Generated code:
 ```jsx
-<Frame rounded={12} margin padding={0.075}>
+<Frame rounded={12} margin padding={1.5}>
   <SymField func={(x, y) => 100 * x * y} xlim={[0, 1]} ylim={[0, 1]} N={15} />
 </Frame>
 ```

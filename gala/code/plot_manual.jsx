@@ -1,6 +1,6 @@
 const aspect = 2
 const ratio = pi / aspect
-return <Box margin={0.3}>
+return <Box margin={3}>
   <Group coord={[0, 1, 2*pi, -1]} aspect={aspect}>
     <HMesh locs={5} opacity={0.15} />
     <VMesh locs={5} opacity={0.15} />

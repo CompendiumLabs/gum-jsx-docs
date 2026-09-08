@@ -1,5 +1,5 @@
 // a blue circle as a custom operator between a and b: dropped in plainly it touches its neighbors, wrapped in a MathBox classed as a binary operator it spaces like a plus, and an arrow boxed as a relation two ems wide spaces like an equals sign
-const op = <Box padding>
+const op = <Box padding={0.15}>
   <Circle fill={blue} />
 </Box>
 return <VStack spacing={0.075}>

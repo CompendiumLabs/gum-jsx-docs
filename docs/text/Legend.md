@@ -12,7 +12,7 @@ Parameters:
 - `children` — the badge specifications, each with a `label`
 - `vspacing` = `0.1` — the vertical spacing between rows
 - `hspacing` = `0.25` — the gap between a badge and its label, relative to the badge
-- `padding` = `0.05` — the padding inside the frame
+- `padding` = `0.4` — the padding inside the frame, in em
 - `rounded` = `10` — the corner radius of the frame, in stroke units
 - `fill` = `white` — the background colour of the frame
 - `justify` = `left` — the horizontal justification of the rows

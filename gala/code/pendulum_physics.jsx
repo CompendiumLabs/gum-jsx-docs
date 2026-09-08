@@ -22,7 +22,7 @@ const [ bobX, bobY ] = polard(rodRot, rodLen, [pivotX, pivotY])
 const [ midX, midY ] = polard(rodRot, 0.50 * rodLen, [pivotX, pivotY])
 const [ tenX, tenY ] = polard(rodRot, 0.75 * rodLen, [pivotX, pivotY])
 
-return <Box margin={0.06}>
+return <Box margin>
   <VStack gap={0.25}>
     {/* Title */}
     <Text color={navy}>Simple Pendulum</Text>

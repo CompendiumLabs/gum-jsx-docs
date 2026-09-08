@@ -76,7 +76,7 @@ const leaves = [
   ...leaf([-0.015, -0.78], [-0.52, -0.62], 0.13),
 ]
 
-return <Box fill={bg} rounded margin={0.05} clip>
+return <Box fill={bg} rounded margin clip>
   <Graph xlim={[-1, 1]} ylim={[-1.3, 1.3]} aspect={2 / 2.6} padding={0.05}>
     <Circle pos={[0, 0.5]} rad={0.75} fill={pink} opacity={0.04} stroke={none} />
     <Circle pos={[0, 0.5]} rad={0.5} fill={pink} opacity={0.05} stroke={none} />

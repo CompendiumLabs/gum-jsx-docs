@@ -33,7 +33,7 @@ const CompareRow = ({ children, label }) =>
     <Box share={0.4}><Text ysize={0.7}>{label}</Text></Box>
   </HStack>
 
-return <TitleFrame title="From A to B" title-size={0.15} padding margin rounded>
+return <TitleFrame title="From A to B" padding margin rounded>
   <VStack spacing={0.05}>
     <CompareRow label="the direct method">
       <Latex>{"A \\xrightarrow{\\quad\\quad} B"}</Latex>
