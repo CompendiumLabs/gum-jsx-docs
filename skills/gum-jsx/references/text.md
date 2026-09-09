@@ -46,7 +46,7 @@ Create a presentation slide with a title and some content. A slide is a fixed-as
 
 Text size is set by `em`, the em as a fraction of the slide height, so `em={0.05}` fits twenty lines top to bottom and the content width in em follows from the frame. Without `em`, `width` is the content width in em and the size follows from that. Either way the column spans the content width, and a child's `scale` sizes it relative to the slide's em, so `<Text scale={2}>` is a heading twice the body size.
 
-With a fixed `aspect`, the column is also given the area's height, so a figure with no size of its own (a plot, a framed element, or a **TextFigure** without a `width` or `height`), alone or beside text in a **TextRow**, is sized to the height left after the text rather than spanning the width, and several such figures split it evenly (see **TextCol**). Content taller than the frame's area is handled by `overflow`: shrunk to fit (the default), clipped, or an error. The `overflow` property on the resulting element is the ratio of the content height to the area's, so a value above `1` means it did not fit. Both `margin` and `padding` are given as fractions of the slide height, so they are the same distance in every direction.
+With a fixed `aspect`, the column is also given the area's height, so a figure with no size of its own (a plot, a framed element, or a **TextFigure** without a `width` or `height`), alone or beside text in a **TextRow**, is sized to the height left after the text rather than spanning the width, and several such figures split it evenly (see **TextCol**). Content taller than the frame's area, or wider than `em` asks for (a row of figures at their own size, say), is handled by `overflow`: shrunk to fit (the default), clipped, or an error. Shrinking in width means the em comes out smaller than asked and the whole slide with it, which is why a deck whose slides must all be the same size is worth rendering with `overflow="error"`. The `overflow` property on the resulting element is the ratio of the content height to the area's, so a value above `1` means it did not fit. Both `margin` and `padding` are given as fractions of the slide height, so they are the same distance in every direction.
 
 Parameters:
 - `children` = `[]` — a list of strings or `Element`s to stack vertically
@@ -55,7 +55,7 @@ Parameters:
 - `em` — the text size, as a fraction of the slide height
 - `width` = `25` — the width of the content in ems, which sets the text size when `em` is not given
 - `gap` = `0.5` — the space between content elements in em
-- `overflow` = `'shrink'` — what to do with content taller than the frame: `shrink`, `clip`, or `error`
+- `overflow` = `'shrink'` — what to do with content taller or wider than the frame: `shrink`, `clip`, or `error`
 - `margin` = `0.1` — the space between the canvas edge and the frame
 - `padding` = `0.1` — the space between the frame and the content
 - `justify` = `'left'` — the horizontal justification of the text

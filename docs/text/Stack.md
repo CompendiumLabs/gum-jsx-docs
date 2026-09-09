@@ -27,7 +27,7 @@ Parameters:
 - `hug` — whether a stack with no `width` hugs its children across the axis (the default, unless it fills a slot of a stack with a width); `hug={false}` spans the width offered
 - `gap` = `0` — the space between children in em
 - `spacing` = `0` — the space between children as a fraction of the stack's length; `true` for `0.1`
-- `even` = `false` — give every child an equal share
+- `even` = `false` — give every child an equal share of what the `spacing` and the `gap` leave (the gap is counted when the stack knows its length; a hugging stack adds it on top)
 - `justify` = `'center'` — where a child narrower than a column sits, or where a row narrower than its width sits along it; also the text alignment handed to the text children; `stretch` stretches every child of a column that can
 - `valign` = `'center'` — how a row's children align across it: `top`, `anchor` (their first lines' math axes), `center`, `bottom`, or `stretch` (every child that can takes the row's height)
 - `anchor` = `'first'` — where the stack's own anchor line is: its first child's, or `center` for its middle
