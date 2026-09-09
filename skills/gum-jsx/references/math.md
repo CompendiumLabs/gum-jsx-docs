@@ -146,7 +146,7 @@ Prompt: There are two latex equations framed by rounded borders arranged vertica
 
 Generated code:
 ```jsx
-<VStack gap={0.25} fit>
+<VStack gap={0.5}>
   <Frame padding rounded border={2}>
     <Latex>{"\\int_0^{\\infty} \\exp(-x^2) dx = \\sqrt{\\pi}"}</Latex>
   </Frame>
@@ -497,13 +497,11 @@ Prompt: x squared with an i subscript
 
 Generated code:
 ```jsx
-<Frame padding rounded border={10} fill={gray} margin>
-  <MathText>
-    <SupSub sup="2" sub="i">
-      <MathSymbol>x</MathSymbol>
-    </SupSub>
-  </MathText>
-</Frame>
+<TextFrame padding rounded border={10} fill={gray} margin>
+  <SupSub sup="2" sub="i">
+    <MathSymbol>x</MathSymbol>
+  </SupSub>
+</TextFrame>
 ```
 
 ## TextMode

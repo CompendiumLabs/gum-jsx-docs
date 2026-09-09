@@ -93,24 +93,26 @@ const Dz2Orbital = () => <OrbGraph>
 // labeled orbital cell: a figure four ems tall with a math caption
 const Cell = ({ label, children }) =>
   <TextFigure height={4} caption={<Tex>{label}</Tex>}>
-    <Frame aspect={1} border rounded fill={fill_col}>
+    <Frame aspect={1} border rounded={10} fill={fill_col}>
       {children}
     </Frame>
   </TextFigure>
 
 // main slide: each row is centered, so the 1 / 3 / 2 arrangement lines up
-return <Slide aspect title="Atomic Orbitals" title-size={0.08} em={0.04} gap={0.5}>
-  <TextRow justify="center" gap={1}>
-    <Cell label="1s"><SOrbital /></Cell>
-  </TextRow>
-  <TextRow justify="center" gap={1}>
-    <Cell label="2p_x"><PxOrbital /></Cell>
-    <Cell label="2p_y"><PyOrbital /></Cell>
-    <Cell label="2p_z"><PzOrbital /></Cell>
-  </TextRow>
-  <TextRow justify="center" gap={1}>
-    <Cell label="3d_{xy}"><DxyOrbital /></Cell>
-    <Cell label="3d_{z^2}"><Dz2Orbital /></Cell>
-  </TextRow>
-</Slide>
+return <TitleFrame aspect rounded padding={2} title="Atomic Orbitals">
+  <TextCol gap>
+    <TextRow justify="center" gap>
+      <Cell label="1s"><SOrbital /></Cell>
+    </TextRow>
+    <TextRow justify="center" gap>
+      <Cell label="2p_x"><PxOrbital /></Cell>
+      <Cell label="2p_y"><PyOrbital /></Cell>
+      <Cell label="2p_z"><PzOrbital /></Cell>
+    </TextRow>
+    <TextRow justify="center" gap>
+      <Cell label="3d_{xy}"><DxyOrbital /></Cell>
+      <Cell label="3d_{z^2}"><Dz2Orbital /></Cell>
+    </TextRow>
+  </TextCol>
+</TitleFrame>
 ```

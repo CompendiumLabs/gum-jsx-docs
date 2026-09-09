@@ -185,7 +185,7 @@ Generated code:
   <SymLine fy={sin} stroke={blue} stroke-width={2} />
   <SymLine fy={cos} stroke={red} stroke-width={2} stroke-dasharray={5} />
   <SymPoints fy={x => 0.5*sin(2*x)} N={12} fill={green} point-size={0.05} />
-  <Legend pos={[5.2, 0.85]} ysize={0.7} vspacing={0.15}>
+  <Legend pos={[5.2, 0.85]} ysize={0.7} vspacing={0.15} padding={0.25}>
     {[
       { stroke: blue, stroke_width: 2, label: 'sine' },
       { stroke: red, stroke_width: 2, stroke_dasharray: 5, label: 'cosine' },

@@ -147,8 +147,8 @@ const SurfaceDiagram = (attr) =>
   </Group>
 
 const MathPanel = (attr) =>
-  <TextCol gap={1} {...attr}>
-    <TextFrame padding={[0.8, 0.6]} rounded fill="#f8f4fc" border-stroke="#d0b8e0" justify="center">
+  <TextCol gap={1} width={15} {...attr}>
+    <TextFrame padding={0.8} rounded={10} fill="#f8f4fc" border-stroke="#d0b8e0" justify="center">
       <Latex>{"\\oint_{\\partial S} F \\cdot dr = \\iint_{S} (\\nabla \\times F) \\cdot dS"}</Latex>
     </TextFrame>
     <Text spacing={0.25}>The line integral of a vector field <Tex>F</Tex> around the closed boundary curve <Tex>\delta S</Tex> equals the surface integral of the curl of <Tex>F</Tex> over any oriented surface <Tex>S</Tex> bounded by that curve.</Text>
@@ -156,8 +156,8 @@ const MathPanel = (attr) =>
 
 // the diagram is sized in em and the panel takes the rest of the row
 return <Slide title="Stokes' Theorem" title-size={0.13} padding={0.15} em={0.05}>
-  <TextRow gap={2} valign="center">
-    <TextFigure height={11}>
+  <TextRow gap={3} valign="center">
+    <TextFigure height={13}>
       <SurfaceDiagram />
     </TextFigure>
     <MathPanel />

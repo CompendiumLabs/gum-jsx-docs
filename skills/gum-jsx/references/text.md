@@ -161,7 +161,7 @@ Generated code:
 
 *Inherits*: **Box** > **Group** > **Element**
 
-A **Box** for text: strings among the children (with any inline elements) are set as a **Text** with the box's font settings, aligned left by default, and `padding` is `0.4` em unless given. Everything else is as for **Box**: one element (a formula, a **TextCol**, a **TextFigure**) is boxed as it is; the box hugs its content and lays it out for the width it is given, so text wraps inside the padding; and `width`, `height`, `aspect`, `justify` and `scale` work the same way. **TextFrame** is the same with `border = 1`.
+A **Box** for text: strings among the children (with any inline elements) are set as a **Text** with the box's font settings, aligned left by default, and `padding` is `0.4` em unless given. Everything else is as for **Box**: one element (a formula, a **TextCol**, a **TextFigure**) is boxed as it is; the box hugs its content and lays it out for the width it is given, so text wraps inside the padding, and spans a column when its `align` or the column's `justify` is `stretch`; and `width`, `height`, `aspect`, `justify` and `scale` work the same way. **TextFrame** is the same with `border = 1`.
 
 Parameters: as for **Box**, with `padding` = `0.4` and `margin` = `0` (`true` for `0.4`).
 
@@ -178,7 +178,7 @@ Generated code:
 
 *Inherits*: **TextStack** > **Stack** > **Group** > **Element**
 
-A vertical **Stack** with text's defaults: a column of text blocks, `gap` em apart (half a line) and flush left. Each child is laid out for the column's width and they stack top to bottom; the column is as tall as they come to. A **Text** or **Bullets** child wraps to the column's width unless it has a `width` of its own, in which case it keeps it and sits by `justify`, or by its own `align` (`align="right"` on a figure puts it at the right of a left-justified column; a **TextFigure** sits in the middle by default). A child's `scale` sets its size relative to the column's em, which is how headings and captions are made. A formula (**Latex**) sits at the text's size, a figure spans the column at its aspect, and a bare element (a plot) fills the height the column has to give.
+A vertical **Stack** with text's defaults: a column of text blocks, `gap` em apart (half a line) and flush left. Each child is laid out for the column's width and they stack top to bottom; the column is as tall as they come to. A **Text** or **Bullets** child wraps to the column's width unless it has a `width` of its own, in which case it keeps it and sits by `justify`, or by its own `align`; a **TextBox** or a nested stack hugs its content and sits by them too, unless its `align` or the column's `justify` is `stretch`, in which case it spans the column (its `width`, or the widest child's) (`align="right"` on a figure puts it at the right of a left-justified column; a **TextFigure** sits in the middle by default). A child's `scale` sets its size relative to the column's em, which is how headings and captions are made. A formula (**Latex**) sits at the text's size, a figure spans the column at its aspect, and a bare element (a plot) fills the height the column has to give.
 
 Every element carries its box in em, so a column can be a child of another column, a **TextRow**, a **TextGrid**, or a **TextBox**, and a **Slide** is a column in a frame. A column with no `width` is as wide as its widest child laid at its own size.
 
@@ -274,9 +274,9 @@ Generated code:
 const shapes = [ [ 'Circle', <Circle fill={blue} /> ], [ 'Square', <Square fill={red} /> ], [ 'Triangle', <Triangle fill={green} /> ] ]
 return <TextGrid cols={3} width={24} gap={1} justify="center">
   { shapes.map(([ name, shape ]) =>
-    <TextFrame rounded padding={0.5}>
-      <TextFigure height={3} caption={name}>{shape}</TextFigure>
-    </TextFrame>
+    <Frame aspect rounded padding={1}>
+      <TextFigure caption={name} gap={0.5}>{shape}</TextFigure>
+    </Frame>
   ) }
 </TextGrid>
 ```
@@ -377,10 +377,10 @@ Prompt: Various food emojis are arranged in a spaced out grid and framed with th
 Generated code:
 ```jsx
 const emoji = [ '🍇', '🥦', '🍔', '🍉', '🍍', '🌽', '🍩', '🥝', '🍟' ]
-return <TitleFrame title="Fruits & Veggies" margin padding rounded>
+return <TitleFrame title="Fruits & Veggies" margin padding={1.5} rounded>
   <Grid rows={3} spacing={0.05}>
     {emoji.map(e =>
-      <Frame aspect rounded padding><Text>{e}</Text></Frame>
+      <Frame aspect rounded padding={0.25}><Text>{e}</Text></Frame>
     )}
   </Grid>
 </TitleFrame>
