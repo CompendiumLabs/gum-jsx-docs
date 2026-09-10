@@ -168,4 +168,5 @@ There is a gallery of more complex examples available. Each is a single markdown
 - [The Nexus](references/gala/the_nexus.md): a plot of damped cosine functions (**Plot**, **SymSpline**)
 - [Transformer](references/gala/transformer.md): a block diagram of a transformer architecture (**VStack**, **Frame**, **Arrow**)
 - [Two Columns](references/gala/two_column.md): a two-column slide, a plot with a caption beside a heading, a paragraph, and a list (**Slide**, **TextRow**, **TextFigure**, **TextCol**)
+- [UI Mockup](references/gala/ui_mockup.md): an interface mockup, notification cards over graph paper, one holding a plot (**Frame**, **VStack**, **Box**, **Mesh**)
 - [Unit Distance](references/gala/unit_distance.md): a unit-distance graph of a complex integer lattice (**Graph**, **Segments**, **Points**)

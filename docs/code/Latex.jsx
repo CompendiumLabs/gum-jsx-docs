@@ -1,5 +1,5 @@
 // There are two latex equations framed by rounded borders arranged vertically. The top one shows a Gaussian integral and the bottom one shows a trigonometric identity.
-<VStack gap={0.5}>
+<VStack gap={0.5} justify="stretch">
   <Frame padding rounded border={2}>
     <Latex>{"\\int_0^{\\infty} \\exp(-x^2) dx = \\sqrt{\\pi}"}</Latex>
   </Frame>
