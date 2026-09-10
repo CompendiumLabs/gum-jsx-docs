@@ -25,7 +25,7 @@ Prompt: A vector field showing a function with gradient 100 * x * y. There shoul
 
 Generated code:
 ```jsx
-<Frame rounded={12} margin padding={1.5}>
+<Frame aspect rounded={10} margin padding={1.5}>
   <SymField func={(x, y) => 100 * x * y} xlim={[0, 1]} ylim={[0, 1]} N={15} />
 </Frame>
 ```
@@ -134,7 +134,7 @@ Prompt: Draw a rounded star shape with a blue fill. Wrap it in a rounded frame.
 Generated code:
 ```jsx
 const rad = t => 1 - 0.2 * cos(5 * (t - pi/2))
-return <Frame rounded padding margin>
+return <Frame rounded padding={2} margin>
   <SymPoly aspect fill={blue}
     tlim={[0, 2*pi]} N={200}
     f={t => polar(t, rad(t))}
