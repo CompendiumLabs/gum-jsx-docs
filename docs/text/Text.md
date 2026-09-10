@@ -50,7 +50,7 @@ Parameters:
 - `scale` = `1` — the size of the text relative to the surrounding text's em
 - `whitespace` = `'normal'` — collapse whitespace, or `'pre'` / `'preserve'` to preserve it without wrapping
 - `tab-size` = `4` — tab stops in columns for preserved text
-- `spacing` = `0` — extra line spacing, as a fraction of the block
+- `gap` = `0` — extra line spacing, in em: lines sit `1 + gap` apart
 - `justify` = `'left'` — the horizontal justification of the text
 - `color` = `black` — sets the text color using both stroke and fill (this is the usual way)
 - `font-family` = `sans` — the font family (for display and size calculations)

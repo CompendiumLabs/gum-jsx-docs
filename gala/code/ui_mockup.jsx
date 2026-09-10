@@ -30,7 +30,7 @@ return <Frame rounded={15} clip border={2}>
     <VStack gap={0.75} pos={[0.82, 0.22]}>{
       messages.map(({ title, body }) =>
         <Window width={16} title={title}>
-          <Text spacing={0.15}>{body}</Text>
+          <Text gap={0.2}>{body}</Text>
         </Window>
       )
     }</VStack>
