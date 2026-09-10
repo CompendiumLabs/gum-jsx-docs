@@ -1,6 +1,6 @@
 # UI Mockup
 
-An interface rather than a figure: notification cards floating over graph paper, one of them holding a **Plot**. All of it is one local component. `Message` is a rounded **Frame** around a **VStack** of a filled title **Box**, a rule, and a body box, and it spreads `{...attr}` onto the frame, so each call site supplies the `pos` and `width`.
+An interface rather than a figure: notification cards floating over graph paper, one of them holding a **Plot**. All of it is one local component. `Window` is a rounded **Frame** around a **VStack** of a filled title **Box**, a rule, and a body box, and it spreads `{...attr}` onto the frame, so each call site supplies the `pos` and `width`.
 
 The title bar is the interesting piece. A column hugs its children, so the header box would come out only as wide as its text; `align="stretch"` makes it take the column's width instead, which spans the gray band across the card and pins the column to the card's width, so `justify="left"` puts the title and the body against the left edge. Drop it and the column shrinks to its widest line and floats in the middle. The divider is an **HLine** with `height={0}`: no room in the stack, but it still spans its slot, so it draws a hairline right at the boundary.
 
@@ -16,7 +16,7 @@ const messages = [
   { title: 'Testing, Testing', body: 'What are we doing here?' },
 ]
 
-const Message = ({ title, children, ...attr }) =>
+const Window = ({ title, children, ...attr }) =>
   <Frame rounded={7} fill={white} {...attr}>
     <VStack justify="left">
       <Box padding fill={gray} align="stretch">
@@ -37,14 +37,14 @@ const Visual = ({ ...attr }) =>
 return <Frame rounded={15} clip border={2}>
   <Group em={0.03} aspect={1.5}>
     <Mesh2D opacity={0.1} xlocs={60} ylocs={40} />
-    <Message title="Data Viz" pos={[0.45, 0.55]} width={30}>
+    <Window title="Data Viz" pos={[0.45, 0.55]} width={30}>
       <Visual />
-    </Message>
+    </Window>
     <VStack gap={0.75} pos={[0.82, 0.22]}>{
       messages.map(({ title, body }) =>
-        <Message width={16} title={title}>
+        <Window width={16} title={title}>
           <Text spacing={0.15}>{body}</Text>
-        </Message>
+        </Window>
       )
     }</VStack>
   </Group>

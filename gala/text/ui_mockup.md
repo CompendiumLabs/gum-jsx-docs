@@ -1,6 +1,6 @@
 # UI Mockup
 
-An interface rather than a figure: notification cards floating over graph paper, one of them holding a [Plot](/docs/Plot). All of it is one local component. `Message` is a rounded [Frame](/docs/Box) around a [VStack](/docs/Stack) of a filled title [Box](/docs/Box), a rule, and a body box, and it spreads `{...attr}` onto the frame, so each call site supplies the `pos` and `width`.
+An interface rather than a figure: notification cards floating over graph paper, one of them holding a [Plot](/docs/Plot). All of it is one local component. `Window` is a rounded [Frame](/docs/Box) around a [VStack](/docs/Stack) of a filled title [Box](/docs/Box), a rule, and a body box, and it spreads `{...attr}` onto the frame, so each call site supplies the `pos` and `width`.
 
 The title bar is the interesting piece. A column hugs its children, so the header box would come out only as wide as its text; `align="stretch"` makes it take the column's width instead, which spans the gray band across the card and pins the column to the card's width, so `justify="left"` puts the title and the body against the left edge. Drop it and the column shrinks to its widest line and floats in the middle. The divider is an [HLine](/docs/UnitLine) with `height={0}`: no room in the stack, but it still spans its slot, so it draws a hairline right at the boundary.
 
