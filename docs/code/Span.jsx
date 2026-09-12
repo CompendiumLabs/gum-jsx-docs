@@ -7,4 +7,4 @@
       <Text font_size={px(18)}>un<Span font_weight={bold} color={blue}>break</Span>able</Text>
     </VStack>
   </Box>
-</Svg>
+</Svg>;

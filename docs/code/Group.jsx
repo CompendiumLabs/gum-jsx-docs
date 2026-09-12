@@ -2,13 +2,29 @@
 <Svg width={px(420)} height={px(240)}>
   <Group>
     <Rect fill={lightgray} stroke={none} />
-    <Line from={{ x: 0.3, y: 0.45 }} to={{ x: 0.7, y: 0.45 }}
-      stroke={darkgray} stroke_width={px(3)} />
-    <Circle x={0.2} y={0.45} anchor="center" width={px(64)}
-      fill={blue} stroke={none} />
-    <Square x={0.8} y={0.45} anchor="center" width={px(64)}
-      fill={red} stroke={none} />
+    <Line
+      from={{ x: 0.3, y: 0.45 }}
+      to={{ x: 0.7, y: 0.45 }}
+      stroke={darkgray}
+      stroke_width={px(3)}
+    />
+    <Circle
+      x={0.2}
+      y={0.45}
+      anchor="center"
+      width={px(64)}
+      fill={blue}
+      stroke={none}
+    />
+    <Square
+      x={0.8}
+      y={0.45}
+      anchor="center"
+      width={px(64)}
+      fill={red}
+      stroke={none}
+    />
     <Text x={0.2} y={0.72} anchor="center">Source</Text>
     <Text x={0.8} y={0.72} anchor="center">Result</Text>
   </Group>
-</Svg>
+</Svg>;

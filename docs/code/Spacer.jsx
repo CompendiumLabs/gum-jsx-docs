@@ -7,4 +7,4 @@
       <Text color={blue}>Right</Text>
     </HStack>
   </Frame>
-</Svg>
+</Svg>;

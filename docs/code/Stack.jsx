@@ -15,4 +15,4 @@
       </HStack>
     </VStack>
   </Box>
-</Svg>
+</Svg>;

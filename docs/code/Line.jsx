@@ -2,8 +2,15 @@
 const Rule = ({ cap, color }) => (
   <HStack gap={px(16)} align="center">
     <Text width={px(64)}>{cap}</Text>
-    <Line width={px(240)} height={px(24)} from={{ x: 0.05, y: 0.5 }} to={{ x: 0.95, y: 0.5 }}
-      stroke={color} stroke_width={px(10)} stroke_linecap={cap} />
+    <Line
+      width={px(240)}
+      height={px(24)}
+      from={{ x: 0.05, y: 0.5 }}
+      to={{ x: 0.95, y: 0.5 }}
+      stroke={color}
+      stroke_width={px(10)}
+      stroke_linecap={cap}
+    />
   </HStack>
 );
 return (

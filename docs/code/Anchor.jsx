@@ -1,6 +1,10 @@
 // A zero-sized anchor positions text.
 <Svg width={px(460)} height={px(280)}>
   <Box padding={px(30)} background="white">
-    <Group><Anchor x={0.5} y={0.5}><Text font_size={px(24)}>Centered on a point</Text></Anchor></Group>
+    <Group>
+      <Anchor x={0.5} y={0.5}>
+        <Text font_size={px(24)}>Centered on a point</Text>
+      </Anchor>
+    </Group>
   </Box>
-</Svg>
+</Svg>;

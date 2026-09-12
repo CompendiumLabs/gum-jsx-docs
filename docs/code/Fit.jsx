@@ -4,7 +4,12 @@
     <HStack gap={px(20)}>
       <VStack gap={px(8)}>
         <Text font_size={px(14)}>contain</Text>
-        <Frame width={px(220)} height={px(100)} padding={px(12)} border_color={blue}>
+        <Frame
+          width={px(220)}
+          height={px(100)}
+          padding={px(12)}
+          border_color={blue}
+        >
           <Fit mode="contain">
             <Text color={blue}>Size by fitting</Text>
           </Fit>
@@ -12,7 +17,12 @@
       </VStack>
       <VStack gap={px(8)}>
         <Text font_size={px(14)}>scale_down</Text>
-        <Frame width={px(220)} height={px(100)} padding={px(12)} border_color={red}>
+        <Frame
+          width={px(220)}
+          height={px(100)}
+          padding={px(12)}
+          border_color={red}
+        >
           <Fit mode="scale_down">
             <Text color={red}>Size by fitting</Text>
           </Fit>
@@ -20,4 +30,4 @@
       </VStack>
     </HStack>
   </Box>
-</Svg>
+</Svg>;

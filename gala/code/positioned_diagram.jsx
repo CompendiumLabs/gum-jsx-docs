@@ -1,8 +1,18 @@
 // Group positions nodes and explicit arrow geometry in a shared pixel canvas.
 const Node = ({ x, title, detail, color }) => (
-  <Frame x={px(x)} y={px(208)} anchor="center" width={px(168)} height={px(112)}
-    padding={px(16)} align="center" border_width={px(2)} border_color={color}
-    radius={px(14)} background={black}>
+  <Frame
+    x={px(x)}
+    y={px(208)}
+    anchor="center"
+    width={px(168)}
+    height={px(112)}
+    padding={px(16)}
+    align="center"
+    border_width={px(2)}
+    border_color={color}
+    radius={px(14)}
+    background={black}
+  >
     <VStack width={1} gap={px(8)} align="center">
       <Text font_size={px(22)} font_weight={bold} color={white}>{title}</Text>
       <Text font_size={px(14)} color={white}>{detail}</Text>
@@ -11,11 +21,26 @@ const Node = ({ x, title, detail, color }) => (
 );
 const Arrow = ({ from, to }) => (
   <>
-    <Line from={{ x: px(from), y: px(208) }} to={{ x: px(to - 12), y: px(208) }}
-      stroke={gray} stroke_width={px(2)} />
-    <Polygon x={px(to)} y={px(208)} anchor={{ x: 1, y: 0.5 }} width={px(12)} height={px(14)}
-      points={[{ x: 0, y: 0 }, { x: 1, y: 0.5 }, { x: 0, y: 1 }]}
-      fill={gray} stroke={none} />
+    <Line
+      from={{ x: px(from), y: px(208) }}
+      to={{ x: px(to - 12), y: px(208) }}
+      stroke={gray}
+      stroke_width={px(2)}
+    />
+    <Polygon
+      x={px(to)}
+      y={px(208)}
+      anchor={{ x: 1, y: 0.5 }}
+      width={px(12)}
+      height={px(14)}
+      points={[
+        { x: 0, y: 0 },
+        { x: 1, y: 0.5 },
+        { x: 0, y: 1 },
+      ]}
+      fill={gray}
+      stroke={none}
+    />
   </>
 );
 return (

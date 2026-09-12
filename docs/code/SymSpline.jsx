@@ -1,6 +1,14 @@
 // SymSpline uses the shared sampler.
 <Svg width={px(500)} height={px(320)}>
   <Box padding={px(30)} background="white">
-    <Plot><SymSpline fy={Math.sin} xlim={[0,2*pi]} samples={13} stroke="#2563eb" stroke_width={px(2)}/></Plot>
+    <Plot>
+      <SymSpline
+        fy={Math.sin}
+        xlim={[0, 2 * pi]}
+        samples={13}
+        stroke="#2563eb"
+        stroke_width={px(2)}
+      />
+    </Plot>
   </Box>
-</Svg>
+</Svg>;

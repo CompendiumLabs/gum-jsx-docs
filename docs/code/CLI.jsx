@@ -7,4 +7,4 @@
       <Text text="Change -W to reflow this paragraph. Change --ratio to sample more pixels without changing the layout." />
     </VStack>
   </Box>
-</Svg>
+</Svg>;

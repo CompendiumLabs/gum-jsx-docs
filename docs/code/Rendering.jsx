@@ -1,6 +1,12 @@
 // Immutable source becomes a pixel fragment, then self-contained SVG output.
 const Stage = ({ label, color }) => (
-  <Frame width={px(120)} padding={px(14)} border_color={color} background={white} radius={px(8)}>
+  <Frame
+    width={px(120)}
+    padding={px(14)}
+    border_color={color}
+    background={white}
+    radius={px(8)}
+  >
     <Text text_align="center" width={1} color={color} font_weight={bold}>{label}</Text>
   </Frame>
 );

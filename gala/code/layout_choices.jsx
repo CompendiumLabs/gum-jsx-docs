@@ -2,8 +2,16 @@
 const Band = ({ title, children }) => (
   <VStack width={1} gap={px(8)}>
     <Text font_weight={bold}>{title}</Text>
-    <Frame width={1} height={px(82)} padding={px(12)} border_color={gray} background={white}>
-      <HStack width={1} height={1} gap={px(12)}>{children}</HStack>
+    <Frame
+      width={1}
+      height={px(82)}
+      padding={px(12)}
+      border_color={gray}
+      background={white}
+    >
+      <HStack width={1} height={1} gap={px(12)}>
+        {children}
+      </HStack>
     </Frame>
   </VStack>
 );

@@ -3,4 +3,4 @@
   <Box padding={px(30)} background="white">
     <TextFrame width={px(300)} background="#eff6ff">A measured paragraph in a padded TextFrame.</TextFrame>
   </Box>
-</Svg>
+</Svg>;

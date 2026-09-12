@@ -4,4 +4,4 @@
     <Rect aspect={1} fill={blue} stroke={none} />
     <Rect aspect={2} fill={red} stroke={none} />
   </VStack>
-</Svg>
+</Svg>;

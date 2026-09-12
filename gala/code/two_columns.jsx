@@ -5,14 +5,38 @@
       <Text font_family={mono} font_size={px(14)} color={blue}>LAYOUT / 01</Text>
       <Text font_size={px(30)} font_weight={bold}>A figure beside its explanation</Text>
       <HStack gap={px(24)}>
-        <Frame basis={0} grow={1} padding={px(20)} radius={px(12)}
-          border_color={gray} background={white}>
+        <Frame
+          basis={0}
+          grow={1}
+          padding={px(20)}
+          radius={px(12)}
+          border_color={gray}
+          background={white}
+        >
           <VStack width={1} gap={px(16)}>
             <Text font_size={px(14)} font_weight={bold}>ONE SHARED WIDTH</Text>
             <HStack width={1} height={px(160)} gap={px(12)} align="end">
-              <Rect basis={0} grow={1} height={px(64)} fill={blue} stroke={none} />
-              <Rect basis={0} grow={1} height={px(112)} fill={red} stroke={none} />
-              <Rect basis={0} grow={1} height={px(160)} fill={green} stroke={none} />
+              <Rect
+                basis={0}
+                grow={1}
+                height={px(64)}
+                fill={blue}
+                stroke={none}
+              />
+              <Rect
+                basis={0}
+                grow={1}
+                height={px(112)}
+                fill={red}
+                stroke={none}
+              />
+              <Rect
+                basis={0}
+                grow={1}
+                height={px(160)}
+                fill={green}
+                stroke={none}
+              />
             </HStack>
             <Text font_size={px(14)} color={slate}>Fixed heights, flexible widths.</Text>
           </VStack>
@@ -26,4 +50,4 @@
       </HStack>
     </VStack>
   </Box>
-</Svg>
+</Svg>;

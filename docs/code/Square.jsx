@@ -11,9 +11,15 @@
       <VStack gap={px(8)}>
         <Text>Rect, aspect = 1</Text>
         <Frame padding={px(8)} border_color={darkgray}>
-          <Rect width={px(160)} height={px(80)} aspect={1} fill={red} stroke={none} />
+          <Rect
+            width={px(160)}
+            height={px(80)}
+            aspect={1}
+            fill={red}
+            stroke={none}
+          />
         </Frame>
       </VStack>
     </HStack>
   </Box>
-</Svg>
+</Svg>;

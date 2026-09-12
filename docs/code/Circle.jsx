@@ -7,9 +7,15 @@
         <Circle width={px(160)} height={px(80)} fill={red} stroke={none} />
       </Frame>
       <Frame padding={px(8)} border_color={darkgray}>
-        <Circle width={px(160)} height={px(80)} center={{ x: 0.25, y: 0.5 }}
-          radius={px(28)} fill={green} stroke={none} />
+        <Circle
+          width={px(160)}
+          height={px(80)}
+          center={{ x: 0.25, y: 0.5 }}
+          radius={px(28)}
+          fill={green}
+          stroke={none}
+        />
       </Frame>
     </HStack>
   </Box>
-</Svg>
+</Svg>;

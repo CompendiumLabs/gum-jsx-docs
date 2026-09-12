@@ -1,6 +1,12 @@
 // Mixed text styles, aligned baselines, and a preformatted block remain at fixed font sizes.
 <Svg width={px(680)}>
-  <Box width={1} padding={px(32)} background={slate} color={gray} font_size={px(18)}>
+  <Box
+    width={1}
+    padding={px(32)}
+    background={slate}
+    color={gray}
+    font_size={px(18)}
+  >
     <VStack width={1} gap={px(20)}>
       <HStack width={1} align="baseline">
         <Text font_family={mono} font_size={px(14)} color={blue}>TYPE / 06</Text>
@@ -14,11 +20,23 @@
         <Text font_family={mono} font_size={px(30)} color={red}>0123</Text>
         <Text font_size={px(20)} font_style="italic" color={blue}>quiet emphasis</Text>
       </HStack>
-      <Frame width={1} padding={px(16)} background={black} border_color={darkgray} radius={px(8)}>
-        <Text font_family={mono} font_size={px(16)} line_height={em(1.5)} whitespace="pre" wrap={false}
-          text={"source    immutable\nlayout    explicit\noutput    SVG paths"} />
+      <Frame
+        width={1}
+        padding={px(16)}
+        background={black}
+        border_color={darkgray}
+        radius={px(8)}
+      >
+        <Text
+          font_family={mono}
+          font_size={px(16)}
+          line_height={em(1.5)}
+          whitespace="pre"
+          wrap={false}
+          text={"source    immutable\nlayout    explicit\noutput    SVG paths"}
+        />
       </Frame>
       <Text font_size={px(14)} color={white}>Glyph outlines travel with the SVG; font files stay at layout time.</Text>
     </VStack>
   </Box>
-</Svg>
+</Svg>;
