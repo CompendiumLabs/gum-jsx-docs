@@ -19,6 +19,8 @@ weights, padding, backgrounds, and borders do not inherit.
 | stroke_linecap | "butt" | "butt", "round", or "square" |
 | stroke_linejoin | "miter" | "miter", "round", or "bevel" |
 | stroke_miterlimit | 4 | Dimensionless miter limit |
+| stroke_dasharray | [] | Nonnegative layout lengths; an empty/all-zero array is solid |
+| opacity | 1 | Per-drawing paint opacity from 0 to 1 |
 
 Use paint strings such as `"#317969"`, `"tomato"`, or `"none"`. Text uses
 color, not fill. For a Box's own fill use background; setting fill on a Box instead
@@ -53,9 +55,14 @@ An em stroke follows the local font size. A fractional stroke follows the shape'
 shorter side. An explicit [Fit](Fit.md) scales the completed stroke with everything
 else in its child.
 
-Supported styles are an explicit vocabulary, not a pass-through SVG attribute
-bag. Opacity, dash arrays, gradients, CSS classes, style objects, and prefixed
-subunit props are not implemented. Unknown props may be ignored rather than
-reported, so use this reference rather than assuming browser SVG behavior.
+Dash lengths resolve like stroke widths: pixels stay fixed, em follows font size,
+and fractions use the shorter side. Opacity inherits and applies to individual
+drawings, including text and box decoration. It is not a composited group opacity;
+overlapping drawings can accumulate alpha.
+
+Supported styles remain an explicit vocabulary. Gradients, arbitrary CSS classes,
+and general SVG/style-attribute injection are deferred. Plot parts accept nested
+axis_style/tick_style/label_style/grid_style/title_style objects; arbitrary prefixed
+subunit props are not routed. Unknown props may be ignored, so use the reference.
 
 [Runnable source](../code/Style.jsx).

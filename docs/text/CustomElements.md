@@ -25,8 +25,15 @@ const Tile = define_element('Tile', (props, query) => {
 
 The callback runs during layout, not construction. Source props are immutable
 snapshots: plain records, arrays, primitive values, and Element references.
-Do not put functions, font objects, host handles, or mutable caches in props.
+Stored props cannot contain functions, font objects, host handles, or caches.
 Behavior belongs to the element type and resources belong to LayoutPass.
+
+The optional fourth argument accepts normalize(input), which runs once during
+construction and returns the immutable source data. It can consume sampling or
+styling callbacks and expand child descriptions before layout. data_bounds(props)
+reports graphable data limits without measurement; see [Coordinates](Coordinates.md).
+define_component(name, build) instead adopts an existing element's description
+and protocol, with a new name and no extra layout wrapper.
 
 ## The query contract
 
@@ -36,8 +43,9 @@ Behavior belongs to the element type and resources belong to LayoutPass.
 | sizing | Resolved source sizes, bounds, and aspect preference |
 | style | Resolved inherited style, including pixel font size |
 | reference | Definite parent dimensions for percentage resolution |
+| coordinates | Optional ambient data limits and flip directions |
 | path | Diagnostic location in the element graph |
-| child(element, request, reference?, index?) | Measure a child with inherited style |
+| child(element, request, reference?, index?, context?) | Measure a child; context can override style/coordinates |
 | resource(name) | Obtain a host resource from this pass |
 | prepare(name, compute) | Cache preparation independent of requests and references |
 
@@ -54,7 +62,7 @@ container's inherited reference. Parent placement does not mutate the child or
 remeasure it. Validate your own props and child policy explicitly.
 
 Prepared values must depend only on source, style, and versioned resources—not
-the current width, height, or percentage reference. Use ordinary layout work for
+the current width, height, percentage reference, or coordinate context. Use ordinary layout work for
 allocation-dependent geometry. Set a new resource version on a reused pass when
 external data changes; see [Fonts](Fonts.md) for an example.
 

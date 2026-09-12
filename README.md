@@ -5,6 +5,12 @@ Start with [Gum](docs/text/Gum.md), [units](docs/text/Units.md), and
 [sizing](docs/text/Sizing.md). Coming from the original? Read
 [migration notes](docs/text/Migration.md) before reusing an old example.
 
+Basic plotting is available: start with [Plot](docs/text/Plot.md),
+[Graph](docs/text/Graph.md), and [Sampling](docs/text/Sampling.md), or try the
+[curve and band](gala/text/plot_wave.md), [bars](gala/text/plot_bars.md), and
+[vector field](gala/text/plot_field.md) showcases. The editor includes a Plotting
+category alongside layout, geometry, and text.
+
 This follows gum-org/gum-jsx-docs's paired-file structure:
 
 ```text
@@ -95,7 +101,7 @@ matching files each time; single-page reads do not load the rest of the collecti
 Text loaders remove the machine-readable category line. Page preparation appends
 a fenced JSX example and preserves relative Markdown links.
 
-Reference categories are core, layout, geometry, text, and api. Keep each
+Reference categories are core, layout, geometry, plotting, text, and api. Keep each
 `*Category*: ...` line directly below the page's title. Gallery pages need only a
 title. A Markdown viewer should resolve relative links against the original text
 file and map them to its own routes, rather than requiring routes in the content.

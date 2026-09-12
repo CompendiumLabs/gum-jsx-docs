@@ -1,0 +1,6 @@
+// Explicit labels and a directed axis.
+<Svg width={px(480)} height={px(300)}>
+  <Box padding={px(30)} background="white">
+    <Graph xlim={[0,4]} ylim={[0,1]}><HAxis lim={[0,4]} ticks={[[0,"Start"],[2,"Middle"],[4,"End"]]} arrow/><VAxis lim={[0,1]}/></Graph>
+  </Box>
+</Svg>

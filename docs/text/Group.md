@@ -37,8 +37,10 @@ Nested Groups establish new local canvases.
 Set `clip` on Group to hide content outside its rectangle. Clipping defaults to
 false and does not erase reported overflow. Svg still clips at the outer viewport.
 
-The x/y/anchor props only have positioning meaning for direct Group children.
-Box and stacks use their own placement rules. There is no pos, rect, coord,
-rotation, auto-bounds, or node/edge lookup API.
+Group uses local fractional x/y/anchor positions; Graph uses data positions and
+Overlay places decorations relative to a measured base. Box and stacks use their
+own placement rules. Use [Graph](Graph.md) for data limits and [Rotate](Rotate.md)
+or [TransformBox](TransformBox.md) for explicit transforms. Group does not infer
+data limits or perform node/edge lookup.
 
 [Runnable source](../code/Group.jsx).

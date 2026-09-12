@@ -16,10 +16,14 @@ this package use the current API exclusively.
 | Automatic stack figure fitting, share, even | Explicit basis / grow / shrink and chosen dimensions |
 | spacing and direction-sensitive justify/valign | gap, cross-axis align, main-axis justify |
 | Text scale / justify | font_size / text_align |
-| TextBox / TextFrame / TextCol / TextRow | Box or Frame around Text; VStack / HStack |
+| TextBox / TextFrame / TextCol / TextRow | Basic conveniences on Box and shared stack layout |
 | fit flag on an element | Explicit Fit wrapper |
 | Line points as coordinate pairs | Line from/to objects; Polyline or Polygon points objects |
 | SVG path strings | Path commands built with move_to, line_to, quad_to, curve_to, close_path |
+| Graph clones geometry into a coord | Explicit coordinate context; CoordLine and new marks map their data |
+| Untagged plot dimensions and prefixed styles | Pixel/em strokes and labels; nested part style objects |
+| N symbolic samples | samples; functions execute once at construction and missing values create gaps |
+| Element rotate / transform shortcuts | Explicit Rotate / TransformBox wrappers |
 | evaluateGum(...).svg() | evaluate → LayoutPass.layout → render_svg |
 
 These are design correspondences, not mechanical renames. In particular, sizing
@@ -29,11 +33,14 @@ Changing a viewport does not implicitly scale typography.
 
 ## What is not ported?
 
-Plot, Graph, axes, Grid, networks, arrows, splines, symbolic sampling, images,
-math/TeX, slide layouts, theme/color helpers, and legacy plugins are not present.
-Use plain JavaScript data plus the implemented geometry when that is sufficient.
-The [sampled-curve showcase](../../gala/text/sampled_curve.md) demonstrates this
-without claiming to be a Plot replacement.
+Graph, Plot, axes, arrows, splines, symbolic sampling, and basic text/slide layouts
+are now available. See [Plot](Plot.md), [Sampling](Sampling.md), and the
+[plotting overview](../../../docs/PLOTTING.md) for current behavior and limits.
+The [sampled-curve showcase](../../gala/text/sampled_curve.md) remains an example
+of a manual layout; the [plot showcase](../../gala/text/plot_wave.md) uses the new API.
+
+Wrapping/grid layouts, networks, images, math/TeX, themes, legacy plugins,
+nonlinear scales, adaptive sampling, and advanced plotting options remain deferred.
 
 Stacks do not solve for a composite aspect. A height-only column of unsized
 figures stays naturally sized unless the author supplies width or explicit flex.
