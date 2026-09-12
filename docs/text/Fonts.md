@@ -27,10 +27,10 @@ files load lazily on first use. Browser hosts should preload the needed family
 before layout and arrange for the bundled font assets to be served:
 
 ```ts
-import { Fonts, LayoutPass } from 'gum-next-core';
+import { Fonts, LayoutPass, sans, regular } from 'gum-next-core';
 
 const fonts = new Fonts();
-await fonts.load('IBM Plex Sans'); // Omit the family to load all bundled faces.
+await fonts.load(sans); // Omit the family to load all bundled faces.
 const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } });
 ```
 
@@ -39,7 +39,7 @@ collection. This Bun example uses an application-provided file:
 
 ```ts
 const bytes = await Bun.file('./assets/MyFont-Regular.ttf').arrayBuffer();
-fonts.register('My Font', bytes, { weight: 400, style: 'normal' });
+fonts.register('My Font', bytes, { weight: regular, style: 'normal' });
 pass.set_resource('fonts', fonts, fonts.version);
 ```
 

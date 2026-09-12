@@ -6,9 +6,9 @@ const points = values.map((value, index) => ({
 }));
 return (
   <Svg>
-    <Frame padding={px(20)} border_color="#ccd7df" background="#f7f8fa">
+    <Frame padding={px(20)} border_color={gray} background={lightgray}>
       <Polyline width={px(320)} height={px(140)} points={points}
-        fill="none" stroke="#2c7567" stroke_width={px(4)}
+        fill={none} stroke={blue} stroke_width={px(4)}
         stroke_linejoin="round" stroke_linecap="round" />
     </Frame>
   </Svg>

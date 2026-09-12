@@ -26,9 +26,10 @@ before constructing the final elements.
 ## Names and spelling
 
 The evaluator supplies the documented elements, `px`, `em`, path constructors,
-and selected custom-layout helpers. Standard JavaScript names such as `Math`
-and `Array` are available. There are no built-in `blue`, `range`, `linspace`,
-or `Plot` bindings in next.
+and selected custom-layout helpers. [Style constants](Style.md) such as `blue`,
+`red`, `green`, `yellow`, `purple`, `mono`, and `bold` are also built in.
+Standard JavaScript names such as `Math` and `Array` are available. There are
+no built-in `range`, `linspace`, or `Plot` bindings in next.
 
 Use snake_case props. Hyphenated JSX attributes such as `font-size` are normalized
 to `font_size`; camelCase is not normalized. Unknown SVG attributes are not

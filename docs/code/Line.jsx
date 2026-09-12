@@ -8,11 +8,11 @@ const Rule = ({ cap, color }) => (
 );
 return (
   <Svg>
-    <Box padding={px(20)} background="#f7f8fa">
+    <Box padding={px(20)} background={lightgray}>
       <VStack gap={px(16)}>
-        <Rule cap="butt" color="#2c7567" />
-        <Rule cap="round" color="#486d9c" />
-        <Rule cap="square" color="#bb6748" />
+        <Rule cap="butt" color={blue} />
+        <Rule cap="round" color={red} />
+        <Rule cap="square" color={green} />
       </VStack>
     </Box>
   </Svg>

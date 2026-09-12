@@ -38,7 +38,7 @@ tabs; it does not turn wrapping off. For literal code or a small aligned table,
 use whitespace="pre" together with wrap={false} and a monospaced font.
 
 ```jsx
-<Text font_family="IBM Plex Mono" whitespace="pre" wrap={false}
+<Text font_family={mono} whitespace="pre" wrap={false}
   text={"name\tcount\nalpha\t12"} />
 ```
 

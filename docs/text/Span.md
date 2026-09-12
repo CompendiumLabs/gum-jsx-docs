@@ -9,7 +9,7 @@ inline badge or a separately positioned run.
 
 ```jsx
 <Text>
-  {"One "}<Span font_weight={700}>important</Span>{" word."}
+  {"One "}<Span font_weight={bold}>important</Span>{" word."}
 </Text>
 ```
 
