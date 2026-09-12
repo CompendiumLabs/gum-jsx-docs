@@ -3,8 +3,8 @@
   <Box padding={px(30)} background="white">
     <Plot>
       <SymLine
-        fy={Math.sin}
-        xlim={[0, 2 * pi]}
+        fy={sin}
+        xlim={[0, tau]}
         samples={101}
         stroke="#2563eb"
         stroke_width={px(2)}

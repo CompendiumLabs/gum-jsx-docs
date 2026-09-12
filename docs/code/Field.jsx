@@ -4,8 +4,8 @@
     <Plot>
       <Field
         vectors={[
-          { point: { x: 0, y: 0 }, vector: { x: 1, y: 2 } },
-          { point: { x: 1, y: 0 }, vector: { x: 2, y: 1 } },
+          { point: [0, 0], vector: [1, 2] },
+          { point: { x: 1, y: 0 }, vector: [2, 1] },
         ]}
         stroke="#2563eb"
         stroke_width={px(2)}

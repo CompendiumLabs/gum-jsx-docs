@@ -3,12 +3,12 @@
 *Category*: geometry
 
 Polyline connects `points` in order with straight segments. Each point is an
-object `{ x, y }`, not an array. An empty list draws nothing. The path remains
+object `{ x, y }` or tuple `[x, y]`; both forms can be mixed. An empty list draws nothing. The path remains
 open; use [Polygon](Polygon.md) to close the final edge.
 
 ```jsx
 <Polyline width={px(240)} height={px(100)}
-  points={[{ x: 0, y: 0.8 }, { x: 0.4, y: 0.2 }, { x: 1, y: 0.6 }]}
+  points={[[0, 0.8], { x: 0.4, y: 0.2 }, [1, 0.6]]}
   fill="none" stroke="#2c7567" stroke_width={px(3)} />
 ```
 

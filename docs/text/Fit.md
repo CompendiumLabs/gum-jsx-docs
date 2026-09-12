@@ -19,7 +19,8 @@ axes available as percentage references.
 | align | "center" | Position scaled content in the target |
 | clip | false | Clip to the target rectangle |
 
-Alignment accepts "start", "center", "end", numbers from 0 to 1, or { x, y }.
+Alignment accepts "start", "center", "end", numbers from 0 to 1, or independent
+choices in `{x,y}` / `[x,y]` form.
 Stretch is not a Fit alignment: scaling is always uniform.
 Use `mode="cover" clip` when cropping is intended.
 

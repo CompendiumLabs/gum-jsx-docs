@@ -4,14 +4,14 @@ const Meter = define_element(
   (props, query) => {
     if (element_children(props.children).length)
       throw new TypeError("Meter has no children");
-    if (!Number.isFinite(props.value))
+    if (!isFinite(props.value))
       throw new TypeError("Meter value must be finite");
     const size = shape_size(query.request, query.sizing);
-    const value = Math.max(0, Math.min(1, props.value));
+    const value = clamp(props.value);
     const paint = (fill) => ({ fill, stroke: none, stroke_width: 0 });
     return make_fragment({
       size,
-      label: `${Math.round(value * 100)} percent`,
+      label: `${round(value * 100)} percent`,
       draw: [
         draw_rect(make_rect(0, 0, size.width, size.height), paint(gray)),
         draw_rect(
@@ -32,7 +32,7 @@ return (
         {[0.25, 0.6, 0.9].map((value) => (
           <HStack gap={px(12)} align="center">
             <Meter value={value} />
-            <Text>{Math.round(value * 100)}%</Text>
+            <Text>{round(value * 100)}%</Text>
           </HStack>
         ))}
       </VStack>

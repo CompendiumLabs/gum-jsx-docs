@@ -21,8 +21,8 @@ return (
         head_size={px(5)}
       />
       <SymLine
-        f={(t) => [1.25 * Math.cos(t), 1.25 * Math.sin(t)]}
-        tlim={[0, 2 * pi]}
+        f={(t) => polar(t, 1.25)}
+        tlim={[0, tau]}
         stroke="#e8793c"
         stroke_width={px(2.5)}
       />

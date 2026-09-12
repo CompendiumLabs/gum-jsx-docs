@@ -2,7 +2,7 @@
 <Svg width={px(460)} height={px(280)}>
   <Box padding={px(30)} background="white">
     <Group>
-      <Anchor x={0.5} y={0.5}>
+      <Anchor x={0.5} y={0.5} align={[0.5, 0.5]}>
         <Text font_size={px(24)}>Centered on a point</Text>
       </Anchor>
     </Group>

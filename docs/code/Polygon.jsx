@@ -1,9 +1,6 @@
-// Generate regular polygons with plain JavaScript and normalized coordinates.
+// Evenly spaced angles and polar coordinates generate regular polygons.
 const regular = (count) =>
-  Array.from({ length: count }, (_, index) => {
-    const angle = -pi / 2 + (2 * pi * index) / count;
-    return { x: 0.5 + 0.45 * Math.cos(angle), y: 0.5 + 0.45 * Math.sin(angle) };
-  });
+  linspace(-90, 270, count, false).map((angle) => polard(angle, 0.45, [0.5, 0.5]));
 return (
   <Svg>
     <Box padding={px(20)} background={lightgray}>

@@ -3,7 +3,7 @@
   <Box padding={px(30)} background="white">
     <Graph xlim={[-0.5, 3.5]} ylim={[-0.5, 3.5]}>
       <ArrowHead
-        tip={{ x: 2, y: 2 }}
+        tip={[2, 2]}
         angle={-30}
         head_size={px(45)}
         fill="#2563eb"

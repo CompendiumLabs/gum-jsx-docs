@@ -11,6 +11,11 @@ Basic plotting is available: start with [Plot](docs/text/Plot.md),
 [vector field](gala/text/plot_field.md) showcases. The editor includes a Plotting
 category alongside layout, geometry, and text.
 
+[Math helpers](docs/text/MathHelpers.md), [arrays](docs/text/Arrays.md),
+[vectors](docs/text/Vectors.md), [colors](docs/text/Colors.md), and
+[seeded random data](docs/text/Random.md) are built into JSX and exported for
+host code. The examples use these helpers directly.
+
 This follows gum-org/gum-jsx-docs's paired-file structure:
 
 ```text
@@ -43,9 +48,11 @@ gum-next-core is a development dependency for checking examples.
   [Square](docs/text/Square.md), [Circle](docs/text/Circle.md),
   [Ellipse](docs/text/Ellipse.md), [Line](docs/text/Line.md),
   [Polyline](docs/text/Polyline.md), [Polygon](docs/text/Polygon.md),
-  [Path](docs/text/Path.md).
+  [Path](docs/text/Path.md), [Point values](docs/text/PointValues.md).
 - Text: [Text](docs/text/Text.md), [Span](docs/text/Span.md), [Fonts](docs/text/Fonts.md).
 - Embedding: [Rendering](docs/text/Rendering.md), [Custom elements](docs/text/CustomElements.md).
+- Numeric helpers: [Math](docs/text/MathHelpers.md), [Arrays](docs/text/Arrays.md),
+  [Vectors](docs/text/Vectors.md), [Colors](docs/text/Colors.md), [Random](docs/text/Random.md).
 
 ## Showcase
 
@@ -55,6 +62,7 @@ gum-next-core is a development dependency for checking examples.
 - [Sampled curve](gala/text/sampled_curve.md): plain JavaScript data and Polyline.
 - [Layout choices](gala/text/layout_choices.md): natural sizing versus explicit flex.
 - [Typography card](gala/text/typography_card.md): mixed fonts, wrapping, and preformatted text.
+- [Arrow caps and tips](gala/text/arrow_caps.md): thick shafts, fixed tips, and straight/curved/rounded routes.
 
 ## Run an example
 

@@ -20,9 +20,16 @@ Children paint in source order, so put backgrounds and connectors before labels.
 | anchor | "start" | Point on the child's allocated rectangle placed at x/y |
 | width / height | — | Child's preferred size; fractions use the whole Group |
 
-Anchor accepts start, center, end, a fraction from 0 to 1, or an object with
-independent x/y choices. For example, `anchor={{ x: 'end', y: 'center' }}`.
-Stretch is not an anchor.
+Anchor accepts start, center, end, a fraction from 0 to 1, or independent x/y
+choices in an object or two-entry tuple. `anchor={[1, 0.5]}`,
+`anchor={['end', 'center']}`, and `anchor={{ x: 'end', y: 'center' }}` all place
+the right-edge midpoint at x/y. A missing object axis defaults to start.
+Anchor values are dimensionless; px/em and stretch are not anchor values.
+
+Anchor describes the element's attachment point for its parent. Its own
+`align` or `justify` describes how it arranges its children. For example, a
+Box can use `anchor={[0.5, 0.5]}` to center itself at x/y and `align="end"`
+to place its content at the Box's bottom-right corner.
 
 Every child receives an offer for the whole canvas, not only the space to the
 right/below its position. Give positioned shapes a width or height when they

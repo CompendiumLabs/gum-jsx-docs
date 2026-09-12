@@ -5,8 +5,8 @@ const Rule = ({ cap, color }) => (
     <Line
       width={px(240)}
       height={px(24)}
-      from={{ x: 0.05, y: 0.5 }}
-      to={{ x: 0.95, y: 0.5 }}
+      from={[0.05, 0.5]}
+      to={[0.95, 0.5]}
       stroke={color}
       stroke_width={px(10)}
       stroke_linecap={cap}

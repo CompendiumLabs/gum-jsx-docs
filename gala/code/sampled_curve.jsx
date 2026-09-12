@@ -1,11 +1,10 @@
 // Sample a damped oscillation and explicitly map its domain into a small chart.
 const plot = { left: 64, top: 24, width: 560, height: 224 };
-const mapX = (value) => px(plot.left + (plot.width * value) / 8);
-const mapY = (value) => px(plot.top + (plot.height * (1 - value)) / 2);
-const points = Array.from({ length: 101 }, (_, index) => {
-  const t = (8 * index) / 100;
-  return { x: mapX(t), y: mapY(Math.exp(-0.24 * t) * Math.sin(2.5 * t)) };
-});
+const mapX = (value) => px(plot.left + plot.width * rescale(value, [0, 8]));
+const mapY = (value) => px(plot.top + plot.height * rescale(value, [1, -1]));
+const points = linspace(0, 8, 101).map((t) => ({
+  x: mapX(t), y: mapY(exp(-0.24 * t) * sin(2.5 * t)),
+}));
 return (
   <Svg width={px(720)}>
     <Box width={1} padding={px(28)} background={lightgray} color={slate}>
@@ -13,7 +12,7 @@ return (
         <Text font_family={mono} font_size={px(14)} color={blue}>DATA / 04</Text>
         <Text font_size={px(30)} font_weight={bold}>A damped oscillation</Text>
         <Group height={px(300)}>
-          {[-1, 0, 1].map((value) => (
+          {range(-1, 2).map((value) => (
             <>
               <Line
                 from={{ x: mapX(0), y: mapY(value) }}
@@ -39,9 +38,7 @@ return (
             stroke_linejoin="round"
             stroke_linecap="round"
           />
-          {points
-            .filter((_, index) => index % 25 === 0)
-            .map((point) => (
+          {slice(points, 0, undefined, 25).map((point) => (
               <Circle
                 x={point.x}
                 y={point.y}
@@ -52,7 +49,7 @@ return (
                 stroke_width={px(1)}
               />
             ))}
-          {[0, 2, 4, 6, 8].map((value) => (
+          {range(0, 9, 2).map((value) => (
             <Text x={mapX(value)} y={px(260)} anchor={{ x: 0.5, y: 0 }}
               font_family={mono} font_size={px(12)} color={slate}>{value}</Text>
           ))}

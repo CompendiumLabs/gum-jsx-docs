@@ -11,18 +11,18 @@ return (
           title="Sine and cosine"
           xlabel="Phase (rad)"
           ylabel="Value"
-          xlim={[0, 2 * pi]}
+          xlim={[0, tau]}
           ylim={[-1.2, 1.2]}
         >
           <SymLine
-            fy={Math.sin}
-            xlim={[0, 2 * pi]}
+            fy={sin}
+            xlim={[0, tau]}
             stroke="#2563eb"
             stroke_width={px(2.5)}
           />
           <SymSpline
-            fy={Math.cos}
-            xlim={[0, 2 * pi]}
+            fy={cos}
+            xlim={[0, tau]}
             samples={17}
             stroke="#e8793c"
             stroke_width={px(2.5)}

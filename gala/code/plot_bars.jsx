@@ -7,10 +7,7 @@ return (
       title="Change by region"
       xlabel="Region"
       ylabel="Change (%)"
-      xticks={["North", "East", "Central", "South", "West"].map((name, i) => [
-        i,
-        name,
-      ])}
+      xticks={enumerate(["North", "East", "Central", "South", "West"])}
       styles={(value) => ({ fill: value < 0 ? "#e8793c" : "#0d9488" })}
       radius={px(4)}
       background="white"

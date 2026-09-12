@@ -3,12 +3,12 @@
 *Category*: geometry
 
 Polygon connects `points` in order and closes the path back to the first point.
-Points are `{ x, y }` objects containing fractions, px, or em. Fractions use the
+Points are `{ x, y }` objects or `[x, y]` tuples containing fractions, px, or em. Fractions use the
 polygon's own rectangle; the point list does not establish its layout size.
 
 ```jsx
 <Polygon width={px(120)} height={px(100)}
-  points={[{ x: 0.5, y: 0 }, { x: 1, y: 1 }, { x: 0, y: 1 }]}
+  points={[[0.5, 0], [1, 1], [0, 1]]}
   fill="#2c7567" stroke="none" />
 ```
 
@@ -18,8 +18,9 @@ stroke_miterlimit control stroked corners. Empty points produce no drawing.
 Vertices outside the allocated rectangle remain outside; clipping belongs to a
 container or the root viewport.
 
-Regular polygons can be generated with ordinary JavaScript and trigonometry,
-as in the example. There is no built-in regular-polygon generator or point-list
+The example uses `linspace(-90,270,count,false)` and `polard` to generate a regular
+polygon without duplicating its closing vertex. See [Arrays](Arrays.md) and
+[Vectors](Vectors.md) for these helpers. There is no point-list
 bounding-box fit. Use [Polyline](Polyline.md) for an open outline or [Path](Path.md)
 for curved edges.
 

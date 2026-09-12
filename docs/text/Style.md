@@ -46,9 +46,12 @@ from the CSS color `fill="blue"`:
 | gray | #f0f0f0 | lightgray | #f6f6f6 |
 | darkgray | #888888 | slate | #1e252e |
 
-Numeric constants are also available: `e`, `pi`, `phi` (the golden ratio),
+Numeric constants are also available: `e`, `pi`, `tau` (2 pi), `phi` (the golden ratio),
 `r2d` (180 / pi), and `d2r` (pi / 180). Host-provided `scope` bindings can
 override any built-in constant for an evaluation.
+
+[Math helpers](MathHelpers.md) supplies bare numeric functions. Use
+[interp and palette](Colors.md) to generate colors from numeric data.
 
 Pixel strokes remain the same thickness when shapes are laid out at new sizes.
 An em stroke follows the local font size. A fractional stroke follows the shape's

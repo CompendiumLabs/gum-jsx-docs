@@ -5,7 +5,7 @@
 Circle has an intrinsic 1:1 aspect. Without a definite size its natural fallback
 is 16 × 16px; specifying width alone normally produces a circle of that diameter.
 
-`center` is an `{ x, y }` pair, defaulting to `{ x: 0.5, y: 0.5 }` in the shape's
+`center` is an `{ x, y }` or `[x, y]` pair, defaulting to `{ x: 0.5, y: 0.5 }` in the shape's
 own rectangle. `radius` is a scalar length, defaulting to 0.5 of the shorter
 side. Thus a default Circle remains circular and centered even inside a
 nonsquare allocation.

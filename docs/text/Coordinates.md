@@ -10,6 +10,10 @@ width, height, stroke widths, and other lengths still use fractions/px/em.
 pixels; unmap_point reverses it (zero-sized frames cannot be inverted).
 point_bounds, merge_bounds, and data_bounds(element) support inference.
 
+Point arguments accept `{x,y}` or `[x,y]`; point lists can mix the two.
+Mapping results always have named `{x,y}` coordinates. See [Point values](PointValues.md)
+for the shared input convention and examples using zip and length tuples.
+
 A custom element reports bounds with the fourth define_element argument:
 
 ```ts

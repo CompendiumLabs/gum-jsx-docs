@@ -3,8 +3,8 @@
   <Box padding={px(30)} background="white">
     <Plot>
       <SymPoints
-        fy={Math.sin}
-        xlim={[0, 2 * pi]}
+        fy={sin}
+        xlim={[0, tau]}
         samples={17}
         fill="#2563eb"
         point_size={px(7)}

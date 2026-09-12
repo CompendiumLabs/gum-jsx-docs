@@ -3,8 +3,8 @@
   <Box padding={px(30)} background="white">
     <Plot>
       <SymPoly
-        f={(t) => [Math.cos(t), Math.sin(t)]}
-        tlim={[0, 2 * pi]}
+        f={polar}
+        tvals={linspace(0, tau, 100, false)}
         fill="#dbeafe"
         stroke="#2563eb"
       />

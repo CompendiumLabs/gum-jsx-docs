@@ -16,8 +16,8 @@ The inner content area subtracts padding and the border on each side.
 | border_width | px(0) | Border thickness inside the frame |
 | border_color | Resolved color | Border paint |
 | background | "none" | This Box's background |
-| radius | 0 | Scalar radius or { x, y } radii |
-| align | "start" | Content alignment on both axes, or { x, y } |
+| radius | 0 | Scalar radius, { x, y }, or [x, y] radii |
+| align | "start" | Content alignment on both axes, or { x, y } / [x, y] |
 | clip | false | Clip content inside the rounded border |
 
 Missing named padding sides are zero. For example,
@@ -26,7 +26,9 @@ Padding arrays, boolean padding, and a margin prop are not supported. Use
 another outer Box when you need outside spacing.
 
 Alignment accepts "start", "center", "end", "stretch", or a fraction from 0 to 1.
-In an object, x and y can be set independently. Stretch sends exact child
+In an object or two-entry tuple, x and y can be set independently:
+`align={['stretch', 'end']}` stretches horizontally and aligns at the bottom.
+Stretch sends exact child
 requests only on axes established before child measurement. It does not
 uniformly scale content.
 

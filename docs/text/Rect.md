@@ -23,10 +23,10 @@ Use stroke="none" for a fill-only swatch.
 ## Rounded corners
 
 `radius` defaults to zero. A scalar rounds both axes equally; a pair sets
-elliptical corners:
+elliptical corners. Pairs accept `{x, y}` or `[x, y]`:
 
 ```jsx
-<Rect width={px(160)} height={px(80)} radius={{ x: px(24), y: px(12) }} />
+<Rect width={px(160)} height={px(80)} radius={[px(24), px(12)]} />
 ```
 
 Fractional scalar radii use the shorter side. A pair's x/y fractions use width

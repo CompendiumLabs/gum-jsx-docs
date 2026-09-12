@@ -1,9 +1,10 @@
 # Sampled curve
 
-This small chart uses plain JavaScript, Group, Line, Text, Circle, and Polyline.
-It deliberately has no Plot dependency: the old plotting system has not been
-ported. The example spells out the data-to-pixel transform, axes, tick labels,
-and a few sample markers.
+This small chart combines numeric helpers with Group, Line, Text, Circle, and
+Polyline. `linspace`, `exp`, and `sin` generate the data; `rescale` maps it into
+pixels; `range` generates ticks; and `slice` selects every 25th sample marker.
+The example spells out the transform, axes, and labels. The
+[Plot showcase](plot_wave.md) provides automatic axes and measured margins.
 
 The function is exp(-0.24t) sin(2.5t), sampled at 101 evenly spaced points from
 0 to 8. The vertical domain is fixed at -1 to 1. Mapping y subtracts from the top

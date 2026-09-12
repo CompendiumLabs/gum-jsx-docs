@@ -2,7 +2,9 @@
 
 *Category*: geometry
 
-An ellipse segment with center, scalar or {x,y} radius, and start/end angles in degrees. Defaults: center {x:0.5,y:0.5}, radius 0.5, angles 0–360. The span may be at most one turn. In data space, numeric radii are data distances and flips affect orientation. Cubic pieces approximate the ellipse.
+An ellipse segment with center, scalar or paired radius, and start/end angles in degrees. Defaults: center {x:0.5,y:0.5}, radius 0.5, angles 0–360. The span may be at most one turn. In data space, numeric radii are data distances and flips affect orientation. Cubic pieces approximate the ellipse.
+
+Center and paired radii accept `{x,y}` or `[x,y]`.
 
 Inside [Graph](Graph.md), numeric geometry uses data coordinates; outside it,
 geometry uses local fractions/px/em. space="local" opts out of an ambient graph,

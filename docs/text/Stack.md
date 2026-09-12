@@ -19,7 +19,7 @@ elements, not bare strings.
 | width / height and limits | — | Common sizing of the stack's frame |
 
 HStack additionally supports `align="baseline"`. Use a single alignment value
-for stacks, rather than Box's per-axis alignment object.
+for stacks; per-axis alignment objects and tuples belong to Box/Fit.
 
 ## Explicit flex
 

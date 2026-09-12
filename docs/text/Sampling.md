@@ -4,7 +4,10 @@
 
 `sample_points(options)` returns an immutable array of {x,y} or null gaps.
 sample_curve also includes the parameter: {t,point}. linspace(a,b,n) generates
-inclusive values; n=0 is empty, n=1 returns a.
+inclusive values; n=0 is empty, n=1 returns a. Pass false as its fourth argument
+to omit the closing endpoint for periodic data. See [Arrays](Arrays.md) for
+range, linspace, and grid generation, and [Math helpers](MathHelpers.md) for
+functions such as sin, cos, and exp, available directly in JSX.
 
 | Inputs | Sampling rule |
 |---|---|

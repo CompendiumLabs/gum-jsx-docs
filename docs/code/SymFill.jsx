@@ -4,8 +4,8 @@
     <Plot>
       <SymFill
         xlim={[0, 6]}
-        upper={(x) => Math.sin(x) + 0.3}
-        lower={(x) => Math.sin(x) - 0.3}
+        upper={(x) => sin(x) + 0.3}
+        lower={(x) => sin(x) - 0.3}
         fill="#93c5fd"
       />
     </Plot>
