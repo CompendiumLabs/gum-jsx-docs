@@ -4,7 +4,8 @@ return (
     <Slide title="From samples to a figure" font_size={px(18)}>
       <TextFigure
         caption="A common sampler supports scalar functions and parametric curves."
-        caption_style={{ color: "#64748b", font_size: px(14) }}
+        caption-color="#64748b"
+        caption-font-size={px(14)}
       >
         <Plot
           height={px(325)}

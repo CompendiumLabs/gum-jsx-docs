@@ -18,9 +18,17 @@ your own frame.
 | rotate | Label rotation in degrees |
 | labels, line | true; independently hide text or baseline |
 | arrow | false; head at the directed endpoint |
-| line_style, tick_style, label_style | Nested styles |
+| line_*, tick_* | Scoped styles such as line_stroke and tick_stroke_width |
+| label_* | Text options such as label_color, label_font_size, and label_wrap |
+| line_style, tick_style, label_style | Compatible nested part options |
 
 Pair labels may be strings, numbers, or Elements. Out-of-domain ticks are omitted.
+Scopes configure generated labels; supplied Elements keep their own props.
+Flat props override matching fields of nested objects. tick_size, label_offset,
+and ordinary line_height remain owner props. These scopes also work on Axis's
+directional, labels-only, and scale-only variants. See
+[scoped props](../../topics/text/Style.md#scoped-component-props).
+
 Automatic 1/2/5 intervals need not include every endpoint; public linear_ticks
 and format_tick expose the helpers. Work is bounded to 10000 ticks.
 

@@ -13,6 +13,11 @@ polyline. Both heads follow the original route's endpoint directions.
 | head_width | 0.65 | Full head width divided by its length |
 | head_style | — | Overrides for head paint; the default fill matches the shaft stroke |
 
+Use scoped props such as `head_fill={red}`, `head_stroke={none}`, or
+`head_stroke_width={px(2)}` to set head styles directly. They override matching
+fields in head_style. head_size and head_width retain their geometry meanings.
+See [scoped props](../../topics/text/Style.md#scoped-component-props).
+
 Head tips stay at the requested endpoints. The shaft retreats at headed ends so
 its cap fits behind the triangular tip. Clearance accounts for the resolved
 stroke width, head width, and butt/round/square cap style. It is computed in

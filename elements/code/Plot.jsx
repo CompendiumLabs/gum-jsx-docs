@@ -1,4 +1,4 @@
-// A sampled curve, uncertainty band, observations, and a measured legend.
+// A sampled curve with scoped axis labels, a title, and a measured legend.
 const wave = (x) => sin(x) * exp(-x / 9);
 const observations = linspace(0.4, 11.8, 15).map((x, i) => ({
   x,
@@ -13,6 +13,9 @@ return (
       xlim={[0, 12]}
       ylim={[-1.3, 1.3]}
       background="white"
+      xaxis-label-color={blue}
+      title-font-weight={bold}
+      legend-label-font-size={px(11)}
       legend={[
         { label: "Model", color: "#2563eb" },
         { label: "Observations", kind: "point", color: "#e8793c" },

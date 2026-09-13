@@ -38,6 +38,46 @@ const tile = new Tile({ fill: 'tomato' });
 TypeScript annotations, define the class, and use `<Tile />`. A class defined in
 host code can be supplied through `evaluate(code, { scope: { Tile } })`.
 
+## Scoped props
+
+`prefix_split(prefixes, props, keep?)` separates component scopes without mutating
+the input. It returns one object per prefix, in the requested order, then the
+remaining props. The longest matching prefix wins when prefixes overlap. Optional
+exact `keep` keys remain with the owner. `prefix_join(prefix, props)` adds the
+prefix to every key. Neither helper resolves units or executes callbacks.
+
+Both helpers are available in JSX and as named exports from `gum-next-core`:
+
+```jsx
+const Captioned = props => {
+  const [caption, rest] = prefix_split(['caption'], props);
+  return <TextFigure {...rest} caption_style={caption} />;
+};
+
+return <Captioned caption="A diagram" caption-color={blue}>
+  <Arrow {...prefix_join('head', { fill: red })} />
+</Captioned>;
+```
+
+`Prefixed<Prefix, Props>` derives scoped TypeScript names while retaining each
+property's value type and optionality:
+
+```ts
+type CaptionedProps = BoxProps & { caption?: string }
+  & Prefixed<'caption', TextOptions>;
+```
+
+Import `BoxProps`, `Prefixed`, and `TextOptions` as types from `gum-next-core`.
+TextOptions is TextProps without text/children, which the owner supplies.
+Components choose which scopes to support and where to route them; LayoutPass
+has no prefix policy. See [Style](./Style.md#scoped-component-props) for built-in
+scopes and precedence.
+
+Scopes are constructor-input syntax. Class defaults below still use normalized
+source props: Arrow defaults may specify `head_style`, while `head_fill` is an
+input alias. Defaults that affect child construction belong in a component or
+normalizer before the child descriptions are built.
+
 ## Class hooks and defaults
 
 | Static member | Role |

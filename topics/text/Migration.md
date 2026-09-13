@@ -21,7 +21,7 @@ this package use the current API exclusively.
 | Line points as coordinate pairs | Line from/to; Polyline or Polygon points. All accept [x,y] or {x,y} |
 | SVG path strings | Path commands built with move_to, line_to, quad_to, curve_to, close_path |
 | Graph clones geometry into a coord | Explicit coordinate context; CoordLine and new marks map their data |
-| Untagged plot dimensions and prefixed styles | Pixel/em strokes and labels; nested part style objects |
+| Untagged plot dimensions and prefixed styles | Pixel/em strokes and labels; typed component scopes and compatible nested part objects |
 | N symbolic samples | samples; functions execute once at construction and missing values create gaps |
 | Element rotate / transform shortcuts | Explicit Rotate / TransformBox wrappers |
 | evaluateGum(...).svg() | evaluate → LayoutPass.layout → render_svg |
