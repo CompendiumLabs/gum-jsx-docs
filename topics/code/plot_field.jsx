@@ -7,7 +7,7 @@ return (
       ylabel="y"
       xlim={[-2.4, 2.4]}
       ylim={[-2.4, 2.4]}
-      background="white"
+      background={white}
       aspect={1.25}
     >
       <SymField
@@ -16,14 +16,14 @@ return (
         ylim={[-2, 2]}
         samples={11}
         scale={0.14}
-        stroke="#0f766e"
+        stroke={green}
         stroke_width={px(1.5)}
         head_size={px(5)}
       />
       <SymLine
         f={(t) => polar(t, 1.25)}
         tlim={[0, tau]}
-        stroke="#e8793c"
+        stroke={red}
         stroke_width={px(2.5)}
       />
     </Plot>

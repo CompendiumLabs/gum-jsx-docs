@@ -13,11 +13,11 @@ axes available as percentage references.
 
 | Property | Default | Meaning |
 |---|---|---|
-| mode | "contain" | Fit inside the target |
+| mode | `"contain"` | Fit inside the target |
 | mode="cover" | — | Cover the target, possibly extending outside it |
 | mode="scale_down" | — | Contain, but never enlarge |
-| align | "center" | Position scaled content in the target |
-| clip | false | Clip to the target rectangle |
+| align | `"center"` | Position scaled content in the target |
+| clip | `false` | Clip to the target rectangle |
 
 Alignment accepts "start", "center", "end", numbers from 0 to 1, or independent
 choices in `{x,y}` / `[x,y]` form.

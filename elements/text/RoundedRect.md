@@ -2,6 +2,10 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| radius | `0.125` of the shorter side | Scalar corner radius or independent `{ x, y }` / `[x, y]` radii |
+
 RoundedRect is [Rect](./Rect.md) with a default corner radius of 0.125 of its
 shorter side. It accepts the same sizing and paint props, has no children, and
 does not imply a particular aspect ratio.
@@ -13,7 +17,7 @@ for a pill shape.
 
 ```jsx
 <RoundedRect width={px(160)} height={px(64)} radius={px(32)}
-  fill="#2c7567" stroke="none" />
+  fill={green} stroke={none} />
 ```
 
 Rounding changes the geometry, not the layout size. For a rounded container

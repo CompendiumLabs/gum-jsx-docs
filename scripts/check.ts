@@ -13,6 +13,7 @@ const entries = [
   ...listElements().map(entry => ({ ...entry, dir: elementsDir, collection: elements })),
   ...listTopics().map(entry => ({ ...entry, dir: topicsDir, collection: topics })),
 ];
+const commonOnlyElements = new Set(['Spacer', 'Span']);
 
 for (const [name, value] of Object.entries(core)) {
   if (typeof value === 'function' && value.prototype instanceof core.Element) {
@@ -41,13 +42,48 @@ function checkLinks(file: string): void {
   }
 }
 
+function checkPropertyValues(file: string, markdown: string): void {
+  let table = false;
+  for (const line of markdown.split('\n')) {
+    if (/^\| (?:Property|Direct child prop) \| Default \| Meaning \|$/.test(line)) {
+      table = true;
+      continue;
+    }
+    if (!table) continue;
+    if (!line.startsWith('|')) { table = false; continue; }
+    const value = line.split('|')[2]?.trim() ?? '';
+    if (/^-+$/.test(value)) continue;
+    const prose = value.replace(/`[^`]*`/g, '');
+    assert.doesNotMatch(prose, /(?:^|[\s/,])(?:true|false|-?\d+(?:\.\d+)?)(?=$|[\s/,])|\b(?:px|em)\(|"[^"]*"/,
+      `${file}: format literal default values as code: ${value}`);
+    assert.doesNotMatch(value,
+      /`"(?:none|black|white|gray|blue|red|green|yellow|purple|lightgray|darkgray|slate)"`/,
+      `${file}: write predefined constants without string quotes: ${value}`);
+  }
+}
+
 checkLinks(join(packageRoot, 'README.md'));
 let drawings = 0;
 for (const { name, title, dir, collection } of entries) {
   const code = collection.code[name]!;
   const text = collection.text[name]!;
   const file = join(dir, 'code', name + '.jsx');
+  if (dir === elementsDir && !commonOnlyElements.has(name)) {
+    const table = text.search(/^\| Property \| Default \| Meaning \|$/m);
+    const textFile = join(dir, 'text', name + '.md');
+    assert.ok(table >= 0, `${textFile}: element-specific props need a property table`);
+    assert.ok(text.slice(0, table).split('\n').length <= 24,
+      `${textFile}: put the property table near the top of the page`);
+  }
+  if (dir === elementsDir) checkPropertyValues(join(dir, 'text', name + '.md'), text);
   assert.ok(code.startsWith('// '), `${file}: describe the example on its first line`);
+  if (!(dir === topicsDir && name === 'Colors')) {
+    assert.doesNotMatch(code, /#[\da-f]{3,8}\b/i,
+      `${file}: use the shared color constants instead of hard-coded hex colors`);
+    assert.doesNotMatch(code,
+      /(["'])(?:none|black|white|gray|blue|red|green|yellow|purple|lightgray|darkgray|slate)\1/,
+      `${file}: use shared color constants without string quotes`);
+  }
   checkLinks(join(dir, 'text', name + '.md'));
   const element = core.evaluate(code, { name: file });
   assert.ok(element instanceof core.Svg, `${file}: examples should include their viewport`);

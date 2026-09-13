@@ -2,6 +2,11 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| center | `{ x: 0.5, y: 0.5 }` | Center in the Ellipse's local rectangle |
+| radius | `{ x: 0.5, y: 0.5 }` | Horizontal and vertical radii |
+
 Ellipse draws an axis-aligned ellipse in its allocated rectangle. Unlike
 [Circle](./Circle.md), it has no intrinsic aspect ratio. Set both dimensions or
 supply one dimension and an aspect to control its proportions.
@@ -13,7 +18,7 @@ fractions and height for y fractions; px and em are also accepted.
 
 ```jsx
 <Ellipse width={px(160)} height={px(96)}
-  radius={[0.4, px(24)]} fill="#2c7567" />
+  radius={[0.4, px(24)]} fill={green} />
 ```
 
 Radii must be nonnegative. Explicit radii and centers do not change layout size,

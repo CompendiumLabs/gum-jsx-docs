@@ -6,23 +6,31 @@ Compose graphable children with linear axes, grid lines, measured tick labels,
 axis titles, an optional legend, and an optional background. Limits follow
 [Graph](./Graph.md); inferred limits receive 5% padding by default.
 
-| Prop | Default / behavior |
-|---|---|
-| title, xlabel, ylabel | String or Element; y title rotates −90° |
-| axis, xaxis, yaxis | Enabled; each axis accepts false or an [Axis](./Axis.md) props object |
-| xticks, yticks | Target count 5 or explicit numbers / [value,label] pairs |
-| grid | true; uses the same ticks as each axis |
-| axis_*, xaxis_*, yaxis_* | Axis options, including xaxis_tick_size and xaxis_label_color |
-| tick_*, label_*, title_*, xlabel_*, ylabel_* | Tick styles and generated text options; title defaults to 1.35em bold |
-| grid_*, xgrid_*, ygrid_*, legend_* | Mesh and legend options, including legend_label_font_size |
-| axis_style, tick_style, label_style, title_style, grid_style | Compatible nested part options |
-| xlabel_style, ylabel_style, xgrid_style, ygrid_style, legend_style | Nested options for the corresponding scopes |
-| margin | Extra outer space: px(12), a length or named sides |
-| label_gap | px(8) between titles and axis extents |
-| background, plot_background | Optional full-frame / data-area paints |
-| border_width, border_color | Optional data-area border; width defaults to zero |
-| legend | An Element or array of [Legend](./Legend.md) entries, inside top right |
-| clip | true for data; axes, grid, and labels remain separate |
+| Property | Default | Meaning |
+|---|---|---|
+| coord | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
+| xlim / ylim | Inferred | Directed data limits |
+| flip_x / flip_y | `false` / `true` | Reverse horizontal or vertical screen mapping |
+| padding | `0.05` | Fractional padding applied to inferred data limits |
+| axis | `true` | Enable or disable both axes by default |
+| xaxis / yaxis | `axis` | Boolean or Axis props for one axis |
+| xticks / yticks | `5` | Target count or explicit values / labeled pairs |
+| grid | `true` | Draw grid lines at axis ticks |
+| title / xlabel / ylabel | — | String or Element; the y title rotates −90° |
+| legend | — | Legend Element or array of Legend entries |
+| margin | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
+| label_gap | `px(8)` | Space between titles and measured axis extents |
+| background | — | Full-frame background paint |
+| plot_background | — | Data-area background paint |
+| border_width | `px(0)` | Data-area border thickness |
+| border_color | `"#cbd5e1"` | Data-area border paint |
+| clip | `true` | Clip data marks to the data area |
+| axis_* / xaxis_* / yaxis_* | — | Flat Axis option overrides |
+| tick_* / label_* | — | Shared generated tick and label styles |
+| title_* / xlabel_* / ylabel_* | — | Generated title text options |
+| grid_* / xgrid_* / ygrid_* | — | Grid options and styles |
+| legend_* | — | Generated Legend options |
+| *_style | — | Nested options for the corresponding scopes |
 
 Fonts default to 12px. Margins come from measured axis overflow and title sizes.
 Title and x title wrap at the usable width. Explicit margin adds space to those

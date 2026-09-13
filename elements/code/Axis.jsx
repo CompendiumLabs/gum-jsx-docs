@@ -1,6 +1,6 @@
 // Explicit labels and a directed axis with scoped line, tick, and text styles.
 <Svg width={px(480)} height={px(300)}>
-  <Box padding={px(30)} background="white">
+  <Box padding={px(30)} background={white}>
     <Graph xlim={[0, 4]} ylim={[0, 1]}>
       <HAxis
         lim={[0, 4]}

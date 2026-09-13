@@ -2,6 +2,11 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| from | `{ x: 0, y: 0 }` | Segment start in the Line's local rectangle |
+| to | `{ x: 1, y: 1 }` | Segment end in the Line's local rectangle |
+
 Line draws one segment from `from` to `to`, each an `{ x, y }` or `[x, y]` pair of lengths.
 The defaults are `{ x: 0, y: 0 }` and `{ x: 1, y: 1 }`: the diagonal of its own
 allocated rectangle. Fractions use that rectangle's width and height, not the
@@ -10,7 +15,7 @@ parent's size.
 ```jsx
 <Line width={px(200)} height={px(40)}
   from={[0, 0.5]} to={[1, 0.5]}
-  stroke="#2c7567" stroke_width={px(4)} stroke_linecap="round" />
+  stroke={green} stroke_width={px(4)} stroke_linecap="round" />
 ```
 
 Line always disables fill. It otherwise inherits stroke color, width, and cap

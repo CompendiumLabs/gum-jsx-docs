@@ -18,12 +18,12 @@ The viewport establishes percentage references for its direct content. Its
 fragment has a rectangular clip, and serialized SVG hides viewport overflow.
 Overflow is still retained in the fragment for inspection.
 
-| Property | Meaning |
-|---|---|
-| children | One content element, optionally absent |
-| width / height | Preferred viewport dimensions |
-| min_width / max_width, min_height / max_height | Own size limits |
-| Typography and paint | Inherited by content |
+| Property | Default | Meaning |
+|---|---|---|
+| children | — | One content element, optionally absent |
+| width / height | Natural | Preferred viewport dimensions; explicit values require px() |
+| min_width / max_width, min_height / max_height | — | Own size limits |
+| Typography and paint | Inherited | Style inherited by content |
 
 An aspect on Svg does not derive the other viewport dimension. Put an aspect
 on a shape or Group inside it instead.

@@ -2,6 +2,11 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| segments | `[]` | Independent pairs of segment endpoints |
+| space | Automatic | Use ambient data coordinates or local geometry |
+
 Independent segments in one drawing. segments is an array of pairs of `{x,y}` or `[x,y]` endpoints. Pairs never connect to one another; fill is ignored.
 
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,

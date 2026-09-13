@@ -2,6 +2,13 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| points | `[]` | Marker positions; null and nonfinite values are omitted |
+| point_size | `px(6)` | Marker size, pair, or `(point, index) => size` callback |
+| shape | `Circle` | Marker Element or `(point, index) => Element` callback |
+| space | Automatic | Use ambient data coordinates or local geometry |
+
 Repeat a marker at each `{x,y}` or `[x,y]` in points. The forms can be mixed.
 Null/nonfinite entries are omitted
 without changing callback indices. Positions use ambient [Graph](./Graph.md)

@@ -21,6 +21,25 @@ elements, not bare strings.
 HStack additionally supports `align="baseline"`. Use a single alignment value
 for stacks; per-axis alignment objects and tuples belong to Box/Fit.
 
+## Per-child alignment
+
+Set `align_self` on a direct child to override the stack's cross-axis `align`:
+vertical in HStack, horizontal in VStack. Values are `"start"`, `"center"`,
+`"end"`, `"stretch"`, or a number from 0 to 1; horizontal stacks also accept
+`"baseline"`. Omitted or `undefined` uses the parent's `align`.
+
+```jsx
+<VStack width={px(240)} align="stretch">
+  <Text>This child receives the column width.</Text>
+  <Text align-self="end">Right-aligned, at its natural width.</Text>
+</VStack>
+```
+
+A child's own `align` still controls its contents, not its placement in the
+parent stack. `align_self` does not inherit or pass through wrappers: put it on
+the wrapping Box, Frame, or nested stack when that is the direct child. TextRow,
+TextCol, and TextStack use the same rules for their element children.
+
 ## Explicit flex
 
 The immediate stack parent reads these props from each **direct child**:
@@ -30,6 +49,7 @@ The immediate stack parent reads these props from each **direct child**:
 | basis | Starting main-axis length; otherwise preferred dimension, otherwise natural size |
 | grow | Share of surplus; default 0 |
 | shrink | Shortage weight, multiplied by original basis; default 0 |
+| align_self | Cross-axis alignment override; defaults to the stack's align |
 | min_width / max_width, etc. | Limits on the main-axis allocation |
 
 The allocator reserves gaps, clamps bases, and distributes surplus or shortage.
@@ -56,9 +76,16 @@ provide room for explicit growth.
 Text reflows at its allocated width. Stretch can require another child query:
 a column selects its shared width before packing heights; a row selects height
 after width allocation and text reflow. Selected sizes never become speculative
-percentage references.
+percentage references. Only children with effective `"stretch"` alignment receive
+the exact cross-axis size. Other children keep their usual sizing behavior.
+A stretching column keeps its selected width if a non-stretch child later grows
+wider during height allocation, reporting overflow instead of reflowing again.
 
-Justify and align position completed allocations. Text's own text_align is
+Only baseline-aligned children contribute to the row's baseline group. The row
+also accommodates non-baseline children's heights, and stretching siblings
+receive a height that includes the baseline group's ascent and descent.
+
+Justify and align/align_self position completed allocations. Text's own text_align is
 separate. Distributed spacing only adds positive free space; center/end may
 position overflowing content outside the frame.
 

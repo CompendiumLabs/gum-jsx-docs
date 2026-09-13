@@ -7,6 +7,14 @@ side defaults to bottom. offset is a layout length (0); at selects a fractional
 location on the content edge (0.5), and attachment_anchor selects the attachment's
 own point along that edge (0.5).
 
+| Property | Default | Meaning |
+|---|---|---|
+| attachment | — | Element placed outside the content frame |
+| side | `"bottom"` | Content edge used for the attachment |
+| offset | `0` | Distance between the content and attachment |
+| at | `0.5` | Fractional position along the content edge |
+| attachment_anchor | `0.5` | Attachment point aligned with `at` |
+
 Both at and attachment_anchor are scalar numbers: 0 selects the start of the
 edge, 0.5 its center, and 1 its end. For top/bottom attachments they act
 horizontally; for left/right attachments they act vertically. For example,

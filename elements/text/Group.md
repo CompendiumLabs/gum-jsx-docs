@@ -14,10 +14,14 @@ needs its own width/height or a dimension plus aspect.
 The coordinate origin is top left, with positive x right and positive y down.
 Children paint in source order, so put backgrounds and connectors before labels.
 
+| Property | Default | Meaning |
+|---|---|---|
+| clip | `false` | Clip child paint to the Group rectangle |
+
 | Direct child prop | Default | Meaning |
 |---|---|---|
-| x / y | 0 | Anchor location; fractions use the whole Group |
-| anchor | "start" | Point on the child's allocated rectangle placed at x/y |
+| x / y | `0` | Anchor location; fractions use the whole Group |
+| anchor | `"start"` | Point on the child's allocated rectangle placed at x/y |
 | width / height | — | Child's preferred size; fractions use the whole Group |
 
 Anchor accepts start, center, end, a fraction from 0 to 1, or independent x/y

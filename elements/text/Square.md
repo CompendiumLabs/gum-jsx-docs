@@ -2,11 +2,15 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| radius | `0` | Scalar corner radius or independent `{ x, y }` / `[x, y]` radii |
+
 Square is a rectangle with an intrinsic 1:1 aspect and square drawing geometry.
 Setting just width or height normally determines the other dimension:
 
 ```jsx
-<Square width={px(80)} fill="#2c7567" stroke="none" />
+<Square width={px(80)} fill={green} stroke={none} />
 ```
 
 If an allocation is not square, Square draws the largest centered square that

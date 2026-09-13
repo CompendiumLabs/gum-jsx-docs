@@ -2,6 +2,10 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| radius | `0` | Scalar corner radius or independent `{ x, y }` / `[x, y]` radii |
+
 Rect paints its allocated rectangle. It is a leaf: it has no content children.
 Use a [Box](./Box.md) when the rectangle should surround text or another element.
 
@@ -18,7 +22,7 @@ preference. Set both dimensions when you need a specific rectangle.
 
 The default paint is no fill and a black 1px stroke. Strokes are centered on the
 rectangle's boundary, so visible ink can extend beyond its layout rectangle.
-Use stroke="none" for a fill-only swatch.
+Use `stroke={none}` for a fill-only swatch.
 
 ## Rounded corners
 

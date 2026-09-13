@@ -12,26 +12,27 @@ return (
       ylabel="Amplitude"
       xlim={[0, 12]}
       ylim={[-1.3, 1.3]}
-      background="white"
+      background={white}
       legend={[
-        { label: "Model", color: "#2563eb" },
-        { label: "Observations", kind: "point", color: "#e8793c" },
+        { label: "Model", color: blue },
+        { label: "Observations", kind: "point", color: red },
       ]}
     >
       <SymFill
         xlim={[0, 12]}
         upper={(x) => wave(x) + 0.16}
         lower={(x) => wave(x) - 0.16}
-        fill="#dbeafe"
+        fill={blue}
+        opacity={0.25}
       />
       <SymLine
         xlim={[0, 12]}
         fy={wave}
         samples={241}
-        stroke="#2563eb"
+        stroke={blue}
         stroke_width={px(2.5)}
       />
-      <Points points={observations} fill="#e8793c" point_size={px(7)} />
+      <Points points={observations} fill={red} point_size={px(7)} />
     </Plot>
   </Svg>
 );

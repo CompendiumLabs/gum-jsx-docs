@@ -9,15 +9,15 @@ fragments. Rendering does not query elements, resolve units, or load fonts.
 ## From JSX to SVG
 
 ```ts
-import { evaluate, LayoutPass, render_svg, inspect_fragment } from 'gum-next-core';
+import { evaluate, LayoutPass, render_svg, inspect_fragment, white } from 'gum-next-core';
 
-const source = '<Svg><Square width={px(80)} fill="#2c7567" stroke="none" /></Svg>';
+const source = '<Svg><Square width={px(80)} fill={green} stroke={none} /></Svg>';
 const element = evaluate(source, { name: 'example.jsx' });
 const pass = new LayoutPass();
 const fragment = pass.layout(element);
 const svg = render_svg(fragment, {
   title: 'An eighty-pixel square',
-  background: 'white',
+  background: white,
   id_prefix: 'example',
 });
 console.log(inspect_fragment(fragment));
@@ -33,10 +33,10 @@ JSX is optional. Element exports are constructors, so ordinary TypeScript can
 build the same source graph directly:
 
 ```ts
-import { Svg, Square, px } from 'gum-next-core';
+import { Svg, Square, px, green, none } from 'gum-next-core';
 
 const element = new Svg({
-  children: new Square({ width: px(80), fill: '#2c7567', stroke: 'none' }),
+  children: new Square({ width: px(80), fill: green, stroke: none }),
 });
 ```
 

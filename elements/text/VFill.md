@@ -2,6 +2,13 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| points | `[]` | First edge of the filled region |
+| boundary | `0` | Second edge as points, or a y baseline |
+| direction | `"vertical"` | Fill vertically; may be overridden |
+| space | Automatic | Use ambient data coordinates or local geometry |
+
 Fill a region between points and boundary, arrays of `{x,y}` records or `[x,y]` tuples. boundary
 may be a scalar baseline (default 0). Arrays must have matching lengths; a gap
 in either boundary splits the whole region.

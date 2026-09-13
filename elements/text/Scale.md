@@ -2,6 +2,16 @@
 
 *Category*: plotting
 
+| Property | Default | Meaning |
+|---|---|---|
+| lim | `[0, 1]` | Directed tick domain |
+| ticks | `5` | Target count or explicit values / labeled pairs |
+| interval | Automatic | Positive fixed tick step |
+| side | `"bottom"` | Edge and orientation |
+| at | Frame edge | Data location on the perpendicular axis |
+| tick_size | `px(5)` | Tick length |
+| tick_style / tick_* | — | Nested or flat styles for ticks |
+
 Scale draws ticks only, without a baseline or labels. It defaults to side="bottom".
 It accepts the [Axis](./Axis.md) props, including lim, ticks, interval, side, at,
 format, rotate, and nested styles. Labels-only elements still account for

@@ -6,6 +6,11 @@ Transform a naturally measured child using an affine matrix [a,b,c,d,e,f]:
 x′=ax+cy+e, y′=bx+dy+f. Default is identity. A canvas child needs its own finite
 dimensions.
 
+| Property | Default | Meaning |
+|---|---|---|
+| matrix | `[1, 0, 0, 1, 0, 0]` | Affine transform `[a,b,c,d,e,f]` |
+| resize | `true` | Resize and translate the wrapper to the transformed bounds |
+
 resize defaults to true: transformed bounds set natural size, translated to
 the local origin. resize=false keeps the original frame and reports overflow.
 Exact allocations override wrapper size. The finished geometry, including

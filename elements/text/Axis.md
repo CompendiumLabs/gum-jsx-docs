@@ -6,21 +6,22 @@ An axis occupies the graph frame; ticks and labels extend outside it. Plot
 measures that overflow to reserve margins. Use an axis inside Graph to compose
 your own frame.
 
-| Prop | Meaning |
-|---|---|
-| lim | Directed tick domain, default [0,1]; explicit outside Plot |
-| ticks | Target count 5 or explicit numbers / [value,label] pairs |
-| interval | Positive fixed step instead of automatic 1/2/5 intervals |
-| side | bottom (default), top, left, or right; selects orientation |
-| at | Optional data location on the perpendicular axis; otherwise the frame edge |
-| tick_size, label_offset | px(5) tick and px(4) gap |
-| format | (value,index) → string for numeric ticks, called at construction |
-| rotate | Label rotation in degrees |
-| labels, line | true; independently hide text or baseline |
-| arrow | false; head at the directed endpoint |
-| line_*, tick_* | Scoped styles such as line_stroke and tick_stroke_width |
-| label_* | Text options such as label_color, label_font_size, and label_wrap |
-| line_style, tick_style, label_style | Compatible nested part options |
+| Property | Default | Meaning |
+|---|---|---|
+| lim | `[0, 1]` | Directed tick domain; explicit outside Plot |
+| ticks | `5` | Target count or explicit numbers / `[value, label]` pairs |
+| interval | Automatic | Positive fixed step instead of automatic 1/2/5 intervals |
+| side | `"bottom"` | Axis edge and orientation |
+| at | Frame edge | Data location on the perpendicular axis |
+| tick_size | `px(5)` | Tick length |
+| label_offset | `px(4)` | Gap between ticks and labels |
+| format | `format_tick` | `(value, index) => string` for numeric ticks |
+| rotate | `0` | Label rotation in degrees |
+| labels | `true` | Draw tick labels |
+| line | `true` | Draw the baseline |
+| arrow | `false` | Draw a head at the directed endpoint |
+| line_style / tick_style / label_style | — | Nested styles for generated parts |
+| line_* / tick_* / label_* | — | Flat overrides for generated-part styles |
 
 Pair labels may be strings, numbers, or Elements. Out-of-domain ticks are omitted.
 Scopes configure generated labels; supplied Elements keep their own props.

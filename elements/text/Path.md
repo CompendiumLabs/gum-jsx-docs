@@ -2,6 +2,10 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| commands | `[]` | Path command records or arrays returned by the path helpers |
+
 Path draws a sequence of explicit path commands. Supply `commands`, not an SVG
 d string. The following helpers are available in JSX and exported by core:
 
@@ -21,14 +25,14 @@ move_to starts another subpath in the same drawing.
 ```jsx
 <Path width={px(240)} height={px(100)}
   commands={[move_to(0, 0.8), curve_to(0.3, 0, 0.7, 1, 1, 0.2)]}
-  fill="none" stroke="#2c7567" stroke_width={px(3)} />
+  fill={none} stroke={green} stroke_width={px(3)} />
 ```
 
 Layout follows ordinary shape sizing, not the bounds of the commands. The
 same normalized path can be stretched by choosing another allocation. For
 aspect-preserving geometry, supply a size/aspect or place a sized Path in [Fit](./Fit.md).
 Paint is inherited; an open path with a fill still has SVG's implicitly closed
-fill area. Set fill="none" for an unfilled curve.
+fill area. Set `fill={none}` for an unfilled curve.
 
 Only move, line, quadratic, cubic, and close commands are implemented. SVG arc
 commands, path-string parsing, and automatic spline construction are not part

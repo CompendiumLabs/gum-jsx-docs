@@ -12,7 +12,8 @@ this package use the current API exclusively.
 | Rectangle | Rect |
 | rounded | radius |
 | Box border / border-stroke / fill | border_width / border_color / background |
-| Padding arrays, booleans, and margin | A length or named-side padding object; outer Box for outside spacing |
+| Padding arrays and side objects | `[h, v]` / `[t, b, l, r]`, `{ h, v }`, `{ t, b, l, r }`, or full side names; values are lengths |
+| Boolean padding and margin | Explicit padding lengths; outer Box for outside spacing |
 | Automatic stack figure fitting, share, even | Explicit basis / grow / shrink and chosen dimensions |
 | spacing and direction-sensitive justify/valign | gap, cross-axis align, main-axis justify |
 | Text scale / justify | font_size / text_align |

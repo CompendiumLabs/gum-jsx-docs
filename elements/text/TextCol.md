@@ -2,6 +2,12 @@
 
 *Category*: text
 
+| Property | Default | Meaning |
+|---|---|---|
+| gap | `em(0.6)` | Space between adjacent children |
+| align | `"stretch"` | Horizontal alignment |
+| justify | `"start"` | Vertical packing and distributed spacing |
+
 A text-aware stack: strings/numbers become Text elements at construction.
 Existing figures retain their identities and flex metadata. TextStack uses
 direction="vertical" by default, or "horizontal"; TextRow is horizontal with
@@ -11,5 +17,7 @@ Other props follow [Stack](../../topics/text/Stack.md). gap defaults to 0.6em. W
 reflows text while preserving glyph measurements and baselines. These wrappers
 do not add automatic flex weights, fitting, or a separate text scale. Specify
 grow/shrink/basis for flexible content.
+Element children can override horizontal alignment with align_self; for example,
+align_self="end" opts out of the default stretch and aligns at the right edge.
 
 [Runnable source](../code/TextCol.jsx).

@@ -2,6 +2,16 @@
 
 *Category*: plotting
 
+| Property | Default | Meaning |
+|---|---|---|
+| coord | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
+| xlim | Inferred or `[0, 1]` | Directed horizontal data limits |
+| ylim | Inferred or `[0, 1]` | Directed vertical data limits |
+| flip_x | `false` | Reverse horizontal screen mapping |
+| flip_y | `true` | Reverse vertical screen mapping for Cartesian y-up coordinates |
+| padding | `0` | Fractional inferred-limit padding, scalar or `{ x, y }` |
+| clip | `false` | Clip children to the graph frame |
+
 A finite canvas with a linear data coordinate system. Graph infers limits from
 graphable children or accepts `xlim={[min,max]}`, `ylim={[min,max]}`, or
 `coord={[xmin,ymin,xmax,ymax]}`. Individual limits override coord.

@@ -2,6 +2,11 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| center | `{ x: 0.5, y: 0.5 }` | Center in the Circle's local rectangle |
+| radius | `0.5` | Radius relative to the shorter side, or a px/em length |
+
 Circle has an intrinsic 1:1 aspect. Without a definite size its natural fallback
 is 16 × 16px; specifying width alone normally produces a circle of that diameter.
 
@@ -12,7 +17,7 @@ nonsquare allocation.
 
 ```jsx
 <Circle width={px(160)} height={px(80)}
-  center={{ x: 0.25, y: 0.5 }} radius={px(28)} fill="#2c7567" />
+  center={{ x: 0.25, y: 0.5 }} radius={px(28)} fill={green} />
 ```
 
 Coordinates and radius affect the drawing, not the allocated size. Moving the

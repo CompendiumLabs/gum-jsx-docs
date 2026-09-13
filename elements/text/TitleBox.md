@@ -2,6 +2,19 @@
 
 *Category*: text
 
+| Property | Default | Meaning |
+|---|---|---|
+| title | — | String or Element placed before the content |
+| title_style / title_* | `bold` | Nested or flat text options for a generated title |
+| gap | `em(0.6)` | Space between the title and content |
+| padding | `em(0.75)` | Length or [Box padding shorthand](./Box.md) |
+| border_width | `px(0)` | Border thickness inside the frame |
+| border_color | Resolved color | Border paint |
+| background | `none` | Box background |
+| radius | `0` | Scalar radius or independent `{ x, y }` / `[x, y]` radii |
+| align | `"start"` | Content alignment on both axes |
+| clip | `false` | Clip content inside the rounded border |
+
 TitleBox composes an optional title above text or figure children inside a Box.
 title is a string or Element; title_style overrides default bold text.
 Scoped title_ props accept text options, including title_color, title_font_size,

@@ -4,7 +4,7 @@ return (
     <Slide title="From samples to a figure" font_size={px(18)}>
       <TextFigure
         caption="A common sampler supports scalar functions and parametric curves."
-        caption-color="#64748b"
+        caption-color={blue}
         caption-font-size={px(14)}
       >
         <Plot
@@ -18,14 +18,14 @@ return (
           <SymLine
             fy={sin}
             xlim={[0, tau]}
-            stroke="#2563eb"
+            stroke={blue}
             stroke_width={px(2.5)}
           />
           <SymSpline
             fy={cos}
             xlim={[0, tau]}
             samples={17}
-            stroke="#e8793c"
+            stroke={red}
             stroke_width={px(2.5)}
           />
         </Plot>

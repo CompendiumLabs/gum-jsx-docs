@@ -2,6 +2,13 @@
 
 *Category*: plotting
 
+| Property | Default | Meaning |
+|---|---|---|
+| label | Children | String or Element placed outside the frame |
+| side | `"bottom"` | Frame edge used for the label |
+| offset | `em(1)` | Distance outside that edge |
+| rotate | `0` | Label rotation in degrees |
+
 Attach label (or children) outside a frame edge. side defaults to bottom;
 offset to 1em. rotate applies a degree rotation. The label centers along the
 selected side and reports overflow without reserving space. Plot measures and

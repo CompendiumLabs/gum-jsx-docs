@@ -12,18 +12,31 @@ The inner content area subtracts padding and the border on each side.
 
 | Property | Default | Meaning |
 |---|---|---|
-| padding | 0 | One length, or named left/top/right/bottom lengths |
-| border_width | px(0) | Border thickness inside the frame |
+| padding | `0` | Length, side/axis object, or `[h, v]` / `[t, b, l, r]` |
+| border_width | `px(0)` | Border thickness inside the frame |
 | border_color | Resolved color | Border paint |
-| background | "none" | This Box's background |
-| radius | 0 | Scalar radius, { x, y }, or [x, y] radii |
-| align | "start" | Content alignment on both axes, or { x, y } / [x, y] |
-| clip | false | Clip content inside the rounded border |
+| background | `none` | This Box's background |
+| radius | `0` | Scalar radius, { x, y }, or [x, y] radii |
+| align | `"start"` | Content alignment on both axes, or { x, y } / [x, y] |
+| clip | `false` | Clip content inside the rounded border |
 
-Missing named padding sides are zero. For example,
-`padding={{ left: em(1), right: em(1), top: px(8), bottom: px(8) }}`.
-Padding arrays, boolean padding, and a margin prop are not supported. Use
-another outer Box when you need outside spacing.
+Padding accepts full side names (`top`, `bottom`, `left`, `right`), short names
+(`t`, `b`, `l`, `r`), or horizontal/vertical defaults (`h`, `v`). These forms are
+equivalent:
+
+```jsx
+<Box padding={{ h: em(1), v: px(8) }} />
+<Box padding={[em(1), px(8)]} />
+<Box padding={{ t: px(8), b: px(8), l: em(1), r: em(1) }} />
+<Box padding={[px(8), px(8), em(1), em(1)]} />
+```
+
+Array order is `[h, v]` or `[t, b, l, r]`, not CSS order; other array lengths are rejected.
+Object forms may be mixed: full side names override short names, which override
+`h`/`v`. For example, `padding={{ h: em(1), l: 0 }}` leaves only right padding.
+Unspecified sides are zero. Each value accepts px/em lengths or raw fractions.
+Boolean padding and a margin prop are not supported. Use another outer Box when
+you need outside spacing.
 
 Alignment accepts "start", "center", "end", "stretch", or a fraction from 0 to 1.
 In an object or two-entry tuple, x and y can be set independently:

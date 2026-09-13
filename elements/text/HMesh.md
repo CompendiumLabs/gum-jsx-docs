@@ -2,6 +2,13 @@
 
 *Category*: plotting
 
+| Property | Default | Meaning |
+|---|---|---|
+| lim | `[0, 1]` | Directed domain used to place grid lines |
+| ticks | `5` | Target count or explicit values / labeled pairs |
+| interval | Automatic | Positive fixed tick step |
+| direction | `"x"` | Draw vertical lines; may be overridden |
+
 Grid lines at ticks using the count/explicit/interval rules of [Axis](./Axis.md).
 lim supplies the generation domain (default [0,1]).
 

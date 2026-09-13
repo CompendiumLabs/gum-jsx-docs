@@ -1,12 +1,12 @@
 // SymPoints uses the shared sampler.
 <Svg width={px(500)} height={px(320)}>
-  <Box padding={px(30)} background="white">
+  <Box padding={px(30)} background={white}>
     <Plot>
       <SymPoints
         fy={sin}
         xlim={[0, tau]}
         samples={17}
-        fill="#2563eb"
+        fill={blue}
         point_size={px(7)}
       />
     </Plot>

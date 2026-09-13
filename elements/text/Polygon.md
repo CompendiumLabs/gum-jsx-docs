@@ -2,6 +2,10 @@
 
 *Category*: geometry
 
+| Property | Default | Meaning |
+|---|---|---|
+| points | `[]` | Ordered local vertices joined and closed into a polygon |
+
 Polygon connects `points` in order and closes the path back to the first point.
 Points are `{ x, y }` objects or `[x, y]` tuples containing fractions, px, or em. Fractions use the
 polygon's own rectangle; the point list does not establish its layout size.
@@ -9,7 +13,7 @@ polygon's own rectangle; the point list does not establish its layout size.
 ```jsx
 <Polygon width={px(120)} height={px(100)}
   points={[[0.5, 0], [1, 1], [0, 1]]}
-  fill="#2c7567" stroke="none" />
+  fill={green} stroke={none} />
 ```
 
 Shared sizing and paint props work as on [Rect](./Rect.md). There is no default

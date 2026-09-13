@@ -10,12 +10,13 @@ layout descriptor. An ordinary primitive needs only a static layout method.
 ```ts
 import {
   Element, element_children, px, shape_size, make_fragment, make_rect, draw_rect,
+  green, none, red,
   type ElementProps, type LayoutQuery,
 } from 'gum-next-core';
 
 class Tile extends Element {
   static defaults: Partial<ElementProps> = {
-    width: px(80), height: px(40), fill: '#2c7567',
+    width: px(80), height: px(40), fill: green,
   };
 
   static layout(props: ElementProps, query: LayoutQuery) {
@@ -25,13 +26,13 @@ class Tile extends Element {
     return make_fragment({
       size,
       draw: [draw_rect(make_rect(0, 0, size.width, size.height), {
-        fill: query.style.fill, stroke: 'none', stroke_width: 0,
+        fill: query.style.fill, stroke: none, stroke_width: 0,
       })],
     });
   }
 }
 
-const tile = new Tile({ fill: 'tomato' });
+const tile = new Tile({ fill: red });
 ```
 
 `Element` is also available directly inside evaluated JSX: omit the imports and

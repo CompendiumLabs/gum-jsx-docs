@@ -2,6 +2,17 @@
 
 *Category*: plotting
 
+| Property | Default | Meaning |
+|---|---|---|
+| values | `[]` | Bar endpoints |
+| positions | Indices | Bar centers; must match `values` |
+| bases | `0` | Scalar, array, or callback for bar baselines |
+| bar_width | `0.8` | Scalar, array, or callback for widths in data units |
+| direction | `"horizontal"` | Vertical or horizontal bars |
+| radius | `0` | Corner radius in layout units |
+| styles | — | Per-bar style array or `(value, index) => style` callback |
+| space | Automatic | Use ambient data coordinates or local geometry |
+
 Draw bars from values. positions supplies centers (default indices starting at
 zero), bases defaults to zero, and bar_width to 0.8 data units. bases and
 bar_width accept a scalar, a same-length array, or (value,index) function.

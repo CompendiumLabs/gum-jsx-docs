@@ -7,11 +7,19 @@ polyline. Both heads follow the original route's endpoint directions.
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| start_head | false | Draw a head at the first point |
-| end_head | true | Draw a head at the last point |
-| head_size | px(9) | Head length, using layout units |
-| head_width | 0.65 | Full head width divided by its length |
+| from | `{ x: 0, y: 0 }` | Start point when `points` is omitted |
+| to | `{ x: 1, y: 1 }` | End point when `points` is omitted |
+| points | `from`, `to` | Full shaft route; overrides `from` and `to` |
+| curve | `false` | Connect the route with a spline |
+| tension | `1` | Spline tangent strength when `curve` is true |
+| radius | `0` | Rounded-corner radius for a non-curved route |
+| start_head | `false` | Draw a head at the first point |
+| end_head | `true` | Draw a head at the last point |
+| head_size | `px(9)` | Head length, using layout units |
+| head_width | `1.3` | Full head width divided by its length |
 | head_style | — | Overrides for head paint; the default fill matches the shaft stroke |
+| head_* | — | Flat overrides for fields in `head_style` |
+| space | Automatic | Use ambient data coordinates or local geometry |
 
 Use scoped props such as `head_fill={red}`, `head_stroke={none}`, or
 `head_stroke_width={px(2)}` to set head styles directly. They override matching

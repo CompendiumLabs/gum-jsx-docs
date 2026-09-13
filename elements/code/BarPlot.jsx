@@ -8,9 +8,9 @@ return (
       xlabel="Region"
       ylabel="Change (%)"
       xticks={enumerate(["North", "East", "Central", "South", "West"])}
-      styles={(value) => ({ fill: value < 0 ? "#e8793c" : "#0d9488" })}
+      styles={(value) => ({ fill: value < 0 ? red : green })}
       radius={px(4)}
-      background="white"
+      background={white}
       padding={{ x: 0.12, y: 0.1 }}
     >
       <CoordLine
@@ -18,7 +18,7 @@ return (
           { x: -0.6, y: 0 },
           { x: 4.6, y: 0 },
         ]}
-        stroke="#334155"
+        stroke={blue}
       />
     </BarPlot>
   </Svg>
