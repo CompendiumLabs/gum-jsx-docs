@@ -2,11 +2,12 @@ import { fileURLToPath } from 'node:url';
 
 // Content is located relative to the package, never the caller's working directory.
 const packageRoot = fileURLToPath(new URL('../', import.meta.url));
-const docsDir = fileURLToPath(new URL('../docs/', import.meta.url));
-const docsTextDir = fileURLToPath(new URL('../docs/text/', import.meta.url));
-const docsCodeDir = fileURLToPath(new URL('../docs/code/', import.meta.url));
-const galaDir = fileURLToPath(new URL('../gala/', import.meta.url));
-const galaTextDir = fileURLToPath(new URL('../gala/text/', import.meta.url));
-const galaCodeDir = fileURLToPath(new URL('../gala/code/', import.meta.url));
+const elementsDir = fileURLToPath(new URL('../elements/', import.meta.url));
+const elementsTextDir = fileURLToPath(new URL('../elements/text/', import.meta.url));
+const elementsCodeDir = fileURLToPath(new URL('../elements/code/', import.meta.url));
+const topicsDir = fileURLToPath(new URL('../topics/', import.meta.url));
+const topicsTextDir = fileURLToPath(new URL('../topics/text/', import.meta.url));
+const topicsCodeDir = fileURLToPath(new URL('../topics/code/', import.meta.url));
 
-export { packageRoot, docsDir, docsTextDir, docsCodeDir, galaDir, galaTextDir, galaCodeDir };
+export { packageRoot, elementsDir, elementsTextDir, elementsCodeDir,
+  topicsDir, topicsTextDir, topicsCodeDir };

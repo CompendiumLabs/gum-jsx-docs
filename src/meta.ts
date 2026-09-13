@@ -1,11 +1,12 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { docsDir, galaDir } from './dirs';
+import { elementsDir, topicsDir } from './dirs';
 
-type DocsEntry = Readonly<{ name: string; title: string; cat: string }>;
-type GalaEntry = Readonly<{ name: string; title: string }>;
-type GalaInfo = { tags: string[]; text: Record<string, string>; code: Record<string, string> };
-type DocsInfo = GalaInfo & { cats: Record<string, string[]> };
+type ElementEntry = Readonly<{ name: string; title: string; cat: string }>;
+type TopicEntry = Readonly<{ name: string; title: string; cat?: string }>;
+type CollectionInfo = { tags: string[]; text: Record<string, string>; code: Record<string, string> };
+type ElementsInfo = CollectionInfo & { cats: Record<string, string[]> };
+type TopicsInfo = CollectionInfo & { cats: Record<string, string[]> };
 
 const category = /^\*Category\*:[ \t]*(.+?)[ \t]*$/m;
 const stripCategory = /^\*Category\*:[ \t]*.*\r?\n(?:\r?\n)?/m;
@@ -38,7 +39,7 @@ function title(text: string, name: string): string {
 }
 
 // Derive the catalog from the files, as in gum-jsx-docs. No second manifest to maintain.
-function listDocs(dir = docsDir): DocsEntry[] {
+function listElements(dir = elementsDir): ElementEntry[] {
   return names(dir).map(name => {
     const text = read(dir, 'text', name);
     const cat = category.exec(text)?.[1];
@@ -48,43 +49,55 @@ function listDocs(dir = docsDir): DocsEntry[] {
     || a.name.localeCompare(b.name));
 }
 
-function listGala(dir = galaDir): GalaEntry[] {
-  return names(dir).map(name => ({ name, title: title(read(dir, 'text', name), name) }));
+function listTopics(dir = topicsDir): TopicEntry[] {
+  return names(dir).map(name => {
+    const text = read(dir, 'text', name);
+    const cat = category.exec(text)?.[1];
+    if (cat && !categories.includes(cat)) throw new Error(`${name} has an unknown *Category*: line`);
+    return { name, title: title(text, name), ...(cat ? { cat } : {}) };
+  }).sort((a, b) => (a.cat ? categories.indexOf(a.cat) : categories.length)
+    - (b.cat ? categories.indexOf(b.cat) : categories.length)
+    || a.name.localeCompare(b.name));
 }
 
-function getDocsText(name: string, dir = docsDir): string {
+function getElementText(name: string, dir = elementsDir): string {
   return read(dir, 'text', name).replace(stripCategory, '');
 }
-function getDocsCode(name: string, dir = docsDir): string { return read(dir, 'code', name); }
-function getGalaText(name: string, dir = galaDir): string { return read(dir, 'text', name); }
-function getGalaCode(name: string, dir = galaDir): string { return read(dir, 'code', name); }
+function getElementCode(name: string, dir = elementsDir): string { return read(dir, 'code', name); }
+function getTopicText(name: string, dir = topicsDir): string {
+  return read(dir, 'text', name).replace(stripCategory, '');
+}
+function getTopicCode(name: string, dir = topicsDir): string { return read(dir, 'code', name); }
 
-function getDocs(dir = docsDir): DocsInfo {
-  const entries = listDocs(dir);
+function getElements(dir = elementsDir): ElementsInfo {
+  const entries = listElements(dir);
   const cats: Record<string, string[]> = {};
   for (const { name, cat } of entries) (cats[cat] ??= []).push(name);
   const tags = entries.map(entry => entry.name);
   return { tags, cats,
-    text: Object.fromEntries(tags.map(name => [name, getDocsText(name, dir)])),
-    code: Object.fromEntries(tags.map(name => [name, getDocsCode(name, dir)])) };
+    text: Object.fromEntries(tags.map(name => [name, getElementText(name, dir)])),
+    code: Object.fromEntries(tags.map(name => [name, getElementCode(name, dir)])) };
 }
 
-function getGala(dir = galaDir): GalaInfo {
-  const tags = listGala(dir).map(entry => entry.name);
-  return { tags,
-    text: Object.fromEntries(tags.map(name => [name, getGalaText(name, dir)])),
-    code: Object.fromEntries(tags.map(name => [name, getGalaCode(name, dir)])) };
+function getTopics(dir = topicsDir): TopicsInfo {
+  const entries = listTopics(dir);
+  const cats: Record<string, string[]> = {};
+  for (const { name, cat } of entries) if (cat) (cats[cat] ??= []).push(name);
+  const tags = entries.map(entry => entry.name);
+  return { tags, cats,
+    text: Object.fromEntries(tags.map(name => [name, getTopicText(name, dir)])),
+    code: Object.fromEntries(tags.map(name => [name, getTopicCode(name, dir)])) };
 }
 
 // Preserve Markdown links; the viewer can resolve them relative to the source page.
-function prepareDocsPage(text: string, code: string): string {
+function prepareElementPage(text: string, code: string): string {
   return text.replace(stripCategory, '').trim() + '\n\n## Example\n\n'
     + '```jsx\n' + code.trim() + '\n```\n';
 }
-function prepareGalaPage(text: string, code: string): string {
-  return prepareDocsPage(text, code);
+function prepareTopicPage(text: string, code: string): string {
+  return prepareElementPage(text, code);
 }
 
-export { listDocs, getDocs, getDocsText, getDocsCode, prepareDocsPage };
-export { listGala, getGala, getGalaText, getGalaCode, prepareGalaPage };
-export type { DocsEntry, DocsInfo, GalaEntry, GalaInfo };
+export { listElements, getElements, getElementText, getElementCode, prepareElementPage };
+export { listTopics, getTopics, getTopicText, getTopicCode, prepareTopicPage };
+export type { CollectionInfo, ElementEntry, ElementsInfo, TopicEntry, TopicsInfo };

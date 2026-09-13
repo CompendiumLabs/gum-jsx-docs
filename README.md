@@ -1,30 +1,30 @@
 # gum-next-docs
 
 Markdown documentation and executable JSX examples for the current Gum rewrite.
-Start with [Gum](docs/text/Gum.md), [units](docs/text/Units.md), and
-[sizing](docs/text/Sizing.md). Coming from the original? Read
-[migration notes](docs/text/Migration.md) before reusing an old example.
+Start with [Gum](./topics/text/Gum.md), [units](./topics/text/Units.md), and
+[sizing](./topics/text/Sizing.md). Coming from the original? Read
+[migration notes](./topics/text/Migration.md) before reusing an old example.
 
-Basic plotting is available: start with [Plot](docs/text/Plot.md),
-[Graph](docs/text/Graph.md), and [Sampling](docs/text/Sampling.md), or try the
-[curve and band](gala/text/plot_wave.md), [bars](gala/text/plot_bars.md), and
-[vector field](gala/text/plot_field.md) showcases. The editor includes a Plotting
+Basic plotting is available: start with [Plot](./elements/text/Plot.md),
+[Graph](./elements/text/Graph.md), and [Sampling](./topics/text/Sampling.md), or try the
+[curve and band](./topics/text/plot_wave.md), [bars](./topics/text/plot_bars.md), and
+[vector field](./topics/text/plot_field.md) showcases. The editor includes a Plotting
 category alongside layout, geometry, and text.
 
-[Math helpers](docs/text/MathHelpers.md), [arrays](docs/text/Arrays.md),
-[vectors](docs/text/Vectors.md), [colors](docs/text/Colors.md), and
-[seeded random data](docs/text/Random.md) are built into JSX and exported for
+[Math helpers](./topics/text/MathHelpers.md), [arrays](./topics/text/Arrays.md),
+[vectors](./topics/text/Vectors.md), [colors](./topics/text/Colors.md), and
+[seeded random data](./topics/text/Random.md) are built into JSX and exported for
 host code. The examples use these helpers directly.
 
-This follows gum-org/gum-jsx-docs's paired-file structure:
+The two collections use the same paired-file structure:
 
 ```text
-docs/
-  text/<Name>.md       Reference page; category appears below its title
-  code/<Name>.jsx      Self-contained, runnable example of that page
-gala/
-  text/<name>.md       Showcase explanation
-  code/<name>.jsx      Complete showcase source
+elements/
+  text/<Name>.md       Element reference; category appears below its title
+  code/<Name>.jsx      Self-contained, runnable element example
+topics/
+  text/<name>.md       Conceptual guide or showcase explanation
+  code/<name>.jsx      Self-contained, runnable topic example
 src/                  Read-only catalog and page loaders
 scripts/check.ts      Validate links, coverage, and example rendering
 ```
@@ -34,35 +34,42 @@ There is no viewer, server, or Markdown renderer in this package. gum-next-edit'
 code/figure popups. There are no runtime package dependencies;
 gum-next-core is a development dependency for checking examples.
 
-## Reference
+## Elements
 
-- Getting started: [Gum](docs/text/Gum.md), [JSX](docs/text/JSX.md),
-  [Units](docs/text/Units.md), [Sizing](docs/text/Sizing.md),
-  [Style](docs/text/Style.md), [CLI](docs/text/CLI.md), [Migration](docs/text/Migration.md).
-- Layout: [Svg](docs/text/Svg.md), [Box](docs/text/Box.md),
-  [Frame](docs/text/Frame.md), [Fit](docs/text/Fit.md),
-  [Stack](docs/text/Stack.md), [HStack](docs/text/HStack.md),
-  [VStack](docs/text/VStack.md), [Spacer](docs/text/Spacer.md),
-  [Group](docs/text/Group.md).
-- Geometry: [Rect](docs/text/Rect.md), [RoundedRect](docs/text/RoundedRect.md),
-  [Square](docs/text/Square.md), [Circle](docs/text/Circle.md),
-  [Ellipse](docs/text/Ellipse.md), [Line](docs/text/Line.md),
-  [Polyline](docs/text/Polyline.md), [Polygon](docs/text/Polygon.md),
-  [Path](docs/text/Path.md), [Point values](docs/text/PointValues.md).
-- Text: [Text](docs/text/Text.md), [Span](docs/text/Span.md), [Fonts](docs/text/Fonts.md).
-- Embedding: [Rendering](docs/text/Rendering.md), [Custom elements](docs/text/CustomElements.md).
-- Numeric helpers: [Math](docs/text/MathHelpers.md), [Arrays](docs/text/Arrays.md),
-  [Vectors](docs/text/Vectors.md), [Colors](docs/text/Colors.md), [Random](docs/text/Random.md).
+- Layout: [Svg](./elements/text/Svg.md), [Box](./elements/text/Box.md),
+  [Frame](./elements/text/Frame.md), [Fit](./elements/text/Fit.md),
+  [HStack](./elements/text/HStack.md), [VStack](./elements/text/VStack.md),
+  [Spacer](./elements/text/Spacer.md), and [Group](./elements/text/Group.md).
+- Geometry: [Rect](./elements/text/Rect.md), [RoundedRect](./elements/text/RoundedRect.md),
+  [Square](./elements/text/Square.md), [Circle](./elements/text/Circle.md),
+  [Ellipse](./elements/text/Ellipse.md), [Line](./elements/text/Line.md),
+  [Polyline](./elements/text/Polyline.md), [Polygon](./elements/text/Polygon.md),
+  and [Path](./elements/text/Path.md).
+- Text: [Text](./elements/text/Text.md), [Span](./elements/text/Span.md),
+  [Bullets](./elements/text/Bullets.md), and [Slide](./elements/text/Slide.md).
 
-## Showcase
+## Topics
 
-- [Two columns](gala/text/two_columns.md): an explicitly allocated figure and paragraph.
-- [Shape cards](gala/text/shape_cards.md): reusable components and nested stacks.
-- [Positioned diagram](gala/text/positioned_diagram.md): labels, nodes, and connectors using Group.
-- [Sampled curve](gala/text/sampled_curve.md): plain JavaScript data and Polyline.
-- [Layout choices](gala/text/layout_choices.md): natural sizing versus explicit flex.
-- [Typography card](gala/text/typography_card.md): mixed fonts, wrapping, and preformatted text.
-- [Arrow caps and tips](gala/text/arrow_caps.md): thick shafts, fixed tips, and straight/curved/rounded routes.
+- Getting started: [Gum](./topics/text/Gum.md), [JSX](./topics/text/JSX.md),
+  [Units](./topics/text/Units.md), [Sizing](./topics/text/Sizing.md),
+  [Style](./topics/text/Style.md), [CLI](./topics/text/CLI.md), and
+  [Migration](./topics/text/Migration.md).
+- Geometry and layout: [Point values](./topics/text/PointValues.md),
+  [Coordinates](./topics/text/Coordinates.md), and [Stack](./topics/text/Stack.md).
+- Embedding: [Rendering](./topics/text/Rendering.md),
+  [Custom elements](./topics/text/CustomElements.md), and [Fonts](./topics/text/Fonts.md).
+- Numeric helpers: [Math](./topics/text/MathHelpers.md), [Arrays](./topics/text/Arrays.md),
+  [Vectors](./topics/text/Vectors.md), [Colors](./topics/text/Colors.md), [Random](./topics/text/Random.md).
+
+### Showcases
+
+- [Two columns](./topics/text/two_columns.md): an explicitly allocated figure and paragraph.
+- [Shape cards](./topics/text/shape_cards.md): reusable components and nested stacks.
+- [Positioned diagram](./topics/text/positioned_diagram.md): labels, nodes, and connectors using Group.
+- [Sampled curve](./topics/text/sampled_curve.md): plain JavaScript data and Polyline.
+- [Layout choices](./topics/text/layout_choices.md): natural sizing versus explicit flex.
+- [Typography card](./topics/text/typography_card.md): mixed fonts, wrapping, and preformatted text.
+- [Arrow caps and tips](./topics/text/arrow_caps.md): thick shafts, fixed tips, and straight/curved/rounded routes.
 
 ## Run an example
 
@@ -70,10 +77,10 @@ From the parent gum-next workspace:
 
 ```sh
 bun install
-bun run gum gum-next-docs/docs/code/Gum.jsx
-bun run gum gum-next-docs/gala/code/two_columns.jsx -o /tmp/two-columns.svg
-bun run gum gum-next-docs/gala/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
-bun run gum gum-next-docs/docs/code/VStack.jsx -f tree --stats
+bun run gum gum-next-docs/topics/code/Gum.jsx
+bun run gum gum-next-docs/topics/code/two_columns.jsx -o /tmp/two-columns.svg
+bun run gum gum-next-docs/topics/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
+bun run gum gum-next-docs/elements/code/VStack.jsx -f tree --stats
 bun --filter gum-next-docs check
 bun run typecheck
 ```
@@ -91,29 +98,29 @@ in a browser bundle:
 
 ```ts
 import {
-  getDocs, getGala, listDocs, getDocsText, getDocsCode,
-  prepareDocsPage, docsCodeDir,
+  getElements, getTopics, listElements, getElementText, getElementCode,
+  prepareElementPage, elementsCodeDir,
 } from 'gum-next-docs';
 
-const { tags, cats, text, code } = getDocs();
-const page = prepareDocsPage(text.Box!, code.Box!);
-const entries = listDocs(); // { name, title, cat }[]
-const gallery = getGala();  // { tags, text, code }
-const onePage = getDocsText('Box');
-const oneExample = getDocsCode('Box');
+const { tags, cats, text, code } = getElements();
+const page = prepareElementPage(text.Box!, code.Box!);
+const entries = listElements(); // { name, title, cat }[]
+const topics = getTopics();     // { tags, cats, text, code }
+const onePage = getElementText('Box');
+const oneExample = getElementCode('Box');
 ```
 
-getGalaText/getGalaCode, listGala, prepareGalaPage, and the docs/gala directory
-paths are also exported. Names are basenames, not paths. Catalog calls discover
-matching files each time; single-page reads do not load the rest of the collection.
-Text loaders remove the machine-readable category line. Page preparation appends
-a fenced JSX example and preserves relative Markdown links.
+getTopicText/getTopicCode, listTopics, prepareTopicPage, and the elements/topics
+directory paths are also exported. Names are basenames, not paths. Catalog calls
+discover matching files each time; single-page reads do not load the rest of the
+collection. Text loaders remove optional machine-readable category lines. Page
+preparation appends a fenced JSX example and preserves relative Markdown links.
 
-Reference categories are core, layout, geometry, plotting, text, and api. Keep each
-`*Category*: ...` line directly below the page's title. Gallery pages need only a
-title. A Markdown viewer should resolve relative links against the original text
-file and map them to its own routes, rather than requiring routes in the content.
-Raw files are exposed through the `./docs/*` and `./gala/*` package subpaths.
+Categories are core, layout, geometry, plotting, text, and api. Every element page
+needs a `*Category*: ...` line directly below its title; topic pages may include one.
+A Markdown viewer should resolve relative links against the original text file and
+map them to its own routes, rather than requiring routes in the content. Raw files
+are exposed through the `./elements/*` and `./topics/*` package subpaths.
 
 ## Contributing
 
