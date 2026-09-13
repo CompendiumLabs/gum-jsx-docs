@@ -14,14 +14,23 @@ Point arguments accept `{x,y}` or `[x,y]`; point lists can mix the two.
 Mapping results always have named `{x,y}` coordinates. See [Point values](PointValues.md)
 for the shared input convention and examples using zip and length tuples.
 
-A custom element reports bounds with the fourth define_element argument:
+A custom element reports bounds with a static method:
 
 ```ts
-const Mark = define_element('Mark', (props, query) => {
-  // Map data with query.coordinates and the selected pixel size here.
-  return make_fragment({ size: shape_size(query.request, query.sizing) });
-}, {}, { data_bounds: () => ({ xlim: [0, 10], ylim: [-1, 1] }) });
+class Mark extends Element {
+  static data_bounds(_props: ElementProps): DataBounds {
+    return { xlim: [0, 10], ylim: [-1, 1] };
+  }
+  static layout(props: ElementProps, query: LayoutQuery) {
+    // Map data with query.coordinates and the selected pixel size here.
+    return make_fragment({ size: shape_size(query.request, query.sizing) });
+  }
+}
 ```
+
+These helpers and types are exports from `gum-next-core`. The factory form
+`define_element` also accepts `data_bounds` in its fourth options argument.
+See [Custom elements](CustomElements.md) for both forms and inherited hooks.
 
 Ordinary containers contribute descendant bounds. A data_bounds callback is a
 boundary: returning null excludes the subtree. Graph and Plot use this to

@@ -1,13 +1,18 @@
 // A custom meter resolves its allocated size and emits two local pixel rectangles.
-const Meter = define_element(
-  "Meter",
-  (props, query) => {
+class Meter extends Element {
+  static defaults = { width: px(240), height: px(16), value: 0, fill: blue };
+
+  static normalize({ value = 0, ...props }) {
     if (element_children(props.children).length)
       throw new TypeError("Meter has no children");
-    if (!isFinite(props.value))
+    if (!isFinite(value))
       throw new TypeError("Meter value must be finite");
+    return { ...props, value: clamp(value) };
+  }
+
+  static layout(props, query) {
     const size = shape_size(query.request, query.sizing);
-    const value = clamp(props.value);
+    const { value } = props;
     const paint = (fill) => ({ fill, stroke: none, stroke_width: 0 });
     return make_fragment({
       size,
@@ -20,9 +25,12 @@ const Meter = define_element(
         ),
       ],
     });
-  },
-  { width: px(240), height: px(16), value: 0, fill: blue },
-);
+  }
+}
+
+class CompactMeter extends Meter {
+  static defaults = { width: px(160), height: px(10), fill: green };
+}
 
 return (
   <Svg>
@@ -35,6 +43,10 @@ return (
             <Text>{round(value * 100)}%</Text>
           </HStack>
         ))}
+        <HStack gap={px(12)} align="center">
+          <CompactMeter value={0.7} />
+          <Text>Inherited layout and normalization</Text>
+        </HStack>
       </VStack>
     </Box>
   </Svg>

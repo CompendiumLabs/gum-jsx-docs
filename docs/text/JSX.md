@@ -30,8 +30,10 @@ host code. Helpers such as `zip(xs, ys)` can supply point lists directly.
 
 ## Names and spelling
 
-The evaluator supplies the documented elements, `px`, `em`, path constructors,
-and selected custom-layout helpers. [Style constants](Style.md) such as `blue`,
+The evaluator supplies the documented elements, the `Element` base class, `px`,
+`em`, path constructors, and selected custom-layout helpers. Classes can extend
+`Element` directly in JSX; see [Custom elements](CustomElements.md).
+[Style constants](Style.md) such as `blue`,
 `red`, `green`, `yellow`, `purple`, `mono`, and `bold` are also built in.
 [Math helpers](MathHelpers.md) such as `sin`, `cos`, `exp`, `sqrt`, and `clamp`,
 [array helpers](Arrays.md) such as `range`, `linspace`, `zip`, and `enumerate`,

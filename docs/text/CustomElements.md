@@ -3,37 +3,123 @@
 *Category*: api
 
 Prefer a [functional JSX component](JSX.md) when existing elements can express
-the layout. Use define_element when you need a new primitive or layout policy.
-It creates an Element constructor from a name, layout callback, and optional
-default source props.
+the layout. Extend `Element` when you need a new primitive or layout policy.
+The inherited constructor handles the name, defaults, source ownership, and
+layout descriptor. An ordinary primitive needs only a static layout method.
 
 ```ts
 import {
-  define_element, shape_size, make_fragment, make_rect, draw_rect,
+  Element, element_children, px, shape_size, make_fragment, make_rect, draw_rect,
+  type ElementProps, type LayoutQuery,
 } from 'gum-next-core';
 
-const Tile = define_element('Tile', (props, query) => {
-  const size = shape_size(query.request, query.sizing);
-  return make_fragment({
-    size,
-    draw: [draw_rect(make_rect(0, 0, size.width, size.height), {
-      fill: query.style.fill, stroke: 'none', stroke_width: 0,
-    })],
-  });
-}, { fill: '#2c7567' });
+class Tile extends Element {
+  static defaults: Partial<ElementProps> = {
+    width: px(80), height: px(40), fill: '#2c7567',
+  };
+
+  static layout(props: ElementProps, query: LayoutQuery) {
+    if (element_children(props.children).length)
+      throw new TypeError('Tile has no children');
+    const size = shape_size(query.request, query.sizing);
+    return make_fragment({
+      size,
+      draw: [draw_rect(make_rect(0, 0, size.width, size.height), {
+        fill: query.style.fill, stroke: 'none', stroke_width: 0,
+      })],
+    });
+  }
+}
+
+const tile = new Tile({ fill: 'tomato' });
 ```
 
-The callback runs during layout, not construction. Source props are immutable
+`Element` is also available directly inside evaluated JSX: omit the imports and
+TypeScript annotations, define the class, and use `<Tile />`. A class defined in
+host code can be supplied through `evaluate(code, { scope: { Tile } })`.
+
+## Class hooks and defaults
+
+| Static member | Role |
+| --- | --- |
+| `defaults` | Optional source props, merged over inherited defaults |
+| `layout(props, query)` | Required behavior; returns a fragment during layout |
+| `normalize(input)` | Optional construction-time conversion to source props |
+| `data_bounds(props)` | Optional graph bounds without measurement |
+| `element_name` | Optional explicit diagnostic name; otherwise the subclass name is used |
+
+Defaults and hook references are captured on a class's first use, including use
+as an ancestor. Set them before constructing instances. Defaults are deeply
+copied; the caller's original records stay mutable. Each instance overrides the
+merged defaults, including explicit `undefined` values. Nested records are
+replaced rather than deep-merged.
+
+```ts
+class SmallTile extends Tile {
+  static defaults: Partial<ElementProps> = { width: px(32) };
+}
+// Retains Tile's height, fill, and layout; its diagnostic name is SmallTile.
+const small = new SmallTile();
+```
+
+In TypeScript, annotate overridable defaults as `Partial<Props>` so descendants
+can supply only the properties they change. A child inherits layout and optional
+hooks; an override replaces that hook. Hooks receive the concrete class as
+`this`, including when inherited. An explicit `element_name` belongs to the class
+that declares it; descendants normally receive their own class names. Bundles
+that rename classes should preserve class names or supply explicit names.
+
+The layout method runs during layout, not construction. Source props are immutable
 snapshots: plain records, arrays, primitive values, and Element references.
 Stored props cannot contain functions, font objects, host handles, or caches.
 Behavior belongs to the element type and resources belong to LayoutPass.
+The base constructor freezes the instance, so ordinary instance field
+initializers or assignments after `super()` cannot add mutable state.
 
-The optional fourth argument accepts normalize(input), which runs once during
-construction and returns the immutable source data. It can consume sampling or
-styling callbacks and expand child descriptions before layout. data_bounds(props)
-reports graphable data limits without measurement; see [Coordinates](Coordinates.md).
-define_component(name, build) instead adopts an existing element's description
-and protocol, with a new name and no extra layout wrapper.
+## Normalization and components
+
+`normalize(input)` runs once on raw constructor input, before source defaults
+are merged into its result. It can consume sampling or styling callbacks and
+expand child descriptions. Give the normalizer its own input fallbacks; source
+defaults are not passed into it. This order matches `define_element`.
+
+When the input differs from stored data, use `Element<SourceProps, InputProps>`:
+
+```ts
+type SourceProps = ElementProps & { points: readonly PointValue[] };
+type InputProps = ElementProps & { sample?: () => readonly PointValue[] };
+
+class SampledMark extends Element<SourceProps, InputProps> {
+  static normalize({ sample, ...props }: InputProps): SourceProps {
+    return { ...props, points: sample?.() ?? [] };
+  }
+  static data_bounds(props: SourceProps) {
+    return point_bounds(props.points);
+  }
+  static layout(props: SourceProps, query: LayoutQuery) {
+    // Map props.points with query.coordinates before drawing them.
+    return make_fragment({ size: shape_size(query.request, query.sizing) });
+  }
+}
+```
+
+Here `PointValue` and `point_bounds` are additional exports from `gum-next-core`.
+`data_bounds(props)` reports graphable data limits without measurement; see
+[Coordinates](Coordinates.md).
+
+`define_element(name, layout, defaults?, options?)` remains available and uses
+the same base-class machinery. Its defaults are captured when the factory is
+called; `options` accepts `normalize` and `data_bounds`:
+
+```ts
+const AnotherTile = define_element('AnotherTile', Tile.layout, Tile.defaults);
+```
+
+`define_component(name, build)` adopts an existing element's description and
+protocol, with a new name and no extra layout wrapper. It preserves the static
+layout and bounds behavior without retaining the original subclass or rerunning
+its normalizer. The low-level `new Element(type, props)` constructor remains
+available for explicit protocol adoption.
 
 ## The query contract
 
@@ -66,7 +152,8 @@ the current width, height, percentage reference, or coordinate context. Use ordi
 allocation-dependent geometry. Set a new resource version on a reused pass when
 external data changes; see [Fonts](Fonts.md) for an example.
 
-The runnable Meter defines a small custom leaf using only evaluator bindings.
+The runnable Meter defines a small custom leaf and a CompactMeter subclass using
+only evaluator bindings. Its normalizer validates and clamps the input once.
 Its drawings use the size actually allocated to it, and its value is explicit
 source data. It does not add an implicit growth policy to stacks.
 
