@@ -5,7 +5,8 @@ styles, baseline alignment, and a short preformatted block. All faces come
 from core's bundled font provider. No browser font stylesheet or rasterizer
 font registration is needed.
 
-The outer **Box** establishes font size and color for its descendants. **Span** changes
+The **Svg** establishes the base font size; descendant font sizes, gaps, and
+padding use ems. The outer **Box** sets the text color. **Span** changes
 only selected runs inside a paragraph. A separate **HStack** aligns three text
 elements by their baselines even though their sizes and families differ.
 Neither operation scales glyphs to fill available space.

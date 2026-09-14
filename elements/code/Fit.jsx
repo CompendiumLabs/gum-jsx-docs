@@ -1,13 +1,13 @@
 // Compare a title enlarged by contain with the same title kept at its original size.
-<Svg>
-  <Box padding={px(20)} background={lightgray}>
-    <HStack gap={px(20)}>
-      <VStack gap={px(8)}>
-        <Text font-size={px(14)}>contain</Text>
+<Svg font-size={px(16)}>
+  <Box padding={em(1.25)} background={lightgray}>
+    <HStack gap={em(1.25)}>
+      <VStack gap={em(0.5)}>
+        <Text font-size={em(0.875)}>contain</Text>
         <Frame
           width={px(220)}
           height={px(100)}
-          padding={px(12)}
+          padding={em(0.75)}
           border-color={blue}
         >
           <Fit mode="contain">
@@ -15,12 +15,12 @@
           </Fit>
         </Frame>
       </VStack>
-      <VStack gap={px(8)}>
-        <Text font-size={px(14)}>scale_down</Text>
+      <VStack gap={em(0.5)}>
+        <Text font-size={em(0.875)}>scale_down</Text>
         <Frame
           width={px(220)}
           height={px(100)}
-          padding={px(12)}
+          padding={em(0.75)}
           border-color={red}
         >
           <Fit mode="scale_down">

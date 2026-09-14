@@ -1,11 +1,10 @@
 // Mixed text styles, aligned baselines, and a preformatted block remain at fixed font sizes.
-<Svg width={px(680)}>
+<Svg width={px(680)} font-size={px(18)}>
   <Box
     width={1}
     padding={em(1.7)}
     background={slate}
     color={gray}
-    font-size={px(18)}
   >
     <VStack width={1} gap={em(1.2)}>
       <HStack width={1} font-family={mono} font-size={em(0.75)}>

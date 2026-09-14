@@ -25,10 +25,10 @@ Padding accepts full side names (`top`, `bottom`, `left`, `right`), short names
 equivalent:
 
 ```jsx
-<Box padding={{ h: em(1), v: px(8) }} />
-<Box padding={[em(1), px(8)]} />
-<Box padding={{ t: px(8), b: px(8), l: em(1), r: em(1) }} />
-<Box padding={[px(8), px(8), em(1), em(1)]} />
+<Box padding={{ h: em(1), v: em(0.5) }} />
+<Box padding={[em(1), em(0.5)]} />
+<Box padding={{ t: em(0.5), b: em(0.5), l: em(1), r: em(1) }} />
+<Box padding={[em(0.5), em(0.5), em(1), em(1)]} />
 ```
 
 Array order is `[h, v]` or `[t, b, l, r]`, not CSS order; other array lengths are rejected.

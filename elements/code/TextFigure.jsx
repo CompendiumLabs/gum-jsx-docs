@@ -1,13 +1,14 @@
 // A slide composes a measured title, figure, and caption at a stable type scale.
 return (
-  <Svg width={px(960)} height={px(540)}>
-    <Slide title="From samples to a figure" font-size={px(18)}>
+  <Svg width={px(960)} height={px(540)} font-size={px(18)}>
+    <Slide title="From samples to a figure" font-size={em(1)}>
       <TextFigure
         caption="A common sampler supports scalar functions and parametric curves."
         caption-color={blue}
-        caption-font-size={px(14)}
+        caption-font-size={em(7 / 9)}
       >
         <Plot
+          font-size={em(2 / 3)}
           height={px(325)}
           title="Sine and cosine"
           xlabel="Phase (rad)"

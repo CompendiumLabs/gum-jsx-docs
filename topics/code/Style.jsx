@@ -1,17 +1,16 @@
 // Inherit shape paint separately from text color, with local overrides.
-<Svg>
+<Svg font-size={px(20)}>
   <Box
-    padding={px(20)}
+    padding={em(1)}
     background={lightgray}
     color={slate}
     fill={blue}
     stroke={none}
     font-family={sans}
-    font-size={px(20)}
   >
-    <VStack gap={px(14)}>
+    <VStack gap={em(0.7)}>
       <Text>Text uses <Span color={red} font-weight={bold}>color</Span>.</Text>
-      <HStack gap={px(14)}>
+      <HStack gap={em(0.7)}>
         <Square width={px(64)} />
         <Circle width={px(64)} fill={red} />
         <RoundedRect

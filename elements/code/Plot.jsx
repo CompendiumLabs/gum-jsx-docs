@@ -5,8 +5,9 @@ const observations = linspace(0.4, 11.8, 15).map((x, i) => [
   wave(x) + 0.08 * cos(i * 3),
 ])
 return (
-  <Svg width={px(680)} height={px(420)}>
+  <Svg width={px(680)} height={px(420)} font-size={px(12)}>
     <Plot
+      font-size={em(1)}
       title="A damped oscillation"
       xlabel="Time (s)"
       ylabel="Amplitude"
@@ -14,7 +15,7 @@ return (
       ylim={[-1.3, 1.3]}
       xaxis-label-color={blue}
       title-font-weight={bold}
-      legend-label-font-size={px(11)}
+      legend-label-font-size={em(11 / 12)}
       legend={[
         { label: "Model", color: blue },
         { label: "Observations", kind: "point", color: red },

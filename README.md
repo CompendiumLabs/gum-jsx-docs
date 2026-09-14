@@ -135,8 +135,13 @@ are exposed through the `./elements/*` and `./topics/*` package subpaths.
 
 Add a Markdown page and same-named JSX file together. Begin the JSX with a short
 comment describing what it demonstrates. Prefer explicit sizes where allocation
-would otherwise be ambiguous, keep text readable, and use px/em for absolute
-lengths. Run the content check and inspect a PNG when changing a visual example.
+would otherwise be ambiguous and keep text readable. For examples with text, set
+the base `font-size` in pixels on **Svg**, then use `em(...)` for descendant font
+sizes, gaps, and padding. Elements with their own font defaults, such as **Plot**
+and **Slide**, need an explicit relative `font-size` to follow that base. Strokes,
+borders, corner radii, and fixed geometry can use pixels. Plot domain padding
+remains fractional. Run the content check and inspect a PNG when changing a
+visual example.
 
 These docs describe implemented behavior, not feature parity with old Gum.
 Development history and the porting inventory remain in the parent workspace's

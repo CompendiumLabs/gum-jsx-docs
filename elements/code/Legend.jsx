@@ -1,6 +1,6 @@
 // Legend badges and labels.
-<Svg width={px(480)} height={px(300)}>
-  <Box padding={px(30)}>
+<Svg width={px(480)} height={px(300)} font-size={px(16)}>
+  <Box padding={em(1.875)}>
     <Legend
       entries={[
         { label: "Prediction", color: blue },

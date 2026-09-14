@@ -36,7 +36,7 @@ const cards = [
     symbol: <Polygon aspect={1} points={penta} fill={green} stroke={none} />,
   },
 ]
-return <Svg width={px(760)}>
+return <Svg width={px(760)} font-size={px(16)}>
   <Box width={1} padding={em(2)} background={lightgray} color={slate}>
     <VStack width={1} gap={em(1)}>
       <Text font-family={mono} font-size={em(1)} color={blue}>COMPOSITION / 02</Text>

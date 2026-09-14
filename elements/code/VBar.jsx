@@ -1,7 +1,7 @@
 // One VBar with an explicit baseline.
-<Svg width={px(480)} height={px(300)}>
-  <Box padding={px(30)}>
-    <Plot padding={[0.1, 0.25]}>
+<Svg width={px(480)} height={px(300)} font-size={px(16)}>
+  <Box padding={em(1.875)}>
+    <Plot font-size={em(0.75)} padding={[0.1, 0.25]}>
       <VBar
         value={3}
         position={1}

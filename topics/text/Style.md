@@ -90,7 +90,7 @@ local to the owner and happens once during construction, before layout.
 
 **Text** options include font/paint, dimensions, wrap, whitespace, and `text-align`;
 content is supplied by the owner. For example, `title-wrap={false}` keeps a title
-on one line, and `legend-label-font-size={px(10)}` controls generated legend text.
+on one line, and `legend-label-font-size={em(0.85)}` controls generated legend text.
 
 Nested `*-style` objects remain supported. At the same scope, flat props override
 matching fields in the nested object. Shared settings supply defaults for more

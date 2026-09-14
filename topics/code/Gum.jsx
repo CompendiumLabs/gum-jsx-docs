@@ -1,9 +1,9 @@
 // A first diagram: a heading, two shapes, and a paragraph in a padded box.
-<Svg width={px(400)}>
-  <Box width={1} padding={px(20)} background={lightgray}>
-    <VStack gap={px(12)}>
-      <Text font-size={px(24)} font-weight={bold}>Hello, Gum.</Text>
-      <HStack gap={px(12)}>
+<Svg width={px(400)} font-size={px(16)}>
+  <Box width={1} padding={em(1.25)} background={lightgray}>
+    <VStack gap={em(0.75)}>
+      <Text font-size={em(1.5)} font-weight={bold}>Hello, Gum.</Text>
+      <HStack gap={em(0.75)}>
         <Square width={px(56)} fill={blue} stroke={none} />
         <Circle width={px(56)} fill={red} stroke={none} />
       </HStack>

@@ -8,7 +8,7 @@ input arrays and objects remain untouched. `repeat` repeats references rather
 than cloning its value.
 
 ```jsx
-<HStack gap={px(8)}>
+<HStack gap={em(0.5)}>
   {range(5).map(i => <Circle width={px(12 + i * 4)} fill={blue} />)}
 </HStack>
 ```

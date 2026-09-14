@@ -18,13 +18,13 @@ class Paragraphs extends Element {
   }
 }
 
-return <Svg width={px(768)} height={px(440)} color={slate}>
+return <Svg width={px(768)} height={px(440)} color={slate} font-size={px(16)}>
   <Paragraphs>
-    <Text font-size={px(28)} font-weight={bold}>One paragraph, two widths</Text>
-    <Text font-size={px(14)} color={slate}>Same source and prepared glyphs. Both columns use an 18px font.</Text>
-    <Text font-size={px(13)} font-weight={bold} color={blue}>408px allocation</Text>
-    <Text font-size={px(13)} font-weight={bold} color={blue}>224px allocation</Text>
-    <Text font-size={px(18)} line-height={em(1.45)}>
+    <Text font-size={em(1.75)} font-weight={bold}>One paragraph, two widths</Text>
+    <Text font-size={em(0.875)} color={slate}>Same source and prepared glyphs. Both columns use an 18px font.</Text>
+    <Text font-size={em(0.8125)} font-weight={bold} color={blue}>408px allocation</Text>
+    <Text font-size={em(0.8125)} font-weight={bold} color={blue}>224px allocation</Text>
+    <Text font-size={em(1.125)} line-height={em(1.45)}>
       {'A paragraph now answers a width offer with '}
       <Span font-weight={bold}>real glyph measurements.</Span>
       {' The words reflow, while the font size stays at 18 pixels. '}

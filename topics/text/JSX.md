@@ -46,7 +46,7 @@ becomes `_` before the element or function component receives its props. The
 documentation uses dashes consistently:
 
 ```jsx
-<Text font-size={px(20)} font-weight={bold}>Revenue</Text>
+<Text font-size={em(1.25)} font-weight={bold}>Revenue</Text>
 ```
 
 This also works for custom props such as `label-text` and boolean attributes

@@ -30,7 +30,7 @@ const Diagram = ({ ...attr }) => <HStack align="center" {...attr}>
   <Node title="Render" detail="SVG paths" color={green} width={0.7/3} />
 </HStack>
 
-return <Svg width={px(760)} height={px(400)}>
+return <Svg width={px(760)} height={px(400)} font-size={px(16)}>
   <Box background={slate} padding={em(2)} height={1} width={1}>
     <VStack gap={em(1.5)} height={1} width={1}>
       <Text font-family={mono} font-size={em(0.9)} color={blue}>POSITIONING / 03</Text>

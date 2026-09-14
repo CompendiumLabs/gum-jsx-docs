@@ -7,11 +7,11 @@ const waves = [
 const xs = linspace(0, tau, 16, false)
 const ys = xs.map(sin)
 const labels = ['0', 'pi/2', 'pi', '3pi/2', '2pi']
-return <Svg width={px(720)}>
-  <Box padding={px(24)} background={lightgray} color={slate}>
-    <VStack gap={px(16)} align="stretch">
-      <Text font-size={px(28)} font-weight={bold}>Math, directly in JSX</Text>
-      <Plot height={px(320)} xlim={[0, tau]} ylim={[-1.3, 1.3]}
+return <Svg width={px(720)} font-size={px(16)}>
+  <Box padding={em(1.5)} background={lightgray} color={slate}>
+    <VStack gap={em(1)} align="stretch">
+      <Text font-size={em(1.75)} font-weight={bold}>Math, directly in JSX</Text>
+      <Plot font-size={em(0.75)} height={px(320)} xlim={[0, tau]} ylim={[-1.3, 1.3]}
         xlabel="x (radians)" xticks={zip(range(5).map(i => i * pi / 2), labels)}
         legend={waves.map(({ label, color }) => ({ label, color }))}>
         {waves.map(({ fy, color }) => <SymLine fy={fy} xlim={[0, tau]}
@@ -19,7 +19,7 @@ return <Svg width={px(720)}>
         <Points points={zip(xs, ys)}
           point-size={px(6)} fill={blue} stroke={white} stroke-width={px(1)} />
       </Plot>
-      <Text font-family={mono} font-size={px(14)}>
+      <Text font-family={mono} font-size={em(0.875)}>
         {xs.length} periodic samples. Mean: {rounder(mean(ys), 3)}. RMS: {rounder(norm(ys) / sqrt(ys.length), 3)}.
       </Text>
     </VStack>

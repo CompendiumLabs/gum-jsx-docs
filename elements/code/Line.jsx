@@ -1,6 +1,6 @@
 // Stroke caps change the ends of otherwise identical horizontal line segments.
 const Rule = ({ cap, color }) => (
-  <HStack gap={px(16)} align="center">
+  <HStack gap={em(1)} align="center">
     <Text width={px(64)}>{cap}</Text>
     <Line
       width={px(240)}
@@ -14,9 +14,9 @@ const Rule = ({ cap, color }) => (
   </HStack>
 )
 return (
-  <Svg>
-    <Box padding={px(20)} background={lightgray}>
-      <VStack gap={px(16)}>
+  <Svg font-size={px(16)}>
+    <Box padding={em(1.25)} background={lightgray}>
+      <VStack gap={em(1)}>
         <Rule cap="butt" color={blue} />
         <Rule cap="round" color={red} />
         <Rule cap="square" color={green} />

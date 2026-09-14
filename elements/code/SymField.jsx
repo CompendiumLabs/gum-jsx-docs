@@ -1,7 +1,8 @@
 // Vector direction is mapped through the graph before fixed-size arrowheads are drawn.
 return (
-  <Svg width={px(600)} height={px(480)}>
+  <Svg width={px(600)} height={px(480)} font-size={px(12)}>
     <Plot
+      font-size={em(1)}
       title="Rotation field"
       xlabel="x"
       ylabel="y"

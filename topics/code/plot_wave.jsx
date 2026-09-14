@@ -5,8 +5,9 @@ const observations = linspace(0.4, 11.8, 15).map((x, i) => [
   wave(x) + 0.08 * cos(i * 3),
 ])
 return (
-  <Svg width={px(680)} height={px(420)}>
+  <Svg width={px(680)} height={px(420)} font-size={px(12)}>
     <Plot
+      font-size={em(1)}
       title="A damped oscillation"
       xlabel="Time (s)"
       ylabel="Amplitude"

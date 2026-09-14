@@ -1,5 +1,5 @@
 // Place two nodes and labels in a fixed canvas; the connector paints behind them.
-<Svg width={px(420)} height={px(240)}>
+<Svg width={px(420)} height={px(240)} font-size={px(16)}>
   <Group>
     <Rect fill={lightgray} stroke={none} />
     <Line

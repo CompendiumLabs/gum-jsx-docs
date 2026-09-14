@@ -1,8 +1,8 @@
 // Reusable components, dashed JSX attributes, and text whitespace.
 const Swatch = ({ color, label }) => (
-  <VStack gap={px(8)}>
+  <VStack gap={em(0.5)}>
     <Square width={px(64)} fill={color} stroke={none} />
-    <Text font-size={px(14)}>{label}</Text>
+    <Text font-size={em(0.875)}>{label}</Text>
   </VStack>
 )
 const swatches = [
@@ -13,13 +13,13 @@ const swatches = [
   { color: purple, label: "Purple" },
 ]
 return (
-  <Svg>
-    <Box padding={px(20)} background={lightgray}>
-      <VStack gap={px(20)}>
-        <Text font-size={px(22)} font-weight={bold}>
+  <Svg font-size={px(16)}>
+    <Box padding={em(1.25)} background={lightgray}>
+      <VStack gap={em(1.25)}>
+        <Text font-size={em(1.375)} font-weight={bold}>
           A label without surrounding blank lines
         </Text>
-        <HStack gap={px(24)}>
+        <HStack gap={em(1.5)}>
           {swatches.map((swatch) => (
             <Swatch {...swatch} />
           ))}
@@ -28,7 +28,7 @@ return (
           Hello <Span font-weight={bold} color={blue}>world</Span>
           This internal line break remains.
         </Text>
-        <Frame padding={px(8)} border-color={blue}>
+        <Frame padding={em(0.5)} border-color={blue}>
           <Text whitespace="pre" font-family={mono} wrap={false}>
             {'  Exact spaces  \n  and a final blank line.\n'}
           </Text>

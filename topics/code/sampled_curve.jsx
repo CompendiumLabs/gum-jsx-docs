@@ -7,11 +7,11 @@ const points = linspace(0, 8, 101).map((t) => [
   mapY(exp(-0.24 * t) * sin(2.5 * t)),
 ])
 return (
-  <Svg width={px(720)}>
-    <Box width={1} padding={px(28)} background={lightgray} color={slate}>
-      <VStack width={1} gap={px(16)}>
-        <Text font-family={mono} font-size={px(14)} color={blue}>DATA / 04</Text>
-        <Text font-size={px(30)} font-weight={bold}>A damped oscillation</Text>
+  <Svg width={px(720)} font-size={px(16)}>
+    <Box width={1} padding={em(1.75)} background={lightgray} color={slate}>
+      <VStack width={1} gap={em(1)}>
+        <Text font-family={mono} font-size={em(0.875)} color={blue}>DATA / 04</Text>
+        <Text font-size={em(1.875)} font-weight={bold}>A damped oscillation</Text>
         <Group height={px(300)}>
           {range(-1, 2).map((value) => (
             <>
@@ -22,7 +22,7 @@ return (
                 stroke-width={px(1)}
               />
               <Text x={px(44)} y={mapY(value)} anchor={[1, 0.5]}
-                font-family={mono} font-size={px(12)} color={slate}>{value}</Text>
+                font-family={mono} font-size={em(0.75)} color={slate}>{value}</Text>
             </>
           ))}
           <Line
@@ -52,12 +52,12 @@ return (
             ))}
           {range(0, 9, 2).map((value) => (
             <Text x={mapX(value)} y={px(260)} anchor={[0.5, 0]}
-              font-family={mono} font-size={px(12)} color={slate}>{value}</Text>
+              font-family={mono} font-size={em(0.75)} color={slate}>{value}</Text>
           ))}
-          <Text x={px(648)} y={px(260)} font-size={px(12)} font-style="italic">t</Text>
+          <Text x={px(648)} y={px(260)} font-size={em(0.75)} font-style="italic">t</Text>
         </Group>
-        <Text font-family={mono} font-size={px(16)}>exp(-0.24t) sin(2.5t)</Text>
-        <Text font-size={px(14)} color={slate}>101 samples. Explicit domains, axes, and labels. Just geometry and JavaScript.</Text>
+        <Text font-family={mono} font-size={em(1)}>exp(-0.24t) sin(2.5t)</Text>
+        <Text font-size={em(0.875)} color={slate}>101 samples. Explicit domains, axes, and labels. Just geometry and JavaScript.</Text>
       </VStack>
     </Box>
   </Svg>

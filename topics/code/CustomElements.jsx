@@ -33,17 +33,17 @@ class CompactMeter extends Meter {
 }
 
 return (
-  <Svg>
-    <Box padding={px(24)} background={lightgray}>
-      <VStack gap={px(12)}>
-        <Text font-size={px(22)} font-weight={bold}>A custom leaf</Text>
+  <Svg font-size={px(16)}>
+    <Box padding={em(1.5)} background={lightgray}>
+      <VStack gap={em(0.75)}>
+        <Text font-size={em(1.375)} font-weight={bold}>A custom leaf</Text>
         {[0.25, 0.6, 0.9].map((value) => (
-          <HStack gap={px(12)} align="center">
+          <HStack gap={em(0.75)} align="center">
             <Meter value={value} />
             <Text>{round(value * 100)}%</Text>
           </HStack>
         ))}
-        <HStack gap={px(12)} align="center">
+        <HStack gap={em(0.75)} align="center">
           <CompactMeter value={0.7} />
           <Text>Inherited layout and normalization</Text>
         </HStack>

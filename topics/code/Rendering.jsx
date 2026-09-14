@@ -2,7 +2,7 @@
 const Stage = ({ label, color }) => (
   <Frame
     width={px(120)}
-    padding={px(14)}
+    padding={em(0.875)}
     border-color={color}
     background={white}
     radius={px(8)}
@@ -11,9 +11,9 @@ const Stage = ({ label, color }) => (
   </Frame>
 )
 return (
-  <Svg>
-    <Box padding={px(20)} background={lightgray}>
-      <HStack gap={px(12)} align="center">
+  <Svg font-size={px(16)}>
+    <Box padding={em(1.25)} background={lightgray}>
+      <HStack gap={em(0.75)} align="center">
         <Stage label="Source" color={blue} />
         <Text>→</Text>
         <Stage label="Fragment" color={red} />
