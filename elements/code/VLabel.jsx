@@ -5,4 +5,4 @@
       <VLabel lim={[0, 4]} value={2} label="Midpoint" />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

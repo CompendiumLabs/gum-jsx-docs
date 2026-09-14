@@ -27,20 +27,20 @@ files load lazily on first use. Browser hosts should preload the needed family
 before layout and arrange for the bundled font assets to be served:
 
 ```ts
-import { Fonts, LayoutPass, sans, regular } from 'gum-next-core';
+import { Fonts, LayoutPass, sans, regular } from 'gum-next-core'
 
-const fonts = new Fonts();
-await fonts.load(sans); // Omit the family to load all bundled faces.
-const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } });
+const fonts = new Fonts()
+await fonts.load(sans) // Omit the family to load all bundled faces.
+const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } })
 ```
 
 For your own font, register the bytes of an individual face, not a font
 collection. This Bun example uses an application-provided file:
 
 ```ts
-const bytes = await Bun.file('./assets/MyFont-Regular.ttf').arrayBuffer();
-fonts.register('My Font', bytes, { weight: regular, style: 'normal' });
-pass.set_resource('fonts', fonts, fonts.version);
+const bytes = await Bun.file('./assets/MyFont-Regular.ttf').arrayBuffer()
+fonts.register('My Font', bytes, { weight: regular, style: 'normal' })
+pass.set_resource('fonts', fonts, fonts.version)
 ```
 
 register accepts ArrayBuffer or Uint8Array and owns a copy. Registration bumps

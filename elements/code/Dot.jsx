@@ -9,4 +9,4 @@
       stroke_width={px(3)}
     />
   </Box>
-</Svg>;
+</Svg>

@@ -5,4 +5,4 @@
       <Text>Text and graphics share a layout protocol.</Text>
     </TitleFrame>
   </Box>
-</Svg>;
+</Svg>

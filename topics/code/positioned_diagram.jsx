@@ -18,7 +18,7 @@ const Node = ({ x, title, detail, color }) => (
       <Text font_size={px(14)} color={white}>{detail}</Text>
     </VStack>
   </Frame>
-);
+)
 const Arrow = ({ from, to }) => (
   <>
     <Line
@@ -42,7 +42,7 @@ const Arrow = ({ from, to }) => (
       stroke={none}
     />
   </>
-);
+)
 return (
   <Svg width={px(760)} height={px(400)}>
     <Group>
@@ -59,4 +59,4 @@ return (
       <Text x={px(36)} y={px(340)} width={px(688)} font_size={px(15)} color={white}>Positions are explicit. Text remains text-sized. The renderer receives finished geometry.</Text>
     </Group>
   </Svg>
-);
+)

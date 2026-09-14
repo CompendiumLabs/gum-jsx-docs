@@ -6,4 +6,4 @@
       <Rect aspect={2} fill={red} stroke={none} />
     </VStack>
   </Box>
-</Svg>;
+</Svg>

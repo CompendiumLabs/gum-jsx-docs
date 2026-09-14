@@ -5,4 +5,4 @@
       <Text font_size={px(20)}>320 by 180</Text>
     </Frame>
   </Box>
-</Svg>;
+</Svg>

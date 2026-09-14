@@ -1,5 +1,5 @@
 // A data-domain palette and a white-to-blue interpolation ramp.
-const paint = palette(blue, red, [0, 8]);
+const paint = palette(blue, red, [0, 8])
 return <Svg>
   <Box padding={px(24)} background={lightgray}>
     <VStack gap={px(16)}>
@@ -19,4 +19,4 @@ return <Svg>
       </HStack>
     </VStack>
   </Box>
-</Svg>;
+</Svg>

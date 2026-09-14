@@ -14,7 +14,7 @@ const Card = ({ title, note, color, symbol }) => (
       <Text line_height={em(1.4)}>{note}</Text>
     </VStack>
   </Frame>
-);
+)
 const cards = [
   {
     title: "Circle",
@@ -70,7 +70,7 @@ const cards = [
       />
     ),
   },
-];
+]
 return (
   <Svg width={px(760)}>
     <Box width={1} padding={px(28)} background={lightgray} color={slate}>
@@ -85,4 +85,4 @@ return (
       </VStack>
     </Box>
   </Svg>
-);
+)

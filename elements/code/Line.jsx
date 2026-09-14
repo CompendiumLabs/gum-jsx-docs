@@ -12,7 +12,7 @@ const Rule = ({ cap, color }) => (
       stroke_linecap={cap}
     />
   </HStack>
-);
+)
 return (
   <Svg>
     <Box padding={px(20)} background={lightgray}>
@@ -23,4 +23,4 @@ return (
       </VStack>
     </Box>
   </Svg>
-);
+)

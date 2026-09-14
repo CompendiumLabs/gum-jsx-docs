@@ -5,4 +5,4 @@
       <Mesh2D xlim={[0, 4]} ylim={[0, 4]} />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

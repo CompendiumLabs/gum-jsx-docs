@@ -12,4 +12,4 @@
       </Attach>
     </Group>
   </Box>
-</Svg>;
+</Svg>

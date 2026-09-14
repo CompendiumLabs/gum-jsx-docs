@@ -9,4 +9,4 @@
       />
     </Plot>
   </Box>
-</Svg>;
+</Svg>

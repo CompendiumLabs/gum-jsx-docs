@@ -1,6 +1,6 @@
 // Evenly spaced angles and polar coordinates generate regular polygons.
 const regular = (count) =>
-  linspace(-90, 270, count, false).map((angle) => polard(angle, 0.45, [0.5, 0.5]));
+  linspace(-90, 270, count, false).map((angle) => polard(angle, 0.45, [0.5, 0.5]))
 return (
   <Svg>
     <Box padding={px(20)} background={lightgray}>
@@ -29,4 +29,4 @@ return (
       </HStack>
     </Box>
   </Svg>
-);
+)

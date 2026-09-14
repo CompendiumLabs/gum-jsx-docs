@@ -6,4 +6,4 @@
       <OuterLabel offset={px(8)} label="Outside the frame" />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

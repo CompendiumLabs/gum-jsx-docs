@@ -7,9 +7,9 @@ by default. Re-evaluating the same document gives the same samples. The host's
 random stream, other evaluations, layout, and SVG IDs do not change those draws.
 
 ```jsx
-setSeed(7);
-const points = range(100).map(() => [normal(), normal()]);
-return <Plot><Points points={points} fill={blue} /></Plot>;
+setSeed(7)
+const points = range(100).map(() => [normal(), normal()])
+return <Plot><Points points={points} fill={blue} /></Plot>
 ```
 
 | Call | Meaning |

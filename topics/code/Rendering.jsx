@@ -9,7 +9,7 @@ const Stage = ({ label, color }) => (
   >
     <Text text_align="center" width={1} color={color} font_weight={bold}>{label}</Text>
   </Frame>
-);
+)
 return (
   <Svg>
     <Box padding={px(20)} background={lightgray}>
@@ -22,4 +22,4 @@ return (
       </HStack>
     </Box>
   </Svg>
-);
+)

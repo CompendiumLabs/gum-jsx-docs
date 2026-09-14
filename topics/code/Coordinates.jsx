@@ -4,7 +4,7 @@ const samples = [
   [3, 4],
   [6, 3],
   [8, 7],
-];
+]
 return (
   <Svg width={px(540)} height={px(330)}>
     <Box padding={px(28)} background={white}>
@@ -22,4 +22,4 @@ return (
       </Graph>
     </Box>
   </Svg>
-);
+)

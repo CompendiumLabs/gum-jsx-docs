@@ -1,7 +1,7 @@
 // Sequences become categorical ticks, bars, and a reshaped text table.
-const indices = range(1, 7);
-const values = indices.map(n => pow(n, 2));
-const rows = reshape(values, [2, 3]);
+const indices = range(1, 7)
+const values = indices.map(n => pow(n, 2))
+const rows = reshape(values, [2, 3])
 return <Svg width={px(600)}>
   <Box padding={px(24)} background={lightgray}>
     <VStack gap={px(16)} align="stretch">
@@ -18,4 +18,4 @@ return <Svg width={px(600)}>
       </HStack>
     </VStack>
   </Box>
-</Svg>;
+</Svg>

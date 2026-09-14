@@ -21,4 +21,4 @@
       </VStack>
     </HStack>
   </Frame>
-</Svg>;
+</Svg>

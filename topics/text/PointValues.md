@@ -34,11 +34,11 @@ for the distinction between placing an element and arranging its contents.
 [Array helpers](./Arrays.md) can feed point lists directly:
 
 ```jsx
-const xs = linspace(0, tau, 33);
+const xs = linspace(0, tau, 33)
 return <Plot>
   <CoordLine points={zip(xs, xs.map(sin))} />
   <Points points={xs.map(x => [x, cos(x)])} />
-</Plot>;
+</Plot>
 ```
 
 Null and nonfinite coordinates keep their existing gap behavior: lines and fills
@@ -56,11 +56,11 @@ allows px/em coordinates. For a separately declared array, annotate its point
 type or use `as const` to retain tuple lengths:
 
 ```ts
-import { Points, Line, px } from 'gum-next-core';
-import type { PointValue, PositionValue } from 'gum-next-core';
+import { Points, Line, px } from 'gum-next-core'
+import type { PointValue, PositionValue } from 'gum-next-core'
 
-const data: PointValue[] = [[0, 1], [2, 3]];
-const endpoint: PositionValue = [px(12), 0.5];
-const markers = new Points({ points: data });
-const line = new Line({ from: endpoint, to: [1, 0.5] });
+const data: PointValue[] = [[0, 1], [2, 3]]
+const endpoint: PositionValue = [px(12), 0.5]
+const markers = new Points({ points: data })
+const line = new Line({ from: endpoint, to: [1, 0.5] })
 ```

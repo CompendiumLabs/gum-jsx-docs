@@ -1,13 +1,13 @@
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath } from 'node:url'
 
 // Content is located relative to the package, never the caller's working directory.
-const packageRoot = fileURLToPath(new URL('../', import.meta.url));
-const elementsDir = fileURLToPath(new URL('../elements/', import.meta.url));
-const elementsTextDir = fileURLToPath(new URL('../elements/text/', import.meta.url));
-const elementsCodeDir = fileURLToPath(new URL('../elements/code/', import.meta.url));
-const topicsDir = fileURLToPath(new URL('../topics/', import.meta.url));
-const topicsTextDir = fileURLToPath(new URL('../topics/text/', import.meta.url));
-const topicsCodeDir = fileURLToPath(new URL('../topics/code/', import.meta.url));
+const packageRoot = fileURLToPath(new URL('../', import.meta.url))
+const elementsDir = fileURLToPath(new URL('../elements/', import.meta.url))
+const elementsTextDir = fileURLToPath(new URL('../elements/text/', import.meta.url))
+const elementsCodeDir = fileURLToPath(new URL('../elements/code/', import.meta.url))
+const topicsDir = fileURLToPath(new URL('../topics/', import.meta.url))
+const topicsTextDir = fileURLToPath(new URL('../topics/text/', import.meta.url))
+const topicsCodeDir = fileURLToPath(new URL('../topics/code/', import.meta.url))
 
 export { packageRoot, elementsDir, elementsTextDir, elementsCodeDir,
-  topicsDir, topicsTextDir, topicsCodeDir };
+  topicsDir, topicsTextDir, topicsCodeDir }

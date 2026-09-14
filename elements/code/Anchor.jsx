@@ -7,4 +7,4 @@
       </Anchor>
     </Group>
   </Box>
-</Svg>;
+</Svg>

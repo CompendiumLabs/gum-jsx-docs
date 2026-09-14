@@ -4,14 +4,14 @@ const Swatch = ({ color, label }) => (
     <Square width={px(64)} fill={color} stroke={none} />
     <Text font-size={px(14)}>{label}</Text>
   </VStack>
-);
+)
 const swatches = [
   { color: blue, label: "Blue" },
   { color: red, label: "Red" },
   { color: green, label: "Green" },
   { color: yellow, label: "Yellow" },
   { color: purple, label: "Purple" },
-];
+]
 return (
   <Svg>
     <Box padding={px(20)} background={lightgray}>
@@ -36,4 +36,4 @@ return (
       </VStack>
     </Box>
   </Svg>
-);
+)

@@ -39,4 +39,4 @@
       <Text font_size={px(14)} color={white}>Glyph outlines travel with the SVG; font files stay at layout time.</Text>
     </VStack>
   </Box>
-</Svg>;
+</Svg>

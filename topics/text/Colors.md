@@ -7,8 +7,8 @@ returns a function that maps numeric data to those colors. Both are available
 in JSX and as named imports.
 
 ```js
-const paint = palette(blue, red, [-1, 1]);
-const midpoint = interp(white, blue, 0.5);
+const paint = palette(blue, red, [-1, 1])
+const midpoint = interp(white, blue, 0.5)
 ```
 
 Colors must use #rgb, #rgba, #rrggbb, or #rrggbbaa notation. Gum's named color

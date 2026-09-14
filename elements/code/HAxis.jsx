@@ -5,4 +5,4 @@
       <HAxis lim={[0, 4]} ticks={[0, 1, 2, 3, 4]} />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

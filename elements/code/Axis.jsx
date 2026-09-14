@@ -17,4 +17,4 @@
       <VAxis lim={[0, 1]} />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

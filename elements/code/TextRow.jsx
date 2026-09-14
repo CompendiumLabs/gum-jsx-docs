@@ -6,4 +6,4 @@
       <Text color={blue}>A shared layout.</Text>
     </TextRow>
   </Box>
-</Svg>;
+</Svg>

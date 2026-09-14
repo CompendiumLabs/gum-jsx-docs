@@ -1,11 +1,11 @@
 // Sample a damped oscillation and explicitly map its domain into a small chart.
-const plot = { left: 64, top: 24, width: 560, height: 224 };
-const mapX = (value) => px(plot.left + plot.width * rescale(value, [0, 8]));
-const mapY = (value) => px(plot.top + plot.height * rescale(value, [1, -1]));
+const plot = { left: 64, top: 24, width: 560, height: 224 }
+const mapX = (value) => px(plot.left + plot.width * rescale(value, [0, 8]))
+const mapY = (value) => px(plot.top + plot.height * rescale(value, [1, -1]))
 const points = linspace(0, 8, 101).map((t) => [
   mapX(t),
   mapY(exp(-0.24 * t) * sin(2.5 * t)),
-]);
+])
 return (
   <Svg width={px(720)}>
     <Box width={1} padding={px(28)} background={lightgray} color={slate}>
@@ -61,4 +61,4 @@ return (
       </VStack>
     </Box>
   </Svg>
-);
+)

@@ -19,11 +19,11 @@ A custom element reports bounds with a static method:
 ```ts
 class Mark extends Element {
   static data_bounds(_props: ElementProps): DataBounds {
-    return { xlim: [0, 10], ylim: [-1, 1] };
+    return { xlim: [0, 10], ylim: [-1, 1] }
   }
   static layout(props: ElementProps, query: LayoutQuery) {
     // Map data with query.coordinates and the selected pixel size here.
-    return make_fragment({ size: shape_size(query.request, query.sizing) });
+    return make_fragment({ size: shape_size(query.request, query.sizing) })
   }
 }
 ```

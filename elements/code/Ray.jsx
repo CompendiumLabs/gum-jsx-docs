@@ -11,4 +11,4 @@
       />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

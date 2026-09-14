@@ -5,4 +5,4 @@
       <Mesh lim={[0, 4]} ticks={5} />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

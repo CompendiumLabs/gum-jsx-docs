@@ -31,4 +31,4 @@ return (
       </TextFigure>
     </Slide>
   </Svg>
-);
+)

@@ -22,4 +22,4 @@
       </VStack>
     </HStack>
   </Box>
-</Svg>;
+</Svg>

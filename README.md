@@ -100,14 +100,14 @@ in a browser bundle:
 import {
   getElements, getTopics, listElements, getElementText, getElementCode,
   prepareElementPage, elementsCodeDir,
-} from 'gum-next-docs';
+} from 'gum-next-docs'
 
-const { tags, cats, text, code } = getElements();
-const page = prepareElementPage(text.Box!, code.Box!);
-const entries = listElements(); // { name, title, cat }[]
-const topics = getTopics();     // { tags, cats, text, code }
-const onePage = getElementText('Box');
-const oneExample = getElementCode('Box');
+const { tags, cats, text, code } = getElements()
+const page = prepareElementPage(text.Box!, code.Box!)
+const entries = listElements() // { name, title, cat }[]
+const topics = getTopics()     // { tags, cats, text, code }
+const onePage = getElementText('Box')
+const oneExample = getElementCode('Box')
 ```
 
 getTopicText/getTopicCode, listTopics, prepareTopicPage, and the elements/topics

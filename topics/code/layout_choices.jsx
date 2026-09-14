@@ -14,7 +14,7 @@ const Band = ({ title, children }) => (
       </HStack>
     </Frame>
   </VStack>
-);
+)
 return (
   <Svg width={px(680)}>
     <Box width={1} padding={px(28)} background={lightgray} color={slate}>
@@ -37,4 +37,4 @@ return (
       </VStack>
     </Box>
   </Svg>
-);
+)

@@ -29,7 +29,7 @@ empty array. Zero/nonfinite steps and a step too small to advance are errors.
 for circles and other periodic data without a duplicate closing sample:
 
 ```js
-const vertices = linspace(0, tau, 12, false).map(angle => polar(angle));
+const vertices = linspace(0, tau, 12, false).map(angle => polar(angle))
 ```
 
 Bounds must be finite; counts are integers from 0 to 100000. Generated ranges

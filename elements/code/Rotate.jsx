@@ -5,4 +5,4 @@
       <Text font_size={px(30)} font_weight={700}>Rotated text</Text>
     </Rotate>
   </Box>
-</Svg>;
+</Svg>

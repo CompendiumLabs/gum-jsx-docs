@@ -5,4 +5,4 @@
       <Rect width={px(240)} height={px(110)} fill={white} stroke={blue} />
     </TransformBox>
   </Box>
-</Svg>;
+</Svg>

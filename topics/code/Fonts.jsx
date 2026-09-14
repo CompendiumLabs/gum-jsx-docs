@@ -7,7 +7,7 @@ const Family = ({ name, color }) => (
     ))}
     <Text font_size={px(22)} font_style="italic">Italic request</Text>
   </VStack>
-);
+)
 return (
   <Svg>
     <Box padding={px(24)} background={lightgray}>
@@ -17,4 +17,4 @@ return (
       </HStack>
     </Box>
   </Svg>
-);
+)

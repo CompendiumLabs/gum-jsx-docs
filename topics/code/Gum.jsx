@@ -10,4 +10,4 @@
       <Text text="Shapes resize. Text keeps its font size. Stacks arrange the result." />
     </VStack>
   </Box>
-</Svg>;
+</Svg>

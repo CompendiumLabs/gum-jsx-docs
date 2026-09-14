@@ -1,7 +1,7 @@
 // Seeded normal samples stay identical across rerenders and viewport changes.
-setSeed(7);
-const points = range(120).map(() => [normal(), normal()]);
-const center = [mean(points.map(p => p[0])), mean(points.map(p => p[1]))];
+setSeed(7)
+const points = range(120).map(() => [normal(), normal()])
+const center = [mean(points.map(p => p[0])), mean(points.map(p => p[1]))]
 return <Svg width={px(600)}>
   <Box padding={px(24)} background={lightgray}>
     <VStack gap={px(16)} align="stretch">
@@ -16,4 +16,4 @@ return <Svg width={px(600)}>
       </Text>
     </VStack>
   </Box>
-</Svg>;
+</Svg>

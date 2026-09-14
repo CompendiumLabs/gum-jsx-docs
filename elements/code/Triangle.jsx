@@ -3,4 +3,4 @@
   <Box padding={px(30)} background={white}>
     <Triangle fill={blue} stroke={blue} stroke_width={px(3)} />
   </Box>
-</Svg>;
+</Svg>

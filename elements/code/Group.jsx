@@ -27,4 +27,4 @@
     <Text x={0.2} y={0.72} anchor={[0.5, 0.5]}>Source</Text>
     <Text x={0.8} y={0.72} anchor={['center', 'center']}>Result</Text>
   </Group>
-</Svg>;
+</Svg>

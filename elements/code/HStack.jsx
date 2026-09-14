@@ -11,4 +11,4 @@
       <Square width={px(40)} fill={blue} stroke={none} align-self="end" />
     </HStack>
   </Frame>
-</Svg>;
+</Svg>

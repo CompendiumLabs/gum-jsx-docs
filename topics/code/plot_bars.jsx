@@ -1,5 +1,5 @@
 // Categorical ticks, positive and negative bars, and functional bar colors.
-const values = [28, 43, -17, 56, 34];
+const values = [28, 43, -17, 56, 34]
 return (
   <Svg width={px(640)} height={px(380)}>
     <BarPlot
@@ -22,4 +22,4 @@ return (
       />
     </BarPlot>
   </Svg>
-);
+)

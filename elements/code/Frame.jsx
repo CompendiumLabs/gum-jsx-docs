@@ -11,4 +11,4 @@
       <Text>Ready to <Span font_weight={bold}>render</Span></Text>
     </Frame>
   </Box>
-</Svg>;
+</Svg>

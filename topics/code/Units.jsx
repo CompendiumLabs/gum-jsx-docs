@@ -10,4 +10,4 @@
       <Rect width={0.5} height={px(24)} fill={green} stroke={none} />
     </VStack>
   </Box>
-</Svg>;
+</Svg>

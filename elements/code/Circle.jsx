@@ -18,4 +18,4 @@
       </Frame>
     </HStack>
   </Box>
-</Svg>;
+</Svg>

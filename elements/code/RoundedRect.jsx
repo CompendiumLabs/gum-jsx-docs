@@ -19,4 +19,4 @@
       />
     </HStack>
   </Box>
-</Svg>;
+</Svg>

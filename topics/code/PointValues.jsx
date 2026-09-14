@@ -1,7 +1,7 @@
 // Zipped tuples and marker tuples share a plot and the same marker callbacks.
-const xs = linspace(-pi, pi, 33);
-const points = zip(xs, xs.map(sin));
-const markers = [[-pi, 0], [-pi / 2, -1], [0, 0], [pi / 2, 1], [pi, 0]];
+const xs = linspace(-pi, pi, 33)
+const points = zip(xs, xs.map(sin))
+const markers = [[-pi, 0], [-pi / 2, -1], [0, 0], [pi / 2, 1], [pi, 0]]
 return <Svg width={px(640)}>
   <Box padding={px(24)} background={lightgray}>
     <VStack gap={px(12)} align="stretch">
@@ -16,4 +16,4 @@ return <Svg width={px(640)}>
       </Text>
     </VStack>
   </Box>
-</Svg>;
+</Svg>

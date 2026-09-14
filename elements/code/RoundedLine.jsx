@@ -10,4 +10,4 @@
       />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

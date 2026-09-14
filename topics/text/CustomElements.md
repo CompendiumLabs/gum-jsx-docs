@@ -12,27 +12,27 @@ import {
   Element, element_children, px, shape_size, make_fragment, make_rect, draw_rect,
   green, none, red,
   type ElementProps, type LayoutQuery,
-} from 'gum-next-core';
+} from 'gum-next-core'
 
 class Tile extends Element {
   static defaults: Partial<ElementProps> = {
     width: px(80), height: px(40), fill: green,
-  };
+  }
 
   static layout(props: ElementProps, query: LayoutQuery) {
     if (element_children(props.children).length)
-      throw new TypeError('Tile has no children');
-    const size = shape_size(query.request, query.sizing);
+      throw new TypeError('Tile has no children')
+    const size = shape_size(query.request, query.sizing)
     return make_fragment({
       size,
       draw: [draw_rect(make_rect(0, 0, size.width, size.height), {
         fill: query.style.fill, stroke: none, stroke_width: 0,
       })],
-    });
+    })
   }
 }
 
-const tile = new Tile({ fill: red });
+const tile = new Tile({ fill: red })
 ```
 
 `Element` is also available directly inside evaluated JSX: omit the imports and
@@ -51,13 +51,13 @@ Both helpers are available in JSX and as named exports from `gum-next-core`:
 
 ```jsx
 const Captioned = props => {
-  const [caption, rest] = prefix_split(['caption'], props);
-  return <TextFigure {...rest} caption_style={caption} />;
-};
+  const [caption, rest] = prefix_split(['caption'], props)
+  return <TextFigure {...rest} caption_style={caption} />
+}
 
 return <Captioned caption="A diagram" caption-color={blue}>
   <Arrow {...prefix_join('head', { fill: red })} />
-</Captioned>;
+</Captioned>
 ```
 
 `Prefixed<Prefix, Props>` derives scoped TypeScript names while retaining each
@@ -65,7 +65,7 @@ property's value type and optionality:
 
 ```ts
 type CaptionedProps = BoxProps & { caption?: string }
-  & Prefixed<'caption', TextOptions>;
+  & Prefixed<'caption', TextOptions>
 ```
 
 Import `BoxProps`, `Prefixed`, and `TextOptions` as types from `gum-next-core`.
@@ -97,10 +97,10 @@ replaced rather than deep-merged.
 
 ```ts
 class SmallTile extends Tile {
-  static defaults: Partial<ElementProps> = { width: px(32) };
+  static defaults: Partial<ElementProps> = { width: px(32) }
 }
 // Retains Tile's height, fill, and layout; its diagnostic name is SmallTile.
-const small = new SmallTile();
+const small = new SmallTile()
 ```
 
 In TypeScript, annotate overridable defaults as `Partial<Props>` so descendants
@@ -127,19 +127,19 @@ defaults are not passed into it. This order matches `define_element`.
 When the input differs from stored data, use `Element<SourceProps, InputProps>`:
 
 ```ts
-type SourceProps = ElementProps & { points: readonly PointValue[] };
-type InputProps = ElementProps & { sample?: () => readonly PointValue[] };
+type SourceProps = ElementProps & { points: readonly PointValue[] }
+type InputProps = ElementProps & { sample?: () => readonly PointValue[] }
 
 class SampledMark extends Element<SourceProps, InputProps> {
   static normalize({ sample, ...props }: InputProps): SourceProps {
-    return { ...props, points: sample?.() ?? [] };
+    return { ...props, points: sample?.() ?? [] }
   }
   static data_bounds(props: SourceProps) {
-    return point_bounds(props.points);
+    return point_bounds(props.points)
   }
   static layout(props: SourceProps, query: LayoutQuery) {
     // Map props.points with query.coordinates before drawing them.
-    return make_fragment({ size: shape_size(query.request, query.sizing) });
+    return make_fragment({ size: shape_size(query.request, query.sizing) })
   }
 }
 ```
@@ -153,7 +153,7 @@ the same base-class machinery. Its defaults are captured when the factory is
 called; `options` accepts `normalize` and `data_bounds`:
 
 ```ts
-const AnotherTile = define_element('AnotherTile', Tile.layout, Tile.defaults);
+const AnotherTile = define_element('AnotherTile', Tile.layout, Tile.defaults)
 ```
 
 `define_component(name, build)` adopts an existing element's description and

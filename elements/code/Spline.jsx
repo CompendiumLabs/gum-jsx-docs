@@ -9,4 +9,4 @@
       />
     </Graph>
   </Box>
-</Svg>;
+</Svg>

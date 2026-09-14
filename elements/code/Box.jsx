@@ -13,4 +13,4 @@
       <Text text="The width includes its padding and border. This paragraph wraps inside the remaining content area." />
     </VStack>
   </Box>
-</Svg>;
+</Svg>

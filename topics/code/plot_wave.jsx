@@ -1,9 +1,9 @@
 // A sampled curve, uncertainty band, observations, and a measured legend.
-const wave = (x) => sin(x) * exp(-x / 9);
+const wave = (x) => sin(x) * exp(-x / 9)
 const observations = linspace(0.4, 11.8, 15).map((x, i) => [
   x,
   wave(x) + 0.08 * cos(i * 3),
-]);
+])
 return (
   <Svg width={px(680)} height={px(420)}>
     <Plot
@@ -35,4 +35,4 @@ return (
       <Points points={observations} fill={red} point_size={px(7)} />
     </Plot>
   </Svg>
-);
+)
