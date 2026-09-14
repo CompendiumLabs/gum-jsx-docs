@@ -4,10 +4,10 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| from | `[0, 0]` | Segment start in the Line's local rectangle |
-| to | `[1, 1]` | Segment end in the Line's local rectangle |
+| `from` | `[0, 0]` | Segment start in the **Line**'s local rectangle |
+| `to` | `[1, 1]` | Segment end in the **Line**'s local rectangle |
 
-Line draws one segment from `from` to `to`, each an `{ x, y }` or `[x, y]` pair of lengths.
+**Line** draws one segment from `from` to `to`, each an `{ x, y }` or `[x, y]` pair of lengths.
 The defaults are `[0, 0]` and `[1, 1]`: the diagonal of its own
 allocated rectangle. Fractions use that rectangle's width and height, not the
 parent's size.
@@ -18,7 +18,7 @@ parent's size.
   stroke={green} stroke_width={px(4)} stroke_linecap="round" />
 ```
 
-Line always disables fill. It otherwise inherits stroke color, width, and cap
+**Line** always disables fill. It otherwise inherits stroke color, width, and cap
 style; caps may be butt, round, or square. Stroke width is px, em, or a fraction
 of the shorter allocated side. An explicit px width is useful for very shallow
 or zero-height lines.

@@ -4,9 +4,9 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| points | `[]` | Ordered local vertices joined and closed into a polygon |
+| `points` | `[]` | Ordered local vertices joined and closed into a polygon |
 
-Polygon connects `points` in order and closes the path back to the first point.
+**Polygon** connects `points` in order and closes the path back to the first point.
 Points are `{ x, y }` objects or `[x, y]` tuples containing fractions, px, or em. Fractions use the
 polygon's own rectangle; the point list does not establish its layout size.
 
@@ -17,8 +17,8 @@ polygon's own rectangle; the point list does not establish its layout size.
 ```
 
 Shared sizing and paint props work as on [Rect](./Rect.md). There is no default
-fill; set one explicitly for a solid silhouette. stroke_linejoin and
-stroke_miterlimit control stroked corners. Empty points produce no drawing.
+fill; set one explicitly for a solid silhouette. `stroke_linejoin` and
+`stroke_miterlimit` control stroked corners. Empty points produce no drawing.
 Vertices outside the allocated rectangle remain outside; clipping belongs to a
 container or the root viewport.
 

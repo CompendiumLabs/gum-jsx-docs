@@ -10,7 +10,7 @@
   >
     <VStack gap={px(8)}>
       <Text font_size={px(22)} font_weight={bold} color={blue}>A content box</Text>
-      <Text text="The width includes its padding and border. This paragraph wraps inside the remaining content area." />
+      <Text>The width includes its padding and border. This paragraph wraps inside the remaining content area.</Text>
     </VStack>
   </Box>
 </Svg>

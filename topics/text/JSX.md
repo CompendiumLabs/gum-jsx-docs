@@ -14,12 +14,12 @@ evaluation, before layout. Prefer these small functions for reusable combination
 of built-in elements; [Custom elements](./CustomElements.md) covers new layout behavior.
 
 Arrays and JSX fragments flatten inside containers. Null, undefined, and boolean
-children are ignored. Element containers also ignore blank strings, so spaces
+children are ignored. **Element** containers also ignore blank strings, so spaces
 between tags do not become layout children. A root fragment is an array, not an
-element, so put it inside a container. Single-content containers such as Box still
+element, so put it inside a container. Single-content containers such as **Box** still
 require at most one element after flattening.
 
-Element props are snapshotted. Records, arrays, lengths, and existing elements are
+**Element** props are snapshotted. Records, arrays, lengths, and existing elements are
 supported source data; function-valued props on built-in elements and mutable
 resource objects are not. A component function may consume a callback itself
 before constructing the final elements.
@@ -90,7 +90,7 @@ nonbreaking spaces remain content.
 ```
 
 Indentation is shared across each element's children; nested elements normalize
-their own content. Text beginning beside an opening tag keeps its initial spaces;
+their own content. **Text** beginning beside an opening tag keeps its initial spaces;
 continuation lines lose their common indentation. [Text](../../elements/text/Text.md) then applies
 its normal or pre layout rules to the resulting content.
 

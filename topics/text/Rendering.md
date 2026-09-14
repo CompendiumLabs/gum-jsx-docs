@@ -26,10 +26,10 @@ console.log(pass.stats) // queries, layouts, hits
 
 evaluate executes JavaScript. Use it only for trusted source, or provide a
 separate isolation boundary in your application. Its optional scope adds or
-overrides evaluator bindings. It returns an Element, not an SVG string. The
-[CLI](./CLI.md) also wraps bare elements in Svg; the core evaluator does not.
+overrides evaluator bindings. It returns an **Element**, not an SVG string. The
+[CLI](./CLI.md) also wraps bare elements in **Svg**; the core evaluator does not.
 
-JSX is optional. Element exports are constructors, so ordinary TypeScript can
+JSX is optional. **Element** exports are constructors, so ordinary TypeScript can
 build the same source graph directly:
 
 ```ts
@@ -67,14 +67,14 @@ inspect_fragment shows this geometry without going through SVG.
 
 Keep element identities and a LayoutPass to reuse cached results for identical
 requests, inherited styles, reference boxes, and resource versions. Creating a
-new equivalent element or a new pass does not preserve that cache. Text also
+new equivalent element or a new pass does not preserve that cache. **Text** also
 caches prepared glyphs within a pass so a new width can reuse shaping. This is
 query caching, not a promise that every layout or edit is sublinear.
 
 render_svg accepts title, background, and id_prefix. Use distinct prefixes when
 embedding multiple generated SVGs in one HTML document, so clip definitions do
 not collide. Prefixes start with a letter or underscore and then contain
-letters, digits, underscores, dots, or hyphens. Text is emitted as paths.
+letters, digits, underscores, dots, or hyphens. **Text** is emitted as paths.
 
 For PNG and terminal graphics, use gum-next-png and gum-next-cli through the
 [CLI](./CLI.md). Those host concerns are separate from core layout. The runnable

@@ -4,21 +4,21 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| commands | `[]` | Path command records or arrays returned by the path helpers |
+| `commands` | `[]` | **Path** command records or arrays returned by the path helpers |
 
-Path draws a sequence of explicit path commands. Supply `commands`, not an SVG
+**Path** draws a sequence of explicit path commands. Supply `commands`, not an SVG
 d string. The following helpers are available in JSX and exported by core:
 
 | Helper | Meaning |
 | --- | --- |
-| move_to(x, y) | Start a subpath at a point |
-| line_to(x, y) | Straight segment to a point |
-| quad_to(x1, y1, x, y) | Quadratic Bézier with one control point |
-| curve_to(x1, y1, x2, y2, x, y) | Cubic Bézier with two control points |
-| close_path() | Close the current subpath |
+| `move_to(x, y)` | Start a subpath at a point |
+| `line_to(x, y)` | Straight segment to a point |
+| `quad_to(x1, y1, x, y)` | Quadratic Bézier with one control point |
+| `curve_to(x1, y1, x2, y2, x, y)` | Cubic Bézier with two control points |
+| `close_path()` | Close the current subpath |
 
 The first command of a nonempty path must be move_to. Coordinates are absolute
-within the Path's own rectangle, not relative displacements. Fractions use its
+within the **Path**'s own rectangle, not relative displacements. Fractions use its
 width and height, including for control points. px and em work too. A new
 move_to starts another subpath in the same drawing.
 
@@ -30,7 +30,7 @@ move_to starts another subpath in the same drawing.
 
 Layout follows ordinary shape sizing, not the bounds of the commands. The
 same normalized path can be stretched by choosing another allocation. For
-aspect-preserving geometry, supply a size/aspect or place a sized Path in [Fit](./Fit.md).
+aspect-preserving geometry, supply a size/aspect or place a sized **Path** in [Fit](./Fit.md).
 Paint is inherited; an open path with a fill still has SVG's implicitly closed
 fill area. Set `fill={none}` for an unfilled curve.
 

@@ -4,19 +4,19 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| radius | `0` | Scalar corner radius or independent `{ x, y }` / `[x, y]` radii |
+| `radius` | `0` | Scalar corner radius or independent `{ x, y }` / `[x, y]` radii |
 
-Rect paints its allocated rectangle. It is a leaf: it has no content children.
+**Rect** paints its allocated rectangle. It is a leaf: it has no content children.
 Use a [Box](./Box.md) when the rectangle should surround text or another element.
 
 ## Size and paint
 
-Rect accepts the shared [sizing](../../topics/text/Sizing.md) and [style](../../topics/text/Style.md) props. With no
+**Rect** accepts the shared [sizing](../../topics/text/Sizing.md) and [style](../../topics/text/Style.md) props. With no
 aspect, each axis is resolved independently. A finite offer can size the shape;
 an otherwise unconstrained axis falls back to 16px. A stack's main-axis
 allocation still follows [explicit flex](../../topics/text/Stack.md), not automatic filling.
 
-`aspect` is width divided by height. For example, width={px(160)} aspect={2}
+`aspect` is width divided by height. For example, `width={px(160)}` `aspect={2}`
 gives a preferred height of 80px. Exact allocations take precedence over this
 preference. Set both dimensions when you need a specific rectangle.
 

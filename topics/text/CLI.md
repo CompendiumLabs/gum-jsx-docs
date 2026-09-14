@@ -37,11 +37,11 @@ content; overriding width does not uniformly scale fonts and strokes.
 The sampling ratio changes raster resolution without changing layout.
 SVG/tree/JSON allow zero-sized axes; PNG/kitty require positive dimensions.
 
-A bare element is wrapped in Svg by the CLI. The core evaluator itself does not
+A bare element is wrapped in **Svg** by the CLI. The core evaluator itself does not
 add this wrapper. Input and output paths are relative to the current directory.
 Errors go to stderr and exit with status 1.
 
-PNG and kitty use gum-next-png. Text is already encoded as SVG paths, so raster
+PNG and kitty use gum-next-png. **Text** is already encoded as SVG paths, so raster
 output does not need separate font registration. Use
 `bun run --silent gum ... --stats` to suppress Bun's script announcement.
 

@@ -24,7 +24,7 @@ it needs no imports when evaluated by the Gum CLI.
 - Stack growth and shrinkage are explicit. A column can measure aspect figures
   from a supplied width, but does not infer a shared width from their combined
   height. See [Sizing](./Sizing.md) and [Stack](./Stack.md).
-- Text keeps its font size during layout. [Fit](../../elements/text/Fit.md) is the explicit operation
+- **Text** keeps its font size during layout. [Fit](../../elements/text/Fit.md) is the explicit operation
   that scales an entire drawing, including its glyphs and strokes.
 
 There is no browser DOM or React runtime behind these elements. JSX constructs

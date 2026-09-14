@@ -7,23 +7,23 @@ weights, padding, backgrounds, and borders do not inherit.
 
 | Property | Default | Meaning |
 |---|---|---|
-| font_size | px(16) | Text size; relative forms use the inherited font |
-| font_family | "IBM Plex Sans" | Registered font family |
-| font_weight | 400 | Numeric weight from 1 to 1000 |
-| font_style | "normal" | "normal" or "italic" |
-| line_height | em(1.2) | Line box height, not glyph scaling |
-| color | "black" | Text color and default Box border color |
-| fill | "none" | Shape fill |
-| stroke | "black" | Shape stroke |
-| stroke_width | px(1) | Shape stroke thickness |
-| stroke_linecap | "butt" | "butt", "round", or "square" |
-| stroke_linejoin | "miter" | "miter", "round", or "bevel" |
-| stroke_miterlimit | 4 | Dimensionless miter limit |
-| stroke_dasharray | [] | Nonnegative layout lengths; an empty/all-zero array is solid |
-| opacity | 1 | Per-drawing paint opacity from 0 to 1 |
+| `font_size` | `px(16)` | **Text** size; relative forms use the inherited font |
+| `font_family` | `"IBM Plex Sans"` | Registered font family |
+| `font_weight` | `400` | Numeric weight from 1 to 1000 |
+| `font_style` | `"normal"` | "normal" or "italic" |
+| `line_height` | `em(1.2)` | Line box height, not glyph scaling |
+| `color` | `"black"` | **Text** color and default **Box** border color |
+| `fill` | `"none"` | Shape fill |
+| `stroke` | `"black"` | Shape stroke |
+| `stroke_width` | `px(1)` | Shape stroke thickness |
+| `stroke_linecap` | `"butt"` | "butt", "round", or "square" |
+| `stroke_linejoin` | `"miter"` | "miter", "round", or "bevel" |
+| `stroke_miterlimit` | `4` | Dimensionless miter limit |
+| `stroke_dasharray` | `[]` | Nonnegative layout lengths; an empty/all-zero array is solid |
+| `opacity` | `1` | Per-drawing paint opacity from 0 to 1 |
 
-Use paint strings such as `"#317969"`, `"tomato"`, or `"none"`. Text uses
-color, not fill. For a Box's own fill use background; setting fill on a Box instead
+Use paint strings such as `"#317969"`, `"tomato"`, or `"none"`. **Text** uses
+color, not fill. For a **Box**'s own fill use background; setting fill on a **Box** instead
 changes the inherited shape paint.
 
 Built-in constants are available in evaluated JSX and as named imports from
@@ -79,30 +79,30 @@ local to the owner and happens once during construction, before layout.
 
 | Owner | Scopes |
 |---|---|
-| Arrow | `head_` styles |
-| Axis / Scale / Label / Labels, including directional variants | `line_`, `tick_` styles; `label_` text options |
-| Plot / BarPlot | `axis_`, `xaxis_`, `yaxis_` axis options; `tick_` styles |
-| Plot / BarPlot | `label_`, `title_`, `xlabel_`, `ylabel_` text options |
-| Plot / BarPlot | `grid_`, `xgrid_`, `ygrid_` mesh options; `legend_` legend options |
-| Legend | `label_` text options |
-| TitleBox / TitleFrame / Slide | `title_` text options |
-| TextFigure | `caption_` text options |
+| **Arrow** | `head_` styles |
+| **Axis** / **Scale** / **Label** / **Labels**, including directional variants | `line_`, `tick_` styles; `label_` text options |
+| **Plot** / **BarPlot** | `axis_`, `xaxis_`, `yaxis_` axis options; `tick_` styles |
+| **Plot** / **BarPlot** | `label_`, `title_`, `xlabel_`, `ylabel_` text options |
+| **Plot** / **BarPlot** | `grid_`, `xgrid_`, `ygrid_` mesh options; `legend_` legend options |
+| **Legend** | `label_` text options |
+| **TitleBox** / **TitleFrame** / **Slide** | `title_` text options |
+| **TextFigure** | `caption_` text options |
 
-Text options include font/paint, dimensions, wrap, whitespace, and text_align;
+**Text** options include font/paint, dimensions, wrap, whitespace, and `text_align`;
 content is supplied by the owner. For example, `title_wrap={false}` keeps a title
 on one line, and `legend_label_font_size={px(10)}` controls generated legend text.
 
 Nested `*_style` objects remain supported. At the same scope, flat props override
 matching fields in the nested object. Shared settings supply defaults for more
-specific scopes, merging part option records per field. Plot's common tick/label
+specific scopes, merging part option records per field. **Plot**'s common tick/label
 settings precede common axis settings, then xaxis/yaxis option objects, then flat
 xaxis_/yaxis_ props. Shared grid and label settings precede x/y-specific settings.
 Unit records and arrays remain individual values, not recursively merged objects.
 
-Owner geometry props keep their meanings: Arrow's head_size/head_width, Axis's
-tick_size/label_offset and ordinary line_height, and Plot's label_gap. An explicit
+Owner geometry props keep their meanings: **Arrow**'s `head_size`/`head_width`, **Axis**'s
+`tick_size`/`label_offset` and ordinary `line_height`, and **Plot**'s `label_gap`. An explicit
 disabled axis stays disabled. Caller-supplied title, caption, label, and legend
-Elements retain their own props; scopes configure parts created by the owner.
+**Element**s retain their own props; scopes configure parts created by the owner.
 
 For custom components, [prefix_split and prefix_join](./CustomElements.md#scoped-props)
 are available in JSX and as named exports. Supported styles remain an explicit

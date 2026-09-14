@@ -4,10 +4,10 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| center | `[0.5, 0.5]` | Center in the Ellipse's local rectangle |
-| radius | `[0.5, 0.5]` | Horizontal and vertical radii |
+| `center` | `[0.5, 0.5]` | Center in the **Ellipse**'s local rectangle |
+| `radius` | `[0.5, 0.5]` | Horizontal and vertical radii |
 
-Ellipse draws an axis-aligned ellipse in its allocated rectangle. Unlike
+**Ellipse** draws an axis-aligned ellipse in its allocated rectangle. Unlike
 [Circle](./Circle.md), it has no intrinsic aspect ratio. Set both dimensions or
 supply one dimension and an aspect to control its proportions.
 
@@ -21,6 +21,6 @@ width for x fractions and height for y fractions; px and em are also accepted.
 ```
 
 Radii must be nonnegative. Explicit radii and centers do not change layout size,
-and may extend outside it. Ellipse accepts shared sizing and paint props and
+and may extend outside it. **Ellipse** accepts shared sizing and paint props and
 has no content children. There is no element-level rotation prop; a rotated
 outline can instead be constructed with [Path](./Path.md).

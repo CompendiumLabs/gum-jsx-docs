@@ -2,8 +2,7 @@
 
 Markdown documentation and executable JSX examples for the current Gum rewrite.
 Start with [Gum](./topics/text/Gum.md), [units](./topics/text/Units.md), and
-[sizing](./topics/text/Sizing.md). Coming from the original? Read
-[migration notes](./topics/text/Migration.md) before reusing an old example.
+[sizing](./topics/text/Sizing.md).
 
 Basic plotting is available: start with [Plot](./elements/text/Plot.md),
 [Graph](./elements/text/Graph.md), and [Sampling](./topics/text/Sampling.md), or try the
@@ -52,8 +51,7 @@ gum-next-core is a development dependency for checking examples.
 
 - Getting started: [Gum](./topics/text/Gum.md), [JSX](./topics/text/JSX.md),
   [Units](./topics/text/Units.md), [Sizing](./topics/text/Sizing.md),
-  [Style](./topics/text/Style.md), [CLI](./topics/text/CLI.md), and
-  [Migration](./topics/text/Migration.md).
+  [Style](./topics/text/Style.md), and [CLI](./topics/text/CLI.md).
 - Geometry and layout: [Point values](./topics/text/PointValues.md),
   [Coordinates](./topics/text/Coordinates.md), and [Stack](./topics/text/Stack.md).
 - Embedding: [Rendering](./topics/text/Rendering.md),
@@ -65,11 +63,20 @@ gum-next-core is a development dependency for checking examples.
 
 - [Two columns](./topics/text/two_columns.md): an explicitly allocated figure and paragraph.
 - [Shape cards](./topics/text/shape_cards.md): reusable components and nested stacks.
-- [Positioned diagram](./topics/text/positioned_diagram.md): labels, nodes, and connectors using Group.
-- [Sampled curve](./topics/text/sampled_curve.md): plain JavaScript data and Polyline.
+- [Positioned diagram](./topics/text/positioned_diagram.md): labels, nodes, and connectors using **Group**.
+- [Sampled curve](./topics/text/sampled_curve.md): plain JavaScript data and **Polyline**.
 - [Layout choices](./topics/text/layout_choices.md): natural sizing versus explicit flex.
 - [Typography card](./topics/text/typography_card.md): mixed fonts, wrapping, and preformatted text.
 - [Arrow caps and tips](./topics/text/arrow_caps.md): thick shafts, fixed tips, and straight/curved/rounded routes.
+- [Flex limits and shrinkage](./topics/text/stack_flex.md) and
+  [stack alignment](./topics/text/stack_alignment.md): capped growth, shrinking, baselines, and stretch.
+- [Nested anchors](./topics/text/group_anchors.md),
+  [canvas clipping](./topics/text/group_clip.md), and
+  [rounded box clipping](./topics/text/box_clip.md): positioning and visible overflow.
+- [One paragraph, two widths](./topics/text/paragraph.md) and
+  [line boxes and baselines](./topics/text/typography.md): measured text geometry.
+- [Reusing fragments](./topics/text/repeated.md) and
+  [clipping and transforms](./topics/text/clipping.md): custom parent layout and placement.
 
 ## Run an example
 
@@ -86,10 +93,12 @@ bun run typecheck
 ```
 
 The CLI defaults to kitty graphics; use SVG or PNG output on other terminals.
-Every example includes its own Svg and uses only the current evaluator's bindings.
+Every example includes its own **Svg** and uses only the current evaluator's bindings.
 No legacy packages, image files, custom fonts, network fetches, or generated assets
 are required. The check command renders SVG in memory and leaves the checkout unchanged.
-Core behavior tests remain in gum-next-core.
+Core behavior tests and synthetic layout fixtures remain in gum-next-core.
+The former core examples are consolidated into these collections; equivalent
+examples share one docs source, and previews are generated on demand.
 
 ## Load the content
 

@@ -12,19 +12,19 @@ elements, not bare strings.
 
 | Stack prop | Default | Meaning |
 |---|---|---|
-| gap | 0 | Length between adjacent children, with no outside gap |
-| align | "start" | Cross-axis positioning; "start", "center", "end", "stretch", or 0–1 |
-| justify | "start" | Main-axis positioning; "start", "center", "end", or 0–1 |
-| justify | — | Also "space_between", "space_around", or "space_evenly" |
-| width / height and limits | — | Common sizing of the stack's frame |
+| `gap` | `0` | Length between adjacent children, with no outside gap |
+| `align` | `"start"` | Cross-axis positioning; "start", "center", "end", "stretch", or 0–1 |
+| `justify` | `"start"` | Main-axis positioning; "start", "center", "end", or 0–1 |
+| `justify` | — | Also "space_between", "space_around", or "space_evenly" |
+| `width` / `height` and limits | — | Common sizing of the stack's frame |
 
-HStack additionally supports `align="baseline"`. Use a single alignment value
-for stacks; per-axis alignment objects and tuples belong to Box/Fit.
+**HStack** additionally supports `align="baseline"`. Use a single alignment value
+for stacks; per-axis alignment objects and tuples belong to **Box**/**Fit**.
 
 ## Per-child alignment
 
 Set `align_self` on a direct child to override the stack's cross-axis `align`:
-vertical in HStack, horizontal in VStack. Values are `"start"`, `"center"`,
+vertical in **HStack**, horizontal in **VStack**. Values are `"start"`, `"center"`,
 `"end"`, `"stretch"`, or a number from 0 to 1; horizontal stacks also accept
 `"baseline"`. Omitted or `undefined` uses the parent's `align`.
 
@@ -37,8 +37,8 @@ vertical in HStack, horizontal in VStack. Values are `"start"`, `"center"`,
 
 A child's own `align` still controls its contents, not its placement in the
 parent stack. `align_self` does not inherit or pass through wrappers: put it on
-the wrapping Box, Frame, or nested stack when that is the direct child. TextRow,
-TextCol, and TextStack use the same rules for their element children.
+the wrapping **Box**, **Frame**, or nested stack when that is the direct child. **TextRow**,
+**TextCol**, and **TextStack** use the same rules for their element children.
 
 ## Explicit flex
 
@@ -46,11 +46,11 @@ The immediate stack parent reads these props from each **direct child**:
 
 | Child prop | Meaning |
 |---|---|
-| basis | Starting main-axis length; otherwise preferred dimension, otherwise natural size |
-| grow | Share of surplus; default 0 |
-| shrink | Shortage weight, multiplied by original basis; default 0 |
-| align_self | Cross-axis alignment override; defaults to the stack's align |
-| min_width / max_width, etc. | Limits on the main-axis allocation |
+| `basis` | Starting main-axis length; otherwise preferred dimension, otherwise natural size |
+| `grow` | Share of surplus; default `0` |
+| `shrink` | Shortage weight, multiplied by original `basis`; default `0` |
+| `align_self` | Cross-axis alignment override; defaults to the stack's `align` |
+| `min_width` / `max_width`, etc. | Limits on the main-axis allocation |
 
 The allocator reserves gaps, clamps bases, and distributes surplus or shortage.
 Items at limits freeze while the rest receive the remaining allocation.
@@ -61,7 +61,7 @@ Insufficient shrinkage leaves overflow; a stack does not clip itself.
 `width={0.5}` means half the full established parent width, not half of what
 remains after gaps. Fractional widths/bases/gaps require definite references.
 
-Put flex on a wrapping Box, Frame, or nested stack when that wrapper is the
+Put flex on a wrapping **Box**, **Frame**, or nested stack when that wrapper is the
 direct child. Flex props do not inherit or pass through wrappers.
 [Spacer](../../elements/text/Spacer.md) has explicit zero-basis/grow-one defaults.
 
@@ -73,7 +73,7 @@ is used unless its own size or an exact allocation establishes a larger frame.
 On an entirely natural axis, children simply pack; an own minimum can also
 provide room for explicit growth.
 
-Text reflows at its allocated width. Stretch can require another child query:
+**Text** reflows at its allocated width. Stretch can require another child query:
 a column selects its shared width before packing heights; a row selects height
 after width allocation and text reflow. Selected sizes never become speculative
 percentage references. Only children with effective `"stretch"` alignment receive
@@ -85,7 +85,7 @@ Only baseline-aligned children contribute to the row's baseline group. The row
 also accommodates non-baseline children's heights, and stretching siblings
 receive a height that includes the baseline group's ascent and descent.
 
-Justify and align/align_self position completed allocations. Text's own text_align is
+Justify and align/align_self position completed allocations. **Text**'s own `text_align` is
 separate. Distributed spacing only adds positive free space; center/end may
 position overflowing content outside the frame.
 

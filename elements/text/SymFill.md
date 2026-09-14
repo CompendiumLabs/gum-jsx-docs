@@ -4,13 +4,13 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| upper | `1` | Upper function or constant |
-| lower | `0` | Lower function or constant |
-| xlim / ylim | `[0, 1]` | Sampling range for vertical / horizontal fills |
-| xvals / yvals | Generated | Explicit sample coordinates |
-| samples | `101` | Number of generated samples |
-| direction | `"vertical"` | Fill vertically or horizontally |
-| space | Automatic | Use ambient data coordinates or local geometry |
+| `upper` | `1` | Upper function or constant |
+| `lower` | `0` | Lower function or constant |
+| `xlim` / `ylim` | `[0, 1]` | Sampling range for vertical / horizontal fills |
+| `xvals` / `yvals` | `Generated` | Explicit sample coordinates |
+| `samples` | `101` | Number of generated samples |
+| `direction` | `"vertical"` | Fill vertically or horizontally |
+| `space` | Automatic | Use ambient data coordinates or local geometry |
 
 Sample a band between upper and lower functions or numbers (defaults 1 and 0).
 Vertical fills use xvals/xlim (default [0,1]); horizontal fills use yvals/ylim.

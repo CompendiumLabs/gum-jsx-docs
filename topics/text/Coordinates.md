@@ -8,7 +8,7 @@ width, height, stroke widths, and other lengths still use fractions/px/em.
 `infer_coordinates(children, options)` returns an immutable
 {xlim,ylim,flip_x,flip_y} record. `map_point(point, coordinates, size)` maps to
 pixels; unmap_point reverses it (zero-sized frames cannot be inverted).
-point_bounds, merge_bounds, and data_bounds(element) support inference.
+point_bounds, merge_bounds, and `data_bounds(element)` support inference.
 
 Point arguments accept `{x,y}` or `[x,y]`; point lists can mix the two.
 Mapping results always have named `{x,y}` coordinates. See [Point values](./PointValues.md)
@@ -33,7 +33,7 @@ These helpers and types are exports from `gum-next-core`. The factory form
 See [Custom elements](./CustomElements.md) for both forms and inherited hooks.
 
 Ordinary containers contribute descendant bounds. A data_bounds callback is a
-boundary: returning null excludes the subtree. Graph and Plot use this to
+boundary: returning null excludes the subtree. **Graph** and **Plot** use this to
 isolate their internal data.
 
 LayoutQuery and LayoutContext expose coordinates. query.child accepts a fifth

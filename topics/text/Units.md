@@ -18,18 +18,18 @@ Zero is valid in every form and needs no reference. Unit strings such as
 
 | Property | Fraction reference |
 |---|---|
-| width, min_width, max_width | Established parent content width |
-| height, min_height, max_height | Established parent content height |
-| Horizontal / vertical padding | Corresponding established parent axis |
-| Stack basis and gap | Established main-axis length of the stack |
-| Group child's x / y | Whole Group width / height |
-| Shape point x / y | Shape's own resolved width / height |
-| Scalar shape radius and stroke_width | Shorter side of the shape |
-| Box border_width | Shorter established parent side; both axes must be known |
-| font_size | Inherited font size |
-| line_height | Resolved local font size |
+| `width`, `min_width`, `max_width` | Established parent content width |
+| `height`, `min_height`, `max_height` | Established parent content height |
+| Horizontal / vertical `padding` | Corresponding established parent axis |
+| Stack `basis` and `gap` | Established main-axis length of the stack |
+| **Group** child's `x` / `y` | Whole **Group** width / height |
+| Shape point `x` / `y` | Shape's own resolved width / height |
+| Scalar shape `radius` and `stroke_width` | Shorter side of the shape |
+| **Box** `border_width` | Shorter established parent side; both axes must be known |
+| `font_size` | Inherited font size |
+| `line_height` | Resolved local font size |
 
-The default font size is 16px. For font_size, both `em(1.5)` and `1.5`
+The default font size is 16px. For `font_size`, both `em(1.5)` and `1.5`
 multiply the inherited size. Other em lengths use the element's newly resolved
 font size. Thus `font_size={px(20)} padding={em(1)}` gives 20px padding.
 
@@ -38,7 +38,7 @@ font size. Thus `font_size={px(20)} padding={em(1)}` gives 20px padding.
 A hugging container can receive a width offer without committing to that width.
 Its descendants cannot use that offer as a percentage reference. Set the
 container's width explicitly when you need fractional descendants:
-`HStack width={1}` under a fixed-width Svg establishes a full-width row.
+`HStack width={1}` under a fixed-width **Svg** establishes a full-width row.
 
 Fractions refer to the full established content area, not the space left after
 siblings or gaps. Two half-width children plus a gap exceed one full width.

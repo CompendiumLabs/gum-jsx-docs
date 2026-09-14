@@ -75,7 +75,7 @@ has no prefix policy. See [Style](./Style.md#scoped-component-props) for built-i
 scopes and precedence.
 
 Scopes are constructor-input syntax. Class defaults below still use normalized
-source props: Arrow defaults may specify `head_style`, while `head_fill` is an
+source props: **Arrow** defaults may specify `head_style`, while `head_fill` is an
 input alias. Defaults that affect child construction belong in a component or
 normalizer before the child descriptions are built.
 
@@ -111,7 +111,7 @@ that declares it; descendants normally receive their own class names. Bundles
 that rename classes should preserve class names or supply explicit names.
 
 The layout method runs during layout, not construction. Source props are immutable
-snapshots: plain records, arrays, primitive values, and Element references.
+snapshots: plain records, arrays, primitive values, and **Element** references.
 Stored props cannot contain functions, font objects, host handles, or caches.
 Behavior belongs to the element type and resources belong to LayoutPass.
 The base constructor freezes the instance, so ordinary instance field
@@ -172,9 +172,9 @@ available for explicit protocol adoption.
 | reference | Definite parent dimensions for percentage resolution |
 | coordinates | Optional ambient data limits and flip directions |
 | path | Diagnostic location in the element graph |
-| child(element, request, reference?, index?, context?) | Measure a child; context can override style/coordinates |
-| resource(name) | Obtain a host resource from this pass |
-| prepare(name, compute) | Cache preparation independent of requests and references |
+| `child(element, request, reference?, index?, context?)` | Measure a child; context can override style/coordinates |
+| `resource(name)` | Obtain a host resource from this pass |
+| `prepare(name, compute)` | Cache preparation independent of requests and references |
 
 Return a fragment in local pixel coordinates. For a shape-like leaf,
 shape_size resolves its size. For a content-sized element, measure children and

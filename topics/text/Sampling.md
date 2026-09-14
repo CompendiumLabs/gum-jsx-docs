@@ -3,19 +3,19 @@
 *Category*: api
 
 `sample_points(options)` returns an immutable array of {x,y} or null gaps.
-sample_curve also includes the parameter: {t,point}. linspace(a,b,n) generates
-inclusive values; n=0 is empty, n=1 returns a. Pass false as its fourth argument
+sample_curve also includes the parameter: {t,point}. `linspace(a,b,n)` generates
+inclusive values; `n=0` is empty, `n=1` returns `a`. Pass `false` as its fourth argument
 to omit the closing endpoint for periodic data. See [Arrays](./Arrays.md) for
 range, linspace, and grid generation, and [Math helpers](./MathHelpers.md) for
 functions such as sin, cos, and exp, available directly in JSX.
 
 | Inputs | Sampling rule |
 |---|---|
-| fy + xlim/xvals | y = fy(x) |
-| fx + ylim/yvals | x = fx(y) |
-| f + tlim/tvals | f(t) returns {x,y} or [x,y] |
-| fx + fy | Independent coordinate functions of t |
-| xvals + yvals | Paired explicit samples |
+| `fy` + `xlim`/`xvals` | `y = fy(x)` |
+| `fx` + `ylim`/`yvals` | `x = fx(y)` |
+| `f` + `tlim`/`tvals` | `f(t)` returns `{x,y}` or `[x,y]` |
+| `fx` + `fy` | Independent coordinate functions of `t` |
+| `xvals` + `yvals` | Paired explicit samples |
 | Only one value array | Missing values span the other limit, default [0,1] |
 
 fx/fy may be constants. samples defaults to 101 for generated arrays; explicit

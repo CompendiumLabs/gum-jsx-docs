@@ -8,29 +8,29 @@ axis titles, an optional legend, and an optional background. Limits follow
 
 | Property | Default | Meaning |
 |---|---|---|
-| coord | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
-| xlim / ylim | Inferred | Directed data limits |
-| flip_x / flip_y | `false` / `true` | Reverse horizontal or vertical screen mapping |
-| padding | `0.05` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
-| axis | `true` | Enable or disable both axes by default |
-| xaxis / yaxis | `axis` | Boolean or Axis props for one axis |
-| xticks / yticks | `5` | Target count or explicit values / labeled pairs |
-| grid | `true` | Draw grid lines at axis ticks |
-| title / xlabel / ylabel | — | String or Element; the y title rotates −90° |
-| legend | — | Legend Element or array of Legend entries |
-| margin | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
-| label_gap | `px(8)` | Space between titles and measured axis extents |
-| background | — | Full-frame background paint |
-| plot_background | — | Data-area background paint |
-| border_width | `px(0)` | Data-area border thickness |
-| border_color | `"#cbd5e1"` | Data-area border paint |
-| clip | `true` | Clip data marks to the data area |
-| axis_* / xaxis_* / yaxis_* | — | Flat Axis option overrides |
-| tick_* / label_* | — | Shared generated tick and label styles |
-| title_* / xlabel_* / ylabel_* | — | Generated title text options |
-| grid_* / xgrid_* / ygrid_* | — | Grid options and styles |
-| legend_* | — | Generated Legend options |
-| *_style | — | Nested options for the corresponding scopes |
+| `coord` | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
+| `xlim` / `ylim` | Inferred | Directed data limits |
+| `flip_x` / `flip_y` | `false` / `true` | Reverse horizontal or vertical screen mapping |
+| `padding` | `0.05` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
+| `axis` | `true` | Enable or disable both axes by default |
+| `xaxis` / `yaxis` | `axis` | Boolean or **Axis** props for one axis |
+| `xticks` / `yticks` | `5` | Target count or explicit values / labeled pairs |
+| `grid` | `true` | Draw grid lines at axis ticks |
+| `title` / `xlabel` / `ylabel` | — | String or **Element**; the y title rotates −90° |
+| `legend` | — | **Legend** **Element** or array of **Legend** entries |
+| `margin` | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
+| `label_gap` | `px(8)` | Space between titles and measured axis extents |
+| `background` | — | Full-frame background paint |
+| `plot_background` | — | Data-area background paint |
+| `border_width` | `px(0)` | Data-area border thickness |
+| `border_color` | `"#cbd5e1"` | Data-area border paint |
+| `clip` | `true` | Clip data marks to the data area |
+| `axis_*` / `xaxis_*` / `yaxis_*` | — | Flat **Axis** option overrides |
+| `tick_*` / `label_*` | — | Shared generated tick and label styles |
+| `title_*` / `xlabel_*` / `ylabel_*` | — | Generated title text options |
+| `grid_*` / `xgrid_*` / `ygrid_*` | — | Grid options and styles |
+| `legend_*` | — | Generated **Legend** options |
+| `*_style` | — | Nested options for the corresponding scopes |
 
 Padding uses [Graph's side and axis forms](./Graph.md), with numeric fractions
 of inferred data spans. Explicit limits stay exact.
@@ -42,16 +42,16 @@ measurements. The fragment's content rectangle identifies the data area.
 For example, `axis_stroke={slate}` affects both axes and
 `xaxis_label_color={blue}` changes only the x tick labels. Common tick/label
 settings precede common axis settings, then xaxis/yaxis option objects, then
-flat xaxis_/yaxis_ props. Part option records merge per field. At the same scope,
+flat `xaxis_`/`yaxis_` props. Part option records merge per field. At the same scope,
 flat props override matching nested settings. `title_wrap={false}` disables title
 wrapping. See [scoped props](../../topics/text/Style.md#scoped-component-props).
 
-Scopes preserve label_gap and do not enable an explicitly disabled axis. Plot
+Scopes preserve `label_gap` and do not enable an explicitly disabled axis. **Plot**
 supplies axis/grid domains; explicit xticks/yticks override scoped axis tick
 options. Callback props such as xaxis_format run when the axes are constructed.
-Supplied title, label, and legend Elements retain their own descriptions.
+Supplied title, label, and legend **Element**s retain their own descriptions.
 
-Plot fills finite offers, naturally measures 480×320, and derives a missing axis
+**Plot** fills finite offers, naturally measures 480×320, and derives a missing axis
 at 1.5 unless aspect is supplied. In a stack, give it a preferred height or an
 explicit flex allocation. Small frames can exhaust the data area and report
 overflow; they never shrink text to fit.

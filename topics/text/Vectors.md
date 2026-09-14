@@ -10,7 +10,7 @@ invalid results into gaps.
 
 `add2`, `sub2`, `mul2`, and `div2` work component by component. Each operand can
 be an `{x,y}` point, a `[x,y]` pair, or a scalar broadcast to both components.
-Results are native `{x,y}` points, ready for Polygon, Points, or Field.
+Results are native `{x,y}` points, ready for **Polygon**, **Points**, or **Field**.
 Those elements also accept `[x,y]` inputs directly; see [Point values](./PointValues.md).
 
 ```js

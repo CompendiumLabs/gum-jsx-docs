@@ -4,18 +4,18 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| lim | `[0, 1]` | Directed tick domain |
-| ticks | `5` | Target count or explicit values / labeled pairs |
-| interval | Automatic | Positive fixed tick step |
-| side | `"left"` | Edge and orientation |
-| at | Frame edge | Data location on the perpendicular axis |
-| tick_size | `px(5)` | Tick length |
-| tick_style / tick_* | — | Nested or flat styles for ticks |
+| `lim` | `[0, 1]` | Directed tick domain |
+| `ticks` | `5` | Target count or explicit values / labeled pairs |
+| `interval` | Automatic | Positive fixed tick step |
+| `side` | `"left"` | Edge and orientation |
+| `at` | Frame edge | Data location on the perpendicular axis |
+| `tick_size` | `px(5)` | Tick length |
+| `tick_style` / `tick_*` | — | Nested or flat styles for ticks |
 
-VScale draws ticks only, without a baseline or labels. It defaults to side="left".
+**VScale** draws ticks only, without a baseline or labels. It defaults to `side="left"`.
 It accepts the [Axis](./Axis.md) props, including lim, ticks, interval, side, at,
-format, rotate, and nested styles. Labels-only elements still account for
-tick_size when positioning text, so they align with a separate Scale.
+format, rotate, and nested styles. **Labels**-only elements still account for
+`tick_size` when positioning text, so they align with a separate **Scale**.
 
-lim defaults to [0,1]; specify the desired tick domain inside Graph. Plot
+lim defaults to [0,1]; specify the desired tick domain inside **Graph**. **Plot**
 supplies matching limits automatically.

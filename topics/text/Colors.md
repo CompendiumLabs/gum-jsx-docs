@@ -15,7 +15,7 @@ Colors must use #rgb, #rgba, #rrggbb, or #rrggbbaa notation. Gum's named color
 constants are hex strings and work directly. Literal CSS color names and the
 `none` paint value are not interpolation inputs.
 
-Interpolation is linear in the RGB and alpha channels and returns an rgba(...)
+Interpolation is linear in the RGB and alpha channels and returns an `rgba(...)`
 string. Fractions are clamped to [0,1]. Palette limits default to [0,1], may be
 reversed, and must have distinct finite endpoints. Values outside the limits
 use the endpoint color. The palette owns its limits and parses its colors once.

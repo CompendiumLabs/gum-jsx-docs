@@ -7,7 +7,7 @@
         <Square width={px(56)} fill={blue} stroke={none} />
         <Circle width={px(56)} fill={red} stroke={none} />
       </HStack>
-      <Text text="Shapes resize. Text keeps its font size. Stacks arrange the result." />
+      <Text>Shapes resize. Text keeps its font size. Stacks arrange the result.</Text>
     </VStack>
   </Box>
 </Svg>
