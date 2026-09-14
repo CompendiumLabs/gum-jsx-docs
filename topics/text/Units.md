@@ -39,6 +39,10 @@ A hugging container can receive a width offer without committing to that width.
 Its descendants cannot use that offer as a percentage reference. Set the
 container's width explicitly when you need fractional descendants:
 `HStack width={1}` under a fixed-width **Svg** establishes a full-width row.
+`width="fill"` instead establishes the actual offered width, without requiring
+a fraction reference. **TextBox**, **TextFrame**, and **TextCol** default to that
+policy; see [Sizing](./Sizing.md). Neither `"fill"` nor `"fit"` is a length unit,
+so they cannot be used for padding, gaps, heights, or min/max limits.
 
 Fractions refer to the full established content area, not the space left after
 siblings or gaps. Two half-width children plus a gap exceed one full width.

@@ -1,20 +1,19 @@
 # Positioned diagram
 
-**Group** provides a known 760 × 400px canvas for three labeled nodes and two
-connectors. **Frame**s are placed by their centers, while each connector uses
-explicit endpoints in the same coordinate system. Small **Polygon** triangles
-form the arrowheads; there is no implicit arrow or graph-routing API here.
+An **HStack** arranges three labeled **Frame** nodes and two connectors inside a
+760 × 400px **Svg**. Each node takes `0.7 / 3` of the row width and each connector
+takes `0.15`. The row itself uses 90% of the document's content width and is centered.
 
-Connectors are listed before nodes, so node backgrounds paint over any shared
-edge. **Labels** are ordinary **Text**. A background **Rect** paints the canvas without
-changing the layout. This is useful for small process diagrams where positions
-are known ahead of time.
+The outer **TextBox** paints the background and passes its padded width to
+**TextCol**. Both explicitly use `height={1}` so the column's two **Spacer** children
+can distribute spare vertical space around the diagram. Width filling comes from
+the document defaults; the row's fractional widths and vertical spacing remain explicit.
 
-Each line uses the whole **Group** allocation, but its endpoints are pixel lengths.
-This illustrates the distinction between an element's allocated rectangle and
-the smaller geometry drawn inside it. Each node instead has an explicit box
-size; **Group**'s anchor offsets that box around its target point.
+Each connector is a **Group** containing an **Arrow** and a **Text** label. The arrow
+runs from `[0, 0.5]` to `[1, 0.5]` in that group's local rectangle, and the label is
+anchored below it. Nodes stretch to the row's height and center their text inside
+their frames.
 
-Try changing a node's y position and adjusting its connectors. Nothing queries
-another element's bounds: automatic attachment points and routing belong to a
-future higher-level diagram layer, not this example.
+Try changing the diagram width or the node and connector fractions. The row
+allocates each part directly; the connectors do not query node bounds or route
+automatically.

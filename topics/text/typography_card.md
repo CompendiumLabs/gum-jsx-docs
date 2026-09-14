@@ -6,7 +6,9 @@ from core's bundled font provider. No browser font stylesheet or rasterizer
 font registration is needed.
 
 The **Svg** establishes the base font size; descendant font sizes, gaps, and
-padding use ems. The outer **Box** sets the text color. **Span** changes
+padding use ems. The outer **TextBox** sets the text color and fills the available
+width. **TextCol** passes its content width to rows and frames without repeated
+width declarations. **Span** changes
 only selected runs inside a paragraph. A separate **HStack** aligns three text
 elements by their baselines even though their sizes and families differ.
 Neither operation scales glyphs to fill available space.

@@ -38,12 +38,18 @@ Unspecified sides are zero. Each value accepts px/em lengths or raw fractions.
 Boolean padding and a margin prop are not supported. Use another outer **Box** when
 you need outside spacing.
 
-Alignment accepts "start", "center", "end", "stretch", or a fraction from 0 to 1.
+Alignment accepts "start", "center", "end", "fill", "stretch", or a fraction from 0 to 1.
 In an object or two-entry tuple, x and y can be set independently:
 `align={['stretch', 'end']}` stretches horizontally and aligns at the bottom.
 Stretch sends exact child
 requests only on axes established before child measurement. It does not
 uniformly scale content.
+
+Fill uses the established content area too, but allocates only unspecified or
+`width="fill"` dimensions, respecting the child's explicit sizes, `width="fit"`,
+and min/max limits. `align={{ x: "fill" }}` fills automatic child widths while
+retaining natural heights. Remaining space stays at the end of a fill-aligned axis.
+The box's own width can independently use `"fill"` or `"fit"`; see [Sizing](../../topics/text/Sizing.md).
 
 Background and border paint are local decoration. `fill` and `stroke` still inherit
 to child shapes; they do not paint the **Box** itself. The border is drawn last.

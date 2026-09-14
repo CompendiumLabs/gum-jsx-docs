@@ -28,7 +28,7 @@ fractions, px, and em. Numeric points in graph marks use data coordinates inside
 
 **Anchor** and alignment pairs instead use dimensionless fractions from 0 to 1 or
 the keywords start/center/end: `anchor={['end', 0.5]}`. **Box** alignment also allows
-stretch. Stack align/justify remain single-axis values. See [Group](../../elements/text/Group.md)
+fill and stretch. Stack align/justify remain single-axis values. See [Group](../../elements/text/Group.md)
 for the distinction between placing an element and arranging its contents.
 
 [Array helpers](./Arrays.md) can feed point lists directly:

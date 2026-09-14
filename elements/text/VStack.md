@@ -29,9 +29,13 @@ For the attached example, the author wants 500px of total height from **Rect**
 aspects 1 and 2. With no gap, H = W/1 + W/2, so the chosen column width is 1000/3.
 Both figures receive that width and their heights follow.
 
-Alternatively, `basis={0} grow={2}` and `basis={0} grow={1}` explicitly divide
-a 500px height budget into the needed 2:1 proportions. Those weights are a
+Alternatively, `grow={2}` and `grow={1}` on children without explicit heights
+divide a 500px height budget into the needed 2:1 proportions. Those weights are a
 decision by the author; they are not inferred from the aspects.
+
+With a finite height budget, unsized growing children start from zero. An explicit
+height supplies their basis instead, and `basis="auto"` measures natural heights
+when none are specified. Without a height budget, grow retains natural measurement.
 
 **Text** does not grow its font to occupy a height allocation. Exact height can
 leave space around its normal-sized lines or report overflow if they do not fit.
@@ -41,7 +45,11 @@ Use **Fit** only when scaling the whole result is the goal.
 
 Align controls horizontal position; justify controls vertical packing. Defaults
 are start. A direct child's `align-self` overrides the stack's align, accepting
-start, center, end, stretch, or 0–1. Omitted values use the parent's align.
-Only stretching children receive the selected shared width, which can trigger
-text reflow. Child containers' own align values continue to position their
+start, center, end, fill, stretch, or 0–1. Omitted values use the parent's align.
+Stretch imposes the selected shared width, which can trigger text reflow.
+Fill allocates that width only to unspecified or fill-width children, respecting
+explicit widths, `width="fit"`, and min/max limits.
+Child containers' own align values continue to position their
 contents. **VStack** does not accept baseline alignment, including via `align-self`.
+
+[TextCol](./TextCol.md) supplies document defaults: `width="fill"` and `align="fill"`.

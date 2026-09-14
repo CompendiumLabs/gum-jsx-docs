@@ -13,7 +13,7 @@ elements, not bare strings.
 | Stack prop | Default | Meaning |
 |---|---|---|
 | `gap` | `0` | Length between adjacent children, with no outside gap |
-| `align` | `"start"` | Cross-axis positioning; "start", "center", "end", "stretch", or 0–1 |
+| `align` | `"start"` | Cross-axis positioning; "start", "center", "end", "fill", "stretch", or 0–1 |
 | `justify` | `"start"` | Main-axis positioning; "start", "center", "end", or 0–1 |
 | `justify` | — | Also "space_between", "space_around", or "space_evenly" |
 | `width` / `height` and limits | — | Common sizing of the stack's frame |
@@ -25,7 +25,7 @@ for stacks; per-axis alignment objects and tuples belong to **Box**/**Fit**.
 
 Set `align-self` on a direct child to override the stack's cross-axis `align`:
 vertical in **HStack**, horizontal in **VStack**. Values are `"start"`, `"center"`,
-`"end"`, `"stretch"`, or a number from 0 to 1; horizontal stacks also accept
+`"end"`, `"fill"`, `"stretch"`, or a number from 0 to 1; horizontal stacks also accept
 `"baseline"`. Omitted or `undefined` uses the parent's `align`.
 
 ```jsx
@@ -40,13 +40,21 @@ parent stack. `align-self` does not inherit or pass through wrappers: put it on
 the wrapping **Box**, **Frame**, or nested stack when that is the direct child. **TextRow**,
 **TextCol**, and **TextStack** use the same rules for their element children.
 
+`align="fill"` allocates the shared cross-axis size only to automatically sized
+children. It respects explicit dimensions, `width="fit"`, and min/max limits;
+any remaining cross-axis space stays at the end. `align="stretch"` imposes the
+shared size even on explicitly sized or bounded children. **TextCol** defaults
+to fill alignment and fills its own offered width. A child's own `width="fill"`
+still occupies an available width even when `align-self` opts out of the parent's
+allocation; combine `width="fit"` with `align-self="end"` for a compact panel.
+
 ## Explicit flex
 
 The immediate stack parent reads these props from each **direct child**:
 
 | Child prop | Meaning |
 |---|---|
-| `basis` | Starting main-axis length; otherwise preferred dimension, otherwise natural size |
+| `basis` | Starting main-axis length, or `"auto"` for the explicit dimension/content basis; omitted uses the rules below |
 | `grow` | Share of surplus; default `0` |
 | `shrink` | Shortage weight, multiplied by original `basis`; default `0` |
 | `align-self` | Cross-axis alignment override; defaults to the stack's `align` |
@@ -56,8 +64,28 @@ The allocator reserves gaps, clamps bases, and distributes surplus or shortage.
 Items at limits freeze while the rest receive the remaining allocation.
 Insufficient shrinkage leaves overflow; a stack does not clip itself.
 
-`basis={0} grow={1}` divides remaining space evenly among equivalent children.
-`grow={1}` alone adds equal surplus to potentially different natural bases.
+The basis is selected before distribution:
+
+1. An explicit length basis wins, including `basis={0}`.
+2. Otherwise, use the child's explicit width in a row or height in a column.
+3. If still unsized, positive `grow` starts from zero when the stack has an
+   available or exact main-axis budget.
+4. Without such a budget, or with omitted/zero growth, measure the child's content.
+
+`basis="auto"` skips the zero fallback: use the explicit main-axis dimension or
+measure content. A row child's `width="fit"` also preserves a measured basis;
+`width="fill"` supplies no fixed basis. Explicit length bases still override fit.
+Grow can enlarge a fitted child's final allocation beyond that starting width.
+
+`grow={1}` alone therefore gives unsized children equal shares of the space after
+gaps and fixed items, subject to limits. With `basis="auto"`, equal grow weights
+add equal surplus to potentially different content widths. See
+[Growth bases](./stack_basis.md) for a comparison using the same labels.
+
+An explicit `basis={0}` remains zero even during natural measurement, where content
+can overflow a zero allocation. A maximum on the stack can supply an available
+budget; a minimum alone retains natural bases before adding surplus space.
+
 `width={0.5}` means half the full established parent width, not half of what
 remains after gaps. Fractional widths/bases/gaps require definite references.
 
@@ -67,17 +95,19 @@ direct child. Flex props do not inherit or pass through wrappers.
 
 ## Measurement and placement
 
-The stack passes cross-axis offers inward while measuring natural main-axis
-bases. Finite main-axis offers supply a flex budget, but the stack hugs what
-is used unless its own size or an exact allocation establishes a larger frame.
+The stack passes cross-axis offers inward and measures content only when a basis
+or cross-axis allocation requires it. Finite main-axis offers supply a flex budget,
+but the stack hugs what is used unless its own size or an exact allocation
+establishes a larger frame.
 On an entirely natural axis, children simply pack; an own minimum can also
 provide room for explicit growth.
 
 **Text** reflows at its allocated width. Stretch can require another child query:
 a column selects its shared width before packing heights; a row selects height
 after width allocation and text reflow. Selected sizes never become speculative
-percentage references. Only children with effective `"stretch"` alignment receive
-the exact cross-axis size. Other children keep their usual sizing behavior.
+percentage references. Stretching children receive the exact cross-axis size;
+eligible fill children receive that size clamped to their own limits.
+Other children keep their usual sizing behavior.
 A stretching column keeps its selected width if a non-stretch child later grows
 wider during height allocation, reporting overflow instead of reflowing again.
 

@@ -1,19 +1,18 @@
 // Data-driven cards use equal outer flex allocation and fixed-size centered symbols.
 const Card = ({ title, note, color, symbol }) => (
-  <Frame
-    basis={0}
+  <TextFrame
     grow={1}
     padding={em(1)}
     radius={px(12)}
     border-color={gray}
     background={white}
- >
-    <VStack width={1} gap={em(0.5)}>
+  >
+    <TextCol gap={em(0.5)}>
       <Box height={em(10)} padding={em(1)} align-self="center">{symbol}</Box>
       <Text font-size={em(1.5)} font-weight={bold} color={color}>{title}</Text>
       <Text line-height={em(1.4)}>{note}</Text>
-    </VStack>
-  </Frame>
+    </TextCol>
+  </TextFrame>
 )
 const penta = [ [0.5, 0], [1, 0.35], [0.8, 1], [0.2, 1], [0, 0.35]]
 const cards = [
@@ -37,15 +36,15 @@ const cards = [
   },
 ]
 return <Svg width={px(760)} font-size={px(16)}>
-  <Box width={1} padding={em(2)} background={lightgray} color={slate}>
-    <VStack width={1} gap={em(1)}>
+  <TextBox padding={em(2)} background={lightgray} color={slate}>
+    <TextCol gap={em(1)}>
       <Text font-family={mono} font-size={em(1)} color={blue}>COMPOSITION / 02</Text>
       <Text font-size={em(2)} font-weight={bold}>One component, three shapes</Text>
-      <HStack width={1} gap={em(1)} align="stretch">
+      <HStack gap={em(1)} align="stretch">
         {cards.map((card) => (
           <Card {...card} />
         ))}
       </HStack>
-    </VStack>
-  </Box>
+    </TextCol>
+  </TextBox>
 </Svg>

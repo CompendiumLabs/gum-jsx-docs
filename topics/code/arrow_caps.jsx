@@ -14,8 +14,8 @@ const CapColumn = ({ cap }) => <VStack gap={em(0.75)}>
   </Group>
 </VStack>
 return <Svg width={px(760)} font-size={px(16)}>
-  <Box padding={em(1.5)} color={slate}>
-    <VStack gap={em(1.25)} align="stretch">
+  <TextBox padding={em(1.5)} color={slate}>
+    <TextCol gap={em(1.25)}>
       <Text font-size={em(1.75)} font-weight={bold}>Arrow tips, clean at every cap</Text>
       <Text font-size={em(0.875)}>The dashed guides mark the requested endpoints.</Text>
       <HStack gap={em(1.25)}>{caps.map(cap => <CapColumn cap={cap} />)}</HStack>
@@ -37,6 +37,6 @@ return <Svg width={px(760)} font-size={px(16)}>
           </Group>
         </VStack>
       </HStack>
-    </VStack>
-  </Box>
+    </TextCol>
+  </TextBox>
 </Svg>

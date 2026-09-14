@@ -31,14 +31,14 @@ const Diagram = ({ ...attr }) => <HStack align="center" {...attr}>
 </HStack>
 
 return <Svg width={px(760)} height={px(400)} font-size={px(16)}>
-  <Box background={slate} padding={em(2)} height={1} width={1}>
-    <VStack gap={em(1.5)} height={1} width={1}>
+  <TextBox background={slate} padding={em(2)} height={1}>
+    <TextCol gap={em(1.5)} height={1}>
       <Text font-family={mono} font-size={em(0.9)} color={blue}>POSITIONING / 03</Text>
       <Text font-size={em(2)} font-weight={bold} color={white}>A tiny processing pipeline</Text>
       <Spacer />
       <Diagram width={0.9} align-self="center" />
       <Spacer />
       <Text font-size={em(1)} color={white}>Positions are explicit. Text remains text-sized. The renderer receives finished geometry.</Text>
-    </VStack>
-  </Box>
+    </TextCol>
+  </TextBox>
 </Svg>

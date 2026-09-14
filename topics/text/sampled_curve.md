@@ -13,7 +13,8 @@ of the pixel domain because larger SVG y coordinates go down the page.
 All plotted points use px lengths in a shared **Group** canvas. The **Polyline**'s
 allocation is the whole canvas, not a data-derived bounding box. This keeps
 axes, markers, and labels in the same known coordinate system. The surrounding
-**VStack** handles the title and caption independently.
+**TextCol** handles the title and caption independently, using the content width
+provided by the outer **TextBox**.
 
 Try changing the damping coefficient or sample count. Change the explicit plot
 rectangle too if you want a wider graph; merely enlarging the **Svg** does not

@@ -9,9 +9,15 @@ The reference pages here describe what works now.
 ## Start here
 
 1. Use [Svg](../../elements/text/Svg.md) for the viewport.
-2. Use [Box](../../elements/text/Box.md) or [Frame](../../elements/text/Frame.md) for padding and decoration.
-3. Arrange content with [HStack](../../elements/text/HStack.md), [VStack](../../elements/text/VStack.md), or [Group](../../elements/text/Group.md).
+2. Use [TextBox](../../elements/text/TextBox.md) or [TextFrame](../../elements/text/TextFrame.md) for padded document content.
+3. Arrange content with [TextCol](../../elements/text/TextCol.md), [HStack](../../elements/text/HStack.md), or [Group](../../elements/text/Group.md).
 4. Add [shapes](../../elements/text/Rect.md) and [Text](../../elements/text/Text.md).
+
+**TextBox**, **TextFrame**, and **TextCol** fill available width and pass it to
+automatically sized content. Explicit child widths are respected. Use
+`width="fit"` for a compact document component. [Box](../../elements/text/Box.md),
+[Frame](../../elements/text/Frame.md), and [VStack](../../elements/text/VStack.md)
+provide primitives that size to their content by default.
 
 Each page has a matching executable example. Download or edit the linked JSX;
 it needs no imports when evaluated by the Gum CLI.

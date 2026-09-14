@@ -1,8 +1,8 @@
 // Each nested Group has its own local 0–1 reference rectangle. The same position
 // meets a different point of the Box: its top-left, center, or bottom-right.
 <Svg width={px(600)} color={slate} font-size={px(16)}>
-  <Box width={1} padding={em(1)}>
-    <VStack width={1} gap={em(0.875)}>
+  <TextBox padding={em(1)}>
+    <TextCol gap={em(0.875)}>
       <Text font-size={em(1.5)} font-weight={bold}>Choose the point that meets the position</Text>
       <Group aspect={3}>
         {['start', 'center', 'end'].map((anchor, index) =>
@@ -17,6 +17,6 @@
           </Group>
         )}
       </Group>
-    </VStack>
-  </Box>
+    </TextCol>
+  </TextBox>
 </Svg>

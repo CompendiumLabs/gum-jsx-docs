@@ -65,9 +65,10 @@ ellipsized. A trailing newline adds a blank line. Empty text has no natural size
 or ink. Line height controls spacing, not glyph scaling: very tight lines can
 overlap or extend beyond their line boxes.
 
-In an [HStack](./HStack.md), use `basis={0}` `grow={1}` on a paragraph to give it the
-remaining width. A fixed-height text frame does not automatically fit its text
-vertically. Align the **Text** element using its parent; `text-align` only aligns
+In an [HStack](./HStack.md), use `grow={1}` on an unsized paragraph to give it the
+remaining width. Its basis defaults to zero under a finite row budget; use
+`basis="auto"` to start from its measured width. A fixed-height text frame does not
+automatically fit its text vertically. Align the **Text** element using its parent; `text-align` only aligns
 lines inside the **Text** rectangle.
 
 SVG output contains glyph paths and an accessible text label, not native SVG

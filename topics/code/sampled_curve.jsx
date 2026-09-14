@@ -8,8 +8,8 @@ const points = linspace(0, 8, 101).map((t) => [
 ])
 return (
   <Svg width={px(720)} font-size={px(16)}>
-    <Box width={1} padding={em(1.75)} background={lightgray} color={slate}>
-      <VStack width={1} gap={em(1)}>
+    <TextBox padding={em(1.75)} background={lightgray} color={slate}>
+      <TextCol gap={em(1)}>
         <Text font-family={mono} font-size={em(0.875)} color={blue}>DATA / 04</Text>
         <Text font-size={em(1.875)} font-weight={bold}>A damped oscillation</Text>
         <Group height={px(300)}>
@@ -58,7 +58,7 @@ return (
         </Group>
         <Text font-family={mono} font-size={em(1)}>exp(-0.24t) sin(2.5t)</Text>
         <Text font-size={em(0.875)} color={slate}>101 samples. Explicit domains, axes, and labels. Just geometry and JavaScript.</Text>
-      </VStack>
-    </Box>
+      </TextCol>
+    </TextBox>
   </Svg>
 )
