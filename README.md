@@ -5,8 +5,8 @@ Start with [Gum](./topics/text/Gum.md), [units](./topics/text/Units.md), and
 [sizing](./topics/text/Sizing.md).
 
 Basic plotting is available: start with [Plot](./elements/text/Plot.md),
-[Graph](./elements/text/Graph.md), and [Sampling](./topics/text/Sampling.md), or try the
-[curve and band](./topics/text/plot_wave.md), [bars](./topics/text/plot_bars.md), and
+[Graph](./elements/text/Graph.md), and [SymLine](./elements/text/SymLine.md), or try the
+[curve and band](./elements/text/SymFill.md), [bars](./topics/text/plot_bars.md), and
 [vector field](./topics/text/plot_field.md) showcases. The editor includes a Plotting
 category alongside layout, geometry, and text.
 
@@ -14,6 +14,9 @@ category alongside layout, geometry, and text.
 [vectors](./topics/text/Vectors.md), [colors](./topics/text/Colors.md), and
 [seeded random data](./topics/text/Random.md) are built into JSX and exported for
 host code. The examples use these helpers directly.
+
+[Math authoring](./topics/text/Math.md) covers the new TeX and math-element slice.
+The CLI and editor include a Math category with ten runnable element references.
 
 The two collections use the same paired-file structure:
 
@@ -31,7 +34,7 @@ scripts/check.ts      Validate links, coverage, and example rendering
 There is no viewer, server, or Markdown renderer in this package. gum-next-edit's
 `/docs` route consumes the catalogs to show SVG cards and editable, live-rendered
 code/figure popups. There are no runtime package dependencies;
-gum-next-core is a development dependency for checking examples.
+gum-next-core and gum-next-math are development dependencies for checking examples.
 
 ## Elements
 
@@ -46,6 +49,11 @@ gum-next-core is a development dependency for checking examples.
   and [Path](./elements/text/Path.md).
 - Text: [Text](./elements/text/Text.md), [Span](./elements/text/Span.md),
   [Bullets](./elements/text/Bullets.md), and [Slide](./elements/text/Slide.md).
+- Math: [Latex](./elements/text/Latex.md), [Tex](./elements/text/Tex.md),
+  [MathText](./elements/text/MathText.md), [MathSymbol](./elements/text/MathSymbol.md),
+  [MathSpan](./elements/text/MathSpan.md), [MathRow](./elements/text/MathRow.md),
+  [MathCol](./elements/text/MathCol.md), [MathBox](./elements/text/MathBox.md),
+  [MathSpacer](./elements/text/MathSpacer.md), and [MathRule](./elements/text/MathRule.md).
 
 ## Topics
 
@@ -64,7 +72,7 @@ gum-next-core is a development dependency for checking examples.
 - [Two columns](./topics/text/two_columns.md): an explicitly allocated figure and paragraph.
 - [Shape cards](./topics/text/shape_cards.md): reusable components and nested stacks.
 - [Positioned diagram](./topics/text/positioned_diagram.md): labels, nodes, and connectors using **Group**.
-- [Sampled curve](./topics/text/sampled_curve.md): plain JavaScript data and **Polyline**.
+- [Sampled curve](./elements/text/SymLine.md): function sampling with **SymLine**.
 - [Layout choices](./topics/text/layout_choices.md): natural sizing versus explicit flex.
 - [Typography card](./topics/text/typography_card.md): mixed fonts, wrapping, and preformatted text.
 - [Arrow caps and tips](./topics/text/arrow_caps.md): thick shafts, fixed tips, and straight/curved/rounded routes.
@@ -125,7 +133,7 @@ discover matching files each time; single-page reads do not load the rest of the
 collection. Text loaders remove optional machine-readable category lines. Page
 preparation appends a fenced JSX example and preserves relative Markdown links.
 
-Categories are core, layout, geometry, plotting, text, and api. Every element page
+Categories are core, layout, geometry, plotting, text, math, and api. Every element page
 needs a `*Category*: ...` line directly below its title; topic pages may include one.
 A Markdown viewer should resolve relative links against the original text file and
 map them to its own routes, rather than requiring routes in the content. Raw files

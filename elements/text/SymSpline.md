@@ -13,7 +13,7 @@
 | `tension` | `1` | Catmull–Rom tangent strength; 0 makes straight segments |
 | `closed` | `false` | Close each finite run |
 
-Sample using [Sampling](../../topics/text/Sampling.md) and draw with [Spline](./Spline.md).
+Use the sampling options described by [SymLine](./SymLine.md) and draw with [Spline](./Spline.md).
 Null/nonfinite samples split paths or omit markers.
 Use fy for y=`f(x)`, fx for x=`f(y)`, or `f(t)` for parametric points. Limits here
 control sampling; enclosing **Graph**/**Plot** limits control the view.

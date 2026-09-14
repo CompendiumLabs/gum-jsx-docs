@@ -19,8 +19,8 @@ open; use [Polygon](./Polygon.md) to close the final edge.
 Fractions map to the polyline's own allocated axes. Pixels and em are also
 accepted. Point bounds do not set its size, and there is no automatic data-domain
 or aspect inference. For sampled data, explicitly map values into the rectangle;
-remember that SVG y increases downward. The [sampled curve showcase](../../topics/text/sampled_curve.md)
-demonstrates this without a **Plot** component.
+remember that SVG y increases downward. [SymLine](./SymLine.md) provides function
+sampling when a graph coordinate system is more convenient.
 
 Paint is inherited. Set `fill={none}` for a line chart: if you supply a fill,
 SVG fills the area as though the last point were connected to the first even

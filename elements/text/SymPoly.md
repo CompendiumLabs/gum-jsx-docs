@@ -11,7 +11,7 @@
 | `samples` | `101` | Number of generated samples |
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 
-Sample using [Sampling](../../topics/text/Sampling.md) and draw with [CoordLine](./CoordLine.md).
+Use the sampling options described by [SymLine](./SymLine.md) and draw with [CoordLine](./CoordLine.md).
 Each finite run closes into a polygon.
 Use fy for y=`f(x)`, fx for x=`f(y)`, or `f(t)` for parametric points. Limits here
 control sampling; enclosing **Graph**/**Plot** limits control the view.

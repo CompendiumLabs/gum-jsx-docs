@@ -9,8 +9,8 @@
           <VStack align="center" gap={em(1.5)}>
             <Text font-weight={bold}>{anchor}</Text>
             <Group width={px(200)} height={px(200)}>
-              <Line from={{x: 0.5, y: 0}} to={{x: 0.5, y: 1}} stroke="#ccc" />
-              <Line from={{x: 0, y: 0.5}} to={{x: 1, y: 0.5}} stroke="#ccc" />
+              <Line from={{x: 0.5, y: 0}} to={{x: 0.5, y: 1}} stroke={interp(white, black, 0.2)} />
+              <Line from={{x: 0, y: 0.5}} to={{x: 1, y: 0.5}} stroke={interp(white, black, 0.2)} />
               <Rect x={0.5} y={0.5} anchor={anchor} width={em(5)} height={em(3)}
                 fill={blue} stroke={none} radius={px(5)} />
               <Circle x={0.5} y={0.5} anchor="center" width={px(7)} fill={slate} stroke={white} />

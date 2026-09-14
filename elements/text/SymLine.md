@@ -12,7 +12,7 @@
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 | `closed` | `false` | Close each finite run |
 
-Sample using [Sampling](../../topics/text/Sampling.md) and draw with [CoordLine](./CoordLine.md).
+Sample a function at the specified values and draw with [CoordLine](./CoordLine.md).
 Null/nonfinite samples split paths or omit markers.
 Use fy for y=`f(x)`, fx for x=`f(y)`, or `f(t)` for parametric points. Limits here
 control sampling; enclosing **Graph**/**Plot** limits control the view.

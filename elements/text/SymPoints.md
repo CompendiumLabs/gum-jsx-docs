@@ -13,7 +13,7 @@
 | `point-size` | `px(6)` | Marker size, pair, or callback |
 | `shape` | `Circle` | Marker **Element** or callback |
 
-Sample using [Sampling](../../topics/text/Sampling.md) and draw with [Points](./Points.md).
+Use the sampling options described by [SymLine](./SymLine.md) and draw with [Points](./Points.md).
 Null/nonfinite samples split paths or omit markers.
 Use fy for y=`f(x)`, fx for x=`f(y)`, or `f(t)` for parametric points. Limits here
 control sampling; enclosing **Graph**/**Plot** limits control the view.

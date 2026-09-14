@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import * as core from 'gum-next-core'
+import * as math from 'gum-next-math'
 import { elementsDir, topicsDir, packageRoot, listElements, listTopics,
   getElements, getTopics, prepareElementPage, prepareTopicPage } from '../src'
 
@@ -14,19 +15,21 @@ const entries = [
   ...listTopics().map(entry => ({ ...entry, dir: topicsDir, collection: topics })),
 ]
 const commonOnlyElements = new Set(['Spacer', 'Span'])
+const bindings = { ...core, ...math }
 
-for (const [name, value] of Object.entries(core)) {
+for (const [name, value] of Object.entries(bindings)) {
+  if (name === 'MathElement') continue // Abstract base; documented with custom math sources.
   if (typeof value === 'function' && value.prototype instanceof core.Element) {
     assert.ok(elements.tags.includes(name), `Missing element reference for ${name}`)
   }
 }
 for (const name of elements.tags) {
-  const value = core[name as keyof typeof core]
+  const value = bindings[name as keyof typeof bindings]
   assert.ok(typeof value === 'function' && value.prototype instanceof core.Element,
     `${name} belongs in topics because it is not an Element`)
 }
 for (const name of topics.tags) {
-  const value = core[name as keyof typeof core]
+  const value = bindings[name as keyof typeof bindings]
   assert.ok(!(typeof value === 'function' && value.prototype instanceof core.Element),
     `${name} belongs in elements because it is an Element`)
 }
@@ -64,6 +67,8 @@ function checkPropertyValues(file: string, markdown: string): void {
 
 checkLinks(join(packageRoot, 'README.md'))
 let drawings = 0
+const fonts = math.createMathFonts()
+const pass = new core.LayoutPass({ fonts: { value: fonts, version: fonts.version } })
 for (const { name, title, dir, collection } of entries) {
   const code = collection.code[name]!
   const text = collection.text[name]!
@@ -85,9 +90,9 @@ for (const { name, title, dir, collection } of entries) {
       `${file}: use shared color constants without string quotes`)
   }
   checkLinks(join(dir, 'text', name + '.md'))
-  const element = core.evaluate(code, { name: file })
+  const element = core.evaluate(code, { name: file, scope: math })
   assert.ok(element instanceof core.Svg, `${file}: examples should include their viewport`)
-  const fragment = new core.LayoutPass().layout(element)
+  const fragment = pass.layout(element)
   assert.ok(fragment.size.width > 0 && fragment.size.height > 0, `${file}: empty viewport`)
   const svg = core.render_svg(fragment, { title, id_prefix: name })
   assert.ok(svg.startsWith('<svg ') && svg.endsWith('</svg>'), `${file}: invalid SVG envelope`)

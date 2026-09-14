@@ -16,7 +16,7 @@ Math helpers are available directly in JSX and as named imports from
 ## Scalars and constants
 
 These aliases have JavaScript's numeric behavior, including NaN and Infinity
-outside a function's domain. [Sampling](./Sampling.md) turns nonfinite results into
+outside a function's domain. [SymLine](../../elements/text/SymLine.md) turns nonfinite results into
 gaps. Trigonometric functions take radians.
 
 | **Group** | Names |
