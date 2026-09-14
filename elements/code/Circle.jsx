@@ -3,10 +3,10 @@
   <Box padding={px(20)} background={lightgray}>
     <HStack gap={px(16)}>
       <Circle width={px(80)} fill={blue} stroke={none} />
-      <Frame padding={px(8)} border_color={darkgray}>
+      <Frame padding={px(8)} border-color={darkgray}>
         <Circle width={px(160)} height={px(80)} fill={red} stroke={none} />
       </Frame>
-      <Frame padding={px(8)} border_color={darkgray}>
+      <Frame padding={px(8)} border-color={darkgray}>
         <Circle
           width={px(160)}
           height={px(80)}

@@ -8,7 +8,7 @@
         start={20}
         end={320}
         stroke={blue}
-        stroke_width={px(3)}
+        stroke-width={px(3)}
       />
     </Graph>
   </Box>

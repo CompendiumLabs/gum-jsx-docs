@@ -2,7 +2,7 @@
 <Svg width={px(460)} height={px(280)}>
   <Box padding={px(30)}>
     <TextStack>
-      <Text font_size={px(22)} font_weight={700}>Measured type</Text>
+      <Text font-size={px(22)} font-weight={700}>Measured type</Text>
       <Text color={blue}>A shared layout.</Text>
     </TextStack>
   </Box>

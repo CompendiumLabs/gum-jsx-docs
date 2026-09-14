@@ -42,17 +42,16 @@ names such as `Math` and `Array` remain available. Local declarations and
 host-provided scope bindings can override the supplied names.
 
 JSX attributes accept dashes or underscores: every `-` in an attribute name
-becomes `_` before the element or function component receives its props.
-For example, these spellings are equivalent:
+becomes `_` before the element or function component receives its props. The
+documentation uses dashes consistently:
 
 ```jsx
 <Text font-size={px(20)} font-weight={bold}>Revenue</Text>
-<Text font_size={px(20)} font_weight={bold}>Revenue</Text>
 ```
 
 This also works for custom props such as `label-text` and boolean attributes
 such as `show-label`; component functions receive `label_text` and `show_label`.
-If both spellings appear, the last attribute wins. Attribute values are unchanged.
+If both spellings appear in source, the last attribute wins. Attribute values are unchanged.
 Use underscore keys in JavaScript objects, including objects spread with `{...props}`;
 those keys are ordinary JavaScript and bypass attribute-name conversion.
 camelCase is not normalized. Unknown SVG attributes are not automatically
@@ -84,7 +83,7 @@ nonbreaking spaces remain content.
 
 ```jsx
 <Text>
-  Hello <Span font_weight={bold}>world</Span>
+  Hello <Span font-weight={bold}>world</Span>
   A second line
 </Text>
 ```

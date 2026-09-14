@@ -9,12 +9,12 @@ inline badge or a separately positioned run.
 
 ```jsx
 <Text>
-  {"One "}<Span font_weight={bold}>important</Span>{" word."}
+  {"One "}<Span font-weight={bold}>important</Span>{" word."}
 </Text>
 ```
 
 Font family, size, weight, style, color, and line height may be overridden. em or
-fractional `font_size` is relative to the surrounding font size. Nested **Span**s
+fractional `font-size` is relative to the surrounding font size. Nested **Span**s
 inherit the resolved style of their containing **Span**. Use `color`, not fill,
 for glyph color.
 

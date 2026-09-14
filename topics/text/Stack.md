@@ -23,7 +23,7 @@ for stacks; per-axis alignment objects and tuples belong to **Box**/**Fit**.
 
 ## Per-child alignment
 
-Set `align_self` on a direct child to override the stack's cross-axis `align`:
+Set `align-self` on a direct child to override the stack's cross-axis `align`:
 vertical in **HStack**, horizontal in **VStack**. Values are `"start"`, `"center"`,
 `"end"`, `"stretch"`, or a number from 0 to 1; horizontal stacks also accept
 `"baseline"`. Omitted or `undefined` uses the parent's `align`.
@@ -36,7 +36,7 @@ vertical in **HStack**, horizontal in **VStack**. Values are `"start"`, `"center
 ```
 
 A child's own `align` still controls its contents, not its placement in the
-parent stack. `align_self` does not inherit or pass through wrappers: put it on
+parent stack. `align-self` does not inherit or pass through wrappers: put it on
 the wrapping **Box**, **Frame**, or nested stack when that is the direct child. **TextRow**,
 **TextCol**, and **TextStack** use the same rules for their element children.
 
@@ -49,8 +49,8 @@ The immediate stack parent reads these props from each **direct child**:
 | `basis` | Starting main-axis length; otherwise preferred dimension, otherwise natural size |
 | `grow` | Share of surplus; default `0` |
 | `shrink` | Shortage weight, multiplied by original `basis`; default `0` |
-| `align_self` | Cross-axis alignment override; defaults to the stack's `align` |
-| `min_width` / `max_width`, etc. | Limits on the main-axis allocation |
+| `align-self` | Cross-axis alignment override; defaults to the stack's `align` |
+| `min-width` / `max-width`, etc. | Limits on the main-axis allocation |
 
 The allocator reserves gaps, clamps bases, and distributes surplus or shortage.
 Items at limits freeze while the rest receive the remaining allocation.
@@ -85,7 +85,7 @@ Only baseline-aligned children contribute to the row's baseline group. The row
 also accommodates non-baseline children's heights, and stretching siblings
 receive a height that includes the baseline group's ascent and descent.
 
-Justify and align/align_self position completed allocations. **Text**'s own `text_align` is
+`justify`, `align`, and `align-self` position completed allocations. **Text**'s own `text-align` is
 separate. Distributed spacing only adds positive free space; center/end may
 position overflowing content outside the frame.
 

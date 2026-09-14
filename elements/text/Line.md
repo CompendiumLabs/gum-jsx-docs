@@ -15,7 +15,7 @@ parent's size.
 ```jsx
 <Line width={px(200)} height={px(40)}
   from={[0, 0.5]} to={[1, 0.5]}
-  stroke={green} stroke_width={px(4)} stroke_linecap="round" />
+  stroke={green} stroke-width={px(4)} stroke-linecap="round" />
 ```
 
 **Line** always disables fill. It otherwise inherits stroke color, width, and cap

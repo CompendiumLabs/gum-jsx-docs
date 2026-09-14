@@ -3,12 +3,12 @@
   <Box padding={px(20)} background={lightgray}>
     <HStack gap={px(20)}>
       <VStack gap={px(8)}>
-        <Text font_size={px(14)}>contain</Text>
+        <Text font-size={px(14)}>contain</Text>
         <Frame
           width={px(220)}
           height={px(100)}
           padding={px(12)}
-          border_color={blue}
+          border-color={blue}
         >
           <Fit mode="contain">
             <Text color={blue}>Size by fitting</Text>
@@ -16,12 +16,12 @@
         </Frame>
       </VStack>
       <VStack gap={px(8)}>
-        <Text font_size={px(14)}>scale_down</Text>
+        <Text font-size={px(14)}>scale_down</Text>
         <Frame
           width={px(220)}
           height={px(100)}
           padding={px(12)}
-          border_color={red}
+          border-color={red}
         >
           <Fit mode="scale_down">
             <Text color={red}>Size by fitting</Text>

@@ -6,12 +6,12 @@
 |---|---|---|
 | `coord` | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
 | `xlim` / `ylim` | Inferred | Directed data limits |
-| `flip_x` / `flip_y` | `false` / `true` | Reverse horizontal or vertical screen mapping |
+| `flip-x` / `flip-y` | `false` / `true` | Reverse horizontal or vertical screen mapping |
 | `padding` | `0.05` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
 | `values` | `[]` | Bar endpoints |
 | `positions` | Indices | Bar centers |
 | `bases` | `0` | Scalar, array, or callback for bar baselines |
-| `bar_width` | `0.8` | Scalar, array, or callback for widths in data units |
+| `bar-width` | `0.8` | Scalar, array, or callback for widths in data units |
 | `direction` | `"vertical"` | Vertical or horizontal bars |
 | `radius` | `0` | Bar corner radius in layout units |
 | `styles` | — | Per-bar style array or callback |
@@ -22,21 +22,21 @@
 | `title` / `xlabel` / `ylabel` | — | String or **Element**; the y title rotates −90° |
 | `legend` | — | **Legend** **Element** or array of **Legend** entries |
 | `margin` | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
-| `label_gap` | `px(8)` | Space between titles and measured axis extents |
+| `label-gap` | `px(8)` | Space between titles and measured axis extents |
 | `background` | — | Full-frame background paint |
-| `plot_background` | — | Data-area background paint |
-| `border_width` | `px(0)` | Data-area border thickness |
-| `border_color` | `"#cbd5e1"` | Data-area border paint |
+| `plot-background` | — | Data-area background paint |
+| `border-width` | `px(0)` | Data-area border thickness |
+| `border-color` | `"#cbd5e1"` | Data-area border paint |
 | `clip` | `true` | Clip data marks to the data area |
-| `axis_*` / `xaxis_*` / `yaxis_*` | — | Flat **Axis** option overrides |
-| `tick_*` / `label_*` | — | Shared generated tick and label styles |
-| `title_*` / `xlabel_*` / `ylabel_*` | — | Generated title text options |
-| `grid_*` / `xgrid_*` / `ygrid_*` | — | Grid options and styles |
-| `legend_*` | — | Generated **Legend** options |
-| `*_style` | — | Nested options for the corresponding scopes |
+| `axis-*` / `xaxis-*` / `yaxis-*` | — | Flat **Axis** option overrides |
+| `tick-*` / `label-*` | — | Shared generated tick and label styles |
+| `title-*` / `xlabel-*` / `ylabel-*` | — | Generated title text options |
+| `grid-*` / `xgrid-*` / `ygrid-*` | — | Grid options and styles |
+| `legend-*` | — | Generated **Legend** options |
+| `*-style` | — | Nested options for the corresponding scopes |
 
 Compose [Bars](./Bars.md) and [Plot](./Plot.md). Accepts values, positions, bases,
-`bar_width`, direction, radius, and styles along with **Plot** props. Additional
+`bar-width`, direction, radius, and styles along with **Plot** props. Additional
 children overlay bars and participate in limit inference.
 
 Padding follows [Graph](./Graph.md): values are fractions of inferred data spans.

@@ -3,11 +3,11 @@ const Stage = ({ label, color }) => (
   <Frame
     width={px(120)}
     padding={px(14)}
-    border_color={color}
+    border-color={color}
     background={white}
     radius={px(8)}
   >
-    <Text text_align="center" width={1} color={color} font_weight={bold}>{label}</Text>
+    <Text text-align="center" width={1} color={color} font-weight={bold}>{label}</Text>
   </Frame>
 )
 return (

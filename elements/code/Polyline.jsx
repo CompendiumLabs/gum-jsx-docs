@@ -6,16 +6,16 @@ const points = values.map((value, index) => [
 ])
 return (
   <Svg>
-    <Frame padding={px(20)} border_color={gray} background={lightgray}>
+    <Frame padding={px(20)} border-color={gray} background={lightgray}>
       <Polyline
         width={px(320)}
         height={px(140)}
         points={points}
         fill={none}
         stroke={blue}
-        stroke_width={px(4)}
-        stroke_linejoin="round"
-        stroke_linecap="round"
+        stroke-width={px(4)}
+        stroke-linejoin="round"
+        stroke-linecap="round"
       />
     </Frame>
   </Svg>

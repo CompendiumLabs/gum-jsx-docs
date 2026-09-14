@@ -16,7 +16,7 @@ both forms in one list. Each tuple must contain exactly two coordinates.
 | `from`, `to`, `center`, `origin`, `tip` | **Line**, **Circle**/**Ellipse**, **Arc**, **Arrow**, **Ray**, **ArrowHead**, and their conveniences |
 | `points` and `fill` boundary lists | **Polyline**/**Polygon**, **CoordLine**, **Spline**, **RoundedLine**, **Points**, **Arrow**, **Fill**/**HFill**/**VFill** |
 | Segment endpoints | `segments={[[[0, 0], [1, 1]], [[0, 1], [1, 0]]]}` |
-| Paired radius or `point_size` | **Rect**/**Box** corners, **Ellipse**/**Arc** radii, and **Points** marker dimensions |
+| Paired radius or `point-size` | **Rect**/**Box** corners, **Ellipse**/**Arc** radii, and **Points** marker dimensions |
 | **Field** samples | `vectors={[{point: [0, 0], vector: [1, 2]}]}` |
 | **Anchor** and alignment pairs | `anchor={[1, 0.5]}`, **Box**/**Fit**/**Anchor** `align`, and **Rotate** `origin` |
 | Numeric helper inputs | Vector arithmetic, `spline2d` and path builders, `point_bounds`, `map_point`/`unmap_point`, drawing centers/radii, and placement offsets |

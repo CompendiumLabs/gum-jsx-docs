@@ -5,7 +5,7 @@
       <ArrowHead
         tip={[2, 2]}
         angle={-30}
-        head_size={px(45)}
+        head-size={px(45)}
         fill={blue}
         stroke={blue}
       />

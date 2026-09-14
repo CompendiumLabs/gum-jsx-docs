@@ -32,9 +32,9 @@ return (
         fy={wave}
         samples={241}
         stroke={blue}
-        stroke_width={px(2.5)}
+        stroke-width={px(2.5)}
       />
-      <Points points={observations} fill={red} point_size={px(7)} />
+      <Points points={observations} fill={red} point-size={px(7)} />
     </Plot>
   </Svg>
 )

@@ -13,17 +13,17 @@ polyline. Both heads follow the original route's endpoint directions.
 | `curve` | `false` | Connect the route with a spline |
 | `tension` | `1` | Spline tangent strength when `curve` is true |
 | `radius` | `0` | Rounded-corner radius for a non-curved route |
-| `start_head` | `false` | Draw a head at the first point |
-| `end_head` | `true` | Draw a head at the last point |
-| `head_size` | `px(9)` | Head length, using layout units |
-| `head_width` | `1.3` | Full head width divided by its length |
-| `head_style` | — | Overrides for head paint; the default fill matches the shaft stroke |
-| `head_*` | — | Flat overrides for fields in `head_style` |
+| `start-head` | `false` | Draw a head at the first point |
+| `end-head` | `true` | Draw a head at the last point |
+| `head-size` | `px(9)` | Head length, using layout units |
+| `head-width` | `1.3` | Full head width divided by its length |
+| `head-style` | — | Overrides for head paint; the default fill matches the shaft stroke |
+| `head-*` | — | Flat overrides for fields in `head-style` |
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 
-Use scoped props such as `head_fill={red}`, `head_stroke={none}`, or
-`head_stroke_width={px(2)}` to set head styles directly. They override matching
-fields in `head_style`. `head_size` and `head_width` retain their geometry meanings.
+Use scoped props such as `head-fill={red}`, `head-stroke={none}`, or
+`head-stroke-width={px(2)}` to set head styles directly. They override matching
+fields in `head-style`. `head-size` and `head-width` retain their geometry meanings.
 See [scoped props](../../topics/text/Style.md#scoped-component-props).
 
 Head tips stay at the requested endpoints. The shaft retreats at headed ends so
@@ -33,7 +33,7 @@ pixels after coordinate mapping, so fixed pixel strokes keep the same clearance
 when a graph resizes or flips.
 
 Ends without heads keep their original shaft endpoints and caps. Setting
-`head_size` to zero disables both heads and shortening. A zero-length route has
+`head-size` to zero disables both heads and shortening. A zero-length route has
 no heads. Very short terminal segments are consumed by the inset; if shortening
 uses the entire route, only the heads remain. For a head narrower than the shaft,
 the cap stops at the head's base to keep them connected.

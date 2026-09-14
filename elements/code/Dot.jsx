@@ -6,7 +6,7 @@
       height={px(30)}
       fill={blue}
       stroke={blue}
-      stroke_width={px(3)}
+      stroke-width={px(3)}
     />
   </Box>
 </Svg>

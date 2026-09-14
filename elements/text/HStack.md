@@ -13,7 +13,7 @@ axis. See [Stack](../../topics/text/Stack.md) for all props and allocation rules
 
 | Direct child prop | Default | Meaning |
 |---|---|---|
-| `align_self` | `Stack's align` | Override this child's vertical alignment |
+| `align-self` | `Stack's align` | Override this child's vertical alignment |
 
 An **HStack** without explicit flex uses each child's preferred or measured natural
 width. An available height can determine aspect figures' widths locally.
@@ -27,14 +27,14 @@ the columns themselves.
 ## Alignment
 
 - align controls vertical positioning: start, center, end, stretch, or 0–1.
-- `align_self` on a direct child overrides that default using the same values.
+- `align-self` on a direct child overrides that default using the same values.
 - `align="baseline"` aligns the first text baselines; a child without a baseline
   uses its bottom edge. Only children whose effective alignment is baseline
   participate; the row includes their ascent and descent extents.
 - justify controls horizontal positioning or distributed spacing.
 
 Stretch allocates the row's selected height only to stretching children; it can override
-preferred cross-axis sizes. It does not scale glyphs. **Text**.`text_align` only affects
+preferred cross-axis sizes. It does not scale glyphs. **Text**.`text-align` only affects
 the placement of lines within that **Text**'s own width.
 Child containers' own align values continue to position their contents.
 

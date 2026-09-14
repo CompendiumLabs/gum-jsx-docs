@@ -10,8 +10,8 @@ return <Svg color={slate}>
   <Box padding={px(24)}>
     <HStack gap={px(36)}>
       {[false, true].map(clip => <VStack gap={px(10)}>
-        <Text font_size={px(14)} font_weight={bold}>clip = {String(clip)}</Text>
-        <Box border_width={px(2)} border_color={slate}>
+        <Text font-size={px(14)} font-weight={bold}>clip = {String(clip)}</Text>
+        <Box border-width={px(2)} border-color={slate}>
           <Group width={px(180)} height={px(100)} clip={clip}>{artwork}</Group>
         </Box>
       </VStack>)}

@@ -5,7 +5,7 @@
       <CoordLine
         points={[[0, 0], [1, 2], [2, 1], [3, 3]]}
         stroke={blue}
-        stroke_width={px(3)}
+        stroke-width={px(3)}
       />
     </Graph>
   </Box>

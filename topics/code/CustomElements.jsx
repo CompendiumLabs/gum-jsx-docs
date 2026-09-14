@@ -36,7 +36,7 @@ return (
   <Svg>
     <Box padding={px(24)} background={lightgray}>
       <VStack gap={px(12)}>
-        <Text font_size={px(22)} font_weight={bold}>A custom leaf</Text>
+        <Text font-size={px(22)} font-weight={bold}>A custom leaf</Text>
         {[0.25, 0.6, 0.9].map((value) => (
           <HStack gap={px(12)} align="center">
             <Meter value={value} />

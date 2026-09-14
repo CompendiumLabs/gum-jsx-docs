@@ -25,7 +25,7 @@ move_to starts another subpath in the same drawing.
 ```jsx
 <Path width={px(240)} height={px(100)}
   commands={[move_to(0, 0.8), curve_to(0.3, 0, 0.7, 1, 1, 0.2)]}
-  fill={none} stroke={green} stroke_width={px(3)} />
+  fill={none} stroke={green} stroke-width={px(3)} />
 ```
 
 Layout follows ordinary shape sizing, not the bounds of the commands. The

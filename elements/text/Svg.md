@@ -22,7 +22,7 @@ Overflow is still retained in the fragment for inspection.
 |---|---|---|
 | `children` | — | One content element, optionally absent |
 | `width` / `height` | `Natural` | Preferred viewport dimensions; explicit values require `px()` |
-| `min_width` / `max_width`, `min_height` / `max_height` | — | Own size limits |
+| `min-width` / `max-width`, `min-height` / `max-height` | — | Own size limits |
 | Typography and paint | `Inherited` | Style inherited by content |
 
 An aspect on **Svg** does not derive the other viewport dimension. Put an aspect

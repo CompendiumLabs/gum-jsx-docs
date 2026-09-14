@@ -17,8 +17,8 @@ polygon's own rectangle; the point list does not establish its layout size.
 ```
 
 Shared sizing and paint props work as on [Rect](./Rect.md). There is no default
-fill; set one explicitly for a solid silhouette. `stroke_linejoin` and
-`stroke_miterlimit` control stroked corners. Empty points produce no drawing.
+fill; set one explicitly for a solid silhouette. `stroke-linejoin` and
+`stroke-miterlimit` control stroked corners. Empty points produce no drawing.
 Vertices outside the allocated rectangle remain outside; clipping belongs to a
 container or the root viewport.
 

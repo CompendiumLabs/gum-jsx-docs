@@ -8,8 +8,8 @@ const Rule = ({ cap, color }) => (
       from={[0.05, 0.5]}
       to={[0.95, 0.5]}
       stroke={color}
-      stroke_width={px(10)}
-      stroke_linecap={cap}
+      stroke-width={px(10)}
+      stroke-linecap={cap}
     />
   </HStack>
 )

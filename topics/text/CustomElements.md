@@ -52,7 +52,7 @@ Both helpers are available in JSX and as named exports from `gum-next-core`:
 ```jsx
 const Captioned = props => {
   const [caption, rest] = prefix_split(['caption'], props)
-  return <TextFigure {...rest} caption_style={caption} />
+  return <TextFigure {...rest} caption-style={caption} />
 }
 
 return <Captioned caption="A diagram" caption-color={blue}>

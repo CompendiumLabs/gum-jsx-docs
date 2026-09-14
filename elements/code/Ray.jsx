@@ -7,7 +7,7 @@
         angle={-30}
         length={px(150)}
         stroke={blue}
-        stroke_width={px(3)}
+        stroke-width={px(3)}
       />
     </Graph>
   </Box>

@@ -7,7 +7,7 @@
         xlim={[0, tau]}
         samples={101}
         stroke={blue}
-        stroke_width={px(2)}
+        stroke-width={px(2)}
       />
     </Plot>
   </Box>

@@ -5,13 +5,13 @@ const Card = ({ title, note, color, symbol }) => (
     grow={1}
     padding={em(1)}
     radius={px(12)}
-    border_color={gray}
+    border-color={gray}
     background={white}
  >
     <VStack width={1} gap={em(0.5)}>
       <Box height={em(10)} padding={em(1)} align-self="center">{symbol}</Box>
-      <Text font_size={em(1.5)} font_weight={bold} color={color}>{title}</Text>
-      <Text line_height={em(1.4)}>{note}</Text>
+      <Text font-size={em(1.5)} font-weight={bold} color={color}>{title}</Text>
+      <Text line-height={em(1.4)}>{note}</Text>
     </VStack>
   </Frame>
 )
@@ -39,8 +39,8 @@ const cards = [
 return <Svg width={px(760)}>
   <Box width={1} padding={em(2)} background={lightgray} color={slate}>
     <VStack width={1} gap={em(1)}>
-      <Text font_family={mono} font_size={em(1)} color={blue}>COMPOSITION / 02</Text>
-      <Text font_size={em(2)} font_weight={bold}>One component, three shapes</Text>
+      <Text font-family={mono} font-size={em(1)} color={blue}>COMPOSITION / 02</Text>
+      <Text font-size={em(2)} font-weight={bold}>One component, three shapes</Text>
       <HStack width={1} gap={em(1)} align="stretch">
         {cards.map((card) => (
           <Card {...card} />

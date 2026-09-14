@@ -6,7 +6,7 @@
       from={[0.3, 0.45]}
       to={[0.7, 0.45]}
       stroke={darkgray}
-      stroke_width={px(3)}
+      stroke-width={px(3)}
     />
     <Circle
       x={0.2}

@@ -15,7 +15,7 @@ axes available as percentage references.
 |---|---|---|
 | `mode` | `"contain"` | Fit inside the target |
 | `mode="cover"` | — | Cover the target, possibly extending outside it |
-| `mode="`scale_down`"` | — | Contain, but never enlarge |
+| `mode="scale_down"` | — | Contain, but never enlarge |
 | `align` | `"center"` | Position scaled content in the target |
 | `clip` | `false` | Clip to the target rectangle |
 

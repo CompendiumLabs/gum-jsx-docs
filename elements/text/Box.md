@@ -13,8 +13,8 @@ The inner content area subtracts padding and the border on each side.
 | Property | Default | Meaning |
 |---|---|---|
 | `padding` | `0` | Length, side/axis object, or `[h, v]` / `[t, b, l, r]` |
-| `border_width` | `px(0)` | Border thickness inside the frame |
-| `border_color` | Resolved color | Border paint |
+| `border-width` | `px(0)` | Border thickness inside the frame |
+| `border-color` | Resolved color | Border paint |
 | `background` | `none` | This **Box**'s background |
 | `radius` | `0` | Scalar radius, { x, y }, or [x, y] radii |
 | `align` | `"start"` | Content alignment on both axes, or { x, y } / [x, y] |

@@ -6,7 +6,7 @@
         points={[[0, 0], [0, 2], [2, 2], [2, 3]]}
         radius={px(18)}
         stroke={blue}
-        stroke_width={px(3)}
+        stroke-width={px(3)}
       />
     </Graph>
   </Box>

@@ -10,8 +10,8 @@ return (
   <Svg width={px(720)}>
     <Box width={1} padding={px(28)} background={lightgray} color={slate}>
       <VStack width={1} gap={px(16)}>
-        <Text font_family={mono} font_size={px(14)} color={blue}>DATA / 04</Text>
-        <Text font_size={px(30)} font_weight={bold}>A damped oscillation</Text>
+        <Text font-family={mono} font-size={px(14)} color={blue}>DATA / 04</Text>
+        <Text font-size={px(30)} font-weight={bold}>A damped oscillation</Text>
         <Group height={px(300)}>
           {range(-1, 2).map((value) => (
             <>
@@ -19,25 +19,25 @@ return (
                 from={[mapX(0), mapY(value)]}
                 to={[mapX(8), mapY(value)]}
                 stroke={value === 0 ? darkgray : gray}
-                stroke_width={px(1)}
+                stroke-width={px(1)}
               />
               <Text x={px(44)} y={mapY(value)} anchor={[1, 0.5]}
-                font_family={mono} font_size={px(12)} color={slate}>{value}</Text>
+                font-family={mono} font-size={px(12)} color={slate}>{value}</Text>
             </>
           ))}
           <Line
             from={[mapX(0), mapY(1)]}
             to={[mapX(0), mapY(-1)]}
             stroke={darkgray}
-            stroke_width={px(1)}
+            stroke-width={px(1)}
           />
           <Polyline
             points={points}
             fill={none}
             stroke={blue}
-            stroke_width={px(3)}
-            stroke_linejoin="round"
-            stroke_linecap="round"
+            stroke-width={px(3)}
+            stroke-linejoin="round"
+            stroke-linecap="round"
           />
           {slice(points, 0, undefined, 25).map(([x, y]) => (
               <Circle
@@ -47,17 +47,17 @@ return (
                 width={px(7)}
                 fill={red}
                 stroke={lightgray}
-                stroke_width={px(1)}
+                stroke-width={px(1)}
               />
             ))}
           {range(0, 9, 2).map((value) => (
             <Text x={mapX(value)} y={px(260)} anchor={[0.5, 0]}
-              font_family={mono} font_size={px(12)} color={slate}>{value}</Text>
+              font-family={mono} font-size={px(12)} color={slate}>{value}</Text>
           ))}
-          <Text x={px(648)} y={px(260)} font_size={px(12)} font_style="italic">t</Text>
+          <Text x={px(648)} y={px(260)} font-size={px(12)} font-style="italic">t</Text>
         </Group>
-        <Text font_family={mono} font_size={px(16)}>exp(-0.24t) sin(2.5t)</Text>
-        <Text font_size={px(14)} color={slate}>101 samples. Explicit domains, axes, and labels. Just geometry and JavaScript.</Text>
+        <Text font-family={mono} font-size={px(16)}>exp(-0.24t) sin(2.5t)</Text>
+        <Text font-size={px(14)} color={slate}>101 samples. Explicit domains, axes, and labels. Just geometry and JavaScript.</Text>
       </VStack>
     </Box>
   </Svg>

@@ -4,11 +4,11 @@
     <Frame
       padding={em(0.75)}
       radius={px(8)}
-      font_size={px(20)}
+      font-size={px(20)}
       color={blue}
       background={white}
     >
-      <Text>Ready to <Span font_weight={bold}>render</Span></Text>
+      <Text>Ready to <Span font-weight={bold}>render</Span></Text>
     </Frame>
   </Box>
 </Svg>

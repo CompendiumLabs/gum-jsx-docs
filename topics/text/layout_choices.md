@@ -21,4 +21,4 @@ aspect-sensitive vertical stacks, a known shared width is often clearer than
 trying to derive it from a total height.
 
 Try changing both grow factors in the last row to 1, or give one child a
-`max_width` to see space redistribute after its limit is reached.
+`max-width` to see space redistribute after its limit is reached.

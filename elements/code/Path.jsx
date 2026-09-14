@@ -11,8 +11,8 @@
         ]}
         fill={none}
         stroke={blue}
-        stroke_width={px(4)}
-        stroke_linecap="round"
+        stroke-width={px(4)}
+        stroke-linecap="round"
       />
       <Path
         width={px(140)}

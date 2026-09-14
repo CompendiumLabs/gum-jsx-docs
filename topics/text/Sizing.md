@@ -8,8 +8,8 @@ general constraint solver.
 
 ## Element dimensions
 
-Common sizing props are width, height, `min_width`, `max_width`, `min_height`, and
-`max_height`. All take [lengths](./Units.md). Minima default to zero and maxima
+Common sizing props are width, height, `min-width`, `max-width`, `min-height`, and
+`max-height`. All take [lengths](./Units.md). Minima default to zero and maxima
 are unbounded. A preferred width or height is clamped to the element's own limits.
 An exact allocation from the parent takes precedence.
 

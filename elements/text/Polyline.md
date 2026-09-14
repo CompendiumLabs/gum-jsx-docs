@@ -13,7 +13,7 @@ open; use [Polygon](./Polygon.md) to close the final edge.
 ```jsx
 <Polyline width={px(240)} height={px(100)}
   points={[[0, 0.8], [0.4, 0.2], [1, 0.6]]}
-  fill={none} stroke={green} stroke_width={px(3)} />
+  fill={none} stroke={green} stroke-width={px(3)} />
 ```
 
 Fractions map to the polyline's own allocated axes. Pixels and em are also
@@ -24,6 +24,6 @@ demonstrates this without a **Plot** component.
 
 Paint is inherited. Set `fill={none}` for a line chart: if you supply a fill,
 SVG fills the area as though the last point were connected to the first even
-though the stroked path stays open. `stroke_linejoin` controls the joins, and
-`stroke_linecap` controls the two open ends. There is no smoothing option; use
+though the stroked path stays open. `stroke-linejoin` controls the joins, and
+`stroke-linecap` controls the two open ends. There is no smoothing option; use
 [Path](./Path.md) for Bézier curves.

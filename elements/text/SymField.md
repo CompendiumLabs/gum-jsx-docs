@@ -11,10 +11,10 @@
 | `samples` | `11` | Scalar count or `{ x, y }` counts |
 | `scale` | `1` | Multiplier applied to every vector |
 | `normalize` | `false` | Normalize vectors before applying `scale` |
-| `head_size` | `px(5)` | Arrowhead length for built-in arrows |
-| `head_width` | `1.3` | Full arrowhead width divided by its length |
+| `head-size` | `px(5)` | Arrowhead length for built-in arrows |
+| `head-width` | `1.3` | Full arrowhead width divided by its length |
 | `shape` | — | Replacement **Element** or callback |
-| `shape_height` | `px(8)` | Height allocated to replacement shapes |
+| `shape-height` | `px(8)` | Height allocated to replacement shapes |
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 
 Sample `f(x,y)` on a rectangular grid and draw it with [Field](./Field.md).

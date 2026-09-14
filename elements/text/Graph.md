@@ -7,8 +7,8 @@
 | `coord` | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
 | `xlim` | Inferred or `[0, 1]` | Directed horizontal data limits |
 | `ylim` | Inferred or `[0, 1]` | Directed vertical data limits |
-| `flip_x` | `false` | Reverse horizontal screen mapping |
-| `flip_y` | `true` | Reverse vertical screen mapping for Cartesian y-up coordinates |
+| `flip-x` | `false` | Reverse horizontal screen mapping |
+| `flip-y` | `true` | Reverse vertical screen mapping for Cartesian y-up coordinates |
 | `padding` | `0` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
 | `clip` | `false` | Clip children to the graph frame |
 
@@ -16,7 +16,7 @@ A finite canvas with a linear data coordinate system. **Graph** infers limits fr
 graphable children or accepts `xlim={[min,max]}`, `ylim={[min,max]}`, or
 `coord={[xmin,ymin,xmax,ymax]}`. Individual limits override coord.
 
-The default is Cartesian: x right, y up. `flip_x` defaults to false and `flip_y` to
+The default is Cartesian: x right, y up. `flip-x` defaults to false and `flip-y` to
 true. Descending limits also reverse an axis. padding is a dimensionless fraction
 of each inferred data span; explicit limits stay exact.
 Empty axes use [0,1]. A singleton expands by `max(0.5, 5% of its magnitude)`;

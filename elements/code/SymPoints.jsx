@@ -7,7 +7,7 @@
         xlim={[0, tau]}
         samples={17}
         fill={blue}
-        point_size={px(7)}
+        point-size={px(7)}
       />
     </Plot>
   </Box>

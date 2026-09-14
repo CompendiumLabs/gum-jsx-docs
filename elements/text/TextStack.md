@@ -18,4 +18,4 @@ Other props follow [Stack](../../topics/text/Stack.md). gap defaults to 0.6em. W
 reflows text while preserving glyph measurements and baselines. These wrappers
 do not add automatic flex weights, fitting, or a separate text scale. Specify
 grow/shrink/basis for flexible content.
-**Element** children can override the cross-axis alignment with `align_self`.
+**Element** children can override the cross-axis alignment with `align-self`.

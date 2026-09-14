@@ -8,7 +8,7 @@
           { point: [1, 0], vector: [2, 1] },
         ]}
         stroke={blue}
-        stroke_width={px(2)}
+        stroke-width={px(2)}
       />
     </Plot>
   </Box>

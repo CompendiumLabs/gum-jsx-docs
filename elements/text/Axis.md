@@ -13,20 +13,20 @@ your own frame.
 | `interval` | Automatic | Positive fixed step instead of automatic 1/2/5 intervals |
 | `side` | `"bottom"` | Axis edge and orientation |
 | `at` | Frame edge | Data location on the perpendicular axis |
-| `tick_size` | `px(5)` | Tick length |
-| `label_offset` | `px(4)` | Gap between ticks and labels |
+| `tick-size` | `px(5)` | Tick length |
+| `label-offset` | `px(4)` | Gap between ticks and labels |
 | `format` | `format_tick` | `(value, index) => string` for numeric ticks |
 | `rotate` | `0` | Label rotation in degrees |
 | `labels` | `true` | Draw tick labels |
 | `line` | `true` | Draw the baseline |
 | `arrow` | `false` | Draw a head at the directed endpoint |
-| `line_style` / `tick_style` / `label_style` | — | Nested styles for generated parts |
-| `line_*` / `tick_*` / `label_*` | — | Flat overrides for generated-part styles |
+| `line-style` / `tick-style` / `label-style` | — | Nested styles for generated parts |
+| `line-*` / `tick-*` / `label-*` | — | Flat overrides for generated-part styles |
 
 Pair labels may be strings, numbers, or **Element**s. Out-of-domain ticks are omitted.
 Scopes configure generated labels; supplied **Element**s keep their own props.
-Flat props override matching fields of nested objects. `tick_size`, `label_offset`,
-and ordinary `line_height` remain owner props. These scopes also work on **Axis**'s
+Flat props override matching fields of nested objects. `tick-size`, `label-offset`,
+and ordinary `line-height` remain owner props. These scopes also work on **Axis**'s
 directional, labels-only, and scale-only variants. See
 [scoped props](../../topics/text/Style.md#scoped-component-props).
 

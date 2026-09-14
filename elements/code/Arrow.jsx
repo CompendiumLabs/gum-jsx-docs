@@ -6,10 +6,10 @@
         points={[[0, 0], [1, 2.5], [3, 2]]}
         curve
         start_head
-        head_size={px(12)}
+        head-size={px(12)}
         head-fill={red}
         stroke={blue}
-        stroke_width={px(3)}
+        stroke-width={px(3)}
         stroke-linecap="round"
       />
     </Graph>

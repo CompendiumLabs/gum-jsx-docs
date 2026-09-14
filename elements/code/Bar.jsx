@@ -6,7 +6,7 @@
         value={3}
         position={1}
         base={-1}
-        bar_width={0.6}
+        bar-width={0.6}
         fill={blue}
         radius={px(6)}
       />
