@@ -4,7 +4,7 @@
     <Group>
       <Attach
         x={0.5} y={0.5} anchor={[0.5, 0.5]}
-        side="bottom" at={1} attachment-anchor={1}
+        side="bottom" at={1} child-anchor={1}
         offset={px(10)}
         attachment={<Text>Attached caption</Text>}
       >
