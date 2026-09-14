@@ -1,9 +1,9 @@
-// A naturally sized label with the Frame's default one-pixel border.
+// A naturally sized label with rounded top corners and the default one-pixel border.
 <Svg font-size={px(20)}>
   <Box padding={em(0.8)} background={lightgray}>
     <Frame
       padding={em(0.75)}
-      radius={px(8)}
+      radius={{ t: px(8) }}
       color={blue}
       background={white}
     >

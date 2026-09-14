@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `radius` | `0` | Scalar corner radius or independent `{ x, y }` / `[x, y]` radii |
+| `radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or [side/corner object](./Box.md) |
 
 **Square** is a rectangle with an intrinsic 1:1 aspect and square drawing geometry.
 Setting just width or height normally determines the other dimension:

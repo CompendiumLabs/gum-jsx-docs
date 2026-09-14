@@ -9,7 +9,7 @@
 | `bases` | `0` | Scalar, array, or callback for bar baselines |
 | `bar-width` | `0.8` | Scalar, array, or callback for widths in data units |
 | `direction` | `"horizontal"` | Vertical or horizontal bars |
-| `radius` | `0` | Corner radius in layout units |
+| `radius` | `0` | Scalar, elliptical pair, or [side/corner object](./Box.md) in layout units |
 | `styles` | — | Per-bar style array or `(value, index) => style` callback |
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 
@@ -26,3 +26,7 @@ styles accepts a same-length array or (value,index) function returning style
 objects, evaluated once at construction. Defaults: blue fill, no stroke.
 radius rounds corners in layout units such as `px(4)`. Use [Graph](./Graph.md) or
 [Plot](./Plot.md) for data coordinates.
+
+Use `radius={{ r: px(6) }}` for rounded right ends and square left ends, or
+specify individual `tl`, `tr`, `bl`, and `br` corners. Each entry accepts a length
+or elliptical pair. See [Bars](./Bars.md) for all forms and screen-edge semantics.

@@ -13,7 +13,7 @@
 | `bases` | `0` | Scalar, array, or callback for bar baselines |
 | `bar-width` | `0.8` | Scalar, array, or callback for widths in data units |
 | `direction` | `"vertical"` | Vertical or horizontal bars |
-| `radius` | `0` | Bar corner radius in layout units |
+| `radius` | `0` | Scalar, elliptical pair, or [side/corner object](./Box.md) in layout units |
 | `styles` | — | Per-bar style array or callback |
 | `axis` | `true` | Enable or disable both axes by default |
 | `xaxis` / `yaxis` | `axis` | Boolean or **Axis** props for one axis |
@@ -38,6 +38,11 @@
 Compose [Bars](./Bars.md) and [Plot](./Plot.md). Accepts values, positions, bases,
 `bar-width`, direction, radius, and styles along with **Plot** props. Additional
 children overlay bars and participate in limit inference.
+
+For rounded tops with square baselines on positive vertical bars, use
+`radius={{ t: px(6) }}`. Horizontal bars can use `radius={{ r: px(6) }}`.
+Sides refer to screen edges, so negative bars may need `b` or `l` instead.
+Scalar, paired, and individual corner radii follow [Bars](./Bars.md).
 
 Padding follows [Graph](./Graph.md): values are fractions of inferred data spans.
 Use `padding={[0.12, 0.1]}` for horizontal/vertical padding, or **Box**-style side
