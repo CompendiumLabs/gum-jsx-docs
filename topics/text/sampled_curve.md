@@ -19,6 +19,3 @@ Try changing the damping coefficient or sample count. Change the explicit plot
 rectangle too if you want a wider graph; merely enlarging the Svg does not
 rescale these pixel coordinates. For a reusable chart abstraction, turn the
 mapping into a functional component with explicit size and domain parameters.
-
-[Runnable source](../code/sampled_curve.jsx) · [Polyline](../../elements/text/Polyline.md) ·
-[Group](../../elements/text/Group.md) · [Units](./Units.md)

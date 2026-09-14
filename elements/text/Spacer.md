@@ -16,5 +16,3 @@ allocation. Use gap on the stack when you want the same space between every pair
 Spacer does not make a naturally sized parent acquire extra space. Supply a
 finite budget or frame size when there should be space to absorb.
 It is an ordinary element with ordinary flex props, not a special allocator case.
-
-[Runnable source](../code/Spacer.jsx).

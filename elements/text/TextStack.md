@@ -19,5 +19,3 @@ reflows text while preserving glyph measurements and baselines. These wrappers
 do not add automatic flex weights, fitting, or a separate text scale. Specify
 grow/shrink/basis for flexible content.
 Element children can override the cross-axis alignment with align_self.
-
-[Runnable source](../code/TextStack.jsx).

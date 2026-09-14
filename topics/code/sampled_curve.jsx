@@ -2,9 +2,10 @@
 const plot = { left: 64, top: 24, width: 560, height: 224 };
 const mapX = (value) => px(plot.left + plot.width * rescale(value, [0, 8]));
 const mapY = (value) => px(plot.top + plot.height * rescale(value, [1, -1]));
-const points = linspace(0, 8, 101).map((t) => ({
-  x: mapX(t), y: mapY(exp(-0.24 * t) * sin(2.5 * t)),
-}));
+const points = linspace(0, 8, 101).map((t) => [
+  mapX(t),
+  mapY(exp(-0.24 * t) * sin(2.5 * t)),
+]);
 return (
   <Svg width={px(720)}>
     <Box width={1} padding={px(28)} background={lightgray} color={slate}>
@@ -15,18 +16,18 @@ return (
           {range(-1, 2).map((value) => (
             <>
               <Line
-                from={{ x: mapX(0), y: mapY(value) }}
-                to={{ x: mapX(8), y: mapY(value) }}
+                from={[mapX(0), mapY(value)]}
+                to={[mapX(8), mapY(value)]}
                 stroke={value === 0 ? darkgray : gray}
                 stroke_width={px(1)}
               />
-              <Text x={px(44)} y={mapY(value)} anchor={{ x: 1, y: 0.5 }}
+              <Text x={px(44)} y={mapY(value)} anchor={[1, 0.5]}
                 font_family={mono} font_size={px(12)} color={slate}>{value}</Text>
             </>
           ))}
           <Line
-            from={{ x: mapX(0), y: mapY(1) }}
-            to={{ x: mapX(0), y: mapY(-1) }}
+            from={[mapX(0), mapY(1)]}
+            to={[mapX(0), mapY(-1)]}
             stroke={darkgray}
             stroke_width={px(1)}
           />
@@ -38,10 +39,10 @@ return (
             stroke_linejoin="round"
             stroke_linecap="round"
           />
-          {slice(points, 0, undefined, 25).map((point) => (
+          {slice(points, 0, undefined, 25).map(([x, y]) => (
               <Circle
-                x={point.x}
-                y={point.y}
+                x={x}
+                y={y}
                 anchor="center"
                 width={px(7)}
                 fill={red}
@@ -50,7 +51,7 @@ return (
               />
             ))}
           {range(0, 9, 2).map((value) => (
-            <Text x={mapX(value)} y={px(260)} anchor={{ x: 0.5, y: 0 }}
+            <Text x={mapX(value)} y={px(260)} anchor={[0.5, 0]}
               font_family={mono} font_size={px(12)} color={slate}>{value}</Text>
           ))}
           <Text x={px(648)} y={px(260)} font_size={px(12)} font_style="italic">t</Text>

@@ -7,7 +7,7 @@
       <Ellipse
         width={px(160)}
         height={px(96)}
-        radius={{ x: 0.4, y: px(24) }}
+        radius={[0.4, px(24)]}
         fill={green}
         stroke={none}
       />

@@ -4,9 +4,9 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| from | `{ x: 0, y: 0.5 }` | Segment start in the local rectangle |
-| to | `{ x: 1, y: 0.5 }` | Segment end in the local rectangle |
+| from | `[0, 0.5]` | Segment start in the local rectangle |
+| to | `[1, 0.5]` | Segment end in the local rectangle |
 
-HLine is a local Line convenience. HLine and UnitLine span x=0 to x=1 at y=0.5; VLine spans y=0 to y=1 at x=0.5. from/to props can override these defaults. Use CoordLine for data geometry.
-
-[Runnable source](../code/HLine.jsx).
+HLine is a local Line convenience. HLine and UnitLine span `x=0` to `x=1` at `y=0.5`;
+VLine spans `y=0` to `y=1` at `x=0.5`. `from/to` props can override these defaults. Use
+CoordLine for data geometry.

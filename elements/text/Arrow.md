@@ -7,8 +7,8 @@ polyline. Both heads follow the original route's endpoint directions.
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| from | `{ x: 0, y: 0 }` | Start point when `points` is omitted |
-| to | `{ x: 1, y: 1 }` | End point when `points` is omitted |
+| from | `[0, 0]` | Start point when `points` is omitted |
+| to | `[1, 1]` | End point when `points` is omitted |
 | points | `from`, `to` | Full shaft route; overrides `from` and `to` |
 | curve | `false` | Connect the route with a spline |
 | tension | `1` | Spline tangent strength when `curve` is true |
@@ -47,5 +47,3 @@ Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../topics/text/Poi
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,
 geometry uses local fractions/px/em. space="local" opts out of an ambient graph,
 and space="data" requires one. Pixel strokes keep their size.
-
-[Runnable source](../code/Arrow.jsx) · [Cap comparison](../../topics/text/arrow_caps.md).

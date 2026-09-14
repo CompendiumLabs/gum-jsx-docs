@@ -23,5 +23,3 @@ for a pill shape.
 Rounding changes the geometry, not the layout size. For a rounded container
 with text, padding, or clipping, use [Box](./Box.md) or [Frame](./Frame.md) with a
 radius instead. Shapes cannot wrap children.
-
-[Runnable source](../code/RoundedRect.jsx) · [Style](../../topics/text/Style.md)

@@ -14,6 +14,3 @@ Try changing the Svg width from 720px to 640px. The column widths, bar widths,
 and paragraph line breaks change, while the fonts, padding, and bar heights
 stay fixed. To give the figure more of the row, change its direct Frame's grow
 to 2. Putting grow only on the nested bar stack would not affect the outer row.
-
-[Runnable source](../code/two_columns.jsx) · [HStack](../../elements/text/HStack.md) ·
-[Frame](../../elements/text/Frame.md) · [Text](../../elements/text/Text.md)

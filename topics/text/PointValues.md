@@ -6,8 +6,8 @@ Point inputs accept either `[x, y]` or `{x, y}` in JSX and host code. You can mi
 both forms in one list. Each tuple must contain exactly two coordinates.
 
 ```jsx
-<Line from={[0, 0.5]} to={{x: 1, y: 0.5}} />
-<Polygon points={[[0.5, 0], [1, 1], {x: 0, y: 1}]} />
+<Line from={[0, 0.5]} to={[1, 0.5]} />
+<Polygon points={[[0.5, 0], [1, 1], [0, 1]]} />
 <Ellipse center={[0.5, 0.5]} radius={[px(30), em(1)]} />
 ```
 
@@ -59,10 +59,8 @@ type or use `as const` to retain tuple lengths:
 import { Points, Line, px } from 'gum-next-core';
 import type { PointValue, PositionValue } from 'gum-next-core';
 
-const data: PointValue[] = [[0, 1], {x: 2, y: 3}];
+const data: PointValue[] = [[0, 1], [2, 3]];
 const endpoint: PositionValue = [px(12), 0.5];
 const markers = new Points({ points: data });
 const line = new Line({ from: endpoint, to: [1, 0.5] });
 ```
-
-[Runnable source](../code/PointValues.jsx) · [Coordinates](./Coordinates.md) · [Vectors](./Vectors.md)

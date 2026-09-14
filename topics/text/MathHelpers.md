@@ -68,5 +68,3 @@ integer from 0 to 100. Mapping limits must be finite.
 See [Arrays](./Arrays.md) for `range`, `linspace`, and grids;
 [Vectors](./Vectors.md) for point and complex arithmetic; [Random](./Random.md) for
 repeatable sampling; and [Colors](./Colors.md) for color interpolation.
-
-[Runnable source](../code/MathHelpers.jsx).

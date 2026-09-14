@@ -24,5 +24,3 @@ once at construction. Shapes receive exact marker dimensions
 and a cleared data context, then are centered on their points. The same immutable
 shape can be reused everywhere. Defaults: black fill, no stroke. Return styled
 shapes for individual colors. Marker sizes do not contribute to data limits.
-
-[Runnable source](../code/Points.jsx) · [Point values](../../topics/text/PointValues.md).

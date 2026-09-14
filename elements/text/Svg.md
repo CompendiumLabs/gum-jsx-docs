@@ -31,5 +31,3 @@ on a shape or Group inside it instead.
 Background and title are [render_svg options](../../topics/text/Rendering.md) and CLI options,
 not Svg props. A full-size Box can supply a background in the source.
 The CLI wraps a bare non-Svg root automatically; `evaluate` does not.
-
-[Runnable source](../code/Svg.jsx).

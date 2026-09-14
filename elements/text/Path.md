@@ -37,5 +37,3 @@ fill area. Set `fill={none}` for an unfilled curve.
 Only move, line, quadratic, cubic, and close commands are implemented. SVG arc
 commands, path-string parsing, and automatic spline construction are not part
 of the current API.
-
-[Runnable source](../code/Path.jsx) · [Polyline](./Polyline.md) · [Polygon](./Polygon.md)

@@ -5,7 +5,7 @@
       <Field
         vectors={[
           { point: [0, 0], vector: [1, 2] },
-          { point: { x: 1, y: 0 }, vector: [2, 1] },
+          { point: [1, 0], vector: [2, 1] },
         ]}
         stroke={blue}
         stroke_width={px(2)}

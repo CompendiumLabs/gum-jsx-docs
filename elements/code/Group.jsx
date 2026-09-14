@@ -3,8 +3,8 @@
   <Group>
     <Rect fill={lightgray} stroke={none} />
     <Line
-      from={{ x: 0.3, y: 0.45 }}
-      to={{ x: 0.7, y: 0.45 }}
+      from={[0.3, 0.45]}
+      to={[0.7, 0.45]}
       stroke={darkgray}
       stroke_width={px(3)}
     />

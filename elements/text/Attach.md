@@ -29,5 +29,3 @@ This replaces the earlier `Attach.align` prop.
 The main child determines the frame. The attachment reports ink/overflow
 without reserving space. Use outer Box padding when needed; Plot measures and
 reserves its own labels automatically.
-
-[Runnable source](../code/Attach.jsx).

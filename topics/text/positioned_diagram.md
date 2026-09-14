@@ -18,6 +18,3 @@ size; Group's anchor offsets that box around its target point.
 Try changing a node's y position and adjusting its connectors. Nothing queries
 another element's bounds: automatic attachment points and routing belong to a
 future higher-level diagram layer, not this example.
-
-[Runnable source](../code/positioned_diagram.jsx) · [Group](../../elements/text/Group.md) ·
-[Line](../../elements/text/Line.md) · [Polygon](../../elements/text/Polygon.md)

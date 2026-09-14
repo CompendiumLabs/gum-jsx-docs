@@ -15,9 +15,9 @@ Those elements also accept `[x,y]` inputs directly; see [Point values](./PointVa
 
 ```js
 add2([1, 2], 3)                   // {x:4, y:5}
-mul2({x:2, y:3}, [4, 5])         // {x:8, y:15}
+mul2([2, 3], [4, 5])            // {x:8, y:15}
 polar(pi / 2, 2, [1, 1])         // approximately {x:1, y:3}
-polard(90, [2, 3], {x:1, y:1})   // approximately {x:1, y:4}
+polard(90, [2, 3], [1, 1])       // approximately {x:1, y:4}
 ```
 
 `polar(angle,radius=1,center=[0,0])` takes radians; `polard` takes degrees.
@@ -43,5 +43,3 @@ normc([3, 4])           // 5
 
 Complex division scales its divisor to avoid squaring large components; a zero
 divisor produces nonfinite results.
-
-[Runnable source](../code/Vectors.jsx) · [Arrays and grids](./Arrays.md).

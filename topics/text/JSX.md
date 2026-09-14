@@ -24,8 +24,8 @@ supported source data; function-valued props on built-in elements and mutable
 resource objects are not. A component function may consume a callback itself
 before constructing the final elements.
 
-[Point inputs](./PointValues.md) accept `[x, y]` or `{x, y}`, including mixtures:
-`<Polyline points={[[0, 0], {x: 0.5, y: 1}, [1, 0]]} />`. This also works in
+[Point inputs](./PointValues.md) accept `[x, y]` pairs:
+`<Polyline points={[[0, 0], [0.5, 1], [1, 0]]} />`. This also works in
 host code. Helpers such as `zip(xs, ys)` can supply point lists directly.
 
 ## Names and spelling
@@ -107,5 +107,3 @@ JSX normalization. `wrap={false}` also keeps long lines from wrapping.
 
 Evaluation runs JavaScript in the host environment. It is **not a security
 sandbox**. Do not evaluate untrusted documents on a server without isolation.
-
-[Runnable source](../code/JSX.jsx).

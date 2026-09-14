@@ -45,5 +45,3 @@ start, center, end, stretch, or 0–1. Omitted values use the parent's align.
 Only stretching children receive the selected shared width, which can trigger
 text reflow. Child containers' own align values continue to position their
 contents. VStack does not accept baseline alignment, including via align_self.
-
-[Runnable source](../code/VStack.jsx).

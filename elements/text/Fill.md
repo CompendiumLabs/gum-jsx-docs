@@ -19,5 +19,3 @@ convenience. Defaults: pale blue fill, no stroke.
 
 Numeric geometry follows [Graph](./Graph.md) and participates in limits, including
 the baseline. [SymFill](./SymFill.md) samples function boundaries.
-
-[Runnable source](../code/Fill.jsx).

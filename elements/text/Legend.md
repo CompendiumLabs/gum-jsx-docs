@@ -27,5 +27,3 @@ as label_color, label_font_size, or label_wrap. Flat props override matching
 nested fields. Supplied label/badge Elements retain their own props.
 Legend hugs its rows. Plot's legend prop
 places it inside top right; layout containers can place it elsewhere.
-
-[Runnable source](../code/Legend.jsx).

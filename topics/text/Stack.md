@@ -92,5 +92,3 @@ position overflowing content outside the frame.
 There is no automatic grow/shrink for unsized graphics, no derived composite
 aspect, and no common-cross-axis fitting search. Give a column of aspect figures
 a width, give a row a height, or choose explicit flex allocations. See [Sizing](./Sizing.md).
-
-[Runnable source](../code/Stack.jsx).

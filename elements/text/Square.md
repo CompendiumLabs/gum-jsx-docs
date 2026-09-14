@@ -28,5 +28,3 @@ explicit child flex allocation when that relationship matters.
 
 The example allocates a 160 × 80px rectangle to each shape. Square remains
 square; Rect paints the full allocation. The enclosing Frames reveal the sizes.
-
-[Runnable source](../code/Square.jsx) · [Sizing](../../topics/text/Sizing.md)

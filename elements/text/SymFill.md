@@ -19,5 +19,3 @@ direction, fill, stroke, and space.
 
 A missing/nonfinite value in either boundary splits the whole band. Both
 boundaries contribute to limits. Callbacks execute once at construction.
-
-[Runnable source](../code/SymFill.jsx).

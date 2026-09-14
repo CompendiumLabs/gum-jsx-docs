@@ -31,5 +31,3 @@ wrapped paragraph or a compound diagram.
 
 Do not use Fit when the goal is to keep text and pixel strokes at their authored
 sizes. Use [Box](./Box.md), [Stack](../../topics/text/Stack.md), and explicit allocations instead.
-
-[Runnable source](../code/Fit.jsx).

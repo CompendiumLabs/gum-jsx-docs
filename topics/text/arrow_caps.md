@@ -12,5 +12,3 @@ under graph scaling. Shaft and head colors differ to make the connection visible
 
 See [Arrow](../../elements/text/Arrow.md) for options and short-route behavior.
 The same geometry is used by [Field](../../elements/text/Field.md).
-
-[Runnable source](../code/arrow_caps.jsx).

@@ -41,5 +41,3 @@ context argument: {coordinates} establishes a context, {coordinates:null} clears
 it, and omission inherits it. Coordinates participate in layout-cache identity.
 query.prepare must stay independent of coordinates, requests, and references.
 The engine transports context; inference and mapping remain element policies.
-
-[Runnable source](../code/Coordinates.jsx).

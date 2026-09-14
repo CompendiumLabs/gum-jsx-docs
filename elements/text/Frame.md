@@ -25,5 +25,3 @@ The example uses em padding so the space around the label follows its font size.
 
 In a stack, put basis/grow/shrink on the Frame if the frame is the allocated item.
 Neither a border nor an unsized shape inside it makes a Frame automatically flexible.
-
-[Runnable source](../code/Frame.jsx).

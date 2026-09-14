@@ -22,21 +22,21 @@ const Node = ({ x, title, detail, color }) => (
 const Arrow = ({ from, to }) => (
   <>
     <Line
-      from={{ x: px(from), y: px(208) }}
-      to={{ x: px(to - 12), y: px(208) }}
+      from={[px(from), px(208)]}
+      to={[px(to - 12), px(208)]}
       stroke={gray}
       stroke_width={px(2)}
     />
     <Polygon
       x={px(to)}
       y={px(208)}
-      anchor={{ x: 1, y: 0.5 }}
+      anchor={[1, 0.5]}
       width={px(12)}
       height={px(14)}
       points={[
-        { x: 0, y: 0 },
-        { x: 1, y: 0.5 },
-        { x: 0, y: 1 },
+        [0, 0],
+        [1, 0.5],
+        [0, 1],
       ]}
       fill={gray}
       stroke={none}

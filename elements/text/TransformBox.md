@@ -16,5 +16,3 @@ the local origin. resize=false keeps the original frame and reports overflow.
 Exact allocations override wrapper size. The finished geometry, including
 fonts and strokes, is transformed. [Rotate](./Rotate.md) provides angles and
 [Fit](./Fit.md) fits content into an offer.
-
-[Runnable source](../code/TransformBox.jsx).

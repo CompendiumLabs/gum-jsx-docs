@@ -26,5 +26,3 @@ The grid has at most 100000 points, with generated counts at most 1000 per axis.
 Callbacks run once; zero/nonfinite vectors are omitted. Choose scale to keep
 arrows near their cells, and explicit Plot limits when arrow endpoints should
 not expand the viewport.
-
-[Runnable source](../code/SymField.jsx).

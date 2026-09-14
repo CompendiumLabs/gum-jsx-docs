@@ -54,5 +54,3 @@ of W + W/2. To obtain 500px with no gaps, the author can choose W = 1000/3.
 Likewise, independently growing aspect figures need not have the same cross-axis
 size. There is no automatic filling metadata, expand flag, or mixed text/figure
 fitting search. See [Stack](./Stack.md) for the exact allocation controls.
-
-[Runnable source](../code/Sizing.jsx).

@@ -15,5 +15,3 @@ visible child.
 Use parent-owned x/y/anchor props to position the Anchor itself in Group or
 Graph. `anchor` selects the wrapper's own attachment point; `align` positions
 its child within the wrapper's frame. Positioning and child sizes remain separate.
-
-[Runnable source](../code/Anchor.jsx).

@@ -108,5 +108,3 @@ For custom components, [prefix_split and prefix_join](./CustomElements.md#scoped
 are available in JSX and as named exports. Supported styles remain an explicit
 vocabulary; gradients, arbitrary CSS classes, and general SVG attribute injection
 are deferred. Unknown props may be ignored, so use the component reference.
-
-[Runnable source](../code/Style.jsx).

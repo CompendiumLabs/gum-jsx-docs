@@ -69,5 +69,3 @@ The abandoned automatic filling layer is not part of the API.
 For the full porting inventory, see the workspace
 [feature map](../../../docs/FEATURES.md). For the behavior to use today, start
 with [Units](./Units.md), [Sizing](./Sizing.md), [Stack](./Stack.md), and [Text](../../elements/text/Text.md).
-
-[Runnable source](../code/Migration.jsx).

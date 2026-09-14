@@ -37,5 +37,3 @@ Fractional scalar radii use the shorter side. A pair's x/y fractions use width
 and height respectively. Radii must be nonnegative and are capped at half the
 corresponding side. [RoundedRect](./RoundedRect.md) is the same geometry with a
 nonzero default radius.
-
-[Runnable source](../code/Rect.jsx) · [Square](./Square.md) · [Units](../../topics/text/Units.md)

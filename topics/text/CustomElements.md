@@ -197,5 +197,3 @@ The runnable Meter defines a small custom leaf and a CompactMeter subclass using
 only evaluator bindings. Its normalizer validates and clamps the input once.
 Its drawings use the size actually allocated to it, and its value is explicit
 source data. It does not add an implicit growth policy to stacks.
-
-[Runnable source](../code/CustomElements.jsx) · [Rendering](./Rendering.md) · [Sizing](./Sizing.md)

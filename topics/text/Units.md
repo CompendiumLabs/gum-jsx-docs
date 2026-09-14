@@ -49,5 +49,3 @@ The engine does not guess a reference or solve percentage cycles.
 
 Aspect ratios, grow/shrink weights, alignment fractions, and anchor fractions
 are dimensionless numbers, not lengths.
-
-[Runnable source](../code/Units.jsx).

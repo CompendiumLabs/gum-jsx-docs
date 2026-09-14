@@ -22,5 +22,3 @@ tick_size when positioning text, so they align with a separate Scale.
 
 lim defaults to [0,1]; specify the desired tick domain inside Graph. Plot
 supplies matching limits automatically.
-
-[Runnable source](../code/HLabels.jsx).

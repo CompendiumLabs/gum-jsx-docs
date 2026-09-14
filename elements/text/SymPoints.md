@@ -20,6 +20,3 @@ control sampling; enclosing Graph/Plot limits control the view.
 
 All Points styling options are available. shape and point_size functions run once per finite sample.
 Construction stores immutable sampled data; resizing never executes callbacks.
-
-
-[Runnable source](../code/SymPoints.jsx).

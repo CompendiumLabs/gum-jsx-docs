@@ -8,7 +8,7 @@ random stream, other evaluations, layout, and SVG IDs do not change those draws.
 
 ```jsx
 setSeed(7);
-const points = range(100).map(() => ({x: normal(), y: normal()}));
+const points = range(100).map(() => [normal(), normal()]);
 return <Plot><Points points={points} fill={blue} /></Plot>;
 ```
 
@@ -33,5 +33,3 @@ sequence again. `setSeed` inside JSX affects only that evaluation's stream.
 Sampling happens while constructing elements. Resizing a figure reuses those
 samples. To create different data, change the seed and evaluate again. A host
 can also override individual helpers through `evaluate(source, {scope})`.
-
-[Runnable source](../code/Random.jsx) · [Sampling](./Sampling.md).

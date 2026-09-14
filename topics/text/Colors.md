@@ -25,5 +25,3 @@ Use a palette in construction-time style callbacks for bars or custom markers:
 ```jsx
 <Bars values={[-1, -0.5, 0, 0.5, 1]} styles={value => ({fill: paint(value)})} />
 ```
-
-[Runnable source](../code/Colors.jsx) · [Style constants](./Style.md).

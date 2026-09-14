@@ -7,7 +7,7 @@
 | coord | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
 | xlim / ylim | Inferred | Directed data limits |
 | flip_x / flip_y | `false` / `true` | Reverse horizontal or vertical screen mapping |
-| padding | `0.05` | Fractional padding applied to inferred data limits |
+| padding | `0.05` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
 | values | `[]` | Bar endpoints |
 | positions | Indices | Bar centers |
 | bases | `0` | Scalar, array, or callback for bar baselines |
@@ -39,10 +39,12 @@ Compose [Bars](./Bars.md) and [Plot](./Plot.md). Accepts values, positions, base
 bar_width, direction, radius, and styles along with Plot props. Additional
 children overlay bars and participate in limit inference.
 
+Padding follows [Graph](./Graph.md): values are fractions of inferred data spans.
+Use `padding={[0.12, 0.1]}` for horizontal/vertical padding, or Box-style side
+shorthands for individual edges. `margin` adds layout space around the plot.
+
 fill sets the default bar color; entries returned by styles can override it.
 
 Positions are numeric data coordinates. Supply [value,label] ticks for categories:
 xticks for vertical bars, yticks for horizontal. Limits include baselines and
 widths. Grouping and automatic stacking are deferred.
-
-[Runnable source](../code/BarPlot.jsx).

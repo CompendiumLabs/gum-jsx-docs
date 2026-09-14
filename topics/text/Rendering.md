@@ -79,5 +79,3 @@ letters, digits, underscores, dots, or hyphens. Text is emitted as paths.
 For PNG and terminal graphics, use gum-next-png and gum-next-cli through the
 [CLI](./CLI.md). Those host concerns are separate from core layout. The runnable
 source below is a small diagram to feed through this pipeline, not a host script.
-
-[Runnable source](../code/Rendering.jsx) · [Fonts](./Fonts.md) · [Custom elements](./CustomElements.md)

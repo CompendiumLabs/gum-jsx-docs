@@ -31,5 +31,3 @@ Counts are integers bounded at 100000.
 Sampling runs once at construction. Callbacks and closure state are not stored
 in source descriptions. Build a new element to resample; resizing reuses data.
 Adaptive sampling is deferred.
-
-[Runnable source](../code/Sampling.jsx).

@@ -51,5 +51,3 @@ and outline implementation.
 
 Fonts is a host API, not a default [JSX evaluator](./JSX.md) binding. The runnable
 example uses only the bundled families and needs no setup beyond the CLI.
-
-[Runnable source](../code/Fonts.jsx) · [Rendering](./Rendering.md) · [Text](../../elements/text/Text.md)

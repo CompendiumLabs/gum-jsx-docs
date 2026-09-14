@@ -11,12 +11,12 @@ return (
       styles={(value) => ({ fill: value < 0 ? red : green })}
       radius={px(4)}
       background={white}
-      padding={{ x: 0.12, y: 0.1 }}
+      padding={[0.12, 0.1]}
     >
       <CoordLine
         points={[
-          { x: -0.6, y: 0 },
-          { x: 4.6, y: 0 },
+          [-0.6, 0],
+          [4.6, 0],
         ]}
         stroke={blue}
       />

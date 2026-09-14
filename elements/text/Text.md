@@ -72,5 +72,3 @@ lines inside the Text rectangle.
 SVG output contains glyph paths and an accessible text label, not native SVG
 text. This makes font rendering self-contained, but the paths are not ordinary
 selectable text.
-
-[Runnable source](../code/Text.jsx) · [Typography showcase](../../topics/text/typography_card.md)

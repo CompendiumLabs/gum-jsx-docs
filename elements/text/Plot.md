@@ -11,7 +11,7 @@ axis titles, an optional legend, and an optional background. Limits follow
 | coord | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
 | xlim / ylim | Inferred | Directed data limits |
 | flip_x / flip_y | `false` / `true` | Reverse horizontal or vertical screen mapping |
-| padding | `0.05` | Fractional padding applied to inferred data limits |
+| padding | `0.05` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
 | axis | `true` | Enable or disable both axes by default |
 | xaxis / yaxis | `axis` | Boolean or Axis props for one axis |
 | xticks / yticks | `5` | Target count or explicit values / labeled pairs |
@@ -31,6 +31,9 @@ axis titles, an optional legend, and an optional background. Limits follow
 | grid_* / xgrid_* / ygrid_* | — | Grid options and styles |
 | legend_* | — | Generated Legend options |
 | *_style | — | Nested options for the corresponding scopes |
+
+Padding uses [Graph's side and axis forms](./Graph.md), with numeric fractions
+of inferred data spans. Explicit limits stay exact.
 
 Fonts default to 12px. Margins come from measured axis overflow and title sizes.
 Title and x title wrap at the usable width. Explicit margin adds space to those
@@ -57,5 +60,3 @@ This first version has linear scales. Log/date scales, minor ticks, label
 collision avoidance, automatic legend extraction, and legend placement
 optimization are deferred. Use fewer ticks, shorter labels, or an axis rotate
 option for crowded categories.
-
-[Runnable source](../code/Plot.jsx).

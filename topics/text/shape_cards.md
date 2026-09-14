@@ -17,6 +17,3 @@ Try adding another entry to the cards array. The row will divide the same width
 among more cards; it does not wrap into another row automatically. For a dense
 set of cards, build multiple HStacks explicitly—the current API has no Grid or
 wrapping-row component.
-
-[Runnable source](../code/shape_cards.jsx) · [JSX](./JSX.md) ·
-[Group](../../elements/text/Group.md) · [Stacks](./Stack.md)

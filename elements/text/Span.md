@@ -27,5 +27,3 @@ inline-element system.
 Keep literal text on one source line, use text expressions, or include newlines
 intentionally: Text retains explicit newlines. The example mixes styles within
 one paragraph and highlights the middle of an otherwise unbroken word.
-
-[Runnable source](../code/Span.jsx) · [Fonts](../../topics/text/Fonts.md) · [Style](../../topics/text/Style.md)

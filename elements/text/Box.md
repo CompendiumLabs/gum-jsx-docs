@@ -55,5 +55,3 @@ Prefer px/em padding for naturally sized boxes. See [Units](../../topics/text/Un
 Box does not relay child grow/shrink props through to a stack parent. Put flex
 props on the Box itself when it is the item being allocated.
 Box also does not infer an aspect from its content.
-
-[Runnable source](../code/Box.jsx).

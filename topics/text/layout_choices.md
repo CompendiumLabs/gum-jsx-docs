@@ -22,6 +22,3 @@ trying to derive it from a total height.
 
 Try changing both grow factors in the last row to 1, or give one child a
 max_width to see space redistribute after its limit is reached.
-
-[Runnable source](../code/layout_choices.jsx) · [Stacks](./Stack.md) ·
-[Sizing](./Sizing.md) · [VStack](../../elements/text/VStack.md)

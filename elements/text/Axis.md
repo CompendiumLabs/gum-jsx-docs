@@ -37,5 +37,3 @@ Ticks and label descriptions are fixed at construction. A standalone Axis uses
 lim for generation and the ambient graph for mapping; provide matching limits,
 or let [Plot](./Plot.md) construct it. Minor ticks and collision avoidance are
 deferred.
-
-[Runnable source](../code/Axis.jsx).

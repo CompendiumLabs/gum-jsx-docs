@@ -7,7 +7,7 @@
       <Rect
         width={px(120)}
         height={px(80)}
-        radius={{ x: px(24), y: px(12) }}
+        radius={[px(24), px(12)]}
         fill={green}
         stroke={none}
       />

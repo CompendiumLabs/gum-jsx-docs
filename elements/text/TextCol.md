@@ -19,5 +19,3 @@ do not add automatic flex weights, fitting, or a separate text scale. Specify
 grow/shrink/basis for flexible content.
 Element children can override horizontal alignment with align_self; for example,
 align_self="end" opts out of the default stretch and aligns at the right edge.
-
-[Runnable source](../code/TextCol.jsx).

@@ -27,5 +27,3 @@ polygon without duplicating its closing vertex. See [Arrays](../../topics/text/A
 [Vectors](../../topics/text/Vectors.md) for these helpers. There is no point-list
 bounding-box fit. Use [Polyline](./Polyline.md) for an open outline or [Path](./Path.md)
 for curved edges.
-
-[Runnable source](../code/Polygon.jsx) · [JSX](../../topics/text/JSX.md)

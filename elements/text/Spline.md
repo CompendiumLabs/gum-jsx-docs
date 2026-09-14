@@ -16,5 +16,3 @@ Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../topics/text/Poi
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,
 geometry uses local fractions/px/em. space="local" opts out of an ambient graph,
 and space="data" requires one. Pixel strokes keep their size.
-
-[Runnable source](../code/Spline.jsx).

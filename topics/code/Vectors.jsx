@@ -1,6 +1,6 @@
 // Native points from a Cartesian grid and evenly spaced polar vectors.
 const tips = linspace(0, tau, 12, false).map(angle => polar(angle, 1.5));
-const vectors = tips.map(tip => ({ point: { x: 0, y: 0 }, vector: mul2(tip, 1.1) }));
+const vectors = tips.map(tip => ({ point: [0, 0], vector: mul2(tip, 1.1) }));
 return <Svg>
   <Box padding={px(24)} background={lightgray}>
     <VStack gap={px(16)}>

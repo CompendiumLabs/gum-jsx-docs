@@ -28,5 +28,3 @@ axis runs from origin to endpoint: width is the mapped vector length;
 shape_height defaults to px(8). It receives a cleared data context before
 rotation. Callbacks execute once at construction and always receive `{x,y}`
 records in sample.point and sample.vector, including for tuple inputs.
-
-[Runnable source](../code/Field.jsx).

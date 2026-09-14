@@ -26,5 +26,3 @@ styles accepts a same-length array or (value,index) function returning style
 objects, evaluated once at construction. Defaults: blue fill, no stroke.
 radius rounds corners in layout units such as px(4). Use [Graph](./Graph.md) or
 [Plot](./Plot.md) for data coordinates.
-
-[Runnable source](../code/Bars.jsx).

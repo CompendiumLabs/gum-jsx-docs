@@ -56,5 +56,3 @@ an omitted stop with a negative step includes index zero.
 
 [Math helpers](./MathHelpers.md) supplies reductions such as sum, mean, cumsum,
 and norm. [Sampling](./Sampling.md) describes generated graph geometry.
-
-[Runnable source](../code/Arrays.jsx).

@@ -19,6 +19,3 @@ Try narrowing the Svg to change paragraph wrapping. The preformatted lines
 will not wrap, so a sufficiently narrow card will overflow; that behavior is
 intentional and visible in the layout diagnostics. SVG text is emitted as paths
 with accessible labels, not as selectable native text.
-
-[Runnable source](../code/typography_card.jsx) · [Text](../../elements/text/Text.md) ·
-[Span](../../elements/text/Span.md) · [Fonts](./Fonts.md)

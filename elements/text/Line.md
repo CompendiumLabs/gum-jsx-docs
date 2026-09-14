@@ -4,11 +4,11 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| from | `{ x: 0, y: 0 }` | Segment start in the Line's local rectangle |
-| to | `{ x: 1, y: 1 }` | Segment end in the Line's local rectangle |
+| from | `[0, 0]` | Segment start in the Line's local rectangle |
+| to | `[1, 1]` | Segment end in the Line's local rectangle |
 
 Line draws one segment from `from` to `to`, each an `{ x, y }` or `[x, y]` pair of lengths.
-The defaults are `{ x: 0, y: 0 }` and `{ x: 1, y: 1 }`: the diagonal of its own
+The defaults are `[0, 0]` and `[1, 1]`: the diagonal of its own
 allocated rectangle. Fractions use that rectangle's width and height, not the
 parent's size.
 
@@ -28,5 +28,3 @@ large allocation still takes up the full allocation, and points can extend
 outside it. Set dimensions explicitly for a predictable rule or connector.
 There are no built-in arrows or references to other elements' positions yet;
 use [Group](./Group.md) to share a known coordinate system between nodes and lines.
-
-[Runnable source](../code/Line.jsx) · [Polyline](./Polyline.md) · [Path](./Path.md)

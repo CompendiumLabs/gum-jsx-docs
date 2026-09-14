@@ -41,5 +41,3 @@ Child containers' own align values continue to position their contents.
 If child widths and gaps exceed the budget, nothing shrinks unless shrink was
 enabled. Fixed-width text may overflow internally even when its frame is small.
 Wrap the row in a clipping Box if clipping is intended.
-
-[Runnable source](../code/HStack.jsx).

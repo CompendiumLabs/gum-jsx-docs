@@ -10,7 +10,7 @@
         <Circle
           width={px(160)}
           height={px(80)}
-          center={{ x: 0.25, y: 0.5 }}
+          center={[0.25, 0.5]}
           radius={px(28)}
           fill={green}
           stroke={none}

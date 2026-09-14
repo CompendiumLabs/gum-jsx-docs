@@ -42,5 +42,3 @@ bun run gum gum-next-docs/topics/code/Gum.jsx -o /tmp/hello.svg
 
 The first command uses kitty graphics. See [CLI](./CLI.md) for PNG, tree, JSON,
 viewport overrides, and other terminal options.
-
-[Runnable source](../code/Gum.jsx).

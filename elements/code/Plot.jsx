@@ -1,9 +1,9 @@
 // A sampled curve with scoped axis labels, a title, and a measured legend.
 const wave = (x) => sin(x) * exp(-x / 9);
-const observations = linspace(0.4, 11.8, 15).map((x, i) => ({
+const observations = linspace(0.4, 11.8, 15).map((x, i) => [
   x,
-  y: wave(x) + 0.08 * cos(i * 3),
-}));
+  wave(x) + 0.08 * cos(i * 3),
+]);
 return (
   <Svg width={px(680)} height={px(420)}>
     <Plot

@@ -10,5 +10,3 @@ is paint order; clip hides outside ink. Unlike Group, Overlay can hug its base.
 | Property | Default | Meaning |
 |---|---|---|
 | clip | `false` | Clip every layer to the base child's frame |
-
-[Runnable source](../code/Overlay.jsx).

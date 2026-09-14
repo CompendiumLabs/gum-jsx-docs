@@ -25,8 +25,8 @@ Children paint in source order, so put backgrounds and connectors before labels.
 | width / height | — | Child's preferred size; fractions use the whole Group |
 
 Anchor accepts start, center, end, a fraction from 0 to 1, or independent x/y
-choices in an object or two-entry tuple. `anchor={[1, 0.5]}`,
-`anchor={['end', 'center']}`, and `anchor={{ x: 'end', y: 'center' }}` all place
+choices in an object or two-entry tuple. `anchor={[1, 0.5]}` and
+`anchor={['end', 'center']}` both place
 the right-edge midpoint at x/y. A missing object axis defaults to start.
 Anchor values are dimensionless; px/em and stretch are not anchor values.
 
@@ -53,5 +53,3 @@ Overlay places decorations relative to a measured base. Box and stacks use their
 own placement rules. Use [Graph](./Graph.md) for data limits and [Rotate](./Rotate.md)
 or [TransformBox](./TransformBox.md) for explicit transforms. Group does not infer
 data limits or perform node/edge lookup.
-
-[Runnable source](../code/Group.jsx).

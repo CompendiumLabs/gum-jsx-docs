@@ -12,7 +12,7 @@ open; use [Polygon](./Polygon.md) to close the final edge.
 
 ```jsx
 <Polyline width={px(240)} height={px(100)}
-  points={[[0, 0.8], { x: 0.4, y: 0.2 }, [1, 0.6]]}
+  points={[[0, 0.8], [0.4, 0.2], [1, 0.6]]}
   fill={none} stroke={green} stroke_width={px(3)} />
 ```
 
@@ -27,5 +27,3 @@ SVG fills the area as though the last point were connected to the first even
 though the stroked path stays open. stroke_linejoin controls the joins, and
 stroke_linecap controls the two open ends. There is no smoothing option; use
 [Path](./Path.md) for Bézier curves.
-
-[Runnable source](../code/Polyline.jsx) · [Style](../../topics/text/Style.md)

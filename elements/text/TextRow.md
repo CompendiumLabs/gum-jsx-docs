@@ -19,5 +19,3 @@ do not add automatic flex weights, fitting, or a separate text scale. Specify
 grow/shrink/basis for flexible content.
 Element children can override vertical alignment with align_self, including
 opting into or out of the baseline group.
-
-[Runnable source](../code/TextRow.jsx).

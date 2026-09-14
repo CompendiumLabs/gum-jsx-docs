@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| center | `{ x: 0.5, y: 0.5 }` | Center of the ellipse |
+| center | `[0.5, 0.5]` | Center of the ellipse |
 | radius | `0.5` | Scalar radius or independent `{ x, y }` / `[x, y]` radii |
 | start | `0` | Starting screen-space angle in degrees |
 | end | `360` | Ending screen-space angle in degrees |
@@ -17,5 +17,3 @@ Center and paired radii accept `{x,y}` or `[x,y]`.
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,
 geometry uses local fractions/px/em. space="local" opts out of an ambient graph,
 and space="data" requires one. Pixel strokes keep their size.
-
-[Runnable source](../code/Arc.jsx).

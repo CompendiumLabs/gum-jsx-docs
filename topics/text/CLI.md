@@ -47,5 +47,3 @@ output does not need separate font registration. Use
 
 PDF, watch mode, themes, zoom, TeX, and deck commands are not implemented.
 Only run trusted JSX; the evaluator executes JavaScript.
-
-[Runnable source](../code/CLI.jsx).
