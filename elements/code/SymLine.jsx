@@ -1,6 +1,6 @@
 // SymLine uses the shared sampler.
 <Svg width={px(500)} height={px(320)}>
-  <Box padding={px(30)} background={white}>
+  <Box padding={px(30)}>
     <Plot>
       <SymLine
         fy={sin}

@@ -7,7 +7,7 @@ return <Svg width={px(600)}>
     <VStack gap={px(16)} align="stretch">
       <Text font-size={px(26)} font-weight={bold}>Random data, repeatable figures</Text>
       <Plot height={px(340)} xlim={[-3.5, 3.5]} ylim={[-3.5, 3.5]}
-        xlabel="x" ylabel="y" background={white}>
+        xlabel="x" ylabel="y">
         <Points points={points} point-size={px(6)} fill={blue} opacity={0.65} />
         <Points points={[center]} point-size={px(12)} fill={red} stroke={white} stroke-width={px(2)} />
       </Plot>

@@ -7,7 +7,7 @@ const samples = [
 ]
 return (
   <Svg width={px(540)} height={px(330)}>
-    <Box padding={px(28)} background={white}>
+    <Box padding={px(28)}>
       <Graph xlim={[10, 0]} ylim={[0, 8]}>
         <Mesh2D xlim={[0, 10]} ylim={[0, 8]} />
         <Spline points={samples} stroke={blue} stroke_width={px(2)} />

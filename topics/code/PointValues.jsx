@@ -6,7 +6,7 @@ return <Svg width={px(640)}>
   <Box padding={px(24)} background={lightgray}>
     <VStack gap={px(12)} align="stretch">
       <Text font-size={px(26)} font-weight={bold}>Points as coordinate pairs</Text>
-      <Plot height={px(280)} xlabel="x" ylabel="sin(x)" background={white}>
+      <Plot height={px(280)} xlabel="x" ylabel="sin(x)">
         <CoordLine points={points} stroke={blue} stroke-width={px(2)} />
         <Points points={markers} point-size={[px(8), px(12)]}
           shape={point => <Rect radius={px(2)} fill={point.y < 0 ? red : blue} />} />

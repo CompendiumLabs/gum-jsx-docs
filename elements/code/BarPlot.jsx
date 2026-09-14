@@ -10,7 +10,6 @@ return (
       xticks={enumerate(["North", "East", "Central", "South", "West"])}
       styles={(value) => ({ fill: value < 0 ? red : green })}
       radius={px(4)}
-      background={white}
       padding={[0.12, 0.1]}
     >
       <CoordLine

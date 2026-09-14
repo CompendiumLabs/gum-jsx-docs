@@ -1,6 +1,6 @@
 // Arc in data coordinates.
 <Svg width={px(480)} height={px(300)}>
-  <Box padding={px(30)} background={white}>
+  <Box padding={px(30)}>
     <Graph xlim={[-0.5, 3.5]} ylim={[-0.5, 3.5]}>
       <Arc
         center={[1.5, 1.5]}

@@ -28,7 +28,7 @@ return (
           Hello <Span font-weight={bold} color={blue}>world</Span>
           This internal line break remains.
         </Text>
-        <Frame padding={px(8)} border-color={blue} background={white}>
+        <Frame padding={px(8)} border-color={blue}>
           <Text whitespace="pre" font-family={mono} wrap={false}>
             {'  Exact spaces  \n  and a final blank line.\n'}
           </Text>

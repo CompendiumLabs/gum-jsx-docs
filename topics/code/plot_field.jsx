@@ -7,7 +7,6 @@ return (
       ylabel="y"
       xlim={[-2.4, 2.4]}
       ylim={[-2.4, 2.4]}
-      background={white}
       aspect={1.25}
     >
       <SymField

@@ -3,86 +3,49 @@ const Card = ({ title, note, color, symbol }) => (
   <Frame
     basis={0}
     grow={1}
-    padding={px(16)}
+    padding={em(1)}
     radius={px(12)}
     border_color={gray}
     background={white}
-  >
-    <VStack width={1} gap={px(14)}>
-      <Group height={px(124)}>{symbol}</Group>
-      <Text font_size={px(22)} font_weight={bold} color={color}>{title}</Text>
+ >
+    <VStack width={1} gap={em(0.5)}>
+      <Box height={em(10)} padding={em(1)} align-self="center">{symbol}</Box>
+      <Text font_size={em(1.5)} font_weight={bold} color={color}>{title}</Text>
       <Text line_height={em(1.4)}>{note}</Text>
     </VStack>
   </Frame>
 )
+const penta = [ [0.5, 0], [1, 0.35], [0.8, 1], [0.2, 1], [0, 0.35]]
 const cards = [
   {
     title: "Circle",
     color: blue,
     note: "A circular outline inside its allocated rectangle.",
-    symbol: (
-      <Circle
-        x={0.5}
-        y={0.5}
-        anchor="center"
-        width={px(88)}
-        fill={blue}
-        stroke={none}
-      />
-    ),
+    symbol: <Circle fill={blue} stroke={none} />,
   },
   {
     title: "Square",
     color: red,
     note: "A square silhouette with gently rounded corners.",
-    symbol: (
-      <Square
-        x={0.5}
-        y={0.5}
-        anchor="center"
-        width={px(88)}
-        radius={px(12)}
-        fill={red}
-        stroke={none}
-      />
-    ),
+    symbol: <Square radius={px(12)} fill={red} stroke={none} />,
   },
   {
     title: "Polygon",
     color: green,
     note: "Explicit points joined into a closed, filled path.",
-    symbol: (
-      <Polygon
-        x={0.5}
-        y={0.5}
-        anchor="center"
-        width={px(88)}
-        height={px(88)}
-        points={[
-          [0.5, 0],
-          [1, 0.35],
-          [0.8, 1],
-          [0.2, 1],
-          [0, 0.35],
-        ]}
-        fill={green}
-        stroke={none}
-      />
-    ),
+    symbol: <Polygon aspect={1} points={penta} fill={green} stroke={none} />,
   },
 ]
-return (
-  <Svg width={px(760)}>
-    <Box width={1} padding={px(28)} background={lightgray} color={slate}>
-      <VStack width={1} gap={px(20)}>
-        <Text font_family={mono} font_size={px(14)} color={blue}>COMPOSITION / 02</Text>
-        <Text font_size={px(30)} font_weight={bold}>One component, three shapes</Text>
-        <HStack width={1} gap={px(16)} align="stretch">
-          {cards.map((card) => (
-            <Card {...card} />
-          ))}
-        </HStack>
-      </VStack>
-    </Box>
-  </Svg>
-)
+return <Svg width={px(760)}>
+  <Box width={1} padding={em(2)} background={lightgray} color={slate}>
+    <VStack width={1} gap={em(1)}>
+      <Text font_family={mono} font_size={em(1)} color={blue}>COMPOSITION / 02</Text>
+      <Text font_size={em(2)} font_weight={bold}>One component, three shapes</Text>
+      <HStack width={1} gap={em(1)} align="stretch">
+        {cards.map((card) => (
+          <Card {...card} />
+        ))}
+      </HStack>
+    </VStack>
+  </Box>
+</Svg>

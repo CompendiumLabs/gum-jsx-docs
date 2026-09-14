@@ -7,9 +7,9 @@ return <Svg width={px(600)}>
     <VStack gap={px(16)} align="stretch">
       <Text font-size={px(26)} font-weight={bold}>From a range to a figure</Text>
       <BarPlot height={px(260)} values={values} xticks={enumerate(indices.map(String))}
-        xlabel="n" ylabel="n squared" fill={blue} background={white} />
+        xlabel="n" ylabel="n squared" fill={blue} />
       <HStack gap={px(24)} align="center">
-        <Frame padding={px(12)} background={white}>
+        <Frame padding={px(12)}>
           <Text whitespace="pre" font-family={mono}>
             {rows.map(row => row.map(n => String(n).padStart(2)).join('  ')).join('\n')}
           </Text>

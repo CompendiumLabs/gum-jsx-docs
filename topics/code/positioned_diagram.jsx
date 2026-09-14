@@ -1,62 +1,44 @@
 // Group positions nodes and explicit arrow geometry in a shared pixel canvas.
-const Node = ({ x, title, detail, color }) => (
+const Node = ({ title, detail, color, ...attr }) => (
   <Frame
-    x={px(x)}
-    y={px(208)}
-    anchor="center"
-    width={px(168)}
-    height={px(112)}
-    padding={px(16)}
     align="center"
-    border_width={px(2)}
-    border_color={color}
-    radius={px(14)}
+    align-self="stretch"
+    border-width={px(2)}
+    border-color={color}
+    radius={px(12)}
     background={black}
+    padding={[em(0.5), em(1.5)]}
+    {...attr}
   >
-    <VStack width={1} gap={px(8)} align="center">
-      <Text font_size={px(22)} font_weight={bold} color={white}>{title}</Text>
-      <Text font_size={px(14)} color={white}>{detail}</Text>
+    <VStack gap={em(0.5)} align="center">
+      <Text font-size={em(1.4)} font-weight={bold} color={white}>{title}</Text>
+      <Text font-size={em(0.9)} color={white}>{detail}</Text>
     </VStack>
   </Frame>
 )
-const Arrow = ({ from, to }) => (
-  <>
-    <Line
-      from={[px(from), px(208)]}
-      to={[px(to - 12), px(208)]}
-      stroke={gray}
-      stroke_width={px(2)}
-    />
-    <Polygon
-      x={px(to)}
-      y={px(208)}
-      anchor={[1, 0.5]}
-      width={px(12)}
-      height={px(14)}
-      points={[
-        [0, 0],
-        [1, 0.5],
-        [0, 1],
-      ]}
-      fill={gray}
-      stroke={none}
-    />
-  </>
-)
-return (
-  <Svg width={px(760)} height={px(400)}>
-    <Group>
-      <Rect fill={slate} stroke={none} />
-      <Text x={px(36)} y={px(28)} font_family={mono} font_size={px(14)} color={blue}>POSITIONING / 03</Text>
-      <Text x={px(36)} y={px(62)} font_size={px(30)} font_weight={bold} color={white}>A tiny processing pipeline</Text>
-      <Arrow from={212} to={296} />
-      <Arrow from={464} to={548} />
-      <Node x={128} title="Source" detail="JSX + data" color={blue} />
-      <Node x={380} title="Layout" detail="pixel fragments" color={red} />
-      <Node x={632} title="Render" detail="SVG paths" color={green} />
-      <Text x={px(254)} y={px(284)} anchor="center" font_size={px(14)} color={white}>measure</Text>
-      <Text x={px(506)} y={px(284)} anchor="center" font_size={px(14)} color={white}>serialize</Text>
-      <Text x={px(36)} y={px(340)} width={px(688)} font_size={px(15)} color={white}>Positions are explicit. Text remains text-sized. The renderer receives finished geometry.</Text>
-    </Group>
-  </Svg>
-)
+
+const ArrowBox = ({ text = "", color = white, ...attr }) => <Group {...attr}>
+  <Arrow stroke={color} from={[0, 0.5]} to={[1, 0.5]} />
+  <Text x={0.5} y={1} anchor="center" color={color}>{text}</Text>
+</Group>
+
+const Diagram = ({ ...attr }) => <HStack align="center" {...attr}>
+  <Node title="Source" detail="JSX + data" color={blue} width={0.7/3} />
+  <ArrowBox text="measure" width={0.15} height={em(2)} />
+  <Node title="Layout" detail="pixel fragments" color={red} width={0.7/3} />
+  <ArrowBox text="serialize" width={0.15} height={em(2)} />
+  <Node title="Render" detail="SVG paths" color={green} width={0.7/3} />
+</HStack>
+
+return <Svg width={px(760)} height={px(400)}>
+  <Box background={slate} padding={em(2)} height={1} width={1}>
+    <VStack gap={em(1.5)} height={1} width={1}>
+      <Text font-family={mono} font-size={em(0.9)} color={blue}>POSITIONING / 03</Text>
+      <Text font-size={em(2)} font-weight={bold} color={white}>A tiny processing pipeline</Text>
+      <Spacer />
+      <Diagram width={0.9} align-self="center" />
+      <Spacer />
+      <Text font-size={em(1)} color={white}>Positions are explicit. Text remains text-sized. The renderer receives finished geometry.</Text>
+    </VStack>
+  </Box>
+</Svg>

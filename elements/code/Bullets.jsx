@@ -1,6 +1,6 @@
 // A list with wrapping items.
 <Svg width={px(460)} height={px(280)}>
-  <Box padding={px(30)} background={white}>
+  <Box padding={px(30)}>
     <Bullets
       items={[
         "Measured markers",

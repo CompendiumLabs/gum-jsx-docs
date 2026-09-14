@@ -1,6 +1,6 @@
 // Bars with positive and negative values.
 <Svg width={px(520)} height={px(340)}>
-  <Box padding={px(30)} background={white}>
+  <Box padding={px(30)}>
     <Plot>
       <Bars
         values={[2, 4, -1, 3]}

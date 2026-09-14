@@ -1,6 +1,6 @@
 // HBars with positive and negative values.
 <Svg width={px(520)} height={px(340)}>
-  <Box padding={px(30)} background={white}>
+  <Box padding={px(30)}>
     <Plot>
       <HBars
         values={[2, 4, -1, 3]}

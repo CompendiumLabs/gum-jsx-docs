@@ -1,6 +1,6 @@
 // One HBar with an explicit baseline.
 <Svg width={px(480)} height={px(300)}>
-  <Box padding={px(30)} background={white}>
+  <Box padding={px(30)}>
     <Plot>
       <HBar
         value={3}
