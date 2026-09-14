@@ -14,7 +14,7 @@
 | `bar-width` | `0.8` | Scalar, array, or callback for widths in data units |
 | `direction` | `"vertical"` | Vertical or horizontal bars |
 | `radius` | `0` | Scalar, elliptical pair, or [side/corner object](./Box.md) in layout units |
-| `styles` | — | Per-bar style array or callback |
+| `styles` | — | Per-bar style array or `(value, index) => style` callback; may override `radius` |
 | `axis` | `true` | Enable or disable both axes by default |
 | `xaxis` / `yaxis` | `axis` | Boolean or **Axis** props for one axis |
 | `xticks` / `yticks` | `5` | Target count or explicit values / labeled pairs |
@@ -48,7 +48,24 @@ Padding follows [Graph](./Graph.md): values are fractions of inferred data spans
 Use `padding={[0.12, 0.1]}` for horizontal/vertical padding, or **Box**-style side
 shorthands for individual edges. `margin` adds layout space around the plot.
 
-fill sets the default bar color; entries returned by styles can override it.
+`fill` and `radius` set shared bar defaults; entries returned by `styles` can
+override either. For a value-dependent radius, return it from `styles`:
+
+```jsx
+<BarPlot
+  values={[28, -17, 43]}
+  styles={(value) => ({
+    fill: value < 0 ? red : green,
+    radius: value < 0 ? { b: px(6) } : { t: px(6) },
+  })}
+/>
+```
+
+This rounds the exposed ends under the default vertical axes. `radius: 0`
+keeps an individual bar square; an omitted radius uses the shared default.
+Callbacks receive the endpoint value and original index, and run once at
+construction. Use `styles` for per-bar callbacks; `radius` itself takes a shared
+radius value.
 
 Positions are numeric data coordinates. Supply [value,label] ticks for categories:
 xticks for vertical bars, yticks for horizontal. Limits include baselines and

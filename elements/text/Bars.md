@@ -10,7 +10,7 @@
 | `bar-width` | `0.8` | Scalar, array, or callback for widths in data units |
 | `direction` | `"vertical"` | Vertical or horizontal bars |
 | `radius` | `0` | Scalar, elliptical pair, or [side/corner object](./Box.md) in layout units |
-| `styles` | — | Per-bar style array or `(value, index) => style` callback |
+| `styles` | — | Per-bar style array or `(value, index) => style` callback; may override `radius` |
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 
 Draw bars from values. positions supplies centers (default indices starting at
@@ -26,6 +26,13 @@ styles accepts a same-length array or (value,index) function returning style
 objects, evaluated once at construction. Defaults: blue fill, no stroke.
 radius rounds corners in layout units such as `px(4)`. Use [Graph](./Graph.md) or
 [Plot](./Plot.md) for data coordinates.
+
+Return `radius` in a style entry to override the shared radius for that bar:
+`styles={(value) => ({ radius: px(abs(value) / 4) })}`. Style arrays support the
+same field. An omitted radius inherits the shared value; `radius: 0` keeps that
+bar square. Callbacks receive the original value and index, skipping nonfinite
+values, and are not rerun during resizing. Per-bar radii accept all forms below;
+their `em` lengths use the bar's resolved font size.
 
 Radius also accepts an elliptical `[x, y]` / `{ x, y }` pair or a side/corner
 object using `t`, `b`, `l`, `r`, `tl`, `tr`, `bl`, and `br`, as on [Box](./Box.md).

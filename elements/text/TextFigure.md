@@ -17,8 +17,10 @@
 
 A figure followed by an optional caption (string or **Element**). `caption-style`
 styles generated text, gap defaults to 0.5em, and **Box** props control outer
-decoration. Children must be figure **Element**s. Give a figure an em/px height;
-the caption reflows at the shared column width.
+decoration. Children must be figure **Element**s. Give a figure an em/px height,
+or use `grow={1}` on it when **TextFigure** receives a finite height (for example,
+as the body of a **Slide**). The figure then takes the space left by the caption,
+which reflows at the shared column width.
 
 Scoped `caption-` props accept generated text options, including `caption-color`,
 `caption-font-size`, and `caption-wrap`. They override matching fields in

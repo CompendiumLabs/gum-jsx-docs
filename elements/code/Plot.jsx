@@ -1,11 +1,11 @@
-// A sampled curve with scoped axis labels, a title, and a measured legend.
+// A sampled curve, uncertainty band, observations, and a measured legend.
 const wave = (x) => sin(x) * exp(-x / 9)
 const observations = linspace(0.4, 11.8, 15).map((x, i) => [
   x,
   wave(x) + 0.08 * cos(i * 3),
 ])
 return (
-  <Svg width={px(680)} height={px(420)} font-size={px(12)}>
+  <Svg width={px(680)} height={px(420)} font-size={px(16)}>
     <Plot
       font-size={em(1)}
       title="A damped oscillation"
@@ -13,9 +13,6 @@ return (
       ylabel="Amplitude"
       xlim={[0, 12]}
       ylim={[-1.3, 1.3]}
-      xaxis-label-color={blue}
-      title-font-weight={bold}
-      legend-label-font-size={em(11 / 12)}
       legend={[
         { label: "Model", color: blue },
         { label: "Observations", kind: "point", color: red },

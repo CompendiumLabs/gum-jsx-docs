@@ -16,7 +16,7 @@ return (
           point-size={(p, i) => px(8 + i * 2)}
           shape={<Square fill={blue} stroke={white} stroke-width={px(1)} />}
         />
-        <Text x={8} y={7} anchor={['center', 'end']} font-size={em(0.875)} color={blue}>Peak</Text>
+        <Text x={8} y={7.25} anchor={['center', 'end']} font-size={em(0.875)} color={blue}>Peak</Text>
         <HAxis lim={[10, 0]} />
         <VAxis lim={[0, 8]} />
       </Graph>

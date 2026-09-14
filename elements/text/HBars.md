@@ -10,7 +10,7 @@
 | `bar-width` | `0.8` | Scalar, array, or callback for widths in data units |
 | `direction` | `"horizontal"` | Vertical or horizontal bars |
 | `radius` | `0` | Scalar, elliptical pair, or [side/corner object](./Box.md) in layout units |
-| `styles` | — | Per-bar style array or `(value, index) => style` callback |
+| `styles` | — | Per-bar style array or `(value, index) => style` callback; may override `radius` |
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 
 Draw bars from values. positions supplies centers (default indices starting at
@@ -30,3 +30,5 @@ radius rounds corners in layout units such as `px(4)`. Use [Graph](./Graph.md) o
 Use `radius={{ r: px(6) }}` for rounded right ends and square left ends, or
 specify individual `tl`, `tr`, `bl`, and `br` corners. Each entry accepts a length
 or elliptical pair. See [Bars](./Bars.md) for all forms and screen-edge semantics.
+For value-dependent rounding, return `radius` from `styles`, for example
+`styles={(v) => ({ radius: v < 0 ? { l: px(6) } : { r: px(6) } })}`.
