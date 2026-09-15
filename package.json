@@ -1,6 +1,6 @@
 {
   "name": "gum-jsx-docs",
-  "description": "Markdown reference pages and runnable examples for gum-next",
+  "description": "Markdown reference pages and runnable examples for gum-jsx",
   "type": "module",
   "private": true,
   "module": "src/index.ts",
@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "gum-next-core": "workspace:*",
-    "gum-next-math": "workspace:*",
+    "gum-jsx-core": "workspace:*",
+    "gum-jsx-math": "workspace:*",
     "typescript": "^7"
   }
 }

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
-import * as core from 'gum-next-core'
-import * as math from 'gum-next-math'
+import * as core from 'gum-jsx-core'
+import * as math from 'gum-jsx-math'
 import { elementsDir, topicsDir, packageRoot, listElements, listTopics,
   getElements, getTopics, prepareElementPage, prepareTopicPage } from '../src'
 
