@@ -20,8 +20,13 @@ color changes, basic math font commands, and local macros are implemented.
 Scripts, fractions, indexed radicals, large operators and limits, and scalable
 delimiters (including `\middle`) are also available. See
 [ordinary mathematical expressions](MathExpressions.md) for parsed and direct
-JSX examples. Arrays, decorations, and formulas within prose `Text` are later
-phases. Unsupported constructs throw an error; they never disappear.
+JSX examples. Formulas also work [inside prose](InlineMath.md), and ordinary
+Gum elements work [inside math](MathComposition.md). Arrays and decorations
+remain later phases. Unsupported constructs throw an error; they never disappear.
+
+[TextMode](../../elements/text/TextMode.md) treats strings literally, preserving
+spaces and run kerning, while nested `MathText` continues to parse TeX. Use it
+for labels such as “distance” in a fraction or “average” in a subscript.
 
 ## Spacing and groups
 
@@ -106,6 +111,7 @@ bun run gum gum-next-docs/topics/code/Math.jsx -o /tmp/math.png --ratio 2
 bun run compare 'a+b=c' -S 48 -o /tmp/math-compare.png
 bun run compare --suite -S 48 -o /tmp/math-gallery.png
 bun run compare --suite 3 --inline -S 48 -o /tmp/math-inline.png
+bun run compare --suite 4 -S 48 -o /tmp/math-text.png
 ```
 
 The comparison script requires Chromium, `pdflatex`, and `pdftoppm`. It places

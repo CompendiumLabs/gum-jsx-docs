@@ -10,8 +10,9 @@ text fragment.
 ## Content and formatting
 
 Supply text as children. Children may be strings,
-numbers, [Spans](./Span.md), or nested arrays of those values. Null and boolean
-children are ignored. Other elements, including shapes, are not inline content.
+numbers, [Spans](./Span.md), other elements, or nested arrays of those values.
+Null and boolean children are ignored. Each embedded element is an indivisible
+inline item, aligned by its baseline or bottom edge. Give figures concrete sizes.
 
 | Property | Default | Meaning |
 | --- | --- | --- |
@@ -21,7 +22,7 @@ children are ignored. Other elements, including shapes, are not inline content.
 | `font-weight` | `regular` | Numeric weight |
 | `font-style` | `"normal"` | normal or italic |
 | `color` | `black` | Glyph fill; the shape fill prop does not color text |
-| `line-height` | `em(1.2)` | Line box height, relative to the local font size |
+| `line-height` | `em(1.2)` | Prose line strut; inline elements may enlarge the line |
 | `wrap` | `true` | Permit wrapping at legal word-break positions |
 | `whitespace` | `"normal"` | normal or pre |
 | `tab-size` | `4` | Positive integer tab-stop interval in pre mode |
@@ -64,6 +65,12 @@ unbreakable word wider than its budget overflows; it is not shrunk or silently
 ellipsized. A trailing newline adds a blank line. Empty text has no natural size
 or ink. Line height controls spacing, not glyph scaling: very tight lines can
 overlap or extend beyond their line boxes.
+
+Inline elements enlarge a line using their logical above/below-baseline extents;
+ink overhang alone does not enlarge it. A formula stays at its natural size and
+overflows if it cannot fit. [Tex](./Tex.md) is the usual inline math choice;
+[Latex](./Latex.md) retains its display-style default. See
+[math inside prose](../../topics/text/InlineMath.md) for examples.
 
 In an [HStack](./HStack.md), use `grow={1}` on an unsized paragraph to give it the
 remaining width. Its basis defaults to zero under a finite row budget; use

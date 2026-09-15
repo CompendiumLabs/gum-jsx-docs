@@ -25,5 +25,7 @@ child's unspecified width inside that content area. Explicit child widths,
 measures its content. Height remains content-sized.
 
 Use **TextCol** for multiple block children. A single element inside JSX fragments
-or conditional children is preserved; strings and **Span** children form inline text.
+or conditional children is preserved. Mixed strings, **Span**s, and formulas
+form one paragraph. Wrap several elements without prose in **Text** to request
+inline layout explicitly.
 An explicit `align` replaces the default. See [Sizing](../../topics/text/Sizing.md).
