@@ -9,14 +9,14 @@
 | `font-size` | Inherited | Base font size for body text, title scale, padding, and gaps |
 | `padding` | `em(1.5)` | Slide-edge lengths; accepts [Box padding forms](./Box.md) |
 | `gap` | `em(0.8)` | Space between the title and body |
-| `background` | `white` | **Slide** background paint |
+| `background` | `none` | Explicit **Slide** background paint |
 | `clip` | `false` | Clip content to the 16:9 slide frame |
 
 A 16:9 canvas with a measured title and flexible content area. `title` is a string
 or **Element**; `title-style` overrides default 1.6em bold text. The base font
 inherits from **Svg** or another parent (16px without a parent override). Set
 `font-size` on **Slide** only when it should differ from its parent. Defaults:
-1.5em padding, 0.8em gap, white background. `clip` optionally hides paint outside
+1.5em padding, 0.8em gap, transparent background. `clip` optionally hides paint outside
 the slide (false by default).
 
 Scoped `title-` props accept generated text options, including `title-color`,

@@ -26,7 +26,7 @@
 | `background` | — | Full-frame background paint |
 | `plot-background` | — | Data-area background paint |
 | `border-width` | `px(0)` | Data-area border thickness |
-| `border-color` | `"#cbd5e1"` | Data-area border paint |
+| `border-color` | `"theme:border"` | Data-area border paint |
 | `clip` | `true` | Clip data marks to the data area |
 | `axis-*` / `xaxis-*` / `yaxis-*` | — | Flat **Axis** option overrides |
 | `tick-*` / `label-*` | — | Shared generated tick and label styles |

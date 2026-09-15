@@ -7,14 +7,15 @@ weights, padding, backgrounds, and borders do not inherit.
 
 | Property | Default | Meaning |
 |---|---|---|
+| `theme` | `"light"` | Inherited `"light"` or `"dark"` palette; see [Themes](./Themes.md) |
 | `font-size` | `px(16)` | **Text** size; relative forms use the inherited font |
 | `font-family` | `"IBM Plex Sans"` | Registered font family |
 | `font-weight` | `400` | Numeric weight from 1 to 1000 |
 | `font-style` | `"normal"` | "normal" or "italic" |
 | `line-height` | `em(1.2)` | Line box height, not glyph scaling |
-| `color` | `"black"` | **Text** color and default **Box** border color |
+| `color` | Theme foreground (`black` in light) | **Text** color and default **Box** border color |
 | `fill` | `"none"` | Shape fill |
-| `stroke` | `"black"` | Shape stroke |
+| `stroke` | Theme foreground (`black` in light) | Shape stroke |
 | `stroke-width` | `px(1)` | Shape stroke thickness |
 | `stroke-linecap` | `"butt"` | "butt", "round", or "square" |
 | `stroke-linejoin` | `"miter"` | "miter", "round", or "bevel" |
@@ -25,6 +26,10 @@ weights, padding, backgrounds, and borders do not inherit.
 Use paint strings such as `"#317969"`, `"tomato"`, or `"none"`. **Text** uses
 color, not fill. For a **Box**'s own fill use background; setting fill on a **Box** instead
 changes the inherited shape paint.
+
+Semantic paints such as `"theme:accent"`, `"theme:muted"`, and `"theme:area"`
+resolve from the inherited palette during layout. Literal colors stay fixed
+when the theme changes.
 
 Built-in constants are available in evaluated JSX and as named imports from
 `gum-next-core`. Use `font-family={sans}` or `{mono}` for IBM Plex Sans or Mono,

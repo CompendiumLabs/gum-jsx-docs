@@ -21,6 +21,8 @@ Overflow is still retained in the fragment for inspection.
 | Property | Default | Meaning |
 |---|---|---|
 | `children` | — | One content element, optionally absent |
+| `theme` | Inherited, initially `"light"` | Palette inherited by all content |
+| `background` | `none` | Explicit viewport paint; independent of the theme |
 | `width` / `height` | Natural | Preferred viewport dimensions; explicit values require `px()` |
 | `min-width` / `max-width`, `min-height` / `max-height` | — | Own size limits |
 | Typography and paint | Inherited | Style inherited by content |
@@ -28,6 +30,11 @@ Overflow is still retained in the fragment for inspection.
 An aspect on **Svg** does not derive the other viewport dimension. Put an aspect
 on a shape or **Group** inside it instead.
 
-Background and title are [render_svg options](../../topics/text/Rendering.md) and CLI options,
-not **Svg** props. A full-size **Box** can supply a background in the source.
+Set `theme="dark"` for foregrounds suited to a dark surface. Descendants use the
+palette for text, strokes, grids, plot borders, and legend badges and borders.
+Explicit paint props override the defaults. See [Themes](../../topics/text/Themes.md).
+
+Title remains a [render_svg option](../../topics/text/Rendering.md). Its background
+option paints behind the entire fragment. Themes do not paint backgrounds;
+**Svg**'s `background` prop can supply an explicit viewport background in source.
 The CLI wraps a bare non-**Svg** root automatically; `evaluate` does not.

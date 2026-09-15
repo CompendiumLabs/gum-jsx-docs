@@ -23,7 +23,7 @@ axis titles, an optional legend, and an optional background. Limits follow
 | `background` | — | Full-frame background paint |
 | `plot-background` | — | Data-area background paint |
 | `border-width` | `px(0)` | Data-area border thickness |
-| `border-color` | `"#cbd5e1"` | Data-area border paint |
+| `border-color` | `"theme:border"` | Data-area border paint |
 | `clip` | `true` | Clip data marks to the data area |
 | `axis-*` / `xaxis-*` / `yaxis-*` | — | Flat **Axis** option overrides |
 | `tick-*` / `label-*` | — | Shared generated tick and label styles |
@@ -36,6 +36,8 @@ Padding uses [Graph's side and axis forms](./Graph.md), with numeric fractions
 of inferred data spans. Explicit limits stay exact.
 
 Fonts default to 12px. Margins come from measured axis overflow and title sizes.
+Text uses `theme:text`, axes use `theme:muted`, and grid lines use `theme:grid`.
+These paints follow the inherited [theme](../../topics/text/Themes.md).
 Title and x title wrap at the usable width. Explicit margin adds space to those
 measurements. The fragment's content rectangle identifies the data area.
 
