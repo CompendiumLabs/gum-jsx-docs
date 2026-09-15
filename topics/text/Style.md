@@ -84,7 +84,7 @@ local to the owner and happens once during construction, before layout.
 
 | Owner | Scopes |
 |---|---|
-| **Arrow** | `head-` styles |
+| **Arrow** / **Field** / **SymField** | `head-` shape and paint options |
 | **Axis** / **Scale** / **Label** / **Labels**, including directional variants | `line-`, `tick-` styles; `label-` text options |
 | **Plot** / **BarPlot** | `axis-`, `xaxis-`, `yaxis-` axis options; `tick-` styles |
 | **Plot** / **BarPlot** | `label-`, `title-`, `xlabel-`, `ylabel-` text options |
@@ -96,6 +96,10 @@ local to the owner and happens once during construction, before layout.
 **Text** options include font/paint, dimensions, wrap, whitespace, and `text-align`;
 content is supplied by the owner. For example, `title-wrap={false}` keeps a title
 on one line, and `legend-label-font-size={em(0.85)}` controls generated legend text.
+
+**ArrowHead** options include `open`, `curve`, and paint: `head-open` draws open
+barbs, and `head-curve={0.7}` curves them independently of the shaft. The same
+options work in `head-style={{open: true, curve: 0.7}}`.
 
 Nested `*-style` objects remain supported. At the same scope, flat props override
 matching fields in the nested object. Shared settings supply defaults for more

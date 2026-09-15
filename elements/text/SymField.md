@@ -13,6 +13,10 @@
 | `normalize` | `false` | Normalize vectors before applying `scale` |
 | `head-size` | `px(5)` | Arrowhead length for built-in arrows |
 | `head-width` | `1.3` | Full arrowhead width divided by its length |
+| `head-curve` | `0` | Barb curvature from `0` to `1`, as in [Arrow](Arrow.md) |
+| `head-open` | `false` | Draw stroked barbs connected to the shaft tip |
+| `head-barb` | `"both"` | Draw both barbs, or only `"left"` / `"right"` relative to each vector |
+| `head-style` / `head-*` | — | Shared ArrowHead shape and paint options, as in [Arrow](Arrow.md) |
 | `shape` | — | Replacement **Element** or callback |
 | `shape-height` | `px(8)` | Height allocated to replacement shapes |
 | `space` | Automatic | Use ambient data coordinates or local geometry |

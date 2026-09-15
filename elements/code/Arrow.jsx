@@ -1,4 +1,4 @@
-// Arrow in data coordinates with separately scoped head paint.
+// A curved Arrow with open barbs and separately scoped head paint.
 <Svg width={px(480)} height={px(300)}>
   <Box padding={px(30)}>
     <Graph xlim={[-0.5, 3.5]} ylim={[-0.5, 3.5]}>
@@ -7,10 +7,13 @@
         curve
         start_head
         head-size={px(12)}
-        head-fill={red}
+        head-open
+        head-curve={0.7}
+        head-stroke={red}
         stroke={blue}
         stroke-width={px(3)}
         stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </Graph>
   </Box>

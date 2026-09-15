@@ -13,6 +13,7 @@ elements, including ordinary Gum figures, keep their natural size.
 | under | `false` | Place a stretchy decoration beneath the body. |
 | shifty | `true` | Apply a single character's font skew. |
 | mode | `"math"` | Symbol table for a fixed glyph; `"text"` supports text accents. |
+| head-curve | `0.7` | Barb curvature from `0` to `1` for drawn arrow accents, including `vec`. |
 
 Fixed accents include `hat`, `bar`, `vec`, `dot`, `ddot`, `acute`, `grave`,
 `breve`, `check`, `tilde`, and `mathring`. Wide hats, checks, and tildes fit the
