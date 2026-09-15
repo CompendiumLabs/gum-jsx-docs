@@ -2,7 +2,7 @@
 
 *Category*: math
 
-Math is available in the CLI and editor through the optional `gum-next-math`
+Math is available in the CLI and editor through the optional `gum-jsx-math`
 package. Start with [Latex](../../elements/text/Latex.md) for a complete formula,
 [Tex](../../elements/text/Tex.md) for text style, or
 [MathText](../../elements/text/MathText.md) to mix TeX with explicit math elements.
@@ -84,8 +84,8 @@ See also [formula labels on plots](MathPlotLabels.md) and [math in slides](MathS
 ## Library setup
 
 ```ts
-import { LayoutPass, Box, Svg, px, em, render_svg, evaluate } from 'gum-next-core'
-import * as math from 'gum-next-math'
+import { LayoutPass, Box, Svg, px, em, render_svg, evaluate } from 'gum-jsx-core'
+import * as math from 'gum-jsx-math'
 
 const fonts = math.createMathFonts()
 // Browser hosts preload before layout. Bun can also load local faces on demand.
@@ -114,7 +114,7 @@ still propagate to the host.
 From the workspace root:
 
 ```sh
-bun run gum gum-next-docs/topics/code/Math.jsx -o /tmp/math.png --ratio 2
+bun run gum gum-jsx-docs/topics/code/Math.jsx -o /tmp/math.png --ratio 2
 bun run compare 'a+b=c' -S 48 -o /tmp/math-compare.png
 bun run compare --suite -S 48 -o /tmp/math-gallery.png
 bun run compare --suite 3 --inline -S 48 -o /tmp/math-inline.png

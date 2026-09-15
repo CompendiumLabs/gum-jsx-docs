@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "gum-next-docs",
+      "name": "gum-jsx-docs",
       "devDependencies": {
         "@types/bun": "latest",
         "typescript": "^7",

@@ -39,11 +39,11 @@ that result. The [rendering API](./Rendering.md) exposes each stage separately.
 
 ## Run the example
 
-From the gum-next workspace:
+From the gum-jsx workspace:
 
 ```sh
-bun run gum gum-next-docs/topics/code/Gum.jsx
-bun run gum gum-next-docs/topics/code/Gum.jsx -o /tmp/hello.svg
+bun run gum gum-jsx-docs/topics/code/Gum.jsx
+bun run gum gum-jsx-docs/topics/code/Gum.jsx -o /tmp/hello.svg
 ```
 
 The first command uses kitty graphics. See [CLI](./CLI.md) for PNG, tree, JSON,

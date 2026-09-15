@@ -1,4 +1,4 @@
-# gum-next-docs
+# gum-jsx-docs
 
 Markdown documentation and executable JSX examples for the current Gum rewrite.
 Start with [Gum](./topics/text/Gum.md), [units](./topics/text/Units.md), and
@@ -42,10 +42,10 @@ src/                  Read-only catalog and page loaders
 scripts/check.ts      Validate links, coverage, and example rendering
 ```
 
-There is no viewer, server, or Markdown renderer in this package. gum-next-edit's
+There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
 `/docs` route consumes the catalogs to show SVG cards and editable, live-rendered
 code/figure popups. There are no runtime package dependencies;
-gum-next-core and gum-next-math are development dependencies for checking examples.
+gum-jsx-core and gum-jsx-math are development dependencies for checking examples.
 
 ## Elements
 
@@ -101,15 +101,15 @@ gum-next-core and gum-next-math are development dependencies for checking exampl
 
 ## Run an example
 
-From the parent gum-next workspace:
+From the parent gum-jsx workspace:
 
 ```sh
 bun install
-bun run gum gum-next-docs/topics/code/Gum.jsx
-bun run gum gum-next-docs/topics/code/two_columns.jsx -o /tmp/two-columns.svg
-bun run gum gum-next-docs/topics/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
-bun run gum gum-next-docs/elements/code/VStack.jsx -f tree --stats
-bun --filter gum-next-docs check
+bun run gum gum-jsx-docs/topics/code/Gum.jsx
+bun run gum gum-jsx-docs/topics/code/two_columns.jsx -o /tmp/two-columns.svg
+bun run gum gum-jsx-docs/topics/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
+bun run gum gum-jsx-docs/elements/code/VStack.jsx -f tree --stats
+bun --filter gum-jsx-docs check
 bun run visual-test
 bun run typecheck
 ```
@@ -120,8 +120,8 @@ No legacy packages, image files, custom fonts, network fetches, or generated ass
 are required. The check command renders SVG in memory and leaves the checkout unchanged.
 The workspace visual-test command renders every element example, every topic example,
 and every focused regression into a searchable standalone HTML report at
-`gum-next-cli/visual-report/dist/index.html`.
-Core behavior tests and synthetic layout fixtures remain in gum-next-core.
+`gum-jsx-cli/visual-report/dist/index.html`.
+Core behavior tests and synthetic layout fixtures remain in gum-jsx-core.
 The former core examples are consolidated into these collections; equivalent
 examples share one docs source, and previews are generated on demand.
 
@@ -134,7 +134,7 @@ in a browser bundle:
 import {
   getElements, getTopics, listElements, getElementText, getElementCode,
   prepareElementPage, elementsCodeDir,
-} from 'gum-next-docs'
+} from 'gum-jsx-docs'
 
 const { tags, cats, text, code } = getElements()
 const page = prepareElementPage(text.Box!, code.Box!)

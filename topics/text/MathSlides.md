@@ -17,8 +17,8 @@ The runnable slide combines a mathematical title, two display equations, mixed
 prose, a shaded Gaussian curve, and formulas in the axes and caption.
 
 ```sh
-bun run gum gum-next-docs/topics/code/MathSlides.jsx -o /tmp/math-slide.svg
-bun run gum gum-next-docs/topics/code/MathSlides.jsx -o /tmp/math-slide.png --ratio 2
+bun run gum gum-jsx-docs/topics/code/MathSlides.jsx -o /tmp/math-slide.svg
+bun run gum gum-jsx-docs/topics/code/MathSlides.jsx -o /tmp/math-slide.png --ratio 2
 ```
 
 See [Slide](../../elements/text/Slide.md), [plot labels](MathPlotLabels.md), and

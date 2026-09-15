@@ -9,7 +9,7 @@ fragments. Rendering does not query elements, resolve units, or load fonts.
 ## From JSX to SVG
 
 ```ts
-import { evaluate, LayoutPass, render_svg, inspect_fragment, white } from 'gum-next-core'
+import { evaluate, LayoutPass, render_svg, inspect_fragment, white } from 'gum-jsx-core'
 
 const source = '<Svg><Square width={px(80)} fill={green} stroke={none} /></Svg>'
 const element = evaluate(source, { name: 'example.jsx' })
@@ -33,7 +33,7 @@ JSX is optional. **Element** exports are constructors, so ordinary TypeScript ca
 build the same source graph directly:
 
 ```ts
-import { Svg, Square, px, green, none } from 'gum-next-core'
+import { Svg, Square, px, green, none } from 'gum-jsx-core'
 
 const element = new Svg({
   children: new Square({ width: px(80), fill: green, stroke: none }),
@@ -47,7 +47,7 @@ available supplies an advisory budget, and exact fixes an allocation. Values in
 these low-level requests are already pixels, unlike source lengths:
 
 ```ts
-import { make_request, exact, available } from 'gum-next-core'
+import { make_request, exact, available } from 'gum-jsx-core'
 
 const fragment = pass.layout(element, make_request({
   width: exact(400), height: available(300),
@@ -106,6 +106,6 @@ embedding multiple generated SVGs in one HTML document, so clip definitions do
 not collide. Prefixes start with a letter or underscore and then contain
 letters, digits, underscores, dots, or hyphens. **Text** is emitted as paths.
 
-For PNG and terminal graphics, use gum-next-png and gum-next-cli through the
+For PNG and terminal graphics, use gum-jsx-png and gum-jsx-cli through the
 [CLI](./CLI.md). Those host concerns are separate from core layout. The runnable
 source below is a small diagram to feed through this pipeline, not a host script.

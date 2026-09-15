@@ -32,7 +32,7 @@ resolve from the inherited palette during layout. Literal colors stay fixed
 when the theme changes.
 
 Built-in constants are available in evaluated JSX and as named imports from
-`gum-next-core`. Use `font-family={sans}` or `{mono}` for IBM Plex Sans or Mono,
+`gum-jsx-core`. Use `font-family={sans}` or `{mono}` for IBM Plex Sans or Mono,
 and `font-weight={light}`, `{regular}`, or `{bold}` for weights 300, 400, or 700.
 
 Examples use `blue` as the default accent, followed by `red`, `green`, `yellow`,

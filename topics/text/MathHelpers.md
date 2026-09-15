@@ -3,7 +3,7 @@
 *Category*: api
 
 Math helpers are available directly in JSX and as named imports from
-`gum-next-core`. Use `sin(x)` in an expression, or pass `sin` directly as a
+`gum-jsx-core`. Use `sin(x)` in an expression, or pass `sin` directly as a
 [symbolic curve](../../elements/text/SymLine.md)'s `fy` prop. `Math` itself is also available.
 
 ```jsx

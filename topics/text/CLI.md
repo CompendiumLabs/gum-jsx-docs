@@ -2,15 +2,15 @@
 
 *Category*: core
 
-gum-next-cli evaluates JSX, lays out the result with gum-next-core, and writes SVG,
+gum-jsx-cli evaluates JSX, lays out the result with gum-jsx-core, and writes SVG,
 PNG, kitty graphics, a fragment tree, or JSON. Run these commands from the
-gum-next workspace.
+gum-jsx workspace.
 
 ```sh
-bun run gum gum-next-docs/topics/code/CLI.jsx
-bun run gum gum-next-docs/topics/code/CLI.jsx -o /tmp/cli.svg
-bun run gum gum-next-docs/topics/code/CLI.jsx -W 320 -o /tmp/cli.png --ratio 2
-bun run gum gum-next-docs/topics/code/CLI.jsx -f tree --stats
+bun run gum gum-jsx-docs/topics/code/CLI.jsx
+bun run gum gum-jsx-docs/topics/code/CLI.jsx -o /tmp/cli.svg
+bun run gum gum-jsx-docs/topics/code/CLI.jsx -W 320 -o /tmp/cli.png --ratio 2
+bun run gum gum-jsx-docs/topics/code/CLI.jsx -f tree --stats
 bun run gum --help
 ```
 
@@ -49,7 +49,7 @@ A bare element is wrapped in **Svg** by the CLI. The core evaluator itself does 
 add this wrapper. Input and output paths are relative to the current directory.
 Errors go to stderr and exit with status 1.
 
-PNG and kitty use gum-next-png. **Text** is already encoded as SVG paths, so raster
+PNG and kitty use gum-jsx-png. **Text** is already encoded as SVG paths, so raster
 output does not need separate font registration. Use
 `bun run --silent gum ... --stats` to suppress Bun's script announcement.
 

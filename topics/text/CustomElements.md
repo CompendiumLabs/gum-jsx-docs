@@ -12,7 +12,7 @@ import {
   Element, element_children, px, shape_size, make_fragment, make_rect, draw_rect,
   green, none, red,
   type ElementProps, type LayoutQuery,
-} from 'gum-next-core'
+} from 'gum-jsx-core'
 
 class Tile extends Element {
   static defaults: Partial<ElementProps> = {
@@ -47,7 +47,7 @@ remaining props. The longest matching prefix wins when prefixes overlap. Optiona
 exact `keep` keys remain with the owner. `prefix_join(prefix, props)` adds the
 prefix to every key. Neither helper resolves units or executes callbacks.
 
-Both helpers are available in JSX and as named exports from `gum-next-core`:
+Both helpers are available in JSX and as named exports from `gum-jsx-core`:
 
 ```jsx
 const Captioned = props => {
@@ -68,7 +68,7 @@ type CaptionedProps = BoxProps & { caption?: string }
   & Prefixed<'caption', TextOptions>
 ```
 
-Import `BoxProps`, `Prefixed`, and `TextOptions` as types from `gum-next-core`.
+Import `BoxProps`, `Prefixed`, and `TextOptions` as types from `gum-jsx-core`.
 TextOptions is TextProps without text/children, which the owner supplies.
 Components choose which scopes to support and where to route them; LayoutPass
 has no prefix policy. See [Style](./Style.md#scoped-component-props) for built-in
@@ -144,7 +144,7 @@ class SampledMark extends Element<SourceProps, InputProps> {
 }
 ```
 
-Here `PointValue` and `point_bounds` are additional exports from `gum-next-core`.
+Here `PointValue` and `point_bounds` are additional exports from `gum-jsx-core`.
 `data_bounds(props)` reports graphable data limits without measurement; see
 [Coordinates](./Coordinates.md).
 

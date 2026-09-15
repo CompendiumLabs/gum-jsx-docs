@@ -28,7 +28,7 @@ class Mark extends Element {
 }
 ```
 
-These helpers and types are exports from `gum-next-core`. The factory form
+These helpers and types are exports from `gum-jsx-core`. The factory form
 `define_element` also accepts `data_bounds` in its fourth options argument.
 See [Custom elements](./CustomElements.md) for both forms and inherited hooks.
 
