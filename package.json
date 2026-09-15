@@ -1,5 +1,5 @@
 {
-  "name": "gum-next-docs",
+  "name": "gum-jsx-docs",
   "description": "Markdown reference pages and runnable examples for gum-next",
   "type": "module",
   "private": true,
