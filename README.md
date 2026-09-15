@@ -10,6 +10,11 @@ Basic plotting is available: start with [Plot](./elements/text/Plot.md),
 [vector field](./topics/text/plot_field.md) showcases. The editor includes a Plotting
 category alongside layout, geometry, and text.
 
+[Network](./elements/text/Network.md) connects [Node](./elements/text/Node.md)
+frames with [Edge](./elements/text/Edge.md) arrows, including
+[nodes inside fitted and rotated layouts](./topics/text/network_connections.md).
+The editor's Networks category includes runnable examples of each.
+
 [Math helpers](./topics/text/MathHelpers.md), [arrays](./topics/text/Arrays.md),
 [vectors](./topics/text/Vectors.md), [colors](./topics/text/Colors.md), and
 [seeded random data](./topics/text/Random.md) are built into JSX and exported for
@@ -55,6 +60,8 @@ gum-next-core and gum-next-math are development dependencies for checking exampl
   and [Path](./elements/text/Path.md).
 - Text: [Text](./elements/text/Text.md), [Span](./elements/text/Span.md),
   [Bullets](./elements/text/Bullets.md), and [Slide](./elements/text/Slide.md).
+- Networks: [Network](./elements/text/Network.md), [Node](./elements/text/Node.md),
+  and [Edge](./elements/text/Edge.md).
 - Math: [Latex](./elements/text/Latex.md), [Tex](./elements/text/Tex.md),
   [MathText](./elements/text/MathText.md), [MathSymbol](./elements/text/MathSymbol.md),
   [MathSpan](./elements/text/MathSpan.md), [MathRow](./elements/text/MathRow.md),
@@ -143,7 +150,7 @@ discover matching files each time; single-page reads do not load the rest of the
 collection. Text loaders remove optional machine-readable category lines. Page
 preparation appends a fenced JSX example and preserves relative Markdown links.
 
-Categories are core, layout, geometry, plotting, text, math, and api. Every element page
+Categories are core, layout, geometry, plotting, networks, text, math, and api. Every element page
 needs a `*Category*: ...` line directly below its title; topic pages may include one.
 A Markdown viewer should resolve relative links against the original text file and
 map them to its own routes, rather than requiring routes in the content. Raw files

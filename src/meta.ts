@@ -10,7 +10,7 @@ type TopicsInfo = CollectionInfo & { cats: Record<string, string[]> }
 
 const category = /^\*Category\*:[ \t]*(.+?)[ \t]*$/m
 const stripCategory = /^\*Category\*:[ \t]*.*\r?\n(?:\r?\n)?/m
-const categories = ['core', 'layout', 'geometry', 'plotting', 'text', 'math', 'api']
+const categories = ['core', 'layout', 'geometry', 'plotting', 'networks', 'text', 'math', 'api']
 
 function pageName(name: string): string {
   if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) throw new Error('Invalid documentation page name')
