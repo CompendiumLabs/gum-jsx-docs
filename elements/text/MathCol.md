@@ -4,6 +4,9 @@
 
 Stack math elements vertically, with an explicit gap and horizontal alignment. The complete column is one atom, centered on its own math axis.
 
+Use [MathArray](MathArray.md) for shared columns, row baselines, and table rules,
+or [aligned equations](../../topics/text/AlignedMath.md) for TeX multiline environments.
+
 | Property | Default | Meaning |
 | --- | --- | --- |
 | children | Empty | Elements or TeX strings. |

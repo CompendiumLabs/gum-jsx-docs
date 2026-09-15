@@ -21,8 +21,9 @@ Scripts, fractions, indexed radicals, large operators and limits, and scalable
 delimiters (including `\middle`) are also available. See
 [ordinary mathematical expressions](MathExpressions.md) for parsed and direct
 JSX examples. Formulas also work [inside prose](InlineMath.md), and ordinary
-Gum elements work [inside math](MathComposition.md). Arrays and decorations
-remain later phases. Unsupported constructs throw an error; they never disappear.
+Gum elements work [inside math](MathComposition.md). [Matrices, arrays, and cases](MathArrays.md)
+and [aligned equations](AlignedMath.md) are available. Decorations remain a later
+phase. Unsupported constructs throw an error; they never disappear.
 
 [TextMode](../../elements/text/TextMode.md) treats strings literally, preserving
 spaces and run kerning, while nested `MathText` continues to parse TeX. Use it
@@ -46,6 +47,8 @@ contents: `a{+}b` treats the inner plus as an ordinary atom.
 `MathRow` aligns children on their math axes without automatic inter-atom glue.
 Use [MathSpacer](../../elements/text/MathSpacer.md) for explicit signed advances.
 [MathCol](../../elements/text/MathCol.md) stacks independent formulas.
+[MathArray](../../elements/text/MathArray.md) aligns columns and row baselines,
+with explicit gaps and table rules.
 
 ## Size, color, and export
 
@@ -112,6 +115,8 @@ bun run compare 'a+b=c' -S 48 -o /tmp/math-compare.png
 bun run compare --suite -S 48 -o /tmp/math-gallery.png
 bun run compare --suite 3 --inline -S 48 -o /tmp/math-inline.png
 bun run compare --suite 4 -S 48 -o /tmp/math-text.png
+bun run compare --suite 5 -S 48 -o /tmp/math-arrays.png
+bun run compare --suite 5 --inline -S 48 -o /tmp/math-arrays-inline.png
 ```
 
 The comparison script requires Chromium, `pdflatex`, and `pdftoppm`. It places
