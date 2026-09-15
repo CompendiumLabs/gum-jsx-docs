@@ -1,5 +1,5 @@
 // Tall inline formulas expand line boxes while preserving the prose baseline.
-<Svg width={px(760)} font-size={px(23)}>
+<Svg font-size={px(23)}>
   <Box padding={em(1)}>
     <Text width={px(700)}>
       {"The normalized value "}

@@ -1,5 +1,5 @@
 // Negated relations place their slash consistently across narrow and wide glyphs.
-<Svg width={px(900)} font-size={px(36)}>
+<Svg font-size={px(36)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.7)} justify="start">
       <Latex>{String.raw`a\neq b\quad a\notin B\quad A\nsubseteq B`}</Latex>

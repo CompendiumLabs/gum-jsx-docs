@@ -1,5 +1,5 @@
 // TeX atom classes insert binary, relation, punctuation, and operator spacing.
-<Svg width={px(780)} font-size={px(35)}>
+<Svg font-size={px(35)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.7)} justify="start">
       <Latex>{String.raw`a+b-c\times d\div e`}</Latex>

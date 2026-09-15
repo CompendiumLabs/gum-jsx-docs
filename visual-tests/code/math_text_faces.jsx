@@ -1,5 +1,5 @@
 // TextMode face combinations preserve literal spaces and mix with nested math.
-<Svg width={px(860)} font-size={px(34)}>
+<Svg font-size={px(34)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.7)} justify="start">
       <MathText>x=<TextMode>ordinary words</TextMode>+y</MathText>

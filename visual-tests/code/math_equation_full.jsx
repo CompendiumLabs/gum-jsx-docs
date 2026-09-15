@@ -1,5 +1,5 @@
 // A dense display equation combines operators, limits, fractions, roots, and fences.
-<Svg width={px(900)} font-size={px(34)}>
+<Svg font-size={px(34)}>
   <Box padding={em(0.9)}>
     <Latex>
       {String.raw`

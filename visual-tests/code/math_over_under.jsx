@@ -1,5 +1,5 @@
 // Rules and enclosures track compound operands without disturbing adjacent baselines.
-<Svg width={px(820)} font-size={px(36)}>
+<Svg font-size={px(36)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.8)} justify="start">
       <MathText>

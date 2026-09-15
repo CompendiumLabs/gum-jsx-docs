@@ -1,5 +1,5 @@
 // The same expression changes size predictably through display and script styles.
-<Svg width={px(900)} font-size={px(36)}>
+<Svg font-size={px(36)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.8)} justify="start">
       <MathText style="display">

@@ -1,5 +1,5 @@
 // Delimiters grow across fractions, roots, nested arrays, and middle fences.
-<Svg width={px(760)} font-size={px(34)}>
+<Svg font-size={px(34)}>
   <Box padding={em(0.9)}>
     <MathCol gap={em(0.8)} justify="start">
       <Bracket delim="round" style="display">

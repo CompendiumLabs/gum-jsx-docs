@@ -1,5 +1,5 @@
 // Math alphabets and text faces select distinct fonts without changing the row baseline.
-<Svg width={px(840)} font-size={px(34)}>
+<Svg font-size={px(34)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.7)} justify="start">
       <Latex>{String.raw`\mathrm{ABCxyz}\quad\mathbf{ABCxyz}\quad\mathit{ABCxyz}`}</Latex>

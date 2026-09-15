@@ -1,5 +1,5 @@
 // Array rules, alignments, row gaps, and an outer frame resolve together.
-<Svg width={px(760)} font-size={px(29)}>
+<Svg font-size={px(29)}>
   <Box padding={em(0.8)}>
     <MathArray
       ncol={4}

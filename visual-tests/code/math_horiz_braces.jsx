@@ -1,5 +1,5 @@
 // Overbraces and underbraces span the body while their labels use script style.
-<Svg width={px(900)} font-size={px(36)}>
+<Svg font-size={px(36)}>
   <Box padding={em(0.9)}>
     <MathCol gap={em(1)} justify="start">
       <MathText style="display">

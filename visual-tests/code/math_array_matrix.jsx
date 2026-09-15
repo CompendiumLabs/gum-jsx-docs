@@ -1,5 +1,5 @@
 // Matrix rows share baselines while natural columns follow their widest cells.
-<Svg width={px(720)} font-size={px(34)}>
+<Svg font-size={px(34)}>
   <Box padding={em(0.8)}>
     <MathText style="display">
       A=

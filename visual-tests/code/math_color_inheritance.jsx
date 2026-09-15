@@ -1,5 +1,5 @@
 // Math color inherits through nested structures and can be overridden locally.
-<Svg width={px(720)} font-size={px(36)}>
+<Svg font-size={px(36)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.7)} justify="start" color={blue}>
       <MathText>

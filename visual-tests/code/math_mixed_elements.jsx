@@ -6,7 +6,7 @@ const curve = (
   </Plot>
 )
 return (
-  <Svg width={px(820)} font-size={px(30)}>
+  <Svg font-size={px(30)}>
     <Box padding={em(0.9)}>
       <MathText style="display">
         <Frac>

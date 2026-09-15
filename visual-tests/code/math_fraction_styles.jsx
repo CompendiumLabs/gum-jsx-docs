@@ -1,5 +1,5 @@
 // Fractions descend through display, text, script, and nested cramped styles.
-<Svg width={px(820)} font-size={px(36)}>
+<Svg font-size={px(36)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.8)} justify="start">
       <MathText style="display">

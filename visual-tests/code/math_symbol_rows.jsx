@@ -1,5 +1,5 @@
 // Representative symbol rows catch glyph-table, class, and baseline regressions.
-<Svg width={px(940)} font-size={px(31)}>
+<Svg font-size={px(31)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.55)} justify="start">
       <Latex>{String.raw`\alpha\;\beta\;\gamma\;\delta\;\epsilon\;\theta\;\lambda\;\mu\;\pi\;\sigma\;\phi\;\omega`}</Latex>

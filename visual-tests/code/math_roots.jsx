@@ -1,5 +1,5 @@
 // Root indices, tall radicands, and nested roots exercise surd and rule assembly.
-<Svg width={px(840)} font-size={px(38)}>
+<Svg font-size={px(38)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.8)} justify="start">
       <MathText>

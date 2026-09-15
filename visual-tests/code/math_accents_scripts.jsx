@@ -1,5 +1,5 @@
 // Accents keep their attachment points when scripts and wide bodies are combined.
-<Svg width={px(720)} font-size={px(38)}>
+<Svg font-size={px(38)}>
   <Box padding={em(0.8)}>
     <MathCol gap={em(0.7)} justify="start">
       <MathText>
