@@ -77,7 +77,9 @@ accepts an explicit `fill`.
 Outlines retain ink beyond the logical advance, including italic glyphs and
 negative kerns. An explicit `Svg` viewport clips at its edges, so leave padding
 for overhang. The comparison script expands to the union of logical size and
-ink before rendering. Standalone math export conveniences are a later phase.
+ink before rendering. [Standalone helpers and gum-tex](MathExport.md) now
+provide that viewport directly, with synchronous and asynchronous SVG export.
+See also [formula labels on plots](MathPlotLabels.md) and [math in slides](MathSlides.md).
 
 ## Library setup
 
@@ -121,6 +123,7 @@ bun run compare --suite 5 -S 48 -o /tmp/math-arrays.png
 bun run compare --suite 5 --inline -S 48 -o /tmp/math-arrays-inline.png
 bun run compare --suite 6 -S 48 -o /tmp/math-typography.png
 bun run compare --suite 6 --inline -S 48 -o /tmp/math-typography-inline.png
+bun run compare --suite 7 -S 48 -o /tmp/math-exports.png
 ```
 
 The comparison script requires Chromium, `pdflatex`, and `pdftoppm`. It places

@@ -45,5 +45,30 @@ PNG and kitty use gum-next-png. **Text** is already encoded as SVG paths, so ras
 output does not need separate font registration. Use
 `bun run --silent gum ... --stats` to suppress Bun's script announcement.
 
-PDF, watch mode, themes, zoom, TeX, and deck commands are not implemented.
+PDF, watch mode, themes, zoom, and deck commands are not implemented.
 Only run trusted JSX; the evaluator executes JavaScript.
+
+## TeX input
+
+`gum-tex` uses the same output formats and viewport options as `gum`. Pass a
+literal formula, `-i formula.tex` for a file, or omit input to read stdin:
+
+```sh
+bun run gum-tex 'e^{i\pi}+1=0' -o /tmp/euler.svg
+bun run gum-tex '\frac{a+b}{c+d}' -S 48 -p 0.25 -o /tmp/fraction.png --ratio 2
+bun run gum-tex -i formula.tex --inline -f tree --stats
+printf '%s\n' 'x^2+y^2=1' | bun run gum-tex -f svg
+bun run gum-tex 'x^2+y^2=1' --fit -W 400
+```
+
+Quote literal TeX with single quotes and omit surrounding `$` delimiters.
+Use `--` before a formula starting with a dash. `-S` sets font size in pixels
+(default 24); `-p` adds padding in em (default 0). `--inline` selects text style,
+`--no-strut` removes the minimum line box, `--color` sets paint, and repeatable
+`--macro` definitions use command=expansion, such as `'\RR=\mathbb{R}'`.
+
+The natural viewport includes the logical formula box and visible overhang.
+An empty axis has a one-pixel floor. `-W` and `-H` alone clip at the original
+font size; `--fit` explicitly scales to those dimensions. `--ratio` changes
+only raster sampling. See [standalone exports](MathExport.md) for the matching
+library API and [math authoring](Math.md) for supported formulas.

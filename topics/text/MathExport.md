@@ -1,0 +1,123 @@
+# Standalone math exports
+
+*Category*: math
+
+Use `mathToElement` for a naturally sized formula viewport, or `mathToSvg` to
+render directly to an SVG string. Both accept TeX or an existing Gum element.
+The [gum-tex command](CLI.md) exposes the same export through SVG, PNG, kitty
+graphics, a fragment tree, and JSON.
+
+```ts
+import { px, em } from 'gum-next-core'
+import { mathToElement, mathToSvg, mathToSvgAsync } from 'gum-next-math'
+
+const tex = String.raw`\int_0^\infty e^{-x^2}\,dx=\frac{\sqrt\pi}{2}`
+const element = mathToElement(tex, { font_size: px(36), padding: em(0.25) })
+const svg = mathToSvg(tex, { font_size: px(36), title: 'Gaussian integral' })
+// This version preloads fonts before layout, including in a browser.
+const browserSvg = await mathToSvgAsync(tex, { font_size: px(36) })
+```
+
+`mathToElement` returns an immutable **Svg**, with no parsing, measurement, or
+font I/O during construction. Its viewport is determined during ordinary layout.
+It can be returned from a JSX program or placed inside another layout.
+
+| Option | Default | Meaning |
+|---|---|---|
+| `font_size` | `px(24)` | Base em, using normal Gum lengths |
+| `padding` | `px(0)` | Extra space around the logical and visible bounds; accepts Gum insets |
+| `inline` | `false` | Text style instead of display style |
+| `strut` | `true` | Reserve the minimum formula line box |
+| `style`, `size_index` | inherited math policy | Explicit TeX style and size declaration |
+| `color`, `opacity`, `font_family` | inherited style | Formula paint and an optional math face |
+| `macros`, `warnings`, `on_error` | same as **Latex** | Parsing and error policy |
+| `width`, `height` | natural | Explicit **Svg** dimensions, using `px()`; these clip without scaling |
+
+The viewport includes the union of logical dimensions and visible ink, then
+adds padding. Leading and trailing laps, negative kerns, tall operators,
+accents, and smashed ink remain visible. Phantom's reserved logical space also
+remains. Each natural export axis has a minimum of one pixel, so empty and
+all-space formulas are valid SVG and PNG sources. `strut: false` with an empty
+formula gives a 1 × 1 viewport; explicit zero dimensions still produce a
+zero-sized, clipped SVG and cannot be rasterized.
+
+**Latex** and **Tex** inside ordinary layouts keep their typographic advances.
+Use those elements for inline prose; the export helper is a viewport, with
+additional space for ink. An explicitly constrained **Svg** retains its usual
+clipping behavior.
+
+## Font size and fitting
+
+Changing `font_size` lays out typography at that em. To scale a completed
+formula, wrap its export in [Fit](../../elements/text/Fit.md):
+
+```jsx
+const formula = mathToElement(String.raw`\frac{a+b}{c+d}`, {
+  font_size: px(30),
+  padding: em(0.2),
+})
+return (
+  <Svg>
+    <Fit width={px(300)}>
+      {formula}
+    </Fit>
+  </Svg>
+)
+```
+
+On the command line, `-S 30` sets the em. `--fit -W 300` uniformly scales the
+completed formula, while `-W 300` alone sets an exact clipping viewport.
+`--ratio 2` changes raster sampling without changing layout.
+
+## Fonts, passes, and asynchronous helpers
+
+SVG helpers create their own fonts and pass by default. Repeated callers can
+supply `fonts`, `pass`, or both; if both are present they must refer to the same
+font resource. Supplied fonts must already have math faces registered through
+`createMathFonts` or `registerMathFonts`. Helpers preserve custom registrations.
+Core itself remains independent of math.
+
+```ts
+import { LayoutPass, render_svg } from 'gum-next-core'
+import { createMathFonts, mathToElementAsync, mathToSvgAsync } from 'gum-next-math'
+
+const fonts = createMathFonts()
+const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } })
+const source = await mathToElementAsync(String.raw`\mathscr{A}`, { pass })
+const svg = render_svg(pass.layout(source))
+const other = await mathToSvgAsync(String.raw`\mathbf{B}`, { pass })
+```
+
+`mathToElementAsync` requires caller-owned `fonts` or `pass`, so preloaded
+resources remain available when you lay out its returned source. Async helpers
+load all registered faces, including the optional math alphabets and bundled
+prose; concurrent calls sharing a font object share requests and can retry a
+failed fetch. Imports and synchronous source construction perform no fetching.
+For selective preload, use `loadBaseMathFonts` or `loadMathFonts`, then call the
+synchronous helpers. An unloaded browser face reports **FontNotLoadedError**.
+
+SVG helpers accept `request` and the core's `title`, `background`, and
+`id_prefix` options. Formula source labels survive in the fragment tree and as
+escaped accessible labels in SVG. Output consists of paths and needs no
+installed fonts or page CSS. A custom **FontProvider** can be supplied through
+a pass to synchronous helpers; its host is responsible for preloading it.
+
+## PNG output from the library
+
+PNG conversion stays in `gum-next-png`. Pass the completed fragment's size to
+preserve fractional viewport dimensions when selecting raster resolution:
+
+```ts
+import { LayoutPass, render_svg } from 'gum-next-core'
+import { createMathFonts, mathToElement } from 'gum-next-math'
+import { rasterize_svg } from 'gum-next-png'
+
+const fonts = createMathFonts()
+const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } })
+const fragment = pass.layout(mathToElement(String.raw`\widehat{ABC}`))
+const png = rasterize_svg(render_svg(fragment), { size: fragment.size, ratio: 2 })
+await Bun.write('formula.png', png)
+```
+
+See also [math authoring](Math.md), [plot labels](MathPlotLabels.md), and
+[math in slides](MathSlides.md).

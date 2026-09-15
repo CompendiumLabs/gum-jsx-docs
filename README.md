@@ -16,7 +16,10 @@ category alongside layout, geometry, and text.
 host code. The examples use these helpers directly.
 
 [Math authoring](./topics/text/Math.md) covers the new TeX and math-element slice.
-The CLI and editor include a Math category with ten runnable element references.
+The editor includes a Math category with element references and topics for
+[standalone exports](./topics/text/MathExport.md),
+[plot labels](./topics/text/MathPlotLabels.md), and [slides](./topics/text/MathSlides.md).
+The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, and kitty.
 
 The two collections use the same paired-file structure:
 
