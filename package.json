@@ -10,6 +10,7 @@
     "./dirs": "./src/dirs.ts",
     "./elements/*": "./elements/*",
     "./topics/*": "./topics/*",
+    "./visual-tests/*": "./visual-tests/*",
     "./package.json": "./package.json"
   },
   "scripts": {

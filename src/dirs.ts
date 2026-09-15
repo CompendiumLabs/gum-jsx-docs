@@ -8,6 +8,8 @@ const elementsCodeDir = fileURLToPath(new URL('../elements/code/', import.meta.u
 const topicsDir = fileURLToPath(new URL('../topics/', import.meta.url))
 const topicsTextDir = fileURLToPath(new URL('../topics/text/', import.meta.url))
 const topicsCodeDir = fileURLToPath(new URL('../topics/code/', import.meta.url))
+const visualTestsDir = fileURLToPath(new URL('../visual-tests/', import.meta.url))
+const visualTestsCodeDir = fileURLToPath(new URL('../visual-tests/code/', import.meta.url))
 
 export { packageRoot, elementsDir, elementsTextDir, elementsCodeDir,
-  topicsDir, topicsTextDir, topicsCodeDir }
+  topicsDir, topicsTextDir, topicsCodeDir, visualTestsDir, visualTestsCodeDir }

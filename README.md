@@ -21,7 +21,8 @@ The editor includes a Math category with element references and topics for
 [plot labels](./topics/text/MathPlotLabels.md), and [slides](./topics/text/MathSlides.md).
 The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, and kitty.
 
-The two collections use the same paired-file structure:
+The two reference collections use the same paired-file structure. Focused visual
+regressions live beside them and need code only:
 
 ```text
 elements/
@@ -30,6 +31,8 @@ elements/
 topics/
   text/<name>.md       Conceptual guide or showcase explanation
   code/<name>.jsx      Self-contained, runnable topic example
+visual-tests/
+  code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
 scripts/check.ts      Validate links, coverage, and example rendering
 ```
@@ -100,6 +103,7 @@ bun run gum gum-next-docs/topics/code/two_columns.jsx -o /tmp/two-columns.svg
 bun run gum gum-next-docs/topics/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
 bun run gum gum-next-docs/elements/code/VStack.jsx -f tree --stats
 bun --filter gum-next-docs check
+bun run visual-test
 bun run typecheck
 ```
 
@@ -107,6 +111,9 @@ The CLI defaults to kitty graphics; use SVG or PNG output on other terminals.
 Every example includes its own **Svg** and uses only the current evaluator's bindings.
 No legacy packages, image files, custom fonts, network fetches, or generated assets
 are required. The check command renders SVG in memory and leaves the checkout unchanged.
+The workspace visual-test command renders every element example, every topic example,
+and every focused regression into a searchable standalone HTML report at
+`gum-next-cli/visual-report/dist/index.html`.
 Core behavior tests and synthetic layout fixtures remain in gum-next-core.
 The former core examples are consolidated into these collections; equivalent
 examples share one docs source, and previews are generated on demand.
