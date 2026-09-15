@@ -1,6 +1,7 @@
 // Immutable source becomes a pixel fragment, then self-contained SVG output.
-const Stage = ({ label, color }) => (
+const Stage = ({ label, color, debug }) => (
   <TextFrame
+    debug={debug}
     width={px(120)}
     padding={em(0.875)}
     border-color={color}
@@ -16,7 +17,7 @@ return (
       <HStack gap={em(0.75)} align="center">
         <Stage label="Source" color={blue} />
         <Text>→</Text>
-        <Stage label="Fragment" color={red} />
+        <Stage label="Fragment" color={red} debug />
         <Text>→</Text>
         <Stage label="SVG" color={green} />
       </HStack>

@@ -63,6 +63,36 @@ baselines, ink bounds, and overflow. Size is the allocated rectangle; ink is
 painted bounds after clipping; overflow records excess content before clipping.
 inspect_fragment shows this geometry without going through SVG.
 
+## Debugging layout
+
+Add `debug` to a layout element to show its allocated rectangle in **solid red** and
+its content rectangle, when available, in **dashed blue**:
+
+```jsx
+<Box debug padding={px(16)} width={px(240)}>
+  <HStack gap={px(12)}>
+    <Text>First</Text>
+    <Text>Second</Text>
+  </HStack>
+</Box>
+```
+
+Only the marked element gets outlined; children can opt in separately with their
+own `debug` flags. Omit the flag or use `debug={false}` to turn it off. The same
+option works in TypeScript, for example `new Box({ debug: true, padding: px(16) })`.
+
+The allocated rectangle is the element's final layout size. Containers such as
+**Box** expose a separate content rectangle inside their insets; elements without
+one show only the allocated rectangle. The overlays follow rotations and fitting,
+appear above the artwork, and bypass content clipping within the SVG viewport.
+They leave layout, ink bounds, and overflow unchanged. SVG, PNG, and terminal
+graphics all include the overlays.
+
+Inline **Span** styling is folded into its owning **Text**; mark the **Text** to
+inspect its allocation.
+
+The middle stage in the runnable example below uses `debug` to show both boxes.
+
 ## Reuse and output
 
 Keep element identities and a LayoutPass to reuse cached results for identical
