@@ -16,14 +16,16 @@ package. Start with [Latex](../../elements/text/Latex.md) for a complete formula
 ```
 
 Symbols, ordinary groups, named operators, atom-class overrides, signed glue,
-color changes, basic math font commands, and local macros are implemented.
+color changes, composed font commands, and local macros are implemented.
 Scripts, fractions, indexed radicals, large operators and limits, and scalable
 delimiters (including `\middle`) are also available. See
 [ordinary mathematical expressions](MathExpressions.md) for parsed and direct
 JSX examples. Formulas also work [inside prose](InlineMath.md), and ordinary
 Gum elements work [inside math](MathComposition.md). [Matrices, arrays, and cases](MathArrays.md)
-and [aligned equations](AlignedMath.md) are available. Decorations remain a later
-phase. Unsupported constructs throw an error; they never disappear.
+and [aligned equations](AlignedMath.md) are available, together with
+[accents, braces, and arrows](MathDecorations.md), [math boxes](MathBoxes.md),
+and [composed fonts and macros](MathFonts.md). Unsupported constructs throw
+an error; they never disappear.
 
 [TextMode](../../elements/text/TextMode.md) treats strings literally, preserving
 spaces and run kerning, while nested `MathText` continues to parse TeX. Use it
@@ -117,6 +119,8 @@ bun run compare --suite 3 --inline -S 48 -o /tmp/math-inline.png
 bun run compare --suite 4 -S 48 -o /tmp/math-text.png
 bun run compare --suite 5 -S 48 -o /tmp/math-arrays.png
 bun run compare --suite 5 --inline -S 48 -o /tmp/math-arrays-inline.png
+bun run compare --suite 6 -S 48 -o /tmp/math-typography.png
+bun run compare --suite 6 --inline -S 48 -o /tmp/math-typography-inline.png
 ```
 
 The comparison script requires Chromium, `pdflatex`, and `pdftoppm`. It places
