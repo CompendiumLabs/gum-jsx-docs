@@ -17,9 +17,11 @@ package. Start with [Latex](../../elements/text/Latex.md) for a complete formula
 
 Symbols, ordinary groups, named operators, atom-class overrides, signed glue,
 color changes, basic math font commands, and local macros are implemented.
-Scripts, fractions, radicals, large operators, scalable delimiters, arrays,
-decorations, and formulas within prose `Text` are later phases. Unsupported
-constructs throw an error; they never disappear from the formula.
+Scripts, fractions, indexed radicals, large operators and limits, and scalable
+delimiters (including `\middle`) are also available. See
+[ordinary mathematical expressions](MathExpressions.md) for parsed and direct
+JSX examples. Arrays, decorations, and formulas within prose `Text` are later
+phases. Unsupported constructs throw an error; they never disappear.
 
 ## Spacing and groups
 
@@ -35,6 +37,7 @@ sequence an atom. [MathRow](../../elements/text/MathRow.md),
 [MathBox](../../elements/text/MathBox.md), and TeX braces always group their
 contents: `a{+}b` treats the inner plus as an ordinary atom.
 
+`MathText` preserves the baseline across local style and size declarations.
 `MathRow` aligns children on their math axes without automatic inter-atom glue.
 Use [MathSpacer](../../elements/text/MathSpacer.md) for explicit signed advances.
 [MathCol](../../elements/text/MathCol.md) stacks independent formulas.
@@ -44,8 +47,17 @@ Use [MathSpacer](../../elements/text/MathSpacer.md) for explicit signed advances
 Use `font-size={px(36)}` to set the base em. All eight math styles are accepted
 as element props, including cramped variants; script and scriptscript glyphs
 use factors of 0.7 and 0.5 without repeated scaling through nested groups.
+TeX style commands and `\mathchoice` select the active style. Size declarations
+from `\tiny` through `\Huge` use TeX's table of text/script/scriptscript sizes;
+the equivalent JSX property is `size-index={1}` through `size-index={11}`, with
+normal size at `6`. The selected size index is part of layout cache identity.
 Ordinary Gum sizing props use the inherited Gum font size; math-specific glue,
 rule thickness, and gaps use the active math em.
+
+`\limits` and `\nolimits` override a large or named operator's normal policy.
+Direct JSX uses `limits="auto"`, `limits="always"`, or `limits="never"` on
+`MathOp` or `SupSub`. Generalized fractions preserve requested style, rule
+thickness, and delimiters. Continued fractions reserve the numerator strut.
 
 Width and height allocate a box; they do not scale a formula. Small exact boxes
 retain their glyphs and report overflow. Use [Fit](../../elements/text/Fit.md)
@@ -93,6 +105,7 @@ From the workspace root:
 bun run gum gum-next-docs/topics/code/Math.jsx -o /tmp/math.png --ratio 2
 bun run compare 'a+b=c' -S 48 -o /tmp/math-compare.png
 bun run compare --suite -S 48 -o /tmp/math-gallery.png
+bun run compare --suite 3 --inline -S 48 -o /tmp/math-inline.png
 ```
 
 The comparison script requires Chromium, `pdflatex`, and `pdftoppm`. It places
