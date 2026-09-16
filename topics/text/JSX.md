@@ -4,7 +4,9 @@
 
 A Gum source file is JavaScript with JSX expressions. A single bare element is
 returned automatically. If you add declarations or other statements, finish with
-an explicit `return`. Return one element, usually [Svg](../../elements/text/Svg.md).
+an explicit `return`. For rendering, return one element, usually [Svg](../../elements/text/Svg.md).
+`evaluate` returns any result unchanged, including non-element values such as
+numbers, strings, arrays, and objects. Code without a return produces `undefined`.
 
 ## Components and data
 

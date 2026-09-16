@@ -23,6 +23,7 @@ bun run gum --help
 | -W, --width | Exact viewport width in pixels |
 | -H, --height | Exact viewport height in pixels |
 | --ratio | Positive PNG/kitty sampling ratio; default 1 |
+| --select | PNG/kitty crop as `x,y,width,height` in source-image pixels |
 | --background | Viewport background paint |
 | --theme | `light` or `dark`; overrides the source root theme |
 | --title | SVG or PDF document title |
@@ -45,6 +46,11 @@ See [Themes](./Themes.md).
 Viewport overrides are independent. Omitted axes use source dimensions or hug
 content; overriding width does not uniformly scale fonts and strokes.
 The sampling ratio changes raster resolution without changing layout.
+For example, `--select 100,50,200,100 --ratio 3` renders a 200-by-100-pixel
+region starting at `(100, 50)` as a 600-by-300 PNG. Coordinates start at the
+top-left of the source viewport; width and height must be positive. Cropping
+happens before rasterization, preserving sharp vector edges when magnified.
+Selection is supported for PNG and kitty in both CLI commands.
 SVG/tree/JSON allow zero-sized axes; PNG/PDF/kitty require positive dimensions.
 
 A bare element is wrapped in **Svg** by the CLI. The core evaluator itself does not
@@ -61,7 +67,7 @@ than selectable text; debug overlays are omitted. `--ratio` and `--id-prefix`
 do not affect PDF output. See the [PDF API](../../../gum-jsx-pdf/README.md)
 for supported colors and page-size limits.
 
-Watch mode, zoom, and deck commands are not implemented.
+Watch mode and deck commands are not implemented.
 Only run trusted JSX; the evaluator executes JavaScript.
 
 ## TeX input
