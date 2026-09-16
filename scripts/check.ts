@@ -97,7 +97,7 @@ for (const { name, title, dir, collection } of entries) {
   const svg = core.render_svg(fragment, { title, id_prefix: name })
   assert.ok(svg.startsWith('<svg ') && svg.endsWith('</svg>'), `${file}: invalid SVG envelope`)
   assert.ok(!/NaN|Infinity/.test(svg), `${file}: nonfinite geometry`)
-  assert.ok(/<(?:path|rect|ellipse)\b/.test(svg), `${file}: no drawing`)
+  assert.ok(/<(?:path|rect|ellipse|image)\b/.test(svg), `${file}: no drawing`)
   const page = dir === elementsDir ? prepareElementPage(text, code) : prepareTopicPage(text, code)
   assert.ok(page.includes(code) && page.includes('# ' + title), `${file}: incomplete prepared page`)
   drawings++
