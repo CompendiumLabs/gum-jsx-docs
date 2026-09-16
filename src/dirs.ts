@@ -2,14 +2,20 @@ import { fileURLToPath } from 'node:url'
 
 // Content is located relative to the package, never the caller's working directory.
 const packageRoot = fileURLToPath(new URL('../', import.meta.url))
-const elementsDir = fileURLToPath(new URL('../elements/', import.meta.url))
-const elementsTextDir = fileURLToPath(new URL('../elements/text/', import.meta.url))
-const elementsCodeDir = fileURLToPath(new URL('../elements/code/', import.meta.url))
-const topicsDir = fileURLToPath(new URL('../topics/', import.meta.url))
-const topicsTextDir = fileURLToPath(new URL('../topics/text/', import.meta.url))
-const topicsCodeDir = fileURLToPath(new URL('../topics/code/', import.meta.url))
+const docsDir = fileURLToPath(new URL('../docs/', import.meta.url))
+const elementsDir = fileURLToPath(new URL('../docs/elements/', import.meta.url))
+const elementsTextDir = fileURLToPath(new URL('../docs/elements/text/', import.meta.url))
+const elementsCodeDir = fileURLToPath(new URL('../docs/elements/code/', import.meta.url))
+const galleryDir = fileURLToPath(new URL('../docs/gallery/', import.meta.url))
+const galleryTextDir = fileURLToPath(new URL('../docs/gallery/text/', import.meta.url))
+const galleryCodeDir = fileURLToPath(new URL('../docs/gallery/code/', import.meta.url))
+// Compatibility for hosts using the original topic loaders.
+const topicsDir = galleryDir
+const topicsTextDir = galleryTextDir
+const topicsCodeDir = galleryCodeDir
 const visualTestsDir = fileURLToPath(new URL('../visual-tests/', import.meta.url))
 const visualTestsCodeDir = fileURLToPath(new URL('../visual-tests/code/', import.meta.url))
 
-export { packageRoot, elementsDir, elementsTextDir, elementsCodeDir,
+export { packageRoot, docsDir, elementsDir, elementsTextDir, elementsCodeDir,
+  galleryDir, galleryTextDir, galleryCodeDir,
   topicsDir, topicsTextDir, topicsCodeDir, visualTestsDir, visualTestsCodeDir }

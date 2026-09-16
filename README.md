@@ -1,41 +1,48 @@
 # gum-jsx-docs
 
 Markdown documentation and executable JSX examples for the current Gum rewrite.
-Start with [Gum](./topics/text/Gum.md), [units](./topics/text/Units.md), and
-[sizing](./topics/text/Sizing.md).
+Consumers can use `getGuides()` for conceptual documentation and `getGallery()`
+for visual examples grouped by category. Gum Studio presents guides and element
+references at `/gum/docs`, and a searchable figure grid at `/gum/gallery`.
+The original `getTopics()` catalog and package import aliases remain available
+for existing consumers. Content lives under `docs/elements` and `docs/gallery`.
 
-Basic plotting is available: start with [Plot](./elements/text/Plot.md),
-[Graph](./elements/text/Graph.md), and [SymLine](./elements/text/SymLine.md), or try the
-[curve and band](./elements/text/SymFill.md), [bars](./topics/text/plot_bars.md), and
-[vector field](./topics/text/plot_field.md) showcases. The editor includes a Plotting
+Start with [Gum](./docs/gallery/text/Gum.md), [units](./docs/gallery/text/Units.md), and
+[sizing](./docs/gallery/text/Sizing.md).
+
+Basic plotting is available: start with [Plot](./docs/elements/text/Plot.md),
+[Graph](./docs/elements/text/Graph.md), and [SymLine](./docs/elements/text/SymLine.md), or try the
+[curve and band](./docs/elements/text/SymFill.md), [bars](./docs/gallery/text/plot_bars.md), and
+[vector field](./docs/gallery/text/plot_field.md) showcases. The editor includes a Plotting
 category alongside layout, geometry, and text.
 
-[Network](./elements/text/Network.md) connects [Node](./elements/text/Node.md)
-frames with [Edge](./elements/text/Edge.md) arrows, including
-[nodes inside fitted and rotated layouts](./topics/text/network_connections.md).
+[Network](./docs/elements/text/Network.md) connects [Node](./docs/elements/text/Node.md)
+frames with [Edge](./docs/elements/text/Edge.md) arrows, including
+[nodes inside fitted and rotated layouts](./docs/gallery/text/network_connections.md).
 The editor's Networks category includes runnable examples of each.
 
-[Math helpers](./topics/text/MathHelpers.md), [arrays](./topics/text/Arrays.md),
-[vectors](./topics/text/Vectors.md), [colors](./topics/text/Colors.md), and
-[seeded random data](./topics/text/Random.md) are built into JSX and exported for
+[Math helpers](./docs/gallery/text/MathHelpers.md), [arrays](./docs/gallery/text/Arrays.md),
+[vectors](./docs/gallery/text/Vectors.md), [colors](./docs/gallery/text/Colors.md), and
+[seeded random data](./docs/gallery/text/Random.md) are built into JSX and exported for
 host code. The examples use these helpers directly.
 
-[Math authoring](./topics/text/Math.md) covers the new TeX and math-element slice.
+[Math authoring](./docs/gallery/text/Math.md) covers the new TeX and math-element slice.
 The editor includes a Math category with element references and topics for
-[standalone exports](./topics/text/MathExport.md),
-[plot labels](./topics/text/MathPlotLabels.md), and [slides](./topics/text/MathSlides.md).
+[standalone exports](./docs/gallery/text/MathExport.md),
+[plot labels](./docs/gallery/text/MathPlotLabels.md), and [slides](./docs/gallery/text/MathSlides.md).
 The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, and kitty.
 
 The two reference collections use the same paired-file structure. Focused visual
 regressions live beside them and need code only:
 
 ```text
-elements/
-  text/<Name>.md       Element reference; category appears below its title
-  code/<Name>.jsx      Self-contained, runnable element example
-topics/
-  text/<name>.md       Conceptual guide or showcase explanation
-  code/<name>.jsx      Self-contained, runnable topic example
+docs/
+  elements/
+    text/<Name>.md     Element reference; category appears below its title
+    code/<Name>.jsx    Self-contained, runnable element example
+  gallery/
+    text/<name>.md     Conceptual guide or showcase explanation
+    code/<name>.jsx    Self-contained, runnable gallery example
 visual-tests/
   code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
@@ -49,55 +56,88 @@ gum-jsx-core and gum-jsx-math are development dependencies for checking examples
 
 ## Elements
 
-- Layout: [Svg](./elements/text/Svg.md), [Box](./elements/text/Box.md),
-  [Frame](./elements/text/Frame.md), [Fit](./elements/text/Fit.md),
-  [HStack](./elements/text/HStack.md), [VStack](./elements/text/VStack.md),
-  [Spacer](./elements/text/Spacer.md), and [Group](./elements/text/Group.md).
-- Geometry: [Rect](./elements/text/Rect.md), [RoundedRect](./elements/text/RoundedRect.md),
-  [Square](./elements/text/Square.md), [Circle](./elements/text/Circle.md),
-  [Ellipse](./elements/text/Ellipse.md), [Line](./elements/text/Line.md),
-  [Polyline](./elements/text/Polyline.md), [Polygon](./elements/text/Polygon.md),
-  and [Path](./elements/text/Path.md).
-- Text: [Text](./elements/text/Text.md), [Span](./elements/text/Span.md),
-  [Bullets](./elements/text/Bullets.md), and [Slide](./elements/text/Slide.md).
-- Networks: [Network](./elements/text/Network.md), [Node](./elements/text/Node.md),
-  and [Edge](./elements/text/Edge.md).
-- Math: [Latex](./elements/text/Latex.md), [Tex](./elements/text/Tex.md),
-  [MathText](./elements/text/MathText.md), [MathSymbol](./elements/text/MathSymbol.md),
-  [MathSpan](./elements/text/MathSpan.md), [MathRow](./elements/text/MathRow.md),
-  [MathCol](./elements/text/MathCol.md), [MathBox](./elements/text/MathBox.md),
-  [MathSpacer](./elements/text/MathSpacer.md), and [MathRule](./elements/text/MathRule.md).
+- Layout: [Svg](./docs/elements/text/Svg.md), [Box](./docs/elements/text/Box.md),
+  [Frame](./docs/elements/text/Frame.md), [Fit](./docs/elements/text/Fit.md),
+  [HStack](./docs/elements/text/HStack.md), [VStack](./docs/elements/text/VStack.md),
+  [Spacer](./docs/elements/text/Spacer.md), and [Group](./docs/elements/text/Group.md).
+- Geometry: [Rect](./docs/elements/text/Rect.md), [RoundedRect](./docs/elements/text/RoundedRect.md),
+  [Square](./docs/elements/text/Square.md), [Circle](./docs/elements/text/Circle.md),
+  [Ellipse](./docs/elements/text/Ellipse.md), [Line](./docs/elements/text/Line.md),
+  [Polyline](./docs/elements/text/Polyline.md), [Polygon](./docs/elements/text/Polygon.md),
+  and [Path](./docs/elements/text/Path.md).
+- Text: [Text](./docs/elements/text/Text.md), [Span](./docs/elements/text/Span.md),
+  [Bullets](./docs/elements/text/Bullets.md), and [Slide](./docs/elements/text/Slide.md).
+- Networks: [Network](./docs/elements/text/Network.md), [Node](./docs/elements/text/Node.md),
+  and [Edge](./docs/elements/text/Edge.md).
+- Math: [Latex](./docs/elements/text/Latex.md), [Tex](./docs/elements/text/Tex.md),
+  [MathText](./docs/elements/text/MathText.md), [MathSymbol](./docs/elements/text/MathSymbol.md),
+  [MathSpan](./docs/elements/text/MathSpan.md), [MathRow](./docs/elements/text/MathRow.md),
+  [MathCol](./docs/elements/text/MathCol.md), [MathBox](./docs/elements/text/MathBox.md),
+  [MathSpacer](./docs/elements/text/MathSpacer.md), and [MathRule](./docs/elements/text/MathRule.md).
 
-## Topics
+## Gallery and guides
 
-- Getting started: [Gum](./topics/text/Gum.md), [JSX](./topics/text/JSX.md),
-  [Units](./topics/text/Units.md), [Sizing](./topics/text/Sizing.md),
-  [Style](./topics/text/Style.md), and [CLI](./topics/text/CLI.md).
-- Geometry and layout: [Point values](./topics/text/PointValues.md),
-  [Coordinates](./topics/text/Coordinates.md), and [Stack](./topics/text/Stack.md).
-- Embedding: [Rendering](./topics/text/Rendering.md),
-  [Custom elements](./topics/text/CustomElements.md), and [Fonts](./topics/text/Fonts.md).
-- Numeric helpers: [Math](./topics/text/MathHelpers.md), [Arrays](./topics/text/Arrays.md),
-  [Vectors](./topics/text/Vectors.md), [Colors](./topics/text/Colors.md), [Random](./topics/text/Random.md).
+- Getting started: [Gum](./docs/gallery/text/Gum.md), [JSX](./docs/gallery/text/JSX.md),
+  [Units](./docs/gallery/text/Units.md), [Sizing](./docs/gallery/text/Sizing.md),
+  [Style](./docs/gallery/text/Style.md), and [CLI](./docs/gallery/text/CLI.md).
+- Geometry and layout: [Point values](./docs/gallery/text/PointValues.md),
+  [Coordinates](./docs/gallery/text/Coordinates.md), and [Stack](./docs/gallery/text/Stack.md).
+- Embedding: [Rendering](./docs/gallery/text/Rendering.md),
+  [Custom elements](./docs/gallery/text/CustomElements.md), and [Fonts](./docs/gallery/text/Fonts.md).
+- Numeric helpers: [Math](./docs/gallery/text/MathHelpers.md), [Arrays](./docs/gallery/text/Arrays.md),
+  [Vectors](./docs/gallery/text/Vectors.md), [Colors](./docs/gallery/text/Colors.md), [Random](./docs/gallery/text/Random.md).
 
 ### Showcases
 
-- [Two columns](./topics/text/two_columns.md): an explicitly allocated figure and paragraph.
-- [Shape cards](./topics/text/shape_cards.md): reusable components and nested stacks.
-- [Positioned diagram](./topics/text/positioned_diagram.md): labels, nodes, and connectors using **Group**.
-- [Sampled curve](./elements/text/SymLine.md): function sampling with **SymLine**.
-- [Layout choices](./topics/text/layout_choices.md): natural sizing versus explicit flex.
-- [Typography card](./topics/text/typography_card.md): mixed fonts, wrapping, and preformatted text.
-- [Arrow caps and tips](./topics/text/arrow_caps.md): thick shafts, fixed tips, and straight/curved/rounded routes.
-- [Flex limits and shrinkage](./topics/text/stack_flex.md) and
-  [stack alignment](./topics/text/stack_alignment.md): capped growth, shrinking, baselines, and stretch.
-- [Nested anchors](./topics/text/group_anchors.md),
-  [canvas clipping](./topics/text/group_clip.md), and
-  [rounded box clipping](./topics/text/box_clip.md): positioning and visible overflow.
-- [One paragraph, two widths](./topics/text/paragraph.md) and
-  [line boxes and baselines](./topics/text/typography.md): measured text geometry.
-- [Reusing fragments](./topics/text/repeated.md) and
-  [clipping and transforms](./topics/text/clipping.md): custom parent layout and placement.
+- [Pendulum Physics](./docs/gallery/text/pendulum_physics.md): parameter-driven
+  geometry, force arrows, and a math caption, ported from the old gallery.
+- [Particle in a Box](./docs/gallery/text/particle_box.md): offset wavefunctions,
+  hatched walls, and math labels, ported from the old gallery.
+- [Transformer Architecture](./docs/gallery/text/transformer.md): nested blocks
+  with boundary-attached connections, ported from the old gallery.
+
+- [Two columns](./docs/gallery/text/two_columns.md): an explicitly allocated figure and paragraph.
+- [Shape cards](./docs/gallery/text/shape_cards.md): reusable components and nested stacks.
+- [Positioned diagram](./docs/gallery/text/positioned_diagram.md): labels, nodes, and connectors using **Group**.
+- [Sampled curve](./docs/elements/text/SymLine.md): function sampling with **SymLine**.
+- [Layout choices](./docs/gallery/text/layout_choices.md): natural sizing versus explicit flex.
+- [Typography card](./docs/gallery/text/typography_card.md): mixed fonts, wrapping, and preformatted text.
+- [Arrow caps and tips](./docs/gallery/text/arrow_caps.md): thick shafts, fixed tips, and straight/curved/rounded routes.
+- [Flex limits and shrinkage](./docs/gallery/text/stack_flex.md) and
+  [stack alignment](./docs/gallery/text/stack_alignment.md): capped growth, shrinking, baselines, and stretch.
+- [Nested anchors](./docs/gallery/text/group_anchors.md),
+  [canvas clipping](./docs/gallery/text/group_clip.md), and
+  [rounded box clipping](./docs/gallery/text/box_clip.md): positioning and visible overflow.
+- [One paragraph, two widths](./docs/gallery/text/paragraph.md) and
+  [line boxes and baselines](./docs/gallery/text/typography.md): measured text geometry.
+- [Reusing fragments](./docs/gallery/text/repeated.md) and
+  [clipping and transforms](./docs/gallery/text/clipping.md): custom parent layout and placement.
+
+## Old gallery ports
+
+All 25 examples from the old `gum-jsx-docs/gala` collection now have runnable
+sources and explanatory pages here. Alongside Pendulum Physics, Particle in a
+Box, and Transformer Architecture, the remaining ports are:
+
+- Plotting: [Axes with Arrows](./docs/gallery/text/axis_arrows.md), [Flux Capacitance](./docs/gallery/text/flux_capacitance.md), [Complex Roots](./docs/gallery/text/complex_plot.md), [Slick Bars](./docs/gallery/text/slick_bars.md), [The Nexus](./docs/gallery/text/the_nexus.md), [Manual Plot](./docs/gallery/text/plot_manual.md), [Atomic Orbitals](./docs/gallery/text/atomic_orbitals.md).
+- Geometry: [Spline Star](./docs/gallery/text/spline_star.md), [Metal Grid](./docs/gallery/text/metal_grid.md), [Set Theory](./docs/gallery/text/set_theory.md), [Regular Polygons](./docs/gallery/text/polygon_slide.md), [Neon Rose](./docs/gallery/text/neon_rose.md), [Space Rose](./docs/gallery/text/space_rose.md), [Anatomy of a Cell](./docs/gallery/text/cell_diagram.md).
+- Text: [Punk Rock](./docs/gallery/text/punk_rock.md).
+- Layout: [Two Columns](./docs/gallery/text/two_column.md), [UI Mockup](./docs/gallery/text/ui_mockup.md).
+- Networks: [Macroeconomic Flows](./docs/gallery/text/macro_economy.md), [Unit Distance](./docs/gallery/text/unit_distance.md).
+- Math: [Shape Algebra](./docs/gallery/text/shape_algebra.md), [The Scenic Route](./docs/gallery/text/scenic_route.md), [Stokes’ Theorem](./docs/gallery/text/stokes_theorem.md).
+
+The ports use explicit layout sizes, current data-coordinate marks, and the shared
+palette. No core or math implementation changes were required. Useful follow-ups:
+
+- Add diagnostics for unsupported props: legacy sizing, coordinates, and paint
+  props can otherwise be ignored silently.
+- Expose axis arrowhead geometry; Axes with Arrows uses explicit Arrow baselines
+  to preserve curved heads.
+- Add Grid/TextGrid conveniences; regular polygons and the metal grid currently
+  use explicit rows or positioned cells.
+- Consider attached edge labels and obstacle avoidance for flow diagrams.
+- Support separate fill/stroke opacity and the old arrow-arc geometry if future
+  ports need closer paint or arrowhead matching.
 
 ## Run an example
 
@@ -105,10 +145,10 @@ From the parent gum-jsx workspace:
 
 ```sh
 bun install
-bun run gum gum-jsx-docs/topics/code/Gum.jsx
-bun run gum gum-jsx-docs/topics/code/two_columns.jsx -o /tmp/two-columns.svg
-bun run gum gum-jsx-docs/topics/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
-bun run gum gum-jsx-docs/elements/code/VStack.jsx -f tree --stats
+bun run gum gum-jsx-docs/docs/gallery/code/Gum.jsx
+bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.svg
+bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
+bun run gum gum-jsx-docs/docs/elements/code/VStack.jsx -f tree --stats
 bun --filter gum-jsx-docs check
 bun run visual-test
 bun run typecheck
@@ -154,7 +194,7 @@ Categories are core, layout, geometry, plotting, networks, text, math, and api. 
 needs a `*Category*: ...` line directly below its title; topic pages may include one.
 A Markdown viewer should resolve relative links against the original text file and
 map them to its own routes, rather than requiring routes in the content. Raw files
-are exposed through the `./elements/*` and `./topics/*` package subpaths.
+are exposed through the `./docs/elements/*` and `./docs/gallery/*` package subpaths.
 
 ## Contributing
 

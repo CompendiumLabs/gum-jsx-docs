@@ -10,7 +10,7 @@ type TopicsInfo = CollectionInfo & { cats: Record<string, string[]> }
 
 const category = /^\*Category\*:[ \t]*(.+?)[ \t]*$/m
 const stripCategory = /^\*Category\*:[ \t]*.*\r?\n(?:\r?\n)?/m
-const categories = ['core', 'layout', 'geometry', 'plotting', 'networks', 'text', 'math', 'api']
+const categories = ['core', 'layout', 'geometry', 'plotting', 'networks', 'text', 'math', 'api', 'special']
 
 function pageName(name: string): string {
   if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) throw new Error('Invalid documentation page name')
@@ -98,6 +98,38 @@ function prepareTopicPage(text: string, code: string): string {
   return prepareElementPage(text, code)
 }
 
+// Guides belong with the reference; the remaining topics are visual examples.
+const guideNames = ['Gum', 'JSX', 'Units', 'Sizing', 'Style', 'Themes', 'CLI',
+  'Stack', 'PointValues', 'Coordinates', 'Rendering', 'CustomElements', 'Fonts',
+  'MathHelpers', 'Arrays', 'Vectors', 'Colors', 'Random', 'Math', 'MathFonts', 'MathExport']
+
+function selectTopics(collection: TopicsInfo, tags: string[]): TopicsInfo {
+  const selected = new Set(tags)
+  return {
+    tags,
+    cats: Object.fromEntries(Object.entries(collection.cats)
+      .map(([cat, names]) => [cat, names.filter(name => selected.has(name))] as const)
+      .filter(([, names]) => names.length)),
+    text: Object.fromEntries(tags.map(name => [name, collection.text[name]])),
+    code: Object.fromEntries(tags.map(name => [name, collection.code[name]])),
+  }
+}
+
+function getGuides(dir = topicsDir): TopicsInfo {
+  const topics = getTopics(dir)
+  return selectTopics(topics, guideNames.filter(name => topics.tags.includes(name)))
+}
+
+function getGallery(dir = topicsDir): TopicsInfo {
+  const topics = getTopics(dir)
+  const gallery = selectTopics(topics, topics.tags.filter(name => !guideNames.includes(name)))
+  const categorized = new Set(Object.values(gallery.cats).flat())
+  const showcases = gallery.tags.filter(name => !categorized.has(name))
+  if (showcases.length) gallery.cats.showcases = showcases
+  return gallery
+}
+
 export { listElements, getElements, getElementText, getElementCode, prepareElementPage }
 export { listTopics, getTopics, getTopicText, getTopicCode, prepareTopicPage }
+export { getGuides, getGallery }
 export type { CollectionInfo, ElementEntry, ElementsInfo, TopicEntry, TopicsInfo }

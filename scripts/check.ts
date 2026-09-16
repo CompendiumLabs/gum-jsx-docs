@@ -4,12 +4,20 @@ import { dirname, join, resolve } from 'node:path'
 import * as core from 'gum-jsx-core'
 import * as math from 'gum-jsx-math'
 import { elementsDir, topicsDir, packageRoot, listElements, listTopics,
-  getElements, getTopics, prepareElementPage, prepareTopicPage } from '../src'
+  getElements, getTopics, getGuides, getGallery, prepareElementPage, prepareTopicPage } from '../src'
 
 // A content smoke check, not a separate CLI or layout test suite.
 // Only checked-in, trusted JSX is evaluated; evaluate() is not a sandbox.
 const elements = getElements()
 const topics = getTopics()
+const guides = getGuides()
+const gallery = getGallery()
+assert.ok(guides.tags.includes('Gum'), 'Getting started belongs in Docs')
+assert.ok(gallery.tags.includes('plot_bars'), 'Visual showcases belong in Gallery')
+assert.equal(new Set([...guides.tags, ...gallery.tags]).size, topics.tags.length)
+assert.equal(guides.tags.length + gallery.tags.length, topics.tags.length)
+assert.deepEqual(Object.values(gallery.cats).flat().sort(), [...gallery.tags].sort(),
+  'Every gallery example must appear in exactly one category')
 const entries = [
   ...listElements().map(entry => ({ ...entry, dir: elementsDir, collection: elements })),
   ...listTopics().map(entry => ({ ...entry, dir: topicsDir, collection: topics })),

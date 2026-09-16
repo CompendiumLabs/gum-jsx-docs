@@ -8,8 +8,10 @@
   "exports": {
     ".": "./src/index.ts",
     "./dirs": "./src/dirs.ts",
-    "./elements/*": "./elements/*",
-    "./topics/*": "./topics/*",
+    "./docs/elements/*": "./docs/elements/*",
+    "./docs/gallery/*": "./docs/gallery/*",
+    "./elements/*": "./docs/elements/*",
+    "./topics/*": "./docs/gallery/*",
     "./visual-tests/*": "./visual-tests/*",
     "./package.json": "./package.json"
   },
