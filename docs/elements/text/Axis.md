@@ -16,6 +16,7 @@ your own frame.
 | `tick-size` | `px(5)` | Tick length |
 | `tick-side` | `"outer"` | `"inner"`, `"outer"`, or an explicit side |
 | `label-offset` | `px(4)` | Gap between ticks and labels |
+| `label-anchor` | Side-dependent | Point on each label attached to its tick position |
 | `format` | `format_tick` | `(value, index) => string` for numeric ticks |
 | `rotate` | `0` | Label rotation in degrees |
 | `labels` | `true` | Draw tick labels |
@@ -32,6 +33,10 @@ Use `tick-side="inner"` for inward ticks. `"outer"` follows `side`; explicit
 cardinal values such as `side="bottom"` with `tick-side="top"` are also accepted.
 Labels remain on `side`; when ticks point the other way, `label-offset` is measured
 from the baseline.
+Label anchors use the standard point forms. For example, a rotated bottom-axis
+label can hang from its top-right corner with
+`label-anchor={['end', 'start']}`. The default centers labels along the axis and
+selects the edge facing the axis.
 Arrowhead options follow [ArrowHead](./ArrowHead.md): for example, `arrow-open`,
 `arrow-curve`, `arrow-barb`, and `arrow-stroke` control the head drawn by `arrow`.
 Scopes configure generated labels; supplied **Element**s keep their own props.

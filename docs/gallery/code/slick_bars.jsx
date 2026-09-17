@@ -24,6 +24,7 @@ return <Svg height={px(500)}>
     ygrid
     xaxis-lim={[0, 7]}
     xaxis-rotate={-40}
+    xaxis-label-anchor={['end', 'start']}
     axis-tick-size={em(0.5)}
     margin={px(24)}
     bar-width={0.8}
