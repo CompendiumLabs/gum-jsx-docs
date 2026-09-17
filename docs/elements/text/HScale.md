@@ -10,12 +10,13 @@
 | `side` | `"bottom"` | Edge and orientation |
 | `at` | Frame edge | Data location on the perpendicular axis |
 | `tick-size` | `px(5)` | Tick length |
+| `tick-side` | `"outer"` | `"inner"`, `"outer"`, `"top"`, or `"bottom"` |
 | `tick-style` / `tick-*` | — | Nested or flat styles for ticks |
 
 **HScale** draws ticks only, without a baseline or labels. It defaults to `side="bottom"`.
 It accepts the [Axis](./Axis.md) props, including lim, ticks, interval, side, at,
-format, rotate, and nested styles. **Labels**-only elements still account for
-`tick-size` when positioning text, so they align with a separate **Scale**.
+format, rotate, and nested styles. **Labels**-only elements account for `tick-size`
+when `tick-side` is outer, so they align with a separate **Scale**.
 
 lim defaults to [0,1]; specify the desired tick domain inside **Graph**. **Plot**
 supplies matching limits automatically.

@@ -65,6 +65,6 @@ unless `--color` is supplied. Library helpers such as `mathToElement` can be
 nested inside a themed **Svg** to inherit the same palette.
 
 ```sh
-bun run gum-tex 'x^2' --theme dark
-bun run gum-tex 'x^2' -t light --background white -o formula.png
+gum-tex 'x^2' --theme dark
+gum-tex 'x^2' -t light --background white -o formula.png
 ```

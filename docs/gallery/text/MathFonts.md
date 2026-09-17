@@ -4,7 +4,7 @@
 
 Math alphabets select a face per glyph. `\mathrm`, `\mathit`, `\mathbf`,
 `\mathnormal`, `\mathbb`, `\mathcal`, `\mathfrak`, `\mathscr`, `\mathsf`,
-`\mathsfit`, and `\mathtt` are supported, together with old declarations
+`\mathsfit`, and `\mathtt` are supported, together with declarations
 such as `\rm`, `\bf`, and `\cal`. `\boldsymbol` and its `\bm` alias choose
 bold italic math letters and bold main-font symbols where available.
 

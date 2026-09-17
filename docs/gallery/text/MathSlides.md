@@ -14,11 +14,12 @@ use [Fit](../../elements/text/Fit.md) around a
 alone does not scale the formula.
 
 The runnable slide combines a mathematical title, two display equations, mixed
-prose, a shaded Gaussian curve, and formulas in the axes and caption.
+prose, a shaded Gaussian curve, and formulas in the axes and caption. Save it
+as `slide.jsx` to render it:
 
 ```sh
-bun run gum gum-jsx-docs/docs/gallery/code/MathSlides.jsx -o /tmp/math-slide.svg
-bun run gum gum-jsx-docs/docs/gallery/code/MathSlides.jsx -o /tmp/math-slide.png --ratio 2
+gum slide.jsx -o slide.svg
+gum slide.jsx -o slide.png --ratio 2
 ```
 
 See [Slide](../../elements/text/Slide.md), [plot labels](MathPlotLabels.md), and

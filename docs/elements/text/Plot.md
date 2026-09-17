@@ -42,7 +42,8 @@ Title and x title wrap at the usable width. Explicit margin adds space to those
 measurements. The fragment's content rectangle identifies the data area.
 
 For example, `axis-stroke={slate}` affects both axes and
-`xaxis-label-color={blue}` changes only the x tick labels. Common tick/label
+`xaxis-label-color={blue}` changes only the x tick labels. Use
+`axis-tick-side="inner"` to point both axes' ticks into the data area. Common tick/label
 settings precede common axis settings, then xaxis/yaxis option objects, then
 flat `xaxis-`/`yaxis-` props. Part option records merge per field. At the same scope,
 flat props override matching nested settings. `title-wrap={false}` disables title

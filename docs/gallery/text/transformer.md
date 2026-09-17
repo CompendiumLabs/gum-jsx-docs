@@ -2,7 +2,7 @@
 
 *Category*: networks
 
-A port of the old gallery's decoder-only transformer diagram. Read upward from
+A decoder-only transformer diagram. Read upward from
 input tokens through embeddings, the repeated attention/feed-forward layer,
 linear projection, and softmax to output probabilities. The dashed return route
 and `× N` label indicate repetition of the framed layer, not a residual connection.
@@ -19,8 +19,8 @@ and frame padding, keeping its arms horizontal and its `× N` label centered.
 Network does not provide obstacle avoidance or edge-label placement; this route
 calculation needs adjustment if the stack's structure changes.
 
-The old aspect-driven block sizes become explicit pixel widths/heights, and
-`rounded`, `arrow-size`, and `arrow-curve` become `radius`, `head-size`, and
-`head-curve`. Color interpolation still supplies pastel block fills.
+Blocks use explicit pixel widths and heights. The `radius`, `head-size`, and
+`head-curve` props control rounded corners and arrowheads. Color interpolation
+supplies pastel block fills.
 
 [View the source](../code/transformer.jsx).

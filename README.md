@@ -47,12 +47,62 @@ visual-tests/
   code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
 scripts/check.ts      Validate links, coverage, and example rendering
+prompt/               Maintained Gum authoring and skill prompt pieces
+scripts/skill.ts      Generate the portable skill folder and .skill archive
 ```
 
 There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
 `/docs` route consumes the catalogs to show SVG cards and editable, live-rendered
 code/figure popups. There are no runtime package dependencies;
 gum-jsx-core and gum-jsx-math are development dependencies for checking examples.
+
+## Generate the skill package
+
+The skill-generation tooling combines authoring prompts with the layout, units,
+JSX, CLI, and rendering references. The skill assumes `@gum-jsx/cli` is installed
+globally and uses the `gum` commands directly. Build the skill from the workspace
+root or this package directory:
+
+```sh
+bun run skill
+```
+
+This writes `gum-jsx-docs/skills/gum-jsx/SKILL.md` and its references, plus
+`gum-jsx-docs/skills/gum-jsx.skill` (a ZIP with a `gum-jsx/` root folder).
+The folder can be used by skill-aware coding agents; the `.skill` archive can be
+imported by clients that accept that format. Generated outputs are ignored by
+Git; maintain the source prompts and docs, then rebuild.
+
+The entrypoint is assembled from [head](./prompt/head.md),
+[intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md), and
+[gen](./prompt/gen.md). It keeps the essential authoring rules together and links
+to generated indexes for guides, elements by category, and gallery figures.
+Every current page and runnable example is included, with local links rewritten
+for the package. Links to JSX sources point to the embedded example; the separate
+PDF package's API link points to its upstream README.
+
+The script locates inputs and its default output relative to this package,
+independently of the caller's working directory. From the workspace root:
+
+```sh
+bun gum-jsx-docs/scripts/skill.ts -o /tmp/gum-skill/gum-jsx
+bun gum-jsx-docs/scripts/skill.ts -o /tmp/gum-skill/gum-jsx --no-archive
+```
+
+An explicit output path is relative to the caller's directory; its archive is
+`<output>.skill`. Archive generation requires the `zip` executable. Use
+`--no-archive` for a directory-only build without that dependency. Rebuilds track
+their generated files in `.gum-jsx-generated.json`, remove retired generated
+pages, and preserve unrelated local files. Archives contain only the current
+skill pages, never that manifest or local notes. A nonempty destination without
+a build manifest is rejected.
+
+Other consumers, including Gum Studio, can reuse the maintained prompts through
+the exported `promptDir` or `@gum-jsx/docs/prompt/*` subpath. Studio's own chat
+prompt and tool wiring remain separate from this portable skill.
+
+`bun run check` also tests skill coverage, link reachability, prompt-example
+rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unzip`.
 
 ## Elements
 

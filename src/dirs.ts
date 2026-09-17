@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url'
 
 // Content is located relative to the package, never the caller's working directory.
 const packageRoot = fileURLToPath(new URL('../', import.meta.url))
+const promptDir = fileURLToPath(new URL('../prompt/', import.meta.url))
 const docsDir = fileURLToPath(new URL('../docs/', import.meta.url))
 const elementsDir = fileURLToPath(new URL('../docs/elements/', import.meta.url))
 const elementsTextDir = fileURLToPath(new URL('../docs/elements/text/', import.meta.url))
@@ -16,6 +17,6 @@ const topicsCodeDir = galleryCodeDir
 const visualTestsDir = fileURLToPath(new URL('../visual-tests/', import.meta.url))
 const visualTestsCodeDir = fileURLToPath(new URL('../visual-tests/code/', import.meta.url))
 
-export { packageRoot, docsDir, elementsDir, elementsTextDir, elementsCodeDir,
+export { packageRoot, promptDir, docsDir, elementsDir, elementsTextDir, elementsCodeDir,
   galleryDir, galleryTextDir, galleryCodeDir,
   topicsDir, topicsTextDir, topicsCodeDir, visualTestsDir, visualTestsCodeDir }

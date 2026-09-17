@@ -2,17 +2,17 @@
 
 *Category*: core
 
-gum-jsx-cli evaluates JSX, lays out the result with gum-jsx-core, and writes SVG,
-PNG, PDF, kitty graphics, a fragment tree, or JSON. Run these commands from the
-gum-jsx workspace.
+The `gum` command evaluates JSX, lays out the result, and writes SVG, PNG, PDF,
+kitty graphics, a fragment tree, or JSON. Install the CLI globally with
+`bun install -g @gum-jsx/cli` if needed. Save the example below as `figure.jsx`:
 
 ```sh
-bun run gum gum-jsx-docs/docs/gallery/code/CLI.jsx
-bun run gum gum-jsx-docs/docs/gallery/code/CLI.jsx -o /tmp/cli.svg
-bun run gum gum-jsx-docs/docs/gallery/code/CLI.jsx -o /tmp/cli.pdf
-bun run gum gum-jsx-docs/docs/gallery/code/CLI.jsx -W 320 -o /tmp/cli.png --ratio 2
-bun run gum gum-jsx-docs/docs/gallery/code/CLI.jsx -f tree --stats
-bun run gum --help
+gum figure.jsx
+gum figure.jsx -o figure.svg
+gum figure.jsx -o figure.pdf
+gum figure.jsx -W 320 -o figure.png --ratio 2
+gum figure.jsx -f tree --stats
+gum --help
 ```
 
 | Option | Meaning |
@@ -58,8 +58,8 @@ add this wrapper. Input and output paths are relative to the current directory.
 Errors go to stderr and exit with status 1.
 
 PNG and kitty use gum-jsx-png. **Text** is already encoded as SVG paths, so raster
-output does not need separate font registration. Use
-`bun run --silent gum ... --stats` to suppress Bun's script announcement.
+output does not need separate font registration. `--stats` writes machine-readable
+layout counters to stderr independently of the rendered output.
 
 PDF uses gum-jsx-pdf to write a single vector page at 96 pixels per inch, with
 the same viewport, themes, and backgrounds. Text and math are outlines rather
@@ -76,13 +76,13 @@ Only run trusted JSX; the evaluator executes JavaScript.
 literal formula, `-i formula.tex` for a file, or omit input to read stdin:
 
 ```sh
-bun run gum-tex 'e^{i\pi}+1=0' -o /tmp/euler.svg
-bun run gum-tex 'e^{i\pi}+1=0' -o /tmp/euler.pdf
-bun run gum-tex '\frac{a+b}{c+d}' -s 48 -p 0.25 -o /tmp/fraction.png --ratio 2
-bun run gum-tex -i formula.tex --inline -f tree --stats
-printf '%s\n' 'x^2+y^2=1' | bun run gum-tex -f svg
-bun run gum-tex 'x^2+y^2=1' --fit -W 400
-bun run gum-tex 'x^2+y^2=1' --theme dark
+gum-tex 'e^{i\pi}+1=0' -o euler.svg
+gum-tex 'e^{i\pi}+1=0' -o euler.pdf
+gum-tex '\frac{a+b}{c+d}' -s 48 -p 0.25 -o fraction.png --ratio 2
+gum-tex -i formula.tex --inline -f tree --stats
+printf '%s\n' 'x^2+y^2=1' | gum-tex -f svg
+gum-tex 'x^2+y^2=1' --fit -W 400
+gum-tex 'x^2+y^2=1' --theme dark
 ```
 
 Quote literal TeX with single quotes and omit surrounding `$` delimiters.

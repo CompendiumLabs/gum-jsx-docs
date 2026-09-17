@@ -39,7 +39,7 @@ Examples use `blue` as the default accent, followed by `red`, `green`, `yellow`,
 and `purple` for additional distinct items. Backgrounds and ordinary text use
 neutral colors where needed for readability.
 
-Paint constants preserve the original Gum palette, so `fill={blue}` differs
+Paint constants use the Gum palette, so `fill={blue}` differs
 from the CSS color `fill="blue"`:
 
 | Constant | Value | Constant | Value |

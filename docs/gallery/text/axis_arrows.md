@@ -2,10 +2,11 @@
 
 *Category*: plotting
 
-A logarithmic curve with arrowheads on both directed axes. Plot measures the ticks and labels while two explicit Arrow elements draw the baselines and curved heads.
+A logarithmic curve with arrowheads on both directed axes. Plot measures the ticks,
+labels, baselines, and curved heads together.
 
-Ported from the old Gum gallery.
+`axis-arrow` enables both heads. `axis-arrow-size` and `axis-arrow-curve` are
+forwarded to each generated axis; use the corresponding `xaxis-` or `yaxis-`
+scope to customize one axis.
 
-The built-in `xaxis-arrow` and `yaxis-arrow` options currently provide fixed-size straight heads. To preserve the old curved heads, this example disables the built-in baselines and draws arrows in data coordinates. Clipping is disabled so the heads can extend past the data rectangle. Pixel stroke widths and explicit sampling limits keep the result independent of the viewport.
-
-See [Axis](../../elements/text/Axis.md) and [the runnable source](../code/axis_arrows.jsx).
+See [Axis](../../elements/text/Axis.md).

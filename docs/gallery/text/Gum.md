@@ -2,9 +2,8 @@
 
 *Category*: core
 
-Gum describes diagrams with JSX and renders them as SVG. This is the **next**
-implementation: it shares the original project's idea, but not its full API.
-The reference pages here describe what works now.
+Gum describes diagrams with JSX and renders them as SVG. The reference pages
+describe the elements, layout rules, and rendering APIs.
 
 ## Start here
 
@@ -39,11 +38,11 @@ that result. The [rendering API](./Rendering.md) exposes each stage separately.
 
 ## Run the example
 
-From the gum-jsx workspace:
+With `@gum-jsx/cli` installed globally, save the example below as `hello.jsx`:
 
 ```sh
-bun run gum gum-jsx-docs/docs/gallery/code/Gum.jsx
-bun run gum gum-jsx-docs/docs/gallery/code/Gum.jsx -o /tmp/hello.svg
+gum hello.jsx
+gum hello.jsx -o hello.svg
 ```
 
 The first command uses kitty graphics. See [CLI](./CLI.md) for PNG, tree, JSON,

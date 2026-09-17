@@ -109,12 +109,12 @@ symbols, and missing glyphs. Core wraps layout failures in `LayoutError`, whose
 a visible formula diagnostic; missing font resources and programming errors
 still propagate to the host.
 
-## Compare renderers
+## Development: compare renderers
 
-From the workspace root:
+Contributors with a repository checkout can compare renderers from the workspace root:
 
 ```sh
-bun run gum gum-jsx-docs/docs/gallery/code/Math.jsx -o /tmp/math.png --ratio 2
+gum gum-jsx-docs/docs/gallery/code/Math.jsx -o /tmp/math.png --ratio 2
 bun run compare 'a+b=c' -S 48 -o /tmp/math-compare.png
 bun run compare --suite -S 48 -o /tmp/math-gallery.png
 bun run compare --suite 3 --inline -S 48 -o /tmp/math-inline.png

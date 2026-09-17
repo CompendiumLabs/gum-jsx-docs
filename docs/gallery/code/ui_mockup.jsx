@@ -9,10 +9,11 @@ const messages = [
 const Window = ({ title, children, ...props }) => (
   <Frame radius={px(8)} background={white} border-color={darkgray} clip {...props}>
     <VStack width="fill">
-      <TextBox width="fill" padding={px(12)} background={gray} font-weight={bold}>
+      <TextBox width="fill" padding={em(0.5)} background={gray} font-weight={bold}>
         {title}
       </TextBox>
-      <Box width="fill" padding={px(16)}>
+      <HLine height={0} stroke={darkgray} />
+      <Box width="fill" padding={em(0.5)}>
         {children}
       </Box>
     </VStack>

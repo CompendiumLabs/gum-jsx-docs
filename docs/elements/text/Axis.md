@@ -14,19 +14,30 @@ your own frame.
 | `side` | `"bottom"` | Axis edge and orientation |
 | `at` | Frame edge | Data location on the perpendicular axis |
 | `tick-size` | `px(5)` | Tick length |
+| `tick-side` | `"outer"` | `"inner"`, `"outer"`, or an explicit side |
 | `label-offset` | `px(4)` | Gap between ticks and labels |
 | `format` | `format_tick` | `(value, index) => string` for numeric ticks |
 | `rotate` | `0` | Label rotation in degrees |
 | `labels` | `true` | Draw tick labels |
 | `line` | `true` | Draw the baseline |
 | `arrow` | `false` | Draw a head at the directed endpoint |
+| `arrow-size` | `px(7)` | Arrowhead length |
+| `arrow-width` | `1.3` | Full arrowhead width divided by its length |
+| `arrow-style` / `arrow-*` | — | Arrowhead shape and paint options |
 | `line-style` / `tick-style` / `label-style` | — | Nested styles for generated parts |
 | `line-*` / `tick-*` / `label-*` | — | Flat overrides for generated-part styles |
 
 Pair labels may be strings, numbers, or **Element**s. Out-of-domain ticks are omitted.
+Use `tick-side="inner"` for inward ticks. `"outer"` follows `side`; explicit
+cardinal values such as `side="bottom"` with `tick-side="top"` are also accepted.
+Labels remain on `side`; when ticks point the other way, `label-offset` is measured
+from the baseline.
+Arrowhead options follow [ArrowHead](./ArrowHead.md): for example, `arrow-open`,
+`arrow-curve`, `arrow-barb`, and `arrow-stroke` control the head drawn by `arrow`.
 Scopes configure generated labels; supplied **Element**s keep their own props.
-Flat props override matching fields of nested objects. `tick-size`, `label-offset`,
-and ordinary `line-height` remain owner props. These scopes also work on **Axis**'s
+Flat props override matching fields of nested objects. `tick-size`, `tick-side`,
+`label-offset`, `arrow-size`, `arrow-width`, and ordinary `line-height` remain owner props.
+These scopes also work on **Axis**'s
 directional, labels-only, and scale-only variants. See
 [scoped props](../../gallery/text/Style.md#scoped-component-props).
 

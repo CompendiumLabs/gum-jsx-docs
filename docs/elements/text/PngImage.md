@@ -2,7 +2,7 @@
 
 *Category*: special
 
-Embeds a PNG from a base64 data URL, as in the original Gum. The image reads its
+Embeds a PNG from a base64 data URL. The image reads its
 natural pixel dimensions from the PNG header. Set one dimension to resize with
 the original aspect ratio; available space uses the same sizing policy as shapes.
 When both dimensions are fixed, the image fits centered inside the box without

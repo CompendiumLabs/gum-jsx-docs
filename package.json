@@ -8,6 +8,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./dirs": "./src/dirs.ts",
+    "./prompt/*": "./prompt/*",
     "./docs/elements/*": "./docs/elements/*",
     "./docs/gallery/*": "./docs/gallery/*",
     "./elements/*": "./docs/elements/*",
@@ -16,7 +17,8 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "check": "bun scripts/check.ts",
+    "check": "bun scripts/check.ts && bun test scripts/skill.test.ts",
+    "skill": "bun scripts/skill.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
