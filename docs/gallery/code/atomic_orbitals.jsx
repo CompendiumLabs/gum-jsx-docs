@@ -53,54 +53,40 @@ const profiles = [
   },
 ]
 const Cell = ({ profile }) => (
-  <VStack width={px(190)} gap={px(8)} align="center">
-    <Frame
-      width={px(190)}
-      height={px(165)}
-      radius={px(10)}
-      background={lightgray}
-      border-color={gray}
-    >
-      <Graph xlim={[-0.8, 0.8]} ylim={[-0.7, 0.7]}>
+  <VStack gap={em(0.5)} align="center">
+    <Frame radius={em(1)} background={lightgray} border-color={darkgray}>
+      <Graph width={px(200)} height={px(200)} xlim={[-0.8, 0.8]} ylim={[-0.8, 0.8]}>
         <CoordLine
-          points={[
-            [-0.8, 0],
-            [0.8, 0],
-          ]}
+          points={[[-0.8, 0], [0.8, 0]]}
           stroke={darkgray}
           stroke-dasharray={[px(4), px(4)]}
         />
         <CoordLine
-          points={[
-            [0, -0.7],
-            [0, 0.7],
-          ]}
+          points={[[0, -0.8], [0, 0.8]]}
           stroke={darkgray}
           stroke-dasharray={[px(4), px(4)]}
         />
         {profile.pieces.map(([start, end, positive]) => (
           <Lobe radius={profile.radius} start={start} end={end} positive={positive} />
         ))}
-        <Points points={[[0, 0]]} point-size={px(5)} fill={slate} />
+        <Points points={[[0, 0]]} point-size={em(0.5)} fill={slate} />
       </Graph>
     </Frame>
-    <Tex font-size={px(24)}>{profile.label}</Tex>
+    <Tex font-size={em(1.6)}>{profile.label}</Tex>
   </VStack>
 )
-return (
-  <Svg width={px(760)} height={px(790)} font-size={px(18)}>
-    <Box padding={px(28)}>
-      <TitleFrame title="Atomic Orbitals" title-font-size={px(30)} padding={px(20)} radius={px(14)}>
-        <VStack width={px(660)} gap={px(18)}>
-          {[[0], [1, 2, 3], [4, 5]].map((row) => (
-            <HStack width="fill" gap={px(22)} justify="center">
-              {row.map((index) => (
-                <Cell profile={profiles[index]} />
-              ))}
-            </HStack>
-          ))}
-        </VStack>
-      </TitleFrame>
-    </Box>
-  </Svg>
-)
+return <Svg font-size={px(25)}>
+  <Box padding={em(2)}>
+    <TitleFrame title="Atomic Orbitals" title-font-size={em(1.8)} padding={em(4)} radius={em(1)}>
+      <VStack gap={em(2)} align="center">
+        {[[0], [1, 2, 3], [4, 5]].map((row) => (
+          <HStack width="fill" gap={em(2)} justify="center">
+            {row.map((index) => (
+              <Cell profile={profiles[index]} />
+            ))}
+          </HStack>
+        ))}
+      </VStack>
+    </TitleFrame>
+  </Box>
+</Svg>
