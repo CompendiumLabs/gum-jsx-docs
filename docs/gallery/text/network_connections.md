@@ -11,17 +11,18 @@ Put positioning props on each outer wrapper. The Node's `id` stays on the framed
 label inside it. Explicit network limits make these nested layouts' positions
 independent of coordinate inference.
 
-During layout, each named Node records an immutable `connection` with its ID and
-rounded rectangular `boundary`, in its own local pixels. Network walks completed
+During layout, each element with an `id` records an immutable `connection` with
+its ID and `boundary`, in its own local pixels. Boxes and basic shapes report their
+rounded or elliptical outline; other elements report their allocation. Network walks completed
 placements and composes their offsets and transforms. It computes ports on those
 local boundaries and transforms the ports and normals into network pixels before
 building the arrows. It never substitutes a rotated node's enclosing rectangle
 for its outline.
 
-Custom elements can return the same metadata with
-`make_fragment({ size, connection: { id, boundary }, ... })`. The boundary may be
+Custom elements get an allocation boundary from their `id` automatically. They can
+refine it with `make_fragment({ size, ...frame_connection(props.id, boundary) })`. The boundary may be
 smaller than the allocation or have a nonzero origin. It accepts the same pixel
 rectangle and corner radii as `make_clip`. The metadata does not add any paint.
-An identified boundary owns its subtree; a nested Network sets `connection_scope`
-so its node IDs stay local. Singular transforms cannot provide attachment ports
+Identified containers remain transparent to the search; a nested Network sets
+`connection_scope` so its node IDs stay local. Singular transforms cannot provide attachment ports
 and produce a layout error when referenced by an edge.

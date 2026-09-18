@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `start` / `end` | Required | Node IDs, or Node elements with IDs |
+| `start` / `end` | Required | Element IDs, or elements with IDs |
 | `start-side` / `end-side` | Automatic | `"top"`, `"right"`, `"bottom"`, or `"left"` in each node's local frame |
 | `start-loc` / `end-loc` | `0.5` | Position along the chosen side, from zero to one |
 | `points` | `[]` | Intermediate route points in graph coordinates |
@@ -17,8 +17,9 @@
 
 A connection rendered with [Arrow](./Arrow.md)'s shaft, heads, and paint options.
 It must be a direct child of [Network](./Network.md), where `start` and `end` resolve
-against the completed [Node](./Node.md) placements. Passing a Node element uses
-its ID; it does not add that node to the diagram.
+against the completed placements of identified elements, whether [Node](./Node.md)
+or anything else. Passing an element uses its ID; it does not add that element to
+the diagram.
 
 Automatic sides face the other node, or the nearest intermediate waypoint when
 one is provided. Side names are local to each node, so a rotated node's `"top"`

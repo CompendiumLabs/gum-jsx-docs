@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `id` | — | Nonempty identifier used by edges in the enclosing **Network** |
+| `id` | — | Nonempty identifier used by edges, as on any other element |
 | `x` / `y` | `0` / `0` | Position in the parent coordinate system |
 | `anchor` | `"center"` | Point of the allocated node placed at x/y |
 | `width` | `"fit"` | Measure the label; a length sets a wrapping width |
@@ -16,8 +16,10 @@
 | `background` | `none` | Frame background paint |
 | `clip` | `false` | Clip content inside the frame's border |
 
-A compact [TextFrame](./TextFrame.md) that exposes its outer frame as a connection
-boundary. Other frame and style options follow [Box](./Box.md). Text retains its
+A compact [TextFrame](./TextFrame.md) with a centered placement anchor: the
+conventional labeled node. Any element with an `id` can be a node, so **Node** adds
+convenient defaults rather than a special capability. Other frame and style
+options follow [Box](./Box.md). Text retains its
 font size and reflows when given an explicit width. Existing element children,
 including math and text stacks, keep their ordinary layout behavior.
 

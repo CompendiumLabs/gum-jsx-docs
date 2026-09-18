@@ -17,7 +17,7 @@ Basic plotting is available: start with [Plot](./docs/elements/text/Plot.md),
 category alongside layout, geometry, and text.
 
 [Network](./docs/elements/text/Network.md) connects [Node](./docs/elements/text/Node.md)
-frames with [Edge](./docs/elements/text/Edge.md) arrows, including
+frames, or any other element with an `id`, using [Edge](./docs/elements/text/Edge.md) arrows, including
 [nodes inside fitted and rotated layouts](./docs/gallery/text/network_connections.md).
 The editor's Networks category includes runnable examples of each.
 
@@ -173,7 +173,8 @@ Box, and Transformer Architecture, the remaining ports are:
 - Geometry: [Spline Star](./docs/gallery/text/spline_star.md), [Metal Grid](./docs/gallery/text/metal_grid.md), [Set Theory](./docs/gallery/text/set_theory.md), [Regular Polygons](./docs/gallery/text/polygon_slide.md), [Neon Rose](./docs/gallery/text/neon_rose.md), [Space Rose](./docs/gallery/text/space_rose.md), [Anatomy of a Cell](./docs/gallery/text/cell_diagram.md).
 - Text: [Punk Rock](./docs/gallery/text/punk_rock.md).
 - Layout: [Two Columns](./docs/gallery/text/two_column.md), [UI Mockup](./docs/gallery/text/ui_mockup.md).
-- Networks: [Macroeconomic Flows](./docs/gallery/text/macro_economy.md), [Unit Distance](./docs/gallery/text/unit_distance.md).
+- Networks: [Macroeconomic Flows](./docs/gallery/text/macro_economy.md), [Unit Distance](./docs/gallery/text/unit_distance.md),
+  [Any element as a node](./docs/gallery/text/network_shapes.md).
 - Math: [Shape Algebra](./docs/gallery/text/shape_algebra.md), [The Scenic Route](./docs/gallery/text/scenic_route.md), [Stokes’ Theorem](./docs/gallery/text/stokes_theorem.md).
 
 The ports use explicit layout sizes, current data-coordinate marks, and the shared

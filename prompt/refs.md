@@ -20,7 +20,8 @@ Useful starting points:
   [SymLine](references/elements/SymLine.md), and [BarPlot](references/elements/BarPlot.md).
   Plot axes use linear scales.
 - Diagrams: [Network](references/elements/Network.md) connects named
-  [Node](references/elements/Node.md) frames using [Edge](references/elements/Edge.md).
+  [Node](references/elements/Node.md) frames, or any element with an `id`, using
+  [Edge](references/elements/Edge.md).
   It does not automatically arrange nodes or avoid obstacles.
 - Text and math: [Text](references/elements/Text.md),
   [TitleFrame](references/elements/TitleFrame.md), [math authoring](references/guides/Math.md),
