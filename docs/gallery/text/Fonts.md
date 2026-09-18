@@ -18,7 +18,8 @@ oblique transform of the normal outline.
 There is no system-font discovery or automatic fallback-family chain. An
 unknown family or missing glyph is an error, rather than a silently substituted
 font. In particular, do not assume arbitrary emoji or scripts are covered by
-the bundled faces.
+the bundled faces. Emoji are the exception, as described below, and a host can
+opt in to further fallback faces.
 
 ## Host setup
 
@@ -48,6 +49,26 @@ fonts.version; notifying a reused pass invalidates cached geometry. A fresh
 pass can simply receive the latest value/version. A custom FontProvider may be
 injected through the same resource slot if the host supplies its own shaping
 and outline implementation.
+
+## Fallback faces and emoji
+
+Emoji work in ordinary text with no setup. Color fonts are not outlined, because
+a bitmap or layered glyph is not one filled path. Core instead bundles a small
+metrics face for Noto Color Emoji, which only measures, and the SVG carries each
+emoji as live text such as `<text font-family="'Noto Color Emoji'">`. The page
+that displays the SVG should provide that family, for example through an
+`@font-face` rule; otherwise the viewer's own emoji font paints each emoji,
+centered in its measured advance. PNG output depends on the rasterizer's own font
+support, and PDF output reports live text as an error.
+
+Register a face with `fallback: true` to receive other text that the requested
+family cannot shape. Fallback families apply in registration order, after the
+bundled emoji face, and whole grapheme clusters move together:
+
+```ts
+const bytes = await Bun.file('./assets/NotoSansJP-Regular.ttf').arrayBuffer()
+fonts.register('Noto Sans JP', bytes, { fallback: true })
+```
 
 Fonts is a host API, not a default [JSX evaluator](./JSX.md) binding. The runnable
 example uses only the bundled families and needs no setup beyond the CLI.
