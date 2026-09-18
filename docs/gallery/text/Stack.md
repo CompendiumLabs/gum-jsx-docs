@@ -86,8 +86,11 @@ An explicit `basis={0}` remains zero even during natural measurement, where cont
 can overflow a zero allocation. A maximum on the stack can supply an available
 budget; a minimum alone retains natural bases before adding surplus space.
 
-`width={0.5}` means half the full established parent width, not half of what
-remains after gaps. Fractional widths/bases/gaps require definite references.
+A stack reserves its gaps the way a **Box** reserves padding. Along the main axis,
+a child's fractional width, basis, or limit refers to the stack length left after
+gaps, so `width={0.5}` twice tiles a row exactly whatever the gap. A fractional
+`gap` still refers to the full stack length, and cross-axis fractions are unchanged.
+Fractional widths/bases/gaps require definite references.
 
 Put flex on a wrapping **Box**, **Frame**, or nested stack when that wrapper is the
 direct child. Flex props do not inherit or pass through wrappers.

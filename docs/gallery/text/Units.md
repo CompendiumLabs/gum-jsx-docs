@@ -44,9 +44,10 @@ a fraction reference. **TextBox**, **TextFrame**, and **TextCol** default to tha
 policy; see [Sizing](./Sizing.md). Neither `"fill"` nor `"fit"` is a length unit,
 so they cannot be used for padding, gaps, heights, or min/max limits.
 
-Fractions refer to the full established content area, not the space left after
-siblings or gaps. Two half-width children plus a gap exceed one full width.
-Use [explicit flex](./Stack.md) to divide remaining space.
+Fractions refer to the established content area, not the space left after
+siblings. A stack deducts its gaps from that area along its main axis, so two
+half-width children tile a row with any gap. Use [explicit flex](./Stack.md)
+to divide the space that fixed siblings leave.
 
 An unresolved nonzero fraction throws an error with the source property path.
 The engine does not guess a reference or solve percentage cycles.
