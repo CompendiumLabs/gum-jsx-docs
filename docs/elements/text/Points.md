@@ -22,5 +22,7 @@ the default is **Circle**.
 Callbacks always receive `{x,y}` records, including for tuple inputs, and execute
 once at construction. Shapes receive exact marker dimensions
 and a cleared data context, then are centered on their points. The same immutable
-shape can be reused everywhere. Defaults: black fill, no stroke. Return styled
-shapes for individual colors. Marker sizes do not contribute to data limits.
+shape can be reused everywhere. **Rotate** and **TransformBox** pass those dimensions
+through to their wrapped shape before transforming it. Defaults: black fill, no
+stroke. Return styled shapes for individual colors. Marker sizes do not contribute
+to data limits.

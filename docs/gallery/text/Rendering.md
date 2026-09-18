@@ -26,8 +26,9 @@ console.log(pass.stats) // queries, layouts, hits
 
 evaluate executes JavaScript. Use it only for trusted source, or provide a
 separate isolation boundary in your application. Its optional scope adds or
-overrides evaluator bindings. It returns an **Element**, not an SVG string. The
-[CLI](./CLI.md) also wraps bare elements in **Svg**; the core evaluator does not.
+overrides evaluator bindings. It returns an **Element**, not an SVG string, and
+sources ending in a return statement may hand back a plain value instead.
+render_element below wraps bare elements in **Svg**; the core evaluator does not.
 
 JSX is optional. **Element** exports are constructors, so ordinary TypeScript can
 build the same source graph directly:
@@ -40,11 +41,50 @@ const element = new Svg({
 })
 ```
 
+## Viewports and plain values
+
+Hosts such as the [CLI](./CLI.md), the editor, and the MCP viewer share one
+entry point that takes an evaluated result, wraps a bare element in **Svg**,
+applies host viewport props, lays it out under a request, and serializes it:
+
+```ts
+import { evaluate, render_element, make_request, exact } from 'gum-jsx-core'
+
+const result = render_element(evaluate(source), {
+  request: make_request({ width: exact(400) }),
+  defaults: { theme: 'light' },
+  overrides: { background: 'white' },
+  id_prefix: 'example',
+})
+if (result.kind === 'svg') console.log(result.svg, result.size)
+else console.log('plain value:', result.value)
+```
+
+The result is tagged. An element yields `svg` markup, the realized `size`, the
+`fragment`, and the `pass` that produced it; anything else comes back as a
+`value` for the host to print. Without options a fresh LayoutPass with the core
+fonts is created. Pass `fonts` to seed it with another provider, such as the
+math fonts, or `pass` to reuse one across renders and keep its cache; fonts
+given alongside a pass are installed on it.
+`defaults` sit beneath the source's own **Svg** props, so a source theme beats a
+host default, while `overrides` sit above them for hosts whose theme must win.
+`wrap` props apply only to the viewport generated around a bare element, for
+example `max_width` and `max_height` bounds for a preview canvas that an
+explicit **Svg** should not inherit. Undefined entries in any of the three are
+ignored, so optional settings can be forwarded directly. An existing **Svg**
+keeps its layout descriptor and extra props, so custom viewport subclasses
+survive. `request` is an ordinary LayoutRequest; the
+[Svg](../../elements/text/Svg.md) `aspect` and size props resolve against it as
+in any layout. Use layout_element for the same wrapping and layout without
+serialization, for example to inspect or rasterize the fragment, and
+make_viewport for the wrapping step alone.
+
 ## Requests and results
 
 pass.layout accepts an optional LayoutRequest. natural means no size offer,
-available supplies an advisory budget, and exact fixes an allocation. Values in
-these low-level requests are already pixels, unlike source lengths:
+available supplies an advisory budget, and exact fixes an allocation. Omitted,
+undefined, and null axes are natural, so optional dimensions forward directly.
+Values in these low-level requests are already pixels, unlike source lengths:
 
 ```ts
 import { make_request, exact, available } from 'gum-jsx-core'

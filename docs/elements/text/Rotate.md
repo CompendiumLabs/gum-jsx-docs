@@ -14,7 +14,8 @@ naturally; give finite canvases their own dimensions.
 
 resize defaults to true: the rotated allocation sets natural size and shifts
 into positive coordinates. `resize=false` retains the original frame and reports
-overflow. Exact outer allocations still win. Rotation transforms geometry,
+overflow. Exact outer allocations still win and keep the transformed bounds
+centered in that frame. Rotation transforms geometry,
 strokes, and text; it does not reflow content. Horizontal guides survive zero
 and half turns. Other rotations tilt the baseline, which has no single vertical
 coordinate; the wrapper omits it while the original child's guides remain intact.
