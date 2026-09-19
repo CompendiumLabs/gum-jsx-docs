@@ -24,11 +24,11 @@ values are omitted without shifting category indices.
 
 styles accepts a same-length array or (value,index) function returning style
 objects, evaluated once at construction. Defaults: blue fill, no stroke.
-radius rounds corners in layout units such as `px(4)`. Use [Graph](./Graph.md) or
+radius rounds corners in layout units such as `em(0.25)`. Use [Graph](./Graph.md) or
 [Plot](./Plot.md) for data coordinates.
 
-Use `radius={{ r: px(6) }}` for rounded right ends and square left ends, or
+Use `radius={{ r: em(0.5) }}` for rounded right ends and square left ends, or
 specify individual `tl`, `tr`, `bl`, and `br` corners. Each entry accepts a length
 or elliptical pair. See [Bars](./Bars.md) for all forms and screen-edge semantics.
 For value-dependent rounding, return `radius` from `styles`, for example
-`styles={(v) => ({ radius: v < 0 ? { l: px(6) } : { r: px(6) } })}`.
+`styles={(v) => ({ radius: v < 0 ? { l: em(0.5) } : { r: em(0.5) } })}`.

@@ -9,12 +9,10 @@ const Family = ({ name, color }) => (
   </VStack>
 )
 return (
-  <Svg font-size={px(16)}>
-    <Box padding={em(1.5)} background={lightgray}>
-      <HStack gap={em(2.25)}>
-        <Family name={sans} color={blue} />
-        <Family name={mono} color={red} />
-      </HStack>
-    </Box>
-  </Svg>
+  <Box padding={em(1.5)} background={lightgray}>
+    <HStack gap={em(2.25)}>
+      <Family name={sans} color={blue} />
+      <Family name={mono} color={red} />
+    </HStack>
+  </Box>
 )

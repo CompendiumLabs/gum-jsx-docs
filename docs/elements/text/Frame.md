@@ -24,12 +24,12 @@ Use `width={px(240)} aspect={1}` for a 240×240 square frame. The ratio includes
 the border and padding; it does not stretch the content. Height can also derive
 width. Two fixed dimensions and min/max limits override the preferred ratio.
 
-Use `radius={{ t: px(8) }}` to round only the top corners. The keys are
+Use `radius={{ t: em(0.4) }}` to round only the top corners. The keys are
 `t`, `b`, `l`, `r`, `tl`, `tr`, `bl`, and `br` (bottom-right). Corner values
 override side values, and each value accepts a scalar or elliptical pair:
 
 ```jsx
-<Frame radius={{ t: [px(12), px(6)], tr: 0 }} background={white}>
+<Frame radius={{ t: [em(0.75), em(0.4)], tr: 0 }} background={white}>
   <Text>Rounded top-left corner</Text>
 </Frame>
 ```

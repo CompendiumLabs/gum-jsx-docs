@@ -15,33 +15,31 @@ const paragraph = (
   </Span>
 )
 return (
-  <Svg width={px(780)} font-size={px(22)}>
-    <Box padding={em(1)}>
-      <TextCol gap={em(0.9)}>
-        <Text font-size={em(1.35)} font-weight={700}>Math belongs in the paragraph</Text>
-        <Text>
-          {"When "}
-          <Span color={blue}>
-            <Tex>
-              <SupSub sup="2">x</SupSub>
-              +
-              <SupSub sup="2">y</SupSub>
-              =1
-            </Tex>
-          </Span>
-          {", the point lies on the unit circle. Prose and formulas share a baseline."}
-        </Text>
-        <HStack gap={em(1)} align="start">
-          <TextFrame grow={1} basis={px(0)}>{paragraph}</TextFrame>
-          <TextFrame width={px(270)}>{paragraph}</TextFrame>
-        </HStack>
-        <Bullets
-          items={[
-            ["The rate ", rate, " also works in a list item."],
-            ["Styles can emphasize ", <Span color={blue}>{rate}</Span>, " without changing the surrounding prose."],
-          ]}
-        />
-      </TextCol>
-    </Box>
-  </Svg>
+  <Box width={px(780)} font-size={px(22)} padding={em(1)}>
+    <TextCol gap={em(0.9)}>
+      <Text font-size={em(1.35)} font-weight={700}>Math belongs in the paragraph</Text>
+      <Text>
+        {"When "}
+        <Span color={blue}>
+          <Tex>
+            <SupSub sup="2">x</SupSub>
+            +
+            <SupSub sup="2">y</SupSub>
+            =1
+          </Tex>
+        </Span>
+        {", the point lies on the unit circle. Prose and formulas share a baseline."}
+      </Text>
+      <HStack gap={em(1)} align="start">
+        <TextFrame grow={1} basis={0}>{paragraph}</TextFrame>
+        <TextFrame width={px(270)}>{paragraph}</TextFrame>
+      </HStack>
+      <Bullets
+        items={[
+          ["The rate ", rate, " also works in a list item."],
+          ["Styles can emphasize ", <Span color={blue}>{rate}</Span>, " without changing the surrounding prose."],
+        ]}
+      />
+    </TextCol>
+  </Box>
 )

@@ -33,12 +33,10 @@ Multiple children use **TextCol** and ordinary stack rules, with 0.6em gaps.
 Use `grow={1}` on figures that should share the remaining height with text:
 
 ```jsx
-<Svg width={px(960)} height={px(540)} font-size={px(18)}>
-  <Slide title="Results">
-    <Plot grow={1} />
-    <Text>A caption below the plot.</Text>
-  </Slide>
-</Svg>
+<Slide width={px(960)} font-size={px(18)} title="Results">
+  <Plot grow={1} />
+  <Text>A caption below the plot.</Text>
+</Slide>
 ```
 
 For a **TextFigure**, put `grow={1}` on its figure child to leave room for the

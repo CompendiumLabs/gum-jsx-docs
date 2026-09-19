@@ -17,6 +17,4 @@ class Clipping extends Element {
   }
 }
 
-return <Svg width={px(320)} height={px(144)}>
-  <Clipping><Rect fill={blue} stroke={none} /></Clipping>
-</Svg>
+return <Clipping><Rect fill={blue} stroke={none} /></Clipping>

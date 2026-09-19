@@ -15,7 +15,7 @@ The little bar diagram uses an **HStack** with a known height, end alignment, an
 three explicit bar heights. Equal flexible widths keep the bars balanced. It
 is ordinary geometry, not a **Plot** component or an automatic data scale.
 
-Try changing the **Svg** width from 720px to 640px. The column widths, bar widths,
+Try changing the outer **TextBox** width from 720px to 640px. The column widths, bar widths,
 and paragraph line breaks change, while the fonts, padding, and bar heights
 stay fixed. To give the figure more of the row, change its direct **TextFrame**'s grow
 to 2. Putting grow only on the nested bar stack would not affect the outer row.

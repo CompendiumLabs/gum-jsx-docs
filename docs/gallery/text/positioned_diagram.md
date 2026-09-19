@@ -3,7 +3,7 @@
 *Category*: layout
 
 An **HStack** arranges three labeled **Frame** nodes and two connectors inside a
-760 × 400px **Svg**. Each node takes `0.7 / 3` of the row width and each connector
+760 × 400px **TextBox**. Each node takes `0.7 / 3` of the row width and each connector
 takes `0.15`. The row itself uses 90% of the document's content width and is centered.
 
 The outer **TextBox** paints the background and passes its padded width to

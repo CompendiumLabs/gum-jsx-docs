@@ -2,21 +2,19 @@
 
 *Category*: core
 
-Set `theme="light"` or `theme="dark"` on **Svg**. Its content inherits the palette,
+Set `theme="light"` or `theme="dark"` on the root element. Its content inherits the palette,
 including text, math, strokes, points, filled areas, bars, grids, plot borders,
 legends, and slide text. The accompanying example renders the same chart
 in both themes.
 
 ```jsx
-<Svg theme="dark">
-  <Box padding={px(16)}>
-    <VStack gap={px(12)}>
-      <Text>Uses the theme foreground</Text>
-      <Text color="tomato">Keeps this explicit color</Text>
-      <Square width={px(48)} fill="theme:accent" />
-    </VStack>
-  </Box>
-</Svg>
+<Box theme="dark" padding={em(1)}>
+  <VStack gap={em(0.75)}>
+    <Text>Uses the theme foreground</Text>
+    <Text color="tomato">Keeps this explicit color</Text>
+    <Square width={px(48)} fill="theme:accent" />
+  </VStack>
+</Box>
 ```
 
 Theme selection inherits like typography and can be overridden on any container
@@ -62,7 +60,7 @@ backgrounds in the source still apply.
 
 Both `gum` and `gum-tex` accept these options. TeX uses the selected foreground
 unless `--color` is supplied. Library helpers such as `mathToElement` can be
-nested inside a themed **Svg** to inherit the same palette.
+nested inside a themed element to inherit the same palette.
 
 ```sh
 gum-tex 'x^2' --theme dark

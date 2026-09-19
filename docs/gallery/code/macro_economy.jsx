@@ -12,86 +12,84 @@ const Label = ({ x, y, children, color = slate }) => (
     anchor="center"
     width="fit"
     background={white}
-    padding={px(5)}
+    padding={em(0.35)}
     color={color}
-    font-size={px(15)}
+    font-size={em(0.8)}
   >
     {children}
   </TextBox>
 )
 return (
-  <Svg width={px(960)} height={px(600)} font-size={px(19)}>
-    <Box padding={px(30)}>
-      <VStack width="fill" gap={px(24)}>
-        <Text font-size={px(32)} font-weight={bold}>
-          Macroeconomic Flows
-        </Text>
-        <Network
-          width="fill"
-          height={px(460)}
-          xlim={[0, 1.6]}
-          ylim={[0, 0.9]}
-          flip-y={false}
-          stroke={darkgray}
-          stroke-width={px(2)}
-        >
-          <Edge
-            start="prod"
-            end="cons"
-            start-side="right"
-            end-side="left"
-            start-loc={0.28}
-            end-loc={0.28}
-            curve={false}
-          />
-          <Edge
-            start="cons"
-            end="prod"
-            start-side="left"
-            end-side="right"
-            start-loc={0.72}
-            end-loc={0.72}
-            curve={false}
-          />
-          <Edge start="govt" end="prod" end-side="bottom" />
-          <Edge start="govt" end="cons" end-side="bottom" />
-          <Edge start="trade" end="prod" end-side="top" />
-          <Edge start="trade" end="cons" end-side="top" />
-          {sectors.map(({ id, label, x, y, color }) => (
-            <Node
-              id={id}
-              x={x}
-              y={y}
-              width={px(200)}
-              height={px(64)}
-              background={interp(white, color, 0.16)}
-              border-color={color}
-              border-width={px(2)}
-              radius={px(9)}
-            >
-              {label}
-            </Node>
-          ))}
-          <Label x={0.8} y={0.35} color={blue}>
-            Goods + Services →
-          </Label>
-          <Label x={0.8} y={0.51} color={green}>
-            ← Wages, Rent, Profit
-          </Label>
-          <Label x={0.28} y={0.73}>
-            Subsidies / Taxes
-          </Label>
-          <Label x={1.32} y={0.73}>
-            Transfers / Taxes
-          </Label>
-          <Label x={0.28} y={0.12}>
-            Imports / Exports
-          </Label>
-          <Label x={1.32} y={0.12}>
-            Transfers
-          </Label>
-        </Network>
-      </VStack>
-    </Box>
-  </Svg>
+  <Box width={px(960)} font-size={px(19)} padding={em(1.6)}>
+    <VStack width="fill" gap={em(1.25)}>
+      <Text font-size={em(1.7)} font-weight={bold}>
+        Macroeconomic Flows
+      </Text>
+      <Network
+        width="fill"
+        height={px(460)}
+        xlim={[0, 1.6]}
+        ylim={[0, 0.9]}
+        flip-y={false}
+        stroke={darkgray}
+        stroke-width={px(2)}
+      >
+        <Edge
+          start="prod"
+          end="cons"
+          start-side="right"
+          end-side="left"
+          start-loc={0.28}
+          end-loc={0.28}
+          curve={false}
+        />
+        <Edge
+          start="cons"
+          end="prod"
+          start-side="left"
+          end-side="right"
+          start-loc={0.72}
+          end-loc={0.72}
+          curve={false}
+        />
+        <Edge start="govt" end="prod" end-side="bottom" />
+        <Edge start="govt" end="cons" end-side="bottom" />
+        <Edge start="trade" end="prod" end-side="top" />
+        <Edge start="trade" end="cons" end-side="top" />
+        {sectors.map(({ id, label, x, y, color }) => (
+          <Node
+            id={id}
+            x={x}
+            y={y}
+            width={px(200)}
+            height={px(64)}
+            background={interp(white, color, 0.16)}
+            border-color={color}
+            border-width={px(2)}
+            radius={em(0.5)}
+          >
+            {label}
+          </Node>
+        ))}
+        <Label x={0.8} y={0.35} color={blue}>
+          Goods + Services →
+        </Label>
+        <Label x={0.8} y={0.51} color={green}>
+          ← Wages, Rent, Profit
+        </Label>
+        <Label x={0.28} y={0.73}>
+          Subsidies / Taxes
+        </Label>
+        <Label x={1.32} y={0.73}>
+          Transfers / Taxes
+        </Label>
+        <Label x={0.28} y={0.12}>
+          Imports / Exports
+        </Label>
+        <Label x={1.32} y={0.12}>
+          Transfers
+        </Label>
+      </Network>
+    </VStack>
+  </Box>
 )

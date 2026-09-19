@@ -14,13 +14,11 @@ const Rule = ({ cap, color }) => (
   </HStack>
 )
 return (
-  <Svg font-size={px(16)}>
-    <Box padding={em(1.25)} background={lightgray}>
-      <VStack gap={em(1)}>
-        <Rule cap="butt" color={blue} />
-        <Rule cap="round" color={red} />
-        <Rule cap="square" color={green} />
-      </VStack>
-    </Box>
-  </Svg>
+  <Box padding={em(1.25)} background={lightgray}>
+    <VStack gap={em(1)}>
+      <Rule cap="butt" color={blue} />
+      <Rule cap="round" color={red} />
+      <Rule cap="square" color={green} />
+    </VStack>
+  </Box>
 )

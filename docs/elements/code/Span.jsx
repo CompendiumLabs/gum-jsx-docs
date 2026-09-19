@@ -1,10 +1,8 @@
 // Inline styles share paragraph wrapping and do not introduce word breaks.
-<Svg width={px(460)} font-size={px(16)}>
-  <TextBox padding={em(1.5)} background={lightgray}>
-    <TextCol gap={em(1)}>
-      <Text font-size={em(1.5)}>A <Span font-weight={bold} color={blue}>small</Span> style change</Text>
-      <Text font-size={em(1.125)} line-height={em(1.4)}>Use <Span font-style="italic">emphasis</Span>, a <Span font-family={mono} color={red}>code name</Span>, or a different <Span color={green}>color</Span> without splitting the paragraph.</Text>
-      <Text font-size={em(1.125)}>un<Span font-weight={bold} color={blue}>break</Span>able</Text>
-    </TextCol>
-  </TextBox>
-</Svg>
+<TextBox width={px(460)} padding={em(1.5)} background={lightgray}>
+  <TextCol gap={em(1)}>
+    <Text font-size={em(1.5)}>A <Span font-weight={bold} color={blue}>small</Span> style change</Text>
+    <Text font-size={em(1.125)} line-height={em(1.4)}>Use <Span font-style="italic">emphasis</Span>, a <Span font-family={mono} color={red}>code name</Span>, or a different <Span color={green}>color</Span> without splitting the paragraph.</Text>
+    <Text font-size={em(1.125)}>un<Span font-weight={bold} color={blue}>break</Span>able</Text>
+  </TextCol>
+</TextBox>

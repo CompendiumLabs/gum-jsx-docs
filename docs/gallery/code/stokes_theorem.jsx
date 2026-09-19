@@ -127,53 +127,51 @@ const SurfaceDiagram = () => (
     {normals.map(([base, tip]) => (
       <Arrow from={base} to={tip} stroke={purple} stroke-width={px(2)} head-size={px(12)} />
     ))}
-    <Latex x={0.48} y={0.5} anchor="center" font-size={px(34)} color={purple}>
+    <Latex x={0.48} y={0.5} anchor="center" font-size={em(1.6)} color={purple}>
       S
     </Latex>
     <Latex
       x={0.05}
       y={0.55}
       anchor="center"
-      font-size={px(26)}
+      font-size={em(1.25)}
       color={blue}
     >{String.raw`\partial S`}</Latex>
     <Latex
       x={0.56}
       y={0.17}
       anchor="center"
-      font-size={px(26)}
+      font-size={em(1.25)}
       color={purple}
     >{String.raw`\hat n`}</Latex>
   </Group>
 )
 return (
-  <Svg width={px(1100)} height={px(620)} font-size={px(21)}>
-    <Box padding={px(32)}>
-      <VStack width="fill" gap={px(30)}>
-        <Text font-size={px(34)} font-weight={bold}>
-          Stokes' Theorem
-        </Text>
-        <HStack width="fill" gap={px(36)} align="center">
-          <SurfaceDiagram />
-          <TextCol width={px(520)} gap={px(28)}>
-            <TextFrame
-              padding={px(18)}
-              radius={px(12)}
-              background={interp(white, purple, 0.05)}
-              border-color={interp(white, purple, 0.3)}
-            >
-              <Latex font-size={px(25)}>
-                {String.raw`\oint_{\partial S}F\cdot dr=\iint_S(\nabla\times F)\cdot dS`}
-              </Latex>
-            </TextFrame>
-            <Text>
-              The line integral of a vector field <Tex>F</Tex> around the closed boundary
-              <Tex>{String.raw`\partial S`}</Tex> equals the surface integral of its curl over an
-              oriented surface <Tex>S</Tex> bounded by that curve.
-            </Text>
-          </TextCol>
-        </HStack>
-      </VStack>
-    </Box>
-  </Svg>
+  <Box width={px(1100)} font-size={px(21)} padding={em(1.5)}>
+    <VStack width="fill" gap={em(1.4)}>
+      <Text font-size={em(1.6)} font-weight={bold}>
+        Stokes' Theorem
+      </Text>
+      <HStack width="fill" gap={em(1.7)} align="center">
+        <SurfaceDiagram />
+        <TextCol width={px(520)} gap={em(1.35)}>
+          <TextFrame
+            padding={em(0.85)}
+            radius={em(0.55)}
+            background={interp(white, purple, 0.05)}
+            border-color={interp(white, purple, 0.3)}
+          >
+            <Latex font-size={em(1.2)}>
+              {String.raw`\oint_{\partial S}F\cdot dr=\iint_S(\nabla\times F)\cdot dS`}
+            </Latex>
+          </TextFrame>
+          <Text>
+            The line integral of a vector field <Tex>F</Tex> around the closed boundary
+            <Tex>{String.raw`\partial S`}</Tex> equals the surface integral of its curl over an
+            oriented surface <Tex>S</Tex> bounded by that curve.
+          </Text>
+        </TextCol>
+      </HStack>
+    </VStack>
+  </Box>
 )

@@ -81,33 +81,31 @@ const title = <Latex>{"\\mathbb{Q}(i, \\zeta_3)"}</Latex>
 
 // Plot the exact coefficient graph in a square data canvas.
 return (
-  <Svg width={px(800)} height={px(880)} font-size={px(24)}>
-    <Box padding={px(24)} background={white}>
-      <TitleFrame
-        title={title}
-        title-font-size={px(36)}
-        padding={px(20)}
-        radius={px(12)}
-        border-width={px(2)}
-      >
-        <VStack width="fill" gap={px(16)}>
-          <Graph width={px(700)} height={px(700)} xlim={[-bound, bound]} ylim={[-bound, bound]}>
-            <Mesh2D
-              xlim={[-bound, bound]}
-              ylim={[-bound, bound]}
-              xticks={gridLocs}
-              yticks={gridLocs}
-              opacity={0.12}
-            />
-            <Segments segments={edges} stroke={blue} stroke-width={px(0.8)} opacity={0.6} />
-            <Points points={samples} point-size={px(4)} fill={yellow} />
-          </Graph>
-          <HStack width="fill" justify="space_between">
-            <Tex>{"n=" + n}</Tex>
-            <Tex>{"\\nu=" + m + "\\approx n^{" + delta1 + "}"}</Tex>
-          </HStack>
-        </VStack>
-      </TitleFrame>
-    </Box>
-  </Svg>
+  <Box padding={em(1)} background={white}>
+    <TitleFrame
+      title={title}
+      title-font-size={em(1.5)}
+      padding={em(0.85)}
+      radius={em(0.5)}
+      border-width={px(2)}
+    >
+      <VStack gap={em(0.65)} align="stretch">
+        <Graph aspect={1} xlim={[-bound, bound]} ylim={[-bound, bound]}>
+          <Mesh2D
+            xlim={[-bound, bound]}
+            ylim={[-bound, bound]}
+            xticks={gridLocs}
+            yticks={gridLocs}
+            opacity={0.12}
+          />
+          <Segments segments={edges} stroke={blue} stroke-width={px(0.6)} opacity={0.6} />
+          <Points points={samples} point-size={px(3)} fill={yellow} />
+        </Graph>
+        <HStack justify="space_between">
+          <Tex>{"n=" + n}</Tex>
+          <Tex>{"\\nu=" + m + "\\approx n^{" + delta1 + "}"}</Tex>
+        </HStack>
+      </VStack>
+    </TitleFrame>
+  </Box>
 )

@@ -35,11 +35,9 @@ are not automatically forwarded.
 For example, a rounded frame around a circle needs no fixed outer viewport:
 
 ```jsx
-<Svg font-size={px(20)}>
-  <Frame padding={em(0.75)} radius={em(0.4)}>
-    <Circle width={em(5)} fill={blue} stroke={none} />
-  </Frame>
-</Svg>
+<Frame font-size={px(20)} padding={em(0.75)} radius={em(0.4)}>
+  <Circle width={em(5)} fill={blue} stroke={none} />
+</Frame>
 ```
 
 For repeated elements, use ordinary components and array helpers. Put layout
@@ -52,14 +50,12 @@ const Card = ({ label, color, ...props }) => (
   </TextFrame>
 )
 return (
-  <Svg width={px(440)} font-size={px(20)}>
-    <TextBox padding={em(0.75)}>
-      <HStack gap={em(0.75)}>
-        <Card label="Input" color={blue} grow={1} />
-        <Card label="Output" color={red} grow={1} />
-      </HStack>
-    </TextBox>
-  </Svg>
+  <TextBox width={px(440)} font-size={px(20)} padding={em(0.75)}>
+    <HStack gap={em(0.75)}>
+      <Card label="Input" color={blue} grow={1} />
+      <Card label="Output" color={red} grow={1} />
+    </HStack>
+  </TextBox>
 )
 ```
 

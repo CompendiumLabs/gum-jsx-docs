@@ -3,7 +3,7 @@ const Card = ({ title, note, color, symbol }) => (
   <TextFrame
     grow={1}
     padding={em(1)}
-    radius={px(12)}
+    radius={em(0.75)}
     border-color={gray}
     background={white}
   >
@@ -26,7 +26,7 @@ const cards = [
     title: "Square",
     color: red,
     note: "A square silhouette with gently rounded corners.",
-    symbol: <Square radius={px(12)} fill={red} stroke={none} />,
+    symbol: <Square radius={em(0.75)} fill={red} stroke={none} />,
   },
   {
     title: "Polygon",
@@ -35,16 +35,14 @@ const cards = [
     symbol: <Polygon aspect={1} points={penta} fill={green} stroke={none} />,
   },
 ]
-return <Svg width={px(760)} font-size={px(16)}>
-  <TextBox padding={em(2)} background={lightgray} color={slate}>
-    <TextCol gap={em(1)}>
-      <Text font-family={mono} font-size={em(1)} color={blue}>COMPOSITION / 02</Text>
-      <Text font-size={em(2)} font-weight={bold}>One component, three shapes</Text>
-      <HStack gap={em(1)} align="stretch">
-        {cards.map((card) => (
-          <Card {...card} />
-        ))}
-      </HStack>
-    </TextCol>
-  </TextBox>
-</Svg>
+return <TextBox width={px(760)} padding={em(2)} background={lightgray} color={slate}>
+  <TextCol gap={em(1)}>
+    <Text font-family={mono} font-size={em(1)} color={blue}>COMPOSITION / 02</Text>
+    <Text font-size={em(2)} font-weight={bold}>One component, three shapes</Text>
+    <HStack gap={em(1)} align="stretch">
+      {cards.map((card) => (
+        <Card {...card} />
+      ))}
+    </HStack>
+  </TextCol>
+</TextBox>

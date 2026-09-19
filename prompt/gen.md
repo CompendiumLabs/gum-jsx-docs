@@ -27,25 +27,24 @@ unavailable, say so and report the checks actually performed.
 For a sine plot, use explicit layout units and `samples`:
 
 ```jsx
-<Svg width={px(640)} font-size={px(18)}>
-  <Plot
-    aspect={2}
-    font-size={em(1)}
-    title="Sine wave"
+<Plot
+  width={px(640)}
+  aspect={2}
+  font-size={px(18)}
+  title="Sine wave"
+  xlim={[0, 2 * pi]}
+  ylim={[-1.5, 1.5]}
+  grid
+  grid-stroke-dasharray={[em(0.2), em(0.2)]}
+>
+  <SymLine
+    fy={sin}
     xlim={[0, 2 * pi]}
-    ylim={[-1.5, 1.5]}
-    grid
-    grid-stroke-dasharray={[em(0.2), em(0.2)]}
-  >
-    <SymLine
-      fy={sin}
-      xlim={[0, 2 * pi]}
-      samples={161}
-      stroke={blue}
-      stroke-width={em(0.12)}
-    />
-  </Plot>
-</Svg>
+    samples={161}
+    stroke={blue}
+    stroke-width={em(0.12)}
+  />
+</Plot>
 ```
 
 ## Host code

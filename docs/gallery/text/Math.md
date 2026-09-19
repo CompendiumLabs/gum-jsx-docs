@@ -8,11 +8,9 @@ package. Start with [Latex](../../elements/text/Latex.md) for a complete formula
 [MathText](../../elements/text/MathText.md) to mix TeX with explicit math elements.
 
 ```jsx
-<Svg font-size={px(36)}>
-  <Box padding={em(0.5)}>
-    <Latex>{String.raw`\sin x+\cos y=\operatorname{rank}(A)`}</Latex>
-  </Box>
-</Svg>
+<Box font-size={px(36)} padding={em(0.5)}>
+  <Latex>{String.raw`\sin x+\cos y=\operatorname{rank}(A)`}</Latex>
+</Box>
 ```
 
 Symbols, ordinary groups, named operators, atom-class overrides, signed glue,

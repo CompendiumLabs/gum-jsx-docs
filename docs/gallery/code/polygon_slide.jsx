@@ -28,18 +28,16 @@ const Cell = ({ n, label }) => (
     </VStack>
   </Frame>
 )
-return <Svg font-size={px(22)}>
-  <Box padding={em(2)}>
-    <VStack gap={em(1)}>
-      <Text font-size={px(30)} font-weight={bold}>Simple Regular Polygons</Text>
-      <Text>Equal side lengths and equal interior angles, from three sides to eight.</Text>
-      {[0, 3].map((offset) => (
-        <HStack gap={em(1)}>
-          {shapes.slice(offset, offset + 3).map(([n, label]) => (
-            <Cell n={n} label={label} />
-          ))}
-        </HStack>
-      ))}
-    </VStack>
-  </Box>
-</Svg>
+return <Box font-size={px(22)} padding={em(2)}>
+  <VStack gap={em(1)}>
+    <Text font-size={em(1.35)} font-weight={bold}>Simple Regular Polygons</Text>
+    <Text>Equal side lengths and equal interior angles, from three sides to eight.</Text>
+    {[0, 3].map((offset) => (
+      <HStack gap={em(1)}>
+        {shapes.slice(offset, offset + 3).map(([n, label]) => (
+          <Cell n={n} label={label} />
+        ))}
+      </HStack>
+    ))}
+  </VStack>
+</Box>

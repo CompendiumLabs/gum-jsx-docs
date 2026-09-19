@@ -83,13 +83,13 @@ const Mito = (attr) => (
       points={mitoOuter}
       fill={col.mito.fill}
       stroke={col.mito.stroke}
-      stroke-width={px(1.5)}
+      stroke-width={px(1)}
     />
     <Spline
       space="local"
       points={cristae}
       stroke={col.mito.cristae}
-      stroke-width={px(2.5)}
+      stroke-width={px(1.5)}
       stroke-linecap="round"
     />
   </Group>
@@ -97,7 +97,7 @@ const Mito = (attr) => (
 
 const Lyso = (attr) => (
   <Group aspect={1} {...attr}>
-    <Circle fill={col.lyso.fill} stroke={col.lyso.stroke} stroke-width={px(1.5)} />
+    <Circle fill={col.lyso.fill} stroke={col.lyso.stroke} stroke-width={px(1)} />
     <Points
       space="local"
       points={[
@@ -128,7 +128,7 @@ const Golgi = (attr) => (
             [x1, y],
           ]}
           stroke={col.golgi.stroke}
-          stroke-width={px(5)}
+          stroke-width={px(3)}
           stroke-linecap="round"
         />
       )
@@ -227,141 +227,135 @@ const labels = [
   ["Cytoplasm", "r", 0.92, [0.85, 0.77]],
 ]
 
-const sx = 1040 / 1.9
-const sy = 600
 return (
-  <Svg width={px(1140)} height={px(750)} font-size={px(18)}>
-    <Box padding={px(24)}>
-      <TitleFrame
-        title="Anatomy of a Cell"
-        title-font-size={px(30)}
-        padding={px(24)}
-        radius={px(14)}
-        background={col.frame.fill}
-        border-color={col.frame.border}
-      >
-        <Graph width={px(1040)} height={px(600)} xlim={[-0.2, 1.7]} ylim={[0, 1]} flip-y={false}>
-          <Blob
-            radii={membrane}
-            x={0.75}
-            y={0.5}
-            anchor="center"
-            width={px(1.08 * sx)}
-            height={px(0.86 * sy)}
-            fill={col.cytoplasm.fill}
-            stroke={col.membrane.outer}
-            stroke-width={px(5)}
-          />
-          <Blob
-            radii={membrane}
-            x={0.75}
-            y={0.5}
-            anchor="center"
-            width={px(1.02 * sx)}
-            height={px(0.8 * sy)}
-            fill={none}
-            stroke={col.membrane.inner}
+  <Box padding={em(1.3)}>
+    <TitleFrame
+      title="Anatomy of a Cell"
+      title-font-size={em(1.25)}
+      padding={em(1.3)}
+      radius={em(0.8)}
+      background={col.frame.fill}
+      border-color={col.frame.border}
+    >
+      <Graph aspect={1.73} xlim={[-0.2, 1.7]} ylim={[0, 1]} flip-y={false}>
+        <Blob
+          radii={membrane}
+          x={0.75}
+          y={0.5}
+          anchor="center"
+          width={0.568}
+          height={0.86}
+          fill={col.cytoplasm.fill}
+          stroke={col.membrane.outer}
+          stroke-width={px(3)}
+        />
+        <Blob
+          radii={membrane}
+          x={0.75}
+          y={0.5}
+          anchor="center"
+          width={0.537}
+          height={0.8}
+          fill={none}
+          stroke={col.membrane.inner}
+          stroke-width={px(1)}
+        />
+        {[0.2, 0.245, 0.29].map((r) => (
+          <Spline
+            points={wavyArc(nc, r, 105, 255, 0.012, 15)}
+            stroke={col.er.stroke}
             stroke-width={px(1.5)}
+            stroke-linecap="round"
           />
-          {[0.2, 0.245, 0.29].map((r) => (
-            <Spline
-              points={wavyArc(nc, r, 105, 255, 0.012, 15)}
-              stroke={col.er.stroke}
-              stroke-width={px(2.5)}
-              stroke-linecap="round"
-            />
-          ))}
-          <Blob
-            radii={nucleusR}
-            phase={0.4}
-            x={nc[0]}
-            y={nc[1]}
-            anchor="center"
-            width={px(0.32 * sx)}
-            height={px(0.32 * sy)}
-            fill={col.nucleus.fill}
-            stroke={col.nucleus.stroke}
-            stroke-width={px(3)}
-          />
-          <Blob
-            radii={nucleusR}
-            phase={0.4}
-            x={nc[0]}
-            y={nc[1]}
-            anchor="center"
-            width={px(0.28 * sx)}
-            height={px(0.28 * sy)}
-            fill={none}
-            stroke={col.nucleus.inner}
+        ))}
+        <Blob
+          radii={nucleusR}
+          phase={0.4}
+          x={nc[0]}
+          y={nc[1]}
+          anchor="center"
+          width={0.168}
+          height={0.32}
+          fill={col.nucleus.fill}
+          stroke={col.nucleus.stroke}
+          stroke-width={px(2)}
+        />
+        <Blob
+          radii={nucleusR}
+          phase={0.4}
+          x={nc[0]}
+          y={nc[1]}
+          anchor="center"
+          width={0.147}
+          height={0.28}
+          fill={none}
+          stroke={col.nucleus.inner}
+          stroke-width={px(0.75)}
+          stroke-dasharray={[px(2), px(2)]}
+        />
+        <Blob
+          radii={nucleolusR}
+          phase={1}
+          x={0.88}
+          y={0.47}
+          anchor="center"
+          width={0.058}
+          height={0.11}
+          fill={col.nucleolus.fill}
+          stroke={col.nucleolus.stroke}
+          stroke-width={px(1)}
+        />
+        {mitos.map(([p, size, angle]) => (
+          <Rotate x={p[0]} y={p[1]} anchor="center" angle={angle}>
+            <Mito width={size / 1.9} />
+          </Rotate>
+        ))}
+        <Golgi
+          x={1.01}
+          y={0.72}
+          anchor="center"
+          width={0.095}
+        />
+        <Centrioles
+          x={1.11}
+          y={0.57}
+          anchor="center"
+          width={0.042}
+        />
+        <Lyso x={1.22} y={0.5} anchor="center" width={0.034} />
+        <Lyso x={0.68} y={0.79} anchor="center" width={0.029} />
+        <Blob
+          radii={vacuoleR}
+          phase={0.7}
+          x={0.42}
+          y={0.55}
+          anchor="center"
+          width={0.074}
+          height={0.14}
+          fill={col.vacuole.fill}
+          stroke={col.vacuole.stroke}
+          stroke-width={px(1.5)}
+        />
+        <Points points={ribosomes} point-size={px(3.5)} fill={col.ribosomes.fill} />
+        {labels.map(([label, side, y, target]) => (
+          <CoordLine
+            points={[[side === "l" ? xL + 0.01 : xR - 0.01, y], target]}
+            stroke={col.label.line}
             stroke-width={px(1)}
-            stroke-dasharray={[px(3), px(3)]}
           />
-          <Blob
-            radii={nucleolusR}
-            phase={1}
-            x={0.88}
-            y={0.47}
-            anchor="center"
-            width={px(0.11 * sx)}
-            height={px(0.11 * sy)}
-            fill={col.nucleolus.fill}
-            stroke={col.nucleolus.stroke}
-            stroke-width={px(1.5)}
-          />
-          {mitos.map(([p, size, angle]) => (
-            <Rotate x={p[0]} y={p[1]} anchor="center" angle={angle}>
-              <Mito width={px(size * sx)} height={px((size * sx) / 2.2)} />
-            </Rotate>
-          ))}
-          <Golgi
-            x={1.01}
-            y={0.72}
-            anchor="center"
-            width={px(0.18 * sx)}
-            height={px((0.18 * sx) / 1.4)}
-          />
-          <Centrioles
-            x={1.11}
-            y={0.57}
-            anchor="center"
-            width={px(0.08 * sx)}
-            height={px(0.08 * sx)}
-          />
-          <Lyso x={1.22} y={0.5} anchor="center" width={px(0.065 * sx)} height={px(0.065 * sx)} />
-          <Lyso x={0.68} y={0.79} anchor="center" width={px(0.055 * sx)} height={px(0.055 * sx)} />
-          <Blob
-            radii={vacuoleR}
-            phase={0.7}
-            x={0.42}
-            y={0.55}
-            anchor="center"
-            width={px(0.14 * sx)}
-            height={px(0.14 * sy)}
-            fill={col.vacuole.fill}
-            stroke={col.vacuole.stroke}
-            stroke-width={px(2)}
-          />
-          <Points points={ribosomes} point-size={px(6)} fill={col.ribosomes.fill} />
-          {labels.map(([label, side, y, target]) => (
-            <CoordLine
-              points={[[side === "l" ? xL + 0.01 : xR - 0.01, y], target]}
-              stroke={col.label.line}
-              stroke-width={px(1.5)}
-            />
-          ))}
-          {labels.map(([label, side, y]) => (
-            <Text
-              x={side === "l" ? xL : xR}
-              y={y}
-              anchor={[side === "l" ? 1 : 0, 0.5]}
-              font-size={px(18)}
-              color={col.label.text}
-            >
-              {label}
-            </Text>
-          ))}
-        </Graph>
-      </TitleFrame>
-    </Box>
-  </Svg>
+        ))}
+        {labels.map(([label, side, y]) => (
+          <Text
+            x={side === "l" ? xL : xR}
+            y={y}
+            anchor={[side === "l" ? 1 : 0, 0.5]}
+            font-size={em(0.7)}
+            color={col.label.text}
+          >
+            {label}
+          </Text>
+        ))}
+      </Graph>
+    </TitleFrame>
+  </Box>
 )

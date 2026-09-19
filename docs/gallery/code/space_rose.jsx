@@ -4,7 +4,7 @@ const polarPair = (...args) => {
   return [p.x, p.y]
 }
 const Disc = ({ pos, rad, ...props }) => (
-  <Circle x={pos[0]} y={pos[1]} anchor="center" width={px(2 * rad * 600)} {...props} />
+  <Circle x={pos[0]} y={pos[1]} anchor="center" width={(2 * rad) / aspect} {...props} />
 )
 // vertices traced from the photo in its 1.18-aspect frame (sign bbox center ~[0.4415, 0.40]),
 // remapped into a frame of aspect `aspect`: shape preserved, centered, scaled by `scale`
@@ -249,125 +249,123 @@ const Rose = (attr) => (
 )
 
 return (
-  <Svg width={px(880)} height={px(640)}>
-    <Box padding={px(20)}>
-      <Frame radius={px(12)} clip border-color={interp(black, white, 0.133)}>
-        <Group width={px(840)} height={px(600)}>
-          {/* night */}
-          <Rect fill={night} />
+  <Box padding={em(1.25)}>
+    <Frame radius={em(0.75)} clip border-color={interp(black, white, 0.133)}>
+      <Group aspect={aspect}>
+        {/* night */}
+        <Rect fill={night} />
 
-          {/* starfield (drawn under the glow so stars near the sign get washed out) */}
-          {stars.map((s) => (
-            <Disc
-              pos={s.pos}
-              rad={s.r}
-              fill={s.warm ? interp(white, yellow, 0.236) : interp(white, blue, 0.113)}
-              opacity={s.o}
-              stroke={none}
-            />
-          ))}
-          {bright.map((s) => (
-            <Group>
-              <Polyline
-                points={[
-                  [s.pos[0] - (3.5 * s.r) / aspect, s.pos[1]],
-                  [s.pos[0] + (3.5 * s.r) / aspect, s.pos[1]],
-                ]}
-                stroke={white}
-                stroke-width={px(0.7)}
-                opacity={0.5 * s.o}
-              />
-              <Polyline
-                points={[
-                  [s.pos[0], s.pos[1] - 3.5 * s.r],
-                  [s.pos[0], s.pos[1] + 3.5 * s.r],
-                ]}
-                stroke={white}
-                stroke-width={px(0.7)}
-                opacity={0.5 * s.o}
-              />
-            </Group>
-          ))}
-
-          {/* glow: many soft strokes around the box silhouette; widths grow quadratically so rings
-        are dense near the edge and sparse far out, and outer rings are fainter → long gentle tail */}
-          {linspace(0, 1, 36, true).map((t) => (
-            <Polygon
-              points={hull}
-              fill={none}
-              stroke={glow}
-              stroke-width={px(10 + 420 * t * t)}
-              stroke-linejoin="round"
-              opacity={0.016 * (1 - 0.6 * t)}
-            />
-          ))}
-
-          {/* light box: bottom, left end, then front */}
-          <Face points={[E, D, H, F]} fill={cream3} stroke={cream3} />
-          <Face points={[A, B, E, F]} fill={cream2} stroke={cream2} />
-          <Face points={[B, C, D, E]} fill={cream} stroke={cream} />
-          <Polygon points={[E, D, D1, E1]} fill={band} opacity={0.55} stroke={none} />
-          <Polyline
-            points={[A, B, C]}
-            stroke={band}
-            stroke-width={px(3)}
-            opacity={0.85}
-            stroke-linejoin="round"
+        {/* starfield (drawn under the glow so stars near the sign get washed out) */}
+        {stars.map((s) => (
+          <Disc
+            pos={s.pos}
+            rad={s.r}
+            fill={s.warm ? interp(white, yellow, 0.236) : interp(white, blue, 0.113)}
+            opacity={s.o}
+            stroke={none}
           />
-          <Polyline points={[B, E]} stroke={edge} stroke-width={px(2)} opacity={0.6} />
-          <Polyline
-            points={[F, E, D]}
-            stroke={edge}
-            stroke-width={px(2)}
-            opacity={0.6}
-            stroke-linejoin="round"
-          />
-
-          {/* rose: printed on the face, so every imperfection below sits on top of it */}
-          <Rotate x={trace([0.5, 0.41])[0]} y={trace([0.5, 0.41])[1]} anchor="center" angle={-15}>
-            <Rose
-              width={px(scale * 0.44 * 600)}
-              height={px(scale * 0.44 * 600)}
-              opacity={inkOpacity}
-            />
-          </Rotate>
-
-          {/* texture over the print: uneven backlight, dust, scuffs, glints */}
-          {blotches.map((b) => (
-            <Blotch pos={b.pos} r={b.r} dark={b.dark} o={b.o} />
-          ))}
-          {specks.map((s) => (
-            <Disc
-              pos={s.pos}
-              rad={s.r}
-              fill={interp(green, red, 0.412)}
-              opacity={s.o}
-              stroke={none}
-            />
-          ))}
-          {sideSpecks.map((s) => (
-            <Disc
-              pos={s.pos}
-              rad={s.r}
-              fill={interp(green, red, 0.412)}
-              opacity={s.o}
-              stroke={none}
-            />
-          ))}
-          {scuffs.map((p) => (
+        ))}
+        {bright.map((s) => (
+          <Group>
             <Polyline
-              points={p}
-              stroke={interp(white, yellow, 0.551)}
-              stroke-width={px(1)}
-              opacity={0.6}
-              stroke-linecap="round"
+              points={[
+                [s.pos[0] - (3.5 * s.r) / aspect, s.pos[1]],
+                [s.pos[0] + (3.5 * s.r) / aspect, s.pos[1]],
+              ]}
+              stroke={white}
+              stroke-width={px(0.7)}
+              opacity={0.5 * s.o}
             />
-          ))}
-          {sparkles.map((s) => (
-            <Sparkle pos={s.pos} r={s.r} />
-          ))}
-        </Group>
-      </Frame>
-    </Box>
-  </Svg>
+            <Polyline
+              points={[
+                [s.pos[0], s.pos[1] - 3.5 * s.r],
+                [s.pos[0], s.pos[1] + 3.5 * s.r],
+              ]}
+              stroke={white}
+              stroke-width={px(0.7)}
+              opacity={0.5 * s.o}
+            />
+          </Group>
+        ))}
+
+        {/* glow: many soft strokes around the box silhouette; widths grow quadratically so rings
+      are dense near the edge and sparse far out, and outer rings are fainter → long gentle tail */}
+        {linspace(0, 1, 36, true).map((t) => (
+          <Polygon
+            points={hull}
+            fill={none}
+            stroke={glow}
+            stroke-width={px(10 + 420 * t * t)}
+            stroke-linejoin="round"
+            opacity={0.016 * (1 - 0.6 * t)}
+          />
+        ))}
+
+        {/* light box: bottom, left end, then front */}
+        <Face points={[E, D, H, F]} fill={cream3} stroke={cream3} />
+        <Face points={[A, B, E, F]} fill={cream2} stroke={cream2} />
+        <Face points={[B, C, D, E]} fill={cream} stroke={cream} />
+        <Polygon points={[E, D, D1, E1]} fill={band} opacity={0.55} stroke={none} />
+        <Polyline
+          points={[A, B, C]}
+          stroke={band}
+          stroke-width={px(3)}
+          opacity={0.85}
+          stroke-linejoin="round"
+        />
+        <Polyline points={[B, E]} stroke={edge} stroke-width={px(2)} opacity={0.6} />
+        <Polyline
+          points={[F, E, D]}
+          stroke={edge}
+          stroke-width={px(2)}
+          opacity={0.6}
+          stroke-linejoin="round"
+        />
+
+        {/* rose: printed on the face, so every imperfection below sits on top of it */}
+        <Rotate x={trace([0.5, 0.41])[0]} y={trace([0.5, 0.41])[1]} anchor="center" angle={-15}>
+          <Rose
+            width={(scale * 0.44) / aspect}
+            aspect={1}
+            opacity={inkOpacity}
+          />
+        </Rotate>
+
+        {/* texture over the print: uneven backlight, dust, scuffs, glints */}
+        {blotches.map((b) => (
+          <Blotch pos={b.pos} r={b.r} dark={b.dark} o={b.o} />
+        ))}
+        {specks.map((s) => (
+          <Disc
+            pos={s.pos}
+            rad={s.r}
+            fill={interp(green, red, 0.412)}
+            opacity={s.o}
+            stroke={none}
+          />
+        ))}
+        {sideSpecks.map((s) => (
+          <Disc
+            pos={s.pos}
+            rad={s.r}
+            fill={interp(green, red, 0.412)}
+            opacity={s.o}
+            stroke={none}
+          />
+        ))}
+        {scuffs.map((p) => (
+          <Polyline
+            points={p}
+            stroke={interp(white, yellow, 0.551)}
+            stroke-width={px(1)}
+            opacity={0.6}
+            stroke-linecap="round"
+          />
+        ))}
+        {sparkles.map((s) => (
+          <Sparkle pos={s.pos} r={s.r} />
+        ))}
+      </Group>
+    </Frame>
+  </Box>
 )

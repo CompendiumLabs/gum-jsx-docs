@@ -5,18 +5,16 @@ const points = values.map((value, index) => [
   0.95 - 0.9 * value,
 ])
 return (
-  <Svg>
-    <Frame padding={px(20)} border-color={gray} background={lightgray}>
-      <Polyline
-        width={px(320)}
-        height={px(140)}
-        points={points}
-        fill={none}
-        stroke={blue}
-        stroke-width={px(4)}
-        stroke-linejoin="round"
-        stroke-linecap="round"
-      />
-    </Frame>
-  </Svg>
+  <Frame padding={em(1.25)} border-color={gray} background={lightgray}>
+    <Polyline
+      width={px(320)}
+      height={px(140)}
+      points={points}
+      fill={none}
+      stroke={blue}
+      stroke-width={px(4)}
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+  </Frame>
 )

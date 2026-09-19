@@ -11,7 +11,7 @@ that height. The **Circle** keeps its unit aspect and becomes as wide as the row
 is tall; the two **RoundedRect** children use `grow={1}` to split the rest of the
 width equally.
 
-Try resizing the **Svg** or changing one grow factor to 2. The emoji in the
+Try resizing the outer **Box** or changing one grow factor to 2. The emoji in the
 heading needs no setup; see [Fonts](./Fonts.md).
 
 See [Stack](./Stack.md) for the allocation rules and

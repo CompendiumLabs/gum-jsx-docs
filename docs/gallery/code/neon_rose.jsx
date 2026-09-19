@@ -121,48 +121,45 @@ const leaves = [
 ]
 
 return (
-  <Svg width={px(640)} height={px(820)}>
-    <Box padding={px(20)} background={bg}>
-      <Frame background={bg} radius={px(16)} clip border-color={bg}>
-        <Graph xlim={[-1, 1]} ylim={[-1.3, 1.3]}>
-          <Circle
-            x={0}
-            y={0.5}
+  <Box padding={em(1.25)} background={bg}>
+    <Frame background={bg} radius={em(1)} clip border-color={bg}>
+      <Graph aspect={1 / 1.3} xlim={[-1, 1]} ylim={[-1.3, 1.3]}>
+        <Circle
+          x={0}
+          y={0.5}
+          anchor="center"
+          width={0.75}
+          fill={pink}
+          opacity={0.04}
+          stroke={none}
+        />
+        <Circle
+          x={0}
+          y={0.5}
+          anchor="center"
+          width={0.5}
+          fill={pink}
+          opacity={0.05}
+          stroke={none}
+        />
+        {sparkles.map(([p, size]) => (
+          <Sparkle
+            x={p[0]}
+            y={p[1]}
             anchor="center"
-            width={px(450)}
-            fill={pink}
-            opacity={0.04}
-            stroke={none}
+            width={size / 2}
+            color={pinkCore}
           />
-          <Circle
-            x={0}
-            y={0.5}
-            anchor="center"
-            width={px(300)}
-            fill={pink}
-            opacity={0.05}
-            stroke={none}
-          />
-          {sparkles.map(([p, size]) => (
-            <Sparkle
-              x={p[0]}
-              y={p[1]}
-              anchor="center"
-              width={px(size * 300)}
-              height={px(size * 300)}
-              color={pinkCore}
-            />
-          ))}
-          <Neon color={lime} core={limeCore} points={stem} />
-          {leaves.map((points) => (
-            <Neon color={lime} core={limeCore} points={points} />
-          ))}
-          {petals.map((points) => (
-            <Neon color={pink} core={pinkCore} points={points} />
-          ))}
-          <Neon color={pink} core={pinkCore} points={bud} />
-        </Graph>
-      </Frame>
-    </Box>
-  </Svg>
+        ))}
+        <Neon color={lime} core={limeCore} points={stem} />
+        {leaves.map((points) => (
+          <Neon color={lime} core={limeCore} points={points} />
+        ))}
+        {petals.map((points) => (
+          <Neon color={pink} core={pinkCore} points={points} />
+        ))}
+        <Neon color={pink} core={pinkCore} points={bud} />
+      </Graph>
+    </Frame>
+  </Box>
 )

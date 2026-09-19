@@ -26,44 +26,43 @@ const Matrix = ({ colors }) => (
   </Bracket>
 )
 return (
-  <Svg font-size={px(34)}>
-    <TitleFrame
-      frame-aspect={1}
-      title="Shape Algebra"
-      title-font-size={em(0.6)}
-      padding={em(0.7)}
-      border-width={em(0.03)}
-      radius={em(0.4)}
-      align="center"
-    >
-      <VStack width="fill" gap={em(0.8)} align="center">
-        <MathText style="display">
-          <SupSub sup={String.raw`\infty`} sub="n=1">
-            <MathOp>{String.raw`\sum`}</MathOp>
-          </SupSub>
+  <TitleFrame
+    font-size={px(34)}
+    frame-aspect={1}
+    title="Shape Algebra"
+    title-font-size={em(0.6)}
+    padding={em(0.7)}
+    border-width={em(0.03)}
+    radius={em(0.4)}
+    align="center"
+  >
+    <VStack width="fill" gap={em(0.8)} align="center">
+      <MathText style="display">
+        <SupSub sup={String.raw`\infty`} sub="n=1">
+          <MathOp>{String.raw`\sum`}</MathOp>
+        </SupSub>
+        <Frac>
+          1<SupSub sup="n">2</SupSub>
+        </Frac>
+        =
+        <HalfSquare />= 1
+      </MathText>
+      <MathText style="display">
+        r =
+        <Sqrt>
           <Frac>
-            1<SupSub sup="n">2</SupSub>
+            <Circle width={em(1.1)} fill={interp(white, blue, 0.7)} stroke={none} />
+            <MathSymbol>{String.raw`\pi`}</MathSymbol>
           </Frac>
-          =
-          <HalfSquare />= 1
-        </MathText>
-        <MathText style="display">
-          r =
-          <Sqrt>
-            <Frac>
-              <Circle width={em(1.1)} fill={interp(white, blue, 0.7)} stroke={none} />
-              <MathSymbol>{String.raw`\pi`}</MathSymbol>
-            </Frac>
-          </Sqrt>
-        </MathText>
-        <MathText style="display">
-          <SupSub sup={String.raw`\mathsf{T}`}>
-            <Matrix colors={[blue, red, green, yellow]} />
-          </SupSub>
-          =
-          <Matrix colors={[blue, green, red, yellow]} />
-        </MathText>
-      </VStack>
-    </TitleFrame>
-  </Svg>
+        </Sqrt>
+      </MathText>
+      <MathText style="display">
+        <SupSub sup={String.raw`\mathsf{T}`}>
+          <Matrix colors={[blue, red, green, yellow]} />
+        </SupSub>
+        =
+        <Matrix colors={[blue, green, red, yellow]} />
+      </MathText>
+    </VStack>
+  </TitleFrame>
 )

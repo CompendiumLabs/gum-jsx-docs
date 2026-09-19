@@ -109,8 +109,8 @@ Add `debug` to a layout element to show its allocated rectangle in **solid red**
 its content rectangle, when available, in **dashed blue**:
 
 ```jsx
-<Box debug padding={px(16)} width={px(240)}>
-  <HStack gap={px(12)}>
+<Box debug padding={em(1)} width={px(240)}>
+  <HStack gap={em(0.75)}>
     <Text>First</Text>
     <Text>Second</Text>
   </HStack>
@@ -119,7 +119,7 @@ its content rectangle, when available, in **dashed blue**:
 
 Only the marked element gets outlined; children can opt in separately with their
 own `debug` flags. Omit the flag or use `debug={false}` to turn it off. The same
-option works in TypeScript, for example `new Box({ debug: true, padding: px(16) })`.
+option works in TypeScript, for example `new Box({ debug: true, padding: em(1) })`.
 
 The allocated rectangle is the element's final layout size. Containers such as
 **Box** expose a separate content rectangle inside their insets; elements without

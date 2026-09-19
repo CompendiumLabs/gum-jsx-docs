@@ -13,27 +13,25 @@ const swatches = [
   { color: purple, label: "Purple" },
 ]
 return (
-  <Svg font-size={px(16)}>
-    <Box padding={em(1.25)} background={lightgray}>
-      <VStack gap={em(1.25)}>
-        <Text font-size={em(1.375)} font-weight={bold}>
-          A label without surrounding blank lines
+  <Box padding={em(1.25)} background={lightgray}>
+    <VStack gap={em(1.25)}>
+      <Text font-size={em(1.375)} font-weight={bold}>
+        A label without surrounding blank lines
+      </Text>
+      <HStack gap={em(1.5)}>
+        {swatches.map((swatch) => (
+          <Swatch {...swatch} />
+        ))}
+      </HStack>
+      <Text line-height={em(1.4)}>
+        Hello <Span font-weight={bold} color={blue}>world</Span>
+        This internal line break remains.
+      </Text>
+      <Frame padding={em(0.5)} border-color={blue}>
+        <Text whitespace="pre" font-family={mono} wrap={false}>
+          {'  Exact spaces  \n  and a final blank line.\n'}
         </Text>
-        <HStack gap={em(1.5)}>
-          {swatches.map((swatch) => (
-            <Swatch {...swatch} />
-          ))}
-        </HStack>
-        <Text line-height={em(1.4)}>
-          Hello <Span font-weight={bold} color={blue}>world</Span>
-          This internal line break remains.
-        </Text>
-        <Frame padding={em(0.5)} border-color={blue}>
-          <Text whitespace="pre" font-family={mono} wrap={false}>
-            {'  Exact spaces  \n  and a final blank line.\n'}
-          </Text>
-        </Frame>
-      </VStack>
-    </Box>
-  </Svg>
+      </Frame>
+    </VStack>
+  </Box>
 )

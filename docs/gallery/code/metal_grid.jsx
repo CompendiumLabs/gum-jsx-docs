@@ -11,41 +11,39 @@ const points = [
   [0.88, 0.45],
 ]
 return (
-  <Svg width={px(840)} height={px(510)}>
-    <Box padding={px(24)}>
-      <Frame padding={px(18)} background={darkgray} radius={px(20)} border-width={px(2)}>
-        <Box padding={px(12)} background={black} radius={px(12)}>
-          <Group>
-            {range(rows * cols).map((i) => (
-              <RoundedRect
-                x={(i % cols) / cols}
-                y={floor(i / cols) / rows}
-                width={1 / cols - 0.007}
-                height={1 / rows - 0.012}
-                radius={px(5)}
-                fill={paint(i % cols)}
-                stroke={none}
-                opacity={0.7}
-              />
-            ))}
-            <Spline
-              points={points}
-              tension={0.65}
-              stroke={white}
-              stroke-width={px(15)}
-              opacity={0.25}
-              stroke-linecap="round"
+  <Box padding={em(1.5)}>
+    <Frame padding={em(1.125)} background={darkgray} radius={em(1.25)} border-width={px(2)}>
+      <Box padding={em(0.75)} background={black} radius={em(0.75)}>
+        <Group aspect={cols/rows}>
+          {range(rows * cols).map((i) => (
+            <RoundedRect
+              x={(i % cols) / cols}
+              y={floor(i / cols) / rows}
+              width={1 / cols - 0.007}
+              height={1 / rows - 0.012}
+              radius={em(0.3)}
+              fill={paint(i % cols)}
+              stroke={none}
+              opacity={0.7}
             />
-            <Spline
-              points={points}
-              tension={0.65}
-              stroke={white}
-              stroke-width={px(5)}
-              stroke-linecap="round"
-            />
-          </Group>
-        </Box>
-      </Frame>
-    </Box>
-  </Svg>
+          ))}
+          <Spline
+            points={points}
+            tension={1.2}
+            stroke={white}
+            stroke-width={px(15)}
+            opacity={0.25}
+            stroke-linecap="round"
+          />
+          <Spline
+            points={points}
+            tension={1.2}
+            stroke={white}
+            stroke-width={px(5)}
+            stroke-linecap="round"
+          />
+        </Group>
+      </Box>
+    </Frame>
+  </Box>
 )

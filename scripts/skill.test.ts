@@ -67,8 +67,8 @@ test('every complete JSX example in the maintained prompts renders with the curr
     const markdown = readFileSync(join(promptDir, file), 'utf8')
     for (const match of markdown.matchAll(/^```jsx\n([\s\S]*?)^```/gm)) {
       const element = core.evaluate(match[1], { name: `${file}:${examples}`, scope: math })
-      expect(element).toBeInstanceOf(core.Svg)
-      const fragment = pass.layout(element)
+      expect(element).toBeInstanceOf(core.Element)
+      const fragment = pass.layout(core.make_viewport(element))
       expect(fragment.size.width).toBeGreaterThan(0)
       expect(fragment.size.height).toBeGreaterThan(0)
       const svg = core.render_svg(fragment)

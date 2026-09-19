@@ -15,21 +15,25 @@ const entries = [
   { label: "Sample", color: red, kind: "line" },
   { label: "Total", color: green, kind: "line" },
 ]
-return <Svg width={px(720)} font-size={px(20)}>
-  <TextBox padding={em(1.5)} background={lightgray} color={slate}>
-    <TextCol gap={em(1)}>
-      <Text font-size={em(1.75)} font-weight={bold}>Math, directly in JSX</Text>
-      <Plot font-size={em(0.75)} height={px(320)} xlim={[0, tau]}
-        ylim={[-1.3, 1.3]} xlabel="x (radians)" xticks={xticks}>
-        {waves.map(({ fy, color }) => <SymLine fy={fy} xlim={[0, tau]}
-          stroke={color} stroke-width={px(2.5)} />)}
-        <Points points={zip(xs, ys)}
-          point-size={px(9)} fill={blue} stroke={white} stroke-width={px(1)} />
-        <Legend x={3.33} y={1.2} entries={entries} font-size={em(0.9)} />
-      </Plot>
-      <Text font-family={mono} font-size={em(0.8)}>
-        {xs.length} periodic samples. Mean: {rounder(mean(ys), 3)}. RMS: {rounder(norm(ys) / sqrt(ys.length), 3)}.
-      </Text>
-    </TextCol>
-  </TextBox>
-</Svg>
+return <TextBox
+  width={px(720)}
+  font-size={px(20)}
+  padding={em(1.5)}
+  background={lightgray}
+  color={slate}
+>
+  <TextCol gap={em(1)}>
+    <Text font-size={em(1.75)} font-weight={bold}>Math, directly in JSX</Text>
+    <Plot font-size={em(0.75)} aspect={2} xlim={[0, tau]}
+      ylim={[-1.3, 1.3]} xlabel="x (radians)" xticks={xticks}>
+      {waves.map(({ fy, color }) => <SymLine fy={fy} xlim={[0, tau]}
+        stroke={color} stroke-width={px(2.5)} />)}
+      <Points points={zip(xs, ys)}
+        point-size={px(9)} fill={blue} stroke={white} stroke-width={px(1)} />
+      <Legend x={3.33} y={1.2} entries={entries} font-size={em(0.9)} />
+    </Plot>
+    <Text font-family={mono} font-size={em(0.8)}>
+      {xs.length} periodic samples. Mean: {rounder(mean(ys), 3)}. RMS: {rounder(norm(ys) / sqrt(ys.length), 3)}.
+    </Text>
+  </TextCol>
+</TextBox>

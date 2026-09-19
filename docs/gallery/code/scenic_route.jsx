@@ -32,35 +32,33 @@ const ScenicArrow = () => (
   </MathBox>
 )
 const Row = ({ label, children }) => (
-  <HStack gap={px(32)} align="center">
+  <HStack gap={em(1)} align="center">
     <Box width={px(310)}>{children}</Box>
-    <Text font-size={px(20)}>{label}</Text>
+    <Text font-size={em(0.625)}>{label}</Text>
   </HStack>
 )
 return (
-  <Svg width={px(800)} height={px(400)} font-size={px(32)}>
-    <Box padding={px(30)}>
-      <TitleFrame
-        title="From A to B"
-        title-font-size={px(20)}
-        padding={px(24)}
-        radius={px(14)}
-      >
-        <VStack gap={px(32)}>
-          <Row label="the direct method">
-            <Latex>{String.raw`A\xrightarrow{\quad\quad}B`}</Latex>
-          </Row>
-          <Row label="the polite detour">
-            <Latex>{String.raw`A\xhookrightarrow{\quad\quad}B`}</Latex>
-          </Row>
-          <Row label="the scenic route">
-            <MathText>
-              A
-              <ScenicArrow />B
-            </MathText>
-          </Row>
-        </VStack>
-      </TitleFrame>
-    </Box>
-  </Svg>
+  <Box font-size={px(32)} padding={em(0.95)}>
+    <TitleFrame
+      title="From A to B"
+      title-font-size={em(0.625)}
+      padding={em(0.75)}
+      radius={em(0.45)}
+    >
+      <VStack gap={em(1)}>
+        <Row label="the direct method">
+          <Latex>{String.raw`A\xrightarrow{\quad\quad}B`}</Latex>
+        </Row>
+        <Row label="the polite detour">
+          <Latex>{String.raw`A\xhookrightarrow{\quad\quad}B`}</Latex>
+        </Row>
+        <Row label="the scenic route">
+          <MathText>
+            A
+            <ScenicArrow />B
+          </MathText>
+        </Row>
+      </VStack>
+    </TitleFrame>
+  </Box>
 )

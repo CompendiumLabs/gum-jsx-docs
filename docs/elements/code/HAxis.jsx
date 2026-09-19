@@ -1,8 +1,6 @@
 // HAxis as an independent axis part.
-<Svg width={px(480)} height={px(300)} font-size={px(16)}>
-  <Box padding={em(1.875)}>
-    <Graph xlim={[0, 4]} ylim={[0, 4]}>
-      <HAxis lim={[0, 4]} ticks={[0, 1, 2, 3, 4]} />
-    </Graph>
-  </Box>
-</Svg>
+<Box padding={em(1.875)}>
+  <Graph xlim={[0, 4]} ylim={[0, 4]}>
+    <HAxis lim={[0, 4]} ticks={[0, 1, 2, 3, 4]} />
+  </Graph>
+</Box>

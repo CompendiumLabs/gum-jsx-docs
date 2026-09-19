@@ -2,14 +2,12 @@
 const data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAAGklEQVR4XmP4zwBEIMjwHwggbBBqYAACkBAAKooSbzGPaPkAAAAASUVORK5CYII='
 
 return (
-  <Svg background={white}>
-    <Box padding={px(16)}>
-      <HStack gap={px(24)}>
-        <PngImage data={data} width={px(160)} />
-        <Box border_color={gray} border_width={px(1)} background={lightgray}>
-          <PngImage data={data} width={px(160)} height={px(160)} opacity={0.7} />
-        </Box>
-      </HStack>
-    </Box>
-  </Svg>
+  <Box background={white} padding={em(1)}>
+    <HStack gap={em(1.5)}>
+      <PngImage data={data} width={px(160)} />
+      <Box border_color={gray} border_width={px(1)} background={lightgray}>
+        <PngImage data={data} width={px(160)} height={px(160)} opacity={0.7} />
+      </Box>
+    </HStack>
+  </Box>
 )

@@ -41,7 +41,7 @@ Compose [Bars](./Bars.md) and [Plot](./Plot.md). Accepts values, positions, base
 children overlay bars and participate in limit inference.
 
 For rounded tops with square baselines on positive vertical bars, use
-`radius={{ t: px(6) }}`. Horizontal bars can use `radius={{ r: px(6) }}`.
+`radius={{ t: em(0.5) }}`. Horizontal bars can use `radius={{ r: em(0.5) }}`.
 Sides refer to screen edges, so negative bars may need `b` or `l` instead.
 Scalar, paired, and individual corner radii follow [Bars](./Bars.md).
 
@@ -57,7 +57,7 @@ override either. For a value-dependent radius, return it from `styles`:
   values={[28, -17, 43]}
   styles={(value) => ({
     fill: value < 0 ? red : green,
-    radius: value < 0 ? { b: px(6) } : { t: px(6) },
+    radius: value < 0 ? { b: em(0.5) } : { t: em(0.5) },
   })}
 />
 ```

@@ -23,6 +23,8 @@ const entries = [
   ...listTopics().map(entry => ({ ...entry, dir: topicsDir, collection: topics })),
 ]
 const commonOnlyElements = new Set(['Spacer', 'Span'])
+// Only the Svg reference page needs an explicit viewport.
+const viewportExamples = new Set(['Svg'])
 const bindings = { ...core, ...math }
 
 for (const [name, value] of Object.entries(bindings)) {
@@ -90,6 +92,10 @@ for (const { name, title, dir, collection } of entries) {
   }
   if (dir === elementsDir) checkPropertyValues(join(dir, 'text', name + '.md'), text)
   assert.ok(code.startsWith('// '), `${file}: describe the example on its first line`)
+  if (!viewportExamples.has(name)) {
+    assert.doesNotMatch(code, /<Svg\b/,
+      `${file}: put size and font props on the root element; hosts add the viewport`)
+  }
   if (!(dir === topicsDir && name === 'Colors')) {
     assert.doesNotMatch(code, /#[\da-f]{3,8}\b/i,
       `${file}: use the shared color constants instead of hard-coded hex colors`)
@@ -99,8 +105,9 @@ for (const { name, title, dir, collection } of entries) {
   }
   checkLinks(join(dir, 'text', name + '.md'))
   const element = core.evaluate(code, { name: file, scope: math })
-  assert.ok(element instanceof core.Svg, `${file}: examples should include their viewport`)
-  const fragment = pass.layout(element)
+  assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
+  // Hosts wrap a bare root in a hugging viewport; an explicit Svg is optional.
+  const fragment = pass.layout(core.make_viewport(element))
   assert.ok(fragment.size.width > 0 && fragment.size.height > 0, `${file}: empty viewport`)
   const svg = core.render_svg(fragment, { title, id_prefix: name })
   assert.ok(svg.startsWith('<svg ') && svg.endsWith('</svg>'), `${file}: invalid SVG envelope`)

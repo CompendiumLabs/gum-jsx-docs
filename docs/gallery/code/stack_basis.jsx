@@ -12,13 +12,11 @@ const Pair = ({ title, basis }) => (
     </HStack>
   </TextCol>
 )
-return <Svg width={px(560)} font-size={px(16)} color={slate}>
-  <TextBox padding={em(1.25)}>
-    <TextCol gap={em(1.125)}>
-      <Text font-size={em(1.5)} font-weight={bold}>Choose the starting size</Text>
-      <Pair title="grow={1}: equal shares from zero" />
-      <Pair title={'basis="auto": content widths plus equal growth'} basis="auto" />
-      <Text font-size={em(0.875)}>Both rows use the same labels, gap, and growth weights.</Text>
-    </TextCol>
-  </TextBox>
-</Svg>
+return <TextBox width={px(560)} color={slate} padding={em(1.25)}>
+  <TextCol gap={em(1.125)}>
+    <Text font-size={em(1.5)} font-weight={bold}>Choose the starting size</Text>
+    <Pair title="grow={1}: equal shares from zero" />
+    <Pair title={'basis="auto": content widths plus equal growth'} basis="auto" />
+    <Text font-size={em(0.875)}>Both rows use the same labels, gap, and growth weights.</Text>
+  </TextCol>
+</TextBox>

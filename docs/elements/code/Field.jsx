@@ -1,15 +1,13 @@
 // Explicit vector samples.
-<Svg width={px(480)} height={px(300)} font-size={px(16)}>
-  <Box padding={em(1.875)}>
-    <Plot font-size={em(0.75)}>
-      <Field
-        vectors={[
-          { point: [0, 0], vector: [1, 2] },
-          { point: [1, 0], vector: [2, 1] },
-        ]}
-        stroke={blue}
-        stroke-width={px(2)}
-      />
-    </Plot>
-  </Box>
-</Svg>
+<Box padding={em(1.875)}>
+  <Plot font-size={em(0.75)}>
+    <Field
+      vectors={[
+        { point: [0, 0], vector: [1, 2] },
+        { point: [1, 0], vector: [2, 1] },
+      ]}
+      stroke={blue}
+      stroke-width={px(2)}
+    />
+  </Plot>
+</Box>
