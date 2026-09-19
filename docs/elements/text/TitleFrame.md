@@ -6,6 +6,7 @@
 |---|---|---|
 | `aspect` | — | Preferred ratio of the complete element, including the raised title |
 | `frame-aspect` | — | Preferred ratio of the bordered body, excluding the raised title |
+| `bounds` | `"outer"` | `"frame"` makes the allocation the bordered body, leaving the raised title outside |
 | `title` | — | String or **Element** in a box straddling the top border |
 | `title-position` | `"center"` | `"start"`, `"center"`, `"end"`, or numeric horizontal alignment |
 | `title-style` / `title-*` | Inherited text style | Nested or flat title text and box options |
@@ -15,7 +16,7 @@
 | `title-border-color` | Frame border color | Title box border paint |
 | `title-background` | Frame background | Title box background |
 | `title-radius` | `em(0.3)` | Title box corner radius |
-| `gap` | `em(0.6)` | Minimum space between the bottom of the title box and content |
+| `gap` | `em(0.6)` | Space between content children |
 | `padding` | `em(0.75)` | Length or [Box padding shorthand](./Box.md) |
 | `border-width` | `px(1)` | Border thickness inside the frame |
 | `border-color` | Resolved color | Border paint |
@@ -27,8 +28,12 @@
 **TitleFrame** draws a border around its content, with an optional boxed title
 centered across the top border. Half of the title box sits above that border;
 its full height is included in the layout. The border is cut away behind the
-title, so transparent backgrounds work too. Content padding makes room for the
-title and `gap`; `clip` clips the body content without clipping the raised title.
+title, so transparent backgrounds work too. The title reserves no room inside
+the body: content starts at the ordinary `padding`, so a plot can sit flush with
+the border. Even padding keeps content visually aligned within the frame, so when
+content should clear the lower half of the title box, prefer a smaller
+`title-font-size` or larger `padding` all around over extra top padding. `clip`
+clips the body content without clipping the raised title.
 
 For a square border, use `width={px(480)} frame-aspect={1}`. The bordered body will be
 480×480, and the title's overhang is added to the total layout height automatically.
@@ -38,6 +43,11 @@ also describes that complete element: `width={px(480)} aspect={1}` gives a
 480×480 total allocation, with the border shorter by the title's overhang.
 Outer allocations, including dimensions derived from `aspect`, and min/max limits
 take precedence over the body's `frame-aspect` preference.
+
+With `bounds="frame"`, the layout box is the bordered body alone. `width`, `height`,
+and `aspect` then describe the border, alignment and connections use it, and the
+raised half of the title overhangs the top edge as a reserved outset. Leave room
+for that overhang in the surrounding `gap` or `padding`.
 
 Scoped `title-` props accept text options such as `title-color`, `title-font-size`,
 and `title-wrap`, plus title box padding, border, background, radius, and alignment.

@@ -5,6 +5,7 @@
       title="A titled figure"
       border-color={blue}
       title-background={lightgray}
+      title-font-size={em(0.75)}
       radius={px(8)}
     >
       <Text>Text and graphics share a layout protocol.</Text>

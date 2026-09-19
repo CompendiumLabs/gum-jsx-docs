@@ -30,13 +30,13 @@ const Block = ({ id, label, color }) => (
 )
 
 return (
-  <Svg width={px(620)} height={px(750)} font-size={px(18)} color={slate}>
+  <Svg width={px(620)} height={px(720)} font-size={px(18)} color={slate}>
     <Box padding={px(24)} background={white}>
       <TitleFrame
         title="Transformer Architecture"
-        title-font-size={px(28)}
+        title-font-size={px(20)}
         padding={px(20)} radius={px(16)}
-        border-color={lightgray} gap={px(22)}
+        border-color={darkgray}
       >
         <Network
           width={px(530)} height={px(610)}

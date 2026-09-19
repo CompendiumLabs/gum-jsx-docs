@@ -23,6 +23,7 @@
 | `legend` | — | **Legend** **Element** or array of **Legend** entries |
 | `margin` | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
 | `label-gap` | `px(8)` | Space between titles and measured axis extents |
+| `bounds` | `"outer"` | `"frame"` makes the allocation the data area alone; see below |
 | `background` | — | Full-frame background paint |
 | `plot-background` | — | Data-area background paint |
 | `border-width` | `px(0)` | Data-area border thickness |

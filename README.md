@@ -13,7 +13,7 @@ Start with [Gum](./docs/gallery/text/Gum.md), [units](./docs/gallery/text/Units.
 Basic plotting is available: start with [Plot](./docs/elements/text/Plot.md),
 [Graph](./docs/elements/text/Graph.md), and [SymLine](./docs/elements/text/SymLine.md), or try the
 [curve and band](./docs/elements/text/SymFill.md), [bars](./docs/gallery/text/plot_bars.md), and
-[vector field](./docs/gallery/text/plot_field.md) showcases. The editor includes a Plotting
+[vector field](./docs/elements/text/SymField.md) showcases. The editor includes a Plotting
 category alongside layout, geometry, and text.
 
 [Network](./docs/elements/text/Network.md) connects [Node](./docs/elements/text/Node.md)

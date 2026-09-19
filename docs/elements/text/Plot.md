@@ -20,6 +20,7 @@ axis titles, an optional legend, and an optional background. Limits follow
 | `legend` | — | **Legend** **Element** or array of **Legend** entries |
 | `margin` | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
 | `label-gap` | `px(8)` | Space between titles and measured axis extents |
+| `bounds` | `"outer"` | `"frame"` makes the allocation the data area alone; see below |
 | `background` | — | Full-frame background paint |
 | `plot-background` | — | Data-area background paint |
 | `border-width` | `px(0)` | Data-area border thickness |
@@ -58,6 +59,14 @@ Supplied title, label, and legend **Element**s retain their own descriptions.
 at 1.5 unless aspect is supplied. In a stack, give it a preferred height or an
 explicit flex allocation. Small frames can exhaust the data area and report
 overflow; they never shrink text to fit.
+
+With `bounds="frame"`, the allocation is the data area itself: `width`, `height`,
+and `aspect` size the graph frame, and ticks, labels, and titles sit outside it.
+Stacked plots then align their data areas whatever their tick labels measure, and
+an identified plot connects at its frame. Containers do not make room for those
+decorations, so leave a large enough `gap` or `padding` around the plot. The space
+they need, including `margin`, is reported as the fragment's outset, and a hugging
+[Svg](./Svg.md) viewport grows to include it.
 
 This first version has linear scales. Log/date scales, minor ticks, label
 collision avoidance, automatic legend extraction, and legend placement

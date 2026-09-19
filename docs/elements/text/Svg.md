@@ -10,6 +10,10 @@ An explicit width or height establishes that viewport axis. Unspecified axes
 hug the child's measured size. There is no implicit 500px or 1000px canvas:
 a completely natural **Square** produces a small natural viewport.
 
+Some elements reserve an outset outside their own box, such as a
+[Plot](./Plot.md) with `bounds="frame"`. A hugging axis grows to include it; an
+established axis keeps its size and clips it like any other overflow.
+
 **Svg** gives its content advisory offers on its established axes, rather than
 forcing every child to occupy the whole viewport. Consequently, a tall **Svg**
 does not make a **VStack**'s children grow. Use explicit [stack sizing](../../gallery/text/Stack.md).

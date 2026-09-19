@@ -30,11 +30,10 @@ return (
     <TitleFrame
       frame-aspect={1}
       title="Shape Algebra"
-      title-font-size={em(0.9)}
+      title-font-size={em(0.6)}
       padding={em(0.7)}
       border-width={em(0.03)}
       radius={em(0.4)}
-      gap={em(0.75)}
       align="center"
     >
       <VStack width="fill" gap={em(0.8)} align="center">

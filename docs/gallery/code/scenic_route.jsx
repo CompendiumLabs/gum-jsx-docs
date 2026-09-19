@@ -42,10 +42,9 @@ return (
     <Box padding={px(30)}>
       <TitleFrame
         title="From A to B"
-        title-font-size={px(30)}
+        title-font-size={px(20)}
         padding={px(24)}
         radius={px(14)}
-        gap={px(28)}
       >
         <VStack gap={px(32)}>
           <Row label="the direct method">
