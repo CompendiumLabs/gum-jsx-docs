@@ -7,7 +7,7 @@
 | `id` | — | Nonempty identifier used by edges, as on any other element |
 | `x` / `y` | `0` / `0` | Position in the parent coordinate system |
 | `anchor` | `"center"` | Point of the allocated node placed at x/y |
-| `width` | `"fit"` | Measure the label; a length sets a wrapping width |
+| `width` | Content-sized | Measure the label; a length sets a wrapping width |
 | `text` / `children` | — | Text, inline content, or one existing layout element |
 | `padding` | `em(0.6)` | Space between the label and inside border |
 | `border-width` | `px(1)` | Border thickness inside the frame |
@@ -26,7 +26,7 @@ including math and text stacks, keep their ordinary layout behavior.
 The `id` is optional for a standalone node, and required to reference it from an
 [Edge](./Edge.md). IDs must be unique within the enclosing [Network](./Network.md).
 In Network, x/y are graph data coordinates; in **Group** they are layout lengths.
-When wrapping a Node in **Fit**, **Rotate**, or another container, put x/y/anchor
+When wrapping a Node in **Rotate** or another container, put x/y/anchor
 on the wrapper to position the whole result.
 
 Connections meet the outer frame, including padding and the inside border.

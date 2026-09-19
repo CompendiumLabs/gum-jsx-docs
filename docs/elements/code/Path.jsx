@@ -2,8 +2,8 @@
 <Box padding={em(1.25)} background={lightgray}>
   <HStack gap={em(1.5)}>
     <Path
-      width={px(220)}
-      height={px(100)}
+      grow={2.2}
+      aspect={2.2}
       commands={[
         move_to(0.05, 0.8),
         curve_to(0.3, 0.05, 0.7, 0.95, 0.95, 0.2),
@@ -14,8 +14,8 @@
       stroke-linecap="round"
     />
     <Path
-      width={px(140)}
-      height={px(100)}
+      grow={1.4}
+      aspect={1.4}
       commands={[
         move_to(0.1, 0.5),
         quad_to(0.5, 0, 0.9, 0.5),

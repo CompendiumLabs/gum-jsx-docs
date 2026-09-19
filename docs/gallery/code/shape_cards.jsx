@@ -1,7 +1,7 @@
 // Data-driven cards use equal outer flex allocation and fixed-size centered symbols.
 const Card = ({ title, note, color, symbol }) => (
   <TextFrame
-    grow={1}
+    grow={1} shrink={1} basis={em(11)}
     padding={em(1)}
     radius={em(0.75)}
     border-color={gray}
@@ -35,11 +35,11 @@ const cards = [
     symbol: <Polygon aspect={1} points={penta} fill={green} stroke={none} />,
   },
 ]
-return <TextBox width={px(760)} padding={em(2)} background={lightgray} color={slate}>
+return <TextBox width="fill" padding={em(2)} background={lightgray} color={slate}>
   <TextCol gap={em(1)}>
     <Text font-family={mono} font-size={em(1)} color={blue}>COMPOSITION / 02</Text>
     <Text font-size={em(2)} font-weight={bold}>One component, three shapes</Text>
-    <HStack gap={em(1)} align="stretch">
+    <HStack wrap gap={em(1)} align="stretch">
       {cards.map((card) => (
         <Card {...card} />
       ))}

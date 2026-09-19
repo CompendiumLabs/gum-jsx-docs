@@ -7,6 +7,10 @@ node. [Node](../../elements/text/Node.md) is only the conventional labeled frame
 The example connects a circle, a pill-shaped rectangle, a stack, one member of
 that stack, and a frame that holds a nested network.
 
+The network uses an aspect and minimum width to leave space for fixed-size nodes.
+A bounded preview can scale the complete diagram down without changing those
+internal proportions.
+
 Edges meet the visible outline of boxes and basic shapes, so the arrows touch the
 circle's arc and the pill's rounded ends. The stack draws nothing of its own, and
 its edges meet the rectangle of its allocation instead.

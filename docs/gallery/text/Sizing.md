@@ -9,22 +9,91 @@ general constraint solver.
 ## Element dimensions
 
 Common sizing props are width, height, `min-width`, `max-width`, `min-height`, and
-`max-height`. All accept [lengths](./Units.md); width also accepts `"fill"` and
-`"fit"`. Minima default to zero and maxima
+`max-height`. All accept [lengths](./Units.md); width and height also accept `"fill"`.
+Omitted dimensions use ordinary content measurement. Minima default to zero and maxima
 are unbounded. A preferred width or height is clamped to the element's own limits.
 An exact allocation from the parent takes precedence.
 
-| Width policy | Meaning |
+| Sizing policy | Meaning |
 |---|---|
 | `width="fill"` | Occupy the offered width, clamped to own limits; measure content when no width is offered |
-| `width="fit"` | Use ordinary content measurement, including text wrapping at the offered width; opt out of the parent's fill alignment |
+| Omitted width | Measure content, including text wrapping at the offered width |
 | `width={1}` | Use the whole established parent width; requires a definite fraction reference |
+
+Omitted height measures content; `height="fill"` occupies a finite offered height.
+These do not add flex weights. Use `align-self="start"` (or center/end) to opt out
+of a parent's fill alignment, and `basis="auto"` for content-based flex growth.
 
 Fill resolves from the actual offer. Fractions continue to use the established
 parent content box, which can differ from the current offer. An own maximum
 limits natural measurement without forcing a short paragraph to occupy that maximum.
-Fit does not scale a drawing or supply intrinsic dimensions to a canvas; the
-element still uses its usual measurement rules.
+Omitting dimensions does not scale an ordinary drawing or supply intrinsic
+dimensions to a canvas; the element still uses its usual measurement rules.
+
+## Adaptive figures
+
+Let the host supply the viewport, and distinguish a content-sized figure from
+a layout that deliberately fills its container. Boxes, stacks, **TextBox**,
+**TextFrame**, and **TextCol** are all content-sized by default.
+Do not add `width="fill"` merely to replace a fixed pixel width: that
+can reserve a large blank strip beside otherwise compact content.
+
+Use fill and `grow` when the content should actually occupy that width, and
+leave document height content-sized. Text then reflows at its normal font size.
+Use `aspect` on diagrams whose height follows their width. Wrapping cards may
+use `wrap` with an explicit `basis` on [HStack](../../elements/text/HStack.md).
+Comparisons and two-column figures should keep their intended row composition.
+
+Standalone formulas shrink to their offered space automatically; they do not
+enlarge. Inline formulas and nested math keep their normal font scale.
+An entire fixed scene can put `fit` on its existing root box, stack, or canvas. It measures that
+element naturally and shrinks the whole drawing only when necessary; no wrapper
+is needed. Relative internal dimensions or flex bases can describe the composition
+without fixing the outer viewport in pixels.
+
+The CLI and docs previews offer 640 × 480 pixels by default. This is a budget,
+so a tall document can grow beyond it. `gum example.jsx -W 320` gives an exact
+width with natural height. Supplying both `-W` and `-H` establishes a fixed
+viewport; content needs flex allocation or explicit fitting to stay within it.
+
+Bounded preview hosts such as Gum Studio instead set `max_width` and `max_height`
+on the generated **Svg**. The figure reflows within the offers, then scales down
+uniformly if it is still too wide or too tall. A height limit can therefore reduce
+the rendered width, and a width limit can reduce the height. No height maximum
+means natural height remains available. The [rendering API](./Rendering.md)
+accepts these bounds through `wrap` without adding sizing boilerplate to examples.
+
+## Fitting
+
+Allocation and scaling answer different questions:
+
+| Intent | Props |
+|---|---|
+| A compact panel that still reflows text | Omit width and height |
+| A document that occupies the offered width | `width="fill"` |
+| A standalone formula that shrinks when needed | Automatic; no flag |
+| A composed diagram that keeps its layout and shrinks when needed | `fit` |
+| Scale up or down inside the offered rectangle | `fit="contain"` |
+| Fill the offered rectangle, cropping excess | `fit="cover"` |
+
+`fit` works on every layout element, including
+custom elements. It scales the completed drawing, including its frame, typography,
+padding, guides, and connection geometry. It is not inherited. Omit it for normal
+layout: text reflows and whole formulas shrink. `fit={false}` explicitly disables
+automatic formula fitting. Math spacing, rules, and stretch primitives retain
+their allocation behavior; use explicit `fit` to scale their complete drawing.
+
+With fitting enabled, authored dimensions describe the natural drawing, while
+parent offers and own maxima bound the scaled result. Minima reserve final space.
+Shrink-only fitting hugs the result unless fill sizing or an exact parent allocation
+reserves a larger box. `fit-align` positions the drawing inside that box and defaults
+to center; the element's ordinary `align` still arranges its children. See
+[Fitting](Fitting.md) for examples and the full contract.
+
+Migration: omit former content-sizing keywords (`width="hug"` or `width="fit"`).
+Move parent-fill opt-outs to `align-self`, and content-based growth to `basis="auto"`.
+Former `Fit` wrappers put `fit` on their content; `fit="shrink"` becomes bare `fit`.
+These old APIs have been removed, without compatibility aliases.
 
 ## Aspect ratio
 
@@ -42,7 +111,7 @@ When neither dimension is established, content-sized elements measure normally
 and add space to reach the ratio. Available offers remain advisory; an aspect
 does not implicitly fill them or invent a percentage reference from measured
 content. Fonts, strokes, and child drawings are not scaled. Use
-[Fit](../../elements/text/Fit.md) when uniform scaling is actually intended.
+[fitting](./Sizing.md#fitting) when uniform scaling is actually intended.
 
 Shapes retain their own natural-size and offered-space measurement rules.
 **Square** and **Circle** supply an intrinsic ratio of 1 and still draw
@@ -56,14 +125,16 @@ is then added automatically. Outer allocations take precedence over `frame-aspec
 ## Document layouts
 
 [TextBox](../../elements/text/TextBox.md), [TextFrame](../../elements/text/TextFrame.md),
-and [TextCol](../../elements/text/TextCol.md) default to `width="fill"`.
+and [TextCol](../../elements/text/TextCol.md) are content-sized by default.
+Set `width="fill"` at the document boundary when it should occupy the offered width.
 Their horizontal fill alignment allocates content width to children with an
 unspecified or fill width, respecting explicit widths and min/max limits.
-Use `width="fit"` for a compact panel or label. Heights remain content-sized.
+Use a child's `align-self="start"` for a compact panel or label within a fill-aligned
+container. Heights remain content-sized.
 
 ```jsx
 <Svg width={px(400)}>
-  <TextBox padding={em(1)}>
+  <TextBox width="fill" padding={em(1)}>
     <TextCol gap={0}>
       <HStack>
         <Text>Left</Text><Spacer /><Text>Right</Text>
@@ -80,8 +151,8 @@ flex props. See [Stack](./Stack.md) for fill versus hard stretch alignment.
 
 An unsized child with positive grow starts from a zero basis when its stack has
 a finite main-axis budget. Explicit dimensions still supply a basis, and
-`basis="auto"` requests a content-based fallback. A row child's `width="fit"`
-also preserves a measured basis. See [Growth bases](./stack_basis.md).
+`basis="auto"` requests a content-based fallback. Alignment does not select a
+flex basis. See [Growth bases](./stack_basis.md).
 
 ## Layout requests
 

@@ -6,10 +6,18 @@
 - Set a base `font-size` on `Svg`, then prefer ems for descendant typography,
   padding, gaps, and scalable details. `Plot` and `Slide` have their own font
   defaults; set `font-size={em(1)}` when they should follow that base.
-- `Box`, `Frame`, and ordinary stacks normally hug content. `TextBox`,
-  `TextFrame`, and `TextCol` fill the offered width. `width="fit"` opts out of
-  that fill policy. `width="fill"` uses an offer; `width={1}` requires an
-  established parent width. Neither policy is a general length unit.
+- Boxes, frames, stacks, `TextBox`, `TextFrame`, and `TextCol` are content-sized
+  by default. Use `width="fill"` or `height="fill"` only to occupy an offer;
+  `width={1}` requires an established parent width. Fill is not a length unit.
+  Use `align-self` for a child to opt out of parent fill, and `basis="auto"`
+  for content-based flex growth. There is no content-sizing keyword.
+- Whole standalone formulas shrink automatically when needed; inline formulas
+  and nested atoms keep their normal scale. `fit={false}` disables this behavior.
+  Put `fit` directly on a fixed composition to measure naturally and
+  shrink the complete drawing when needed. It hugs the scaled result; ordinary
+  text still reflows unless fitting is requested. `fit="contain"` also enlarges;
+  `fit="cover"` fills and crops. No fitting wrapper is needed. Authored dimensions
+  describe the natural drawing; host offers and maxima bound the fitted result.
 - A `Box` contains one element. Wrap siblings in `HStack`, `VStack`, or `Group`.
   Use `padding`, `border-width`, `border-color`, `radius`, and `background` for
   its decoration. `fill` and `stroke` instead inherit to child shapes. `Text`
@@ -22,7 +30,7 @@
 - Every element accepts `aspect` as preferred allocated width divided by height.
   One established dimension derives the other; naturally sized content grows
   its allocation to the ratio. Two exact dimensions and conflicting limits take
-  precedence. Aspect does not scale fonts or drawings. Use `Fit` for uniform
+  precedence. Aspect does not scale fonts or drawings. Use `fit` for uniform
   scaling. `TitleFrame frame-aspect={1}` makes the bordered body square;
   ordinary `aspect` includes its raised title. The boxed title defaults to
   centered placement and inherited, normally non-bold text.

@@ -1,5 +1,5 @@
 // Shared relation columns, paired equations, gathered lines, and multiline limits.
-<Box width={px(740)} font-size={px(30)} padding={em(0.8)}>
+<Box font-size={px(30)} padding={em(0.8)}>
   <VStack gap={em(0.8)} align="start">
     <Text font-size={em(0.7)} font-weight={700}>Align on the relation</Text>
     <Latex>

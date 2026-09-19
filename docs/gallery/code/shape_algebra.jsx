@@ -28,7 +28,6 @@ const Matrix = ({ colors }) => (
 return (
   <TitleFrame
     font-size={px(34)}
-    frame-aspect={1}
     title="Shape Algebra"
     title-font-size={em(0.6)}
     padding={em(0.7)}
@@ -36,16 +35,18 @@ return (
     radius={em(0.4)}
     align="center"
   >
-    <VStack width="fill" gap={em(0.8)} align="center">
+    <VStack gap={em(0.8)} align="center">
       <MathText style="display">
         <SupSub sup={String.raw`\infty`} sub="n=1">
           <MathOp>{String.raw`\sum`}</MathOp>
         </SupSub>
         <Frac>
-          1<SupSub sup="n">2</SupSub>
+          1
+          <SupSub sup="n">2</SupSub>
         </Frac>
         =
-        <HalfSquare />= 1
+        <HalfSquare />
+        = 1
       </MathText>
       <MathText style="display">
         r =

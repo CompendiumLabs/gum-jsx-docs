@@ -99,7 +99,7 @@ function prepareTopicPage(text: string, code: string): string {
 }
 
 // Guides belong with the reference; the remaining topics are visual examples.
-const guideNames = ['Gum', 'JSX', 'Units', 'Sizing', 'Style', 'Themes', 'CLI',
+const guideNames = ['Gum', 'JSX', 'Units', 'Sizing', 'Fitting', 'Style', 'Themes', 'CLI',
   'Stack', 'PointValues', 'Coordinates', 'Rendering', 'CustomElements', 'Fonts',
   'MathHelpers', 'Arrays', 'Vectors', 'Colors', 'Random', 'Math', 'MathFonts', 'MathExport']
 

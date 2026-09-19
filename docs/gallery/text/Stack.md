@@ -13,13 +13,16 @@ elements, not bare strings.
 | Stack prop | Default | Meaning |
 |---|---|---|
 | `gap` | `0` | Length between adjacent children, with no outside gap |
+| `wrap` | `false` | HStack only: break into rows at the offered width |
+| `line-gap` | `gap` | Vertical space between wrapped rows |
 | `align` | `"start"` | Cross-axis positioning; "start", "center", "end", "fill", "stretch", or 0–1 |
 | `justify` | `"start"` | Main-axis positioning; "start", "center", "end", or 0–1 |
 | `justify` | — | Also "space_between", "space_around", or "space_evenly" |
 | `width` / `height` and limits | — | Common sizing of the stack's frame |
 
 **HStack** additionally supports `align="baseline"`. Use a single alignment value
-for stacks; per-axis alignment objects and tuples belong to **Box**/**Fit**.
+for a stack's `align`. A child's `align-self` may also use an object or tuple;
+the stack reads only the cross axis, inheriting omitted axes from its own alignment.
 
 ## Per-child alignment
 
@@ -41,12 +44,12 @@ the wrapping **Box**, **Frame**, or nested stack when that is the direct child. 
 **TextCol**, and **TextStack** use the same rules for their element children.
 
 `align="fill"` allocates the shared cross-axis size only to automatically sized
-children. It respects explicit dimensions, `width="fit"`, and min/max limits;
+children. It respects explicit dimensions, child alignment overrides, and min/max limits;
 any remaining cross-axis space stays at the end. `align="stretch"` imposes the
 shared size even on explicitly sized or bounded children. **TextCol** defaults
-to fill alignment and fills its own offered width. A child's own `width="fill"`
+to fill alignment, but measures its own width from content. A child's own `width="fill"`
 still occupies an available width even when `align-self` opts out of the parent's
-allocation; combine `width="fit"` with `align-self="end"` for a compact panel.
+allocation; omit that width and use `align-self="end"` for a compact panel.
 
 ## Explicit flex
 
@@ -73,9 +76,9 @@ The basis is selected before distribution:
 4. Without such a budget, or with omitted/zero growth, measure the child's content.
 
 `basis="auto"` skips the zero fallback: use the explicit main-axis dimension or
-measure content. A row child's `width="fit"` also preserves a measured basis;
-`width="fill"` supplies no fixed basis. Explicit length bases still override fit.
-Grow can enlarge a fitted child's final allocation beyond that starting width.
+measure content. `width="fill"` supplies no fixed basis. Explicit length bases
+take precedence; alignment does not choose a basis. Grow can enlarge a child's
+final allocation beyond its measured starting width.
 
 `grow={1}` alone therefore gives unsized children equal shares of the space after
 gaps and fixed items, subject to limits. With `basis="auto"`, equal grow weights
@@ -91,6 +94,15 @@ a child's fractional width, basis, or limit refers to the stack length left afte
 gaps, so `width={0.5}` twice tiles a row exactly whatever the gap. A fractional
 `gap` still refers to the full stack length, and cross-axis fractions are unchanged.
 Fractional widths/bases/gaps require definite references.
+
+With `wrap`, **HStack** uses the offered width as a percentage reference and chooses row breaks
+using these same bases and limits. Each row reserves its own gaps and distributes
+flex space independently. Supply a `basis` or `min-width` for growing cards to
+control where they wrap. The stack's height follows the resulting rows; with
+no finite width offer, wrapping leaves one natural row. Without explicit fill or
+growth, its width hugs the widest row instead of retaining the entire offer.
+**TextRow** and horizontal
+**TextStack** support the same options.
 
 Put flex on a wrapping **Box**, **Frame**, or nested stack when that wrapper is the
 direct child. Flex props do not inherit or pass through wrappers.

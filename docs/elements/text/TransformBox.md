@@ -16,7 +16,7 @@ the local origin. `resize=false` keeps the original frame and reports overflow.
 Exact allocations override wrapper size and center the transformed bounds in
 that frame. The finished geometry, including
 fonts and strokes, is transformed. [Rotate](./Rotate.md) provides angles and
-[Fit](./Fit.md) fits content into an offer.
+[fitting](../../gallery/text/Sizing.md#fitting) fits content into an offer.
 
 Named vertical guides, including baseline and math axis, transform when `b` is
 zero and a horizontal line stays horizontal. A transform that tilts those lines

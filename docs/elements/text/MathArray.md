@@ -40,7 +40,7 @@ row still reserves its strut.
 Cells keep their natural size. Width offers do not wrap or shrink the table;
 small exact allocations report overflow. For wrapping prose cells, give
 [Text](Text.md) a width; give figures and plots explicit dimensions. Use
-[Fit](Fit.md) around the completed table when scaling is intended. A surrounding
+the [fit prop](../../gallery/text/Sizing.md#fitting) on the table when scaling is intended. A surrounding
 [Bracket](Bracket.md) selects delimiters after measuring all cells and rules.
 
 See [matrices and arrays](../../gallery/text/MathArrays.md) and

@@ -1,5 +1,5 @@
 // A list with wrapping items.
-<Box width={px(460)} padding={em(1.875)}>
+<Box padding={em(1.875)}>
   <Bullets
     items={[
       "Measured markers",

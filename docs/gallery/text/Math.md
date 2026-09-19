@@ -67,9 +67,11 @@ Direct JSX uses `limits="auto"`, `limits="always"`, or `limits="never"` on
 `MathOp` or `SupSub`. Generalized fractions preserve requested style, rule
 thickness, and delimiters. Continued fractions reserve the numerator strut.
 
-Width and height allocate a box; they do not scale a formula. Small exact boxes
-retain their glyphs and report overflow. Use [Fit](../../elements/text/Fit.md)
-when uniform scaling is intended. Formula ink inherits `color`; `MathRule` also
+Whole standalone formulas [shrink automatically](./Sizing.md#fitting) to finite
+offers and maximum sizes. Inline formulas and internal TeX allocations keep their
+normal font scale. Set `fit={false}` for unscaled overflow. MathSpacer, MathRule,
+and MathStretch instead obey their allocations; explicit `fit` can scale their
+whole drawing. Formula ink inherits `color`; `MathRule` also
 accepts an explicit `fill`.
 
 Outlines retain ink beyond the logical advance, including italic glyphs and

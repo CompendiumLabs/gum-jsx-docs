@@ -1,5 +1,5 @@
 // A document panel carries its offered width through a column, row, and frame.
-<TextBox width={px(460)} padding={em(1)} background={lightgray}>
+<TextBox padding={em(1)} background={lightgray}>
   <TextCol gap={em(0.75)}>
     <HStack>
       <Text>Left</Text>

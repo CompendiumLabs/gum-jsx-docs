@@ -1,10 +1,10 @@
 // Rows align their children's first baselines; children without guides use their
 // bottom edge. The last row instead stretches every allocation to the text height.
-<TextBox width={px(540)} color={slate} padding={em(1.25)}>
+<TextBox width="fill" color={slate} padding={em(1.25)}>
   <TextCol gap={em(1.375)}>
     <TextCol gap={em(0.5)}>
       <Text font-size={em(0.8125)} color={slate}>BASELINES / independent font sizes</Text>
-      <HStack gap={em(0.875)} align="baseline">
+      <HStack wrap gap={em(0.875)} align="baseline">
         <Text font-size={em(1)}>Small</Text>
         <Text font-size={em(2)} font-weight={bold}>Large</Text>
         <Text font-size={em(1.375)} font-style="italic" color={blue}>Aligned</Text>

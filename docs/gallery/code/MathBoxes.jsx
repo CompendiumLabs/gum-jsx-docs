@@ -1,5 +1,5 @@
 // Invisible dimensions and visible overhang are separate layout choices.
-<Box width={px(730)} font-size={px(32)} padding={em(1)}>
+<Box font-size={px(32)} padding={em(1)}>
   <VStack gap={em(0.9)} align="start">
     <Text font-size={em(0.65)} font-weight={700}>Reserve height without drawing</Text>
     <Latex>

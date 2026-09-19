@@ -55,7 +55,7 @@ blocks can be cells, just as they can be other math operands.
 Arrays keep their natural width under narrow offers. Exact width/height limits
 allocate a box and expose overflow; they do not search for a smaller table.
 Give a prose cell an explicit width to wrap it, or use
-[Fit](../../elements/text/Fit.md) to scale the finished table deliberately.
+[fitting](./Sizing.md#fitting) to scale the finished table deliberately.
 Formula ink may extend beyond the logical advance at outer rules and italic
 glyphs, so retain padding inside an explicit SVG viewport.
 Very tall braces and matrix bars retain the current glyph-scaling fallback;

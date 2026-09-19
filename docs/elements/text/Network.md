@@ -36,7 +36,7 @@ Inferred padding is a fraction of the data span, so it does not reserve a measur
 margin for every label. Use explicit limits or surrounding **Box** padding when
 you need a particular margin. Use explicit limits for nodes inside nested layouts.
 
-Nodes can be inside **Box**, **Fit**, **Rotate**, stacks, or other ordinary layout
+Nodes can be inside **Box**, **Rotate**, stacks, or other ordinary layout
 elements. Network finds their completed connection boundaries through the
 placement tree, including all offsets and transforms. See
 [Connections through layout](../../gallery/text/network_connections.md).

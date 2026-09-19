@@ -71,10 +71,14 @@ requests only on axes established before child measurement. It does not
 uniformly scale content.
 
 Fill uses the established content area too, but allocates only unspecified or
-`width="fill"` dimensions, respecting the child's explicit sizes, `width="fit"`,
+`width="fill"` dimensions, respecting the child's explicit sizes
 and min/max limits. `align={{ x: "fill" }}` fills automatic child widths while
 retaining natural heights. Remaining space stays at the end of a fill-aligned axis.
-The box's own width can independently use `"fill"` or `"fit"`; see [Sizing](../../gallery/text/Sizing.md).
+The child's `align-self` overrides the box's alignment: a scalar or tuple replaces
+both axes, while an object such as `align-self={{ x: "start" }}` overrides only
+that axis. This is separate from the child's own `align`. The box itself is
+content-sized unless a width, height, or parent allocation establishes its size;
+see [Sizing](../../gallery/text/Sizing.md).
 
 Background and border paint are local decoration. `fill` and `stroke` still inherit
 to child shapes; they do not paint the **Box** itself. The border is drawn last.

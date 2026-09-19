@@ -4,6 +4,7 @@ const Panel = ({ theme, background, ...props }) => (
     theme={theme}
     background={background}
     title={`${theme} theme`}
+    min-height={em(20)}
     padding={em(1)}
     {...props}
   >
@@ -18,7 +19,7 @@ const Panel = ({ theme, background, ...props }) => (
   </Slide>
 )
 
-return <HStack gap={em(1)} align="stretch" height={px(300)}>
-  <Panel grow={1} theme="light" background={white} />
-  <Panel grow={1} theme="dark" background={slate} />
+return <HStack wrap gap={em(1)} align="stretch">
+  <Panel grow={1} shrink={1} basis={em(18)} theme="light" background={white} />
+  <Panel grow={1} shrink={1} basis={em(18)} theme="dark" background={slate} />
 </HStack>

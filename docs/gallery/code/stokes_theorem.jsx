@@ -104,8 +104,8 @@ const [meshV1, meshV2, meshV3] = meshV.map(iso_u)
 const normals = normalPoints.map(normal_arrow)
 const tangents = linspace(0, 1, tangentCount, false).map(tangent_arrow)
 
-const SurfaceDiagram = () => (
-  <Group width={px(460)} height={px(460)}>
+const SurfaceDiagram = (props) => (
+  <Group aspect={1} {...props}>
     <Spline
       closed
       points={boundary}
@@ -147,14 +147,14 @@ const SurfaceDiagram = () => (
   </Group>
 )
 return (
-  <Box width={px(1100)} font-size={px(21)} padding={em(1.5)}>
-    <VStack width="fill" gap={em(1.4)}>
+  <Box fit font-size={px(21)} padding={em(1.5)}>
+    <VStack gap={em(1.4)}>
       <Text font-size={em(1.6)} font-weight={bold}>
         Stokes' Theorem
       </Text>
-      <HStack width="fill" gap={em(1.7)} align="center">
-        <SurfaceDiagram />
-        <TextCol width={px(520)} gap={em(1.35)}>
+      <HStack gap={em(1.7)} align="center">
+        <SurfaceDiagram grow={1} shrink={1} basis={em(20)} />
+        <TextCol grow={1} shrink={1} basis={em(22)} gap={em(1.35)}>
           <TextFrame
             padding={em(0.85)}
             radius={em(0.55)}

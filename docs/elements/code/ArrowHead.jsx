@@ -1,6 +1,6 @@
 // Curvature on filled, open, and single-barbed heads, keeping their endpoints fixed.
-<Box padding={em(1.5)}>
-  <HStack gap={em(1.5)}>
+<Box width="fill" padding={em(1.5)}>
+  <HStack wrap gap={em(1.5)}>
     {[0, 0.35, 0.7, 1].map(curve =>
       <VStack gap={em(1)}>
         <Text align-self="center" font-family={mono}>curve={curve}</Text>

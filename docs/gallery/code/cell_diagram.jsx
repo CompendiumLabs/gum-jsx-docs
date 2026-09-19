@@ -228,7 +228,7 @@ const labels = [
 ]
 
 return (
-  <Box padding={em(1.3)}>
+  <Box min-width={em(20)} padding={em(1.3)}>
     <TitleFrame
       title="Anatomy of a Cell"
       title-font-size={em(1.25)}

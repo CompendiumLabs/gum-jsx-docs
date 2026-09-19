@@ -1,5 +1,5 @@
 // Render the same source as SVG, PNG, kitty graphics, a tree, or JSON.
-<TextBox width={px(420)} padding={em(1.25)} background={lightgray}>
+<TextBox width="fill" padding={em(1.25)} background={lightgray}>
   <TextCol gap={em(0.75)}>
     <Text font-size={em(1.5)} font-weight={bold}>One source, several outputs</Text>
     <Rect aspect={3} radius={em(0.5)} fill={blue} stroke={none} />

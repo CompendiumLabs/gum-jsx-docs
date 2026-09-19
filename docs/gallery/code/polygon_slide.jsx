@@ -1,4 +1,4 @@
-// Six regular polygons arranged in two explicit rows.
+// Six regular polygons stay in two content-sized rows of three.
 const shapes = [
   [3, "Triangle"],
   [4, "Square"],
@@ -10,7 +10,7 @@ const shapes = [
 const paint = palette(blue, purple, [3, 8])
 const Cell = ({ n, label }) => (
   <Frame
-    width={px(220)}
+    grow={1} shrink={1} basis={em(10)}
     padding={em(1)}
     radius={em(0.5)}
     background={lightgray}
@@ -28,7 +28,7 @@ const Cell = ({ n, label }) => (
     </VStack>
   </Frame>
 )
-return <Box font-size={px(22)} padding={em(2)}>
+return <Box fit font-size={px(20)} padding={em(1)}>
   <VStack gap={em(1)}>
     <Text font-size={em(1.35)} font-weight={bold}>Simple Regular Polygons</Text>
     <Text>Equal side lengths and equal interior angles, from three sides to eight.</Text>

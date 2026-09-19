@@ -33,12 +33,12 @@ const ScenicArrow = () => (
 )
 const Row = ({ label, children }) => (
   <HStack gap={em(1)} align="center">
-    <Box width={px(310)}>{children}</Box>
+    <Box width={em(7)}>{children}</Box>
     <Text font-size={em(0.625)}>{label}</Text>
   </HStack>
 )
 return (
-  <Box font-size={px(32)} padding={em(0.95)}>
+  <Box fit font-size={px(32)} padding={em(0.95)}>
     <TitleFrame
       title="From A to B"
       title-font-size={em(0.625)}

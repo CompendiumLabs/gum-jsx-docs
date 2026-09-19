@@ -1,6 +1,6 @@
 // A slide combines a mathematical title, a formula, a plot, and inline math in prose.
 return (
-  <Slide
+  <Slide fit
     width={px(960)}
     font-size={px(22)}
     title={

@@ -46,7 +46,7 @@ docs/
 visual-tests/
   code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
-scripts/check.ts      Validate links, coverage, and example rendering
+scripts/check.ts      Validate links, coverage, and rendering at several widths
 prompt/               Maintained Gum authoring and skill prompt pieces
 scripts/skill.ts      Generate the portable skill folder and .skill archive
 ```
@@ -55,6 +55,17 @@ There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
 `/docs` route consumes the catalogs to show SVG cards and editable, live-rendered
 code/figure popups. There are no runtime package dependencies;
 gum-jsx-core and gum-jsx-math are development dependencies for checking examples.
+
+`bun run check` renders all examples with the same 640 × 480 offer used by the
+CLI and previews, then checks 320, 480, 640, and 960px widths with natural height.
+It also exercises Gum Studio's `max_width` / `max_height` wrapper props at five
+landscape and portrait sizes, including 240px-wide and 240px-high previews.
+It checks root allocations and visible overflow before the SVG clip, finite
+geometry, and nonempty plot data areas. Regression checks also preserve comparison
+rows and verify that larger hosts do not widen content-sized figures with empty
+space. Whole-scene `fit` examples are checked in fixed rectangles. Keep viewport
+dimensions in the host, hug compact content, and use fill or wrapping only when
+the composition calls for it.
 
 ## Generate the skill package
 
@@ -107,7 +118,7 @@ rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unz
 ## Elements
 
 - Layout: [Svg](./docs/elements/text/Svg.md), [Box](./docs/elements/text/Box.md),
-  [Frame](./docs/elements/text/Frame.md), [Fit](./docs/elements/text/Fit.md),
+  [Frame](./docs/elements/text/Frame.md), [Fitting](./docs/gallery/text/Fitting.md),
   [HStack](./docs/elements/text/HStack.md), [VStack](./docs/elements/text/VStack.md),
   [Spacer](./docs/elements/text/Spacer.md), and [Group](./docs/elements/text/Group.md).
 - Geometry: [Rect](./docs/elements/text/Rect.md), [RoundedRect](./docs/elements/text/RoundedRect.md),
@@ -206,7 +217,8 @@ bun run typecheck
 ```
 
 The CLI defaults to kitty graphics; use SVG or PNG output on other terminals.
-Every example includes its own **Svg** and uses only the current evaluator's bindings.
+Examples use the current evaluator's bindings and leave the **Svg** viewport to
+the host, except for the **Svg** reference example itself.
 No legacy packages, image files, custom fonts, network fetches, or generated assets
 are required. The check command renders SVG in memory and leaves the checkout unchanged.
 The workspace visual-test command renders every element example, every topic example,

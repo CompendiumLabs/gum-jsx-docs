@@ -1,5 +1,5 @@
 // A sine plot assembled directly from Graph, a mesh, and two axes.
-<Box font-size={px(17)} padding={[px(32), px(54)]}>
+<Box font-size={px(17)} padding={{ left: em(4.5), right: em(2), top: em(2), bottom: em(3) }}>
   <Graph xlim={[0, tau]} ylim={[-1, 1]}>
     <Mesh2D xlim={[0, tau]} ylim={[-1, 1]} xticks={5} yticks={5} opacity={0.15} />
     <HAxis lim={[0, tau]} ticks={5} side="bottom" />

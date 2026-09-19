@@ -1,6 +1,6 @@
 // A small workflow with content-sized nodes and a wrapped label.
-<Box font-size={px(18)} padding={em(1)}>
-  <Network xlim={[-0.6, 3.4]} ylim={[-0.45, 1.55]} stroke={blue} stroke-width={px(2)}>
+<Box min-width={em(17)} font-size={px(18)} padding={em(1)}>
+  <Network aspect={1.8} xlim={[-0.6, 3.4]} ylim={[-0.45, 1.55]} stroke={blue} stroke-width={px(2)}>
     <Edge start="source" end="parse" />
     <Edge start="parse" end="output" />
     <Edge start="parse" end="errors" />

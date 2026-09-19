@@ -26,5 +26,5 @@ An intrinsic aspect is local to this leaf. A [VStack](./VStack.md) containing a
 height, or automatically grow the **Square**. Give the stack a width or choose
 explicit child flex allocation when that relationship matters.
 
-The example allocates a 160 × 80px rectangle to each shape. **Square** remains
+The example allocates a 2:1 rectangle to each shape at the offered width. **Square** remains
 square; **Rect** paints the full allocation. The enclosing **Frame**s reveal the sizes.

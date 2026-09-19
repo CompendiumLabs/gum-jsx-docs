@@ -40,9 +40,9 @@ Its descendants cannot use that offer as a percentage reference. Set the
 container's width explicitly when you need fractional descendants:
 `HStack width={1}` under a fixed-width **Svg** establishes a full-width row.
 `width="fill"` instead establishes the actual offered width, without requiring
-a fraction reference. **TextBox**, **TextFrame**, and **TextCol** default to that
-policy; see [Sizing](./Sizing.md). Neither `"fill"` nor `"fit"` is a length unit,
-so they cannot be used for padding, gaps, heights, or min/max limits.
+a fraction reference. Width and height are content-sized when omitted; see
+[Sizing](./Sizing.md). `"fill"` is not a length unit, so it cannot be used for
+padding, gaps, or min/max limits.
 
 Fractions refer to the established content area, not the space left after
 siblings. A stack deducts its gaps from that area along its main axis, so two

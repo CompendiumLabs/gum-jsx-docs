@@ -1,6 +1,6 @@
-// An explicit column width determines the heights of two different aspect figures.
+// The offered column width determines the heights of two different aspect figures.
 <Box padding={em(1)} background={lightgray}>
-  <VStack width={px(240)}>
+  <VStack>
     <Rect aspect={1} fill={blue} stroke={none} />
     <Rect aspect={2} fill={red} stroke={none} />
   </VStack>

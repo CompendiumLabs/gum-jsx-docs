@@ -1,5 +1,5 @@
 // Text styles compose, math alphabets select glyphs, and macros stay local.
-<Box width={px(740)} font-size={px(31)} padding={em(0.8)}>
+<Box font-size={px(31)} padding={em(0.8)}>
   <VStack gap={em(0.8)} align="start">
     <Text font-size={em(0.65)} font-weight={700}>Math alphabets and bold symbols</Text>
     <Latex>

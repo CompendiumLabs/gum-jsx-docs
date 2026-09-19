@@ -1,9 +1,9 @@
 // Tex: The inline-style convenience for a complete formula.
 <Box font-size={px(32)} padding={em(0.65)}>
-  <HStack gap={em(0.5)} align="baseline">
-    <Text>For</Text>
+  <Text>
+    {"For "}
     <Tex>a+b=c</Tex>
-    <Text>we have</Text>
+    {" we have "}
     <Tex>c-b=a</Tex>
-  </HStack>
+  </Text>
 </Box>

@@ -60,7 +60,7 @@ override any built-in constant for an evaluation.
 
 Pixel strokes remain the same thickness when shapes are laid out at new sizes.
 An em stroke follows the local font size. A fractional stroke follows the shape's
-shorter side. An explicit [Fit](../../elements/text/Fit.md) scales the completed stroke with everything
+shorter side. Explicit [fitting](./Sizing.md#fitting) scales the completed stroke with everything
 else in its child.
 
 Dash lengths resolve like stroke widths: pixels stay fixed, em follows font size,

@@ -10,7 +10,6 @@ const Label = ({ x, y, children, color = slate }) => (
     x={x}
     y={y}
     anchor="center"
-    width="fit"
     background={white}
     padding={em(0.35)}
     color={color}
@@ -20,13 +19,12 @@ const Label = ({ x, y, children, color = slate }) => (
   </TextBox>
 )
 return (
-  <Box width={px(960)} font-size={px(19)} padding={em(1.6)}>
-    <VStack width="fill" gap={em(1.25)}>
+  <Box fit width={px(960)} font-size={px(19)} padding={em(1.6)}>
+    <VStack gap={em(1.25)}>
       <Text font-size={em(1.7)} font-weight={bold}>
         Macroeconomic Flows
       </Text>
       <Network
-        width="fill"
         height={px(460)}
         xlim={[0, 1.6]}
         ylim={[0, 0.9]}

@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `width` | `"fill"` | Occupy available width; `"fit"` measures content; lengths set an explicit width |
+| `width` | Content-sized | `"fill"` occupies available width; lengths set an explicit width |
 | `text` | — | String converted to the single **Text** child |
 | `padding` | `em(0.6)` | Length or [Box padding shorthand](./Box.md) |
 | `border-width` | `px(1)` | Border thickness inside the frame |
@@ -19,7 +19,7 @@ Other props follow [Box](./Box.md). **TextFrame** adds a 1px border. **Text** re
 the allocated width while font size remains fixed; existing **Element**s are
 retained.
 
-Like [TextBox](./TextBox.md), the frame fills an offered width and passes its
-content width through padding and border to automatically sized children.
-Explicit child widths, `width="fit"`, and min/max limits are respected.
-Use `width="fit"` for a compact frame; with no width offer, content determines its size.
+Like [TextBox](./TextBox.md), the frame measures its content by default. Set
+`width="fill"` to occupy an offered width. It passes an established content width
+through padding and border to automatically sized children, respecting their
+explicit widths and min/max limits. `align-self="start"` keeps a child compact.

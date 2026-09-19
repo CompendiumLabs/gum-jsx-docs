@@ -1,8 +1,9 @@
 # One paragraph, two widths
 *Category*: text
 
-Both columns query the same styled **Text** description, at widths of 408px and
-224px. The font remains 18px while line breaks and measured heights change.
+Both columns query the same styled **Text** description at different fractions
+of the host's width. Below 600px they stack vertically. The font remains 18px
+while line breaks and measured heights change.
 The layout pass reuses prepared glyph measurements across those allocations.
 
 The custom parent draws outlines around the measured paragraph boxes. Compare

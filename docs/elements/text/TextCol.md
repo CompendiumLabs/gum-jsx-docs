@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `width` | `"fill"` | Occupy available width; `"fit"` measures content; lengths set an explicit width |
+| `width` | Content-sized | `"fill"` occupies available width; lengths set an explicit width |
 | `gap` | `em(0.6)` | Space between adjacent children |
 | `align` | `"fill"` | Fill automatic child widths while respecting explicit sizes and limits |
 | `justify` | `"start"` | Vertical packing and distributed spacing |
@@ -20,11 +20,11 @@ do not add automatic flex weights, scaling, or a separate text scale. Specify
 grow/shrink/basis for flexible content.
 **Element** children can override horizontal alignment with `align-self`; for example,
 `align-self="end"` opts out of the default fill allocation and aligns at the right edge.
-A child with its own `width="fill"` still fills the offer; use `width="fit"`
-as well for a compact document component aligned at the edge.
+A child with its own `width="fill"` still fills the offer; omit that width
+for a compact document component aligned at the edge.
 
-Without a width offer, the column measures its content and selects a shared width.
-`width="fit"` also keeps the column content-sized under an available offer.
-Explicit child widths and `width="fit"` opt out of fill alignment; child min/max
+The column measures its content and selects a shared width, reflowing text within
+available offers. Set `width="fill"` to occupy the offer explicitly.
+Explicit child widths and `align-self` opt out of fill alignment; child min/max
 limits constrain fill allocations. Use `align="stretch"` for hard allocations
 that override child widths and limits. Heights retain ordinary stack and flex rules.

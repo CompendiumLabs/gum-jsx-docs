@@ -1,5 +1,5 @@
 // Shapes, small plots, and wrapping text are ordinary operands; plots can carry math labels too.
-const curve = (
+const Curve = props => (
   <Plot
     width={px(150)}
     height={px(72)}
@@ -9,12 +9,13 @@ const curve = (
     xlim={[0, pi]}
     ylim={[0, 1.1]}
     plot-background={lightgray}
+    {...props}
   >
     <SymLine fy={sin} xlim={[0, pi]} stroke={blue} stroke-width={px(2.5)} />
   </Plot>
 )
 return (
-  <Box width={px(760)} font-size={px(30)} padding={em(0.8)}>
+  <Box font-size={px(30)} padding={em(0.8)}>
     <VStack gap={em(0.9)} align="start">
       <Text font-size={em(0.75)} font-weight={700}>Gum elements inside math</Text>
       <MathText style="display">
@@ -24,7 +25,7 @@ return (
         </Frac>
         +
         <Frac>
-          {curve}
+          <Curve />
           <Text width={px(150)} font-size={em(0.6)} text-align="center">
             A wrapping text operand keeps its explicit width.
           </Text>
@@ -41,12 +42,10 @@ return (
           <TextMode>area</TextMode>
         </Sqrt>
       </MathRow>
-      <Text font-size={em(0.6)} color={slate}>Use Fit when a figure should deliberately shrink into a script.</Text>
+      <Text font-size={em(0.6)} color={slate}>Use fit when a figure should deliberately shrink into a script.</Text>
       <SupSub
         sup={
-          <Fit width={px(50)} height={px(24)}>
-            {curve}
-          </Fit>
+          <Curve fit="contain" max-width={px(50)} max-height={px(24)} />
         }
       >
         P
@@ -63,8 +62,9 @@ return (
         }
       >
         <Plot
-          width={px(650)}
-          height={px(270)}
+          width="fill"
+          aspect={2.4}
+          min-height={em(14)}
           font-size={em(0.5)}
           title={
             <Text>

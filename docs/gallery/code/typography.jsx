@@ -1,23 +1,26 @@
 // Inspect line boxes and baseline guides using plain drawing/placement records.
 class Specimen extends Element {
   static layout(props, query) {
-    const size = finish_size(make_size(680, 560), query.request, query.sizing)
+    const width = query.request.width.kind === 'natural' ? 680 : query.request.width.value
+    const inner = maximum(0, width - 48)
+    const reference = make_size(width, 0)
     const children = [], draw = []
     let y = 20
     element_children(props.children).forEach((element, index) => {
-      const fragment = query.child(element, make_request({ width: exact(632) }), size, index)
+      const fragment = query.child(element, make_request({ width: exact(inner) }), reference, index)
       children.push(place_fragment(fragment, make_point(24, y)))
       if (index > 0 && index % 2 === 0) {
-        draw.push(draw_rect(make_rect(24, y, 632, fragment.size.height),
+        draw.push(draw_rect(make_rect(24, y, inner, fragment.size.height),
           { fill: lightgray, stroke: none, stroke_width: 0 }))
         for (const line of fragment.children) {
           const baseline = y + line.offset.y + line.fragment.guides.baseline
-          draw.push(draw_rect(make_rect(24, baseline, 632, 0.5),
+          draw.push(draw_rect(make_rect(24, baseline, inner, 0.5),
             { fill: blue, stroke: none, stroke_width: 0 }))
         }
       }
       y += fragment.size.height + (index % 2 === 0 ? 24 : 8)
     })
+    const size = finish_size(make_size(width, y + 12), query.request, query.sizing)
     return make_fragment({ size, draw, children })
   }
 }

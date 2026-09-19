@@ -7,8 +7,8 @@ const points = values.map((value, index) => [
 return (
   <Frame padding={em(1.25)} border-color={gray} background={lightgray}>
     <Polyline
-      width={px(320)}
-      height={px(140)}
+      width="fill"
+      aspect={16 / 7}
       points={points}
       fill={none}
       stroke={blue}

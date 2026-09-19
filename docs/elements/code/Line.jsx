@@ -3,7 +3,7 @@ const Rule = ({ cap, color }) => (
   <HStack gap={em(1)} align="center">
     <Text width={px(64)}>{cap}</Text>
     <Line
-      width={px(240)}
+      grow={1}
       height={px(24)}
       from={[0.05, 0.5]}
       to={[0.95, 0.5]}

@@ -15,7 +15,7 @@ const Band = ({ title, children }) => (
   </TextCol>
 )
 return (
-  <TextBox width={px(680)} padding={em(1.75)} background={lightgray} color={slate}>
+  <TextBox width="fill" padding={em(1.75)} background={lightgray} color={slate}>
     <TextCol gap={em(1.25)}>
       <Text font-family={mono} font-size={em(0.875)} color={blue}>ALLOCATION / 05</Text>
       <Text font-size={em(1.875)} font-weight={bold}>Allocation is a choice</Text>

@@ -12,9 +12,10 @@ describe the elements, layout rules, and rendering APIs.
 3. Arrange content with [TextCol](../../elements/text/TextCol.md), [HStack](../../elements/text/HStack.md), or [Group](../../elements/text/Group.md).
 4. Add [shapes](../../elements/text/Rect.md) and [Text](../../elements/text/Text.md).
 
-**TextBox**, **TextFrame**, and **TextCol** fill available width and pass it to
-automatically sized content. Explicit child widths are respected. Use
-`width="fit"` for a compact document component. [Box](../../elements/text/Box.md),
+**TextBox**, **TextFrame**, and **TextCol** are content-sized by default. Use
+`width="fill"` when a document should occupy the available width; established
+widths pass to automatically sized content, respecting explicit child sizes.
+[Box](../../elements/text/Box.md),
 [Frame](../../elements/text/Frame.md), and [VStack](../../elements/text/VStack.md)
 provide primitives that size to their content by default.
 
@@ -29,8 +30,9 @@ it needs no imports when evaluated by the Gum CLI.
 - Stack growth and shrinkage are explicit. A column can measure aspect figures
   from a supplied width, but does not infer a shared width from their combined
   height. See [Sizing](./Sizing.md) and [Stack](./Stack.md).
-- **Text** keeps its font size during layout. [Fit](../../elements/text/Fit.md) is the explicit operation
-  that scales an entire drawing, including its glyphs and strokes.
+- **Text** keeps its font size during layout. Standalone formulas shrink when
+  needed. Put [fit](./Sizing.md#fitting) on a composed drawing to scale it as a
+  whole, including its glyphs and strokes.
 
 There is no browser DOM or React runtime behind these elements. JSX constructs
 immutable descriptions; a layout pass creates geometry; SVG rendering serializes

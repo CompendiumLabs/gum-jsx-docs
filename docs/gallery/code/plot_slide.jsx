@@ -1,5 +1,5 @@
 // A slide composes a measured title, figure, and caption at a stable type scale.
-<Slide aspect={1.5} title="From samples to a figure">
+<Slide width="fill" min-height={em(22)} aspect={1.5} title="From samples to a figure">
   <Plot
     grow={1}
     width={0.9}

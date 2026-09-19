@@ -1,6 +1,6 @@
 // A slide composes a measured title, figure, and caption at a stable type scale.
 return (
-  <Slide title="From samples to a figure">
+  <Slide width="fill" min-height={em(22)} title="From samples to a figure">
     <TextFigure
       caption="A common sampler supports scalar functions and parametric curves."
       caption-color={blue}

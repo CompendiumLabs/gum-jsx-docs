@@ -29,8 +29,21 @@ Overflow is still retained in the fragment for inspection.
 | `background` | `none` | Explicit viewport paint; independent of the theme |
 | `width` / `height` | Natural | Preferred viewport dimensions; explicit values require `px()` |
 | `aspect` | — | Preferred viewport width/height ratio |
-| `min-width` / `max-width`, `min-height` / `max-height` | — | Own size limits |
+| `min-width` / `min-height` | — | Minimum viewport dimensions |
+| `max-width` / `max-height` | — | Maximum viewport dimensions; uniformly shrink overflowing content on hugging axes |
 | Typography and paint | Inherited | Style inherited by content |
+
+On an unspecified axis, a maximum first provides a layout offer. Text reflows at
+the offered width; if the resulting figure exceeds either maximum, **Svg** scales
+the complete figure down uniformly. Width and height shrink together, including
+fonts, strokes, and reserved outsets. Smaller figures keep their natural sizes.
+This is the bounded-preview policy used by Gum Studio; it does not change the
+allocation-only meaning of max props on ordinary elements.
+
+An explicit width or height, including an exact parent request, keeps that axis's
+allocation and clipping behavior. Advisory `available(...)` requests without max
+props do not scale anything. A width-only document therefore reflows and grows
+naturally in height.
 
 An explicit `aspect` uses the common sizing rules. `width={px(320)} aspect={2}`
 creates a 320×160 viewport before laying out its content. With neither dimension

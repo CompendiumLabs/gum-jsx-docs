@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `width` | `"fill"` | Occupy available width; `"fit"` measures content; lengths set an explicit width |
+| `width` | Content-sized | `"fill"` occupies available width; lengths set an explicit width |
 | `text` | — | String converted to the single **Text** child |
 | `padding` | `em(0.6)` | Length or [Box padding shorthand](./Box.md) |
 | `border-width` | `px(0)` | Border thickness inside the frame |
@@ -19,10 +19,11 @@ Other props follow [Box](./Box.md). **TextFrame** adds a 1px border. **Text** re
 the allocated width while font size remains fixed; existing **Element**s are
 retained.
 
-The panel fills its offered width, including padding and border, and fills its
-child's unspecified width inside that content area. Explicit child widths,
-`width="fit"`, and min/max limits are respected. With no width offer, the panel
-measures its content. Height remains content-sized.
+The panel measures its content, including padding and border. Use `width="fill"`
+when it should occupy the offered width. Within an established content area,
+its child's unspecified width fills by default. Explicit child widths and min/max
+limits are respected; `align-self="start"` keeps a child compact. Height remains
+content-sized.
 
 Use **TextCol** for multiple block children. A single element inside JSX fragments
 or conditional children is preserved. Mixed strings, **Span**s, and formulas

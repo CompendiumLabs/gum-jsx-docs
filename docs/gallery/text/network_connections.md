@@ -7,6 +7,10 @@ nodes. The example fits one Node inside a larger allocation, pads another, and
 rotates a third. Debug outlines show the allocations; the arrows meet the actual
 node borders inside them.
 
+The network's aspect keeps a tall preview from stretching the routes excessively.
+A minimum width reserves space for its labels; smaller bounded previews scale
+the completed diagram down.
+
 Put positioning props on each outer wrapper. The Node's `id` stays on the framed
 label inside it. Explicit network limits make these nested layouts' positions
 independent of coordinate inference.

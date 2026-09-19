@@ -79,6 +79,23 @@ in any layout. Use layout_element for the same wrapping and layout without
 serialization, for example to inspect or rasterize the fragment, and
 make_viewport for the wrapping step alone.
 
+For a bounded preview, as in Gum Studio, pass maxima on the generated viewport:
+
+```ts
+import { px, render_element } from 'gum-jsx-core'
+
+const result = render_element(element, {
+  wrap: { max_width: px(640), max_height: px(480) },
+})
+```
+
+The content lays out using those offers first. If its measured size exceeds a
+maximum, the viewport uniformly shrinks the whole drawing so both dimensions
+fit; it does not simply crop the bottom. This includes fonts and strokes. With
+only a width and no height maximum, text can still grow naturally in height.
+Use an exact request for a fixed allocation, or advisory requests without maxima
+when overflow beyond the offered size is acceptable.
+
 ## Requests and results
 
 pass.layout accepts an optional LayoutRequest. natural means no size offer,

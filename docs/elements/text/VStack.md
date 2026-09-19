@@ -30,9 +30,10 @@ see [Sizing](../../gallery/text/Sizing.md).
 
 ## Choose the sizing information
 
-For the attached example, the author wants 500px of total height from **Rect**
-aspects 1 and 2. With no gap, H = W/1 + W/2, so the chosen column width is 1000/3.
-Both figures receive that width and their heights follow.
+The attached example fills the offered width. Both **Rect** figures receive that
+width and their heights follow their aspects, 1 and 2. With no gap,
+H = W/1 + W/2. For a desired total height of 500px, the host can offer a width
+of 1000/3; the source needs no fixed pixel dimensions.
 
 Alternatively, `grow={2}` and `grow={1}` on children without explicit heights
 divide a 500px height budget into the needed 2:1 proportions. Those weights are a
@@ -44,7 +45,7 @@ when none are specified. Without a height budget, grow retains natural measureme
 
 **Text** does not grow its font to occupy a height allocation. Exact height can
 leave space around its normal-sized lines or report overflow if they do not fit.
-Use **Fit** only when scaling the whole result is the goal.
+Use `fit` on the stack only when scaling the whole result is the goal.
 
 ## Alignment
 
@@ -53,7 +54,7 @@ are start. A direct child's `align-self` overrides the stack's align, accepting
 start, center, end, fill, stretch, or 0–1. Omitted values use the parent's align.
 Stretch imposes the selected shared width, which can trigger text reflow.
 Fill allocates that width only to unspecified or fill-width children, respecting
-explicit widths, `width="fit"`, and min/max limits.
+explicit widths, child alignment overrides, and min/max limits.
 Child containers' own align values continue to position their
 contents. **VStack** does not accept baseline alignment, including via `align-self`.
 

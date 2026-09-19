@@ -8,19 +8,19 @@ const messages = [
 ]
 const Window = ({ title, children, ...props }) => (
   <Frame radius={em(0.45)} background={white} border-color={darkgray} clip {...props}>
-    <VStack width="fill">
+    <VStack>
       <TextBox width="fill" padding={em(0.5)} background={gray} font-weight={bold}>
         {title}
       </TextBox>
       <HLine height={0} stroke={darkgray} />
-      <Box width="fill" padding={em(0.5)}>
+      <Box padding={em(0.5)}>
         {children}
       </Box>
     </VStack>
   </Frame>
 )
 return (
-  <Box width={px(900)} height={px(600)} font-size={px(18)} padding={em(1.1)}>
+  <Box fit width={px(900)} height={px(600)} font-size={px(18)} padding={em(1.1)}>
     <Frame radius={em(0.85)} clip border-width={px(2)} background={lightgray}>
       <Group>
         <Graph>
@@ -28,7 +28,6 @@ return (
         </Graph>
         <Window title="Data Viz" x={px(55)} y={px(175)} width={px(570)}>
           <Plot
-            width="fill"
             height={px(260)}
             title="Sine Wave"
             xlim={[0, tau]}
@@ -40,8 +39,8 @@ return (
         </Window>
         <VStack x={px(540)} y={px(35)} width={px(285)} gap={em(1)}>
           {messages.map(({ title, body }) => (
-            <Window title={title} width="fill">
-              <Text width="fill">{body}</Text>
+            <Window title={title}>
+              <Text>{body}</Text>
             </Window>
           ))}
         </VStack>

@@ -1,19 +1,17 @@
 // Square preserves square geometry inside a nonsquare allocation; Rect fills it.
 <Box padding={em(1.25)} background={lightgray}>
   <HStack gap={em(1.25)}>
-    <VStack gap={em(0.5)}>
+    <VStack grow={1} gap={em(0.5)}>
       <Text>Square</Text>
       <Frame padding={em(0.5)} border-color={darkgray}>
-        <Square width={px(160)} height={px(80)} fill={blue} stroke={none} />
+        <Square aspect={2} fill={blue} stroke={none} />
       </Frame>
     </VStack>
-    <VStack gap={em(0.5)}>
-      <Text>Rect, aspect = 1</Text>
+    <VStack grow={1} gap={em(0.5)}>
+      <Text>Rect</Text>
       <Frame padding={em(0.5)} border-color={darkgray}>
         <Rect
-          width={px(160)}
-          height={px(80)}
-          aspect={1}
+          aspect={2}
           fill={red}
           stroke={none}
         />

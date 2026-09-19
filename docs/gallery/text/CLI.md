@@ -22,6 +22,7 @@ gum --help
 | -o, --output | Output filename instead of stdout |
 | -W, --width | Exact viewport width in pixels |
 | -H, --height | Exact viewport height in pixels |
+| --natural | Disable the default 640 × 480 offer for JSX |
 | --ratio | Positive PNG/kitty sampling ratio; default 1 |
 | --select | PNG/kitty crop as `x,y,width,height` in source-image pixels |
 | --background | Viewport background paint |
@@ -43,8 +44,12 @@ nested themes still apply. Themes leave backgrounds transparent. `--background`
 paints a backdrop at render time, behind any explicit source backgrounds.
 See [Themes](./Themes.md).
 
-Viewport overrides are independent. Omitted axes use source dimensions or hug
-content; overriding width does not uniformly scale fonts and strokes.
+With neither viewport override, `gum` offers 640 × 480 pixels. Unsized canvases
+use this budget, explicit source dimensions still win, and content may hug or
+grow beyond the offer. Use `--natural` for unbounded intrinsic measurement.
+Viewport overrides are independent: when either is supplied, the other axis
+uses source dimensions or hugs content. `-W 320` reflows a document without
+fixing its height. Overriding width does not uniformly scale fonts and strokes.
 The sampling ratio changes raster resolution without changing layout.
 For example, `--select 100,50,200,100 --ratio 3` renders a 200-by-100-pixel
 region starting at `(100, 50)` as a 600-by-300 PNG. Coordinates start at the
@@ -92,7 +97,8 @@ Use `--` before a formula starting with a dash. `-s` sets font size in pixels
 `--macro` definitions use command=expansion, such as `'\RR=\mathbb{R}'`.
 
 The natural viewport includes the logical formula box and visible overhang.
-An empty axis has a one-pixel floor. `-W` and `-H` alone clip at the original
-font size; `--fit` explicitly scales to those dimensions. `--ratio` changes
+An empty axis has a one-pixel floor. `-W` and `-H` shrink the formula when needed;
+`--fit` also permits enlargement, and `--no-fit` clips at the original font size.
+`--ratio` changes
 only raster sampling. See [standalone exports](MathExport.md) for the matching
 library API and [math authoring](Math.md) for supported formulas.

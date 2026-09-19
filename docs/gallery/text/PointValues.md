@@ -18,7 +18,7 @@ both forms in one list. Each tuple must contain exactly two coordinates.
 | Segment endpoints | `segments={[[[0, 0], [1, 1]], [[0, 1], [1, 0]]]}` |
 | Paired radius or `point-size` | **Rect**/**Box** corners, **Ellipse**/**Arc** radii, and **Points** marker dimensions |
 | **Field** samples | `vectors={[{point: [0, 0], vector: [1, 2]}]}` |
-| **Anchor** and alignment pairs | `anchor={[1, 0.5]}`, **Box**/**Fit**/**Anchor** `align`, and **Rotate** `origin` |
+| **Anchor** and alignment pairs | `anchor={[1, 0.5]}`, **Box**/**Anchor** `align`, `fit-align`, and **Rotate** `origin` |
 | Numeric helper inputs | Vector arithmetic, `spline2d` and path builders, `point_bounds`, `map_point`/`unmap_point`, drawing centers/radii, and placement offsets |
 
 The representation does not change coordinate units. Primitive shapes use local

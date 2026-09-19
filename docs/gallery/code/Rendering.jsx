@@ -2,8 +2,8 @@
 const Stage = ({ label, color, debug }) => (
   <TextFrame
     debug={debug}
-    width={px(120)}
-    padding={em(0.875)}
+    grow={1}
+    padding={em(0.4)}
     border-color={color}
     background={white}
     radius={em(0.5)}

@@ -1,5 +1,5 @@
 // Accents, wide shapes, brace labels, and arrows share the surrounding math context.
-<Box width={px(760)} font-size={px(32)} padding={em(0.8)}>
+<Box font-size={px(32)} padding={em(0.8)}>
   <VStack gap={em(0.8)} align="start">
     <Text font-size={em(0.65)} font-weight={700}>Accents and scripts</Text>
     <Latex>

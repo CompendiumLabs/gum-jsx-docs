@@ -1,11 +1,11 @@
 // Equal flexible columns give a figure and a wrapping explanation the same allocation.
-<TextBox width={px(720)} padding={em(1.75)} background={lightgray} color={slate}>
+<TextBox fit padding={em(1.75)} background={lightgray} color={slate}>
   <TextCol gap={em(1.25)}>
     <Text font-family={mono} font-size={em(0.875)} color={blue}>LAYOUT / 01</Text>
     <Text font-size={em(1.875)} font-weight={bold}>A figure beside its explanation</Text>
     <HStack gap={em(1.5)}>
       <TextFrame
-        grow={1}
+        grow={1} shrink={1} basis={em(16)}
         padding={em(1.25)}
         radius={em(0.75)}
         border-color={gray}
@@ -36,9 +36,9 @@
           <Text font-size={em(0.875)} color={slate}>Fixed heights, flexible widths.</Text>
         </TextCol>
       </TextFrame>
-      <TextCol grow={1} gap={em(0.875)}>
+      <TextCol grow={1} shrink={1} basis={em(16)} gap={em(0.875)}>
         <Text font-size={em(1.5)} font-weight={bold}>Two columns, one allocation</Text>
-        <Text font-size={em(1.125)} line-height={em(1.4)}>Both columns start with a zero basis and grow equally into the remaining row width.</Text>
+        <Text font-size={em(1.125)} line-height={em(1.4)}>Both columns grow equally from a preferred width. The figure and its explanation stay side by side.</Text>
         <Text font-size={em(1.125)} line-height={em(1.4)}>The paragraph reflows. The bars keep their heights. Nothing needs to infer a combined aspect ratio.</Text>
         <Text font-size={em(0.875)} color={blue}>Change the canvas width and render again.</Text>
       </TextCol>

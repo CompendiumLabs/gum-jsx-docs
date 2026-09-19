@@ -9,8 +9,8 @@ const Family = ({ name, color }) => (
   </VStack>
 )
 return (
-  <Box padding={em(1.5)} background={lightgray}>
-    <HStack gap={em(2.25)}>
+  <Box fit padding={em(1.5)} background={lightgray}>
+    <HStack gap={em(1)}>
       <Family name={sans} color={blue} />
       <Family name={mono} color={red} />
     </HStack>

@@ -1,30 +1,25 @@
 // Compare a title enlarged by contain with the same title kept at its original size.
 <Box padding={em(1.25)} background={lightgray}>
   <HStack gap={em(1.25)}>
-    <VStack gap={em(0.5)}>
+    <VStack grow={1} gap={em(0.5)}>
       <Text font-size={em(0.875)}>contain</Text>
       <Frame
-        width={px(220)}
         height={px(100)}
         padding={em(0.75)}
         border-color={blue}
       >
-        <Fit mode="contain">
-          <Text color={blue}>Size by fitting</Text>
-        </Fit>
+        <Text fit="contain" color={blue}>Size by fitting</Text>
       </Frame>
     </VStack>
-    <VStack gap={em(0.5)}>
-      <Text font-size={em(0.875)}>scale_down</Text>
+    <VStack grow={1} gap={em(0.5)}>
+      <Text font-size={em(0.875)}>shrink only</Text>
       <Frame
-        width={px(220)}
+        width="fill"
         height={px(100)}
         padding={em(0.75)}
         border-color={red}
       >
-        <Fit mode="scale_down">
-          <Text color={red}>Size by fitting</Text>
-        </Fit>
+        <Text fit color={red}>Size by fitting</Text>
       </Frame>
     </VStack>
   </HStack>

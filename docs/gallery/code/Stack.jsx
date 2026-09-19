@@ -1,5 +1,5 @@
 // Compare equal flex shares with a naturally sized item and a flexible Spacer.
-<TextBox width={px(480)} padding={em(1.25)} background={lightgray}>
+<TextBox width="fill" padding={em(1.25)} background={lightgray}>
   <TextCol gap={em(0.75)}>
     <Text font-weight={bold}>Equal shares after the gap</Text>
     <HStack height={px(64)} gap={em(0.75)}>

@@ -25,7 +25,7 @@ Supplied title **Element**s retain their own props.
 
 Explicit dimensions or parent offers determine the viewport; natural width is
 480px with a 16:9 height. A single child fills the area below the title, respecting
-its explicit dimensions, `width="fit"`, and min/max limits. A plain **Plot** needs
+its explicit dimensions, `align-self` overrides, and min/max limits. A plain **Plot** needs
 no height calculation; a supplied **TextCol** or **HStack** receives the body
 allocation directly, so its own flex layout can use the remaining space.
 
@@ -41,5 +41,5 @@ Use `grow={1}` on figures that should share the remaining height with text:
 
 For a **TextFigure**, put `grow={1}` on its figure child to leave room for the
 caption. Explicitly oversized content or too much text can still overflow.
-Resizing does not multiply the type scale; use **Fit** for a scaled copy of a
+Resizing does not multiply the type scale; use `fit` for a scaled copy of a
 finished slide.

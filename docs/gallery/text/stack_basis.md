@@ -14,11 +14,11 @@ auto basis instead of a content measurement.
 An explicit `basis` takes precedence over the main-axis dimension. Otherwise,
 an explicit width in a row or height in a column supplies the basis. With neither
 specified, positive growth uses zero under an available or exact main-axis
-request. Natural measurement, omitted or zero growth, `basis="auto"`, and a
-row child's `width="fit"` retain content-based starting sizes. `width="fill"`
+request. Natural measurement, omitted or zero growth, and `basis="auto"`
+retain content-based starting sizes. `width="fill"`
 does not supply a fixed basis.
 
-`width="fit"` preserves a measured starting width; `grow` can still enlarge the
+`basis="auto"` preserves a measured starting width; `grow` can still enlarge the
 final allocation. An explicit `basis={0}` also applies without a finite budget,
 where it can produce a zero allocation with overflowing content.
 

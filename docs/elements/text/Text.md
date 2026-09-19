@@ -4,7 +4,7 @@
 
 **Text** lays out shaped glyphs at a fixed font size. It wraps into lines when given
 a finite width; changing that width reflows the paragraph instead of scaling
-the font. Use [Fit](./Fit.md) only when you intentionally want to scale a finished
+the font. Use [fitting](../../gallery/text/Sizing.md#fitting) only when you intentionally want to scale a finished
 text fragment.
 
 ## Content and formatting

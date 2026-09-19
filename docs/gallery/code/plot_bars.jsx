@@ -9,6 +9,7 @@
   padding={0.025}
   bar-width={0.7}
   xticks={enumerate(["North", "East", "Central", "South", "West"])}
+  xaxis-label-font-size={em(0.8)}
   styles={(value) => ({
     fill: value < 0 ? red : blue,
     radius: value < 0 ? {'b': em(0.25)} : {'t': em(0.25)},

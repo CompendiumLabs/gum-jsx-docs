@@ -1,6 +1,6 @@
 // A padded content box with independent background and inside border paint.
 <Box
-  width={px(380)}
+  width="fill"
   padding={{ left: em(1.5), right: em(1.5), top: em(1), bottom: em(1) }}
   background={lightgray}
   border-width={px(2)}

@@ -1,12 +1,12 @@
 // Ellipses use independent radii along the allocated width and height.
 <Box padding={em(1.25)} background={lightgray}>
   <HStack gap={em(1.25)} align="center">
-    <Ellipse width={px(160)} height={px(80)} fill={blue} stroke={none} />
-    <Ellipse width={px(80)} height={px(120)} fill={red} stroke={none} />
+    <Ellipse grow={2} aspect={2} fill={blue} stroke={none} />
+    <Ellipse grow={1} aspect={2 / 3} fill={red} stroke={none} />
     <Ellipse
-      width={px(160)}
-      height={px(96)}
-      radius={[0.4, px(24)]}
+      grow={2}
+      aspect={5 / 3}
+      radius={[0.4, 0.25]}
       fill={green}
       stroke={none}
     />

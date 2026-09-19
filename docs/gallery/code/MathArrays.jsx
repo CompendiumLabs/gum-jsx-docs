@@ -1,5 +1,5 @@
 // Matrices, cases, small inline arrays, and matrices containing ordinary Gum elements.
-<Box width={px(740)} font-size={px(30)} padding={em(0.8)}>
+<Box font-size={px(30)} padding={em(0.8)}>
   <VStack gap={em(0.8)} align="start">
     <Text font-size={em(0.7)} font-weight={700}>Matrices and unequal cells</Text>
     <Latex>
@@ -24,7 +24,7 @@
         \end{cases}
       `}
     </Latex>
-    <Text width={px(650)} font-size={em(0.65)}>
+    <Text font-size={em(0.65)}>
       {"Small matrices fit inside prose: "}
       <Tex>
         {String.raw`

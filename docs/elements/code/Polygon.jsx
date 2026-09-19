@@ -5,22 +5,22 @@ return (
   <Box padding={em(1.25)} background={lightgray}>
     <HStack gap={em(1.25)}>
       <Polygon
-        width={px(100)}
-        height={px(100)}
+        grow={1}
+        aspect={1}
         points={regular(3)}
         fill={blue}
         stroke={none}
       />
       <Polygon
-        width={px(100)}
-        height={px(100)}
+        grow={1}
+        aspect={1}
         points={regular(5)}
         fill={red}
         stroke={none}
       />
       <Polygon
-        width={px(100)}
-        height={px(100)}
+        grow={1}
+        aspect={1}
         points={regular(6)}
         fill={green}
         stroke={none}

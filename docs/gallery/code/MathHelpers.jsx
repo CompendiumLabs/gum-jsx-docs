@@ -16,7 +16,7 @@ const entries = [
   { label: "Total", color: green, kind: "line" },
 ]
 return <TextBox
-  width={px(720)}
+  width="fill"
   font-size={px(20)}
   padding={em(1.5)}
   background={lightgray}
@@ -30,7 +30,7 @@ return <TextBox
         stroke={color} stroke-width={px(2.5)} />)}
       <Points points={zip(xs, ys)}
         point-size={px(9)} fill={blue} stroke={white} stroke-width={px(1)} />
-      <Legend x={3.33} y={1.2} entries={entries} font-size={em(0.9)} />
+      <Legend x={3.1} y={1.2} anchor={["center", "start"]} entries={entries} font-size={em(0.9)} />
     </Plot>
     <Text font-family={mono} font-size={em(0.8)}>
       {xs.length} periodic samples. Mean: {rounder(mean(ys), 3)}. RMS: {rounder(norm(ys) / sqrt(ys.length), 3)}.

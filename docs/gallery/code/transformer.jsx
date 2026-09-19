@@ -30,7 +30,7 @@ const Block = ({ id, label, color }) => (
 )
 
 return (
-  <Box
+  <Box fit
     font-size={px(18)}
     color={slate}
     padding={em(1.3)}
@@ -82,7 +82,7 @@ return (
         />
         <TextBox
           x={loopX} y={(loopTop + loopBottom) / 2} anchor="center"
-          width="fit" padding={em(0.3)} background={white}
+          padding={em(0.3)} background={white}
           font-size={em(1.2)}
         >
           × N

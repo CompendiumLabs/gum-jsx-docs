@@ -9,6 +9,8 @@ axis. See [Stack](../../gallery/text/Stack.md) for all props and allocation rule
 |---|---|---|
 | `aspect` | — | Preferred width/height ratio of the whole stack |
 | `gap` | `0` | Space between adjacent children |
+| `wrap` | `false` | Start a new row when the next child's flex basis would exceed the offered width |
+| `line-gap` | `gap` | Vertical space between wrapped rows |
 | `align` | `"start"` | Cross-axis (vertical) alignment, including `"baseline"` |
 | `justify` | `"start"` | Main-axis (horizontal) packing and distributed spacing |
 
@@ -28,8 +30,8 @@ finite row budget, its omitted basis starts from zero. To share leftover width
 between wrapped columns, put grow on the columns themselves.
 
 Use `basis="auto" grow={1} shrink={1}` to start from the explicit or measured
-width, adding surplus or shrinking when necessary. `width="fit"` also preserves
-a measured starting width. Explicit length bases take precedence over width.
+width, adding surplus or shrinking when necessary. Explicit length bases take
+precedence over width; alignment does not select a basis.
 
 ## Alignment
 
@@ -50,3 +52,26 @@ min/max height limits. It allocates height only to automatically sized children.
 If child widths and gaps exceed the budget, nothing shrinks unless shrink was
 enabled. Fixed-width text may overflow internally even when its frame is small.
 Wrap the row in a clipping **Box** if clipping is intended.
+
+## Wrapping rows
+
+`wrap` uses the offered width to choose line breaks, then hugs the widest row
+and the combined row heights. It does not reserve unused space to the right.
+Explicit width/fill sizing and growing children can still occupy the full offer.
+Each row distributes its own growth and shrinkage; justification uses the final
+shared width of the wrapped stack.
+Without a finite width offer it remains a single natural row.
+Give flexible cards a `basis` or `min-width` to set when they wrap; unsized growing
+children otherwise start at zero. A single oversized child still needs `shrink`
+to reduce its allocation.
+
+```jsx
+<HStack wrap gap={em(1)}>
+  <TextFrame basis={em(16)} grow={1} shrink={1}>
+    First card
+  </TextFrame>
+  <TextFrame basis={em(16)} grow={1} shrink={1}>
+    Second card
+  </TextFrame>
+</HStack>
+```

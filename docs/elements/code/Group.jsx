@@ -1,5 +1,5 @@
-// Place two nodes and labels in a fixed canvas; the connector paints behind them.
-<Group width={px(420)} height={px(240)}>
+// Place two nodes and labels in a canvas sized by its host; the connector paints behind them.
+<Group aspect={1.75}>
   <Rect fill={lightgray} stroke={none} />
   <Line
     from={[0.3, 0.45]}

@@ -5,6 +5,8 @@
 | Property | Default | Meaning |
 |---|---|---|
 | `gap` | `em(0.6)` | Space between adjacent children |
+| `wrap` | `false` | Start a new row when the next child's basis would exceed the offered width |
+| `line-gap` | `gap` | Vertical space between wrapped rows |
 | `align` | `"baseline"` | Vertical alignment, including first-baseline alignment |
 | `justify` | `"start"` | Horizontal packing and distributed spacing |
 

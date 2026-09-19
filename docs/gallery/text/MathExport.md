@@ -31,7 +31,8 @@ It can be returned from a JSX program or placed inside another layout.
 | `style`, `size_index` | inherited math policy | Explicit TeX style and size declaration |
 | `color`, `opacity`, `font_family` | inherited style | Formula paint and an optional math face |
 | `macros`, `warnings`, `on_error` | same as **Latex** | Parsing and error policy |
-| `width`, `height` | natural | Explicit **Svg** dimensions, using `px()`; these clip without scaling |
+| `width`, `height` | natural | Explicit **Svg** dimensions, using `px()`; the formula shrinks to fit |
+| `fit`, `fit_align` | Automatic shrink-only, `"center"` | `false` disables fitting; `"contain"` also enlarges; `"cover"` fills and crops |
 
 The viewport includes the union of logical dimensions and visible ink, then
 adds padding. Leading and trailing laps, negative kerns, tall operators,
@@ -41,32 +42,28 @@ all-space formulas are valid SVG and PNG sources. `strut: false` with an empty
 formula gives a 1 × 1 viewport; explicit zero dimensions still produce a
 zero-sized, clipped SVG and cannot be rasterized.
 
-**Latex** and **Tex** inside ordinary layouts keep their typographic advances.
-Use those elements for inline prose; the export helper is a viewport, with
-additional space for ink. An explicitly constrained **Svg** retains its usual
-clipping behavior.
+**Latex** and **Tex** use typographic advances rather than ink-expanded viewport
+bounds. Use those elements for inline prose, where they retain the paragraph's
+font scale; the export helper reserves additional space for ink.
+The completed export shrinks to constrained dimensions;
+`fit: false` instead keeps the natural formula size and lets the viewport clip.
 
 ## Font size and fitting
 
 Changing `font_size` lays out typography at that em. To scale a completed
-formula, wrap its export in [Fit](../../elements/text/Fit.md):
+formula, pass the same [fitting props](./Sizing.md#fitting) to the export helper:
 
 ```jsx
-const formula = mathToElement(String.raw`\frac{a+b}{c+d}`, {
+return mathToElement(String.raw`\frac{a+b}{c+d}`, {
   font_size: px(30),
   padding: em(0.2),
+  width: px(300),
+  fit: 'contain',
 })
-return (
-  <Svg>
-    <Fit width={px(300)}>
-      {formula}
-    </Fit>
-  </Svg>
-)
 ```
 
-On the command line, `-S 30` sets the em. `--fit -W 300` uniformly scales the
-completed formula, while `-W 300` alone sets an exact clipping viewport.
+On the command line, `-s 30` sets the em. `-W 300` shrinks only when necessary;
+`--fit -W 300` also permits enlargement, while `--no-fit -W 300` clips at natural size.
 `--ratio 2` changes raster sampling without changing layout.
 
 ## Fonts, passes, and asynchronous helpers

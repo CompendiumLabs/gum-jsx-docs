@@ -27,8 +27,8 @@ implies an axis a quarter of its local font size above that baseline. An element
 without either guide centers on the math axis. Multiline text uses its first
 baseline and keeps its wrapping width.
 
-[Box](../../elements/text/Box.md) padding and [Fit](../../elements/text/Fit.md)
-transform the child's baseline and math axis along with its drawing. `Fit`
+[Box](../../elements/text/Box.md) padding and [fitting](./Sizing.md#fitting)
+transform the child's baseline and math axis along with its drawing. The `fit` prop
 explicitly scales a plot for a compact script; embedding alone does not.
 [TextRow](../../elements/text/TextRow.md) aligns prose and formulas by baseline.
 A rotated label keeps the child's complete geometry; tilted baselines have no

@@ -2,10 +2,10 @@
 const paragraph =
   "A paragraph keeps its font size while the available width changes its line breaks."
 const Column = ({ width, color }) => (
-  <VStack gap={em(0.625)}>
+  <VStack shrink={1} basis={px(width)} gap={em(0.625)}>
     <Text font-weight={bold} color={color}>{width} px</Text>
     <Frame
-      width={px(width)}
+      width="fill"
       padding={em(0.75)}
       border-color={color}
       background={white}
@@ -16,7 +16,7 @@ const Column = ({ width, color }) => (
 )
 return (
   <Box padding={em(1.25)} background={lightgray}>
-    <HStack gap={em(1.25)}>
+    <HStack wrap gap={em(1.25)}>
       <Column width={200} color={blue} />
       <Column width={300} color={red} />
     </HStack>
