@@ -1,8 +1,8 @@
 // Shapes, small plots, and wrapping text are ordinary operands; plots can carry math labels too.
 const Curve = props => (
   <Plot
-    width={px(150)}
-    height={px(72)}
+    width={em(5)}
+    aspect={2.1}
     axis={false}
     grid={false}
     margin={0}
@@ -11,7 +11,7 @@ const Curve = props => (
     plot-background={lightgray}
     {...props}
   >
-    <SymLine fy={sin} xlim={[0, pi]} stroke={blue} stroke-width={px(2.5)} />
+    <SymLine fy={sin} xlim={[0, pi]} stroke={blue} stroke-width={em(0.08)} />
   </Plot>
 )
 return (
@@ -20,19 +20,19 @@ return (
       <Text font-size={em(0.75)} font-weight={700}>Gum elements inside math</Text>
       <MathText style="display">
         <Frac>
-          <Circle width={px(34)} height={px(34)} fill={blue} stroke={none} />
+          <Circle width={em(1.1)} fill={blue} stroke={none} />
           <TextMode>area</TextMode>
         </Frac>
         +
         <Frac>
           <Curve />
-          <Text width={px(150)} font-size={em(0.6)} text-align="center">
+          <Text width={em(8.5)} font-size={em(0.6)} text-align="center">
             A wrapping text operand keeps its explicit width.
           </Text>
         </Frac>
       </MathText>
       <MathRow>
-        <Text width={px(170)} font-size={em(0.6)}>
+        <Text width={em(9.5)} font-size={em(0.6)}>
           A text operand aligns by its first baseline.
         </Text>
         <MathSpacer advance="quad" />
@@ -45,7 +45,7 @@ return (
       <Text font-size={em(0.6)} color={slate}>Use fit when a figure should deliberately shrink into a script.</Text>
       <SupSub
         sup={
-          <Curve fit="contain" max-width={px(50)} max-height={px(24)} />
+          <Curve fit="contain" max-width={em(1.7)} max-height={em(0.8)} />
         }
       >
         P
@@ -87,7 +87,7 @@ return (
           xlim={[-2, 2]}
           ylim={[0, 4]}
         >
-          <SymLine fy={(x) => x * x} xlim={[-2, 2]} stroke={blue} stroke-width={px(2.5)} />
+          <SymLine fy={(x) => x * x} xlim={[-2, 2]} stroke={blue} stroke-width={em(0.16)} />
         </Plot>
       </TextFigure>
     </VStack>

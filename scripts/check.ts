@@ -113,6 +113,14 @@ const comparisonRows: Record<string, readonly string[]> = {
   two_column: ['VStack', 'TextCol'],
   stokes_theorem: ['Group', 'TextCol'],
   polygon_slide: ['Frame', 'Frame', 'Frame'],
+  MathSlides: ['VStack', 'Plot'],
+  positioned_diagram: ['Frame', 'Group', 'Frame', 'Group', 'Frame'],
+}
+const columnGrow: Record<string, readonly number[]> = {
+  MathSlides: [1, 1.1],
+  two_column: [1.15, 1],
+  two_columns: [1, 1],
+  positioned_diagram: [1, 0.65, 1, 0.65, 1],
 }
 function checkComposition(fragment: core.Fragment, name: string, context: string): void {
   const expected = comparisonRows[name]
@@ -121,6 +129,15 @@ function checkComposition(fragment: core.Fragment, name: string, context: string
     && node.children.map(child => child.fragment.name).join(',') === expected.join(','))
   assert.equal(rows.length, name === 'polygon_slide' ? 2 : 1,
     `${context}: preserve the side-by-side composition`)
+  const weights = columnGrow[name]
+  if (weights) for (const row of rows) {
+    const unit = row.children[0]!.fragment.size.width / weights[0]!
+    assert.ok(unit > 0, `${context}: columns need a positive allocation`)
+    row.children.forEach((child, index) => {
+      assert.ok(Math.abs(child.fragment.size.width - unit * weights[index]!) < 1e-6,
+        `${context}: column widths must follow their grow weights`)
+    })
+  }
 }
 
 // More available room must not add a blank strip to content-sized examples.
@@ -130,6 +147,15 @@ const contentSizedExamples = new Set([
 ])
 
 const previewBounds = [[320, 240], [640, 480], [960, 240], [320, 640], [240, 640]] as const
+
+// These examples follow MathSlides: no authored viewport dimensions, and at
+// most one authored pixel length, for the root font. Defaults inside the library
+// are intentionally excluded; unit/explicit-sizing demonstrations are separate.
+const relativeSizingExamples = new Set([
+  'Slide', 'VCenter', 'MathArrays', 'MathComposition', 'MathDecorations', 'MathExport',
+  'MathSlides', 'arrow_caps', 'group_clip', 'macro_economy', 'plot_slide',
+  'positioned_diagram', 'punk_rock', 'transformer', 'two_column', 'two_columns', 'ui_mockup',
+])
 
 checkLinks(join(packageRoot, 'README.md'))
 let drawings = 0
@@ -160,7 +186,13 @@ for (const { name, title, dir, collection } of entries) {
       `${file}: use shared color constants without string quotes`)
   }
   checkLinks(join(dir, 'text', name + '.md'))
-  const element: unknown = core.evaluate(code, { name: file, scope: math })
+  const relative = relativeSizingExamples.has(name)
+  const pixelLengths: number[] = []
+  const scope = relative ? { ...math, px: (value: number) => {
+    pixelLengths.push(value)
+    return core.px(value)
+  } } : math
+  const element: unknown = core.evaluate(code, { name: file, scope })
   assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
   // Match the CLI and preview hosts: finite offers, with natural content height.
   const fragment = pass.layout(core.make_viewport(element), core.make_request({
@@ -217,6 +249,15 @@ for (const { name, title, dir, collection } of entries) {
   }
   const page = dir === elementsDir ? prepareElementPage(text, code) : prepareTopicPage(text, code)
   assert.ok(page.includes(code) && page.includes('# ' + title), `${file}: incomplete prepared page`)
+  if (relative) {
+    assert.equal(element.props.width, undefined, `${file}: the host supplies the viewport width`)
+    assert.equal(element.props.height, undefined, `${file}: the host supplies the viewport height`)
+    assert.ok(pixelLengths.length <= 1, `${file}: use relative sizes below the root font`)
+    if (pixelLengths.length) {
+      assert.deepEqual(element.props.font_size, core.px(pixelLengths[0]!),
+        `${file}: the sole authored pixel length must be the root font size`)
+    }
+  }
   drawings++
   console.log(`ok - ${dir === elementsDir ? 'elements' : 'topics'}/${name}: ${fragment.size.width} × ${fragment.size.height}`)
 }
@@ -227,3 +268,4 @@ for (const dir of [elementsDir, topicsDir]) {
 }
 console.log(`${elements.tags.length} elements and ${topics.tags.length} topics checked; ${drawings} examples rendered at 320, 480, 640, and 960px and in ${previewBounds.length} bounded preview sizes.`)
 console.log(`${contentSizedExamples.size} content-sized figures and ${Object.keys(comparisonRows).length} side-by-side compositions checked.`)
+console.log(`${relativeSizingExamples.size} relative-sizing examples checked; ${Object.keys(columnGrow).length} weighted column layouts checked.`)

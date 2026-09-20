@@ -28,6 +28,7 @@ const Matrix = ({ colors }) => (
 return (
   <TitleFrame
     font-size={px(34)}
+    frame-aspect={1}
     title="Shape Algebra"
     title-font-size={em(0.6)}
     padding={em(0.7)}

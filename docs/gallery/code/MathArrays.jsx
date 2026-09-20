@@ -43,17 +43,17 @@
       G=
       <Bracket delim="square">
         <MathArray ncol={2} colsep={em(0.5)}>
-          <Circle width={px(30)} height={px(30)} fill={blue} stroke={none} />
+          <Circle width={em(1)} fill={blue} stroke={none} />
           <Plot
-            width={px(125)}
-            height={px(55)}
+            width={em(4.2)}
+            aspect={2.3}
             axis={false}
             grid={false}
             margin={0}
             xlim={[0, pi]}
             ylim={[0, 1.1]}
           >
-            <SymLine fy={sin} xlim={[0, pi]} stroke={blue} stroke-width={px(2)} />
+            <SymLine fy={sin} xlim={[0, pi]} stroke={blue} stroke-width={em(0.07)} />
           </Plot>
           <TextMode>shape</TextMode>
           <TextMode>curve</TextMode>

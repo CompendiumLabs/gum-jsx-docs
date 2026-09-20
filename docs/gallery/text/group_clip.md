@@ -1,7 +1,8 @@
 # Clipped and unclipped canvases
 *Category*: layout
 
-Both 180×100 canvases query the same immutable artwork. The left canvas retains
+Both canvases use an `em(11.25)` width and a `1.8` aspect ratio, and query the same
+immutable artwork with fractional positions and dimensions. The left canvas retains
 all paint; the right clips it to the canvas rectangle. Clipping changes visible
 ink while the fragment tree still records the full positioned allocations and
 overflow.

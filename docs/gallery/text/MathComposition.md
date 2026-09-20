@@ -9,7 +9,7 @@ elements. Their normal layout queries determine their size and drawing.
 ```jsx
 <MathText style="display">
   <Frac>
-    <Circle width={px(32)} height={px(32)} fill={blue} stroke={none} />
+    <Circle width={em(1)} fill={blue} stroke={none} />
     <TextMode>area</TextMode>
   </Frac>
 </MathText>
@@ -21,6 +21,10 @@ available width is a budget, not a reference for percentage dimensions or an
 instruction to infer a plot's aspect ratio. Ordinary Gum font sizes and
 dimensions retain their normal meaning inside a script. `TextMode` literals
 and math glyphs follow TeX's script-size table.
+
+The runnable example uses `em()` widths and aspect ratios for its small figures,
+so only the outer base font uses pixels. A text operand's em width is relative to
+that text's own font size, including its `font-size` override.
 
 Elements with a `math_axis` guide use it. Otherwise, an ordinary text baseline
 implies an axis a quarter of its local font size above that baseline. An element

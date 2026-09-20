@@ -1,11 +1,12 @@
 // A decoder-only transformer: nested stacks place blocks; edges find their boundaries.
 const tint = color => interp(white, color, 0.18)
-const blockWidth = 300
-const blockHeight = 46
-const gap = 24
-const terminalHeight = 24
-const layerPadding = 16
-const layerBorder = 1.5
+// Local design dimensions are in em, including the repetition route below.
+const blockWidth = 16.5
+const blockHeight = 2.6
+const gap = 1.3
+const terminalHeight = 1.3
+const layerPadding = 0.9
+const layerBorder = 0.08
 const layers = [
   { id: "norm2", label: "Add & Norm", color: yellow },
   { id: "feed", label: "Feed Forward", color: green },
@@ -14,15 +15,17 @@ const layers = [
 ]
 const flow = ["input", "embedding", "attention", "norm1", "feed", "norm2", "linear", "softmax", "output"]
 // Match the loop's horizontal arms to the first and last block centers.
-const loopX = 230 + blockWidth / 2 + 85
+const stackX = 1.1
+const stackWidth = 23.4
+const loopX = stackX + stackWidth / 2 + blockWidth / 2 + 4.7
 const loopTop = terminalHeight + 3 * gap + 2 * blockHeight
   + layerPadding + layerBorder + blockHeight / 2
 const loopBottom = loopTop + (layers.length - 1) * (blockHeight + gap)
 const Block = ({ id, label, color }) => (
   <Node
-    id={id} width={px(blockWidth)} height={px(blockHeight)}
+    id={id} width={em(blockWidth)} height={em(blockHeight)}
     padding={em(0.45)} radius={em(0.4)} background={tint(color)}
-    border-color={interp(white, color, 0.55)} border-width={px(1.5)}
+    border-color={interp(white, color, 0.55)} border-width={em(0.08)}
     align="center"
   >
     {label}
@@ -43,49 +46,47 @@ return (
       border-color={darkgray}
     >
       <Network
-        width={px(530)} height={px(610)}
-        xlim={[0, 530]} ylim={[0, 610]} flip-y={false}
-        stroke={slate} stroke-width={px(2)}
+        width={em(29.5)} height={em(34)}
+        stroke={slate} stroke-width={em(0.11)}
       >
         {flow.slice(0, -1).map((id, index) => (
           <Edge
             start={id} end={flow[index + 1]}
             start-side="top" end-side="bottom"
-            curve={false} gap={px(3)}
-            head-size={px(9)} head-curve={0.4}
+            curve={false} gap={em(0.17)}
+            head-size={em(0.5)} head-curve={0.4}
           />
         ))}
-        <VStack x={px(20)} y={px(0)} width={px(420)} gap={px(gap)} align="center">
-          <Node id="output" height={px(terminalHeight)} padding={0} border-width={0}>Output Probabilities</Node>
+        <VStack x={em(stackX)} width={em(stackWidth)} gap={em(gap)} align="center">
+          <Node id="output" height={em(terminalHeight)} padding={0} border-width={0}>Output Probabilities</Node>
           <Block id="softmax" label="Softmax" color={red} />
           <Block id="linear" label="Linear" color={red} />
           <Frame
-            padding={px(layerPadding)} border-color={interp(white, slate, 0.2)}
-            border-width={px(layerBorder)} radius={em(0.65)}
+            padding={em(layerPadding)} border-color={interp(white, slate, 0.2)}
+            border-width={em(layerBorder)} radius={em(0.65)}
           >
-            <VStack gap={px(gap)} align="center">
+            <VStack gap={em(gap)} align="center">
               {layers.map(layer => (
                 <Block {...layer} />
               ))}
             </VStack>
           </Frame>
           <Block id="embedding" label="Token + Positional Embedding" color={purple} />
-          <Node id="input" height={px(terminalHeight)} padding={0} border-width={0}>Input Tokens</Node>
+          <Node id="input" height={em(terminalHeight)} padding={0} border-width={0}>Input Tokens</Node>
         </VStack>
         <Edge
           start="norm2" end="attention"
           start-side="right" end-side="right"
-          points={[[loopX, loopTop], [loopX, loopBottom]]}
-          curve={false} radius={em(0.65)} gap={px(6)}
-          stroke={darkgray} stroke-dasharray={[px(5), px(5)]}
-          head-size={px(10)} head-curve={0.4}
+          points={[[em(loopX), em(loopTop)], [em(loopX), em(loopBottom)]]}
+          curve={false} radius={em(0.65)} gap={em(0.33)}
+          stroke={darkgray} stroke-dasharray={[em(0.28), em(0.28)]}
+          head-size={em(0.55)} head-curve={0.4}
         />
         <TextBox
-          x={loopX} y={(loopTop + loopBottom) / 2} anchor="center"
-          padding={em(0.3)} background={white}
-          font-size={em(1.2)}
+          x={em(loopX)} y={em((loopTop + loopBottom) / 2)} anchor="center"
+          padding={em(0.35)} background={white}
         >
-          × N
+          <Text font-size={em(1.2)}>× N</Text>
         </TextBox>
       </Network>
     </TitleFrame>

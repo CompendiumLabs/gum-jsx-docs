@@ -63,6 +63,33 @@ the rendered width, and a width limit can reduce the height. No height maximum
 means natural height remains available. The [rendering API](./Rendering.md)
 accepts these bounds through `wrap` without adding sizing boilerplate to examples.
 
+### Relative compositions
+
+Set one base font size, then use `em()` for local dimensions, fractions for
+positions inside established boxes, and `aspect` for figure shape. On a slide,
+grow weights divide the body allocation without repeating column widths:
+
+```jsx
+<Slide fit font-size={px(15)} title="Results">
+  <HStack gap={em(1)} align="center">
+    <Text grow={1}>A plot beside its explanation.</Text>
+    <Plot grow={1.1} aspect={1.3} font-size={em(0.7)} xlim={[0, tau]} ylim={[-1, 1]}>
+      <SymLine fy={sin} xlim={[0, tau]} stroke={blue} />
+    </Plot>
+  </HStack>
+</Slide>
+```
+
+Grow weights need a finite budget: **Slide** supplies one to its body. A
+content-sized row can instead use `em()` bases to establish a natural composition
+before fitting. Small figures inside math likewise need intrinsic dimensions,
+such as an em width plus aspect. An ordinary content-sized box can simply measure
+its children, including rotated bounds, without becoming a fixed canvas.
+
+See [MathSlides](MathSlides.md), [two columns](two_column.md), and
+[Punk Rock](punk_rock.md) for these variants. Pixel dimensions remain useful in
+examples specifically illustrating exact allocations or pixel units.
+
 ## Fitting
 
 Allocation and scaling answer different questions:

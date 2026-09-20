@@ -31,15 +31,15 @@
       <MathText>
         <Accent accent="widehat">
           <Plot
-            width={px(130)}
-            height={px(55)}
+            width={em(4)}
+            aspect={2.4}
             axis={false}
             grid={false}
             margin={0}
             xlim={[0, pi]}
             ylim={[0, 1.1]}
           >
-            <SymLine fy={sin} xlim={[0, pi]} stroke={white} stroke-width={px(2)} />
+            <SymLine fy={sin} xlim={[0, pi]} stroke={white} stroke-width={em(0.065)} />
           </Plot>
         </Accent>
         =

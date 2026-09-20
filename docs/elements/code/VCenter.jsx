@@ -2,11 +2,11 @@
 <Box font-size={px(36)} padding={em(0.7)}>
   <MathText>
     <VCenter>
-      <Text width={px(100)} font-size={em(0.55)}>A two-line label</Text>
+      <Text width={em(5)} font-size={em(0.55)}>A two-line label</Text>
     </VCenter>
     =
     <VCenter>
-      <Rect width={px(70)} height={px(50)} fill={blue} stroke={none} />
+      <Rect width={em(2)} aspect={1.4} fill={blue} stroke={none} />
     </VCenter>
   </MathText>
 </Box>

@@ -146,32 +146,28 @@ const SurfaceDiagram = (props) => (
     >{String.raw`\hat n`}</Latex>
   </Group>
 )
-return (
-  <Box fit font-size={px(21)} padding={em(1.5)}>
-    <VStack gap={em(1.4)}>
-      <Text font-size={em(1.6)} font-weight={bold}>
-        Stokes' Theorem
-      </Text>
-      <HStack gap={em(1.7)} align="center">
-        <SurfaceDiagram grow={1} shrink={1} basis={em(20)} />
-        <TextCol grow={1} shrink={1} basis={em(22)} gap={em(1.35)}>
-          <TextFrame
-            padding={em(0.85)}
-            radius={em(0.55)}
-            background={interp(white, purple, 0.05)}
-            border-color={interp(white, purple, 0.3)}
-          >
-            <Latex font-size={em(1.2)}>
-              {String.raw`\oint_{\partial S}F\cdot dr=\iint_S(\nabla\times F)\cdot dS`}
-            </Latex>
-          </TextFrame>
-          <Text>
-            The line integral of a vector field <Tex>F</Tex> around the closed boundary
-            <Tex>{String.raw`\partial S`}</Tex> equals the surface integral of its curl over an
-            oriented surface <Tex>S</Tex> bounded by that curve.
-          </Text>
-        </TextCol>
-      </HStack>
-    </VStack>
-  </Box>
-)
+return <Box fit font-size={px(20)} padding={em(1.5)}>
+  <VStack gap={em(1.4)}>
+    <Text font-size={em(2)} font-weight={bold}>
+      Stokes' Theorem
+    </Text>
+    <HStack gap={em(1.7)} align="center">
+      <SurfaceDiagram width={em(20)} />
+      <TextCol width={em(15)} gap={em(1.35)} font-size={em(1.4)}>
+        <TextFrame
+          padding={em(0.85)}
+          radius={em(0.55)}
+          background={interp(white, purple, 0.05)}
+          border-color={interp(white, purple, 0.3)}
+        >
+          <Latex font-size={em(1.2)}>
+            {String.raw`\oint_{\partial S}F\cdot dr=\iint_S(\nabla\times F)\cdot dS`}
+          </Latex>
+        </TextFrame>
+        <Text>
+          The line integral of a vector field <Tex>F</Tex> around the closed boundary <Tex>{String.raw`\partial S`}</Tex> equals the surface integral of its curl over an oriented surface <Tex>S</Tex> bounded by that curve.
+        </Text>
+      </TextCol>
+    </HStack>
+  </VStack>
+</Box>

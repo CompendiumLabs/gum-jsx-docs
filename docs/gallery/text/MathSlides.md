@@ -6,16 +6,19 @@
 **Text** title, display **Latex** alongside a plot, and math inside captions or
 explanatory prose. A slide does not need a separate math renderer or font setup.
 
-For a fixed composition, give the slide a design size and set its
-[fit prop](./Sizing.md#fitting) so the outer size comes from the host.
-Font sizes and internal layout dimensions establish the composition. A **Plot** may use a smaller relative
-font size than the slide's text. For a formula that must fit a reserved area,
-set `fit` on the formula or pass it to a
-[standalone math export](MathExport.md); changing the slide's dimensions
-alone does not scale the formula.
+Set one base `font-size` and express the rest of the composition with relative
+sizes. The slide supplies its body allocation; an **HStack** splits that width
+between `grow={1}` on the text column and `grow={1.1}` on the plot. Neither column
+needs an explicit width. The plot's `aspect={1.3}` determines its height, and
+its smaller `em(0.6)` font keeps tick labels subordinate to the explanation.
+
+Title size and gaps also use `em()`. Standalone formulas fit their columns
+automatically, while inline math keeps the paragraph's font scale. The slide's
+[fit prop](./Sizing.md#fitting) shrinks the completed composition into the host's
+bounds. No authored pixel width or height is required.
 
 The runnable slide combines a mathematical title, two display equations, mixed
-prose, a shaded Gaussian curve, and formulas in the axes and caption. Save it
+prose, and a shaded Gaussian curve. Save it
 as `slide.jsx` to render it:
 
 ```sh

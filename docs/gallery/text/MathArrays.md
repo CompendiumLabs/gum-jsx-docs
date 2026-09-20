@@ -52,10 +52,12 @@ start of the second row. [Bracket](../../elements/text/Bracket.md) supplies
 delimiters around a direct array. Shapes, plots, and explicitly sized text
 blocks can be cells, just as they can be other math operands.
 
-Arrays keep their natural width under narrow offers. Exact width/height limits
-allocate a box and expose overflow; they do not search for a smaller table.
-Give a prose cell an explicit width to wrap it, or use
-[fitting](./Sizing.md#fitting) to scale the finished table deliberately.
+Arrays measure their cells naturally; a whole standalone formula shrinks to its
+offered bounds automatically without changing the table's internal proportions.
+Use `fit={false}` for unscaled allocation and intentional overflow. Give a prose
+cell an explicit width to wrap it. Small shape and plot cells can use em widths
+and aspect ratios, so their dimensions follow the surrounding base font.
+See [fitting](./Sizing.md#fitting) for the distinction between inline and standalone math.
 Formula ink may extend beyond the logical advance at outer rules and italic
 glyphs, so retain padding inside an explicit SVG viewport.
 Very tall braces and matrix bars retain the current glyph-scaling fallback;

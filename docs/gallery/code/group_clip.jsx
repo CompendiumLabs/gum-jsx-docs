@@ -2,8 +2,8 @@
 // its fragment tree still records the full positioned allocations and overflow.
 const artwork = [
   <Rect fill={lightgray} stroke={none} />,
-  <Rect x={px(-14)} y={0.28} width={px(76)} height={px(44)} fill={blue} stroke={none} />,
-  <Circle x={0.88} y={0.5} anchor="center" width={px(88)} fill={red} stroke={none} />,
+  <Rect x={-0.08} y={0.28} width={0.42} height={0.44} fill={blue} stroke={none} />,
+  <Circle x={0.88} y={0.5} anchor="center" width={0.49} fill={red} stroke={none} />,
 ]
 
 return (
@@ -12,8 +12,8 @@ return (
       {[false, true].map(clip => (
         <VStack gap={em(0.625)}>
           <Text font-size={em(0.875)} font-weight={bold}>clip = {String(clip)}</Text>
-          <Box border-width={px(2)} border-color={slate}>
-            <Group width={px(180)} height={px(100)} clip={clip}>
+          <Box border-width={em(0.125)} border-color={slate}>
+            <Group width={em(11.25)} aspect={1.8} clip={clip}>
               {artwork}
             </Group>
           </Box>

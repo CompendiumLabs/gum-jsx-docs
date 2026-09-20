@@ -19,7 +19,11 @@ and frame padding, keeping its arms horizontal and its `× N` label centered.
 Network does not provide obstacle avoidance or edge-label placement; this route
 calculation needs adjustment if the stack's structure changes.
 
-Blocks use explicit pixel widths and heights. The `radius`, `head-size`, and
+Blocks and the network canvas use `em()` dimensions. Route waypoints also use
+`em()`, so they stay attached to the same stack levels when the base font changes.
+The repetition label has a separate text-size override inside its positioned box;
+its position uses the diagram's em, not the label's larger em.
+The `radius`, `head-size`, and
 `head-curve` props control rounded corners and arrowheads. Color interpolation
 supplies pastel block fills.
 

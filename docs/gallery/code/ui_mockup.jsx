@@ -6,45 +6,34 @@ const messages = [
   },
   { title: "Testing, Testing", body: "What are we doing here?" },
 ]
-const Window = ({ title, children, ...props }) => (
+const Window = ({ title, children, padding = em(0.5), ...props }) => (
   <Frame radius={em(0.45)} background={white} border-color={darkgray} clip {...props}>
     <VStack>
       <TextBox width="fill" padding={em(0.5)} background={gray} font-weight={bold}>
         {title}
       </TextBox>
       <HLine height={0} stroke={darkgray} />
-      <Box padding={em(0.5)}>
+      <Box padding={padding}>
         {children}
       </Box>
     </VStack>
   </Frame>
 )
-return (
-  <Box fit width={px(900)} height={px(600)} font-size={px(18)} padding={em(1.1)}>
-    <Frame radius={em(0.85)} clip border-width={px(2)} background={lightgray}>
-      <Group>
-        <Graph>
-          <Mesh2D xlim={[0, 1]} ylim={[0, 1]} xticks={40} yticks={30} opacity={0.1} />
-        </Graph>
-        <Window title="Data Viz" x={px(55)} y={px(175)} width={px(570)}>
-          <Plot
-            height={px(260)}
-            title="Sine Wave"
-            xlim={[0, tau]}
-            ylim={[-1.2, 1.2]}
-            font-size={em(0.8)}
-          >
-            <SymLine fy={sin} xlim={[0, tau]} stroke={blue} stroke-width={px(2.5)} />
-          </Plot>
-        </Window>
-        <VStack x={px(540)} y={px(35)} width={px(285)} gap={em(1)}>
-          {messages.map(({ title, body }) => (
-            <Window title={title}>
-              <Text>{body}</Text>
-            </Window>
-          ))}
-        </VStack>
-      </Group>
-    </Frame>
-  </Box>
-)
+return <Slide fit font-size={px(10)} aspect={1.5} padding={em(1.1)}>
+  <Frame radius={em(0.85)} clip border-width={em(0.1)} background={lightgray}>
+    <Group>
+      <Window title="Data Viz" x={0.06} y={0.31} width={0.67} padding={0}>
+        <Plot aspect={1.9} xlim={[0, tau]} ylim={[-1.2, 1.2]}>
+          <SymLine fy={sin} xlim={[0, tau]} stroke={blue} stroke-width={px(1.5)} />
+        </Plot>
+      </Window>
+      <VStack x={0.64} y={0.06} width={0.33} gap={em(0.75)}>
+        {messages.map(({ title, body }) => (
+          <Window title={title}>
+            <Text>{body}</Text>
+          </Window>
+        ))}
+      </VStack>
+    </Group>
+  </Frame>
+</Slide>

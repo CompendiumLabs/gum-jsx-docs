@@ -1,16 +1,16 @@
 // Thick shafts stay behind arrow tips for every cap style and route shape.
 const caps = ['butt', 'round', 'square']
-const CapColumn = ({ cap }) => <VStack shrink={1} basis={em(14)} gap={em(0.75)}>
-  <Text width={px(224)} text-align="center" font-family={mono}>{cap}</Text>
-  <Group width={px(224)} height={px(140)}>
-    {[24, 200].map(x => <Line from={[px(x), px(12)]} to={[px(x), px(128)]}
-      stroke={gray} stroke-width={px(1)} stroke-dasharray={[px(3), px(4)]} />)}
-    <Arrow from={[px(24), px(40)]} to={[px(200), px(40)]}
-      stroke={slate} stroke-width={px(8)} stroke-linecap={cap}
-      head-size={px(28)} head-width={0.8} head-style={{fill: blue}} />
-    <Arrow from={[px(24), px(100)]} to={[px(200), px(100)]} start-head
-      stroke={slate} stroke-width={px(8)} stroke-linecap={cap}
-      head-size={px(28)} head-width={0.8} head-style={{fill: green}} />
+const CapColumn = ({ cap }) => <VStack shrink={1} basis={em(14)} gap={em(0.75)} align="fill">
+  <Text text-align="center" font-family={mono}>{cap}</Text>
+  <Group aspect={1.6}>
+    {[0.1, 0.9].map(x => <Line from={[x, 0.08]} to={[x, 0.92]}
+      stroke={gray} stroke-width={em(0.0625)} stroke-dasharray={[em(0.2), em(0.25)]} />)}
+    <Arrow from={[0.1, 0.28]} to={[0.9, 0.28]}
+      stroke={slate} stroke-width={em(0.5)} stroke-linecap={cap}
+      head-size={em(1.75)} head-width={0.8} head-style={{fill: blue}} />
+    <Arrow from={[0.1, 0.72]} to={[0.9, 0.72]} start-head
+      stroke={slate} stroke-width={em(0.5)} stroke-linecap={cap}
+      head-size={em(1.75)} head-width={0.8} head-style={{fill: green}} />
   </Group>
 </VStack>
 return <TextBox fit padding={em(1.5)} color={slate}>
@@ -23,16 +23,16 @@ return <TextBox fit padding={em(1.5)} color={slate}>
         <Text width="fill" text-align="center" font-family={mono}>curved / square caps</Text>
         <Group aspect={1.92}>
           <Arrow points={[[0.08, 0.75], [0.4, 0.2], [0.66, 0.8], [0.92, 0.25]]}
-            curve start-head stroke={slate} stroke-width={px(8)} stroke-linecap="square"
-            head-size={px(28)} head-width={0.8} head-style={{fill: blue}} />
+            curve start-head stroke={slate} stroke-width={em(0.5)} stroke-linecap="square"
+            head-size={em(1.75)} head-width={0.8} head-style={{fill: blue}} />
         </Group>
       </VStack>
       <VStack grow={1} basis={em(14)} gap={em(0.75)}>
         <Text width="fill" text-align="center" font-family={mono}>rounded / round caps</Text>
         <Group aspect={1.92}>
           <Arrow points={[[0.08, 0.8], [0.08, 0.25], [0.65, 0.25], [0.65, 0.8], [0.92, 0.8]]}
-            radius={em(1.125)} start-head stroke={slate} stroke-width={px(8)} stroke-linecap="round"
-            head-size={px(28)} head-width={0.8} head-style={{fill: green}} />
+            radius={em(1.125)} start-head stroke={slate} stroke-width={em(0.5)} stroke-linecap="round"
+            head-size={em(1.75)} head-width={0.8} head-style={{fill: green}} />
         </Group>
       </VStack>
     </HStack>

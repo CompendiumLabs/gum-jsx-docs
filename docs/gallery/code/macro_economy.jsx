@@ -19,18 +19,18 @@ const Label = ({ x, y, children, color = slate }) => (
   </TextBox>
 )
 return (
-  <Box fit width={px(960)} font-size={px(19)} padding={em(1.6)}>
+  <Box fit font-size={px(12)} padding={em(1.6)}>
     <VStack gap={em(1.25)}>
       <Text font-size={em(1.7)} font-weight={bold}>
         Macroeconomic Flows
       </Text>
       <Network
-        height={px(460)}
+        aspect={1.95}
         xlim={[0, 1.6]}
         ylim={[0, 0.9]}
         flip-y={false}
         stroke={darkgray}
-        stroke-width={px(2)}
+        stroke-width={em(0.1)}
       >
         <Edge
           start="prod"
@@ -59,11 +59,11 @@ return (
             id={id}
             x={x}
             y={y}
-            width={px(200)}
-            height={px(64)}
+            width={0.24}
+            height={em(3.4)}
             background={interp(white, color, 0.16)}
             border-color={color}
-            border-width={px(2)}
+            border-width={em(0.1)}
             radius={em(0.5)}
           >
             {label}

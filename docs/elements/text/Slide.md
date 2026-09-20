@@ -33,7 +33,7 @@ Multiple children use **TextCol** and ordinary stack rules, with 0.6em gaps.
 Use `grow={1}` on figures that should share the remaining height with text:
 
 ```jsx
-<Slide width={px(960)} font-size={px(18)} title="Results">
+<Slide fit font-size={px(15)} title="Results">
   <Plot grow={1} />
   <Text>A caption below the plot.</Text>
 </Slide>
@@ -43,3 +43,8 @@ For a **TextFigure**, put `grow={1}` on its figure child to leave room for the
 caption. Explicitly oversized content or too much text can still overflow.
 Resizing does not multiply the type scale; use `fit` for a scaled copy of a
 finished slide.
+
+For side-by-side content, place an **HStack** in the body and give its direct
+children grow weights. Use `aspect` on plots, relative font sizes on labels, and
+`em()` padding and gaps. The [math slide](../../gallery/text/MathSlides.md) uses
+this pattern with only one pixel value: its base font size.
