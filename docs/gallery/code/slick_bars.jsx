@@ -30,6 +30,7 @@ return <BarPlot
   border-radius={{ t: em(0.3) }}
   fill={blue}
   aspect={1.3}
+  font-size={px(18)}
 >
   {values.map((value, index) => (
     <Text x={index} y={value + 1.2} anchor="center">

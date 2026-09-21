@@ -26,7 +26,7 @@ return (
         +
         <Frac>
           <Curve />
-          <Text width={em(8.5)} font-size={em(0.6)} text-align="center">
+          <Text width={em(8.5)} font-size={em(0.6)} justify="center">
             A wrapping text operand keeps its explicit width.
           </Text>
         </Frac>

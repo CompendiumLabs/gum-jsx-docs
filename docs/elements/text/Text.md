@@ -26,10 +26,10 @@ inline item, aligned by its baseline or bottom edge. Give figures concrete sizes
 | `wrap` | `true` | Permit wrapping at legal word-break positions |
 | `whitespace` | `"normal"` | normal or pre |
 | `tab-size` | `4` | Positive integer tab-stop interval in pre mode |
-| `text-align` | `"left"` | left, center, or right within the allocated text width |
+| `justify` | `"start"` | start, center, end, or a fraction from 0 to 1 within the allocated text width |
 
 Font and color props inherit through containers. wrap, whitespace, `tab-size`,
-and `text-align` are local **Text** options. See [Fonts](../../gallery/text/Fonts.md) for the bundled
+and `justify` are local **Text** options. See [Fonts](../../gallery/text/Fonts.md) for the bundled
 families, weight matching, and host font loading.
 
 ## Wrapping and whitespace
@@ -75,7 +75,7 @@ overflows if it cannot fit. [Tex](./Tex.md) is the usual inline math choice;
 In an [HStack](./HStack.md), use `grow={1}` on an unsized paragraph to give it the
 remaining width. Its basis defaults to zero under a finite row budget; use
 `basis="auto"` to start from its measured width. A fixed-height text frame does not
-automatically fit its text vertically. Align the **Text** element using its parent; `text-align` only aligns
+automatically fit its text vertically. Align the **Text** element using its parent; `justify` only aligns
 lines inside the **Text** rectangle.
 
 SVG output contains glyph paths and an accessible text label, not native SVG

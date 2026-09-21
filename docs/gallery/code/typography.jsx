@@ -45,5 +45,5 @@ return <Specimen color={slate}>
     line    1.2em
   </Text>
   <Text font-size={em(0.8)} color={slate}>Center-aligned lines in an exact allocation</Text>
-  <Text font-size={em(1.25)} text-align="center">{'A centered first line\nwith a shorter second'}</Text>
+  <Text font-size={em(1.25)} justify="center">{'A centered first line\nwith a shorter second'}</Text>
 </Specimen>

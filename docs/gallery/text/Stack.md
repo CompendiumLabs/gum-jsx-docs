@@ -130,7 +130,7 @@ Only baseline-aligned children contribute to the row's baseline group. The row
 also accommodates non-baseline children's heights, and stretching siblings
 receive a height that includes the baseline group's ascent and descent.
 
-`justify`, `align`, and `align-self` position completed allocations. **Text**'s own `text-align` is
+`justify`, `align`, and `align-self` position completed allocations. **Text**'s own `justify` is
 separate. Distributed spacing only adds positive free space; center/end may
 position overflowing content outside the frame.
 

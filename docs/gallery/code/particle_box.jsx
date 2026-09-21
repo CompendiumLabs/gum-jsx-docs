@@ -19,8 +19,8 @@ return (
         aspect={1.55}
         xlim={[-0.45, 1.45]} ylim={[ymin, ymax]}
         xticks={ticks} yaxis={false} grid={false}
-        font-size={em(0.95)} margin={em(0.65)}
-        xaxis-stroke={black} xaxis-stroke-width={px(1.5)}
+        margin={em(0.65)} xaxis-font-size={em(1.2)}
+        xaxis-stroke={black} xaxis-stroke-width={px(2.5)}
         xaxis-tick-side="outer" xaxis-label-color={black}
       >
         {linspace(ymin, ymax - 0.5, 24).map(y => (

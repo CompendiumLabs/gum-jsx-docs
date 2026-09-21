@@ -93,7 +93,7 @@ local to the owner and happens once during construction, before layout.
 | **TitleBox** / **TitleFrame** / **Slide** | `title-` text options |
 | **TextFigure** | `caption-` text options |
 
-**Text** options include font/paint, dimensions, wrap, whitespace, and `text-align`;
+**Text** options include font/paint, dimensions, wrap, whitespace, and `justify`;
 content is supplied by the owner. For example, `title-wrap={false}` keeps a title
 on one line, and `legend-label-font-size={em(0.85)}` controls generated legend text.
 

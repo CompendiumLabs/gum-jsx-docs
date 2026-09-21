@@ -8,7 +8,7 @@ const Stage = ({ label, color, debug }) => (
     background={white}
     border-radius={em(0.5)}
   >
-    <Text text-align="center" color={color} font-weight={bold}>{label}</Text>
+    <Text justify="center" color={color} font-weight={bold}>{label}</Text>
   </TextFrame>
 )
 return (

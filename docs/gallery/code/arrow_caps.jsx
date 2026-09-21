@@ -1,7 +1,7 @@
 // Thick shafts stay behind arrow tips for every cap style and route shape.
 const CapColumn = ({ cap, ...attr }) =>
   <VStack gap={em(1.5)} align="center" {...attr}>
-    <Text text-align="center" font-family={mono}>{cap}</Text>
+    <Text justify="center" font-family={mono}>{cap}</Text>
     <VStack gap={em(2.5)}>
       <Arrow from={[0, 0.5]} to={[1, 0.5]}
         stroke={slate} stroke-width={em(0.5)} stroke-linecap={cap}
@@ -14,7 +14,7 @@ const CapColumn = ({ cap, ...attr }) =>
 
 const SplineArrow = ({ ...attr }) =>
   <VStack gap={em(0.5)} {...attr}>
-    <Text width="fill" text-align="center" font-family={mono}>curved / square caps</Text>
+    <Text width="fill" justify="center" font-family={mono}>curved / square caps</Text>
     <Box padding={em(1)}>
       <Arrow aspect={2} points={[[0, 1], [0.3, 0.1], [0.7, 0.9], [1, 0]]}
         curve start-head stroke={slate} stroke-width={em(0.5)} stroke-linecap="square"
@@ -24,7 +24,7 @@ const SplineArrow = ({ ...attr }) =>
 
 const RoundedArrow = ({ ...attr }) =>
   <VStack gap={em(0.5)} {...attr}>
-    <Text width="fill" text-align="center" font-family={mono}>rounded / round caps</Text>
+    <Text width="fill" justify="center" font-family={mono}>rounded / round caps</Text>
     <Box padding={em(1)}>
       <Arrow aspect={2} points={[[0, 1], [0, 0], [0.5, 0], [0.5, 1], [1, 1]]}
         radius={em(1)} start-head stroke={slate} stroke-width={em(0.5)} stroke-linecap="round"

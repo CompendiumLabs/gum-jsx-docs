@@ -23,7 +23,7 @@
 - A `Box` contains one element. Wrap siblings in `HStack`, `VStack`, or `Group`.
   Use `padding`, `border-width`, `border-color`, `border-radius`, and `background` for
   its decoration. `fill` and `stroke` instead inherit to child shapes. `Text`
-  uses `color`, not `fill`. Use `text-align` for text inside its allocated box.
+  uses `color`, not `fill`. Use `justify` for text inside its allocated box.
 - Stack `gap` separates items, `align` controls the cross axis, and `justify`
   controls the main axis. Set `grow`, `shrink`, and optional `basis` on direct
   children for flex allocation. Two half-width children plus a gap overflow;

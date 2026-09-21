@@ -43,7 +43,7 @@ precedence over width; alignment does not select a basis.
 - justify controls horizontal positioning or distributed spacing.
 
 Stretch allocates the row's selected height only to stretching children; it can override
-preferred cross-axis sizes. It does not scale glyphs. **Text**.`text-align` only affects
+preferred cross-axis sizes. It does not scale glyphs. **Text**.`justify` only affects
 the placement of lines within that **Text**'s own width.
 Child containers' own align values continue to position their contents.
 Fill follows the same measurement order but respects explicit child heights and

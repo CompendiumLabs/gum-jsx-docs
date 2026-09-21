@@ -72,11 +72,11 @@ const Cell = ({ profile }) => (
         <Points points={[[0, 0]]} point-size={em(0.5)} fill={slate} />
       </Graph>
     </Frame>
-    <Tex font-size={em(1.6)}>{profile.label}</Tex>
+    <Tex font-size={em(1.2)}>{profile.label}</Tex>
   </VStack>
 )
 return <Box font-size={px(20)} padding={em(1)}>
-  <TitleFrame title="Atomic Orbitals" title-font-size={em(1.5)} padding={em(1.5)} border-radius={em(1)}>
+  <TitleFrame title="Atomic Orbitals" title-font-size={em(1.25)} padding={em(2)} border-radius={em(1)}>
     <VStack gap={em(2)} align="center">
       {[[0], [1, 2, 3], [4, 5]].map((row) => (
         <HStack wrap width="fill" gap={em(2)} justify="center">
