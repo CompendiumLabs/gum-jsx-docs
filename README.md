@@ -46,7 +46,8 @@ docs/
 visual-tests/
   code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
-scripts/check.ts      Validate links, coverage, and rendering at several widths
+test/examples.ts      Validate links, coverage, and rendering at several widths
+test/skill.test.ts     Test skill packaging and CLI behavior
 prompt/               Maintained Gum authoring and skill prompt pieces
 scripts/skill.ts      Generate the portable skill folder and .skill archive
 ```
@@ -56,7 +57,7 @@ There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
 code/figure popups. There are no runtime package dependencies;
 gum-jsx-core and gum-jsx-math are development dependencies for checking examples.
 
-`bun run check` renders all examples with the same 640 × 480 offer used by the
+`bun run test` renders all examples with the same 640 × 480 offer used by the
 CLI and previews, then checks 320, 480, 640, and 960px widths with natural height.
 It also exercises Gum Studio's `max_width` / `max_height` wrapper props at five
 landscape and portrait sizes, including 240px-wide and 240px-high previews.
@@ -112,7 +113,7 @@ Other consumers, including Gum Studio, can reuse the maintained prompts through
 the exported `promptDir` or `@gum-jsx/docs/prompt/*` subpath. Studio's own chat
 prompt and tool wiring remain separate from this portable skill.
 
-`bun run check` also tests skill coverage, link reachability, prompt-example
+`bun run test` also tests skill coverage, link reachability, prompt-example
 rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unzip`.
 
 ## Elements
@@ -211,7 +212,7 @@ bun run gum gum-jsx-docs/docs/gallery/code/Gum.jsx
 bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.svg
 bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
 bun run gum gum-jsx-docs/docs/elements/code/VStack.jsx -f tree --stats
-bun --filter gum-jsx-docs check
+bun --filter @gum-jsx/docs test
 bun run visual-test
 bun run typecheck
 ```
@@ -220,7 +221,7 @@ The CLI defaults to kitty graphics; use SVG or PNG output on other terminals.
 Examples use the current evaluator's bindings and leave the **Svg** viewport to
 the host, except for the **Svg** reference example itself.
 No legacy packages, image files, custom fonts, network fetches, or generated assets
-are required. The check command renders SVG in memory and leaves the checkout unchanged.
+are required. The test command renders SVG in memory and leaves the checkout unchanged.
 The workspace visual-test command renders every element example, every topic example,
 and every focused regression into a searchable standalone HTML report at
 `gum-jsx-cli/visual-report/dist/index.html`.
@@ -268,7 +269,7 @@ the base `font-size` in pixels on **Svg**, then use `em(...)` for descendant fon
 sizes, gaps, and padding. Elements with their own font defaults, such as **Plot**
 and **Slide**, need an explicit relative `font-size` to follow that base. Strokes,
 borders, corner radii, and fixed geometry can use pixels. Plot domain padding
-remains fractional. Run the content check and inspect a PNG when changing a
+remains fractional. Run `bun run test` and inspect a PNG when changing a
 visual example.
 
 These docs describe implemented behavior, not feature parity with old Gum.

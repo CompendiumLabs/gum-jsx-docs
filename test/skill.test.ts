@@ -7,7 +7,7 @@ import { delimiter, dirname, join } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
 import { getElements, getGuides, getGallery, getTopics, packageRoot, promptDir } from '../src'
-import { buildSkill, buildSkillFiles } from './skill'
+import { buildSkill, buildSkillFiles } from '../scripts/skill'
 
 const scratch = mkdtempSync(join(tmpdir(), 'gum-jsx-skill-test-'))
 afterAll(() => rmSync(scratch, { recursive: true, force: true }))
