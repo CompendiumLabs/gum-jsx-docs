@@ -2,17 +2,27 @@
 
 *Category*: core
 
-Lengths have three forms. They remain tagged source values until layout has the
+Lengths have five forms. They remain tagged source values until layout has the
 reference needed to turn them into pixels.
 
 | Source | Meaning |
 |---|---|
 | `px(24)` | 24 pixels, independent of font and parent size |
 | `em(2)` | Twice the local font size |
+| `vw(25)` | 25% of the reference canvas width |
+| `vh(4)` | 4% of the reference canvas height |
 | `0.5` | Half the relevant reference dimension |
 
 Zero is valid in every form and needs no reference. Unit strings such as
 `"20px"`, `"2em"`, and `"50%"` are not supported.
+
+Viewport units use a document-wide reference canvas. A root
+`viewport={{ width: 800, height: 600 }}` supplies pixels before typography resolves,
+so `font-size={vh(4)}` sets a 24px base font even when the **Svg** only has maximum
+dimensions. Without an explicit canvas, definite root **Svg** dimensions provide
+the reference. Maximum dimensions, advisory offers, and measured content do not.
+Missing axes fail only when a nonzero unit needs them. See
+[Viewport units](./viewport_units.md) for a complete example and host options.
 
 ## Which reference?
 

@@ -79,6 +79,16 @@ in any layout. Use layout_element for the same wrapping and layout without
 serialization, for example to inspect or rasterize the fragment, and
 make_viewport for the wrapping step alone.
 
+An optional `viewport: { width, height }` supplies reference canvas pixels for
+`vw()` and `vh()` independently of output allocation. Each axis uses the root's
+authored `viewport` first, then an independently established root dimension,
+then the host's `viewport`. These references resolve before the root font. The
+same field is accepted in the context argument to `pass.layout`.
+
+Gum Studio supplies its canvas through `viewport`. Hosts that need to force
+reference dimensions can use `overrides: { viewport: { width, height } }`.
+See [Viewport units](./viewport_units.md).
+
 For a bounded preview, as in Gum Studio, pass maxima on the generated viewport:
 
 ```ts

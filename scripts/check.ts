@@ -23,8 +23,8 @@ const entries = [
   ...listTopics().map(entry => ({ ...entry, dir: topicsDir, collection: topics })),
 ]
 const commonOnlyElements = new Set(['Spacer', 'Span'])
-// Only the Svg reference page needs an explicit viewport.
-const viewportExamples = new Set(['Svg'])
+// Viewport behavior needs an explicit Svg in these examples.
+const viewportExamples = new Set(['Svg', 'viewport_units'])
 const bindings = { ...core, ...math }
 
 for (const [name, value] of Object.entries(bindings)) {

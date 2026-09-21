@@ -27,6 +27,7 @@ Overflow is still retained in the fragment for inspection.
 | `children` | — | One content element, optionally absent |
 | `theme` | Inherited, initially `"light"` | Palette inherited by all content |
 | `background` | `none` | Explicit viewport paint; independent of the theme |
+| `viewport` | — | Reference canvas `{ width, height }` in pixels for `vw()` and `vh()`; does not allocate output space |
 | `width` / `height` | Natural | Preferred viewport dimensions; explicit values require `px()` |
 | `aspect` | — | Preferred viewport width/height ratio |
 | `min-width` / `min-height` | — | Minimum viewport dimensions |
@@ -44,6 +45,12 @@ An explicit width or height, including an exact parent request, keeps that axis'
 allocation and clipping behavior. Advisory `available(...)` requests without max
 props do not scale anything. A width-only document therefore reflows and grows
 naturally in height.
+
+At the document root, `viewport` establishes references before the root font is
+resolved, allowing `font-size={vh(4)}` even with only maximum output dimensions.
+Omitted reference axes use definite root dimensions, then the host's `viewport`
+when provided. The reference canvas stays unchanged through nested **Svg**
+elements. See [Viewport units](../../gallery/text/viewport_units.md).
 
 An explicit `aspect` uses the common sizing rules. `width={px(320)} aspect={2}`
 creates a 320×160 viewport before laying out its content. With neither dimension
