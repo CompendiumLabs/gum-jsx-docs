@@ -8,7 +8,8 @@ Math operands are ordinary Gum elements. Each geometric operand has explicit em 
 
 The TitleFrame uses `frame-aspect={1}` to make a content-sized square border.
 Svg hugs the frame and its raised title without an outer Box or fixed dimensions.
+The frame's `fit` keeps the complete composition inside smaller previews.
 Spacing, borders, corner radii, and the title font use ems, so changing the single
-base font size on Svg scales the whole figure.
+base font size on TitleFrame scales the whole figure.
 
 See [MathArray](../../elements/text/MathArray.md).

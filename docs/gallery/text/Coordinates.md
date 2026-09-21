@@ -3,7 +3,10 @@
 *Category*: api
 
 Data coordinates are distinct from layout lengths. Numeric graph points are data;
-width, height, stroke widths, and other lengths still use fractions/px/em.
+width, height, stroke widths, and other lengths use the ordinary [units](./Units.md).
+Unit strings in point coordinates are local lengths: `"50%"` uses half the
+corresponding drawing dimension, and `"10px"` is a pixel offset. They do not pass
+through data-axis mapping. Bare numeric points keep their data meaning.
 
 `infer_coordinates(children, options)` returns an immutable
 {xlim,ylim,flip_x,flip_y} record. `map_point(point, coordinates, size)` maps to

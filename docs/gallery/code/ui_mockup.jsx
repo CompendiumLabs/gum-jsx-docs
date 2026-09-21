@@ -24,7 +24,7 @@ return <Slide fit font-size={px(10)} aspect={1.5} padding={em(1.1)}>
     <Group>
       <Window title="Data Viz" x={0.06} y={0.31} width={0.67} padding={0}>
         <Plot aspect={1.9} xlim={[0, tau]} ylim={[-1.2, 1.2]}>
-          <SymLine fy={sin} xlim={[0, tau]} stroke={blue} stroke-width={px(1.5)} />
+          <SymLine fy={sin} xlim={[0, tau]} stroke={blue} stroke-width={em(0.15)} />
         </Plot>
       </Window>
       <VStack x={0.64} y={0.06} width={0.33} gap={em(0.75)}>

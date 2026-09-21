@@ -17,7 +17,8 @@ at the top of the example.
 stay the same through nested containers. Numeric fractions keep using their
 ordinary local references. Viewport units work anywhere a length is accepted,
 including font sizes, padding, gaps, positions, shape geometry, and math spacing.
-The explicit dimensions of **Svg** itself still require `px()`.
+Strings such as `"3vw"` and `"2vh"` use the same references. The explicit
+dimensions of **Svg** itself still require pixels: `px(800)` or `"800px"`.
 
 Without an explicit reference canvas, definite root **Svg** dimensions supply the
 references, including exact host allocations, equal minimum/maximum limits, and

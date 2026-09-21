@@ -27,8 +27,8 @@ Overflow is still retained in the fragment for inspection.
 | `children` | — | One content element, optionally absent |
 | `theme` | Inherited, initially `"light"` | Palette inherited by all content |
 | `background` | `none` | Explicit viewport paint; independent of the theme |
-| `viewport` | — | Reference canvas `{ width, height }` in pixels for `vw()` and `vh()`; does not allocate output space |
-| `width` / `height` | Natural | Preferred viewport dimensions; explicit values require `px()` |
+| `viewport` | — | Reference canvas `{ width, height }` in pixels for `vw` and `vh` lengths; does not allocate output space |
+| `width` / `height` | Natural | Preferred viewport dimensions in pixels: `px(800)` or `"800px"` |
 | `aspect` | — | Preferred viewport width/height ratio |
 | `min-width` / `min-height` | — | Minimum viewport dimensions |
 | `max-width` / `max-height` | — | Maximum viewport dimensions; uniformly shrink overflowing content on hugging axes |

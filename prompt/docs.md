@@ -1,8 +1,10 @@
 ## Layout and styling essentials
 
-- Lengths use `px(24)` for pixels, `em(1.5)` for local font sizes, or bare numbers
-  for fractions of an established reference. `width={100}` is not 100 pixels.
-  CSS unit strings and boolean padding are not supported. Zero needs no reference.
+- Lengths accept `px(24)` / `"24px"`, `em(1.5)` / `"1.5em"`, and `vw()` / `vh()`
+  or their unit strings. `"50%"` and `0.5` use the property's established fraction
+  reference. `width={100}` is not 100 pixels. Quoted JSX attributes work directly,
+  including `font-size="4vh"` and `padding="1em"`. Zero, including `"0"`, needs no
+  reference. Nonzero unitless strings and boolean padding are not supported.
 - Set a base `font-size` on `Svg`, then prefer ems for descendant typography,
   padding, gaps, and scalable details. `Plot` and `Slide` have their own font
   defaults; set `font-size={em(1)}` when they should follow that base.
