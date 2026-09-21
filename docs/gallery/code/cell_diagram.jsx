@@ -236,6 +236,7 @@ return (
       radius={em(0.8)}
       background={col.frame.fill}
       border-color={col.frame.border}
+      title-background={white}
     >
       <Graph aspect={1.73} xlim={[-0.2, 1.7]} ylim={[0, 1]} flip-y={false}>
         <Blob
