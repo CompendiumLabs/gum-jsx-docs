@@ -10,10 +10,10 @@ return <Box padding={em(1.5)} background={lightgray}>
       </Box>)}
     </HStack>
     <Text>interp(white, blue, fraction)</Text>
-    <HStack gap={em(0.875)}>
+    <HStack gap={em(0.9)}>
       {linspace(0, 1, 5).map(t => <VStack grow={1} gap={em(0.375)} align="center">
         <Square fill={interp(white, blue, t)} stroke={darkgray} />
-        <Text font-family={mono} font-size={em(0.875)}>{rounder(t)}</Text>
+        <Text font-family={mono} font-size={em(0.9)}>{rounder(t)}</Text>
       </VStack>)}
     </HStack>
   </VStack>

@@ -6,7 +6,7 @@
     <Rect
       grow={3}
       aspect={1.5}
-      radius={[px(24), px(12)]}
+      border-radius={[px(24), px(12)]}
       fill={green}
       stroke={none}
     />

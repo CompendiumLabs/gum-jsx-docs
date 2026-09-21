@@ -27,7 +27,7 @@ return <BarPlot
   axis-tick-size={em(0.5)}
   margin={em(1.5)}
   bar-width={0.8}
-  radius={{ t: em(0.3) }}
+  border-radius={{ t: em(0.3) }}
   fill={blue}
   aspect={1.3}
 >

@@ -13,8 +13,8 @@
 | `bases` | `0` | Scalar, array, or callback for bar baselines |
 | `bar-width` | `0.8` | Scalar, array, or callback for widths in data units |
 | `direction` | `"vertical"` | Vertical or horizontal bars |
-| `radius` | `0` | Scalar, elliptical pair, or [side/corner object](./Box.md) in layout units |
-| `styles` | — | Per-bar style array or `(value, index) => style` callback; may override `radius` |
+| `border-radius` | `0` | Scalar, elliptical pair, or [side/corner object](./Box.md) in layout units |
+| `styles` | — | Per-bar style array or `(value, index) => style` callback; may override `border-radius` |
 | `axis` | `true` | Enable or disable both axes by default |
 | `xaxis` / `yaxis` | `axis` | Boolean or **Axis** props for one axis |
 | `xticks` / `yticks` | `5` | Target count or explicit values / labeled pairs |
@@ -37,11 +37,11 @@
 | `*-style` | — | Nested options for the corresponding scopes |
 
 Compose [Bars](./Bars.md) and [Plot](./Plot.md). Accepts values, positions, bases,
-`bar-width`, direction, radius, and styles along with **Plot** props. Additional
+`bar-width`, direction, border radius, and styles along with **Plot** props. Additional
 children overlay bars and participate in limit inference.
 
 For rounded tops with square baselines on positive vertical bars, use
-`radius={{ t: em(0.5) }}`. Horizontal bars can use `radius={{ r: em(0.5) }}`.
+`border-radius={{ t: em(0.5) }}`. Horizontal bars can use `border-radius={{ r: em(0.5) }}`.
 Sides refer to screen edges, so negative bars may need `b` or `l` instead.
 Scalar, paired, and individual corner radii follow [Bars](./Bars.md).
 
@@ -49,7 +49,7 @@ Padding follows [Graph](./Graph.md): values are fractions of inferred data spans
 Use `padding={[0.12, 0.1]}` for horizontal/vertical padding, or **Box**-style side
 shorthands for individual edges. `margin` adds layout space around the plot.
 
-`fill` and `radius` set shared bar defaults; entries returned by `styles` can
+`fill` and `border-radius` set shared bar defaults; entries returned by `styles` can
 override either. For a value-dependent radius, return it from `styles`:
 
 ```jsx
@@ -57,15 +57,15 @@ override either. For a value-dependent radius, return it from `styles`:
   values={[28, -17, 43]}
   styles={(value) => ({
     fill: value < 0 ? red : green,
-    radius: value < 0 ? { b: em(0.5) } : { t: em(0.5) },
+    border_radius: value < 0 ? { b: em(0.5) } : { t: em(0.5) },
   })}
 />
 ```
 
-This rounds the exposed ends under the default vertical axes. `radius: 0`
+This rounds the exposed ends under the default vertical axes. `border_radius: 0`
 keeps an individual bar square; an omitted radius uses the shared default.
 Callbacks receive the endpoint value and original index, and run once at
-construction. Use `styles` for per-bar callbacks; `radius` itself takes a shared
+construction. Use `styles` for per-bar callbacks; `border-radius` itself takes a shared
 radius value.
 
 Positions are numeric data coordinates. Supply [value,label] ticks for categories:

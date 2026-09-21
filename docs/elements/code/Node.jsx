@@ -6,7 +6,7 @@
   <Node width={em(9)} border-color={blue}>
     A longer label wraps inside its frame
   </Node>
-  <Node width={em(6)} height={em(4)} radius={[0.5, 0.5]} border-color={red}>
+  <Node width={em(6)} height={em(4)} border-radius={[0.5, 0.5]} border-color={red}>
     Done
   </Node>
 </HStack>

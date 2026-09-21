@@ -35,7 +35,7 @@ are not automatically forwarded.
 For example, a rounded frame around a circle needs no fixed outer viewport:
 
 ```jsx
-<Frame font-size={px(20)} padding={em(0.75)} radius={em(0.4)}>
+<Frame font-size={px(20)} padding={em(0.75)} border-radius={em(0.4)}>
   <Circle width={em(5)} fill={blue} stroke={none} />
 </Frame>
 ```

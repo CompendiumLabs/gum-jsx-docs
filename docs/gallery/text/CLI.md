@@ -29,6 +29,7 @@ gum --help
 | --theme | `light` or `dark`; overrides the source root theme |
 | --title | SVG or PDF document title |
 | --id-prefix | SVG definition prefix; default "gum" |
+| --precision | Output significant digits, 1–17 or `full`; default 10 |
 | --stats | Layout counters on stderr |
 | -h, --help | Help |
 
@@ -57,6 +58,8 @@ top-left of the source viewport; width and height must be positive. Cropping
 happens before rasterization, preserving sharp vector edges when magnified.
 Selection is supported for PNG and kitty in both CLI commands.
 SVG/tree/JSON allow zero-sized axes; PNG/PDF/kitty require positive dimensions.
+`--precision` applies to SVG, PDF, and tree numeric output, and to the SVG used for
+PNG and kitty. It does not change the laid-out geometry.
 
 A bare element is wrapped in **Svg** by the CLI. The core evaluator itself does not
 add this wrapper. Input and output paths are relative to the current directory.

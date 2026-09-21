@@ -12,8 +12,8 @@ const points = [
 ]
 return (
   <Box padding={em(1.5)}>
-    <Frame padding={em(1.125)} background={darkgray} radius={em(1.25)} border-width={px(2)}>
-      <Box padding={em(0.75)} background={black} radius={em(0.75)}>
+    <Frame padding={em(0.75)} background={darkgray} border-radius={em(1.25)} border-width={px(2)}>
+      <Box padding={em(0.75)} background={black} border-radius={em(0.75)}>
         <Group aspect={cols/rows}>
           {range(rows * cols).map((i) => (
             <RoundedRect
@@ -21,7 +21,7 @@ return (
               y={floor(i / cols) / rows}
               width={1 / cols - 0.007}
               height={1 / rows - 0.012}
-              radius={em(0.3)}
+              border-radius={em(0.3)}
               fill={paint(i % cols)}
               stroke={none}
               opacity={0.7}

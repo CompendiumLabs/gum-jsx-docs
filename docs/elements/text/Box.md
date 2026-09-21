@@ -17,7 +17,7 @@ The inner content area subtracts padding and the border on each side.
 | `border-width` | `px(0)` | Border thickness inside the frame |
 | `border-color` | Resolved color | Border paint |
 | `background` | `none` | This **Box**'s background |
-| `radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or side/corner object |
+| `border-radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or side/corner object |
 | `align` | `"start"` | Content alignment on both axes, or { x, y } / [x, y] |
 | `clip` | `false` | Clip content inside the rounded border |
 
@@ -47,15 +47,15 @@ Unspecified sides are zero. Each value accepts px/em lengths or raw fractions.
 Boolean padding and a margin prop are not supported. Use another outer **Box** when
 you need outside spacing.
 
-Radius accepts a single length, an elliptical `{ x, y }` / `[x, y]` pair, or
+Border radius accepts a single length, an elliptical `{ x, y }` / `[x, y]` pair, or
 Tailwind-style sides and corners: `t`, `b`, `l`, `r`, `tl`, `tr`, `bl`, `br`.
 Each entry can itself be a length or pair. Unspecified corners are square.
 Explicit corners override sides; `t`/`b` override `l`/`r` at shared corners,
 regardless of object order. Zero explicitly removes rounding at that corner.
 
 ```jsx
-<Box radius={{ t: px(12) }} />
-<Box radius={{ t: [px(16), px(8)], tr: 0, br: px(4) }} />
+<Box border-radius={{ t: px(12) }} />
+<Box border-radius={{ t: [px(16), px(8)], tr: 0, br: px(4) }} />
 ```
 
 Scalar fractions use the final box's shorter side; pairs use its width and

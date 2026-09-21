@@ -34,7 +34,7 @@ return (
     title-font-size={em(0.6)}
     padding={em(0.7)}
     border-width={em(0.03)}
-    radius={em(0.4)}
+    border-radius={em(0.4)}
     align="center"
   >
     <VStack gap={em(0.8)} align="center">

@@ -12,7 +12,7 @@
   <Edge start="circle" end="second" start-side="bottom" end-side="left" />
   <Edge start="stack" end="inner" start-side="right" end-side="bottom" />
   <Circle id="circle" x={0.15} y={0.75} anchor="center" width={em(4)} fill={white} />
-  <Rect id="pill" x={0.5} y={0.75} anchor="center" width={em(8)} height={em(3)} radius={0.5} fill={white} />
+  <Rect id="pill" x={0.5} y={0.75} anchor="center" width={em(8)} height={em(3)} border-radius={0.5} fill={white} />
   <VStack id="stack" x={0.5} y={0.28} anchor="center" width={em(8)} gap={em(0.4)} align="fill">
     <TextFrame id="first" padding={em(0.4)} background={white}>
       First
@@ -21,7 +21,7 @@
       Second
     </TextFrame>
   </VStack>
-  <Frame id="inner" x={0.81} y={0.6} anchor="center" width={0.36} height={0.4} radius={em(0.5)}>
+  <Frame id="inner" x={0.81} y={0.6} anchor="center" width={0.36} height={0.4} border-radius={em(0.5)}>
     <Network xlim={[0, 1]} ylim={[0, 1]} stroke={red}>
       <Edge start="a" end="b" />
       <Node id="a" x={0.25} y={0.75} font-size={em(0.75)} border-color={red}>

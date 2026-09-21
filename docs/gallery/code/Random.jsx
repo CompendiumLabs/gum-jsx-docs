@@ -10,7 +10,7 @@ return <TextBox width="fill" padding={em(1.5)} background={lightgray}>
       <Points points={points} point-size={px(6)} fill={blue} opacity={0.65} />
       <Points points={[center]} point-size={px(12)} fill={red} stroke={white} stroke-width={px(2)} />
     </Plot>
-    <Text font-family={mono} font-size={em(0.875)}>
+    <Text font-family={mono} font-size={em(0.9)}>
       Seed 7. n = {points.length}. Mean = ({rounder(center[0], 3)}, {rounder(center[1], 3)}).
     </Text>
   </TextCol>

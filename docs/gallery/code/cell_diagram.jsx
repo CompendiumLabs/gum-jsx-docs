@@ -228,12 +228,12 @@ const labels = [
 ]
 
 return (
-  <Box min-width={em(20)} padding={em(1.3)}>
+  <Box min-width={em(20)} padding={em(1.5)}>
     <TitleFrame
       title="Anatomy of a Cell"
       title-font-size={em(1.25)}
       padding={em(1.3)}
-      radius={em(0.8)}
+      border-radius={em(0.8)}
       background={col.frame.fill}
       border-color={col.frame.border}
       title-background={white}

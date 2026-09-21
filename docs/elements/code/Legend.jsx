@@ -1,5 +1,5 @@
 // Legend badges and labels.
-<Box padding={em(1.875)}>
+<Box padding={em(2)}>
   <Legend
     entries={[
       { label: "Prediction", color: blue },

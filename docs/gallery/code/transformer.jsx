@@ -24,7 +24,7 @@ const loopBottom = loopTop + (layers.length - 1) * (blockHeight + gap)
 const Block = ({ id, label, color }) => (
   <Node
     id={id} width={em(blockWidth)} height={em(blockHeight)}
-    padding={em(0.45)} radius={em(0.4)} background={tint(color)}
+    padding={em(0.45)} border-radius={em(0.4)} background={tint(color)}
     border-color={interp(white, color, 0.55)} border-width={em(0.08)}
     align="center"
   >
@@ -42,7 +42,7 @@ return (
     <TitleFrame
       title="Transformer Architecture"
       title-font-size={em(1.1)}
-      padding={em(1.1)} radius={em(0.9)}
+      padding={em(1.1)} border-radius={em(0.9)}
       border-color={darkgray}
     >
       <Network
@@ -63,7 +63,7 @@ return (
           <Block id="linear" label="Linear" color={red} />
           <Frame
             padding={em(layerPadding)} border-color={interp(white, slate, 0.2)}
-            border-width={em(layerBorder)} radius={em(0.65)}
+            border-width={em(layerBorder)} border-radius={em(0.65)}
           >
             <VStack gap={em(gap)} align="center">
               {layers.map(layer => (

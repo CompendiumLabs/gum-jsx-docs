@@ -30,7 +30,7 @@ return (
         background={paper}
         border-color={ink}
         border-width={px(2)}
-        radius={em(0.9)}
+        border-radius={em(0.9)}
         clip
       >
         <Graph aspect={580 / 416} xlim={[0, 580]} ylim={[0, 416]} flip-y={false}>
@@ -45,7 +45,7 @@ return (
           <RoundedRect
             x={pivot[0]} y={0} anchor="center"
             width={0.45} height={0.2}
-            radius={px(10)} fill={support} stroke={ink} stroke-width={px(1.5)}
+            border-radius={px(10)} fill={support} stroke={ink} stroke-width={px(1.5)}
           />
           <Arc
             center={pivot} radius={95} start={90 - angle} end={90}

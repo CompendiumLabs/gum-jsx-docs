@@ -11,6 +11,6 @@ return <Box padding={em(1.5)} background={lightgray}>
       <Field vectors={vectors} stroke={blue} stroke-width={px(1.5)} head-size={px(7)} />
       <Points points={tips} point-size={px(7)} fill={red} />
     </Graph>
-    <Text font-size={em(0.875)}>12 vectors, one circle, and a 9 by 9 Cartesian grid.</Text>
+    <Text font-size={em(0.9)}>12 vectors, one circle, and a 9 by 9 Cartesian grid.</Text>
   </VStack>
 </Box>

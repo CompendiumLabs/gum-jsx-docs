@@ -10,7 +10,7 @@
 | `border-width` | `px(0)` | Border thickness inside the frame |
 | `border-color` | Resolved color | Border paint |
 | `background` | `none` | **Box** background |
-| `radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or [side/corner object](./Box.md) |
+| `border-radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or [side/corner object](./Box.md) |
 | `align` | `{ x: "fill" }` | Fill the child's automatic width; start vertically |
 | `clip` | `false` | Clip content inside the rounded border |
 

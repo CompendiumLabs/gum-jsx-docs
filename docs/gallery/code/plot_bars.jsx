@@ -12,7 +12,7 @@
   xaxis-label-font-size={em(0.8)}
   styles={(value) => ({
     fill: value < 0 ? red : blue,
-    radius: value < 0 ? {'b': em(0.25)} : {'t': em(0.25)},
+    border_radius: value < 0 ? {'b': em(0.25)} : {'t': em(0.25)},
   })}
 >
   <CoordLine points={[[-0.5, 0], [4.5, 0]]} stroke={darkgray} />

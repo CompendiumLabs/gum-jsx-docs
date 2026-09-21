@@ -2,7 +2,7 @@
 const Swatch = ({ color, label }) => (
   <VStack basis={em(3)} grow={1} shrink={1} gap={em(0.5)}>
     <Square fill={color} stroke={none} />
-    <Text font-size={em(0.875)}>{label}</Text>
+    <Text font-size={em(0.9)}>{label}</Text>
   </VStack>
 )
 const swatches = [

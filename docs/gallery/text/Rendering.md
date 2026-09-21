@@ -19,6 +19,7 @@ const svg = render_svg(fragment, {
   title: 'An eighty-pixel square',
   background: white,
   id_prefix: 'example',
+  precision: 10,
 })
 console.log(inspect_fragment(fragment))
 console.log(pass.stats) // queries, layouts, hits
@@ -78,6 +79,14 @@ survive. `request` is an ordinary LayoutRequest; the
 in any layout. Use layout_element for the same wrapping and layout without
 serialization, for example to inspect or rasterize the fragment, and
 make_viewport for the wrapping step alone.
+
+SVG output uses 10 significant digits for numbers by default. Pass `precision`
+from 1 to 17 to change that limit, or `'full'` to preserve JavaScript's number
+strings. The setting affects serialization only; fragments keep their original
+pixel coordinates.
+`inspect_fragment(fragment, { precision })` offers the same formatting for tree
+inspection. It defaults to `'full'`; the CLI tree mode supplies its usual
+10 significant digits unless `--precision` overrides them.
 
 An optional `viewport: { width, height }` supplies reference canvas pixels for
 `vw()` and `vh()` independently of output allocation. Each axis uses the root's

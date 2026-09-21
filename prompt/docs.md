@@ -21,7 +21,7 @@
   `fit="cover"` fills and crops. No fitting wrapper is needed. Authored dimensions
   describe the natural drawing; host offers and maxima bound the fitted result.
 - A `Box` contains one element. Wrap siblings in `HStack`, `VStack`, or `Group`.
-  Use `padding`, `border-width`, `border-color`, `radius`, and `background` for
+  Use `padding`, `border-width`, `border-color`, `border-radius`, and `background` for
   its decoration. `fill` and `stroke` instead inherit to child shapes. `Text`
   uses `color`, not `fill`. Use `text-align` for text inside its allocated box.
 - Stack `gap` separates items, `align` controls the cross axis, and `justify`

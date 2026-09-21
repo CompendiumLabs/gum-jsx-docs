@@ -156,7 +156,7 @@ return <Box fit font-size={px(20)} padding={em(1.5)}>
       <TextCol width={em(15)} gap={em(1.35)} font-size={em(1.4)}>
         <TextFrame
           padding={em(0.85)}
-          radius={em(0.55)}
+          border-radius={em(0.55)}
           background={interp(white, purple, 0.05)}
           border-color={interp(white, purple, 0.3)}
         >

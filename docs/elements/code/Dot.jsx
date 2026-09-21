@@ -1,5 +1,5 @@
 // The Dot geometry convenience.
-<Box width="fill" aspect={1.6} padding={em(1.875)}>
+<Box width="fill" aspect={1.6} padding={em(2)}>
   <Dot
     width={px(30)}
     height={px(30)}

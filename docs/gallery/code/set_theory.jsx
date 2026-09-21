@@ -1,5 +1,5 @@
 // Nested elliptical regions with independently positioned labels.
-<TitleFrame font-size={px(25)} title="Set Theory" padding={em(1.2)} radius={em(0.55)}>
+<TitleFrame font-size={px(25)} title="Set Theory" padding={em(3)} border-radius={em(0.55)}>
   <Group aspect={1}>
     <Circle
       width={1}

@@ -10,7 +10,7 @@ const Column = ({ width, color }) => (
       border-color={color}
       background={white}
     >
-      <Text font-size={em(1.125)} line-height={em(1.4)}>{paragraph}</Text>
+      <Text font-size={em(1.2)} line-height={em(1.4)}>{paragraph}</Text>
     </Frame>
   </VStack>
 )

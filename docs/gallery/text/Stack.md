@@ -17,7 +17,7 @@ elements, not bare strings.
 | `line-gap` | `gap` | Vertical space between wrapped rows |
 | `align` | `"start"` | Cross-axis positioning; "start", "center", "end", "fill", "stretch", or 0–1 |
 | `justify` | `"start"` | Main-axis positioning; "start", "center", "end", or 0–1 |
-| `justify` | — | Also "space_between", "space_around", or "space_evenly" |
+| `justify` | — | Also "space-between", "space-around", or "space-evenly" |
 | `width` / `height` and limits | — | Common sizing of the stack's frame |
 
 **HStack** additionally supports `align="baseline"`. Use a single alignment value

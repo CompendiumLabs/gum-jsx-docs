@@ -46,7 +46,7 @@ Missing axes fail only when a nonzero unit needs them. See
 | Stack `basis` and `gap` | Established main-axis length of the stack |
 | **Group** child's `x` / `y` | Whole **Group** width / height |
 | Shape point `x` / `y` | Shape's own resolved width / height |
-| Scalar shape `radius` and `stroke-width` | Shorter side of the shape |
+| Scalar shape `radius`, `border-radius`, and `stroke-width` | Shorter side of the shape |
 | **Box** `border-width` | Shorter established parent side; both axes must be known |
 | `font-size` | Inherited font size |
 | `line-height` | Resolved local font size |

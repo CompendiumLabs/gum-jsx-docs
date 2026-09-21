@@ -6,7 +6,7 @@ const Stage = ({ label, color, debug }) => (
     padding={em(0.4)}
     border-color={color}
     background={white}
-    radius={em(0.5)}
+    border-radius={em(0.5)}
   >
     <Text text-align="center" color={color} font-weight={bold}>{label}</Text>
   </TextFrame>

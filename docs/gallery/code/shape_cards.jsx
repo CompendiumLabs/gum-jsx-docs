@@ -3,7 +3,7 @@ const Card = ({ title, note, color, symbol }) => (
   <TextFrame
     grow={1} shrink={1} basis={em(11)}
     padding={em(1)}
-    radius={em(0.75)}
+    border-radius={em(0.75)}
     border-color={gray}
     background={white}
   >
@@ -26,7 +26,7 @@ const cards = [
     title: "Square",
     color: red,
     note: "A square silhouette with gently rounded corners.",
-    symbol: <Square radius={em(0.75)} fill={red} stroke={none} />,
+    symbol: <Square border-radius={em(0.75)} fill={red} stroke={none} />,
   },
   {
     title: "Polygon",

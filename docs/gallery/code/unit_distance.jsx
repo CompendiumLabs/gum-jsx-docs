@@ -86,7 +86,7 @@ return (
       title={title}
       title-font-size={em(1.5)}
       padding={em(0.85)}
-      radius={em(0.5)}
+      border-radius={em(0.5)}
       border-width={px(2)}
     >
       <VStack gap={em(0.65)} align="stretch">
@@ -101,7 +101,7 @@ return (
           <Segments segments={edges} stroke={blue} stroke-width={px(0.6)} opacity={0.6} />
           <Points points={samples} point-size={px(3)} fill={yellow} />
         </Graph>
-        <HStack justify="space_between">
+        <HStack justify="space-between">
           <Tex>{"n=" + n}</Tex>
           <Tex>{"\\nu=" + m + "\\approx n^{" + delta1 + "}"}</Tex>
         </HStack>

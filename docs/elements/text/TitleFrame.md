@@ -15,13 +15,13 @@
 | `title-border-width` | Frame border width | Title box border thickness |
 | `title-border-color` | Frame border color | Title box border paint |
 | `title-background` | Frame background | Title box background |
-| `title-radius` | `em(0.3)` | Title box corner radius |
+| `title-border-radius` | `em(0.3)` | Title box corner radius |
 | `gap` | `em(0.6)` | Space between content children |
 | `padding` | `em(0.75)` | Length or [Box padding shorthand](./Box.md) |
 | `border-width` | `px(1)` | Border thickness inside the frame |
 | `border-color` | Resolved color | Border paint |
 | `background` | `none` | **Box** background |
-| `radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or [side/corner object](./Box.md) |
+| `border-radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or [side/corner object](./Box.md) |
 | `align` | `"start"` | Content alignment on both axes |
 | `clip` | `false` | Clip content inside the rounded border |
 
@@ -50,7 +50,7 @@ raised half of the title overhangs the top edge as a reserved outset. Leave room
 for that overhang in the surrounding `gap` or `padding`.
 
 Scoped `title-` props accept text options such as `title-color`, `title-font-size`,
-and `title-wrap`, plus title box padding, border, background, radius, and alignment.
+and `title-wrap`, plus title box padding, border, background, border radius, and alignment.
 They override matching fields in `title-style`. Supplied title **Element**s retain
 their own props and inherit the title box's font size.
 Generated titles inherit the surrounding font weight, which is normal by default.

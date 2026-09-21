@@ -43,7 +43,7 @@ return (
       title="From A to B"
       title-font-size={em(0.625)}
       padding={em(0.75)}
-      radius={em(0.45)}
+      border-radius={em(0.45)}
     >
       <VStack gap={em(1)}>
         <Row label="the direct method">

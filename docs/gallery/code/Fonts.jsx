@@ -1,7 +1,7 @@
 // The two bundled families provide light, regular, and bold faces without host setup.
 const Family = ({ name, color }) => (
   <VStack gap={em(0.625)} font-family={name} color={color}>
-    <Text font-size={em(0.875)}>{name}</Text>
+    <Text font-size={em(0.9)}>{name}</Text>
     {[light, regular, bold].map((weight) => (
       <Text font-size={em(1.375)} font-weight={weight}>{weight} — Aa Bb 0123</Text>
     ))}

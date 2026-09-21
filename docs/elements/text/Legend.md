@@ -12,7 +12,7 @@
 | `border-width` | `px(1)` | Border thickness inside the frame |
 | `border-color` | `"theme:border"` | Border paint |
 | `background` | `none` | Explicit **Legend** background |
-| `radius` | `px(4)` | **Box** corner radius |
+| `border-radius` | `px(4)` | **Box** corner radius |
 | `align` | `"start"` | Content alignment inside the box |
 | `clip` | `false` | Clip content inside the rounded border |
 

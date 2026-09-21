@@ -11,7 +11,7 @@
 | `text` / `children` | — | Text, inline content, or one existing layout element |
 | `padding` | `em(0.6)` | Space between the label and inside border |
 | `border-width` | `px(1)` | Border thickness inside the frame |
-| `radius` | `em(0.3)` | Corner radius, including **Box** side/corner forms |
+| `border-radius` | `em(0.3)` | Corner radius, including **Box** side/corner forms |
 | `align` | `"center"` | Align the label within the frame |
 | `background` | `none` | Frame background paint |
 | `clip` | `false` | Clip content inside the frame's border |
@@ -32,4 +32,4 @@ on the wrapper to position the whole result.
 Connections meet the outer frame, including padding and the inside border.
 Label ink and the inner `content` rectangle do not determine attachment points.
 Rounded corners use the same radii for drawing and attachment. A frame with
-`radius={[0.5, 0.5]}` has an elliptical outline.
+`border-radius={[0.5, 0.5]}` has an elliptical outline.

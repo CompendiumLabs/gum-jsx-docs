@@ -7,7 +7,7 @@ return <Plot
   xlim={[-4, 4]}
   ylim={[-2, 2]}
   grid
-  font-size={em(0.875)}
+  font-size={em(0.9)}
   margin={em(1.4)}
   xlabel={<Tex font-size={em(1.25)}>x=a+bi</Tex>}
   ylabel={<Tex font-size={em(1.25)}>c</Tex>}

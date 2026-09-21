@@ -1,5 +1,5 @@
 // A sampled function band.
-<Box padding={em(1.875)}>
+<Box padding={em(2)}>
   <Plot font-size={em(0.75)}>
     <SymFill
       xlim={[0, 6]}

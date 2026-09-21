@@ -1,5 +1,5 @@
 // SymPoints uses the shared sampler.
-<Box padding={em(1.875)}>
+<Box padding={em(2)}>
   <Plot font-size={em(0.75)}>
     <SymPoints
       fy={sin}

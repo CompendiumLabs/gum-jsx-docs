@@ -12,7 +12,7 @@ const Cell = ({ n, label }) => (
   <Frame
     grow={1} shrink={1} basis={em(10)}
     padding={em(1)}
-    radius={em(0.5)}
+    border-radius={em(0.5)}
     background={lightgray}
     border-color={gray}
   >

@@ -250,7 +250,7 @@ const Rose = (attr) => (
 
 return (
   <Box padding={em(1.25)}>
-    <Frame radius={em(0.75)} clip border-color={interp(black, white, 0.133)}>
+    <Frame border-radius={em(0.75)} clip border-color={interp(black, white, 0.133)}>
       <Group aspect={aspect}>
         {/* night */}
         <Rect fill={night} />

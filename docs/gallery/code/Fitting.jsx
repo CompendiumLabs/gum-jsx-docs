@@ -2,7 +2,7 @@
 <Box padding={em(1.25)} background={lightgray}>
   <HStack gap={em(1.25)}>
     <VStack grow={1} gap={em(0.5)}>
-      <Text font-size={em(0.875)}>contain</Text>
+      <Text font-size={em(0.9)}>contain</Text>
       <Frame
         height={px(100)}
         padding={em(0.75)}
@@ -12,7 +12,7 @@
       </Frame>
     </VStack>
     <VStack grow={1} gap={em(0.5)}>
-      <Text font-size={em(0.875)}>shrink only</Text>
+      <Text font-size={em(0.9)}>shrink only</Text>
       <Frame
         width="fill"
         height={px(100)}

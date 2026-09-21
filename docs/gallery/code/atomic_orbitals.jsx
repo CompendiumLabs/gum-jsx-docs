@@ -54,7 +54,7 @@ const profiles = [
 ]
 const Cell = ({ profile }) => (
   <VStack gap={em(0.5)} align="center">
-    <Frame radius={em(1)} background={lightgray} border-color={darkgray}>
+    <Frame border-radius={em(1)} background={lightgray} border-color={darkgray}>
       <Graph width={em(7)} aspect={1} xlim={[-0.8, 0.8]} ylim={[-0.8, 0.8]}>
         <CoordLine
           points={[[-0.8, 0], [0.8, 0]]}
@@ -76,7 +76,7 @@ const Cell = ({ profile }) => (
   </VStack>
 )
 return <Box font-size={px(20)} padding={em(1)}>
-  <TitleFrame title="Atomic Orbitals" title-font-size={em(1.5)} padding={em(1.5)} radius={em(1)}>
+  <TitleFrame title="Atomic Orbitals" title-font-size={em(1.5)} padding={em(1.5)} border-radius={em(1)}>
     <VStack gap={em(2)} align="center">
       {[[0], [1, 2, 3], [4, 5]].map((row) => (
         <HStack wrap width="fill" gap={em(2)} justify="center">

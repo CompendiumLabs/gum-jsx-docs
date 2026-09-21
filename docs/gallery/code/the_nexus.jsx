@@ -1,6 +1,6 @@
 // Ten phase-shifted wave packets on a dense Cartesian mesh.
 <Box padding={em(1.5)}>
-  <Frame padding={em(0.75)} radius={em(0.875)} border-color={slate} border-width={px(2)}>
+  <Frame padding={em(0.75)} border-radius={em(0.9)} border-color={slate} border-width={px(2)}>
     <Plot axis={false} grid={false} margin={em(0.5)} xlim={[-4 * pi, 4 * pi]} ylim={[-1.5, 1.5]}>
       <Mesh2D
         xlim={[-4 * pi, 4 * pi]}

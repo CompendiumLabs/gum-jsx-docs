@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or [side/corner object](./Box.md) |
+| `border-radius` | `0` | Scalar, `{ x, y }` / `[x, y]` pair, or [side/corner object](./Box.md) |
 
 **Rect** paints its allocated rectangle. It is a leaf: it has no content children.
 Use a [Box](./Box.md) when the rectangle should surround text or another element.
@@ -26,15 +26,15 @@ Use `stroke={none}` for a fill-only swatch.
 
 ## Rounded corners
 
-`radius` defaults to zero. A scalar rounds both axes equally; a pair sets
+`border-radius` defaults to zero. A scalar rounds both axes equally; a pair sets
 elliptical corners. Pairs accept `{x, y}` or `[x, y]`:
 
 ```jsx
-<Rect width={px(160)} height={px(80)} radius={[px(24), px(12)]} />
+<Rect width={px(160)} height={px(80)} border-radius={[px(24), px(12)]} />
 ```
 
 Select sides or corners with `t`, `b`, `l`, `r`, `tl`, `tr`, `bl`, and `br`:
-`radius={{ t: px(12), br: [px(6), px(3)] }}` rounds both top corners and
+`border-radius={{ t: px(12), br: [px(6), px(3)] }}` rounds both top corners and
 the bottom-right corner. Unspecified corners are square; explicit corners
 override sides. See [Box](./Box.md) for the shared precedence rules.
 

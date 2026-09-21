@@ -1,5 +1,5 @@
 // The wrapper's anchor and its caption's attachment anchor are independent.
-<Box width="fill" aspect={1.65} padding={em(1.875)}>
+<Box width="fill" aspect={1.65} padding={em(2)}>
   <Group>
     <Attach
       width={0.7}

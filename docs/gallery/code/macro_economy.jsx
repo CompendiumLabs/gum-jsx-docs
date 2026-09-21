@@ -64,7 +64,7 @@ return (
             background={interp(white, color, 0.16)}
             border-color={color}
             border-width={em(0.1)}
-            radius={em(0.5)}
+            border-radius={em(0.5)}
           >
             {label}
           </Node>

@@ -1,5 +1,5 @@
 // Arc in data coordinates.
-<Box padding={em(1.875)}>
+<Box padding={em(2)}>
   <Graph xlim={[-0.5, 3.5]} ylim={[-0.5, 3.5]}>
     <Arc
       center={[1.5, 1.5]}

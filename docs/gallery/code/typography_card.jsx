@@ -23,7 +23,7 @@
       padding={em(0.75)}
       background={black}
       border-color={darkgray}
-      radius={em(0.3)}
+      border-radius={em(0.3)}
     >
       <Text fit
         font-family={mono}

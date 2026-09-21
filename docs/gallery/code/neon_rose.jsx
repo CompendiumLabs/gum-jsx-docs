@@ -122,7 +122,7 @@ const leaves = [
 
 return (
   <Box padding={em(1.25)} background={bg}>
-    <Frame background={bg} radius={em(1)} clip border-color={bg}>
+    <Frame background={bg} border-radius={em(1)} clip border-color={bg}>
       <Graph aspect={1 / 1.3} xlim={[-1, 1]} ylim={[-1.3, 1.3]}>
         <Circle
           x={0}

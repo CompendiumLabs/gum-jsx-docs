@@ -5,7 +5,7 @@
   background={lightgray}
   border-width={px(2)}
   border-color={blue}
-  radius={em(0.75)}
+  border-radius={em(0.75)}
 >
   <VStack gap={em(0.5)}>
     <Text font-size={em(1.375)} font-weight={bold} color={blue}>A content box</Text>
