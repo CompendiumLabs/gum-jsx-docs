@@ -2,6 +2,6 @@
 <Box padding={em(2)}>
   <Graph>
     <Rect stroke={blue} />
-    <OuterLabel offset={em(0.5)} label="Outside the frame" />
+    <OuterLabel offset={em(0.5)}>Outside the frame</OuterLabel>
   </Graph>
 </Box>

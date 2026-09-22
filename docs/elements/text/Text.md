@@ -16,7 +16,6 @@ inline item, aligned by its baseline or bottom edge. Give figures concrete sizes
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| `text` | — | String content; mutually exclusive with children |
 | `font-family` | `sans` | Registered family name |
 | `font-size` | `px(16)` | Glyph size; em/fractions use the inherited font size |
 | `font-weight` | `regular` | Numeric weight |

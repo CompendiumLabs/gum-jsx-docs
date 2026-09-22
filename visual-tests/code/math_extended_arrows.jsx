@@ -4,57 +4,59 @@
     <MathCol gap={em(0.9)} justify="start">
       <MathText>
         A
-        <XArrow above={String.raw`f_n`} below={String.raw`n\to\infty`} />
+        <XArrow below={String.raw`n\to\infty`}>{String.raw`f_n`}</XArrow>
         B
       </MathText>
       <MathText>
         X
-        <XArrow label="xleftrightarrow" above="g" below="h" />
+        <XArrow label="xleftrightarrow" below="h">g</XArrow>
         Y
-        <XArrow label="xrightleftharpoons" above="p" below="q" />
+        <XArrow label="xrightleftharpoons" below="q">p</XArrow>
         Z
       </MathText>
       <MathText color={blue}>
         P
-        <XArrow label="xhookrightarrow" above={<TextMode>embedding</TextMode>} />
+        <XArrow label="xhookrightarrow">
+          <TextMode>embedding</TextMode>
+        </XArrow>
         Q
-        <XArrow label="xhookleftarrow" above="i" />
+        <XArrow label="xhookleftarrow">i</XArrow>
         R
       </MathText>
       <MathText>
         A
-        <XArrow label="xRightarrow" above="f" below="g" />
+        <XArrow label="xRightarrow" below="g">f</XArrow>
         B
-        <XArrow label="xLeftrightarrow" above="p" below="q" />
+        <XArrow label="xLeftrightarrow" below="q">p</XArrow>
         C
-        <XArrow label="xlongequal" above="h" />
+        <XArrow label="xlongequal">h</XArrow>
         D
       </MathText>
       <MathText>
         A
-        <XArrow label="xrightharpoonup" above="f" />
+        <XArrow label="xrightharpoonup">f</XArrow>
         B
-        <XArrow label="xleftharpoondown" above="g" />
+        <XArrow label="xleftharpoondown">g</XArrow>
         C
-        <XArrow label="xleftrightharpoons" above="p" below="q" />
+        <XArrow label="xleftrightharpoons" below="q">p</XArrow>
         D
       </MathText>
       <MathText>
         A
-        <XArrow label="xtwoheadrightarrow" above="f" />
+        <XArrow label="xtwoheadrightarrow">f</XArrow>
         B
-        <XArrow label="xtwoheadleftarrow" above="g" />
+        <XArrow label="xtwoheadleftarrow">g</XArrow>
         C
-        <XArrow label="xmapsto" above="h" />
+        <XArrow label="xmapsto">h</XArrow>
         D
       </MathText>
       <MathText>
         A
-        <XArrow label="xrightleftarrows" above="f" below="g" />
+        <XArrow label="xrightleftarrows" below="g">f</XArrow>
         B
-        <XArrow label="xrightequilibrium" above="p" below="q" />
+        <XArrow label="xrightequilibrium" below="q">p</XArrow>
         C
-        <XArrow label="xleftequilibrium" above="r" below="s" />
+        <XArrow label="xleftequilibrium" below="s">r</XArrow>
         D
       </MathText>
     </MathCol>

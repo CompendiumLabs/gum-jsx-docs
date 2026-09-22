@@ -5,8 +5,7 @@ const gridLocs = range(-4 * maxCoeff, 4 * maxCoeff + 1)
 const deltaCoeffs = range(-1, 2)
 
 // get bounding box for plotting
-const bound0 = maxCoeff * (1 + sqrt(3))
-const bound = bound0 * 1.1
+const bound = maxCoeff * (1 + sqrt(3))
 
 // define basis vectors
 const I = [0, 1]
@@ -80,32 +79,30 @@ const samples = nodes.map((n) => n.pos)
 const title = <Latex>{"\\mathbb{Q}(i, \\zeta_3)"}</Latex>
 
 // Plot the exact coefficient graph in a square data canvas.
-return (
-  <Box padding={em(1)} background={white}>
-    <TitleFrame
-      title={title}
-      title-font-size={em(1.5)}
-      padding={em(0.85)}
-      border-radius={em(0.5)}
-      border-width={px(2)}
-    >
-      <VStack gap={em(0.65)} align="stretch">
-        <Graph aspect={1} xlim={[-bound, bound]} ylim={[-bound, bound]}>
-          <Mesh2D
-            xlim={[-bound, bound]}
-            ylim={[-bound, bound]}
-            xticks={gridLocs}
-            yticks={gridLocs}
-            opacity={0.12}
-          />
-          <Segments segments={edges} stroke={blue} stroke-width={px(0.6)} opacity={0.6} />
-          <Points points={samples} point-size={px(3)} fill={yellow} />
-        </Graph>
-        <HStack justify="space-between">
-          <Tex>{"n=" + n}</Tex>
-          <Tex>{"\\nu=" + m + "\\approx n^{" + delta1 + "}"}</Tex>
-        </HStack>
-      </VStack>
-    </TitleFrame>
-  </Box>
-)
+return <Box padding={em(1)} background={white} font-size={px(25)}>
+  <TitleFrame
+    title={title}
+    title-font-size={em(1.5)}
+    padding={em(0.7)}
+    border-radius={em(0.5)}
+    border-width={px(2)}
+  >
+    <VStack gap={em(0.65)} align="stretch">
+      <Graph aspect={1} xlim={[-bound, bound]} ylim={[-bound, bound]}>
+        <Mesh2D
+          xlim={[-bound, bound]}
+          ylim={[-bound, bound]}
+          xticks={gridLocs}
+          yticks={gridLocs}
+          opacity={0.12}
+        />
+        <Segments segments={edges} stroke={blue} stroke-width={px(0.6)} opacity={0.6} />
+        <Points points={samples} point-size={px(3)} fill={yellow} />
+      </Graph>
+      <HStack justify="space-between">
+        <Tex>{"n=" + n}</Tex>
+        <Tex>{"\\nu=" + m + "\\approx n^{" + delta1 + "}"}</Tex>
+      </HStack>
+    </VStack>
+  </TitleFrame>
+</Box>

@@ -6,7 +6,7 @@ A literal glyph run measured from font outlines. It does not parse TeX or add at
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| text / children | `""` | Literal string or number content. |
+| children | `""` | Literal string or number content. |
 | font_family | `"KaTeX_Main"` | Exact font face; inherited KaTeX families are respected. |
 | center | `false` | Center the ink on the math axis instead of using the font baseline. |
 | skew | Font correction | Override character accent skew, in em. |

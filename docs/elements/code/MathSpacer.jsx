@@ -3,9 +3,9 @@
   <MathCol gap={em(0.5)} justify="start">
     <MathText>ab</MathText>
     <MathText>
-      <MathSymbol text="a" />
+      <MathSymbol>a</MathSymbol>
       <MathSpacer advance={em(-1 / 6)} />
-      <MathSymbol text="b" />
+      <MathSymbol>b</MathSymbol>
     </MathText>
   </MathCol>
 </Box>

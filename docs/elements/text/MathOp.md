@@ -6,7 +6,7 @@ A named function or large operator. Symbols grow in display style; names stay up
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| text / children | Empty | A name, operator glyph, TeX symbol command, or a composed math operand. |
+| children | Empty | A name, operator glyph, TeX symbol command, or a composed math operand. |
 | symbol | Inferred | Select a Size font for a large operator rather than an upright name. |
 | limits | Operator default | `"auto"` stacks limits in display style; `"always"` forces stacking; `"never"` keeps side scripts. Booleans mean always/never. |
 | center | Symbol/body dependent | Center a glyph operator on the math axis. Named text stays on the baseline. |

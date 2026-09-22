@@ -8,8 +8,7 @@ The complete table is an ordinary math atom centered on the math axis.
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| rows | Absent | Nested row data. Cells can be TeX strings, elements, or `null` for an empty cell. |
-| children | Empty | Row arrays, or flat JSX cells chunked by `ncol`. Use `rows` or `children`. |
+| children | Empty | Nested row arrays, or flat JSX cells chunked by `ncol`. Cells can be TeX strings, elements, or `null` for an empty cell. |
 | ncol | Alignment count, or `1` | Number of columns when chunking flat children. |
 | cols | Centered columns | A string such as `"r|c:l"`, or column descriptors. `l`, `c`, `r` align cells; `|` and `:` draw solid and dashed separators. |
 | colsep | `em(0.5)` | Gap on each side of a column. Adjacent columns normally have twice this gap. |
@@ -33,7 +32,9 @@ have `em(0.25)`. Horizontal and vertical rule ink meets at the corners without
 changing column advances.
 
 Use an empty `<MathText />` to reserve an empty cell in flat JSX. Whitespace and
-conditional children in that form are skipped; nested row data preserves cell
+conditional children in that form are skipped. Pass nested row arrays through
+`children` when constructing **MathArray** in JavaScript; JSX flattens expression
+arrays. Nested row data preserves cell
 positions. Ragged rows are allowed. A zero-row table is empty; an explicit empty
 row still reserves its strut.
 

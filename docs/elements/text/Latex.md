@@ -6,7 +6,7 @@ A complete formula in display style, with a one-em minimum line box. Supports or
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| text / children | Empty | TeX source or MathText-compatible children. |
+| children | Empty | TeX source or MathText-compatible children. |
 | inline | `false` | Choose text style instead of display style. |
 | style | Inherited or display | Explicit math style overrides the default. |
 | size_index | Inherited or `6` | TeX text-size index from `1` (tiny) to `11` (Huge). |

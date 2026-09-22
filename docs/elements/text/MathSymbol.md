@@ -6,7 +6,7 @@ Select a glyph and its atom class from the TeX symbol table. The default face fo
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| text / children | `""` | A character or TeX symbol command. |
+| children | `""` | A character or TeX symbol command. |
 | mode | `"math"` | Math or literal text symbol lookup. |
 | font_family | Symbol face | Optional exact face; unsupported glyphs fall back per symbol. |
 | klass / left / right | Symbol class | Override the atom's spacing classes. |

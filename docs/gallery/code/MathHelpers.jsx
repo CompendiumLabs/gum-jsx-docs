@@ -30,7 +30,13 @@ return <TextBox
         stroke={color} stroke-width={px(2.5)} />)}
       <Points points={zip(xs, ys)}
         point-size={px(9)} fill={blue} stroke={white} stroke-width={px(1)} />
-      <Legend x={3.1} y={1.2} anchor={["center", "start"]} entries={entries} font-size={em(0.9)} />
+      <Legend x={3.1} y={1.2} anchor={["center", "start"]} font-size={em(0.9)}>
+        {entries.map(({ label, color, ...options }) =>
+          <LegendItem {...options} badge-color={color}>
+            {label}
+          </LegendItem>
+        )}
+      </Legend>
     </Plot>
     <Text font-family={mono} font-size={em(0.8)}>
       {xs.length} periodic samples. Mean: {rounder(mean(ys), 3)}. RMS: {rounder(norm(ys) / sqrt(ys.length), 3)}.

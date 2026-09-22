@@ -7,7 +7,7 @@ literal. Nest [MathText](MathText.md) or [Tex](Tex.md) for mathematical notation
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| text / children | Empty | Literal strings, numbers, spans, or elements. |
+| children | Empty | Literal strings, numbers, spans, or elements. |
 | family | Main or selected text face | Choose `"main"`, `"sans"`, or `"mono"` for literal runs. |
 | bold / italic | Selected text face | Override the literal face's weight and shape. |
 | font-family | Main math text face | An explicit KaTeX face, such as `mathit`. |

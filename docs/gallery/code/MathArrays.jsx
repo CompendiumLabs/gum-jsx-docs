@@ -1,44 +1,36 @@
 // Matrices, cases, small inline arrays, and matrices containing ordinary Gum elements.
 <Box font-size={px(30)} padding={em(0.8)}>
   <VStack gap={em(0.8)} align="start">
-    <Text font-size={em(0.7)} font-weight={700}>Matrices and unequal cells</Text>
-    <Latex>
-      {String.raw`
-        A = \begin{pmatrix}
-          a & bb \\
-          ccc & d
-        \end{pmatrix}
-        \qquad
-        B = \begin{bmatrix}
-          \frac{1}{x} & 0 \\
-          0 & \frac{a+b}{c}
-        \end{bmatrix}
-      `}
-    </Latex>
-    <Text font-size={em(0.7)} font-weight={700}>Piecewise definitions</Text>
-    <Latex>
-      {String.raw`
-        f(x) = \begin{cases}
-          x^2 & \text{if } x > 0 \\
-          0 & \text{otherwise}
-        \end{cases}
-      `}
-    </Latex>
+    <Text font-size={em(0.7)} font-weight={bold}>Matrices and unequal cells</Text>
+    <Latex>{String.raw`
+      A = \begin{pmatrix}
+        a & bb \\
+        ccc & d
+      \end{pmatrix}
+      \qquad
+      B = \begin{bmatrix}
+        \frac{1}{x} & 0 \\
+        0 & \frac{a+b}{c}
+      \end{bmatrix}
+    `}</Latex>
+    <Text font-size={em(0.7)} font-weight={bold}>Piecewise definitions</Text>
+    <Latex>{String.raw`
+      f(x) = \begin{cases}
+        x^2 & \text{if } x > 0 \\
+        0 & \text{otherwise}
+      \end{cases}
+    `}</Latex>
     <Text font-size={em(0.65)}>
-      {"Small matrices fit inside prose: "}
-      <Tex>
-        {String.raw`
-          R = \left(
-            \begin{smallmatrix}
-              0 & -1 \\
-              1 & 0
-            \end{smallmatrix}
-          \right)
-        `}
-      </Tex>
-      {" rotates a vector by a quarter turn."}
+      Small matrices fit inside prose: <Tex>{String.raw`
+        R = \left(
+          \begin{smallmatrix}
+            0 & -1 \\
+            1 & 0
+          \end{smallmatrix}
+        \right)
+    `}</Tex> rotates a vector by a quarter turn.
     </Text>
-    <Text font-size={em(0.7)} font-weight={700}>Gum elements are cells too</Text>
+    <Text font-size={em(0.7)} font-weight={bold}>Gum elements are cells too</Text>
     <MathText style="display">
       G=
       <Bracket delim="square">

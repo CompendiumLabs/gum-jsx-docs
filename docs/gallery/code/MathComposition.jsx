@@ -17,7 +17,7 @@ const Curve = props => (
 return (
   <Box font-size={px(30)} padding={em(0.8)}>
     <VStack gap={em(0.9)} align="start">
-      <Text font-size={em(0.75)} font-weight={700}>Gum elements inside math</Text>
+      <Text font-size={em(0.75)} font-weight={bold}>Gum elements inside math</Text>
       <MathText style="display">
         <Frac>
           <Circle width={em(1.1)} fill={blue} stroke={none} />

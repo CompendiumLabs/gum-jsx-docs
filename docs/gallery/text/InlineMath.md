@@ -38,7 +38,7 @@ Math retains its own default faces independently of the prose family. Ordinary
 kerning, whitespace normalization, hard breaks, and nonbreaking spaces still
 apply to the surrounding text.
 
-[TextBox](../../elements/text/TextBox.md) and bullet `items` accept arrays mixing
+[TextBox](../../elements/text/TextBox.md) and [Text](../../elements/text/Text.md) children in a bullet accept arrays mixing
 prose, spans, and formulas. Captions and titles can use the same arrays, or an
 explicit `Text` element. A sole block child stays a block. For several elements
 without prose, wrap them in `Text` to request inline layout, or use `TextCol` for

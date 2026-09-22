@@ -4,7 +4,7 @@
 
 | Property | Default | Meaning |
 |---|---|---|
-| `entries` | `[]` | `{ label, color?, kind?, badge? }` legend records |
+| `children` | Empty | [LegendItem](LegendItem.md) rows or custom elements |
 | `gap` | `em(0.4)` | Vertical space between entries |
 | `badge-width` | `em(1.8)` | Width of generated line, point, or bar badges |
 | `label-style` / `label-*` | — | Nested or flat text options for generated labels |
@@ -16,15 +16,15 @@
 | `align` | `"start"` | Content alignment inside the box |
 | `clip` | `false` | Clip content inside the rounded border |
 
-A measured box of badge/label rows. entries contains
-{label,color?,kind?,badge?} records. label is a string or **Element**; kind is line
-(default), point, or bar. A custom badge **Element** replaces its swatch.
+A measured box of badge/label rows. Supply [LegendItem](LegendItem.md) children
+for generated badges and labels, or custom elements for complete rows.
 
 **Box** props control decoration and sizing. Defaults: transparent background, 1px theme
-border, 0.6em padding. Badges use `theme:accent` unless their entry supplies a color.
+border, 0.6em padding. Badges use `theme:accent` unless an item supplies `badge-color`.
 gap is row spacing (0.4em); `badge-width` defaults to 1.8em;
 `label-style` supplies generated text options, also available as scoped props such
 as `label-color`, `label-font-size`, or `label-wrap`. Flat props override matching
 nested fields. Supplied label/badge **Element**s retain their own props.
 **Legend** hugs its rows. **Plot**'s legend prop
-places it inside top right; layout containers can place it elsewhere.
+places it inside top right and still accepts legend records for that separate slot;
+layout containers can place a **Legend** elsewhere.

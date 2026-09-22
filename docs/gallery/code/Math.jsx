@@ -15,7 +15,7 @@
     <MathText>
       a
       <MathBox padding={[em(0.1), em(0.2)]}>
-        <MathSymbol text="+" />
+        <MathSymbol>+</MathSymbol>
       </MathBox>
       b
     </MathText>

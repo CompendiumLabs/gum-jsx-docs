@@ -6,7 +6,7 @@ The inline-style convenience for a complete formula. It currently composes with 
 
 | Property | Default | Meaning |
 | --- | --- | --- |
-| text / children | Empty | TeX source or MathText-compatible children. |
+| children | Empty | TeX source or MathText-compatible children. |
 | inline | `true` | Choose text style by default. |
 | style | Inherited or text | Explicit math style overrides the default. |
 | strut | `true` | Keep at least a one-em line box. |

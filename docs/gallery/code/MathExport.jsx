@@ -4,7 +4,7 @@ const exportOptions = { font_size: em(1.7), padding: em(0.2) }
 return (
   <Box font-size={px(18)} padding={em(1.3)}>
     <VStack gap={em(1.1)} align="start">
-      <Text font-weight={700}>A formula becomes its own viewport</Text>
+      <Text font-weight={bold}>A formula becomes its own viewport</Text>
       <Text>Natural size at 1.7 times the base font, with room for the leading italic ink.</Text>
       {mathToElement(formula, exportOptions)}
       <Text>A 2.7em font lays out the typography at a larger size.</Text>

@@ -46,8 +46,8 @@ at the outer corners. Only the pinned KaTeX column syntax is accepted; LaTeX
 preambles such as `p{…}` and `@{…}` are not supported.
 
 For direct composition, [MathArray](../../elements/text/MathArray.md) accepts
-flat JSX children with `ncol`, or nested `rows` data with elements and TeX strings.
-For example, `rows={[["a", "b"], [null, "d"]]}` reserves an empty cell at the
+flat JSX children with `ncol`, or nested child arrays with elements and TeX strings.
+For example, `children: [["a", "b"], [null, "d"]]` reserves an empty cell at the
 start of the second row. [Bracket](../../elements/text/Bracket.md) supplies
 delimiters around a direct array. Shapes, plots, and explicitly sized text
 blocks can be cells, just as they can be other math operands.

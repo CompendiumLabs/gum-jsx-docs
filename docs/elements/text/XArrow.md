@@ -7,7 +7,7 @@ An extensible relation arrow with labels above and optionally below it.
 | Property | Default | Meaning |
 | --- | --- | --- |
 | label | `"xrightarrow"` | One of the extensible [MathStretch](MathStretch.md) arrow names. |
-| above / children | Empty | Upper label. Use either property. |
+| children | Empty | Upper label. |
 | below | Absent | Lower label. |
 | thickness | `em(0.04)` | Arrow rule thickness. |
 | head-curve | `0.7` | Barb curvature from `0` to `1`, using [ArrowHead](ArrowHead.md) geometry. |
