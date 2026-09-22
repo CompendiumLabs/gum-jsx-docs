@@ -14,11 +14,15 @@ Omitted dimensions use ordinary content measurement. Minima default to zero and 
 are unbounded. A preferred width or height is clamped to the element's own limits.
 An exact allocation from the parent takes precedence.
 
+In the example, each gray track offers the same width. Only the blue box's width
+prop changes; its text, font size, and padding stay the same.
+
 | Sizing policy | Meaning |
 |---|---|
-| `width="fill"` | Occupy the offered width, clamped to own limits; measure content when no width is offered |
 | Omitted width | Measure content, including text wrapping at the offered width |
-| `width={1}` | Use the whole established parent width; requires a definite fraction reference |
+| `width={px(180)}` | Prefer a fixed width of 180 pixels |
+| `width={0.5}` | Use half the established parent content width; requires a definite fraction reference |
+| `width="fill"` | Occupy the offered width, clamped to own limits; measure content when no width is offered |
 
 Omitted height measures content; `height="fill"` occupies a finite offered height.
 These do not add flex weights. Use `align-self="start"` (or center/end) to opt out

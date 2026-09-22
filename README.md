@@ -219,8 +219,9 @@ bun run typecheck
 ```
 
 The CLI defaults to kitty graphics; use SVG or PNG output on other terminals.
-Examples use the current evaluator's bindings and leave the **Svg** viewport to
-the host, except for the **Svg** reference example itself.
+Examples use the current evaluator's bindings. Set size and font props on the
+figure itself or on an explicit **Svg** wrapper. Hosts add an **Svg** viewport
+when the example returns a bare element and preserve an explicit **Svg** root.
 No legacy packages, image files, custom fonts, network fetches, or generated assets
 are required. The test command renders SVG in memory and leaves the checkout unchanged.
 The workspace visual-test command renders every element example, every topic example,

@@ -6,7 +6,7 @@ const observations = linspace(0.4, 11.8, 15).map((x, i) => [
 ])
 return (
   <Plot
-    font-size={em(1)}
+    aspect={1.5}
     title="A damped oscillation"
     xlabel="Time (s)"
     ylabel="Amplitude"

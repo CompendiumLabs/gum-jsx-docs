@@ -1,6 +1,6 @@
 // SymSpline uses the shared sampler.
 <Box padding={em(2)}>
-  <Plot font-size={em(0.75)}>
+  <Plot aspect={1.5}>
     <SymSpline
       fy={sin}
       xlim={[0, tau]}

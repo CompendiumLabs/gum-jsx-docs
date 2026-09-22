@@ -44,20 +44,12 @@ return (
       </MathRow>
       <Text font-size={em(0.6)} color={slate}>Use fit when a figure should deliberately shrink into a script.</Text>
       <SupSub
-        sup={
-          <Curve fit="contain" max-width={em(1.7)} max-height={em(0.8)} />
-        }
-      >
-        P
-      </SupSub>
+        sup={<Curve fit="contain" max-width={em(1.7)} max-height={em(0.8)} />}
+      >P</SupSub>
       <TextFigure
         caption={
           <Text font-size={em(0.6)}>
-            {"The caption includes "}
-            <Tex>
-              <SupSub sup="2">x</SupSub>
-            </Tex>
-            {" using the same inline layout as a paragraph."}
+            The caption includes <Tex><SupSub sup="2">x</SupSub></Tex> using the same inline layout as a paragraph.
           </Text>
         }
       >
@@ -66,24 +58,9 @@ return (
           aspect={2.4}
           min-height={em(14)}
           font-size={em(0.5)}
-          title={
-            <Text>
-              {"A plot of "}
-              <Tex>y=x^2</Tex>
-            </Text>
-          }
-          xlabel={
-            <Text>
-              {"Position "}
-              <Tex>x</Tex>
-            </Text>
-          }
-          ylabel={
-            <Text>
-              {"Power "}
-              <Tex>x^2</Tex>
-            </Text>
-          }
+          title={<Text>A plot of <Tex>y=x^2</Tex></Text>}
+          xlabel={<Text>Position <Tex>x</Tex></Text>}
+          ylabel={<Text>Power <Tex>x^2</Tex></Text>}
           xlim={[-2, 2]}
           ylim={[0, 4]}
         >

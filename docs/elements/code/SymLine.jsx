@@ -1,5 +1,5 @@
 // SymLine uses the shared sampler.
-<Plot margin={em(2)}>
+<Plot aspect={1.5} margin={em(2)}>
   <SymLine
     fy={sin}
     xlim={[0, tau]}

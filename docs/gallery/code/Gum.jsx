@@ -1,5 +1,5 @@
 // A first diagram: a heading, two shapes, and a paragraph in a padded box.
-<TextBox padding={em(1.25)} background={lightgray}>
+<TextBox width={em(20)} padding={em(1.25)} background={lightgray}>
   <TextCol gap={em(0.75)}>
     <Text font-size={em(1.5)} font-weight={bold}>Hello, Gum.</Text>
     <HStack gap={em(0.75)}>

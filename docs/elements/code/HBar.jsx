@@ -1,6 +1,6 @@
 // One HBar with an explicit baseline.
 <Box padding={em(2)}>
-  <Plot font-size={em(0.75)}>
+  <Plot>
     <HBar
       value={3}
       position={1}

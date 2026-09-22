@@ -1,6 +1,6 @@
 // Curved, rounded, and self-loop routes share Arrow's head styling.
 <Box font-size={px(18)} padding={em(1)}>
-  <Network xlim={[-0.6, 3.4]} ylim={[-0.6, 2.2]} stroke-width={px(2)}>
+  <Network aspect={1.5} xlim={[-0.6, 3.4]} ylim={[-0.6, 2.2]} stroke-width={px(2)}>
     <Edge start="a" end="b" stroke={blue} start-head head-open head-size={px(12)} />
     <Edge
       start="a" end="b" start-side="top" end-side="top"

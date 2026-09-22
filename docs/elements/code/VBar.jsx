@@ -1,6 +1,6 @@
 // One VBar with an explicit baseline.
 <Box padding={em(2)}>
-  <Plot font-size={em(0.75)} padding={[0.1, 0.25]}>
+  <Plot padding={[0.1, 0.25]}>
     <VBar
       value={3}
       position={1}

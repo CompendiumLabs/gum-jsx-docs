@@ -8,7 +8,7 @@ const xs = linspace(0, tau, 16, false)
 const ys = xs.map(sin)
 const xticks = zip(
   range(5).map(i => i * pi / 2),
-  ['0', 'pi/2', 'pi', '3pi/2', '2pi']
+  ['0', 'π/2', 'π', '3π/2', '2π']
 )
 const entries = [
   { label: "Prediction", color: blue, kind: "point" },
@@ -30,7 +30,7 @@ return <TextBox
         stroke={color} stroke-width={px(2.5)} />)}
       <Points points={zip(xs, ys)}
         point-size={px(9)} fill={blue} stroke={white} stroke-width={px(1)} />
-      <Legend x={3.1} y={1.2} anchor={["center", "start"]} font-size={em(0.9)}>
+      <Legend x={3.9} y={1.2} anchor={["center", "start"]} font-size={em(0.9)}>
         {entries.map(({ label, color, ...options }) =>
           <LegendItem {...options} badge-color={color}>
             {label}

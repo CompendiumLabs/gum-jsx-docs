@@ -1,6 +1,6 @@
 // One Bar with an explicit baseline.
 <Box padding={em(2)}>
-  <Plot font-size={em(0.75)}>
+  <Plot>
     <Bar
       value={3}
       position={1}

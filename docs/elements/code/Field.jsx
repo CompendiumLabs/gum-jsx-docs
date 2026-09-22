@@ -1,6 +1,6 @@
 // Explicit vector samples.
 <Box padding={em(2)}>
-  <Plot font-size={em(0.75)}>
+  <Plot>
     <Field
       vectors={[
         { point: [0, 0], vector: [1, 2] },
@@ -8,6 +8,7 @@
       ]}
       stroke={blue}
       stroke-width={px(2)}
+      head-size={em(1)}
     />
   </Plot>
 </Box>

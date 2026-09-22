@@ -7,7 +7,6 @@ return (
       caption-font-size={em(7 / 9)}
     >
       <Plot
-        font-size={em(2 / 3)}
         grow={1}
         title="Sine and cosine"
         xlabel="Phase (rad)"

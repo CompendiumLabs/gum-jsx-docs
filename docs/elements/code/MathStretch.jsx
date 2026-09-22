@@ -1,5 +1,5 @@
 // Extensible shapes use Gum paths and inherit the surrounding color.
-<Box font-size={px(34)} padding={em(0.7)} background={interp(black, blue, 0.18)} color={white}>
+<Box font-size={px(34)} padding={em(0.7)}>
   <MathArray ncol={3} colsep={em(0.5)}>
     <MathStretch label="xRightarrow" width={em(3)} />
     <MathStretch label="xrightleftharpoons" width={em(3)} />

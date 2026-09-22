@@ -160,12 +160,12 @@ return <Box fit font-size={px(20)} padding={em(1.5)}>
           background={interp(white, purple, 0.05)}
           border-color={interp(white, purple, 0.3)}
         >
-          <Latex font-size={em(1.2)}>
-            {String.raw`\oint_{\partial S}F\cdot dr=\iint_S(\nabla\times F)\cdot dS`}
-          </Latex>
+          <Latex font-size={em(1.2)}>{String.raw`
+            \oint_{\partial S} F \cdot dr = \iint_S (\nabla \times F) \cdot dS
+          `}</Latex>
         </TextFrame>
         <Text>
-          The line integral of a vector field <Tex>F</Tex> around the closed boundary <Tex>{String.raw`\partial S`}</Tex> equals the surface integral of its curl over an oriented surface <Tex>S</Tex> bounded by that curve.
+          The line integral of a vector field <Tex>F</Tex> around the closed boundary <Tex>\partial S</Tex> equals the surface integral of its curl over an oriented surface <Tex>S</Tex> bounded by that curve.
         </Text>
       </TextCol>
     </HStack>
