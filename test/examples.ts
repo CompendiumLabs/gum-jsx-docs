@@ -6,7 +6,7 @@ import * as math from 'gum-jsx-math'
 import { elementsDir, topicsDir, packageRoot, listElements, listTopics,
   getElements, getTopics, getGuides, getGallery, prepareElementPage, prepareTopicPage } from '../src'
 
-// Render examples with host canvas references, including resized and bounded previews.
+// Render examples at their design sizes and in resized and bounded previews.
 // Only checked-in, trusted JSX is evaluated; evaluate() is not a sandbox.
 const elements = getElements()
 const topics = getTopics()
@@ -23,8 +23,6 @@ const entries = [
   ...listTopics().map(entry => ({ ...entry, dir: topicsDir, collection: topics })),
 ]
 const commonOnlyElements = new Set(['Spacer', 'Span'])
-// Viewport behavior needs an explicit Svg in these examples.
-const viewportExamples = new Set(['Svg', 'viewport_units'])
 const bindings = { ...core, ...math }
 
 for (const [name, value] of Object.entries(bindings)) {
@@ -135,13 +133,6 @@ const contentSizedExamples = new Set([
 const previewBounds = [[320, 240], [640, 480], [960, 240], [320, 640], [240, 640]] as const
 const canvas = { width: 640, height: 480 }
 
-// These examples leave viewport dimensions to the host.
-const relativeSizingExamples = new Set([
-  'Slide', 'VCenter', 'MathArrays', 'MathComposition', 'MathDecorations', 'MathExport',
-  'MathSlides', 'arrow_caps', 'group_clip', 'macro_economy', 'plot_slide',
-  'positioned_diagram', 'punk_rock', 'transformer', 'two_column', 'two_columns', 'ui_mockup',
-])
-
 checkLinks(join(packageRoot, 'README.md'))
 let drawings = 0
 const fonts = math.createMathFonts()
@@ -159,7 +150,7 @@ for (const { name, title, dir, collection } of entries) {
   }
   if (dir === elementsDir) checkPropertyValues(join(dir, 'text', name + '.md'), text)
   assert.ok(code.startsWith('// '), `${file}: describe the example on its first line`)
-  if (!viewportExamples.has(name)) {
+  if (name !== 'Svg') {
     assert.doesNotMatch(code, /<Svg\b/,
       `${file}: put size and font props on the root element; hosts add the viewport`)
   }
@@ -171,13 +162,12 @@ for (const { name, title, dir, collection } of entries) {
       `${file}: use shared color constants without string quotes`)
   }
   checkLinks(join(dir, 'text', name + '.md'))
-  const relative = relativeSizingExamples.has(name)
   const element: unknown = core.evaluate(code, { name: file, scope: math })
   assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
-  // Match Studio: finite offers and a reference canvas, with natural content height.
+  // Match Studio: finite offers, with natural content height.
   const fragment = pass.layout(core.make_viewport(element), core.make_request({
     width: core.available(canvas.width), height: core.available(canvas.height),
-  }), { viewport: canvas })
+  }))
   assert.ok(fragment.size.width > 0 && fragment.size.height > 0, `${file}: empty viewport`)
   const svg = core.render_svg(fragment, { title, id_prefix: name })
   assert.ok(svg.startsWith('<svg ') && svg.endsWith('</svg>'), `${file}: invalid SVG envelope`)
@@ -187,16 +177,15 @@ for (const { name, title, dir, collection } of entries) {
   // Small or unusually shaped canvases can legitimately clip or crowd content.
   // Require finite output there; explicit fitting is checked separately below.
   for (const width of [320, 480, 640, 960]) {
-    const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }),
-      { viewport: { width, height: width * canvas.height / canvas.width } })
+    const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }))
     assert.ok(resized.size.height > 0, `${file} at ${width}px: empty height`)
     checkGeometry(resized, `${file} at ${width}px`)
     if (dir === topicsDir) checkComposition(resized, name, `${file} at ${width}px`)
   }
   for (const [width, height] of previewBounds) {
-    // Also exercise bounded wrappers with the host's canvas as the unit reference.
+    // Also exercise bounded wrappers around the completed figures.
     const result = core.layout_element(element, {
-      pass, viewport: { width, height }, wrap: { max_width: core.px(width), max_height: core.px(height) },
+      pass, wrap: { max_width: core.px(width), max_height: core.px(height) },
     })
     assert.ok(result.kind === 'fragment')
     const bounded = result.fragment
@@ -213,7 +202,7 @@ for (const { name, title, dir, collection } of entries) {
   if (dir === topicsDir && contentSizedExamples.has(name)) {
     const sizes = [2000, 4000].map(width => {
       const result = core.layout_element(element, {
-        pass, viewport: canvas, wrap: { max_width: core.px(width), max_height: core.px(2000) },
+        pass, wrap: { max_width: core.px(width), max_height: core.px(2000) },
       })
       assert.ok(result.kind === 'fragment')
       checkGeometry(result.fragment, `${file} in a roomy preview`)
@@ -225,7 +214,7 @@ for (const { name, title, dir, collection } of entries) {
     for (const [width, height] of [[320, 240], [640, 480], [960, 540]]) {
       const fitted = pass.layout(core.make_viewport(element), core.make_request({
         width: core.exact(width!), height: core.exact(height!),
-      }), { viewport: { width, height } })
+      }))
       assert.ok(Object.values(fitted.overflow).every(value => value <= 3),
         `${file} at ${width} × ${height}: fitted scene overflow`)
       checkPlotAreas(fitted, `${file} at ${width} × ${height}`)
@@ -233,10 +222,6 @@ for (const { name, title, dir, collection } of entries) {
   }
   const page = dir === elementsDir ? prepareElementPage(text, code) : prepareTopicPage(text, code)
   assert.ok(page.includes(code) && page.includes('# ' + title), `${file}: incomplete prepared page`)
-  if (relative) {
-    assert.equal(element.props.width, undefined, `${file}: the host supplies the viewport width`)
-    assert.equal(element.props.height, undefined, `${file}: the host supplies the viewport height`)
-  }
   drawings++
   console.log(`ok - ${dir === elementsDir ? 'elements' : 'topics'}/${name}: ${fragment.size.width} × ${fragment.size.height}`)
 }
@@ -247,4 +232,4 @@ for (const dir of [elementsDir, topicsDir]) {
 }
 console.log(`${elements.tags.length} elements and ${topics.tags.length} topics checked; ${drawings} examples rendered at 320, 480, 640, and 960px and in ${previewBounds.length} bounded preview sizes.`)
 console.log(`${contentSizedExamples.size} content-sized figures and ${Object.keys(comparisonRows).length} side-by-side compositions checked.`)
-console.log(`${relativeSizingExamples.size} relative-sizing examples checked; ${Object.keys(columnGrow).length} weighted column layouts checked.`)
+console.log(`${Object.keys(columnGrow).length} weighted column layouts checked.`)

@@ -9,16 +9,14 @@ their units until layout has the reference needed to turn them into pixels.
 |---|---|
 | `px(24)` or `"24px"` | 24 pixels, independent of font and parent size |
 | `em(2)` or `"2em"` | Twice the local font size |
-| `vw(25)` or `"25vw"` | 25% of the reference canvas width |
-| `vh(4)` or `"4vh"` | 4% of the reference canvas height |
 | `0.5` or `"50%"` | Half the relevant reference dimension |
 
-Quoted JSX attributes work directly: `font-size="4vh"`, `padding="1em"`, and
+Quoted JSX attributes work directly: `font-size="24px"`, `padding="1em"`, and
 `width="50%"`. Helpers remain useful for computed values such as `em(scale * 2)`.
 Both forms use the same measurement functions and references.
 
 Strings accept finite decimal numbers, optional signs and scientific notation,
-followed by lowercase `px`, `em`, `vw`, `vh`, or `%`. Surrounding whitespace is
+followed by lowercase `px`, `em`, or `%`. Surrounding whitespace is
 ignored. Zero is valid in every unit and needs no reference; the unitless string
 `"0"` is also accepted. Other unitless strings, unsupported units, and expressions
 such as `calc(...)` are rejected with the source property path.
@@ -27,14 +25,6 @@ Bare numbers retain their existing meaning. In length props, `width={100}`
 means 100 times the reference width; use `width="100px"` for pixels. In graph
 positions, numbers are data coordinates, while strings such as `"50%"` resolve
 as local lengths. See [Coordinates](./Coordinates.md).
-
-Viewport units use a document-wide reference canvas. A root
-`viewport={{ width: 800, height: 600 }}` supplies pixels before typography resolves,
-so `font-size={vh(4)}` sets a 24px base font even when the **Svg** only has maximum
-dimensions. Without an explicit canvas, definite root **Svg** dimensions provide
-the reference. Maximum dimensions, advisory offers, and measured content do not.
-Missing axes fail only when a nonzero unit needs them. See
-[Viewport units](./viewport_units.md) for a complete example and host options.
 
 ## Which reference?
 

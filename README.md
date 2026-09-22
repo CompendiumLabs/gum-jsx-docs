@@ -59,14 +59,15 @@ gum-jsx-core and gum-jsx-math are development dependencies for checking examples
 
 `bun run test` renders all examples with the same 640 × 480 offer used by the
 CLI and previews, then checks 320, 480, 640, and 960px widths with natural height.
-It also exercises Gum Studio's `max_width` / `max_height` wrapper props at five
+It also exercises `max_width` / `max_height` wrapper props at five
 landscape and portrait sizes, including 240px-wide and 240px-high previews.
-It checks root allocations and visible overflow before the SVG clip, finite
-geometry, and nonempty plot data areas. Regression checks also preserve comparison
+It checks finite geometry and nonempty plot data areas at the default offer.
+Small previews may clip or crowd content. Regression checks also preserve comparison
 rows and verify that larger hosts do not widen content-sized figures with empty
-space. Whole-scene `fit` examples are checked in fixed rectangles. Keep viewport
-dimensions in the host, hug compact content, and use fill or wrapping only when
-the composition calls for it.
+space. Whole-scene `fit` examples are checked in fixed rectangles. Standalone
+figures can set a design height, aspect, and font size; Studio scales the completed
+SVG for display. Compact content may hug its children, and adaptive layouts can
+use fill or wrapping when the composition calls for it.
 
 ## Generate the skill package
 

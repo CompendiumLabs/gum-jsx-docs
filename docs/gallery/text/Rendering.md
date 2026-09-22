@@ -88,17 +88,12 @@ pixel coordinates.
 inspection. It defaults to `'full'`; the CLI tree mode supplies its usual
 10 significant digits unless `--precision` overrides them.
 
-An optional `viewport: { width, height }` supplies reference canvas pixels for
-`vw()` and `vh()` independently of output allocation. Each axis uses the root's
-authored `viewport` first, then an independently established root dimension,
-then the host's `viewport`. These references resolve before the root font. The
-same field is accepted in the context argument to `pass.layout`.
+Gum Studio offers 640 × 480 pixels during layout, then scales the resulting SVG
+to its preview panel. Authored figure dimensions and font sizes determine the
+composition. See [design sizes](./Sizing.md#design-sizes) for a fixed figure
+that preserves its proportions across display sizes.
 
-Gum Studio supplies its canvas through `viewport`. Hosts that need to force
-reference dimensions can use `overrides: { viewport: { width, height } }`.
-See [Viewport units](./viewport_units.md).
-
-For a bounded preview, as in Gum Studio, pass maxima on the generated viewport:
+To bound the SVG output itself, pass maxima on the generated viewport:
 
 ```ts
 import { px, render_element } from 'gum-jsx-core'

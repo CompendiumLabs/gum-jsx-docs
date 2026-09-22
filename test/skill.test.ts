@@ -71,7 +71,7 @@ test('every complete JSX example in the maintained prompts renders with the curr
       expect(element).toBeInstanceOf(core.Element)
       const fragment = pass.layout(core.make_viewport(element), core.make_request({
         width: core.available(canvas.width), height: core.available(canvas.height),
-      }), { viewport: canvas })
+      }))
       expect(fragment.size.width).toBeGreaterThan(0)
       expect(fragment.size.height).toBeGreaterThan(0)
       const svg = core.render_svg(fragment)

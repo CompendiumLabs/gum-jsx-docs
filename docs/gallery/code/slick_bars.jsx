@@ -14,7 +14,8 @@ return <BarPlot
   title="Rounded bars · gallery sample data"
   values={values}
   aspect={1.3}
-  font-size={vh(3)}
+  font-size={px(18)}
+  height={px(550)}
   ylim={[0, 30]}
   xticks={enumerate(labels)}
   yticks={range(0, 31, 5)}
@@ -32,7 +33,7 @@ return <BarPlot
   fill={blue}
 >
   {values.map((value, index) => (
-    <Text x={index} y={value + 1.2} anchor="center">
+    <Text x={index} y={value} anchor={["center", "end"]}>
       {value + "%"}
     </Text>
   ))}

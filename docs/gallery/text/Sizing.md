@@ -30,10 +30,34 @@ limits natural measurement without forcing a short paragraph to occupy that maxi
 Omitting dimensions does not scale an ordinary drawing or supply intrinsic
 dimensions to a canvas; the element still uses its usual measurement rules.
 
+## Design sizes
+
+For a standalone chart, diagram, or slide, set a design height and base font size
+on the outer figure. An aspect ratio determines the width:
+
+```jsx
+<BarPlot
+  height={px(550)}
+  aspect={1.3}
+  font-size={px(18)}
+  values={[2, 5, 8]}
+/>
+```
+
+This figure lays out at 715 × 550 pixels with 18px text. Gum Studio scales the
+completed SVG to the preview panel, preserving the relative sizes of labels,
+bars, margins, and strokes. Set both width and height when the design needs
+independent dimensions. Descendants can use `em()` for typography and spacing,
+and fractions for positions and sizes within established boxes.
+
+Changing the display size preserves the layout. Changing the authored dimensions
+performs a new layout. The CLI's `-W` and `-H` also request a new layout; use
+display scaling or explicit fitting to resize the complete drawing uniformly.
+
 ## Adaptive figures
 
-Let the host supply the viewport, and distinguish a content-sized figure from
-a layout that deliberately fills its container. Boxes, stacks, **TextBox**,
+When a figure should adapt to its available space, distinguish a content-sized
+figure from a layout that deliberately fills its container. Boxes, stacks, **TextBox**,
 **TextFrame**, and **TextCol** are all content-sized by default.
 Do not add `width="fill"` merely to replace a fixed pixel width: that
 can reserve a large blank strip beside otherwise compact content.
@@ -56,8 +80,8 @@ so a tall document can grow beyond it. `gum example.jsx -W 320` gives an exact
 width with natural height. Supplying both `-W` and `-H` establishes a fixed
 viewport; content needs flex allocation or explicit fitting to stay within it.
 
-Bounded preview hosts such as Gum Studio instead set `max_width` and `max_height`
-on the generated **Svg**. The figure reflows within the offers, then scales down
+Hosts can also set `max_width` and `max_height` on the generated **Svg** to bound
+the SVG output. The figure reflows within the offers, then scales down
 uniformly if it is still too wide or too tall. A height limit can therefore reduce
 the rendered width, and a width limit can reduce the height. No height maximum
 means natural height remains available. The [rendering API](./Rendering.md)
@@ -87,8 +111,7 @@ such as an em width plus aspect. An ordinary content-sized box can simply measur
 its children, including rotated bounds, without becoming a fixed canvas.
 
 See [MathSlides](MathSlides.md), [two columns](two_column.md), and
-[Punk Rock](punk_rock.md) for these variants. Pixel dimensions remain useful in
-examples specifically illustrating exact allocations or pixel units.
+[Punk Rock](punk_rock.md) for these variants.
 
 ## Fitting
 

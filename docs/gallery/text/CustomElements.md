@@ -169,23 +169,23 @@ available for explicit protocol adoption.
 | request | Prepared natural, available, or exact requests for both axes |
 | sizing | Resolved source sizes, bounds, and aspect preference |
 | style | Resolved inherited style, including pixel font size |
-| measure | Shared length context: local font size, parent reference, root viewport, and diagnostic path |
+| measure | Shared length context: local font size, parent reference, and diagnostic path |
 | coordinates | Optional ambient data limits and flip directions |
 | math | Optional ambient math layout context |
 | `child(element, request, reference?, index?, context?)` | Measure a child; context can override style, coordinates, and math |
 | `resource(name)` | Obtain a host resource from this pass |
-| `prepare(name, compute, dependencies?)` | Cache preparation independent of requests and parent references |
+| `prepare(name, compute)` | Cache preparation independent of requests and parent references |
 
 Pass `query.measure` directly to length helpers. For example,
-`resolve_length(props.gap, query.measure, size.width, 'gap')` resolves `em`, `vw`,
-and `vh` from that context, uses `size.width` for a numeric fraction, and adds
+`resolve_length(props.gap, query.measure, size.width, 'gap')` resolves `em`
+from that context, uses `size.width` for a numeric fraction, and adds
 `.gap` to the diagnostic path. The fraction reference is explicit because each
 property chooses its own axis or geometry. `resolve_insets(props.padding,
 query.measure)` chooses axes from `query.measure.reference` for each side.
 
 The context is an immutable `LengthContext`. Use
 `make_measure(query.measure, { font_size })` to derive a different local font
-while retaining its viewport, parent reference, and path. Likewise, a patch can
+while retaining its parent reference and path. Likewise, a patch can
 replace `reference` or `path`. A container that resolves a child's placement or
 sizing props before measuring it can use
 `child_measure(child, query, index, reference)` to derive the child's font and
@@ -208,10 +208,8 @@ with place_fragment. The child's default reference argument is empty, not the
 container's inherited reference. Parent placement does not mutate the child or
 remeasure it. Validate your own props and child policy explicitly.
 
-Prepared values may depend on source, style, math context, versioned resources,
-and the root viewport, which is included in preparation cache keys by default.
-Pass `[]` as the dependencies argument only when preparation is independent of
-the viewport. Current requests, parent percentage references, and coordinates
+Prepared values may depend on source, style, math context, and versioned resources.
+Current requests, parent percentage references, and coordinates
 belong in ordinary layout work. Set a new resource version on a reused pass when
 external data changes; see [Fonts](./Fonts.md) for an example.
 

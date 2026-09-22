@@ -1,13 +1,14 @@
 ## Layout and styling essentials
 
-- Lengths accept `px(24)` / `"24px"`, `em(1.5)` / `"1.5em"`, and `vw()` / `vh()`
-  or their unit strings. `"50%"` and `0.5` use the property's established fraction
+- Lengths accept `px(24)` / `"24px"` and `em(1.5)` / `"1.5em"`.
+  `"50%"` and `0.5` use the property's established fraction
   reference. `width={100}` is not 100 pixels. Quoted JSX attributes work directly,
-  including `font-size="4vh"` and `padding="1em"`. Zero, including `"0"`, needs no
+  including `font-size="24px"` and `padding="1em"`. Zero, including `"0"`, needs no
   reference. Nonzero unitless strings and boolean padding are not supported.
-- Set a base `font-size` on `Svg`, then prefer ems for descendant typography,
-  padding, gaps, and scalable details. `Plot` and `Slide` have their own font
-  defaults; set `font-size={em(1)}` when they should follow that base.
+- For a standalone figure, set a design height and base `font-size` on its outer
+  element; `aspect` can supply the width. Studio scales the completed SVG to the
+  display, including text and strokes. Use ems for descendant typography,
+  padding, gaps, and details. Content-sized figures may omit outer dimensions.
 - Boxes, frames, stacks, `TextBox`, `TextFrame`, and `TextCol` are content-sized
   by default. Use `width="fill"` or `height="fill"` only to occupy an offer;
   `width={1}` requires an established parent width. Fill is not a length unit.
