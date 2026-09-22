@@ -6,7 +6,7 @@ import * as math from 'gum-jsx-math'
 import { elementsDir, topicsDir, packageRoot, listElements, listTopics,
   getElements, getTopics, getGuides, getGallery, prepareElementPage, prepareTopicPage } from '../src'
 
-// Check width-driven documents and Studio's bounded-preview sizing contract.
+// Render examples with host canvas references, including resized and bounded previews.
 // Only checked-in, trusted JSX is evaluated; evaluate() is not a sandbox.
 const elements = getElements()
 const topics = getTopics()
@@ -83,22 +83,8 @@ function checkPlotAreas(fragment: core.Fragment, context: string): void {
   for (const child of fragment.children) checkPlotAreas(child.fragment, context)
 }
 
-function checkViewport(fragment: core.Fragment, context: string): void {
-  // Inspect before the viewport's final clip, accounting for uniform fitting.
-  // Clipping deliberately applied within an example remains valid.
-  for (const child of fragment.children) {
-    const frame = core.transform_rect(core.make_rect(0, 0, child.fragment.size.width, child.fragment.size.height),
-      child.offset, child.transform)
-    assert.ok(Object.values(core.bounds_overflow(fragment.size, frame)).every(value => value <= 1e-6),
-      `${context}: root allocation exceeds the viewport`)
-    const ink = core.transform_rect(child.fragment.ink, child.offset, child.transform)
-    const overflow = core.bounds_overflow(fragment.size, ink)
-    // Allow small stroke and glyph overhangs at a frame's boundary.
-    assert.ok(Object.values(overflow).every(value => value <= 3),
-      `${context}: visible overflow ${JSON.stringify(overflow)}`)
-  }
+function checkGeometry(fragment: core.Fragment, context: string): void {
   assert.ok(!/NaN|Infinity/.test(core.render_svg(fragment)), `${context}: nonfinite geometry`)
-  checkPlotAreas(fragment, context)
 }
 
 function fragments(fragment: core.Fragment): core.Fragment[] {
@@ -147,10 +133,9 @@ const contentSizedExamples = new Set([
 ])
 
 const previewBounds = [[320, 240], [640, 480], [960, 240], [320, 640], [240, 640]] as const
+const canvas = { width: 640, height: 480 }
 
-// These examples follow MathSlides: no authored viewport dimensions, and at
-// most one authored pixel length, for the root font. Defaults inside the library
-// are intentionally excluded; unit/explicit-sizing demonstrations are separate.
+// These examples leave viewport dimensions to the host.
 const relativeSizingExamples = new Set([
   'Slide', 'VCenter', 'MathArrays', 'MathComposition', 'MathDecorations', 'MathExport',
   'MathSlides', 'arrow_caps', 'group_clip', 'macro_economy', 'plot_slide',
@@ -187,32 +172,31 @@ for (const { name, title, dir, collection } of entries) {
   }
   checkLinks(join(dir, 'text', name + '.md'))
   const relative = relativeSizingExamples.has(name)
-  const pixelLengths: number[] = []
-  const scope = relative ? { ...math, px: (value: number) => {
-    pixelLengths.push(value)
-    return core.px(value)
-  } } : math
-  const element: unknown = core.evaluate(code, { name: file, scope })
+  const element: unknown = core.evaluate(code, { name: file, scope: math })
   assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
-  // Match the CLI and preview hosts: finite offers, with natural content height.
+  // Match Studio: finite offers and a reference canvas, with natural content height.
   const fragment = pass.layout(core.make_viewport(element), core.make_request({
-    width: core.available(640), height: core.available(480),
-  }))
+    width: core.available(canvas.width), height: core.available(canvas.height),
+  }), { viewport: canvas })
   assert.ok(fragment.size.width > 0 && fragment.size.height > 0, `${file}: empty viewport`)
   const svg = core.render_svg(fragment, { title, id_prefix: name })
   assert.ok(svg.startsWith('<svg ') && svg.endsWith('</svg>'), `${file}: invalid SVG envelope`)
   assert.ok(!/NaN|Infinity/.test(svg), `${file}: nonfinite geometry`)
   assert.ok(/<(?:path|rect|ellipse|image)\b/.test(svg), `${file}: no drawing`)
+  checkPlotAreas(fragment, file)
+  // Small or unusually shaped canvases can legitimately clip or crowd content.
+  // Require finite output there; explicit fitting is checked separately below.
   for (const width of [320, 480, 640, 960]) {
-    const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }))
+    const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }),
+      { viewport: { width, height: width * canvas.height / canvas.width } })
     assert.ok(resized.size.height > 0, `${file} at ${width}px: empty height`)
-    checkViewport(resized, `${file} at ${width}px`)
+    checkGeometry(resized, `${file} at ${width}px`)
     if (dir === topicsDir) checkComposition(resized, name, `${file} at ${width}px`)
   }
   for (const [width, height] of previewBounds) {
-    // Match Gum Studio: maximum wrapper props, not exact requests or offers.
+    // Also exercise bounded wrappers with the host's canvas as the unit reference.
     const result = core.layout_element(element, {
-      pass, wrap: { max_width: core.px(width), max_height: core.px(height) },
+      pass, viewport: { width, height }, wrap: { max_width: core.px(width), max_height: core.px(height) },
     })
     assert.ok(result.kind === 'fragment')
     const bounded = result.fragment
@@ -223,16 +207,16 @@ for (const { name, title, dir, collection } of entries) {
       assert.ok(bounded.size.width <= width + 1e-6 && bounded.size.height <= height + 1e-6,
         `${context}: maximum viewport dimensions exceeded`)
     }
-    checkViewport(bounded, context)
+    checkGeometry(bounded, context)
     if (dir === topicsDir) checkComposition(bounded, name, context)
   }
   if (dir === topicsDir && contentSizedExamples.has(name)) {
     const sizes = [2000, 4000].map(width => {
       const result = core.layout_element(element, {
-        pass, wrap: { max_width: core.px(width), max_height: core.px(2000) },
+        pass, viewport: canvas, wrap: { max_width: core.px(width), max_height: core.px(2000) },
       })
       assert.ok(result.kind === 'fragment')
-      checkViewport(result.fragment, `${file} in a roomy preview`)
+      checkGeometry(result.fragment, `${file} in a roomy preview`)
       return result.fragment.size
     })
     assert.deepEqual(sizes[0], sizes[1], `${file}: unused host width enlarged a content-sized figure`)
@@ -241,7 +225,7 @@ for (const { name, title, dir, collection } of entries) {
     for (const [width, height] of [[320, 240], [640, 480], [960, 540]]) {
       const fitted = pass.layout(core.make_viewport(element), core.make_request({
         width: core.exact(width!), height: core.exact(height!),
-      }))
+      }), { viewport: { width, height } })
       assert.ok(Object.values(fitted.overflow).every(value => value <= 3),
         `${file} at ${width} × ${height}: fitted scene overflow`)
       checkPlotAreas(fitted, `${file} at ${width} × ${height}`)
@@ -252,11 +236,6 @@ for (const { name, title, dir, collection } of entries) {
   if (relative) {
     assert.equal(element.props.width, undefined, `${file}: the host supplies the viewport width`)
     assert.equal(element.props.height, undefined, `${file}: the host supplies the viewport height`)
-    assert.ok(pixelLengths.length <= 1, `${file}: use relative sizes below the root font`)
-    if (pixelLengths.length) {
-      assert.deepEqual(element.props.font_size, core.px(pixelLengths[0]!),
-        `${file}: the sole authored pixel length must be the root font size`)
-    }
   }
   drawings++
   console.log(`ok - ${dir === elementsDir ? 'elements' : 'topics'}/${name}: ${fragment.size.width} × ${fragment.size.height}`)

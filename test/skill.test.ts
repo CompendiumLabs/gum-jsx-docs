@@ -62,13 +62,16 @@ test('all packaged references are reachable from SKILL.md without leaving the sk
 test('every complete JSX example in the maintained prompts renders with the current API', () => {
   const fonts = math.createMathFonts()
   const pass = new core.LayoutPass({ fonts: { value: fonts, version: fonts.version } })
+  const canvas = { width: 640, height: 480 }
   let examples = 0
   for (const file of readdirSync(promptDir).filter(file => file.endsWith('.md'))) {
     const markdown = readFileSync(join(promptDir, file), 'utf8')
     for (const match of markdown.matchAll(/^```jsx\n([\s\S]*?)^```/gm)) {
       const element = core.evaluate(match[1], { name: `${file}:${examples}`, scope: math })
       expect(element).toBeInstanceOf(core.Element)
-      const fragment = pass.layout(core.make_viewport(element))
+      const fragment = pass.layout(core.make_viewport(element), core.make_request({
+        width: core.available(canvas.width), height: core.available(canvas.height),
+      }), { viewport: canvas })
       expect(fragment.size.width).toBeGreaterThan(0)
       expect(fragment.size.height).toBeGreaterThan(0)
       const svg = core.render_svg(fragment)

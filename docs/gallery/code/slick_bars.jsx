@@ -13,8 +13,9 @@ const values = [1.3, 3.2, 8.3, 12.4, 14.1, 15.9, 17.5, 25.2]
 return <BarPlot
   title="Rounded bars · gallery sample data"
   values={values}
+  aspect={1.3}
+  font-size={vh(3)}
   ylim={[0, 30]}
-  font-size={em(0.75)}
   xticks={enumerate(labels)}
   yticks={range(0, 31, 5)}
   xaxis-at={-1.1}
@@ -25,12 +26,10 @@ return <BarPlot
   xaxis-rotate={-40}
   xaxis-label-anchor={['end', 'start']}
   axis-tick-size={em(0.5)}
-  margin={em(1.5)}
+  margin={em(2)}
   bar-width={0.8}
   border-radius={{ t: em(0.3) }}
   fill={blue}
-  aspect={1.3}
-  font-size={px(18)}
 >
   {values.map((value, index) => (
     <Text x={index} y={value + 1.2} anchor="center">
