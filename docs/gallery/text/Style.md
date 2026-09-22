@@ -10,7 +10,7 @@ weights, padding, backgrounds, and borders do not inherit.
 | `theme` | `"light"` | Inherited `"light"` or `"dark"` palette; see [Themes](./Themes.md) |
 | `font-size` | `px(16)` | **Text** size; relative forms use the inherited font |
 | `font-family` | `"IBM Plex Sans"` | Registered font family |
-| `font-weight` | `400` | Numeric weight from 1 to 1000 |
+| `font-weight` | `400` | Numeric weight from 1 to 1000, or `"light"` (300), `"regular"`/`"normal"` (400), `"bold"` (700) |
 | `font-style` | `"normal"` | "normal" or "italic" |
 | `line-height` | `em(1.2)` | Line box height, not glyph scaling |
 | `color` | Theme foreground (`black` in light) | **Text** color and default **Box** border color |
@@ -20,7 +20,7 @@ weights, padding, backgrounds, and borders do not inherit.
 | `stroke-linecap` | `"butt"` | "butt", "round", or "square" |
 | `stroke-linejoin` | `"miter"` | "miter", "round", or "bevel" |
 | `stroke-miterlimit` | `4` | Dimensionless miter limit |
-| `stroke-dasharray` | `[]` | Nonnegative layout lengths; an empty/all-zero array is solid |
+| `stroke-dasharray` | `[]` | A nonnegative layout length for equal dashes/gaps, or an array for a custom pattern; zero or an empty/all-zero array is solid |
 | `opacity` | `1` | Per-drawing paint opacity from 0 to 1 |
 
 Use paint strings such as `"#317969"`, `"tomato"`, or `"none"`. **Text** uses
@@ -34,6 +34,9 @@ when the theme changes.
 Built-in constants are available in evaluated JSX and as named imports from
 `gum-jsx-core`. Use `font-family={sans}` or `{mono}` for IBM Plex Sans or Mono,
 and `font-weight={light}`, `{regular}`, or `{bold}` for weights 300, 400, or 700.
+Quoted weight names work too: `font-weight="bold"` is equivalent to
+`font-weight={bold}` or `font-weight={700}`, including on spans and scoped props
+such as `title-font-weight`.
 
 Examples use `blue` as the default accent, followed by `red`, `green`, `yellow`,
 and `purple` for additional distinct items. Backgrounds and ordinary text use
@@ -64,7 +67,13 @@ shorter side. Explicit [fitting](./Sizing.md#fitting) scales the completed strok
 else in its child.
 
 Dash lengths resolve like stroke widths: pixels stay fixed, em follows font size,
-and fractions use the shorter side. Opacity inherits and applies to individual
+and fractions use the shorter side. A scalar broadcasts to a dash/gap pair:
+`stroke-dasharray={px(4)}` (or `stroke-dasharray="4px"`) is equivalent to
+`stroke-dasharray={[px(4), px(4)]}`. Use an array such as `[px(6), px(3)]` for
+unequal dashes and gaps. Bare numbers are fractions, so `{0.04}` means 4% of the
+shorter side, not pixels. This also works in scoped props such as `grid-stroke-dasharray`.
+
+Opacity inherits and applies to individual
 drawings, including text and box decoration. It is not a composited group opacity;
 overlapping drawings can accumulate alpha.
 

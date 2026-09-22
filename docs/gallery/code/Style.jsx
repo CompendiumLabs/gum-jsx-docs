@@ -9,7 +9,7 @@
   font-family={sans}
 >
   <VStack gap={em(0.7)}>
-    <Text>Text uses <Span color={red} font-weight={bold}>color</Span>.</Text>
+    <Text>Text uses <Span color={red} font-weight="bold">color</Span>.</Text>
     <HStack gap={em(0.7)}>
       <Square width={px(64)} />
       <Circle width={px(64)} fill={red} />
@@ -19,6 +19,7 @@
         fill={none}
         stroke={green}
         stroke-width={px(3)}
+        stroke-dasharray={px(4)}
       />
     </HStack>
   </VStack>

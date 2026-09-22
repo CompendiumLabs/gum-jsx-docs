@@ -14,15 +14,17 @@ runnable JSX example.
 Useful starting points:
 
 - Layout: [Units](references/guides/Units.md), [Sizing](references/guides/Sizing.md),
-  [Stacks](references/guides/Stack.md), [Box](references/elements/Box.md), and
-  [Group](references/elements/Group.md).
+  [Fitting](references/guides/Fitting.md), [Stacks](references/guides/Stack.md),
+  [Box](references/elements/Box.md), and [Group](references/elements/Group.md).
 - Plots: [Plot](references/elements/Plot.md), [Graph](references/elements/Graph.md),
   [SymLine](references/elements/SymLine.md), and [BarPlot](references/elements/BarPlot.md).
-  Plot axes use linear scales.
+  Plot axes use linear scales. `bounds="frame"` sizes and aligns the data area;
+  leave space for the labels and titles outside it.
 - Diagrams: [Network](references/elements/Network.md) connects named
   [Node](references/elements/Node.md) frames, or any element with an `id`, using
   [Edge](references/elements/Edge.md).
   It does not automatically arrange nodes or avoid obstacles.
+  Use [Overlay](references/elements/Overlay.md) for annotations around a measured base.
 - Text and math: [Text](references/elements/Text.md),
   [TitleFrame](references/elements/TitleFrame.md), [math authoring](references/guides/Math.md),
   and [Shape Algebra](references/gallery/shape_algebra.md).

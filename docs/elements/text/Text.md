@@ -18,7 +18,7 @@ inline item, aligned by its baseline or bottom edge. Give figures concrete sizes
 | --- | --- | --- |
 | `font-family` | `sans` | Registered family name |
 | `font-size` | `px(16)` | Glyph size; em/fractions use the inherited font size |
-| `font-weight` | `regular` | Numeric weight |
+| `font-weight` | `regular` | Numeric 1–1000, or `"light"`, `"regular"`/`"normal"`, `"bold"` (300, 400, 700) |
 | `font-style` | `"normal"` | normal or italic |
 | `color` | `black` | Glyph fill; the shape fill prop does not color text |
 | `line-height` | `em(1.2)` | Prose line strut; inline elements may enlarge the line |

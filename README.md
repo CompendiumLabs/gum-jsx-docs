@@ -46,6 +46,7 @@ docs/
 visual-tests/
   code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
+src/skill.ts          Shared prompt and reference assembly for CLI and MCP hosts
 test/examples.ts      Validate links, coverage, and rendering at several widths
 test/skill.test.ts     Test skill packaging and CLI behavior
 prompt/               Maintained Gum authoring and skill prompt pieces
@@ -72,9 +73,9 @@ use fill or wrapping when the composition calls for it.
 ## Generate the skill package
 
 The skill-generation tooling combines authoring prompts with the layout, units,
-JSX, CLI, and rendering references. The skill assumes `@gum-jsx/cli` is installed
-globally and uses the `gum` commands directly. Build the skill from the workspace
-root or this package directory:
+JSX, CLI, and rendering references. The skill uses the `gum` commands directly
+when `@gum-jsx/cli` is on PATH, with workspace scripts as an alternative.
+Build the skill from the workspace root or this package directory:
 
 ```sh
 bun run skill
@@ -87,8 +88,8 @@ imported by clients that accept that format. Generated outputs are ignored by
 Git; maintain the source prompts and docs, then rebuild.
 
 The entrypoint is assembled from [head](./prompt/head.md),
-[intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md), and
-[gen](./prompt/gen.md). It keeps the essential authoring rules together and links
+[intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md),
+[gen](./prompt/gen.md), and [cli](./prompt/cli.md). It keeps the essential authoring rules together and links
 to generated indexes for guides, elements by category, and gallery figures.
 Every current page and runnable example is included, with local links rewritten
 for the package. Links to JSX sources point to the embedded example; the separate
@@ -110,9 +111,17 @@ pages, and preserve unrelated local files. Archives contain only the current
 skill pages, never that manifest or local notes. A nonempty destination without
 a build manifest is rejected.
 
-Other consumers, including Gum Studio, can reuse the maintained prompts through
-the exported `promptDir` or `@gum-jsx/docs/prompt/*` subpath. Studio's own chat
-prompt and tool wiring remain separate from this portable skill.
+`getSkillPrompt()` returns the shared authoring instructions without frontmatter
+or CLI setup; pass `{ cli: true }` to append the CLI workflow. `buildSkillFiles()`
+adds frontmatter and the linked reference pages, enabling CLI instructions by
+default. It only assembles content in memory; `scripts/skill.ts` writes the folder
+and archive. Tool-based hosts can use `buildSkillFiles({ cli: false })` and
+`mapSkillLinks()` to adapt reference links without rewriting fenced examples.
+The MCP server uses this shared assembly and appends its rendering-tool prompt.
+
+Consumers can also read individual pieces through the exported `promptDir` or
+`@gum-jsx/docs/prompt/*` subpath. Studio's own chat prompt and tool wiring remain
+separate from this portable skill.
 
 `bun run test` also tests skill coverage, link reachability, prompt-example
 rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unzip`.

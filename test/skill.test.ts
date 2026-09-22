@@ -90,8 +90,10 @@ test('documented gum commands render files from outside the workspace', () => {
   const intro = readFileSync(join(promptDir, 'intro.md'), 'utf8')
   const source = /^```jsx\n([\s\S]*?)^```/m.exec(intro)![1]
   writeFileSync(join(output, 'figure.jsx'), source)
-  const generation = readFileSync(join(promptDir, 'gen.md'), 'utf8')
-  const commands = [...generation.matchAll(/^```sh\n([\s\S]*?)^```/gm)].map(match => match[1])
+  const generation = readFileSync(join(promptDir, 'cli.md'), 'utf8')
+  // Setup is documented separately; tests use installed workspace executables.
+  const commands = [...generation.matchAll(/^```sh\n([\s\S]*?)^```/gm)]
+    .map(match => match[1]).filter(code => !code.includes('bun install'))
   expect(commands.length).toBeGreaterThan(0)
   // Use the workspace's installed executables without changing the user's
   // global installation. The documented commands run with only PATH setup.

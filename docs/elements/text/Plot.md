@@ -36,7 +36,8 @@ axis titles, an optional legend, and an optional background. Limits follow
 Padding uses [Graph's side and axis forms](./Graph.md), with numeric fractions
 of inferred data spans. Explicit limits stay exact.
 
-Fonts default to 12px. Margins come from measured axis overflow and title sizes.
+Fonts inherit from the parent (16px at the root). Margins come from measured axis
+overflow and title sizes.
 Text uses `theme:text`, axes use `theme:muted`, and grid lines use `theme:grid`.
 These paints follow the inherited [theme](../../gallery/text/Themes.md).
 Title and x title wrap at the usable width. Explicit margin adds space to those

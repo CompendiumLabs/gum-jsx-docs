@@ -3,28 +3,19 @@
 Gum describes figures with JavaScript and JSX, then measures and renders them as
 SVG. It is not React, HTML, or a browser DOM.
 
-## Setup
-
-Before using Gum, install `@gum-jsx/cli` globally if needed:
-
-```sh
-bun install -g @gum-jsx/cli
-```
-
-This provides the `gum`, `gum-tex`, and `gum-mark` commands. The examples assume
-they are available on your PATH.
-
-Use the bundled references for supported components and properties. Preserve the
+Use the references for supported components and properties. Preserve the
 user's chosen data, visual intent, and output format. Ordinary functions returning
 elements are the simplest way to make reusable components.
 
 ## Source format
 
 A single bare JSX element is returned automatically. With declarations or other
-statements, finish with an explicit `return`. Use an explicit `Svg` root for a
-complete figure; its width and height can be omitted when the content determines
-them. The evaluator supplies elements, `px`, `em`, palette constants, and numeric
-helpers. Math elements are supplied by the CLI and Studio as well.
+statements, finish with an explicit `return`. Return one element for a figure;
+rendering hosts wrap a bare root in `Svg`. Put design dimensions and base
+font props on that root. Use an explicit `Svg` when you need viewport control;
+its width and height accept pixels only (`px(640)` or `"640px"`), or can be omitted
+to hug content. The evaluator supplies elements, `px`, `em`, palette constants,
+and numeric helpers. Math bindings are supplied by the rendering host as well.
 
 Gum source runs as a function body, not an imported module. Do not put static
 imports in an evaluated `.jsx` file. JSX attribute dashes become underscores:
@@ -60,6 +51,10 @@ return (
 ```
 
 Keep nested JSX and compound math operands on separate, indented lines. `range`,
-`linspace`, `zip`, and `map` are useful for repeated geometry. `linspace` includes
-the endpoint by default; pass `false` as its fourth argument for periodic samples.
+`linspace`, `zip`, and array `.map()` are useful for repeated geometry. `linspace`
+includes the endpoint by default; pass `false` as its fourth argument for periodic samples.
 Use `setSeed` when a generative figure should be repeatable.
+
+Use `Latex` for display math and `Tex` inside `Text` for inline formulas. In a
+JavaScript string expression, use `String.raw` for TeX backslashes, for example
+``<Tex>{String.raw`\frac{a}{b}`}</Tex>``, without surrounding `$` delimiters.

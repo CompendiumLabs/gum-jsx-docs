@@ -12,8 +12,8 @@ numbers, strings, arrays, and objects. Code without a return produces `undefined
 ## Components and data
 
 Define ordinary functions that return elements, pass props, use object spreads,
-and generate children with `range`, `linspace`, and `map`. Components execute during
-evaluation, before layout. Prefer these small functions for reusable combinations
+and generate children with `range`, `linspace`, and array `.map()`. Components
+execute during evaluation, before layout. Prefer these small functions for reusable combinations
 of built-in elements; [Custom elements](./CustomElements.md) covers new layout behavior.
 
 Arrays and JSX fragments flatten inside containers. Null, undefined, and boolean

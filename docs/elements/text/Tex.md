@@ -2,7 +2,10 @@
 
 *Category*: math
 
-The inline-style convenience for a complete formula. It currently composes with ordinary Gum containers; embedding formulas within a prose Text paragraph is a later phase.
+The text-style convenience for a complete formula. Embed it inside **Text** for
+inline math, or use it in ordinary Gum containers. Inline formulas keep the
+paragraph's font scale and stay on one line; see
+[math inside prose](../../gallery/text/InlineMath.md).
 
 | Property | Default | Meaning |
 | --- | --- | --- |
