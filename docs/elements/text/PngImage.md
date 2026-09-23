@@ -26,6 +26,10 @@ resolution, plus a soft mask for transparency. Repeated copies share the embedde
 image. Surrounding shapes and text remain vector. Enlarging the image does not
 add detail; its print resolution depends on its pixel count and displayed size.
 
+PDF export currently rejects RGB PNGs with only one or two pixels and a `tRNS`
+transparency key because of a decoder limitation. Convert these images to RGBA;
+ordinary RGBA PNGs, including transparent 1×1 images, are supported.
+
 To read a local file in a Bun host script:
 
 ```ts

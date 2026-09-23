@@ -8,7 +8,7 @@ The original `getTopics()` catalog and package import aliases remain available
 for existing consumers. Content lives under `docs/elements` and `docs/gallery`.
 
 See the [Gum project](https://github.com/CompendiumLabs/gum-jsx#readme) for
-workspace setup and the package overview.
+getting started and the package overview.
 
 ## Start reading
 
@@ -214,7 +214,6 @@ palette. See the workspace [feature map](https://github.com/CompendiumLabs/gum-j
 From the parent gum-jsx workspace:
 
 ```sh
-bun install
 bun run gum gum-jsx-docs/docs/gallery/code/Gum.jsx
 bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.svg
 bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
