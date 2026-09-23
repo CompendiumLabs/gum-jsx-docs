@@ -45,6 +45,15 @@
   its allocation to the ratio. Two exact dimensions and conflicting limits take
   precedence. Aspect does not scale fonts or drawings; use `fit` for that.
   Stacks do not infer a composite aspect from their children.
+- `Grid columns={3}` shares equal column widths across rows, dividing an offered
+  width or using the widest natural cell. A track array such as
+  `columns={[em(6), "auto", em(12)]}` uses explicit and content-sized widths.
+  `column-gap` and `row-gap` override `gap`; rows hug their tallest wrapped cell.
+  Alignment defaults to horizontal fill and vertical start; `align="fill"`
+  also fills automatic cell heights. `TextGrid` converts strings/numbers and
+  defaults to em-based gaps. Use `<Box />` for an intentional blank cell.
+  Numeric tracks are fractions, not weights. Cell percentage heights cannot
+  size content-based rows; use absolute lengths or fill/stretch instead.
 - `Group` is a finite positioning canvas, not a content-hugging box. Establish
   both axes with dimensions, finite offers, or one dimension plus aspect. Its
   children use `x`, `y`, and `anchor`, with top-left origin and y pointing down.
@@ -65,5 +74,5 @@ overhang; the outer SVG clips at its viewport.
 
 Consult each component's reference for its layout controls: for example, `Box`
 uses padding for spacing around its content, while `Plot` also has a `margin`.
-Use `HStack` and `VStack` for rows and columns; compose rows or position cells
-in a `Group` for a grid.
+Use `HStack` and `VStack` for rows and columns, `Grid` for shared columns across
+rows, and `Group` for positioned geometry.

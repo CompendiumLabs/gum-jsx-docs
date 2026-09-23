@@ -15,7 +15,8 @@ Useful starting points:
 
 - Layout: [Units](references/guides/Units.md), [Sizing](references/guides/Sizing.md),
   [Fitting](references/guides/Fitting.md), [Stacks](references/guides/Stack.md),
-  [Box](references/elements/Box.md), and [Group](references/elements/Group.md).
+  [Box](references/elements/Box.md), [Grid](references/elements/Grid.md), and
+  [Group](references/elements/Group.md).
 - Plots: [Plot](references/elements/Plot.md), [Graph](references/elements/Graph.md),
   [SymLine](references/elements/SymLine.md), and [BarPlot](references/elements/BarPlot.md).
   Plot axes use linear scales. `bounds="frame"` sizes and aligns the data area;

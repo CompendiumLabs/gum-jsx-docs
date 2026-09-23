@@ -15,6 +15,9 @@ getting started and the package overview.
 Start with [Gum](./docs/gallery/text/Gum.md), [units](./docs/gallery/text/Units.md), and
 [sizing](./docs/gallery/text/Sizing.md).
 
+[Grid](./docs/elements/text/Grid.md) shares column widths across rows;
+[TextGrid](./docs/elements/text/TextGrid.md) adds text conversion and spacing defaults.
+
 Basic plotting is available: start with [Plot](./docs/elements/text/Plot.md),
 [Graph](./docs/elements/text/Graph.md), and [SymLine](./docs/elements/text/SymLine.md), or try the
 [curve and band](./docs/elements/text/SymFill.md), [bars](./docs/gallery/text/plot_bars.md), and

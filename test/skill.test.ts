@@ -12,6 +12,12 @@ import { buildSkill, buildSkillFiles } from '../scripts/skill'
 const scratch = mkdtempSync(join(tmpdir(), 'gum-jsx-skill-test-'))
 afterAll(() => rmSync(scratch, { recursive: true, force: true }))
 const files = buildSkillFiles()
+const cliPrompt = readFileSync(join(promptDir, 'cli.md'), 'utf8')
+// The CLI guide's first JSX block is a declaration-only shared prelude; the
+// second is a slide that consumes it. Exercise them together as documented.
+const deckExamples = [...cliPrompt.matchAll(/^```jsx\n([\s\S]*?)^```/gm)].map(match => match[1])
+const [deckPrelude, deckSlide] = deckExamples
+const deckManifest = JSON.parse(/^```json\n([\s\S]*?)^```/m.exec(cliPrompt)![1])
 
 function links(markdown: string): string[] {
   const prose = markdown.replace(/^```[^\n]*\n[\s\S]*?^```\s*$/gm, '')
@@ -66,8 +72,16 @@ test('every complete JSX example in the maintained prompts renders with the curr
   let examples = 0
   for (const file of readdirSync(promptDir).filter(file => file.endsWith('.md'))) {
     const markdown = readFileSync(join(promptDir, file), 'utf8')
+    let scope: Record<string, unknown> = { ...math }
     for (const match of markdown.matchAll(/^```jsx\n([\s\S]*?)^```/gm)) {
-      const element = core.evaluate(match[1], { name: `${file}:${examples}`, scope: math })
+      if (file === 'cli.md' && match[1] === deckPrelude) {
+        expect(deckExamples).toHaveLength(2)
+        const prelude = core.evaluate_prelude(match[1], { name: 'prelude.jsx', scope })
+        expect(typeof prelude.Card).toBe('function')
+        scope = { ...scope, ...prelude }
+        continue
+      }
+      const element = core.evaluate(match[1], { name: `${file}:${examples}`, scope })
       expect(element).toBeInstanceOf(core.Element)
       const fragment = pass.layout(core.make_viewport(element), core.make_request({
         width: core.available(canvas.width), height: core.available(canvas.height),
@@ -90,9 +104,16 @@ test('documented gum commands render files from outside the workspace', () => {
   const intro = readFileSync(join(promptDir, 'intro.md'), 'utf8')
   const source = /^```jsx\n([\s\S]*?)^```/m.exec(intro)![1]
   writeFileSync(join(output, 'figure.jsx'), source)
-  const generation = readFileSync(join(promptDir, 'cli.md'), 'utf8')
+  const slides = join(output, 'slides')
+  mkdirSync(slides)
+  writeFileSync(join(slides, 'index.json'), JSON.stringify(deckManifest))
+  writeFileSync(join(slides, deckManifest.prelude), deckPrelude)
+  for (const file of deckManifest.slides) {
+    writeFileSync(join(output, file), source)
+    writeFileSync(join(slides, file), deckSlide)
+  }
   // Setup is documented separately; tests use installed workspace executables.
-  const commands = [...generation.matchAll(/^```sh\n([\s\S]*?)^```/gm)]
+  const commands = [...cliPrompt.matchAll(/^```sh\n([\s\S]*?)^```/gm)]
     .map(match => match[1]).filter(code => !code.includes('bun install'))
   expect(commands.length).toBeGreaterThan(0)
   // Use the workspace's installed executables without changing the user's
@@ -102,14 +123,21 @@ test('documented gum commands render files from outside the workspace', () => {
       PATH: [join(packageRoot, '../node_modules/.bin'), dirname(process.execPath), process.env.PATH]
         .filter(Boolean).join(delimiter) },
   })
-  expect(result.status).toBe(0)
+  expect(result.status, result.stderr).toBe(0)
   expect(readFileSync(join(output, 'figure.svg'), 'utf8')).toStartWith('<svg ')
   expect([...readFileSync(join(output, 'figure.png')).subarray(0, 8)])
     .toEqual([137, 80, 78, 71, 13, 10, 26, 10])
   const fragment = JSON.parse(readFileSync(join(output, 'figure.json'), 'utf8'))
   expect(fragment.size.width).toBeGreaterThan(0)
   expect(fragment.size.height).toBeGreaterThan(0)
-  expect(JSON.parse(result.stderr).layouts).toBeGreaterThan(0)
+  const stats = result.stderr.trim().split('\n').map(line => JSON.parse(line))
+  expect(stats).toHaveLength(2)
+  for (const entry of stats) expect(entry.layouts).toBeGreaterThan(0)
+  for (const file of ['figure.pdf', 'talk.pdf']) {
+    expect(readFileSync(join(output, file)).subarray(0, 5).toString()).toBe('%PDF-')
+  }
+  expect([...readFileSync(join(output, 'results.png')).subarray(0, 8)])
+    .toEqual([137, 80, 78, 71, 13, 10, 26, 10])
 })
 
 test('rebuilds prune only obsolete generated pages and create a fresh portable ZIP', () => {
