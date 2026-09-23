@@ -1,0 +1,11 @@
+{
+  "title": "Gum — figures are programs",
+  "prelude": "prelude.jsx",
+  "slides": [
+    "01_language.jsx",
+    "02_layout.jsx",
+    "03_javascript.jsx",
+    "04_math.jsx",
+    "05_outputs.jsx"
+  ]
+}

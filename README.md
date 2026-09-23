@@ -214,10 +214,10 @@ palette. See the workspace [feature map](https://github.com/CompendiumLabs/gum-j
 From the parent gum-jsx workspace:
 
 ```sh
-bun run gum gum-jsx-docs/docs/gallery/code/Gum.jsx
-bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.svg
-bun run gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
-bun run gum gum-jsx-docs/docs/elements/code/VStack.jsx -f tree --stats
+gum gum-jsx-docs/docs/gallery/code/Gum.jsx
+gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.svg
+gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
+gum gum-jsx-docs/docs/elements/code/VStack.jsx -f tree --stats
 bun --filter @gum-jsx/docs test
 bun run visual-test
 bun run typecheck
