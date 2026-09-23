@@ -56,8 +56,8 @@ allows px/em coordinates. For a separately declared array, annotate its point
 type or use `as const` to retain tuple lengths:
 
 ```ts
-import { Points, Line, px } from 'gum-jsx-core'
-import type { PointValue, PositionValue } from 'gum-jsx-core'
+import { Points, Line, px } from '@gum-jsx/core'
+import type { PointValue, PositionValue } from '@gum-jsx/core'
 
 const data: PointValue[] = [[0, 1], [2, 3]]
 const endpoint: PositionValue = [px(12), 0.5]

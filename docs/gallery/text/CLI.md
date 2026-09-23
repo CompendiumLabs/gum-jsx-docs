@@ -3,8 +3,10 @@
 *Category*: core
 
 The `gum` command evaluates JSX, lays out the result, and writes SVG, PNG, PDF,
-kitty graphics, a fragment tree, or JSON. Install the CLI globally with
-`bun install -g @gum-jsx/cli` if needed. Save the example below as `figure.jsx`:
+kitty graphics, a fragment tree, or JSON. Once the 2.0 candidate is published,
+install it with `bun install -g @gum-jsx/cli@beta`. In a workspace checkout,
+run `bun install` at the root and use `bun run gum` instead of `gum`.
+Save the example below as `figure.jsx`:
 
 ```sh
 gum figure.jsx
@@ -29,7 +31,7 @@ gum --help
 | --theme | `light` or `dark`; overrides the source root theme |
 | --title | SVG or PDF document title |
 | --id-prefix | SVG definition prefix; default "gum" |
-| --precision | Output significant digits, 1–17 or `full`; default 10 |
+| --precision | Output decimal places, 0–100 or `full`; default 10 |
 | --stats | Layout counters on stderr |
 | -h, --help | Help |
 

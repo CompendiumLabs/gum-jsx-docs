@@ -2,7 +2,6 @@
   "name": "@gum-jsx/docs",
   "description": "Markdown reference pages and runnable examples for gum-jsx",
   "type": "module",
-  "private": true,
   "module": "src/index.ts",
   "types": "src/index.ts",
   "exports": {
@@ -26,5 +25,31 @@
     "@gum-jsx/core": "workspace:*",
     "@gum-jsx/math": "workspace:*",
     "typescript": "^7"
-  }
+  },
+  "version": "2.0.0-beta.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CompendiumLabs/gum-jsx-docs.git"
+  },
+  "homepage": "https://github.com/CompendiumLabs/gum-jsx-docs#readme",
+  "bugs": {
+    "url": "https://github.com/CompendiumLabs/gum-jsx-docs/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "beta"
+  },
+  "engines": {
+    "bun": ">=1.4.2"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "docs",
+    "prompt",
+    "visual-tests",
+    "scripts/skill.ts"
+  ]
 }

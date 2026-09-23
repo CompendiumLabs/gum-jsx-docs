@@ -23,12 +23,12 @@ opt in to further fallback faces.
 
 ## Host setup
 
-A default LayoutPass supplies Fonts. In Bun and supported Node hosts, bundled
+A default LayoutPass supplies Fonts. In Bun, bundled
 files load lazily on first use. Browser hosts should preload the needed family
 before layout and arrange for the bundled font assets to be served:
 
 ```ts
-import { Fonts, LayoutPass, sans, regular } from 'gum-jsx-core'
+import { Fonts, LayoutPass, sans, regular } from '@gum-jsx/core'
 
 const fonts = new Fonts()
 await fonts.load(sans) // Omit the family to load all bundled faces.

@@ -4,7 +4,7 @@
     <MathText style="display">
       A=
       <Bracket delim="round">
-        <MathArray ncol={3} colsep={em(0.55)} rowsep={em(0.35)}>
+        <MathArray ncol={3} colsep={em(0.55)} rowgaps={[em(0.35)]}>
           <MathText>a</MathText>
           <MathText>bb</MathText>
           <Frac>

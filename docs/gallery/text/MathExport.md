@@ -8,8 +8,8 @@ The [gum-tex command](CLI.md) exposes the same export through SVG, PNG, PDF, kit
 graphics, a fragment tree, and JSON.
 
 ```ts
-import { px, em } from 'gum-jsx-core'
-import { mathToElement, mathToSvg, mathToSvgAsync } from 'gum-jsx-math'
+import { px, em } from '@gum-jsx/core'
+import { mathToElement, mathToSvg, mathToSvgAsync } from '@gum-jsx/math'
 
 const tex = String.raw`\int_0^\infty e^{-x^2}\,dx=\frac{\sqrt\pi}{2}`
 const element = mathToElement(tex, { font_size: px(36), padding: em(0.25) })
@@ -75,8 +75,8 @@ font resource. Supplied fonts must already have math faces registered through
 Core itself remains independent of math.
 
 ```ts
-import { LayoutPass, render_svg } from 'gum-jsx-core'
-import { createMathFonts, mathToElementAsync, mathToSvgAsync } from 'gum-jsx-math'
+import { LayoutPass, render_svg } from '@gum-jsx/core'
+import { createMathFonts, mathToElementAsync, mathToSvgAsync } from '@gum-jsx/math'
 
 const fonts = createMathFonts()
 const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } })
@@ -105,9 +105,9 @@ PNG conversion stays in `gum-jsx-png`. Pass the completed fragment's size to
 preserve fractional viewport dimensions when selecting raster resolution:
 
 ```ts
-import { LayoutPass, render_svg } from 'gum-jsx-core'
-import { createMathFonts, mathToElement } from 'gum-jsx-math'
-import { rasterize_svg } from 'gum-jsx-png'
+import { LayoutPass, render_svg } from '@gum-jsx/core'
+import { createMathFonts, mathToElement } from '@gum-jsx/math'
+import { rasterize_svg } from '@gum-jsx/png'
 
 const fonts = createMathFonts()
 const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } })

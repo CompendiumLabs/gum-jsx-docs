@@ -23,9 +23,9 @@ element, so put it inside a container. Single-content containers such as **Box**
 require at most one element after flattening.
 
 **Element** props are snapshotted. Records, arrays, lengths, and existing elements are
-supported source data; function-valued props on built-in elements and mutable
-resource objects are not. A component function may consume a callback itself
-before constructing the final elements.
+supported source data; mutable resource objects are not. Supported callbacks such as `SymLine fy`,
+bar styles, and axis formatters are consumed during construction. Other custom
+callbacks must be consumed by a component before constructing the final elements.
 
 [Point inputs](./PointValues.md) accept `[x, y]` pairs:
 `<Polyline points={[[0, 0], [0.5, 1], [1, 0]]} />`. This also works in
@@ -57,8 +57,17 @@ such as `show-label`; component functions receive `label_text` and `show_label`.
 If both spellings appear in source, the last attribute wins. Attribute values are unchanged.
 Use underscore keys in JavaScript objects, including objects spread with `{...props}`;
 those keys are ordinary JavaScript and bypass attribute-name conversion.
-camelCase is not normalized. Unknown SVG attributes are not automatically
-forwarded to the output.
+camelCase is not normalized. Built-in constructors reject unknown prop names,
+including misspelled attributes and object-spread keys, with spelling suggestions
+when a close match exists. Unknown SVG attributes are not forwarded to the output.
+For example, `paddding` suggests `padding`.
+The error retains the JSX construction site.
+
+Use an owner's documented scopes for generated children: `TextBox` takes
+`text-whitespace`, while `Text` takes `whitespace`. Function components may consume
+their own props before forwarding the supported ones to a built-in element.
+Custom element subclasses remain extensible; see [Custom elements](./CustomElements.md)
+for opting into a prop allowlist.
 
 The source runs as a function body, not an imported module. Put package imports
 in a host TypeScript script and provide extra bindings through

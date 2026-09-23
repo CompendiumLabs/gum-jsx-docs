@@ -12,7 +12,7 @@ import {
   Element, element_children, px, shape_size, make_fragment, make_rect, draw_rect,
   green, none, red,
   type ElementProps, type LayoutQuery,
-} from 'gum-jsx-core'
+} from '@gum-jsx/core'
 
 class Tile extends Element {
   static defaults: Partial<ElementProps> = {
@@ -217,3 +217,15 @@ The runnable Meter defines a small custom leaf and a CompactMeter subclass using
 only evaluator bindings. Its normalizer validates and clamps the input once.
 Its drawings use the size actually allocated to it, and its value is explicit
 source data. It does not add an implicit growth policy to stacks.
+
+## Prop-name validation
+
+Built-in constructors reject unknown props before normalization. Custom subclasses
+and function components may define their own props without inheriting a built-in
+allowlist. Consume custom props before forwarding the remainder to a built-in.
+
+A library-defined custom class can opt in with `register_props` from `@gum-jsx/core`:
+pass the exact constructor and its full list of accepted input names, including
+any shared layout props it supports. Registration applies only to that constructor,
+so later subclasses can extend the input vocabulary. This validates names; the
+normalizer and layout method still validate values.

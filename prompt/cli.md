@@ -1,9 +1,9 @@
 ## CLI setup
 
-Use an existing Gum CLI when available, or install `@gum-jsx/cli` globally if needed:
+Use an existing Gum CLI when available, or, once the 2.0 candidate is published, install the scoped CLI beta:
 
 ```sh
-bun install -g @gum-jsx/cli
+bun install -g @gum-jsx/cli@beta
 ```
 
 This provides the `gum`, `gum-tex`, and `gum-mark` commands. The examples assume

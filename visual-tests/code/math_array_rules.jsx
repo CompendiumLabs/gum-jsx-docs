@@ -6,7 +6,6 @@
       cols="l|c:r|c"
       outer={true}
       colsep={em(0.45)}
-      rowsep={em(0.25)}
       hlines={[[true], [], [true], [], [false]]}
       rowgaps={[null, em(0.2), null]}
     >

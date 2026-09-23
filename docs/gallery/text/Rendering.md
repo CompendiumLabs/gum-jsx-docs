@@ -9,7 +9,7 @@ fragments. Rendering does not query elements, resolve units, or load fonts.
 ## From JSX to SVG
 
 ```ts
-import { evaluate, LayoutPass, render_svg, inspect_fragment, white } from 'gum-jsx-core'
+import { evaluate, LayoutPass, render_svg, inspect_fragment, white } from '@gum-jsx/core'
 
 const source = '<Svg><Square width={px(80)} fill={green} stroke={none} /></Svg>'
 const element = evaluate(source, { name: 'example.jsx' })
@@ -35,7 +35,7 @@ JSX is optional. **Element** exports are constructors, so ordinary TypeScript ca
 build the same source graph directly:
 
 ```ts
-import { Svg, Square, px, green, none } from 'gum-jsx-core'
+import { Svg, Square, px, green, none } from '@gum-jsx/core'
 
 const element = new Svg({
   children: new Square({ width: px(80), fill: green, stroke: none }),
@@ -49,7 +49,7 @@ entry point that takes an evaluated result, wraps a bare element in **Svg**,
 applies host viewport props, lays it out under a request, and serializes it:
 
 ```ts
-import { evaluate, render_element, make_request, exact } from 'gum-jsx-core'
+import { evaluate, render_element, make_request, exact } from '@gum-jsx/core'
 
 const result = render_element(evaluate(source), {
   request: make_request({ width: exact(400) }),
@@ -80,13 +80,14 @@ in any layout. Use layout_element for the same wrapping and layout without
 serialization, for example to inspect or rasterize the fragment, and
 make_viewport for the wrapping step alone.
 
-SVG output uses 10 significant digits for numbers by default. Pass `precision`
-from 1 to 17 to change that limit, or `'full'` to preserve JavaScript's number
+SVG output uses 10 decimal places for numbers by default. Pass `precision`
+from 0 to 100 to change that limit, or `'full'` to preserve JavaScript's number
 strings. The setting affects serialization only; fragments keep their original
-pixel coordinates.
+pixel coordinates. Trailing zeroes are omitted: `precision: 3` formats
+`123.45678` as `123.457` and `1.2` as `1.2`. Use `0` to round to whole numbers.
 `inspect_fragment(fragment, { precision })` offers the same formatting for tree
 inspection. It defaults to `'full'`; the CLI tree mode supplies its usual
-10 significant digits unless `--precision` overrides them.
+10 decimal places unless `--precision` overrides them.
 
 Gum Studio offers 640 × 480 pixels during layout, then scales the resulting SVG
 to its preview panel. Authored figure dimensions and font sizes determine the
@@ -96,7 +97,7 @@ that preserves its proportions across display sizes.
 To bound the SVG output itself, pass maxima on the generated viewport:
 
 ```ts
-import { px, render_element } from 'gum-jsx-core'
+import { px, render_element } from '@gum-jsx/core'
 
 const result = render_element(element, {
   wrap: { max_width: px(640), max_height: px(480) },
@@ -118,7 +119,7 @@ undefined, and null axes are natural, so optional dimensions forward directly.
 Values in these low-level requests are already pixels, unlike source lengths:
 
 ```ts
-import { make_request, exact, available } from 'gum-jsx-core'
+import { make_request, exact, available } from '@gum-jsx/core'
 
 const fragment = pass.layout(element, make_request({
   width: exact(400), height: available(300),

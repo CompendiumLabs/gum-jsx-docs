@@ -7,20 +7,15 @@ styles, baseline alignment, and a short preformatted block. All faces come
 from core's bundled font provider. No browser font stylesheet or rasterizer
 font registration is needed.
 
-The outer **TextBox** establishes the base font size; descendant font sizes, gaps, and
-padding use ems. The outer **TextBox** sets the text color and fills the available
-width. **TextCol** passes its content width to rows and frames without repeated
-width declarations. **Span** changes
-only selected runs inside a paragraph. A separate **HStack** aligns three text
-elements by their baselines even though their sizes and families differ, wrapping
-them onto new rows when necessary.
-Neither operation scales glyphs to fill available space.
+The outer **Box** establishes the base font size and padding; descendant font
+sizes and gaps use ems. **TextCol** passes its content width to the rows and text
+blocks. **Span** changes selected runs inside a paragraph. A **TextRow** aligns
+three text elements by their baselines and wraps them onto additional rows when
+needed.
 
-The code-style block sets `whitespace="pre"` and `wrap={false}` independently:
-preserving spaces does not disable wrapping on its own. Explicit spaces align
-its columns because the block uses a monospaced font. Its **Frame** supplies the
-background, border, and padding; **Text** is responsible only for glyph layout.
-The `fit` prop scales down these unbreakable lines on narrow cards.
+The code-style **TextBox** sets `text-whitespace="pre"` on its generated **Text**
+child. Preserving spaces does not disable wrapping. The box supplies its
+background, padding, and rounded corners; the child lays out the glyphs.
 
 Try narrowing the host viewport to change paragraph wrapping. Prose keeps its
 font size during reflow; a host-supplied maximum height may subsequently scale

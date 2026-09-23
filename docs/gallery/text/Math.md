@@ -84,8 +84,8 @@ See also [formula labels on plots](MathPlotLabels.md) and [math in slides](MathS
 ## Library setup
 
 ```ts
-import { LayoutPass, Box, Svg, px, em, render_svg, evaluate } from 'gum-jsx-core'
-import * as math from 'gum-jsx-math'
+import { LayoutPass, Box, Svg, px, em, render_svg, evaluate } from '@gum-jsx/core'
+import * as math from '@gum-jsx/math'
 
 const fonts = math.createMathFonts()
 // Browser hosts preload before layout. Bun can also load local faces on demand.

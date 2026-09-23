@@ -1,11 +1,16 @@
-# gum-jsx-docs
+# @gum-jsx/docs
 
-Markdown documentation and executable JSX examples for the current Gum rewrite.
+Guides, element references, and runnable JSX examples for Gum.
 Consumers can use `getGuides()` for conceptual documentation and `getGallery()`
 for visual examples grouped by category. Gum Studio presents guides and element
 references at `/gum/docs`, and a searchable figure grid at `/gum/gallery`.
 The original `getTopics()` catalog and package import aliases remain available
 for existing consumers. Content lives under `docs/elements` and `docs/gallery`.
+
+See the [Gum project](https://github.com/CompendiumLabs/gum-jsx#readme) for
+workspace setup and the package overview.
+
+## Start reading
 
 Start with [Gum](./docs/gallery/text/Gum.md), [units](./docs/gallery/text/Units.md), and
 [sizing](./docs/gallery/text/Sizing.md).
@@ -26,11 +31,13 @@ The editor's Networks category includes runnable examples of each.
 [seeded random data](./docs/gallery/text/Random.md) are built into JSX and exported for
 host code. The examples use these helpers directly.
 
-[Math authoring](./docs/gallery/text/Math.md) covers the new TeX and math-element slice.
+[Math authoring](./docs/gallery/text/Math.md) covers TeX and composable math elements.
 The editor includes a Math category with element references and topics for
 [standalone exports](./docs/gallery/text/MathExport.md),
 [plot labels](./docs/gallery/text/MathPlotLabels.md), and [slides](./docs/gallery/text/MathSlides.md).
-The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, and kitty.
+The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, PDF, and kitty.
+
+## Content structure
 
 The two reference collections use the same paired-file structure. Focused visual
 regressions live beside them and need code only:
@@ -199,18 +206,8 @@ Box, and Transformer Architecture, the remaining ports are:
   [Any element as a node](./docs/gallery/text/network_shapes.md).
 - Math: [Shape Algebra](./docs/gallery/text/shape_algebra.md), [The Scenic Route](./docs/gallery/text/scenic_route.md), [Stokes’ Theorem](./docs/gallery/text/stokes_theorem.md).
 
-The ports use explicit layout sizes, current data-coordinate marks, and the shared
-palette. No core or math implementation changes were required. Useful follow-ups:
-
-- Add diagnostics for unsupported props: legacy sizing, coordinates, and paint
-  props can otherwise be ignored silently.
-- Expose axis arrowhead geometry; Axes with Arrows uses explicit Arrow baselines
-  to preserve curved heads.
-- Add Grid/TextGrid conveniences; regular polygons and the metal grid currently
-  use explicit rows or positioned cells.
-- Consider attached edge labels and obstacle avoidance for flow diagrams.
-- Support separate fill/stroke opacity and the old arrow-arc geometry if future
-  ports need closer paint or arrowhead matching.
+These examples use the current layout engine, data-coordinate marks, and shared
+palette. See the workspace [feature map](https://github.com/CompendiumLabs/gum-jsx/blob/master/docs/FEATURES.md) for planned work.
 
 ## Run an example
 
@@ -242,19 +239,20 @@ examples share one docs source, and previews are generated on demand.
 
 ## Load the content
 
-Use these filesystem loaders in Bun (or Node with a TypeScript loader), not
+Use these filesystem loaders in Bun, not
 in a browser bundle:
 
 ```ts
 import {
-  getElements, getTopics, listElements, getElementText, getElementCode,
+  getElements, getGuides, getGallery, listElements, getElementText, getElementCode,
   prepareElementPage, elementsCodeDir,
-} from 'gum-jsx-docs'
+} from '@gum-jsx/docs'
 
 const { tags, cats, text, code } = getElements()
 const page = prepareElementPage(text.Box!, code.Box!)
 const entries = listElements() // { name, title, cat }[]
-const topics = getTopics()     // { tags, cats, text, code }
+const guides = getGuides()    // { tags, cats, text, code }
+const gallery = getGallery()  // { tags, cats, text, code }
 const onePage = getElementText('Box')
 const oneExample = getElementCode('Box')
 ```
@@ -285,5 +283,5 @@ visual example.
 
 These docs describe implemented behavior, not feature parity with old Gum.
 Development history and the porting inventory remain in the parent workspace's
-[design](../docs/DESIGN.md), [roadmap](../docs/ROADMAP.md), and
-[feature map](../docs/FEATURES.md).
+[design](https://github.com/CompendiumLabs/gum-jsx/blob/master/docs/DESIGN.md), [roadmap](https://github.com/CompendiumLabs/gum-jsx/blob/master/docs/ROADMAP.md), and
+[feature map](https://github.com/CompendiumLabs/gum-jsx/blob/master/docs/FEATURES.md).
