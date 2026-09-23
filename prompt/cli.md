@@ -1,9 +1,10 @@
 ## CLI setup
 
-Use an existing Gum CLI when available, or install the scoped CLI:
+Use an existing Gum CLI when available, or install the scoped prerelease CLI.
+Native support for this prerelease is Bun 1.4.2 or newer on Linux x64.
 
 ```sh
-bun install -g @gum-jsx/cli
+bun install -g @gum-jsx/cli@beta
 ```
 
 This provides the `gum`, `gum-tex`, and `gum-mark` commands. The examples assume
