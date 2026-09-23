@@ -10,29 +10,35 @@ return (
     title="JavaScript is the glue."
     subtitle="Turn data into elements. Reuse ordinary functions as components."
   >
-    <Panel x={64} width={560}>
-      <Label>MAP DATA TO COMPONENTS</Label>
-      <Code size={18}>{`const metrics = [
+    <HStack grow={1} gap={em(1)} align="fill">
+      <Panel title="MAP DATA TO COMPONENTS">
+        <Code>{
+`const metrics = [
   { value: '12', label: 'samples' },
   { value: '3', label: 'series' },
   { value: '1', label: 'figure' },
 ]
 return (
-  <HStack gap={px(16)}>
-    {metrics.map(m => <Metric {...m} />)}
+  <HStack gap={em(0.5)}>
+    {metrics.map(metric => (
+      <Metric grow={1} {...metric} />
+    ))}
   </HStack>
-)`}</Code>
-    </Panel>
-    <Panel x={656} width={560}>
-      <Label>ONE COMPONENT, THREE INSTANCES</Label>
-      <HStack x={px(28)} y={px(94)} width={px(504)} gap={px(16)}>
-        {metrics.map(metric => (
-          <Metric grow={1} {...metric} />
-        ))}
-      </HStack>
-      <Text x={px(28)} y={px(280)} width={px(504)} font-size={px(22)} color={muted}>
-        Metric is a function in prelude.jsx. Every slide can use it.
-      </Text>
-    </Panel>
+)`
+        }</Code>
+      </Panel>
+      <Panel
+        title="ONE COMPONENT, THREE INSTANCES"
+        note="Metric is a functional component in prelude.jsx. Every slide can use it."
+      >
+        <Box grow={1} align="center">
+          <HStack width="fill" gap={em(0.5)}>
+            {metrics.map(metric => (
+              <Metric grow={1} {...metric} />
+            ))}
+          </HStack>
+        </Box>
+      </Panel>
+    </HStack>
   </Page>
 )

@@ -8,8 +8,16 @@ A five-slide introduction to Gum, written in Gum JSX:
 4. Mathematics: sampled curves, plots, and TeX.
 5. Output: SVG, PNG, PDF, and manifest-based decks.
 
-Each slide is 1280 × 720. `index.json` defines the page order and loads
-`prelude.jsx`, which supplies the palette, page layout, and shared components.
+`index.json` defines the page order and loads `prelude.jsx`, which supplies the
+palette and shared components. `Page` puts a `Slide` inside a 1280 × 720 `Svg`
+with a base font size of 24. These are the only pixel dimensions in the layout;
+the outer viewport can also be overridden by the CLI.
+
+The slide title is measured, and the body uses `TextCol` and `HStack` to allocate
+space between the subtitle, flexible panels, and footer. Panels use `Frame` for
+padding and backgrounds. Text and code retain their natural heights; plots and
+centered examples grow into the remaining space. All internal spacing and type
+sizes use `em`, with no absolute positioning or fixed panel dimensions.
 
 From the workspace root, with the CLI on your PATH:
 
