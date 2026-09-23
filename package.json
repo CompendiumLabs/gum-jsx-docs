@@ -22,11 +22,11 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@gum-jsx/core": "workspace:*",
-    "@gum-jsx/math": "workspace:*",
+    "@gum-jsx/core": "2.0.0-beta.1",
+    "@gum-jsx/math": "2.0.0-beta.1",
     "typescript": "^7"
   },
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "license": "MIT",
   "repository": {
     "type": "git",
