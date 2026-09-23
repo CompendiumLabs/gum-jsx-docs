@@ -1,0 +1,8 @@
+{
+  "title": "The sky’s color story",
+  "prelude": "prelude.jsx",
+  "slides": [
+    "01_sky_story.jsx", "02_sunlight.jsx", "03_air.jsx", "04_blue.jsx",
+    "05_sunset.jsx", "06_night.jsx", "07_raindrops.jsx", "08_rainbow.jsx"
+  ]
+}
