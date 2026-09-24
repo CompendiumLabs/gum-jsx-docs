@@ -1,6 +1,9 @@
-# TextFigure
+---
+category: text
+description: "Pair a figure with an optional measured caption and outer decoration."
+---
 
-*Category*: text
+# TextFigure
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# TextGrid
+---
+category: text
+description: "A Grid that converts strings and numbers to Text elements at construction."
+---
 
-*Category*: text
+# TextGrid
 
 A [Grid](./Grid.md) that converts strings and numbers to **Text** elements at
 construction. Existing elements retain their identity and alignment settings.

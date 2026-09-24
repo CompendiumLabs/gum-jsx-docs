@@ -1,6 +1,9 @@
-# Svg
+---
+category: layout
+description: "Set the document viewport and contain its root element."
+---
 
-*Category*: layout
+# Svg
 
 The document viewport. **Svg** accepts zero or one content element, along with the
 common [sizing](../../guides/text/sizing.md) and inherited [style](../../guides/text/style.md) props. Put multiple

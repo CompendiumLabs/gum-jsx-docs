@@ -1,6 +1,9 @@
-# VCenter
+---
+category: math
+description: "Center an operand's logical height on the math axis."
+---
 
-*Category*: math
+# VCenter
 
 Center an operand's logical height on the math axis. It keeps the operand's
 advance, size, and ink and supplies a corresponding baseline. The result is

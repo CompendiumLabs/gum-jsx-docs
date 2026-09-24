@@ -1,6 +1,9 @@
-# CoordLine
+---
+category: geometry
+description: "A piecewise linear path through {x,y} or [x,y] points."
+---
 
-*Category*: geometry
+# CoordLine
 
 | Property | Default | Meaning |
 |---|---|---|

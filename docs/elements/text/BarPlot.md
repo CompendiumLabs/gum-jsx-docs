@@ -1,6 +1,9 @@
-# BarPlot
+---
+category: plotting
+description: "Combine bars, axes, labels, and other plot features in one chart."
+---
 
-*Category*: plotting
+# BarPlot
 
 | Property | Default | Meaning |
 |---|---|---|

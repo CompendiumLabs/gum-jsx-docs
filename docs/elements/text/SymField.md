@@ -1,6 +1,9 @@
-# SymField
+---
+category: plotting
+description: "Sample f(x,y) on a rectangular grid and draw it with Field."
+---
 
-*Category*: plotting
+# SymField
 
 | Property | Default | Meaning |
 |---|---|---|

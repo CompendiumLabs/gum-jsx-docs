@@ -1,6 +1,9 @@
-# VBar
+---
+category: plotting
+description: "Draw one vertical bar at a specified value and position."
+---
 
-*Category*: plotting
+# VBar
 
 | Property | Default | Meaning |
 |---|---|---|

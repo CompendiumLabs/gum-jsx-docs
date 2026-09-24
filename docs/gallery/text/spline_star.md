@@ -1,6 +1,9 @@
-# Spline Star
+---
+category: geometry
+description: "Alternating inner and outer vertices form a rounded five-point star."
+---
 
-*Category*: geometry
+# Spline Star
 
 Alternating inner and outer vertices form a rounded five-point star.
 

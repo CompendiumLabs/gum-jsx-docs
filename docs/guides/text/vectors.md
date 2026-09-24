@@ -1,6 +1,9 @@
-# Vectors
+---
+category: api
+description: "Point and vector helpers are available in JSX and as named imports."
+---
 
-*Category*: api
+# Vectors
 
 Point and vector helpers are available in JSX and as named imports. New arrays
 and points are frozen. Arithmetic preserves NaN/Infinity so sampling can turn

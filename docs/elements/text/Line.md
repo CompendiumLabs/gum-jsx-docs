@@ -1,6 +1,9 @@
-# Line
+---
+category: geometry
+description: "Draw a line segment between two points in local coordinates."
+---
 
-*Category*: geometry
+# Line
 
 | Property | Default | Meaning |
 |---|---|---|

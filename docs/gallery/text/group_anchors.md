@@ -1,6 +1,9 @@
-# Anchors in nested canvases
-*Category*: layout
+---
+category: layout
+description: "Compare how anchors position children in three side-by-side panels."
+---
 
+# Anchors in nested canvases
 Each nested **Group** has its own local reference rectangle. All three boxes use
 the same fractional position, `(0.5, 0.5)`, marked by a dark dot. Their anchors
 place the start, center, or end of the allocated box at that point.

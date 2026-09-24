@@ -1,6 +1,9 @@
-# Gum
+---
+category: core
+description: "Gum describes diagrams with JSX and renders them as SVG."
+---
 
-*Category*: core
+# Gum
 
 Gum describes diagrams with JSX and renders them as SVG. The reference pages
 describe the elements, layout rules, and rendering APIs.

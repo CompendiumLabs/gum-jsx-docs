@@ -1,6 +1,9 @@
-# Math in slides
+---
+category: math
+description: "Slide uses the same elements as ordinary diagrams."
+---
 
-*Category*: math
+# Math in slides
 
 **Slide** uses the same elements as ordinary diagrams. Put inline **Tex** in a
 **Text** title, display **Latex** alongside a plot, and math inside captions or
@@ -27,6 +30,6 @@ gum slide.jsx -W 320 -H 240 -o slide-small.svg
 gum slide.jsx -o slide.png --ratio 2
 ```
 
-See [Slide](../../elements/text/Slide.md), [plot labels](MathPlotLabels.md), and
-[formulas inside prose](InlineMath.md). Single-figure PDF export is available
+See [Slide](../../elements/text/Slide.md), [plot labels](math_plot_labels.md), and
+[formulas inside prose](inline_math.md). Single-figure PDF export is available
 with `-o slide.pdf`; multi-file decks remain a separate planned workflow.

@@ -1,6 +1,9 @@
-# MathSpan
+---
+category: math
+description: "A literal glyph run measured from font outlines."
+---
 
-*Category*: math
+# MathSpan
 
 A literal glyph run measured from font outlines. It does not parse TeX or add atom spacing.
 

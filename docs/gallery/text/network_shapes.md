@@ -1,6 +1,9 @@
-# Any element as a node
+---
+category: networks
+description: "Connect shapes, stacks, and nested elements as network nodes."
+---
 
-*Category*: networks
+# Any element as a node
 
 [Network](../../elements/text/Network.md) treats every element with an `id` as a
 node. [Node](../../elements/text/Node.md) is only the conventional labeled frame.

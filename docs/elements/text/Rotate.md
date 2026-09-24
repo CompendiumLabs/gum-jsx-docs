@@ -1,6 +1,9 @@
-# Rotate
+---
+category: layout
+description: "Rotate a measured child around a chosen alignment point."
+---
 
-*Category*: layout
+# Rotate
 
 Rotate a completed child by angle degrees (positive clockwise). origin defaults
 to center and accepts an alignment value or `{x,y}` / `[x,y]` pair. The child is measured

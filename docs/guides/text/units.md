@@ -1,6 +1,9 @@
-# Units
+---
+category: core
+description: "Lengths accept numbers, helper calls, and unit strings."
+---
 
-*Category*: core
+# Units
 
 Lengths accept numbers, helper calls, and unit strings. Normalization preserves
 their units until layout has the reference needed to turn them into pixels.

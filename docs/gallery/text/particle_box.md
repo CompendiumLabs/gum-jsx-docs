@@ -1,6 +1,9 @@
-# Particle in a Box
+---
+category: plotting
+description: "Illustrate wavefunctions and energy states in an infinite square well."
+---
 
-*Category*: plotting
+# Particle in a Box
 
 A monochrome infinite-square-well illustration.
 Four sinusoidal wavefunctions sit between hatched walls, with matching state

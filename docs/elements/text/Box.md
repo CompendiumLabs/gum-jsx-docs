@@ -1,6 +1,9 @@
-# Box
+---
+category: layout
+description: "Add padding, a background, an inside border, optional rounded clipping, and alignment around one content element."
+---
 
-*Category*: layout
+# Box
 
 Add padding, a background, an inside border, optional rounded clipping, and
 alignment around one content element. To contain siblings, wrap them in a

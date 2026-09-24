@@ -1,6 +1,9 @@
-# SymPoly
+---
+category: plotting
+description: "Sample a function or parametric curve and close each finite run into a polygon."
+---
 
-*Category*: plotting
+# SymPoly
 
 | Property | Default | Meaning |
 |---|---|---|

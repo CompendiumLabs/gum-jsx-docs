@@ -1,6 +1,9 @@
-# Matrices and arrays
+---
+category: math
+description: "Math tables measure their cells at natural size, align columns, and share a baseline across each row."
+---
 
-*Category*: math
+# Matrices and arrays
 
 Math tables measure their cells at natural size, align columns, and share a
 baseline across each row. Fractions and other tall cells expand the row.
@@ -63,6 +66,6 @@ glyphs, so retain padding inside an explicit SVG viewport.
 Very tall braces and matrix bars retain the current glyph-scaling fallback;
 their shapes can differ from the assembled delimiters in KaTeX and LaTeX.
 
-[Aligned equations](AlignedMath.md) describes the related multiline display
+[Aligned equations](aligned_math.md) describes the related multiline display
 environments. Equation numbering and `CD` diagrams remain deferred; explicit
 tags and `CD` produce unsupported diagnostics.

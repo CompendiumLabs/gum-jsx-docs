@@ -1,6 +1,9 @@
-# Scale
+---
+category: plotting
+description: "Draw axis ticks without a baseline or labels."
+---
 
-*Category*: plotting
+# Scale
 
 | Property | Default | Meaning |
 |---|---|---|

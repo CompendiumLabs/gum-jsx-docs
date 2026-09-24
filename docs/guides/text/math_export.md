@@ -1,6 +1,9 @@
-# Standalone math exports
+---
+category: math
+description: "Use mathToElement for a naturally sized formula viewport, or mathToSvg to render directly to an SVG string."
+---
 
-*Category*: math
+# Standalone math exports
 
 Use `mathToElement` for a naturally sized formula viewport, or `mathToSvg` to
 render directly to an SVG string. Both accept TeX or an existing Gum element.
@@ -116,5 +119,5 @@ const png = rasterize_svg(render_svg(fragment), { size: fragment.size, ratio: 2 
 await Bun.write('formula.png', png)
 ```
 
-See also [math authoring](math.md), [plot labels](../../gallery/text/MathPlotLabels.md), and
-[math in slides](../../gallery/text/MathSlides.md).
+See also [math authoring](math.md), [plot labels](../../gallery/text/math_plot_labels.md), and
+[math in slides](../../gallery/text/math_slides.md).

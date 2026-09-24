@@ -1,6 +1,9 @@
-# Spacer
+---
+category: layout
+description: "An empty stack child with explicit defaults basis={0} grow={1}."
+---
 
-*Category*: layout
+# Spacer
 
 An empty stack child with explicit defaults `basis={0} grow={1}`. It has no
 drawing and no content children. Naturally it is zero-sized.

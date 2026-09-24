@@ -1,6 +1,9 @@
-# Field
+---
+category: plotting
+description: "Draw vectors=[{point,vector},...], with either {x,y} or [x,y] for each point and vector."
+---
 
-*Category*: plotting
+# Field
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# Anatomy of a Cell
+---
+category: geometry
+description: "A labeled animal-cell schematic combines a lumpy membrane, nucleus, mitochondria, endoplasmic reticulum, and other organelles."
+---
 
-*Category*: geometry
+# Anatomy of a Cell
 
 A labeled animal-cell schematic combines a lumpy membrane, nucleus, mitochondria, endoplasmic reticulum, and other organelles.
 

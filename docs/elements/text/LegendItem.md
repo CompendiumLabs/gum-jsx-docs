@@ -1,6 +1,9 @@
-# LegendItem
+---
+category: plotting
+description: "One badge and label row inside Legend."
+---
 
-*Category*: plotting
+# LegendItem
 
 One badge and label row inside [Legend](Legend.md). Supply the label as children.
 

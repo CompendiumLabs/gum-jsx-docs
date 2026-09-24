@@ -1,6 +1,9 @@
-# Typography card
+---
+category: text
+description: "A text-focused card combines IBM Plex Sans and Mono, mixed weights, inline styles, baseline alignment, and a short preformatted block."
+---
 
-*Category*: text
+# Typography card
 
 A text-focused card combines IBM Plex Sans and Mono, mixed weights, inline
 styles, baseline alignment, and a short preformatted block. All faces come

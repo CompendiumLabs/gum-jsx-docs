@@ -1,6 +1,9 @@
-# UI Mockup
+---
+category: layout
+description: "Overlapping desktop-style windows combine a live plot, a fine background grid, and wrapped message text."
+---
 
-*Category*: layout
+# UI Mockup
 
 Overlapping desktop-style windows combine a live plot, a fine background grid, and wrapped message text.
 

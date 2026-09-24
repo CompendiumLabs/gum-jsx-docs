@@ -1,6 +1,9 @@
-# Points
+---
+category: geometry
+description: "Repeat a marker at each {x,y} or [x,y] in points."
+---
 
-*Category*: geometry
+# Points
 
 | Property | Default | Meaning |
 |---|---|---|

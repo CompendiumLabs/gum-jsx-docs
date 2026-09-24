@@ -1,6 +1,9 @@
-# TextRow
+---
+category: text
+description: "A text-aware stack: strings/numbers become Text elements at construction."
+---
 
-*Category*: text
+# TextRow
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# Math on plots and axes
+---
+category: math
+description: "Axis tick labels can be Gum elements."
+---
 
-*Category*: math
+# Math on plots and axes
 
 Axis tick labels can be Gum elements. Supply `[value, element]` pairs to
 **Plot**'s `xticks` or `yticks`, or to **Axis**'s `ticks`. The numeric value
@@ -24,4 +27,4 @@ The runnable example uses formulas in every label position. It plots sine and
 cosine with multiples of π on the horizontal axis and a mathematical legend.
 
 See [Plot](../../elements/text/Plot.md), [Axis](../../elements/text/Axis.md),
-[math inside prose](InlineMath.md), and [math in slides](MathSlides.md).
+[math inside prose](inline_math.md), and [math in slides](math_slides.md).

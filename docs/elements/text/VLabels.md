@@ -1,6 +1,9 @@
-# VLabels
+---
+category: plotting
+description: "VLabels draws labels only, without a baseline or ticks."
+---
 
-*Category*: plotting
+# VLabels
 
 | Property | Default | Meaning |
 |---|---|---|

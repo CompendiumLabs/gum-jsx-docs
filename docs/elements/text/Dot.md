@@ -1,6 +1,9 @@
-# Dot
+---
+category: geometry
+description: "A filled Circle with a preferred 6px diameter and no stroke."
+---
 
-*Category*: geometry
+# Dot
 
 | Property | Default | Meaning |
 |---|---|---|

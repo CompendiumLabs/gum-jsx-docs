@@ -1,6 +1,9 @@
-# Text
+---
+category: text
+description: "Text lays out shaped glyphs at a fixed font size."
+---
 
-*Category*: text
+# Text
 
 **Text** lays out shaped glyphs at a fixed font size. It wraps into lines when given
 a finite width; changing that width reflows the paragraph instead of scaling
@@ -69,7 +72,7 @@ Inline elements enlarge a line using their logical above/below-baseline extents;
 ink overhang alone does not enlarge it. A formula stays at its natural size and
 overflows if it cannot fit. [Tex](./Tex.md) is the usual inline math choice;
 [Latex](./Latex.md) retains its display-style default. See
-[math inside prose](../../gallery/text/InlineMath.md) for examples.
+[math inside prose](../../gallery/text/inline_math.md) for examples.
 
 In an [HStack](./HStack.md), use `grow={1}` on an unsized paragraph to give it the
 remaining width. Its basis defaults to zero under a finite row budget; use

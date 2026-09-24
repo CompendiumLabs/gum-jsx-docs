@@ -1,6 +1,9 @@
-# VMesh
+---
+category: plotting
+description: "Draw vertical grid lines at generated or explicit tick values."
+---
 
-*Category*: plotting
+# VMesh
 
 | Property | Default | Meaning |
 |---|---|---|

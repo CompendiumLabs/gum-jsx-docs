@@ -1,6 +1,9 @@
-# HScale
+---
+category: plotting
+description: "HScale draws ticks only, without a baseline or labels."
+---
 
-*Category*: plotting
+# HScale
 
 | Property | Default | Meaning |
 |---|---|---|

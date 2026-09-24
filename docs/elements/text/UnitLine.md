@@ -1,6 +1,9 @@
-# UnitLine
+---
+category: geometry
+description: "Draw a unit-length horizontal line in a local frame."
+---
 
-*Category*: geometry
+# UnitLine
 
 | Property | Default | Meaning |
 |---|---|---|

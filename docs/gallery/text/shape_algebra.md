@@ -1,6 +1,9 @@
-# Shape Algebra
+---
+category: math
+description: "A subdivided square is the value of a series, a colored circle appears under a radical, and a matrix transpose swaps colored swatches."
+---
 
-*Category*: math
+# Shape Algebra
 
 A subdivided square is the value of a series, a colored circle appears under a radical, and a matrix transpose swaps colored swatches.
 

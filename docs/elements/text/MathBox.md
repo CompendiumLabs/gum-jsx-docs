@@ -1,6 +1,9 @@
-# MathBox
+---
+category: math
+description: "Pad, allocate, and align one math child while preserving its baseline and axis."
+---
 
-*Category*: math
+# MathBox
 
 Pad, allocate, and align one math child while preserving its baseline and axis. The wrapper is an ordinary grouped atom by default.
 

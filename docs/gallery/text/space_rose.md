@@ -1,6 +1,9 @@
-# Space Rose
+---
+category: geometry
+description: "A glowing, weathered light-box sign floats in a seeded starfield, with a rose printed on its front face."
+---
 
-*Category*: geometry
+# Space Rose
 
 A glowing, weathered light-box sign floats in a seeded starfield, with a rose printed on its front face.
 

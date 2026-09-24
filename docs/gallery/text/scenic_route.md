@@ -1,6 +1,9 @@
-# The Scenic Route
+---
+category: math
+description: "A direct arrow, a hooked arrow, and a custom figure-eight arrow provide three routes from A to B."
+---
 
-*Category*: math
+# The Scenic Route
 
 A direct arrow, a hooked arrow, and a custom figure-eight arrow provide three routes from A to B.
 

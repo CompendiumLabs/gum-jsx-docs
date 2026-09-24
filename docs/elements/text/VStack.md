@@ -1,6 +1,9 @@
-# VStack
+---
+category: layout
+description: "Arrange child elements top to bottom with flex sizing and alignment."
+---
 
-*Category*: layout
+# VStack
 
 Arrange elements top to bottom. Height is the main axis and width is the cross
 axis. See [Stack](../../guides/text/stack.md) for all props and allocation rules.

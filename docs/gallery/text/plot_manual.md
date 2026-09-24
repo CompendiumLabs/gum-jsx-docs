@@ -1,6 +1,9 @@
-# Manual Plot
+---
+category: plotting
+description: "A sine plot assembled from a Graph, Mesh2D, HAxis, and VAxis, rather than the higher-level Plot component."
+---
 
-*Category*: plotting
+# Manual Plot
 
 A sine plot assembled from a Graph, Mesh2D, HAxis, and VAxis, rather than the higher-level Plot component.
 

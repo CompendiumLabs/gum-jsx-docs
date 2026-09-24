@@ -1,6 +1,9 @@
-# Attach
+---
+category: layout
+description: "Attach an Element outside one content child."
+---
 
-*Category*: layout
+# Attach
 
 Attach an **Element** outside one content child. Supply attachment and children;
 side defaults to bottom. offset is a layout length (0); at selects a fractional

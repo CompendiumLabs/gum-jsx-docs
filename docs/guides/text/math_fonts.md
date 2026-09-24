@@ -1,6 +1,9 @@
-# Math fonts and macros
+---
+category: math
+description: "Select math alphabets, faces, and bold styles in TeX expressions."
+---
 
-*Category*: math
+# Math fonts and macros
 
 Math alphabets select a face per glyph. `\mathrm`, `\mathit`, `\mathbf`,
 `\mathnormal`, `\mathbb`, `\mathcal`, `\mathfrak`, `\mathscr`, `\mathsf`,
@@ -70,4 +73,4 @@ Warnings default to errors and can be set to `warn` or `ignore`; this does not
 enable unsupported commands or trusted HTML. A display-mode `\\` is normally
 a no-op, as in LaTeX. Actual line breaks outside arrays remain unsupported;
 use [MathCol](../../elements/text/MathCol.md) or an
-[aligned environment](../../gallery/text/AlignedMath.md). Equations do not break automatically.
+[aligned environment](../../gallery/text/aligned_math.md). Equations do not break automatically.

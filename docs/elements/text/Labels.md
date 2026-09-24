@@ -1,6 +1,9 @@
-# Labels
+---
+category: plotting
+description: "Labels draws labels only, without a baseline or ticks."
+---
 
-*Category*: plotting
+# Labels
 
 | Property | Default | Meaning |
 |---|---|---|

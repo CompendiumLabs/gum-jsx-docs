@@ -1,6 +1,9 @@
-# JSX
+---
+category: core
+description: "A Gum source file is JavaScript with JSX expressions."
+---
 
-*Category*: core
+# JSX
 
 A Gum source file is JavaScript with JSX expressions. A single bare element is
 returned automatically. If you add declarations or other statements, finish with

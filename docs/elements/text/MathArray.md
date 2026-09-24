@@ -1,6 +1,9 @@
-# MathArray
+---
+category: math
+description: "Arrange math cells in columns and baseline-aligned rows."
+---
 
-*Category*: math
+# MathArray
 
 A naturally sized math table. Each column takes the widest cell advance, and
 each row shares a baseline with enough height and depth for its tallest cells.
@@ -44,5 +47,5 @@ small exact allocations report overflow. For wrapping prose cells, give
 the [fit prop](../../guides/text/sizing.md#fitting) on the table when scaling is intended. A surrounding
 [Bracket](Bracket.md) selects delimiters after measuring all cells and rules.
 
-See [matrices and arrays](../../gallery/text/MathArrays.md) and
-[aligned equations](../../gallery/text/AlignedMath.md) for TeX environments.
+See [matrices and arrays](../../gallery/text/math_arrays.md) and
+[aligned equations](../../gallery/text/aligned_math.md) for TeX environments.

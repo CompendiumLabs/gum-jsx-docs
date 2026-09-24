@@ -1,6 +1,9 @@
-# Ellipse
+---
+category: geometry
+description: "Ellipse draws an axis-aligned ellipse in its allocated rectangle."
+---
 
-*Category*: geometry
+# Ellipse
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# Bracket
+---
+category: math
+description: "An atom with left/right fences fitted to its complete body."
+---
 
-*Category*: math
+# Bracket
 
 An atom with left/right fences fitted to its complete body. Middle delimiters use the same measured extent and do not enlarge their own sizing target.
 

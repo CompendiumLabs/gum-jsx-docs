@@ -1,6 +1,9 @@
-# One paragraph, two widths
-*Category*: text
+---
+category: text
+description: "The custom parent draws outlines around the measured paragraph boxes."
+---
 
+# One paragraph, two widths
 Both columns query the same styled **Text** description at different fractions
 of the host's width. Below 600px they stack vertically. The font remains 18px
 while line breaks and measured heights change.

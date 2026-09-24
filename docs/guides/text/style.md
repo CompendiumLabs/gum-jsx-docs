@@ -1,6 +1,9 @@
-# Style
+---
+category: core
+description: "Explain which typography and paint properties inherit through containers."
+---
 
-*Category*: core
+# Style
 
 Typography and paint inherit through containers. Dimensions, positioning, flex
 weights, padding, backgrounds, and borders do not inherit.

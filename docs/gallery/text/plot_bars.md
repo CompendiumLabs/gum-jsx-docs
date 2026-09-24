@@ -1,6 +1,9 @@
-# Regional changes
+---
+category: plotting
+description: "Categorical ticks, positive and negative bars, and functional bar colors."
+---
 
-*Category*: plotting
+# Regional changes
 
 Categorical ticks, positive and negative bars, and functional bar colors.
 

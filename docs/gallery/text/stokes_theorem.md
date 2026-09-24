@@ -1,6 +1,9 @@
-# Stokes’ Theorem
+---
+category: math
+description: "An obliquely projected surface shows its oriented boundary, tangent arrows, and surface normals beside the theorem and explanatory prose."
+---
 
-*Category*: math
+# Stokes’ Theorem
 
 An obliquely projected surface shows its oriented boundary, tangent arrows, and surface normals beside the theorem and explanatory prose.
 

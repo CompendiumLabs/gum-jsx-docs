@@ -1,6 +1,9 @@
-# Gum and math composition
+---
+category: math
+description: "Math operands are ordinary Gum children."
+---
 
-*Category*: math
+# Gum and math composition
 
 Math operands are ordinary Gum children. A [Frac](../../elements/text/Frac.md)
 can contain a shape or a plot; scripts, roots, and math rows accept the same
@@ -41,4 +44,4 @@ single vertical coordinate, so the wrapper does not advertise a baseline.
 The example includes a shape and plot in fractions, a multiline text operand,
 explicit fitting, and a larger plot with formulas in its title, caption, and
 rotated vertical label. All export as self-contained outlines in SVG and PNG.
-See [math inside prose](InlineMath.md) for paragraphs and lists.
+See [math inside prose](inline_math.md) for paragraphs and lists.

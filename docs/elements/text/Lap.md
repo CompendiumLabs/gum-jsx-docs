@@ -1,6 +1,9 @@
-# Lap
+---
+category: math
+description: "A zero-advance ordinary atom that still draws its operand."
+---
 
-*Category*: math
+# Lap
 
 A zero-advance ordinary atom that still draws its operand. Height, depth, and
 baseline remain intact. Strings parse as TeX.

@@ -1,6 +1,9 @@
-# VLabel
+---
+category: plotting
+description: "One tick label. value defaults to 0; children can be a string, number, or Element (omitted text formats the value)."
+---
 
-*Category*: plotting
+# VLabel
 
 | Property | Default | Meaning |
 |---|---|---|

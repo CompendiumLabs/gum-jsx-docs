@@ -1,11 +1,14 @@
-# Tex
+---
+category: math
+description: "The text-style convenience for a complete formula."
+---
 
-*Category*: math
+# Tex
 
 The text-style convenience for a complete formula. Embed it inside **Text** for
 inline math, or use it in ordinary Gum containers. Inline formulas keep the
 paragraph's font scale and stay on one line; see
-[math inside prose](../../gallery/text/InlineMath.md).
+[math inside prose](../../gallery/text/inline_math.md).
 
 | Property | Default | Meaning |
 | --- | --- | --- |

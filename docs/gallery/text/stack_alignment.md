@@ -1,6 +1,9 @@
-# Baselines, packing, and stretch
-*Category*: layout
+---
+category: layout
+description: "TextBox and TextCol carry the available width through the surrounding document."
+---
 
+# Baselines, packing, and stretch
 The first row aligns mixed-size text on a common baseline; the **Square** uses its
 bottom edge because it has no baseline guide. The second distributes free space
 between fixed-size items. In the last row, the blue bar stretches to the height

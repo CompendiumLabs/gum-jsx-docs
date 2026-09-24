@@ -1,6 +1,9 @@
-# Flex grow
+---
+category: layout
+description: "A bordered card holds a heading, a line of text, and a row of three shapes that takes up whatever room is left."
+---
 
-*Category*: layout
+# Flex grow
 
 A bordered card holds a heading, a line of text, and a row of three shapes that
 takes up whatever room is left.

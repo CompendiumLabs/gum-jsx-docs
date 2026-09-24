@@ -1,6 +1,9 @@
-# Overline
+---
+category: math
+description: "Draw a rule above a cramped math operand while keeping its baseline."
+---
 
-*Category*: math
+# Overline
 
 Draw a rule above a cramped math operand while keeping its baseline. This is
 the direct counterpart of `\overline{…}`.

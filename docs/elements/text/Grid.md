@@ -1,6 +1,9 @@
-# Grid
+---
+category: layout
+description: "Arrange children row by row with column widths shared across every row."
+---
 
-*Category*: layout
+# Grid
 
 Arrange children row by row with column widths shared across every row.
 Rows hug their tallest cell after text has wrapped at the chosen column widths.

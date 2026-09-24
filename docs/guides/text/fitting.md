@@ -1,6 +1,9 @@
-# Fitting
+---
+category: layout
+description: "Put fit on a composition that should scale as a complete drawing."
+---
 
-*Category*: layout
+# Fitting
 
 Put `fit` on a composition that should scale as a complete drawing. It works on
 text, math, frames, stacks, graphs, and custom elements without a wrapper.

@@ -1,6 +1,9 @@
-# MathRow
+---
+category: math
+description: "Group math children in order without adding inter-atom spacing."
+---
 
-*Category*: math
+# MathRow
 
 An explicit grouped atom. Children align on their math axes and keep their order; the row adds no inter-atom glue.
 

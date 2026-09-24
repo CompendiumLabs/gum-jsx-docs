@@ -1,6 +1,9 @@
-# Layout choices
+---
+category: layout
+description: "Three identical-width rows show three explicit allocation policies."
+---
 
-*Category*: layout
+# Layout choices
 
 Three identical-width rows show three explicit allocation policies. Each row
 owns a definite width; its border makes unused space visible. Every rectangle

@@ -1,6 +1,9 @@
-# Regular Polygons
+---
+category: geometry
+description: "Triangles through octagons are shown in two groups of three labeled cards."
+---
 
-*Category*: geometry
+# Regular Polygons
 
 Triangles through octagons are shown in two groups of three labeled cards.
 

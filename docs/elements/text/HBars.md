@@ -1,6 +1,9 @@
-# HBars
+---
+category: plotting
+description: "Draw a series of horizontal bars from values, positions, and baselines."
+---
 
-*Category*: plotting
+# HBars
 
 | Property | Default | Meaning |
 |---|---|---|

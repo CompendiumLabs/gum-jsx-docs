@@ -1,6 +1,9 @@
-# Atomic Orbitals
+---
+category: plotting
+description: "Six stylized angular profiles show s, p, and d lobes with separate positive and negative phases."
+---
 
-*Category*: plotting
+# Atomic Orbitals
 
 Six stylized angular profiles show s, p, and d lobes with separate positive and negative phases.
 

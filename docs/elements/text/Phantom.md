@@ -1,6 +1,9 @@
-# Phantom
+---
+category: math
+description: "Reserve an operand's dimensions while hiding all its ink, including colored children, backgrounds, and cancellation marks."
+---
 
-*Category*: math
+# Phantom
 
 Reserve an operand's dimensions while hiding all its ink, including colored
 children, backgrounds, and cancellation marks.

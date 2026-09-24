@@ -1,6 +1,9 @@
-# Pmb
+---
+category: math
+description: "Simulate bold math by drawing a slightly offset second copy of an operand."
+---
 
-*Category*: math
+# Pmb
 
 Poor-man's bold: draw the same operand twice, with the second copy offset by
 0.02 em horizontally and 0.01 em downward. Advance, baseline, and logical

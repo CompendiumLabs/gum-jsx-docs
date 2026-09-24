@@ -1,6 +1,9 @@
-# Positioned diagram
+---
+category: layout
+description: "An HStack arranges three labeled Frame nodes and two connectors inside a Slide."
+---
 
-*Category*: layout
+# Positioned diagram
 
 An **HStack** arranges three labeled **Frame** nodes and two connectors inside a
 **Slide**. Nodes use `grow={1}` and connectors use `grow={0.65}`. The row itself

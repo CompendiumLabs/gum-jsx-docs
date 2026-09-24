@@ -1,6 +1,9 @@
-# TextMode
+---
+category: math
+description: "Set literal prose inside a math expression."
+---
 
-*Category*: math
+# TextMode
 
 Literal text within math. Spaces and adjacent-run kerning survive; `x^2` stays
 literal. Nest [MathText](MathText.md) or [Tex](Tex.md) for mathematical notation.
@@ -32,5 +35,5 @@ shape commands, including math nested inside `$…$`. See
 [math fonts and macros](../../guides/text/math_fonts.md) for the command list,
 local resets, emphasis, accents, and verbatim text.
 
-See [inline math](../../gallery/text/InlineMath.md) and
-[mixed composition](../../gallery/text/MathComposition.md).
+See [inline math](../../gallery/text/inline_math.md) and
+[mixed composition](../../gallery/text/math_composition.md).

@@ -1,6 +1,9 @@
-# TitleFrame
+---
+category: text
+description: "TitleFrame draws a border around its content, with an optional boxed title centered across the top border."
+---
 
-*Category*: text
+# TitleFrame
 
 | Property | Default | Meaning |
 |---|---|---|

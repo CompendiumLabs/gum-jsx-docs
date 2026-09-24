@@ -1,6 +1,9 @@
-# MathOp
+---
+category: math
+description: "A named function or large operator."
+---
 
-*Category*: math
+# MathOp
 
 A named function or large operator. Symbols grow in display style; names stay upright on the baseline. Scripts read the operator's limit policy.
 

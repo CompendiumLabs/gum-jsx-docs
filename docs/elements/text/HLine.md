@@ -1,6 +1,9 @@
-# HLine
+---
+category: geometry
+description: "Draw a horizontal line across a local drawing frame."
+---
 
-*Category*: geometry
+# HLine
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# TransformBox
+---
+category: layout
+description: "Transform a naturally measured child using an affine matrix [a,b,c,d,e,f]: x′=ax+cy+e, y′=bx+dy+f."
+---
 
-*Category*: layout
+# TransformBox
 
 Transform a naturally measured child using an affine matrix [a,b,c,d,e,f]:
 x′=ax+cy+e, y′=bx+dy+f. Default is identity. A canvas child needs its own finite

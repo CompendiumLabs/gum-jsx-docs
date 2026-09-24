@@ -1,6 +1,9 @@
-# Metal Grid
+---
+category: geometry
+description: "A luminous 9-by-16 tile matrix sits under a bright layered spline, inside nested dark frames."
+---
 
-*Category*: geometry
+# Metal Grid
 
 A luminous 9-by-16 tile matrix sits under a bright layered spline, inside nested dark frames.
 

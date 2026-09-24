@@ -1,6 +1,9 @@
-# Slick Bars
+---
+category: plotting
+description: "Rounded bars, angled category labels, and percentage annotations form a styled bar chart."
+---
 
-*Category*: plotting
+# Slick Bars
 
 Rounded bars, angled category labels, and percentage annotations form a styled bar chart.
 

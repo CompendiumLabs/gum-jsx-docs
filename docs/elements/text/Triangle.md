@@ -1,6 +1,9 @@
-# Triangle
+---
+category: geometry
+description: "A Polygon with vertices at top center and both bottom corners."
+---
 
-*Category*: geometry
+# Triangle
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# Arrow
+---
+category: geometry
+description: "Draw a straight, curved, or rounded shaft with optional arrowheads between points."
+---
 
-*Category*: geometry
+# Arrow
 
 A shaft from from/to or through points. curve makes a spline; radius rounds a
 polyline. Both heads follow the original route's endpoint directions.

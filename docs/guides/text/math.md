@@ -1,6 +1,9 @@
-# Math authoring
+---
+category: math
+description: "Math is available in the CLI and editor through the optional gum-jsx-math package."
+---
 
-*Category*: math
+# Math authoring
 
 Math is available in the CLI and editor through the optional `gum-jsx-math`
 package. Start with [Latex](../../elements/text/Latex.md) for a complete formula,
@@ -17,11 +20,11 @@ Symbols, ordinary groups, named operators, atom-class overrides, signed glue,
 color changes, composed font commands, and local macros are implemented.
 Scripts, fractions, indexed radicals, large operators and limits, and scalable
 delimiters (including `\middle`) are also available. See
-[ordinary mathematical expressions](../../gallery/text/MathExpressions.md) for parsed and direct
-JSX examples. Formulas also work [inside prose](../../gallery/text/InlineMath.md), and ordinary
-Gum elements work [inside math](../../gallery/text/MathComposition.md). [Matrices, arrays, and cases](../../gallery/text/MathArrays.md)
-and [aligned equations](../../gallery/text/AlignedMath.md) are available, together with
-[accents, braces, and arrows](../../gallery/text/MathDecorations.md), [math boxes](../../gallery/text/MathBoxes.md),
+[ordinary mathematical expressions](../../gallery/text/math_expressions.md) for parsed and direct
+JSX examples. Formulas also work [inside prose](../../gallery/text/inline_math.md), and ordinary
+Gum elements work [inside math](../../gallery/text/math_composition.md). [Matrices, arrays, and cases](../../gallery/text/math_arrays.md)
+and [aligned equations](../../gallery/text/aligned_math.md) are available, together with
+[accents, braces, and arrows](../../gallery/text/math_decorations.md), [math boxes](../../gallery/text/math_boxes.md),
 and [composed fonts and macros](math_fonts.md). Unsupported constructs throw
 an error; they never disappear.
 
@@ -79,7 +82,7 @@ negative kerns. An explicit `Svg` viewport clips at its edges, so leave padding
 for overhang. The comparison script expands to the union of logical size and
 ink before rendering. [Standalone helpers and gum-tex](math_export.md) now
 provide that viewport directly, with synchronous and asynchronous SVG export.
-See also [formula labels on plots](../../gallery/text/MathPlotLabels.md) and [math in slides](../../gallery/text/MathSlides.md).
+See also [formula labels on plots](../../gallery/text/math_plot_labels.md) and [math in slides](../../gallery/text/math_slides.md).
 
 ## Library setup
 

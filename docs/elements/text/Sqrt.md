@@ -1,6 +1,9 @@
-# Sqrt
+---
+category: math
+description: "A radical whose rule covers its cramped radicand."
+---
 
-*Category*: math
+# Sqrt
 
 A radical whose rule covers its cramped radicand. An optional index is always set in scriptscript style.
 
@@ -18,4 +21,4 @@ rule overlaps the surd slightly to prevent a rasterization seam. A wide index
 reserves extra width on the left.
 
 Use TeX `\sqrt{x}` or `\sqrt[3]{x}` for the same layout. See
-[ordinary formulas](../../gallery/text/MathExpressions.md).
+[ordinary formulas](../../gallery/text/math_expressions.md).

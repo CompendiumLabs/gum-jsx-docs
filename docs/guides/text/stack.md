@@ -1,6 +1,9 @@
-# Stacks
+---
+category: layout
+description: "Explain flex sizing, wrapping, and alignment in HStack and VStack."
+---
 
-*Category*: layout
+# Stacks
 
 [HStack](../../elements/text/HStack.md) places children left to right. [VStack](../../elements/text/VStack.md) places them
 top to bottom. There is no separate Stack constructor; this page documents their

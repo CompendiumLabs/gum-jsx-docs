@@ -1,6 +1,9 @@
-# HFill
+---
+category: geometry
+description: "Fill horizontally between a series of points and a vertical boundary."
+---
 
-*Category*: geometry
+# HFill
 
 | Property | Default | Meaning |
 |---|---|---|

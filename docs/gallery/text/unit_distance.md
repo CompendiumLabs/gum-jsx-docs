@@ -1,6 +1,9 @@
-# Unit Distance
+---
+category: networks
+description: "A finite set of coefficient vectors in Q(i, ζ₃) produces a dense unit-distance graph."
+---
 
-*Category*: networks
+# Unit Distance
 
 A finite set of coefficient vectors in Q(i, ζ₃) produces a dense unit-distance graph. Exact coefficient tests select edges before positions are projected to the plane.
 

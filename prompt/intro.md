@@ -58,38 +58,3 @@ Use `setSeed` when a generative figure should be repeatable.
 Use `Latex` for display math and `Tex` inside `Text` for inline formulas. In a
 JavaScript string expression, use `String.raw` for TeX backslashes, for example
 ``<Tex>{String.raw`\frac{a}{b}`}</Tex>``, without surrounding `$` delimiters.
-
-## Design philosophy
-
-Gum code should express the structure of a figure and let the layout system do
-the measuring and positioning. Strive for the simplest, most elegant composition
-that preserves the visual intent and is easy to reuse. Hard-coded dimensions and
-positions are a last resort, not the starting point.
-
-- Use layout classes whenever feasible. Compose `HStack`, `VStack`, `TextCol`,
-  `Box`, and `Frame` for rows, columns, spacing, and decoration. Use higher-level
-  elements such as `Slide`, `TextFigure`, and `Plot` for the structures they
-  already understand. Read their documented examples before inventing a layout.
-- Express relationships instead of coordinates. Let content determine natural
-  sizes; use `grow`, `gap`, alignment, and fill sizing to distribute available
-  space. For a note at the bottom of a panel, put flexible content above it in a
-  column rather than assigning the note a y coordinate. Let titles and captions
-  be measured instead of subtracting guessed heights from a canvas.
-- Establish the outer design size and base typography where needed, then use
-  `em` for internal spacing and type scales. Use fractions and aspect ratios for
-  meaningful proportional relationships. Replacing pixel coordinates with `em`
-  coordinates alone does not make a layout compositional.
-- Reuse design decisions. Extract repeated structures into small components,
-  share palette and typography choices, and generate repeated content from data.
-  Forward layout props to a component's outer element so it remains useful in
-  different containers. Prefer a few clear abstractions over copied markup or
-  wrappers that add no useful behavior.
-- Reserve explicit coordinates and fixed sizes for genuine geometric or output
-  requirements, such as data positions, a physical page size, or a diagram whose
-  placement carries meaning. When layout classes cannot express the requirement,
-  keep the manual geometry local and derive related values from shared parameters.
-
-Judge the source as well as the rendered result. A polished picture with brittle
-code is an unfinished example. Check that changes to text, content count, or
-viewport size are handled by the layout rather than requiring a new set of
-hand-tuned offsets.

@@ -1,6 +1,9 @@
-# Coordinates
+---
+category: api
+description: "Explain how graph data coordinates differ from layout lengths."
+---
 
-*Category*: api
+# Coordinates
 
 Data coordinates are distinct from layout lengths. Numeric graph points are data;
 width, height, stroke widths, and other lengths use the ordinary [units](./units.md).

@@ -1,6 +1,9 @@
-# HMesh
+---
+category: plotting
+description: "Draw horizontal grid lines at generated or explicit tick values."
+---
 
-*Category*: plotting
+# HMesh
 
 | Property | Default | Meaning |
 |---|---|---|

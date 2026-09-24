@@ -1,6 +1,9 @@
-# Span
+---
+category: text
+description: "Span changes inherited style for part of a Text element."
+---
 
-*Category*: text
+# Span
 
 **Span** changes inherited style for part of a [Text](./Text.md) element. Its children
 may be strings, numbers, nested **Span**s, inline elements, and arrays. It has no independent box

@@ -1,6 +1,9 @@
-# RoundedRect
+---
+category: geometry
+description: "RoundedRect is Rect with a default corner radius of 0.125 of its shorter side."
+---
 
-*Category*: geometry
+# RoundedRect
 
 | Property | Default | Meaning |
 |---|---|---|

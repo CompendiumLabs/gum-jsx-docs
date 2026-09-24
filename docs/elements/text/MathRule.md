@@ -1,6 +1,9 @@
-# MathRule
+---
+category: math
+description: "A filled horizontal rule centered on the math axis."
+---
 
-*Category*: math
+# MathRule
 
 A filled horizontal rule centered on the math axis. Its default thickness is 0.04 em.
 

@@ -15,6 +15,8 @@ const gallery = getGallery()
 assert.ok(guides.tags.includes('gum'), 'Getting started belongs in Docs')
 for (const name of guides.tags) assert.match(name, /^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$/,
   `Guide filenames must use snake_case: ${name}`)
+for (const name of gallery.tags) assert.match(name, /^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$/,
+  `Gallery filenames must use snake_case: ${name}`)
 assert.ok(gallery.tags.includes('plot_bars'), 'Visual showcases belong in Gallery')
 assert.equal(new Set([...guides.tags, ...gallery.tags]).size, topics.tags.length)
 assert.equal(guides.tags.length + gallery.tags.length, topics.tags.length)
@@ -100,11 +102,11 @@ const comparisonRows: Record<string, readonly string[]> = {
   two_column: ['VStack', 'TextCol'],
   stokes_theorem: ['Group', 'TextCol'],
   polygon_slide: ['Frame', 'Frame', 'Frame'],
-  MathSlides: ['VStack', 'Plot'],
+  math_slides: ['VStack', 'Plot'],
   positioned_diagram: ['Frame', 'Group', 'Frame', 'Group', 'Frame'],
 }
 const columnGrow: Record<string, readonly number[]> = {
-  MathSlides: [1, 1.1],
+  math_slides: [1, 1.1],
   two_column: [1.15, 1],
   two_columns: [1, 1],
   positioned_diagram: [1, 0.65, 1, 0.65, 1],
@@ -130,7 +132,7 @@ function checkComposition(fragment: core.Fragment, name: string, context: string
 // More available room must not add a blank strip to content-sized examples.
 const contentSizedExamples = new Set([
   ...Object.keys(comparisonRows), 'scenic_route', 'shape_algebra', 'fonts', 'gum',
-  'math', 'MathArrays', 'MathBoxes', 'MathDecorations', 'MathExpressions', 'math_fonts', 'AlignedMath',
+  'math', 'math_arrays', 'math_boxes', 'math_decorations', 'math_expressions', 'math_fonts', 'aligned_math',
 ])
 
 const previewBounds = [[320, 240], [640, 480], [960, 240], [320, 640], [240, 640]] as const

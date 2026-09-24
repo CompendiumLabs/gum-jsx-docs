@@ -1,6 +1,9 @@
-# Math boxes and invisible layout
+---
+category: math
+description: "Math keeps logical dimensions separate from drawing bounds."
+---
 
-*Category*: math
+# Math boxes and invisible layout
 
 Math keeps logical dimensions separate from drawing bounds. Phantom, smash,
 and lap deliberately change one without changing the other.

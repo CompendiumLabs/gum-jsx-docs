@@ -1,6 +1,9 @@
-# Node
+---
+category: networks
+description: "A compact TextFrame with a centered placement anchor: the conventional labeled node."
+---
 
-*Category*: networks
+# Node
 
 | Property | Default | Meaning |
 |---|---|---|

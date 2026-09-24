@@ -1,6 +1,9 @@
-# VScale
+---
+category: plotting
+description: "VScale draws ticks only, without a baseline or labels."
+---
 
-*Category*: plotting
+# VScale
 
 | Property | Default | Meaning |
 |---|---|---|

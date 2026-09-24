@@ -1,6 +1,9 @@
-# VLine
+---
+category: geometry
+description: "Draw a vertical line across a local drawing frame."
+---
 
-*Category*: geometry
+# VLine
 
 | Property | Default | Meaning |
 |---|---|---|

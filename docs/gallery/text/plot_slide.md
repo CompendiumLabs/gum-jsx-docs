@@ -1,6 +1,9 @@
-# A slide with a plot
+---
+category: plotting
+description: "A slide composes a measured title, figure, and caption at a stable type scale."
+---
 
-*Category*: plotting
+# A slide with a plot
 
 A slide composes a measured title, figure, and caption at a stable type scale.
 

@@ -1,6 +1,9 @@
-# Themes
+---
+category: core
+description: "Apply a light or dark theme to a complete figure."
+---
 
-*Category*: core
+# Themes
 
 Set `theme="light"` or `theme="dark"` on the root element. Its content inherits the palette,
 including text, math, strokes, points, filled areas, bars, grids, plot borders,

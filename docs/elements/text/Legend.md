@@ -1,6 +1,9 @@
-# Legend
+---
+category: plotting
+description: "A measured box of badge/label rows."
+---
 
-*Category*: plotting
+# Legend
 
 | Property | Default | Meaning |
 |---|---|---|

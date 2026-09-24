@@ -1,6 +1,9 @@
-# Axes with Arrows
+---
+category: plotting
+description: "A logarithmic curve with arrowheads on both directed axes."
+---
 
-*Category*: plotting
+# Axes with Arrows
 
 A logarithmic curve with arrowheads on both directed axes. Plot measures the ticks,
 labels, baselines, and curved heads together.

@@ -1,6 +1,9 @@
-# Spline
+---
+category: geometry
+description: "Draw a cubic spline through points with optional tension and closure."
+---
 
-*Category*: geometry
+# Spline
 
 | Property | Default | Meaning |
 |---|---|---|

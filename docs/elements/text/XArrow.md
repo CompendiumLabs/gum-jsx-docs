@@ -1,6 +1,9 @@
-# XArrow
+---
+category: math
+description: "An extensible relation arrow with labels above and optionally below it."
+---
 
-*Category*: math
+# XArrow
 
 An extensible relation arrow with labels above and optionally below it.
 
@@ -24,4 +27,4 @@ combine them with core lines and arcs. Math controls sizing, the axis, and label
 placement, while core handles the arrow geometry and rendering.
 
 The TeX form is `\xrightarrow[below]{above}`. Over/under decorations on a body
-belong in [Accent](Accent.md). See [math decorations](../../gallery/text/MathDecorations.md).
+belong in [Accent](Accent.md). See [math decorations](../../gallery/text/math_decorations.md).

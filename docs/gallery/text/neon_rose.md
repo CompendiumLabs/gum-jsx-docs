@@ -1,6 +1,9 @@
-# Neon Rose
+---
+category: geometry
+description: "Layered spline strokes create a luminous rose with a spiral bud, curled petals, leaves, and small cross-shaped sparkles."
+---
 
-*Category*: geometry
+# Neon Rose
 
 Layered spline strokes create a luminous rose with a spiral bud, curled petals, leaves, and small cross-shaped sparkles.
 

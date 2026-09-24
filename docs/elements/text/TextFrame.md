@@ -1,6 +1,9 @@
-# TextFrame
+---
+category: text
+description: "TextFrame accepts string/Span/Element children, with 0.6em padding."
+---
 
-*Category*: text
+# TextFrame
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -30,6 +30,8 @@ test('the skill includes every element, guide, and gallery page exactly once wit
     + Object.keys(elements.cats).length + Object.keys(gallery.cats).length)
   expect(files.size).toBeLessThanOrEqual(200)
   for (const [kind, collection] of [['elements', elements], ['guides', guides], ['gallery', gallery]] as const) {
+    const index = files.get(`references/${kind}.md`)
+    expect(index).toBeDefined()
     for (const name of collection.tags) {
       const category = kind === 'guides' ? name
         : Object.entries(collection.cats).find(([, names]) => names.includes(name))![0]
@@ -37,6 +39,8 @@ test('the skill includes every element, guide, and gallery page exactly once wit
       expect(page).toBeDefined()
       expect(page).toContain('```jsx\n' + collection.code[name] + '\n```')
       expect(page).not.toContain('*Category*:')
+      expect(page).not.toContain('description:')
+      expect(index).toContain(` — ${collection.descriptions[name]}`)
       if (kind !== 'guides') {
         expect(page).toContain(`<a id="${name}"></a>`)
         expect(page).toContain(`<a id="${name}-example"></a>`)

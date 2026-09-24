@@ -1,6 +1,9 @@
-# SupSub
+---
+category: math
+description: "Attach superscripts, subscripts, or operator limits to one math operand."
+---
 
-*Category*: math
+# SupSub
 
 Attach superscripts, subscripts, or operator limits to one math operand. Placement uses the base's character nucleus and italic correction.
 
@@ -18,4 +21,4 @@ at the base advance; a superscript also includes its italic correction.
 
 [MathOp](MathOp.md) supplies the default limit policy. Explicit `\limits` and
 `\nolimits` are preserved by the TeX adapter. See
-[ordinary formulas](../../gallery/text/MathExpressions.md) for complete examples.
+[ordinary formulas](../../gallery/text/math_expressions.md) for complete examples.

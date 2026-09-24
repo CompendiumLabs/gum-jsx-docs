@@ -1,6 +1,9 @@
-# Two columns
+---
+category: layout
+description: "A small figure and its explanation share a definite row width."
+---
 
-*Category*: layout
+# Two columns
 
 A small figure and its explanation share a definite row width. Both direct
 children of **HStack** use `grow={1}`, so they split

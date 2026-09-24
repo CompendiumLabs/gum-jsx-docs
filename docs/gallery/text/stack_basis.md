@@ -1,6 +1,9 @@
-# Growth bases
+---
+category: layout
+description: "Compare stack growth when children have different flex bases."
+---
 
-*Category*: layout
+# Growth bases
 
 Both rows contain the same two labels with `grow={1}`. The first row divides
 the space after the gap equally: unsized growing children default to a zero

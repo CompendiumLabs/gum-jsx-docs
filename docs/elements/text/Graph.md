@@ -1,6 +1,9 @@
-# Graph
+---
+category: plotting
+description: "A finite canvas with a linear data coordinate system."
+---
 
-*Category*: plotting
+# Graph
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# Overlay
+---
+category: layout
+description: "Place positioned decorations over a measured base child."
+---
 
-*Category*: layout
+# Overlay
 
 The first child determines natural size. Other children are decorations:
 they receive that established canvas and use **Group**-style x/y/anchor placement.

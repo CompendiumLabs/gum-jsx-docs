@@ -1,6 +1,9 @@
-# Arrays
+---
+category: api
+description: "Array helpers generate figure data and repeated components."
+---
 
-*Category*: api
+# Arrays
 
 Array helpers generate figure data and repeated components. They are available
 in JSX and as named imports. Result arrays and newly created rows are frozen;

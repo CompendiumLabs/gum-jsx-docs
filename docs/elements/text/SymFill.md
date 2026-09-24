@@ -1,6 +1,9 @@
-# SymFill
+---
+category: plotting
+description: "Sample a band between upper and lower functions or numbers (defaults 1 and 0)."
+---
 
-*Category*: plotting
+# SymFill
 
 | Property | Default | Meaning |
 |---|---|---|

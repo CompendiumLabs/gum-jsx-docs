@@ -1,6 +1,9 @@
-# Math inside prose
+---
+category: math
+description: "Text accepts formulas and other Gum elements alongside prose."
+---
 
-*Category*: math
+# Math inside prose
 
 [Text](../../elements/text/Text.md) accepts formulas and other Gum elements
 alongside prose. Use [Tex](../../elements/text/Tex.md) for text-style formulas;
@@ -45,4 +48,4 @@ without prose, wrap them in `Text` to request inline layout, or use `TextCol` fo
 separate blocks.
 
 The example reuses one formula in two different paragraph widths and in a list.
-See [Gum inside math](MathComposition.md) for the other direction.
+See [Gum inside math](math_composition.md) for the other direction.

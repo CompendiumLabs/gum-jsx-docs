@@ -1,6 +1,9 @@
-# Underline
+---
+category: math
+description: "Draw a rule beneath a math operand."
+---
 
-*Category*: math
+# Underline
 
 Draw a rule beneath a math operand. The operand keeps its baseline, and the
 rule spans its advance. Strings parse as TeX; ordinary Gum elements also work.

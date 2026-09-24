@@ -1,6 +1,9 @@
-# Fonts
+---
+category: text
+description: "Core measures text and converts glyph outlines into paths during layout."
+---
 
-*Category*: text
+# Fonts
 
 Core measures text and converts glyph outlines into paths during layout. SVG
 serialization needs no font access, and PNG rasterization needs no font

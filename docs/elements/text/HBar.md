@@ -1,6 +1,9 @@
-# HBar
+---
+category: plotting
+description: "Draw one horizontal bar at a specified value and position."
+---
 
-*Category*: plotting
+# HBar
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,11 +1,14 @@
-# MathCol
+---
+category: math
+description: "Stack math elements vertically, with an explicit gap and horizontal alignment."
+---
 
-*Category*: math
+# MathCol
 
 Stack math elements vertically, with an explicit gap and horizontal alignment. The complete column is one atom, centered on its own math axis.
 
 Use [MathArray](MathArray.md) for shared columns, row baselines, and table rules,
-or [aligned equations](../../gallery/text/AlignedMath.md) for TeX multiline environments.
+or [aligned equations](../../gallery/text/aligned_math.md) for TeX multiline environments.
 
 | Property | Default | Meaning |
 | --- | --- | --- |

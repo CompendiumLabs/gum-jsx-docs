@@ -1,6 +1,9 @@
-# Rect
+---
+category: geometry
+description: "Rect paints its allocated rectangle."
+---
 
-*Category*: geometry
+# Rect
 
 | Property | Default | Meaning |
 |---|---|---|

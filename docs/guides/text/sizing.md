@@ -1,6 +1,9 @@
-# Sizing
+---
+category: core
+description: "Gum separates a parent's request, an element's preferred dimensions, and the size of the rendered content."
+---
 
-*Category*: core
+# Sizing
 
 Gum separates a parent's request, an element's preferred dimensions, and the
 size of the rendered content. This is a local allocation protocol, not a
@@ -114,7 +117,7 @@ before fitting. Small figures inside math likewise need intrinsic dimensions,
 such as an em width plus aspect. An ordinary content-sized box can simply measure
 its children, including rotated bounds, without becoming a fixed canvas.
 
-See [MathSlides](../../gallery/text/MathSlides.md), [two columns](../../gallery/text/two_column.md), and
+See [math slides](../../gallery/text/math_slides.md), [two columns](../../gallery/text/two_column.md), and
 [Punk Rock](../../gallery/text/punk_rock.md) for these variants.
 
 ## Fitting

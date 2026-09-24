@@ -1,6 +1,9 @@
-# TextCol
+---
+category: text
+description: "A text-aware stack: strings/numbers become Text elements at construction."
+---
 
-*Category*: text
+# TextCol
 
 | Property | Default | Meaning |
 |---|---|---|

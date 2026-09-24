@@ -1,6 +1,9 @@
-# Rendering and embedding
+---
+category: api
+description: "Trace the path from source elements through layout fragments to SVG output."
+---
 
-*Category*: api
+# Rendering and embedding
 
 The core pipeline has three boundaries: source elements describe intent,
 LayoutPass produces immutable pixel fragments, and render_svg serializes those

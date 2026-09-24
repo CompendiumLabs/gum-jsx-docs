@@ -1,6 +1,9 @@
-# Circle
+---
+category: geometry
+description: "Circle has an intrinsic 1:1 aspect."
+---
 
-*Category*: geometry
+# Circle
 
 | Property | Default | Meaning |
 |---|---|---|

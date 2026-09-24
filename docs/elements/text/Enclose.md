@@ -1,6 +1,9 @@
-# Enclose
+---
+category: math
+description: "Frame, highlight, cancel, or strike through a math operand."
+---
 
-*Category*: math
+# Enclose
 
 Frame, highlight, cancel, or strike through a math operand.
 

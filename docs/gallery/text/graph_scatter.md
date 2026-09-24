@@ -1,6 +1,9 @@
-# A reversed data axis
+---
+category: plotting
+description: "Directed limits reverse x while annotations and custom markers remain upright."
+---
 
-*Category*: plotting
+# A reversed data axis
 
 Directed limits reverse x while annotations and custom markers remain upright.
 

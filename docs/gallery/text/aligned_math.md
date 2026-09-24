@@ -1,6 +1,9 @@
-# Aligned equations
+---
+category: math
+description: "Use aligned to line up relations across several equations."
+---
 
-*Category*: math
+# Aligned equations
 
 Use `aligned` to line up relations across several equations. Put `&` before
 the relation and `\\` between rows. The first column is right aligned, the
@@ -53,7 +56,7 @@ with a relation or binary operator can use a TeX empty group, such as `"{}=b"`,
 to preserve the intended spacing. Parsed aligned environments insert this
 group automatically.
 
-See [matrices and arrays](MathArrays.md) for rules, cases, and small tables.
+See [matrices and arrays](math_arrays.md) for rules, cases, and small tables.
 `\substack` and `subarray` make script-style multiline content for limits and
 scripts. Phase 5 comparison galleries are available through
 `bun run compare --suite 5`; `--inline` covers the embeddable environments and

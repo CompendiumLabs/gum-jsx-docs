@@ -1,6 +1,9 @@
-# Path
+---
+category: geometry
+description: "Path draws a sequence of explicit path commands."
+---
 
-*Category*: geometry
+# Path
 
 | Property | Default | Meaning |
 |---|---|---|

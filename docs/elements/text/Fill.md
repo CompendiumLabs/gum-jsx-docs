@@ -1,6 +1,9 @@
-# Fill
+---
+category: geometry
+description: "Fill the region between a series of points and a boundary."
+---
 
-*Category*: geometry
+# Fill
 
 | Property | Default | Meaning |
 |---|---|---|

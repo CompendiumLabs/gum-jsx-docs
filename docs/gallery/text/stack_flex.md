@@ -1,6 +1,9 @@
-# Flex limits and shrinkage
-*Category*: layout
+---
+category: layout
+description: "The outer TextBox and nested TextCol components supply a shared width without repeating width declarations."
+---
 
+# Flex limits and shrinkage
 The first row divides free space with growth weights of 1:2:1. The next row caps
 the middle item at 120px and redistributes the remaining space to its neighbors.
 The third row shrinks two 300px bases to fit the available width and gap.

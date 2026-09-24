@@ -1,6 +1,9 @@
-# Macroeconomic Flows
+---
+category: networks
+description: "Producers, consumers, government, and foreign trade form a four-sector flow schematic."
+---
 
-*Category*: networks
+# Macroeconomic Flows
 
 Producers, consumers, government, and foreign trade form a four-sector flow schematic.
 

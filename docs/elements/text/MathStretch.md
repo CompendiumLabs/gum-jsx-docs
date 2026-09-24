@@ -1,6 +1,9 @@
-# MathStretch
+---
+category: math
+description: "A drawn horizontal decoration centered on the math axis."
+---
 
-*Category*: math
+# MathStretch
 
 A drawn horizontal decoration centered on the math axis. It is a relation atom
 when used directly in [MathText](MathText.md).

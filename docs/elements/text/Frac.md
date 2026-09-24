@@ -1,6 +1,9 @@
-# Frac
+---
+category: math
+description: "A fraction with numerator and denominator styles, baseline shifts, and clearance around its rule."
+---
 
-*Category*: math
+# Frac
 
 A fraction with numerator and denominator styles, baseline shifts, and clearance around its rule. Generalized fractions can omit the rule or add delimiters.
 
@@ -22,4 +25,4 @@ in scripts; public Gum `em()` thickness uses the active math em.
 
 The denominator is cramped. Without a bar, clearance is measured between the
 two operands rather than reserving space around an invisible rule. See
-[ordinary formulas](../../gallery/text/MathExpressions.md).
+[ordinary formulas](../../gallery/text/math_expressions.md).

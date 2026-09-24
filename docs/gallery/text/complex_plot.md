@@ -1,6 +1,9 @@
-# Complex Roots
+---
+category: plotting
+description: "The real and imaginary components of the roots of x² + 2cx + 1 are plotted horizontally against the parameter c."
+---
 
-*Category*: plotting
+# Complex Roots
 
 The real and imaginary components of the roots of x² + 2cx + 1 are plotted horizontally against the parameter c.
 

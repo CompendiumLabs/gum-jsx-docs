@@ -1,6 +1,9 @@
-# Network
+---
+category: networks
+description: "Network lays out and places its nodes before connecting them with Edge."
+---
 
-*Category*: networks
+# Network
 
 | Property | Default | Meaning |
 |---|---|---|

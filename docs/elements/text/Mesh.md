@@ -1,6 +1,9 @@
-# Mesh
+---
+category: plotting
+description: "Draw grid lines at generated or explicit tick values."
+---
 
-*Category*: plotting
+# Mesh
 
 | Property | Default | Meaning |
 |---|---|---|

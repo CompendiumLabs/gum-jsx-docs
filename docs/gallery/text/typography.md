@@ -1,6 +1,9 @@
-# Type, ink, and line boxes
-*Category*: text
+---
+category: text
+description: "The tight-leading sample puts 28px glyphs in a 12px line box."
+---
 
+# Type, ink, and line boxes
 Gray rectangles show allocated line boxes and blue rules show measured baselines.
 The samples compare font weights, mixed font sizes on one baseline, tight line
 height, preserved whitespace, and centered lines.

@@ -1,6 +1,9 @@
-# Transformer Architecture
+---
+category: networks
+description: "Diagram the layers and repeated blocks of a decoder-only transformer."
+---
 
-*Category*: networks
+# Transformer Architecture
 
 A decoder-only transformer diagram. Read upward from
 input tokens through embeddings, the repeated attention/feed-forward layer,

@@ -1,6 +1,9 @@
-# Accent
+---
+category: math
+description: "Put a glyph or a width-fitting decoration over an operand."
+---
 
-*Category*: math
+# Accent
 
 Put a glyph or a width-fitting decoration over an operand. Strings parse as TeX;
 elements, including ordinary Gum figures, keep their natural size.
@@ -26,4 +29,4 @@ compound operand supplies its complete decorated box. Fixed accent overhang
 does not enlarge advance. Stretchy accents can enlarge a narrow operand to
 their minimum width. The result is an ordinary math atom.
 
-See [math decorations](../../gallery/text/MathDecorations.md).
+See [math decorations](../../gallery/text/math_decorations.md).

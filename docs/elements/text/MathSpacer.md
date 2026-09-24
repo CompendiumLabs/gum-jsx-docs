@@ -1,6 +1,9 @@
-# MathSpacer
+---
+category: math
+description: "Explicit glue with a signed logical advance."
+---
 
-*Category*: math
+# MathSpacer
 
 Explicit glue with a signed logical advance. Negative advance moves the next item left while the spacer's physical width stays nonnegative.
 

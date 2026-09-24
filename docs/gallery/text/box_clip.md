@@ -1,6 +1,9 @@
-# Rounded box clipping
-*Category*: layout
+---
+category: layout
+description: "Tree output retains the child's full allocation and overflow even though that ink is hidden."
+---
 
+# Rounded box clipping
 A 280px **Square** deliberately overflows a 220×100 **Box**. The **Box** centers the child
 and clips its paint inside the rounded 6px border. The surrounding padding leaves
 room to see the complete border.

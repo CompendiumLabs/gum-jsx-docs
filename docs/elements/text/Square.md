@@ -1,6 +1,9 @@
-# Square
+---
+category: geometry
+description: "Square is a rectangle with an intrinsic 1:1 aspect and square drawing geometry."
+---
 
-*Category*: geometry
+# Square
 
 | Property | Default | Meaning |
 |---|---|---|

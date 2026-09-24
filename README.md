@@ -39,7 +39,7 @@ host code. The examples use these helpers directly.
 [Math authoring](./docs/guides/text/math.md) covers TeX and composable math elements.
 The editor includes a Math category with element references and topics for
 [standalone exports](./docs/guides/text/math_export.md),
-[plot labels](./docs/gallery/text/MathPlotLabels.md), and [slides](./docs/gallery/text/MathSlides.md).
+[plot labels](./docs/gallery/text/math_plot_labels.md), and [slides](./docs/gallery/text/math_slides.md).
 The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, PDF, and kitty.
 
 ## Content structure
@@ -50,7 +50,7 @@ regressions live beside them and need code only:
 ```text
 docs/
   elements/
-    text/<Name>.md     Element reference; category appears below its title
+    text/<Name>.md     Element reference with YAML metadata
     code/<Name>.jsx    Self-contained, runnable element example
   guides/
     text/<name>.md     Conceptual guide; snake_case filename
@@ -72,6 +72,20 @@ There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
 `/docs` route consumes the catalogs to show SVG cards and editable, live-rendered
 code/figure popups. There are no runtime package dependencies;
 gum-jsx-core and gum-jsx-math are development dependencies for checking examples.
+
+Every reference Markdown file starts with YAML front matter containing a
+`category` and a one-sentence `description`. The catalog uses these fields for
+grouping and skill reference indexes; neither appears in the rendered page body.
+For example:
+
+```md
+---
+category: layout
+description: "Explain flex sizing, wrapping, and alignment in HStack and VStack."
+---
+
+# Stacks
+```
 
 `bun run test` renders all examples with the same 640 × 480 offer used by the
 CLI and previews, then checks 320, 480, 640, and 960px widths with natural height.
@@ -110,6 +124,7 @@ Element and gallery text and code are combined into one reference file per
 category; guides keep their own files. Every current page and runnable example
 is included, with local links rewritten to the relevant entry or embedded JSX
 example. The separate PDF package's API link points to its upstream README.
+The generated reference indexes include each page's description alongside its link.
 
 The script locates inputs and its default output relative to this package,
 independently of the caller's working directory. From the workspace root:

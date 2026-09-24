@@ -1,6 +1,9 @@
-# Mesh2D
+---
+category: plotting
+description: "Combine horizontal and vertical grid lines in graph coordinates."
+---
 
-*Category*: plotting
+# Mesh2D
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# Frame
+---
+category: layout
+description: "Surround one element with padding, background, and a default border."
+---
 
-*Category*: layout
+# Frame
 
 **Frame** is [Box](./Box.md) with a default `border-width={px(1)}`. It has the same
 single-content rule, sizing, padding, background, border radius, alignment, and clipping.

@@ -1,6 +1,9 @@
-# The Nexus
+---
+category: plotting
+description: "Ten phase-shifted cosine wave packets share a Gaussian envelope and form a colored interference pattern over a fine grid."
+---
 
-*Category*: plotting
+# The Nexus
 
 Ten phase-shifted cosine wave packets share a Gaussian envelope and form a colored interference pattern over a fine grid.
 

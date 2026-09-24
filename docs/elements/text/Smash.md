@@ -1,6 +1,9 @@
-# Smash
+---
+category: math
+description: "Keep an operand's ink and advance while suppressing its logical height or depth."
+---
 
-*Category*: math
+# Smash
 
 Keep an operand's ink and advance while suppressing its logical height or
 depth. The baseline stays aligned with the original operand's baseline.
@@ -18,4 +21,4 @@ and `top={false}` for `\smash[b]{…}`. Setting both false keeps the extents.
 Smash is an ordinary atom. Its drawing remains in ink/overflow, so a surrounding
 row does not regain the suppressed line height. Leave room in an explicit SVG
 viewport for that overhang. [Phantom](Phantom.md) hides ink; [Lap](Lap.md) removes
-horizontal advance. See [math boxes](../../gallery/text/MathBoxes.md).
+horizontal advance. See [math boxes](../../gallery/text/math_boxes.md).

@@ -1,6 +1,9 @@
-# RaiseBox
+---
+category: math
+description: "Raise or lower an operand relative to the surrounding math baseline."
+---
 
-*Category*: math
+# RaiseBox
 
 Move an operand vertically relative to the surrounding baseline. `shift`
 defaults to zero; positive lengths raise the operand and negative lengths

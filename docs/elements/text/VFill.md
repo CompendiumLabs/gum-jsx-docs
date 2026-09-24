@@ -1,6 +1,9 @@
-# VFill
+---
+category: geometry
+description: "Fill vertically between a series of points and a horizontal boundary."
+---
 
-*Category*: geometry
+# VFill
 
 | Property | Default | Meaning |
 |---|---|---|

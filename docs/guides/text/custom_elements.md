@@ -1,6 +1,9 @@
-# Custom elements
+---
+category: api
+description: "Implement custom primitives and layout policies with the Element API."
+---
 
-*Category*: api
+# Custom elements
 
 Prefer a [functional JSX component](./jsx.md) when existing elements can express
 the layout. Extend `Element` when you need a new primitive or layout policy.

@@ -1,6 +1,9 @@
-# Colors
+---
+category: api
+description: "Create interpolated colors and numeric color palettes with helper functions."
+---
 
-*Category*: api
+# Colors
 
 `interp(start,end,t)` interpolates between two colors. `palette(start,end,lim)`
 returns a function that maps numeric data to those colors. Both are available

@@ -1,6 +1,9 @@
-# Polygon
+---
+category: geometry
+description: "Polygon connects points in order and closes the path back to the first point."
+---
 
-*Category*: geometry
+# Polygon
 
 | Property | Default | Meaning |
 |---|---|---|

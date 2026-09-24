@@ -1,6 +1,9 @@
-# Anchor
+---
+category: layout
+description: "A zero-size point or line frame around a naturally measured child."
+---
 
-*Category*: layout
+# Anchor
 
 A zero-size point or line frame around a naturally measured child. With no
 dimensions it measures 0×0; width/height or exact requests can establish a

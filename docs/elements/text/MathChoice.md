@@ -1,6 +1,9 @@
-# MathChoice
+---
+category: math
+description: "Select one of four children according to the active math style, like TeX \\mathchoice."
+---
 
-*Category*: math
+# MathChoice
 
 Select one of four children according to the active math style, like TeX
 `\mathchoice`. Give children in display, text, script, and scriptscript order.

@@ -1,6 +1,9 @@
-# TitleBox
+---
+category: text
+description: "Place an optional title above content inside a box."
+---
 
-*Category*: text
+# TitleBox
 
 | Property | Default | Meaning |
 |---|---|---|

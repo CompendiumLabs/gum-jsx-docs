@@ -1,6 +1,9 @@
-# Polyline
+---
+category: geometry
+description: "Polyline connects points in order with straight segments."
+---
 
-*Category*: geometry
+# Polyline
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# HorizBrace
+---
+category: math
+description: "An overbrace or underbrace with an optional label."
+---
 
-*Category*: math
+# HorizBrace
 
 An overbrace or underbrace with an optional label. The body sets the brace
 width; a wider label increases the complete box without stretching the brace.

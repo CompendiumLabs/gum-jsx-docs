@@ -1,6 +1,9 @@
-# Arrow caps and tips
+---
+category: geometry
+description: "The top row compares butt, round, and square caps on thick shafts."
+---
 
-*Category*: geometry
+# Arrow caps and tips
 
 The top row compares butt, round, and square caps on thick shafts. Blue arrows
 have one head, green arrows have two, and dashed guides mark their original

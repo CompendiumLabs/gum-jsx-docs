@@ -1,6 +1,9 @@
-# HAxis
+---
+category: plotting
+description: "HAxis draws a baseline, ticks, and labels."
+---
 
-*Category*: plotting
+# HAxis
 
 | Property | Default | Meaning |
 |---|---|---|

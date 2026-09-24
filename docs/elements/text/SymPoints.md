@@ -1,6 +1,9 @@
-# SymPoints
+---
+category: plotting
+description: "Use the sampling options described by SymLine and draw with Points."
+---
 
-*Category*: plotting
+# SymPoints
 
 | Property | Default | Meaning |
 |---|---|---|

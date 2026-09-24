@@ -1,6 +1,9 @@
-# Plot
+---
+category: plotting
+description: "Compose graphable children with linear axes, grid lines, measured tick labels, axis titles, an optional legend, and an optional background."
+---
 
-*Category*: plotting
+# Plot
 
 Compose graphable children with linear axes, grid lines, measured tick labels,
 axis titles, an optional legend, and an optional background. Limits follow

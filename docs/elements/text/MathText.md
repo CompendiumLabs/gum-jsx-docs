@@ -1,6 +1,9 @@
-# MathText
+---
+category: math
+description: "Parse and space a sequence of TeX and math elements."
+---
 
-*Category*: math
+# MathText
 
 A TeX-spaced source sequence. It parses string children, classifies atoms, cancels unary binary operators, and inserts the appropriate glue.
 Use [MathChoice](MathChoice.md) for four style-dependent child branches.

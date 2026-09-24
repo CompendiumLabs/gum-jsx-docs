@@ -1,6 +1,9 @@
-# Bullets
+---
+category: text
+description: "A vertical list with baseline-aligned markers."
+---
 
-*Category*: text
+# Bullets
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# HStack
+---
+category: layout
+description: "Arrange child elements left to right with flex sizing and alignment."
+---
 
-*Category*: layout
+# HStack
 
 Arrange elements left to right. Width is the main axis and height is the cross
 axis. See [Stack](../../guides/text/stack.md) for all props and allocation rules.

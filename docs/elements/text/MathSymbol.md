@@ -1,6 +1,9 @@
-# MathSymbol
+---
+category: math
+description: "Select a glyph and its atom class from the TeX symbol table."
+---
 
-*Category*: math
+# MathSymbol
 
 Select a glyph and its atom class from the TeX symbol table. The default face follows the symbol; prose font families do not override it.
 

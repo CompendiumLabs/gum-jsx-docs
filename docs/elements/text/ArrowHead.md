@@ -1,6 +1,9 @@
-# ArrowHead
+---
+category: geometry
+description: "Draw a standalone open or closed arrowhead at a chosen tip and angle."
+---
 
-*Category*: geometry
+# ArrowHead
 
 | Property | Default | Meaning |
 |---|---|---|

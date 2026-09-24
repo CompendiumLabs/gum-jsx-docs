@@ -5,15 +5,20 @@ import { elementsDir, galleryDir, guidesDir, packageRoot, promptDir } from './di
 import { getElements, getGuides, getGallery, prepareElementPage } from './meta'
 import type { CollectionInfo } from './meta'
 
-type SkillPromptOptions = { cli?: boolean }
+type SkillPromptOptions = {
+  gen?: boolean
+  cli?: boolean
+}
 
 function readPrompt(name: string): string {
   return readFileSync(join(promptDir, `${name}.md`), 'utf8').trim()
 }
 
 // CLI workflows are opt-in; the portable package enables them by default.
-export function getSkillPrompt({ cli = false }: SkillPromptOptions = {}): string {
-  const names = ['intro', 'docs', 'refs', 'gen', ...(cli ? ['cli'] : [])]
+export function getSkillPrompt({ gen = true, cli = false }: SkillPromptOptions = {}): string {
+  const names = ['intro', 'docs', 'refs']
+  if (gen) names.push('gen')
+  if (cli) names.push('cli')
   return names.map(readPrompt).join('\n\n') + '\n'
 }
 
@@ -77,7 +82,7 @@ function indexPage(heading: string, kind: string, collection: CollectionInfo,
   groups: Record<string, string[]>, grouped = false): string {
   const sections = Object.entries(groups).map(([category, names]) =>
     `## ${category[0].toUpperCase() + category.slice(1)}\n\n` + names.map(name =>
-      `- [${title(collection.text[name])}](${kind}/${grouped ? `${category}.md#${name}` : `${name}.md`})`).join('\n'))
+      `- [${title(collection.text[name])}](${kind}/${grouped ? `${category}.md#${name}` : `${name}.md`}) — ${collection.descriptions[name]}`).join('\n'))
   return `# ${heading}\n\nEach ${grouped ? 'entry' : 'page'} includes its runnable JSX example.\n\n${sections.join('\n\n')}\n`
 }
 
@@ -106,7 +111,7 @@ function categoryPage(kind: string, category: string, pages: Page[], sources: Ma
 }
 
 // Pure assembly makes coverage and links testable without generating artifacts.
-export function buildSkillFiles({ cli = true }: SkillPromptOptions = {}): SkillFiles {
+export function buildSkillFiles(opts: SkillPromptOptions = {}): SkillFiles {
   const elements = getElements()
   const guides = getGuides()
   const gallery = getGallery()
@@ -130,7 +135,7 @@ export function buildSkillFiles({ cli = true }: SkillPromptOptions = {}): SkillF
   }
 
   const files: SkillFiles = new Map()
-  const prompt = readPrompt('head') + '\n\n' + getSkillPrompt({ cli })
+  const prompt = readPrompt('head') + '\n\n' + getSkillPrompt({ cli: true, ...opts })
   files.set('SKILL.md', mapSkillLinks(prompt, target => {
     const match = /^references\/(elements|gallery)\/([A-Za-z0-9_-]+)\.md$/.exec(target)
     if (!match) return target

@@ -1,6 +1,9 @@
-# Flux Capacitance
+---
+category: plotting
+description: "A translucent band fills the space between sine and cosine over a full period."
+---
 
-*Category*: plotting
+# Flux Capacitance
 
 A translucent band fills the space between sine and cosine over a full period. The title is playful; the curves are a plotting demonstration.
 

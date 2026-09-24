@@ -1,6 +1,9 @@
-# Pendulum Physics
+---
+category: geometry
+description: "A pendulum diagram with a clipped support, angle arc, equilibrium line, bob, force arrows, and equation of motion."
+---
 
-*Category*: geometry
+# Pendulum Physics
 
 A pendulum diagram with a clipped support, angle arc,
 equilibrium line, bob, force arrows, and equation of motion. Change `angle` or

@@ -1,6 +1,9 @@
-# Two Columns
+---
+category: layout
+description: "A damped-oscillation plot sits beside a paragraph and a short list containing inline math."
+---
 
-*Category*: layout
+# Two Columns
 
 A damped-oscillation plot sits beside a paragraph and a short list containing inline math.
 

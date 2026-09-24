@@ -1,6 +1,9 @@
-# VAxis
+---
+category: plotting
+description: "VAxis draws a baseline, ticks, and labels."
+---
 
-*Category*: plotting
+# VAxis
 
 | Property | Default | Meaning |
 |---|---|---|

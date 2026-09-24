@@ -1,6 +1,9 @@
-# Arc
+---
+category: geometry
+description: "An ellipse segment with center, scalar or paired radius, and start/end angles in degrees."
+---
 
-*Category*: geometry
+# Arc
 
 | Property | Default | Meaning |
 |---|---|---|

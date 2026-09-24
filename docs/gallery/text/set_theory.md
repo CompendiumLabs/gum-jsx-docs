@@ -1,6 +1,9 @@
-# Set Theory
+---
+category: geometry
+description: "Two smaller elliptical regions lie inside the larger set A, with independently positioned labels."
+---
 
-*Category*: geometry
+# Set Theory
 
 Two smaller elliptical regions lie inside the larger set A, with independently positioned labels.
 

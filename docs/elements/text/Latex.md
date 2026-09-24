@@ -1,6 +1,9 @@
-# Latex
+---
+category: math
+description: "A complete formula in display style, with a one-em minimum line box."
+---
 
-*Category*: math
+# Latex
 
 A complete formula in display style, with a one-em minimum line box. Supports ordinary expressions with scripts, fractions, indexed roots, operators, limits, and delimiters.
 

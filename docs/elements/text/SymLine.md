@@ -1,6 +1,9 @@
-# SymLine
+---
+category: plotting
+description: "Sample a function at the specified values and draw with CoordLine."
+---
 
-*Category*: plotting
+# SymLine
 
 | Property | Default | Meaning |
 |---|---|---|

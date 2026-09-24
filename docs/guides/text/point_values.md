@@ -1,6 +1,9 @@
-# Point values
+---
+category: geometry
+description: "Point inputs accept either [x, y] or {x, y} in JSX and host code."
+---
 
-*Category*: geometry
+# Point values
 
 Point inputs accept either `[x, y]` or `{x, y}` in JSX and host code. You can mix
 both forms in one list. Each tuple must contain exactly two coordinates.

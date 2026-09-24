@@ -1,6 +1,9 @@
-# CLI
+---
+category: core
+description: "The gum command evaluates JSX, lays out the result, and writes SVG, PNG, PDF, kitty graphics, a fragment tree, or JSON."
+---
 
-*Category*: core
+# CLI
 
 The `gum` command evaluates JSX, lays out the result, and writes SVG, PNG, PDF,
 kitty graphics, a fragment tree, or JSON. Once the 2.0 candidate is published,

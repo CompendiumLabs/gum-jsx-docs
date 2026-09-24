@@ -1,6 +1,9 @@
-# Random
+---
+category: api
+description: "Every evaluate(source, {seed?}) call starts its own random stream, with seed 42 by default."
+---
 
-*Category*: api
+# Random
 
 Every `evaluate(source, {seed?})` call starts its own random stream, with seed 42
 by default. Re-evaluating the same document gives the same samples. The host's

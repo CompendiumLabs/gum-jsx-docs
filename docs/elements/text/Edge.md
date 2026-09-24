@@ -1,6 +1,9 @@
-# Edge
+---
+category: networks
+description: "A connection rendered with Arrow's shaft, heads, and paint options."
+---
 
-*Category*: networks
+# Edge
 
 | Property | Default | Meaning |
 |---|---|---|

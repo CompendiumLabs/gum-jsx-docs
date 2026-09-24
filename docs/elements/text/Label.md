@@ -1,6 +1,9 @@
-# Label
+---
+category: plotting
+description: "Draw one formatted label at a tick value on an axis."
+---
 
-*Category*: plotting
+# Label
 
 | Property | Default | Meaning |
 |---|---|---|

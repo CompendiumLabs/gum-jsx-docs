@@ -1,6 +1,9 @@
-# Group
+---
+category: layout
+description: "A finite canvas for independently positioned children."
+---
 
-*Category*: layout
+# Group
 
 A finite canvas for independently positioned children. **Group** establishes its
 size before measuring content; it does not hug the bounds of positioned children.

@@ -1,6 +1,9 @@
-# Bars
+---
+category: plotting
+description: "Draw a series of vertical bars from values, positions, and baselines."
+---
 
-*Category*: plotting
+# Bars
 
 | Property | Default | Meaning |
 |---|---|---|

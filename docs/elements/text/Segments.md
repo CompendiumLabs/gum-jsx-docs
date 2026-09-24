@@ -1,6 +1,9 @@
-# Segments
+---
+category: geometry
+description: "Independent segments in one drawing. segments is an array of pairs of {x,y} or [x,y] endpoints."
+---
 
-*Category*: geometry
+# Segments
 
 | Property | Default | Meaning |
 |---|---|---|

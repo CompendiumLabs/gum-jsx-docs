@@ -1,6 +1,9 @@
-# Shape cards
+---
+category: geometry
+description: "Three cards are generated from data with a small functional JSX component."
+---
 
-*Category*: geometry
+# Shape cards
 
 Three cards are generated from data with a small functional JSX component. Each
 card returns a **TextFrame** carrying its own outer flex props; its internal **TextCol** is

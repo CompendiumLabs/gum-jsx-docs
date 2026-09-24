@@ -1,6 +1,9 @@
-# PngImage
+---
+category: special
+description: "Embeds a PNG from a base64 data URL."
+---
 
-*Category*: special
+# PngImage
 
 Embeds a PNG from a base64 data URL. The image reads its
 natural pixel dimensions from the PNG header. Set one dimension to resize with

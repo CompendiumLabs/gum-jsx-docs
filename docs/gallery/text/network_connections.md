@@ -1,6 +1,9 @@
-# Connections through layout
+---
+category: networks
+description: "Show how network edges meet the completed frames of varied nodes."
+---
 
-*Category*: networks
+# Connections through layout
 
 [Network](../../elements/text/Network.md) connects the completed frames of its
 nodes. The example fits one Node inside a larger allocation, pads another, and

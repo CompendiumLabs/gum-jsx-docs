@@ -1,6 +1,9 @@
-# OuterLabel
+---
+category: plotting
+description: "Place a label outside a chosen frame edge with optional offset and rotation."
+---
 
-*Category*: plotting
+# OuterLabel
 
 | Property | Default | Meaning |
 |---|---|---|

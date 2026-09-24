@@ -2,14 +2,12 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { elementsDir, galleryDir, guidesDir } from './dirs'
 
-type ElementEntry = Readonly<{ name: string; title: string; cat: string }>
-type TopicEntry = Readonly<{ name: string; title: string; cat?: string }>
-type CollectionInfo = { tags: string[]; text: Record<string, string>; code: Record<string, string> }
+type ElementEntry = Readonly<{ name: string; title: string; cat: string; description: string }>
+type TopicEntry = Readonly<{ name: string; title: string; cat: string; description: string }>
+type CollectionInfo = { tags: string[]; text: Record<string, string>; code: Record<string, string>; descriptions: Record<string, string> }
 type ElementsInfo = CollectionInfo & { cats: Record<string, string[]> }
 type TopicsInfo = CollectionInfo & { cats: Record<string, string[]> }
 
-const category = /^\*Category\*:[ \t]*(.+?)[ \t]*$/m
-const stripCategory = /^\*Category\*:[ \t]*.*\r?\n(?:\r?\n)?/m
 const categories = ['core', 'layout', 'geometry', 'plotting', 'networks', 'text', 'math', 'api', 'special']
 
 function pageName(name: string): string {
@@ -38,13 +36,35 @@ function title(text: string, name: string): string {
   return value
 }
 
+function page(text: string, name: string): { cat: string; description: string; body: string } {
+  const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n(?:\r?\n)?/.exec(text)
+  if (!match) throw new Error(`${name} needs YAML front matter`)
+  const data: Record<string, string> = {}
+  for (const line of match[1].split(/\r?\n/)) {
+    const field = /^([a-z]+):[ \t]*(.*)$/.exec(line)
+    if (!field || data[field[1]] !== undefined) throw new Error(`${name} has invalid YAML metadata`)
+    const value = field[2].trim()
+    // The maintained descriptions use JSON-style double quotes, valid YAML scalars.
+    data[field[1]] = value.startsWith('"') ? JSON.parse(value) : value
+  }
+  const cat = data.category
+  const description = data.description
+  if (typeof cat !== 'string' || (!categories.includes(cat) && cat !== 'showcases')) {
+    throw new Error(`${name} needs a known category`)
+  }
+  if (typeof description !== 'string' || !description.trim()) {
+    throw new Error(`${name} needs a description`)
+  }
+  return { cat, description: description.trim(), body: text.slice(match[0].length) }
+}
+
 // Derive the catalog from the files, as in gum-jsx-docs. No second manifest to maintain.
 function listElements(dir = elementsDir): ElementEntry[] {
   return names(dir).map(name => {
     const text = read(dir, 'text', name)
-    const cat = category.exec(text)?.[1]
-    if (!cat || !categories.includes(cat)) throw new Error(`${name} needs a known *Category*: line`)
-    return { name, title: title(text, name), cat }
+    const { cat, description, body } = page(text, name)
+    if (cat === 'showcases') throw new Error(`${name} needs an element category`)
+    return { name, title: title(body, name), cat, description }
   }).sort((a, b) => categories.indexOf(a.cat) - categories.indexOf(b.cat)
     || a.name.localeCompare(b.name))
 }
@@ -52,20 +72,19 @@ function listElements(dir = elementsDir): ElementEntry[] {
 function listCollection(dir: string): TopicEntry[] {
   return names(dir).map(name => {
     const text = read(dir, 'text', name)
-    const cat = category.exec(text)?.[1]
-    if (cat && !categories.includes(cat)) throw new Error(`${name} has an unknown *Category*: line`)
-    return { name, title: title(text, name), ...(cat ? { cat } : {}) }
-  }).sort((a, b) => (a.cat ? categories.indexOf(a.cat) : categories.length)
-    - (b.cat ? categories.indexOf(b.cat) : categories.length)
+    const { cat, description, body } = page(text, name)
+    return { name, title: title(body, name), cat, description }
+  }).sort((a, b) => (a.cat === 'showcases' ? categories.length : categories.indexOf(a.cat))
+    - (b.cat === 'showcases' ? categories.length : categories.indexOf(b.cat))
     || a.name.localeCompare(b.name))
 }
 
 function getElementText(name: string, dir = elementsDir): string {
-  return read(dir, 'text', name).replace(stripCategory, '')
+  return page(read(dir, 'text', name), name).body
 }
 function getElementCode(name: string, dir = elementsDir): string { return read(dir, 'code', name); }
 function getCollectionText(name: string, dir: string): string {
-  return read(dir, 'text', name).replace(stripCategory, '')
+  return page(read(dir, 'text', name), name).body
 }
 function getCollectionCode(name: string, dir: string): string { return read(dir, 'code', name); }
 
@@ -74,7 +93,7 @@ function getElements(dir = elementsDir): ElementsInfo {
   const cats: Record<string, string[]> = {}
   for (const { name, cat } of entries) (cats[cat] ??= []).push(name)
   const tags = entries.map(entry => entry.name)
-  return { tags, cats,
+  return { tags, cats, descriptions: Object.fromEntries(entries.map(({ name, description }) => [name, description])),
     text: Object.fromEntries(tags.map(name => [name, getElementText(name, dir)])),
     code: Object.fromEntries(tags.map(name => [name, getElementCode(name, dir)])) }
 }
@@ -82,16 +101,16 @@ function getElements(dir = elementsDir): ElementsInfo {
 function getCollection(dir: string): TopicsInfo {
   const entries = listCollection(dir)
   const cats: Record<string, string[]> = {}
-  for (const { name, cat } of entries) if (cat) (cats[cat] ??= []).push(name)
+  for (const { name, cat } of entries) (cats[cat] ??= []).push(name)
   const tags = entries.map(entry => entry.name)
-  return { tags, cats,
+  return { tags, cats, descriptions: Object.fromEntries(entries.map(({ name, description }) => [name, description])),
     text: Object.fromEntries(tags.map(name => [name, getCollectionText(name, dir)])),
     code: Object.fromEntries(tags.map(name => [name, getCollectionCode(name, dir)])) }
 }
 
 // Preserve Markdown links; the viewer can resolve them relative to the source page.
 function prepareElementPage(text: string, code: string): string {
-  return text.replace(stripCategory, '').trim() + '\n\n## Example\n\n'
+  return text.trim() + '\n\n## Example\n\n'
     + '```jsx\n' + code.trim() + '\n```\n'
 }
 function prepareTopicPage(text: string, code: string): string {
@@ -102,9 +121,6 @@ function getGuides(dir = guidesDir): TopicsInfo { return getCollection(dir); }
 
 function getGallery(dir = galleryDir): TopicsInfo {
   const gallery = getCollection(dir)
-  const categorized = new Set(Object.values(gallery.cats).flat())
-  const showcases = gallery.tags.filter(name => !categorized.has(name))
-  if (showcases.length) gallery.cats.showcases = showcases
   return gallery
 }
 
@@ -123,6 +139,7 @@ function getTopics(dir?: string): TopicsInfo {
     for (const [cat, names] of Object.entries(collection.cats)) (cats[cat] ??= []).push(...names)
   }
   return { tags: [...guides.tags, ...gallery.tags], cats,
+    descriptions: { ...guides.descriptions, ...gallery.descriptions },
     text: { ...guides.text, ...gallery.text }, code: { ...guides.code, ...gallery.code } }
 }
 function topicDir(name: string): string {

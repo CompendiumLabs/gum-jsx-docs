@@ -1,6 +1,9 @@
-# Math decorations
+---
+category: math
+description: "Accents, horizontal rules, braces, and extensible arrows work in TeX and JSX."
+---
 
-*Category*: math
+# Math decorations
 
 Accents, horizontal rules, braces, and extensible arrows work in TeX and JSX.
 Their bodies and labels can contain ordinary Gum elements as well as math.

@@ -1,6 +1,9 @@
-# Slide
+---
+category: text
+description: "Lay out a 16:9 slide with a measured title and flexible content area."
+---
 
-*Category*: text
+# Slide
 
 | Property | Default | Meaning |
 |---|---|---|
@@ -46,5 +49,5 @@ finished slide.
 
 For side-by-side content, place an **HStack** in the body and give its direct
 children grow weights. Use `aspect` on plots, relative font sizes on labels, and
-`em()` padding and gaps. The [math slide](../../gallery/text/MathSlides.md) uses
+`em()` padding and gaps. The [math slide](../../gallery/text/math_slides.md) uses
 this pattern with only one pixel value: its base font size.

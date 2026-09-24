@@ -1,6 +1,9 @@
-# SymSpline
+---
+category: plotting
+description: "Use the sampling options described by SymLine and draw with Spline."
+---
 
-*Category*: plotting
+# SymSpline
 
 | Property | Default | Meaning |
 |---|---|---|

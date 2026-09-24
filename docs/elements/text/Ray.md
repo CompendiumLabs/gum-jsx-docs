@@ -1,6 +1,9 @@
-# Ray
+---
+category: geometry
+description: "A finite ray from origin at a screen-space angle in degrees (positive clockwise)."
+---
 
-*Category*: geometry
+# Ray
 
 | Property | Default | Meaning |
 |---|---|---|

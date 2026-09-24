@@ -1,6 +1,9 @@
-# TextBox
+---
+category: text
+description: "TextBox accepts string/Span/Element children, with 0.6em padding."
+---
 
-*Category*: text
+# TextBox
 
 | Property | Default | Meaning |
 |---|---|---|

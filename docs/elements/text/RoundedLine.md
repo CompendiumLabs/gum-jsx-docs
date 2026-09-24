@@ -1,6 +1,9 @@
-# RoundedLine
+---
+category: geometry
+description: "Draw a polyline with quadratic corners rounded by a configurable radius."
+---
 
-*Category*: geometry
+# RoundedLine
 
 | Property | Default | Meaning |
 |---|---|---|

@@ -1,6 +1,9 @@
-# Math helpers
+---
+category: api
+description: "Math helpers are available directly in JSX and as named imports from gum-jsx-core."
+---
 
-*Category*: api
+# Math helpers
 
 Math helpers are available directly in JSX and as named imports from
 `gum-jsx-core`. Use `sin(x)` in an expression, or pass `sin` directly as a

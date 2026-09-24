@@ -1,6 +1,9 @@
-# Axis
+---
+category: plotting
+description: "An axis occupies the graph frame; ticks and labels extend outside it."
+---
 
-*Category*: plotting
+# Axis
 
 An axis occupies the graph frame; ticks and labels extend outside it. **Plot**
 measures that overflow to reserve margins. Use an axis inside **Graph** to compose

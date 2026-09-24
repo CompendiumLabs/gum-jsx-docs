@@ -1,6 +1,9 @@
-# HLabels
+---
+category: plotting
+description: "HLabels draws labels only, without a baseline or ticks."
+---
 
-*Category*: plotting
+# HLabels
 
 | Property | Default | Meaning |
 |---|---|---|
