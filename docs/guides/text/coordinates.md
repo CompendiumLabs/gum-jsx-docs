@@ -3,7 +3,7 @@
 *Category*: api
 
 Data coordinates are distinct from layout lengths. Numeric graph points are data;
-width, height, stroke widths, and other lengths use the ordinary [units](./Units.md).
+width, height, stroke widths, and other lengths use the ordinary [units](./units.md).
 Unit strings in point coordinates are local lengths: `"50%"` uses half the
 corresponding drawing dimension, and `"10px"` is a pixel offset. They do not pass
 through data-axis mapping. Bare numeric points keep their data meaning.
@@ -14,7 +14,7 @@ pixels; unmap_point reverses it (zero-sized frames cannot be inverted).
 point_bounds, merge_bounds, and `data_bounds(element)` support inference.
 
 Point arguments accept `{x,y}` or `[x,y]`; point lists can mix the two.
-Mapping results always have named `{x,y}` coordinates. See [Point values](./PointValues.md)
+Mapping results always have named `{x,y}` coordinates. See [Point values](./point_values.md)
 for the shared input convention and examples using zip and length tuples.
 
 A custom element reports bounds with a static method:
@@ -33,7 +33,7 @@ class Mark extends Element {
 
 These helpers and types are exports from `gum-jsx-core`. The factory form
 `define_element` also accepts `data_bounds` in its fourth options argument.
-See [Custom elements](./CustomElements.md) for both forms and inherited hooks.
+See [Custom elements](./custom_elements.md) for both forms and inherited hooks.
 
 Ordinary containers contribute descendant bounds. A data_bounds callback is a
 boundary: returning null excludes the subtree. **Graph** and **Plot** use this to

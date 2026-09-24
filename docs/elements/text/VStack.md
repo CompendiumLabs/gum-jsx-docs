@@ -3,7 +3,7 @@
 *Category*: layout
 
 Arrange elements top to bottom. Height is the main axis and width is the cross
-axis. See [Stack](../../gallery/text/Stack.md) for all props and allocation rules.
+axis. See [Stack](../../guides/text/stack.md) for all props and allocation rules.
 
 | Property | Default | Meaning |
 |---|---|---|
@@ -26,7 +26,7 @@ Two different aspect figures do not automatically infer one shared width.
 An explicit `aspect` on the stack can derive its width from height, or vice versa:
 `width={px(240)} aspect={1}` allocates a 240×240 column before flex and child
 alignment. This sizes the column's box without scaling its children;
-see [Sizing](../../gallery/text/Sizing.md).
+see [Sizing](../../guides/text/sizing.md).
 
 ## Choose the sizing information
 

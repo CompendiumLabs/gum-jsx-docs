@@ -57,7 +57,7 @@ offered bounds automatically without changing the table's internal proportions.
 Use `fit={false}` for unscaled allocation and intentional overflow. Give a prose
 cell an explicit width to wrap it. Small shape and plot cells can use em widths
 and aspect ratios, so their dimensions follow the surrounding base font.
-See [fitting](./Sizing.md#fitting) for the distinction between inline and standalone math.
+See [fitting](../../guides/text/sizing.md#fitting) for the distinction between inline and standalone math.
 Formula ink may extend beyond the logical advance at outer rules and italic
 glyphs, so retain padding inside an explicit SVG viewport.
 Very tall braces and matrix bars retain the current glyph-scaling fallback;

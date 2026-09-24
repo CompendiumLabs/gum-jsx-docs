@@ -14,7 +14,7 @@ Existing figures retain their identities and flex metadata. **TextStack** uses
 `direction="vertical"` by default, or "horizontal"; **TextRow** is horizontal with
 baseline alignment, **TextCol** vertical with fill alignment.
 
-Other props follow [Stack](../../gallery/text/Stack.md). gap defaults to 0.6em. Width allocation
+Other props follow [Stack](../../guides/text/stack.md). gap defaults to 0.6em. Width allocation
 reflows text while preserving glyph measurements and baselines. These wrappers
 do not add automatic flex weights, scaling, or a separate text scale. Specify
 grow/shrink/basis for flexible content.

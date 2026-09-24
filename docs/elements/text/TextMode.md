@@ -29,7 +29,7 @@ There is no automatic TeX spacing between children and no wrapping inside
 are preserved. Use an explicitly sized [Text](Text.md) for a wrapping prose operand.
 The TeX adapter uses this literal-run path for composed family, weight, and
 shape commands, including math nested inside `$…$`. See
-[math fonts and macros](../../gallery/text/MathFonts.md) for the command list,
+[math fonts and macros](../../guides/text/math_fonts.md) for the command list,
 local resets, emphasis, accents, and verbatim text.
 
 See [inline math](../../gallery/text/InlineMath.md) and

@@ -44,7 +44,7 @@ const element = new Svg({
 
 ## Viewports and plain values
 
-Hosts such as the [CLI](./CLI.md), the editor, and the MCP viewer share one
+Hosts such as the [CLI](./cli.md), the editor, and the MCP viewer share one
 entry point that takes an evaluated result, wraps a bare element in **Svg**,
 applies host viewport props, lays it out under a request, and serializes it:
 
@@ -91,7 +91,7 @@ inspection. It defaults to `'full'`; the CLI tree mode supplies its usual
 
 Gum Studio offers 640 × 480 pixels during layout, then scales the resulting SVG
 to its preview panel. Authored figure dimensions and font sizes determine the
-composition. See [design sizes](./Sizing.md#design-sizes) for a fixed figure
+composition. See [design sizes](./sizing.md#design-sizes) for a fixed figure
 that preserves its proportions across display sizes.
 
 To bound the SVG output itself, pass maxima on the generated viewport:
@@ -127,7 +127,7 @@ const fragment = pass.layout(element, make_request({
 ```
 
 An available budget does not itself establish a percentage reference. See
-[Units](./Units.md) and [Sizing](./Sizing.md) for how containers establish definite
+[Units](./units.md) and [Sizing](./sizing.md) for how containers establish definite
 boxes and resolve source sizes.
 
 Fragments contain size, drawings, child placements, named guides such as text
@@ -179,5 +179,5 @@ not collide. Prefixes start with a letter or underscore and then contain
 letters, digits, underscores, dots, or hyphens. **Text** is emitted as paths.
 
 For PNG and terminal graphics, use gum-jsx-png and gum-jsx-cli through the
-[CLI](./CLI.md). Those host concerns are separate from core layout. The runnable
+[CLI](./cli.md). Those host concerns are separate from core layout. The runnable
 source below is a small diagram to feed through this pipeline, not a host script.

@@ -3,7 +3,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
-import { elementsDir, topicsDir, packageRoot, listElements, listTopics,
+import { elementsDir, guidesDir, galleryDir, packageRoot, listElements, listGuides, listGallery,
   getElements, getTopics, getGuides, getGallery, prepareElementPage, prepareTopicPage } from '../src'
 
 // Render examples at their design sizes and in resized and bounded previews.
@@ -12,7 +12,9 @@ const elements = getElements()
 const topics = getTopics()
 const guides = getGuides()
 const gallery = getGallery()
-assert.ok(guides.tags.includes('Gum'), 'Getting started belongs in Docs')
+assert.ok(guides.tags.includes('gum'), 'Getting started belongs in Docs')
+for (const name of guides.tags) assert.match(name, /^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$/,
+  `Guide filenames must use snake_case: ${name}`)
 assert.ok(gallery.tags.includes('plot_bars'), 'Visual showcases belong in Gallery')
 assert.equal(new Set([...guides.tags, ...gallery.tags]).size, topics.tags.length)
 assert.equal(guides.tags.length + gallery.tags.length, topics.tags.length)
@@ -20,7 +22,8 @@ assert.deepEqual(Object.values(gallery.cats).flat().sort(), [...gallery.tags].so
   'Every gallery example must appear in exactly one category')
 const entries = [
   ...listElements().map(entry => ({ ...entry, dir: elementsDir, collection: elements })),
-  ...listTopics().map(entry => ({ ...entry, dir: topicsDir, collection: topics })),
+  ...listGuides().map(entry => ({ ...entry, dir: guidesDir, collection: guides })),
+  ...listGallery().map(entry => ({ ...entry, dir: galleryDir, collection: gallery })),
 ]
 const commonOnlyElements = new Set(['Spacer', 'Span'])
 const bindings = { ...core, ...math }
@@ -126,8 +129,8 @@ function checkComposition(fragment: core.Fragment, name: string, context: string
 
 // More available room must not add a blank strip to content-sized examples.
 const contentSizedExamples = new Set([
-  ...Object.keys(comparisonRows), 'scenic_route', 'shape_algebra', 'Fonts', 'Gum',
-  'Math', 'MathArrays', 'MathBoxes', 'MathDecorations', 'MathExpressions', 'MathFonts', 'AlignedMath',
+  ...Object.keys(comparisonRows), 'scenic_route', 'shape_algebra', 'fonts', 'gum',
+  'math', 'MathArrays', 'MathBoxes', 'MathDecorations', 'MathExpressions', 'math_fonts', 'AlignedMath',
 ])
 
 const previewBounds = [[320, 240], [640, 480], [960, 240], [320, 640], [240, 640]] as const
@@ -150,7 +153,7 @@ for (const { name, title, dir, collection } of entries) {
   }
   if (dir === elementsDir) checkPropertyValues(join(dir, 'text', name + '.md'), text)
   assert.ok(code.startsWith('// '), `${file}: describe the example on its first line`)
-  if (!(dir === topicsDir && name === 'Colors')) {
+  if (!(dir === guidesDir && name === 'colors')) {
     assert.doesNotMatch(code, /#[\da-f]{3,8}\b/i,
       `${file}: use the shared color constants instead of hard-coded hex colors`)
     assert.doesNotMatch(code,
@@ -176,7 +179,7 @@ for (const { name, title, dir, collection } of entries) {
     const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }))
     assert.ok(resized.size.height > 0, `${file} at ${width}px: empty height`)
     checkGeometry(resized, `${file} at ${width}px`)
-    if (dir === topicsDir) checkComposition(resized, name, `${file} at ${width}px`)
+    if (dir !== elementsDir) checkComposition(resized, name, `${file} at ${width}px`)
   }
   for (const [width, height] of previewBounds) {
     // Also exercise bounded wrappers around the completed figures.
@@ -193,9 +196,9 @@ for (const { name, title, dir, collection } of entries) {
         `${context}: maximum viewport dimensions exceeded`)
     }
     checkGeometry(bounded, context)
-    if (dir === topicsDir) checkComposition(bounded, name, context)
+    if (dir !== elementsDir) checkComposition(bounded, name, context)
   }
-  if (dir === topicsDir && contentSizedExamples.has(name)) {
+  if (dir !== elementsDir && contentSizedExamples.has(name)) {
     const sizes = [2000, 4000].map(width => {
       const result = core.layout_element(element, {
         pass, wrap: { max_width: core.px(width), max_height: core.px(2000) },
@@ -219,11 +222,11 @@ for (const { name, title, dir, collection } of entries) {
   const page = dir === elementsDir ? prepareElementPage(text, code) : prepareTopicPage(text, code)
   assert.ok(page.includes(code) && page.includes('# ' + title), `${file}: incomplete prepared page`)
   drawings++
-  console.log(`ok - ${dir === elementsDir ? 'elements' : 'topics'}/${name}: ${fragment.size.width} × ${fragment.size.height}`)
+  console.log(`ok - ${dir === elementsDir ? 'elements' : dir === guidesDir ? 'guides' : 'gallery'}/${name}: ${fragment.size.width} × ${fragment.size.height}`)
 }
 
 // Notice unindexed Markdown at the collection root rather than silently omitting it.
-for (const dir of [elementsDir, topicsDir]) {
+for (const dir of [elementsDir, guidesDir, galleryDir]) {
   assert.ok(!readdirSync(dir).some(file => file.endsWith('.md')), `${dir}: put pages in text/`)
 }
 console.log(`${elements.tags.length} elements and ${topics.tags.length} topics checked; ${drawings} examples rendered at 320, 480, 640, and 960px and in ${previewBounds.length} bounded preview sizes.`)

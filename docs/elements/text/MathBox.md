@@ -11,6 +11,6 @@ Pad, allocate, and align one math child while preserving its baseline and axis. 
 | align | `"start"` | Ordinary Box alignment; width changes allocate space without scaling glyphs. |
 | klass / left / right | `"mord"` | Classes exposed by the wrapper. |
 
-Common font, color, and sizing properties follow [Gum units](../../gallery/text/Units.md).
+Common font, color, and sizing properties follow [Gum units](../../guides/text/units.md).
 Math preserves separate logical advance, outline ink, baseline, and math-axis guides.
-See [math authoring](../../gallery/text/Math.md) for supported TeX and font setup.
+See [math authoring](../../guides/text/math.md) for supported TeX and font setup.

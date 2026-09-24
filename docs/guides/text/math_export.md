@@ -4,7 +4,7 @@
 
 Use `mathToElement` for a naturally sized formula viewport, or `mathToSvg` to
 render directly to an SVG string. Both accept TeX or an existing Gum element.
-The [gum-tex command](CLI.md) exposes the same export through SVG, PNG, PDF, kitty
+The [gum-tex command](cli.md) exposes the same export through SVG, PNG, PDF, kitty
 graphics, a fragment tree, and JSON.
 
 ```ts
@@ -51,7 +51,7 @@ The completed export shrinks to constrained dimensions;
 ## Font size and fitting
 
 Changing `font_size` lays out typography at that em. To scale a completed
-formula, pass the same [fitting props](./Sizing.md#fitting) to the export helper:
+formula, pass the same [fitting props](./sizing.md#fitting) to the export helper:
 
 ```jsx
 return mathToElement(String.raw`\frac{a+b}{c+d}`, {
@@ -116,5 +116,5 @@ const png = rasterize_svg(render_svg(fragment), { size: fragment.size, ratio: 2 
 await Bun.write('formula.png', png)
 ```
 
-See also [math authoring](Math.md), [plot labels](MathPlotLabels.md), and
-[math in slides](MathSlides.md).
+See also [math authoring](math.md), [plot labels](../../gallery/text/MathPlotLabels.md), and
+[math in slides](../../gallery/text/MathSlides.md).

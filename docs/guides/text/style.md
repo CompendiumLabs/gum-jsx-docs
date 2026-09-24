@@ -7,7 +7,7 @@ weights, padding, backgrounds, and borders do not inherit.
 
 | Property | Default | Meaning |
 |---|---|---|
-| `theme` | `"light"` | Inherited `"light"` or `"dark"` palette; see [Themes](./Themes.md) |
+| `theme` | `"light"` | Inherited `"light"` or `"dark"` palette; see [Themes](./themes.md) |
 | `font-size` | `px(16)` | **Text** size; relative forms use the inherited font |
 | `font-family` | `"IBM Plex Sans"` | Registered font family |
 | `font-weight` | `400` | Numeric weight from 1 to 1000, or `"light"` (300), `"regular"`/`"normal"` (400), `"bold"` (700) |
@@ -58,12 +58,12 @@ Numeric constants are also available: `e`, `pi`, `tau` (2 pi), `phi` (the golden
 `r2d` (180 / pi), and `d2r` (pi / 180). Host-provided `scope` bindings can
 override any built-in constant for an evaluation.
 
-[Math helpers](./MathHelpers.md) supplies bare numeric functions. Use
-[interp and palette](./Colors.md) to generate colors from numeric data.
+[Math helpers](./math_helpers.md) supplies bare numeric functions. Use
+[interp and palette](./colors.md) to generate colors from numeric data.
 
 Pixel strokes remain the same thickness when shapes are laid out at new sizes.
 An em stroke follows the local font size. A fractional stroke follows the shape's
-shorter side. Explicit [fitting](./Sizing.md#fitting) scales the completed stroke with everything
+shorter side. Explicit [fitting](./sizing.md#fitting) scales the completed stroke with everything
 else in its child.
 
 Dash lengths resolve like stroke widths: pixels stay fixed, em follows font size,
@@ -122,7 +122,7 @@ Owner geometry props keep their meanings: **Arrow**'s `head-size`/`head-width`, 
 disabled axis stays disabled. Caller-supplied title, caption, label, and legend
 **Element**s retain their own props; scopes configure parts created by the owner.
 
-For custom components, [prefix_split and prefix_join](./CustomElements.md#scoped-props)
+For custom components, [prefix_split and prefix_join](./custom_elements.md#scoped-props)
 are available in JSX and as named exports. Supported styles remain an explicit
 vocabulary; gradients, arbitrary CSS classes, and general SVG attribute injection
 are deferred. Unknown props may be ignored, so use the component reference.

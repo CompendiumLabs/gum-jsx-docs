@@ -37,6 +37,6 @@ Keep nested element operands indented on separate lines so the mathematical
 structure stays readable. Whitespace between elements is ignored by math.
 
 All geometry is in outline paths, so the CLI, editor, and docs previews use the
-same layout without installed fonts. [Math authoring](Math.md) describes font
+same layout without installed fonts. [Math authoring](../../guides/text/math.md) describes font
 setup and comparison with KaTeX and LaTeX. Continue with [inline formulas](InlineMath.md),
 [matrices and arrays](MathArrays.md), or [aligned equations](AlignedMath.md).

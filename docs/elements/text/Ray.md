@@ -14,7 +14,7 @@ Defaults: center origin, angle 0, length 0.5 of the shorter frame side. length i
 a layout length; only the origin contributes data bounds. Use **Arrow** with from/to
 for a data-vector endpoint.
 
-Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../gallery/text/PointValues.md).
+Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../guides/text/point_values.md).
 
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,
 geometry uses local fractions/px/em. `space="local"` opts out of an ambient graph,

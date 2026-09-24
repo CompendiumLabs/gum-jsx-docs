@@ -83,7 +83,7 @@ final allocation beyond its measured starting width.
 `grow={1}` alone therefore gives unsized children equal shares of the space after
 gaps and fixed items, subject to limits. With `basis="auto"`, equal grow weights
 add equal surplus to potentially different content widths. See
-[Growth bases](./stack_basis.md) for a comparison using the same labels.
+[Growth bases](../../gallery/text/stack_basis.md) for a comparison using the same labels.
 
 An explicit `basis={0}` remains zero even during natural measurement, where content
 can overflow a zero allocation. A maximum on the stack can supply an available
@@ -136,4 +136,4 @@ position overflowing content outside the frame.
 
 There is no automatic grow/shrink for unsized graphics, no derived composite
 aspect, and no common-cross-axis fitting search. Give a column of aspect figures
-a width, give a row a height, or choose explicit flex allocations. See [Sizing](./Sizing.md).
+a width, give a row a height, or choose explicit flex allocations. See [Sizing](./sizing.md).

@@ -51,4 +51,4 @@ Custom MathElement subclasses retain automatic fitting, including when adopted
 by a named component.
 
 Omit width/height for ordinary content sizing; text still reflows. Use
-`align-self` to override a parent's fill alignment. See [Sizing](Sizing.md).
+`align-self` to override a parent's fill alignment. See [Sizing](sizing.md).

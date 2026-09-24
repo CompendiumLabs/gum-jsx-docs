@@ -48,11 +48,11 @@ and Cartesian grids also have a total size limit of 100000.
 | `slice(values,start?,stop?,step=1)` | Half-open slice with negative indices and negative steps |
 
 `zip(xs, ys)` and `meshgrid(xs, ys)` return tuples that can go directly into
-[point-taking elements](./PointValues.md): `<Points points={zip(xs, ys)} />`.
+[point-taking elements](./point_values.md): `<Points points={zip(xs, ys)} />`.
 
 `lingrid` accepts a shared count, `[nx,ny]`, or `{x:nx,y:ny}`. Limits may be
 reversed. Use `slice(values, undefined, undefined, -1)` to reverse an array;
 an omitted stop with a negative step includes index zero.
 
-[Math helpers](./MathHelpers.md) supplies reductions such as sum, mean, cumsum,
+[Math helpers](./math_helpers.md) supplies reductions such as sum, mean, cumsum,
 and norm. [SymLine](../../elements/text/SymLine.md) describes generated graph geometry.

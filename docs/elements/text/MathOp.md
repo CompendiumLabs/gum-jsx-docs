@@ -19,4 +19,4 @@ Use [SupSub](SupSub.md) to attach limits or side scripts.
 
 Operator logical height includes TeX's font metrics; its drawn ink remains
 independent. This keeps limits clear of a summation sign and scripts near the
-ends of an integral. See [math authoring](../../gallery/text/Math.md).
+ends of an integral. See [math authoring](../../guides/text/math.md).

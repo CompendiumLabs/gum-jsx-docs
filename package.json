@@ -9,8 +9,10 @@
     "./dirs": "./src/dirs.ts",
     "./prompt/*": "./prompt/*",
     "./docs/elements/*": "./docs/elements/*",
+    "./docs/guides/*": "./docs/guides/*",
     "./docs/gallery/*": "./docs/gallery/*",
     "./elements/*": "./docs/elements/*",
+    "./guides/*": "./docs/guides/*",
     "./topics/*": "./docs/gallery/*",
     "./visual-tests/*": "./visual-tests/*",
     "./package.json": "./package.json"

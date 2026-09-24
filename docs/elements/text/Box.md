@@ -78,14 +78,14 @@ The child's `align-self` overrides the box's alignment: a scalar or tuple replac
 both axes, while an object such as `align-self={{ x: "start" }}` overrides only
 that axis. This is separate from the child's own `align`. The box itself is
 content-sized unless a width, height, or parent allocation establishes its size;
-see [Sizing](../../gallery/text/Sizing.md).
+see [Sizing](../../guides/text/sizing.md).
 
 Background and border paint are local decoration. `fill` and `stroke` still inherit
 to child shapes; they do not paint the **Box** itself. The border is drawn last.
 Clipping hides paint but does not erase reported overflow.
 
 Percentage padding uses the established parent's axes, not a guessed final box.
-Prefer px/em padding for naturally sized boxes. See [Units](../../gallery/text/Units.md).
+Prefer px/em padding for naturally sized boxes. See [Units](../../guides/text/units.md).
 
 **Box** does not relay child grow/shrink props through to a stack parent. Put flex
 props on the **Box** itself when it is the item being allocated.

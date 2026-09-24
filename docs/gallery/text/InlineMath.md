@@ -22,7 +22,7 @@ alongside prose. Use [Tex](../../elements/text/Tex.md) for text-style formulas;
 Each formula is one indivisible item. The paragraph breaks around it at Unicode
 line-break opportunities, keeping adjacent punctuation and nonbreaking spaces
 attached. An oversized formula overflows instead of shrinking. `wrap={false}`
-keeps the whole paragraph on one line; use [fitting](./Sizing.md#fitting)
+keeps the whole paragraph on one line; use [fitting](../../guides/text/sizing.md#fitting)
 when scaling is intentional.
 
 String expression children make spaces explicit while keeping nested JSX

@@ -30,7 +30,7 @@ move_to starts another subpath in the same drawing.
 
 Layout follows ordinary shape sizing, not the bounds of the commands. The
 same normalized path can be stretched by choosing another allocation. For
-aspect-preserving geometry, supply a size/aspect or set [fit](../../gallery/text/Sizing.md#fitting) on a sized **Path**.
+aspect-preserving geometry, supply a size/aspect or set [fit](../../guides/text/sizing.md#fitting) on a sized **Path**.
 Paint is inherited; an open path with a fill still has SVG's implicitly closed
 fill area. Set `fill={none}` for an unfilled curve.
 

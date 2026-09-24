@@ -24,5 +24,5 @@ where it can produce a zero allocation with overflowing content.
 
 Try changing the second panel's grow factor to 2 or adding a max-width.
 Growth weights distribute surplus around the chosen bases, subject to bounds.
-See [Stack](./Stack.md) for the full allocation rules and
+See [Stack](../../guides/text/stack.md) for the full allocation rules and
 [Flex limits and shrinkage](./stack_flex.md) for capped growth and shrinking.

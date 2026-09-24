@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os'
 import { delimiter, dirname, join } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
-import { getElements, getGuides, getGallery, getTopics, packageRoot, promptDir } from '../src'
+import { getElements, getGuides, getGallery, packageRoot, promptDir } from '../src'
 import { buildSkill, buildSkillFiles } from '../scripts/skill'
 
 const scratch = mkdtempSync(join(tmpdir(), 'gum-jsx-skill-test-'))
@@ -26,18 +26,27 @@ function links(markdown: string): string[] {
 
 test('the skill includes every element, guide, and gallery page exactly once with unmodified JSX', () => {
   const elements = getElements(), guides = getGuides(), gallery = getGallery()
-  expect(files.size).toBe(4 + elements.tags.length + getTopics().tags.length)
+  expect(files.size).toBe(4 + guides.tags.length
+    + Object.keys(elements.cats).length + Object.keys(gallery.cats).length)
+  expect(files.size).toBeLessThanOrEqual(200)
   for (const [kind, collection] of [['elements', elements], ['guides', guides], ['gallery', gallery]] as const) {
     for (const name of collection.tags) {
-      const page = files.get(`references/${kind}/${name}.md`)
+      const category = kind === 'guides' ? name
+        : Object.entries(collection.cats).find(([, names]) => names.includes(name))![0]
+      const page = files.get(`references/${kind}/${category}.md`)
       expect(page).toBeDefined()
       expect(page).toContain('```jsx\n' + collection.code[name] + '\n```')
       expect(page).not.toContain('*Category*:')
+      if (kind !== 'guides') {
+        expect(page).toContain(`<a id="${name}"></a>`)
+        expect(page).toContain(`<a id="${name}-example"></a>`)
+        expect(page!.split(`<a id="${name}"></a>`)).toHaveLength(2)
+      }
     }
   }
-  expect(files.has('references/elements/PngImage.md')).toBe(true)
-  expect(files.has('references/guides/Sizing.md')).toBe(true)
-  expect(files.has('references/gallery/shape_algebra.md')).toBe(true)
+  expect(files.has('references/elements/special.md')).toBe(true)
+  expect(files.has('references/guides/sizing.md')).toBe(true)
+  expect(files.has('references/gallery/math.md')).toBe(true)
 })
 
 test('all packaged references are reachable from SKILL.md without leaving the skill', () => {
@@ -54,14 +63,18 @@ test('all packaged references are reachable from SKILL.md without leaving the sk
       const [path, anchor] = target.split('#')
       const destination = path ? join(dirname(file), decodeURIComponent(path)) : file
       expect(files.has(destination)).toBe(true)
-      if (anchor === 'example') expect(files.get(destination)).toContain('\n## Example\n')
+      if (anchor && destination.startsWith('references/guides/')) {
+        expect(files.get(destination)!.toLowerCase()).toContain(`## ${anchor.replace(/-/g, ' ')}`)
+      } else if (anchor) {
+        expect(files.get(destination)).toContain(`id="${anchor}"`)
+      }
       pending.push(destination)
     }
   }
   expect([...visited].sort()).toEqual([...files.keys()].sort())
   // Former links into gala/code now lead to the source embedded in each page.
-  expect(links(files.get('references/gallery/transformer.md')!)).toContain('transformer.md#example')
-  expect(links(files.get('references/guides/CLI.md')!)).toContain(
+  expect(links(files.get('references/gallery/networks.md')!)).toContain('networks.md#transformer-example')
+  expect(links(files.get('references/guides/cli.md')!)).toContain(
     'https://github.com/CompendiumLabs/gum-jsx-pdf/blob/master/README.md')
 })
 

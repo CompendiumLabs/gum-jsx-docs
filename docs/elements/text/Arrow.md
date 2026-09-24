@@ -31,7 +31,7 @@ with [ArrowHead](./ArrowHead.md): `head-open` forwards `open`, `head-curve` forw
 fields in `head-style`, so `head-style={{open: true, curve: 0.7}}` can also set
 the shape. `head-size` and `head-width` already have the same names on ArrowHead
 and remain separate geometry props. Head lengths in em use the head's font size.
-See [scoped props](../../gallery/text/Style.md#scoped-component-props).
+See [scoped props](../../guides/text/style.md#scoped-component-props).
 
 `head-curve={0.7}` gives LaTeX-like barbs. It is independent of `curve`, which
 controls the shaft's spline. See [ArrowHead](./ArrowHead.md) for the curvature scale.
@@ -60,7 +60,7 @@ Straight, rounded, and spline shafts use the shortened route. Original points
 still determine inferred graph limits. The same clearance applies to the arrows
 in [Field](./Field.md) and [SymField](./SymField.md).
 
-Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../gallery/text/PointValues.md).
+Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../guides/text/point_values.md).
 
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,
 geometry uses local fractions/px/em. `space="local"` opts out of an ambient graph,

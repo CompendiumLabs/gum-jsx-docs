@@ -46,5 +46,5 @@ inside `\raisebox` and `\vcenter`.
 
 [Pmb](../../elements/text/Pmb.md) overprints an operand to simulate bold while
 retaining its advance. Real bold font commands are covered in
-[math fonts and macros](MathFonts.md). Exotic `\phase`, `\angl`, and `\angln`
+[math fonts and macros](../../guides/text/math_fonts.md). Exotic `\phase`, `\angl`, and `\angln`
 enclosures remain unsupported.

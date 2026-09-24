@@ -17,12 +17,12 @@ Symbols, ordinary groups, named operators, atom-class overrides, signed glue,
 color changes, composed font commands, and local macros are implemented.
 Scripts, fractions, indexed radicals, large operators and limits, and scalable
 delimiters (including `\middle`) are also available. See
-[ordinary mathematical expressions](MathExpressions.md) for parsed and direct
-JSX examples. Formulas also work [inside prose](InlineMath.md), and ordinary
-Gum elements work [inside math](MathComposition.md). [Matrices, arrays, and cases](MathArrays.md)
-and [aligned equations](AlignedMath.md) are available, together with
-[accents, braces, and arrows](MathDecorations.md), [math boxes](MathBoxes.md),
-and [composed fonts and macros](MathFonts.md). Unsupported constructs throw
+[ordinary mathematical expressions](../../gallery/text/MathExpressions.md) for parsed and direct
+JSX examples. Formulas also work [inside prose](../../gallery/text/InlineMath.md), and ordinary
+Gum elements work [inside math](../../gallery/text/MathComposition.md). [Matrices, arrays, and cases](../../gallery/text/MathArrays.md)
+and [aligned equations](../../gallery/text/AlignedMath.md) are available, together with
+[accents, braces, and arrows](../../gallery/text/MathDecorations.md), [math boxes](../../gallery/text/MathBoxes.md),
+and [composed fonts and macros](math_fonts.md). Unsupported constructs throw
 an error; they never disappear.
 
 [TextMode](../../elements/text/TextMode.md) treats strings literally, preserving
@@ -67,7 +67,7 @@ Direct JSX uses `limits="auto"`, `limits="always"`, or `limits="never"` on
 `MathOp` or `SupSub`. Generalized fractions preserve requested style, rule
 thickness, and delimiters. Continued fractions reserve the numerator strut.
 
-Whole standalone formulas [shrink automatically](./Sizing.md#fitting) to finite
+Whole standalone formulas [shrink automatically](./sizing.md#fitting) to finite
 offers and maximum sizes. Inline formulas and internal TeX allocations keep their
 normal font scale. Set `fit={false}` for unscaled overflow. MathSpacer, MathRule,
 and MathStretch instead obey their allocations; explicit `fit` can scale their
@@ -77,9 +77,9 @@ accepts an explicit `fill`.
 Outlines retain ink beyond the logical advance, including italic glyphs and
 negative kerns. An explicit `Svg` viewport clips at its edges, so leave padding
 for overhang. The comparison script expands to the union of logical size and
-ink before rendering. [Standalone helpers and gum-tex](MathExport.md) now
+ink before rendering. [Standalone helpers and gum-tex](math_export.md) now
 provide that viewport directly, with synchronous and asynchronous SVG export.
-See also [formula labels on plots](MathPlotLabels.md) and [math in slides](MathSlides.md).
+See also [formula labels on plots](../../gallery/text/MathPlotLabels.md) and [math in slides](../../gallery/text/MathSlides.md).
 
 ## Library setup
 
@@ -114,7 +114,7 @@ still propagate to the host.
 Contributors with a repository checkout can compare renderers from the workspace root:
 
 ```sh
-gum gum-jsx-docs/docs/gallery/code/Math.jsx -o /tmp/math.png --ratio 2
+gum gum-jsx-docs/docs/guides/code/math.jsx -o /tmp/math.png --ratio 2
 bun run compare 'a+b=c' -S 48 -o /tmp/math-compare.png
 bun run compare --suite -S 48 -o /tmp/math-gallery.png
 bun run compare --suite 3 --inline -S 48 -o /tmp/math-inline.png

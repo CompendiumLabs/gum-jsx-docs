@@ -14,7 +14,7 @@ the root and use `bun run gum` (or `bun run gum-tex`) instead.
 ## Render with the CLI
 
 Save a draft `.jsx` file and render it with `gum`. See the
-[CLI guide](references/guides/CLI.md) for the complete options.
+[CLI guide](references/guides/cli.md) for the complete options.
 
 ```sh
 # With your source saved in figure.jsx:

@@ -31,7 +31,7 @@ the keywords start/center/end: `anchor={['end', 0.5]}`. **Box** alignment also a
 fill and stretch. Stack align/justify remain single-axis values. See [Group](../../elements/text/Group.md)
 for the distinction between placing an element and arranging its contents.
 
-[Array helpers](./Arrays.md) can feed point lists directly:
+[Array helpers](./arrays.md) can feed point lists directly:
 
 ```jsx
 const xs = linspace(0, tau, 33)

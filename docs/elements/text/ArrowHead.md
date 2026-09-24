@@ -28,7 +28,7 @@ On [Arrow](./Arrow.md), the same shape and paint options use the `head-` scope:
 `head-open`, `head-curve`, `head-barb`, `head-stroke`, and so on. `head-size` and `head-width`
 keep their existing names. Head position and direction follow the arrow's route.
 
-Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../gallery/text/PointValues.md).
+Point inputs accept `{x,y}` or `[x,y]`; see [Point values](../../guides/text/point_values.md).
 
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,
 geometry uses local fractions/px/em. `space="local"` opts out of an ambient graph,

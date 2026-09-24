@@ -2,7 +2,7 @@
 
 *Category*: api
 
-Prefer a [functional JSX component](./JSX.md) when existing elements can express
+Prefer a [functional JSX component](./jsx.md) when existing elements can express
 the layout. Extend `Element` when you need a new primitive or layout policy.
 The inherited constructor handles the name, defaults, source ownership, and
 layout descriptor. An ordinary primitive needs only a static layout method.
@@ -71,7 +71,7 @@ type CaptionedProps = BoxProps & { caption?: string }
 Import `BoxProps`, `Prefixed`, and `TextOptions` as types from `gum-jsx-core`.
 TextOptions is TextProps without text/children, which the owner supplies.
 Components choose which scopes to support and where to route them; LayoutPass
-has no prefix policy. See [Style](./Style.md#scoped-component-props) for built-in
+has no prefix policy. See [Style](./style.md#scoped-component-props) for built-in
 scopes and precedence.
 
 Scopes are constructor-input syntax. Class defaults below still use normalized
@@ -146,7 +146,7 @@ class SampledMark extends Element<SourceProps, InputProps> {
 
 Here `PointValue` and `point_bounds` are additional exports from `gum-jsx-core`.
 `data_bounds(props)` reports graphable data limits without measurement; see
-[Coordinates](./Coordinates.md).
+[Coordinates](./coordinates.md).
 
 `define_element(name, layout, defaults?, options?)` remains available and uses
 the same base-class machinery. Its defaults are captured when the factory is
@@ -211,7 +211,7 @@ remeasure it. Validate your own props and child policy explicitly.
 Prepared values may depend on source, style, math context, and versioned resources.
 Current requests, parent percentage references, and coordinates
 belong in ordinary layout work. Set a new resource version on a reused pass when
-external data changes; see [Fonts](./Fonts.md) for an example.
+external data changes; see [Fonts](./fonts.md) for an example.
 
 The runnable Meter defines a small custom leaf and a CompactMeter subclass using
 only evaluator bindings. Its normalizer validates and clamps the input once.

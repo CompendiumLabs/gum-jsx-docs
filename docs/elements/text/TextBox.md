@@ -32,4 +32,4 @@ Use **TextCol** for multiple block children. A single element inside JSX fragmen
 or conditional children is preserved. Mixed strings, **Span**s, and formulas
 form one paragraph. Wrap several elements without prose in **Text** to request
 inline layout explicitly.
-An explicit `align` replaces the default. See [Sizing](../../gallery/text/Sizing.md).
+An explicit `align` replaces the default. See [Sizing](../../guides/text/sizing.md).

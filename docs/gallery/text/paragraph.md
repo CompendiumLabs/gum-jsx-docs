@@ -8,4 +8,4 @@ The layout pass reuses prepared glyph measurements across those allocations.
 
 The custom parent draws outlines around the measured paragraph boxes. Compare
 the allocations with tree output. See [Text](../../elements/text/Text.md),
-[Span](../../elements/text/Span.md), and [Custom elements](./CustomElements.md).
+[Span](../../elements/text/Span.md), and [Custom elements](../../guides/text/custom_elements.md).

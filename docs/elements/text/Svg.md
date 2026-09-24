@@ -3,7 +3,7 @@
 *Category*: layout
 
 The document viewport. **Svg** accepts zero or one content element, along with the
-common [sizing](../../gallery/text/Sizing.md) and inherited [style](../../gallery/text/Style.md) props. Put multiple
+common [sizing](../../guides/text/sizing.md) and inherited [style](../../guides/text/style.md) props. Put multiple
 elements inside a stack or **Group**.
 
 An explicit width or height establishes that viewport axis. Unspecified axes
@@ -16,7 +16,7 @@ established axis keeps its size and clips it like any other overflow.
 
 **Svg** gives its content advisory offers on its established axes, rather than
 forcing every child to occupy the whole viewport. Consequently, a tall **Svg**
-does not make a **VStack**'s children grow. Use explicit [stack sizing](../../gallery/text/Stack.md).
+does not make a **VStack**'s children grow. Use explicit [stack sizing](../../guides/text/stack.md).
 
 The viewport establishes percentage references for its direct content. Its
 fragment has a rectangular clip, and serialized SVG hides viewport overflow.
@@ -51,9 +51,9 @@ the drawing. Two fixed dimensions and min/max limits take precedence.
 
 Set `theme="dark"` for foregrounds suited to a dark surface. Descendants use the
 palette for text, strokes, grids, plot borders, and legend badges and borders.
-Explicit paint props override the defaults. See [Themes](../../gallery/text/Themes.md).
+Explicit paint props override the defaults. See [Themes](../../guides/text/themes.md).
 
-Title remains a [render_svg option](../../gallery/text/Rendering.md). Its background
+Title remains a [render_svg option](../../guides/text/rendering.md). Its background
 option paints behind the entire fragment. Themes do not paint backgrounds;
 **Svg**'s `background` prop can supply an explicit viewport background in source.
 The CLI wraps a bare non-**Svg** root automatically; `evaluate` does not.

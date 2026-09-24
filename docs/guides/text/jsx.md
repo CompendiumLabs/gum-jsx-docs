@@ -14,7 +14,7 @@ numbers, strings, arrays, and objects. Code without a return produces `undefined
 Define ordinary functions that return elements, pass props, use object spreads,
 and generate children with `range`, `linspace`, and array `.map()`. Components
 execute during evaluation, before layout. Prefer these small functions for reusable combinations
-of built-in elements; [Custom elements](./CustomElements.md) covers new layout behavior.
+of built-in elements; [Custom elements](./custom_elements.md) covers new layout behavior.
 
 Arrays and JSX fragments flatten inside containers. Null, undefined, and boolean
 children are ignored. **Element** containers also ignore blank strings, so spaces
@@ -27,7 +27,7 @@ supported source data; mutable resource objects are not. Supported callbacks suc
 bar styles, and axis formatters are consumed during construction. Other custom
 callbacks must be consumed by a component before constructing the final elements.
 
-[Point inputs](./PointValues.md) accept `[x, y]` pairs:
+[Point inputs](./point_values.md) accept `[x, y]` pairs:
 `<Polyline points={[[0, 0], [0.5, 1], [1, 0]]} />`. This also works in
 host code. Helpers such as `zip(xs, ys)` can supply point lists directly.
 
@@ -35,12 +35,12 @@ host code. Helpers such as `zip(xs, ys)` can supply point lists directly.
 
 The evaluator supplies the documented elements, the `Element` base class, `px`,
 `em`, path constructors, and selected custom-layout helpers. Classes can extend
-`Element` directly in JSX; see [Custom elements](./CustomElements.md).
-[Style constants](./Style.md) such as `blue`,
+`Element` directly in JSX; see [Custom elements](./custom_elements.md).
+[Style constants](./style.md) such as `blue`,
 `red`, `green`, `yellow`, `purple`, `mono`, and `bold` are also built in.
-[Math helpers](./MathHelpers.md) such as `sin`, `cos`, `exp`, `sqrt`, and `clamp`,
-[array helpers](./Arrays.md) such as `range`, `linspace`, `zip`, and `enumerate`,
-and [seeded random functions](./Random.md) are also built in. Standard JavaScript
+[Math helpers](./math_helpers.md) such as `sin`, `cos`, `exp`, `sqrt`, and `clamp`,
+[array helpers](./arrays.md) such as `range`, `linspace`, `zip`, and `enumerate`,
+and [seeded random functions](./random.md) are also built in. Standard JavaScript
 names such as `Math` and `Array` remain available. Local declarations and
 host-provided scope bindings can override the supplied names.
 
@@ -62,7 +62,7 @@ unknown SVG attributes are not forwarded to the output.
 
 Use an owner's documented scopes for generated children: `TextBox` takes
 `text-whitespace`, while `Text` takes `whitespace`. Function components and custom
-element classes may define their own props; see [Custom elements](./CustomElements.md).
+element classes may define their own props; see [Custom elements](./custom_elements.md).
 
 The source runs as a function body, not an imported module. Put package imports
 in a host TypeScript script and provide extra bindings through

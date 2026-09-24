@@ -12,4 +12,4 @@ separate vertical allocation policy.
 
 Try a narrower SVG width to inspect the stretch behavior. Cross-axis alignment
 and main-axis packing are independent; see [HStack](../../elements/text/HStack.md)
-and [Stack](./Stack.md) for their props.
+and [Stack](../../guides/text/stack.md) for their props.

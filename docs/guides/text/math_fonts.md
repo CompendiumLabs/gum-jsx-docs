@@ -70,4 +70,4 @@ Warnings default to errors and can be set to `warn` or `ignore`; this does not
 enable unsupported commands or trusted HTML. A display-mode `\\` is normally
 a no-op, as in LaTeX. Actual line breaks outside arrays remain unsupported;
 use [MathCol](../../elements/text/MathCol.md) or an
-[aligned environment](AlignedMath.md). Equations do not break automatically.
+[aligned environment](../../gallery/text/AlignedMath.md). Equations do not break automatically.

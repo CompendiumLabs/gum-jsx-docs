@@ -14,7 +14,7 @@ its smaller `em(0.6)` font keeps tick labels subordinate to the explanation.
 
 Title size and gaps also use `em()`. Standalone formulas fit their columns
 automatically, while inline math keeps the paragraph's font scale. The slide's
-[fit prop](./Sizing.md#fitting) shrinks the completed composition into the host's
+[fit prop](../../guides/text/sizing.md#fitting) shrinks the completed composition into the host's
 bounds. No authored pixel width or height is required.
 
 The runnable slide combines a mathematical title, two display equations, mixed

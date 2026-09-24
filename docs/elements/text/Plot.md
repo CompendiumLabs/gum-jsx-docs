@@ -39,7 +39,7 @@ of inferred data spans. Explicit limits stay exact.
 Fonts inherit from the parent (16px at the root). Margins come from measured axis
 overflow and title sizes.
 Text uses `theme:text`, axes use `theme:muted`, and grid lines use `theme:grid`.
-These paints follow the inherited [theme](../../gallery/text/Themes.md).
+These paints follow the inherited [theme](../../guides/text/themes.md).
 Title and x title wrap at the usable width. Explicit margin adds space to those
 measurements. The fragment's content rectangle identifies the data area.
 
@@ -49,7 +49,7 @@ For example, `axis-stroke={slate}` affects both axes and
 settings precede common axis settings, then xaxis/yaxis option objects, then
 flat `xaxis-`/`yaxis-` props. Part option records merge per field. At the same scope,
 flat props override matching nested settings. `title-wrap={false}` disables title
-wrapping. See [scoped props](../../gallery/text/Style.md#scoped-component-props).
+wrapping. See [scoped props](../../guides/text/style.md#scoped-component-props).
 
 Scopes preserve `label-gap` and do not enable an explicitly disabled axis. **Plot**
 supplies axis/grid domains; explicit xticks/yticks override scoped axis tick

@@ -11,6 +11,6 @@ Select a glyph and its atom class from the TeX symbol table. The default face fo
 | font_family | Symbol face | Optional exact face; unsupported glyphs fall back per symbol. |
 | klass / left / right | Symbol class | Override the atom's spacing classes. |
 
-Common font, color, and sizing properties follow [Gum units](../../gallery/text/Units.md).
+Common font, color, and sizing properties follow [Gum units](../../guides/text/units.md).
 Math preserves separate logical advance, outline ink, baseline, and math-axis guides.
-See [math authoring](../../gallery/text/Math.md) for supported TeX and font setup.
+See [math authoring](../../guides/text/math.md) for supported TeX and font setup.

@@ -4,16 +4,18 @@ Guides, element references, and runnable JSX examples for Gum.
 Consumers can use `getGuides()` for conceptual documentation and `getGallery()`
 for visual examples grouped by category. Gum Studio presents guides and element
 references at `/gum/docs`, and a searchable figure grid at `/gum/gallery`.
-The original `getTopics()` catalog and package import aliases remain available
-for existing consumers. Content lives under `docs/elements` and `docs/gallery`.
+`getTopics()` remains available as a combined guide and gallery catalog. The
+legacy `topics/*` package subpath maps to gallery files; guide files use the new
+`docs/guides` subpath and snake_case names. Content lives under `docs/elements`,
+`docs/guides`, and `docs/gallery`.
 
 See the [Gum project](https://github.com/CompendiumLabs/gum-jsx#readme) for
 getting started and the package overview.
 
 ## Start reading
 
-Start with [Gum](./docs/gallery/text/Gum.md), [units](./docs/gallery/text/Units.md), and
-[sizing](./docs/gallery/text/Sizing.md).
+Start with [Gum](./docs/guides/text/gum.md), [units](./docs/guides/text/units.md), and
+[sizing](./docs/guides/text/sizing.md).
 
 [Grid](./docs/elements/text/Grid.md) shares column widths across rows;
 [TextGrid](./docs/elements/text/TextGrid.md) adds text conversion and spacing defaults.
@@ -29,20 +31,20 @@ frames, or any other element with an `id`, using [Edge](./docs/elements/text/Edg
 [nodes inside fitted and rotated layouts](./docs/gallery/text/network_connections.md).
 The editor's Networks category includes runnable examples of each.
 
-[Math helpers](./docs/gallery/text/MathHelpers.md), [arrays](./docs/gallery/text/Arrays.md),
-[vectors](./docs/gallery/text/Vectors.md), [colors](./docs/gallery/text/Colors.md), and
-[seeded random data](./docs/gallery/text/Random.md) are built into JSX and exported for
+[Math helpers](./docs/guides/text/math_helpers.md), [arrays](./docs/guides/text/arrays.md),
+[vectors](./docs/guides/text/vectors.md), [colors](./docs/guides/text/colors.md), and
+[seeded random data](./docs/guides/text/random.md) are built into JSX and exported for
 host code. The examples use these helpers directly.
 
-[Math authoring](./docs/gallery/text/Math.md) covers TeX and composable math elements.
+[Math authoring](./docs/guides/text/math.md) covers TeX and composable math elements.
 The editor includes a Math category with element references and topics for
-[standalone exports](./docs/gallery/text/MathExport.md),
+[standalone exports](./docs/guides/text/math_export.md),
 [plot labels](./docs/gallery/text/MathPlotLabels.md), and [slides](./docs/gallery/text/MathSlides.md).
 The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, PDF, and kitty.
 
 ## Content structure
 
-The two reference collections use the same paired-file structure. Focused visual
+The three reference collections use the same paired-file structure. Focused visual
 regressions live beside them and need code only:
 
 ```text
@@ -50,8 +52,11 @@ docs/
   elements/
     text/<Name>.md     Element reference; category appears below its title
     code/<Name>.jsx    Self-contained, runnable element example
+  guides/
+    text/<name>.md     Conceptual guide; snake_case filename
+    code/<name>.jsx    Self-contained, runnable guide example
   gallery/
-    text/<name>.md     Conceptual guide or showcase explanation
+    text/<name>.md     Visual example explanation
     code/<name>.jsx    Self-contained, runnable gallery example
 visual-tests/
   code/<name>.jsx      Focused visual regression case
@@ -101,9 +106,10 @@ The entrypoint is assembled from [head](./prompt/head.md),
 [intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md),
 [gen](./prompt/gen.md), and [cli](./prompt/cli.md). It keeps the essential authoring rules together and links
 to generated indexes for guides, elements by category, and gallery figures.
-Every current page and runnable example is included, with local links rewritten
-for the package. Links to JSX sources point to the embedded example; the separate
-PDF package's API link points to its upstream README.
+Element and gallery text and code are combined into one reference file per
+category; guides keep their own files. Every current page and runnable example
+is included, with local links rewritten to the relevant entry or embedded JSX
+example. The separate PDF package's API link points to its upstream README.
 
 The script locates inputs and its default output relative to this package,
 independently of the caller's working directory. From the workspace root:
@@ -139,7 +145,7 @@ rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unz
 ## Elements
 
 - Layout: [Svg](./docs/elements/text/Svg.md), [Box](./docs/elements/text/Box.md),
-  [Frame](./docs/elements/text/Frame.md), [Fitting](./docs/gallery/text/Fitting.md),
+  [Frame](./docs/elements/text/Frame.md), [Fitting](./docs/guides/text/fitting.md),
   [HStack](./docs/elements/text/HStack.md), [VStack](./docs/elements/text/VStack.md),
   [Spacer](./docs/elements/text/Spacer.md), and [Group](./docs/elements/text/Group.md).
 - Geometry: [Rect](./docs/elements/text/Rect.md), [RoundedRect](./docs/elements/text/RoundedRect.md),
@@ -159,15 +165,15 @@ rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unz
 
 ## Gallery and guides
 
-- Getting started: [Gum](./docs/gallery/text/Gum.md), [JSX](./docs/gallery/text/JSX.md),
-  [Units](./docs/gallery/text/Units.md), [Sizing](./docs/gallery/text/Sizing.md),
-  [Style](./docs/gallery/text/Style.md), and [CLI](./docs/gallery/text/CLI.md).
-- Geometry and layout: [Point values](./docs/gallery/text/PointValues.md),
-  [Coordinates](./docs/gallery/text/Coordinates.md), and [Stack](./docs/gallery/text/Stack.md).
-- Embedding: [Rendering](./docs/gallery/text/Rendering.md),
-  [Custom elements](./docs/gallery/text/CustomElements.md), and [Fonts](./docs/gallery/text/Fonts.md).
-- Numeric helpers: [Math](./docs/gallery/text/MathHelpers.md), [Arrays](./docs/gallery/text/Arrays.md),
-  [Vectors](./docs/gallery/text/Vectors.md), [Colors](./docs/gallery/text/Colors.md), [Random](./docs/gallery/text/Random.md).
+- Getting started: [Gum](./docs/guides/text/gum.md), [JSX](./docs/guides/text/jsx.md),
+  [Units](./docs/guides/text/units.md), [Sizing](./docs/guides/text/sizing.md),
+  [Style](./docs/guides/text/style.md), and [CLI](./docs/guides/text/cli.md).
+- Geometry and layout: [Point values](./docs/guides/text/point_values.md),
+  [Coordinates](./docs/guides/text/coordinates.md), and [Stack](./docs/guides/text/stack.md).
+- Embedding: [Rendering](./docs/guides/text/rendering.md),
+  [Custom elements](./docs/guides/text/custom_elements.md), and [Fonts](./docs/guides/text/fonts.md).
+- Numeric helpers: [Math](./docs/guides/text/math_helpers.md), [Arrays](./docs/guides/text/arrays.md),
+  [Vectors](./docs/guides/text/vectors.md), [Colors](./docs/guides/text/colors.md), [Random](./docs/guides/text/random.md).
 
 ### Showcases
 
@@ -217,7 +223,7 @@ palette. See the workspace [feature map](https://github.com/CompendiumLabs/gum-j
 From the parent gum-jsx workspace:
 
 ```sh
-gum gum-jsx-docs/docs/gallery/code/Gum.jsx
+gum gum-jsx-docs/docs/guides/code/gum.jsx
 gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.svg
 gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
 gum gum-jsx-docs/docs/elements/code/VStack.jsx -f tree --stats
@@ -259,8 +265,8 @@ const onePage = getElementText('Box')
 const oneExample = getElementCode('Box')
 ```
 
-getTopicText/getTopicCode, listTopics, prepareTopicPage, and the elements/topics
-directory paths are also exported. Names are basenames, not paths. Catalog calls
+getTopicText/getTopicCode, listTopics, prepareTopicPage, and the original topics
+directory aliases are also exported. Names are basenames, not paths. Catalog calls
 discover matching files each time; single-page reads do not load the rest of the
 collection. Text loaders remove optional machine-readable category lines. Page
 preparation appends a fenced JSX example and preserves relative Markdown links.
@@ -269,7 +275,8 @@ Categories are core, layout, geometry, plotting, networks, text, math, and api. 
 needs a `*Category*: ...` line directly below its title; topic pages may include one.
 A Markdown viewer should resolve relative links against the original text file and
 map them to its own routes, rather than requiring routes in the content. Raw files
-are exposed through the `./docs/elements/*` and `./docs/gallery/*` package subpaths.
+are exposed through the `./docs/elements/*`, `./docs/guides/*`, and
+`./docs/gallery/*` package subpaths.
 
 ## Contributing
 

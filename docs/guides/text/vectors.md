@@ -11,7 +11,7 @@ invalid results into gaps.
 `add2`, `sub2`, `mul2`, and `div2` work component by component. Each operand can
 be an `{x,y}` point, a `[x,y]` pair, or a scalar broadcast to both components.
 Results are native `{x,y}` points, ready for **Polygon**, **Points**, or **Field**.
-Those elements also accept `[x,y]` inputs directly; see [Point values](./PointValues.md).
+Those elements also accept `[x,y]` inputs directly; see [Point values](./point_values.md).
 
 ```js
 add2([1, 2], 3)                   // {x:4, y:5}
@@ -26,7 +26,7 @@ point or pair. Positive angles turn toward positive y; a graph's coordinate
 mapping determines how that appears on the screen.
 
 `addn`, `subn`, `muln`, and `divn` operate on numeric arrays of equal length.
-A length mismatch is an error. [Math helpers](./MathHelpers.md) provides norm and
+A length mismatch is an error. [Math helpers](./math_helpers.md) provides norm and
 normalize; use `normalize(values,2)` for a Euclidean unit vector.
 
 ## Complex values

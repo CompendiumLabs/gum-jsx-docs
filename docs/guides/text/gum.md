@@ -26,17 +26,17 @@ it needs no imports when evaluated by the Gum CLI.
 
 - Raw **length** numbers are fractions. Write `px(100)` for 100 pixels or
   `em(2)` for two local font sizes. A raw `width={100}` means 100 times the
-  established parent width, not 100 pixels. See [Units](./Units.md).
+  established parent width, not 100 pixels. See [Units](./units.md).
 - Stack growth and shrinkage are explicit. A column can measure aspect figures
   from a supplied width, but does not infer a shared width from their combined
-  height. See [Sizing](./Sizing.md) and [Stack](./Stack.md).
+  height. See [Sizing](./sizing.md) and [Stack](./stack.md).
 - **Text** keeps its font size during layout. Standalone formulas shrink when
-  needed. Put [fit](./Sizing.md#fitting) on a composed drawing to scale it as a
+  needed. Put [fit](./sizing.md#fitting) on a composed drawing to scale it as a
   whole, including its glyphs and strokes.
 
 There is no browser DOM or React runtime behind these elements. JSX constructs
 immutable descriptions; a layout pass creates geometry; SVG rendering serializes
-that result. The [rendering API](./Rendering.md) exposes each stage separately.
+that result. The [rendering API](./rendering.md) exposes each stage separately.
 
 ## Run the example
 
@@ -47,5 +47,5 @@ gum hello.jsx
 gum hello.jsx -o hello.svg
 ```
 
-The first command uses kitty graphics. See [CLI](./CLI.md) for PNG, tree, JSON,
+The first command uses kitty graphics. See [CLI](./cli.md) for PNG, tree, JSON,
 viewport overrides, and other terminal options.

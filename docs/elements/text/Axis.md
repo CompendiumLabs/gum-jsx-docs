@@ -44,7 +44,7 @@ Flat props override matching fields of nested objects. `tick-size`, `tick-side`,
 `label-offset`, `arrow-size`, `arrow-width`, and ordinary `line-height` remain owner props.
 These scopes also work on **Axis**'s
 directional, labels-only, and scale-only variants. See
-[scoped props](../../gallery/text/Style.md#scoped-component-props).
+[scoped props](../../guides/text/style.md#scoped-component-props).
 
 Automatic 1/2/5 intervals need not include every endpoint; public linear_ticks
 and format_tick expose the helpers. Work is bounded to 10000 ticks.

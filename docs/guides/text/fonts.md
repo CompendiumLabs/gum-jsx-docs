@@ -70,5 +70,5 @@ const bytes = await Bun.file('./assets/NotoSansJP-Regular.ttf').arrayBuffer()
 fonts.register('Noto Sans JP', bytes, { fallback: true })
 ```
 
-Fonts is a host API, not a default [JSX evaluator](./JSX.md) binding. The runnable
+Fonts is a host API, not a default [JSX evaluator](./jsx.md) binding. The runnable
 example uses only the bundled families and needs no setup beyond the CLI.

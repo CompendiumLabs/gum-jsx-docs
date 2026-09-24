@@ -13,8 +13,8 @@ runnable JSX example.
 
 Useful starting points:
 
-- Layout: [Units](references/guides/Units.md), [Sizing](references/guides/Sizing.md),
-  [Fitting](references/guides/Fitting.md), [Stacks](references/guides/Stack.md),
+- Layout: [Units](references/guides/units.md), [Sizing](references/guides/sizing.md),
+  [Fitting](references/guides/fitting.md), [Stacks](references/guides/stack.md),
   [Box](references/elements/Box.md), [Grid](references/elements/Grid.md), and
   [Group](references/elements/Group.md).
 - Plots: [Plot](references/elements/Plot.md), [Graph](references/elements/Graph.md),
@@ -27,13 +27,13 @@ Useful starting points:
   It does not automatically arrange nodes or avoid obstacles.
   Use [Overlay](references/elements/Overlay.md) for annotations around a measured base.
 - Text and math: [Text](references/elements/Text.md),
-  [TitleFrame](references/elements/TitleFrame.md), [math authoring](references/guides/Math.md),
+  [TitleFrame](references/elements/TitleFrame.md), [math authoring](references/guides/math.md),
   and [Shape Algebra](references/gallery/shape_algebra.md).
 - Complete compositions: [Transformer](references/gallery/transformer.md),
   [Pendulum Physics](references/gallery/pendulum_physics.md), and
   [Two Columns](references/gallery/two_column.md).
-- Host integration: [Rendering](references/guides/Rendering.md),
-  [Fonts](references/guides/Fonts.md), and [Custom elements](references/guides/CustomElements.md).
+- Host integration: [Rendering](references/guides/rendering.md),
+  [Fonts](references/guides/fonts.md), and [Custom elements](references/guides/custom_elements.md).
 
 For features without a dedicated component, compose supported primitives or
 explain the limitation.

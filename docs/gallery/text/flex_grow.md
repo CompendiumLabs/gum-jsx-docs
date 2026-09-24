@@ -12,7 +12,7 @@ inside its allocation, so a tall preview does not make it consume the entire row
 width. The two **RoundedRect** children use `grow={1}` to split the rest equally.
 
 Try resizing the outer **Box** or changing one grow factor to 2. The emoji in the
-heading needs no setup; see [Fonts](./Fonts.md).
+heading needs no setup; see [Fonts](../../guides/text/fonts.md).
 
-See [Stack](./Stack.md) for the allocation rules and
+See [Stack](../../guides/text/stack.md) for the allocation rules and
 [Layout choices](./layout_choices.md) for fixed, equal, and weighted rows.

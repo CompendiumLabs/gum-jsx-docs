@@ -23,7 +23,7 @@ Vertices outside the allocated rectangle remain outside; clipping belongs to a
 container or the root viewport.
 
 The example uses `linspace(-90,270,count,false)` and `polard` to generate a regular
-polygon without duplicating its closing vertex. See [Arrays](../../gallery/text/Arrays.md) and
-[Vectors](../../gallery/text/Vectors.md) for these helpers. There is no point-list
+polygon without duplicating its closing vertex. See [Arrays](../../guides/text/arrays.md) and
+[Vectors](../../guides/text/vectors.md) for these helpers. There is no point-list
 bounding-box fit. Use [Polyline](./Polyline.md) for an open outline or [Path](./Path.md)
 for curved edges.

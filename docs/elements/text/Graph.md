@@ -46,5 +46,5 @@ for fixed geometry. Annotations do not affect inferred limits. Strokes, markers,
 and fonts keep their layout sizes on resize.
 
 clip defaults to false. Clipping hides paint but retains reported overflow.
-Use [Plot](./Plot.md) for measured axes and margins, and [Coordinates](../../gallery/text/Coordinates.md)
+Use [Plot](./Plot.md) for measured axes and margins, and [Coordinates](../../guides/text/coordinates.md)
 for custom graphable elements.

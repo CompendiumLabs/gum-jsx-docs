@@ -45,7 +45,7 @@ A source `<Svg theme="dark">` or `<Svg theme="light">` takes precedence over
 that default; `--theme` overrides the root selection. Explicit paint props and
 nested themes still apply. Themes leave backgrounds transparent. `--background`
 paints a backdrop at render time, behind any explicit source backgrounds.
-See [Themes](./Themes.md).
+See [Themes](./themes.md).
 
 With neither viewport override, `gum` offers 640 × 480 pixels. Unsized canvases
 use this budget, explicit source dimensions still win, and content may hug or
@@ -105,5 +105,5 @@ The natural viewport includes the logical formula box and visible overhang.
 An empty axis has a one-pixel floor. `-W` and `-H` shrink the formula when needed;
 `--fit` also permits enlargement, and `--no-fit` clips at the original font size.
 `--ratio` changes
-only raster sampling. See [standalone exports](MathExport.md) for the matching
-library API and [math authoring](Math.md) for supported formulas.
+only raster sampling. See [standalone exports](math_export.md) for the matching
+library API and [math authoring](math.md) for supported formulas.

@@ -1,6 +1,6 @@
-import { readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
-import { elementsDir, topicsDir } from './dirs'
+import { elementsDir, galleryDir, guidesDir } from './dirs'
 
 type ElementEntry = Readonly<{ name: string; title: string; cat: string }>
 type TopicEntry = Readonly<{ name: string; title: string; cat?: string }>
@@ -49,7 +49,7 @@ function listElements(dir = elementsDir): ElementEntry[] {
     || a.name.localeCompare(b.name))
 }
 
-function listTopics(dir = topicsDir): TopicEntry[] {
+function listCollection(dir: string): TopicEntry[] {
   return names(dir).map(name => {
     const text = read(dir, 'text', name)
     const cat = category.exec(text)?.[1]
@@ -64,10 +64,10 @@ function getElementText(name: string, dir = elementsDir): string {
   return read(dir, 'text', name).replace(stripCategory, '')
 }
 function getElementCode(name: string, dir = elementsDir): string { return read(dir, 'code', name); }
-function getTopicText(name: string, dir = topicsDir): string {
+function getCollectionText(name: string, dir: string): string {
   return read(dir, 'text', name).replace(stripCategory, '')
 }
-function getTopicCode(name: string, dir = topicsDir): string { return read(dir, 'code', name); }
+function getCollectionCode(name: string, dir: string): string { return read(dir, 'code', name); }
 
 function getElements(dir = elementsDir): ElementsInfo {
   const entries = listElements(dir)
@@ -79,14 +79,14 @@ function getElements(dir = elementsDir): ElementsInfo {
     code: Object.fromEntries(tags.map(name => [name, getElementCode(name, dir)])) }
 }
 
-function getTopics(dir = topicsDir): TopicsInfo {
-  const entries = listTopics(dir)
+function getCollection(dir: string): TopicsInfo {
+  const entries = listCollection(dir)
   const cats: Record<string, string[]> = {}
   for (const { name, cat } of entries) if (cat) (cats[cat] ??= []).push(name)
   const tags = entries.map(entry => entry.name)
   return { tags, cats,
-    text: Object.fromEntries(tags.map(name => [name, getTopicText(name, dir)])),
-    code: Object.fromEntries(tags.map(name => [name, getTopicCode(name, dir)])) }
+    text: Object.fromEntries(tags.map(name => [name, getCollectionText(name, dir)])),
+    code: Object.fromEntries(tags.map(name => [name, getCollectionCode(name, dir)])) }
 }
 
 // Preserve Markdown links; the viewer can resolve them relative to the source page.
@@ -98,38 +98,45 @@ function prepareTopicPage(text: string, code: string): string {
   return prepareElementPage(text, code)
 }
 
-// Guides belong with the reference; the remaining topics are visual examples.
-const guideNames = ['Gum', 'JSX', 'Units', 'Sizing', 'Fitting', 'Style', 'Themes', 'CLI',
-  'Stack', 'PointValues', 'Coordinates', 'Rendering', 'CustomElements', 'Fonts',
-  'MathHelpers', 'Arrays', 'Vectors', 'Colors', 'Random', 'Math', 'MathFonts', 'MathExport']
+function getGuides(dir = guidesDir): TopicsInfo { return getCollection(dir); }
 
-function selectTopics(collection: TopicsInfo, tags: string[]): TopicsInfo {
-  const selected = new Set(tags)
-  return {
-    tags,
-    cats: Object.fromEntries(Object.entries(collection.cats)
-      .map(([cat, names]) => [cat, names.filter(name => selected.has(name))] as const)
-      .filter(([, names]) => names.length)),
-    text: Object.fromEntries(tags.map(name => [name, collection.text[name]])),
-    code: Object.fromEntries(tags.map(name => [name, collection.code[name]])),
-  }
-}
-
-function getGuides(dir = topicsDir): TopicsInfo {
-  const topics = getTopics(dir)
-  return selectTopics(topics, guideNames.filter(name => topics.tags.includes(name)))
-}
-
-function getGallery(dir = topicsDir): TopicsInfo {
-  const topics = getTopics(dir)
-  const gallery = selectTopics(topics, topics.tags.filter(name => !guideNames.includes(name)))
+function getGallery(dir = galleryDir): TopicsInfo {
+  const gallery = getCollection(dir)
   const categorized = new Set(Object.values(gallery.cats).flat())
   const showcases = gallery.tags.filter(name => !categorized.has(name))
   if (showcases.length) gallery.cats.showcases = showcases
   return gallery
 }
 
+function listGuides(dir = guidesDir): TopicEntry[] { return listCollection(dir); }
+function listGallery(dir = galleryDir): TopicEntry[] { return listCollection(dir); }
+
+// Preserve the original combined topic catalog for existing consumers.
+function listTopics(dir?: string): TopicEntry[] {
+  return dir ? listCollection(dir) : [...listGuides(), ...listGallery()]
+}
+function getTopics(dir?: string): TopicsInfo {
+  if (dir) return getCollection(dir)
+  const guides = getGuides(), gallery = getGallery()
+  const cats: Record<string, string[]> = {}
+  for (const collection of [guides, gallery]) {
+    for (const [cat, names] of Object.entries(collection.cats)) (cats[cat] ??= []).push(...names)
+  }
+  return { tags: [...guides.tags, ...gallery.tags], cats,
+    text: { ...guides.text, ...gallery.text }, code: { ...guides.code, ...gallery.code } }
+}
+function topicDir(name: string): string {
+  return existsSync(join(guidesDir, 'text', `${pageName(name)}.md`)) ? guidesDir : galleryDir
+}
+function getTopicText(name: string, dir = topicDir(name)): string { return getCollectionText(name, dir); }
+function getTopicCode(name: string, dir = topicDir(name)): string { return getCollectionCode(name, dir); }
+function getGuideText(name: string): string { return getCollectionText(name, guidesDir); }
+function getGuideCode(name: string): string { return getCollectionCode(name, guidesDir); }
+function getGalleryText(name: string): string { return getCollectionText(name, galleryDir); }
+function getGalleryCode(name: string): string { return getCollectionCode(name, galleryDir); }
+
 export { listElements, getElements, getElementText, getElementCode, prepareElementPage }
 export { listTopics, getTopics, getTopicText, getTopicCode, prepareTopicPage }
-export { getGuides, getGallery }
+export { listGuides, getGuides, getGuideText, getGuideCode }
+export { listGallery, getGallery, getGalleryText, getGalleryCode }
 export type { CollectionInfo, ElementEntry, ElementsInfo, TopicEntry, TopicsInfo }

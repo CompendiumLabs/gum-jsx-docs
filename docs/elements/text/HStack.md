@@ -3,7 +3,7 @@
 *Category*: layout
 
 Arrange elements left to right. Width is the main axis and height is the cross
-axis. See [Stack](../../gallery/text/Stack.md) for all props and allocation rules.
+axis. See [Stack](../../guides/text/stack.md) for all props and allocation rules.
 
 | Property | Default | Meaning |
 |---|---|---|
@@ -23,7 +23,7 @@ width. An available height can determine aspect figures' widths locally.
 A width budget alone does not infer a common height for a group of figures.
 An explicit `aspect` on the stack can establish that height: `width={px(240)}
 aspect={2}` allocates a 240×120 row before flex and child alignment. This sets
-the stack's box, not its children's proportions; see [Sizing](../../gallery/text/Sizing.md).
+the stack's box, not its children's proportions; see [Sizing](../../guides/text/sizing.md).
 
 To make an unsized paragraph take remaining width, give it `grow={1}`. Under a
 finite row budget, its omitted basis starts from zero. To share leftover width

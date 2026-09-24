@@ -19,7 +19,7 @@ differs from [Rect](./Rect.md) `aspect={1}`: **Rect** expresses an aspect prefer
 paints its entire final rectangle, even if that preference is overridden.
 
 `border-radius` works as on **Rect**, relative to the drawn square's sides. Paint comes from
-the shared [style](../../gallery/text/Style.md). The natural fallback is 16 × 16px.
+the shared [style](../../guides/text/style.md). The natural fallback is 16 × 16px.
 
 An intrinsic aspect is local to this leaf. A [VStack](./VStack.md) containing a
 **Square** does not inherit a square aspect, infer a shared width from its total

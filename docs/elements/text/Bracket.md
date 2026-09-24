@@ -21,4 +21,4 @@ variants select fixed delimiter levels and the corresponding atom classes.
 
 Missing glyphs in a Size font are skipped. Beyond the largest available glyph,
 ordinary fences scale uniformly; vertical bars preserve their width. Extensible
-piece assembly is not implemented. See [math authoring](../../gallery/text/Math.md).
+piece assembly is not implemented. See [math authoring](../../guides/text/math.md).

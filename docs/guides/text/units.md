@@ -24,7 +24,7 @@ such as `calc(...)` are rejected with the source property path.
 Bare numbers retain their existing meaning. In length props, `width={100}`
 means 100 times the reference width; use `width="100px"` for pixels. In graph
 positions, numbers are data coordinates, while strings such as `"50%"` resolve
-as local lengths. See [Coordinates](./Coordinates.md).
+as local lengths. See [Coordinates](./coordinates.md).
 
 ## Which reference?
 
@@ -53,12 +53,12 @@ container's width explicitly when you need fractional descendants:
 `HStack width={1}` under a fixed-width **Svg** establishes a full-width row.
 `width="fill"` instead establishes the actual offered width, without requiring
 a fraction reference. Width and height are content-sized when omitted; see
-[Sizing](./Sizing.md). `"fill"` is not a length unit, so it cannot be used for
+[Sizing](./sizing.md). `"fill"` is not a length unit, so it cannot be used for
 padding, gaps, or min/max limits.
 
 Fractions refer to the established content area, not the space left after
 siblings. A stack deducts its gaps from that area along its main axis, so two
-half-width children tile a row with any gap. Use [explicit flex](./Stack.md)
+half-width children tile a row with any gap. Use [explicit flex](./stack.md)
 to divide the space that fixed siblings leave.
 
 An unresolved nonzero fraction throws an error with the source property path.

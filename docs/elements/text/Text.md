@@ -4,7 +4,7 @@
 
 **Text** lays out shaped glyphs at a fixed font size. It wraps into lines when given
 a finite width; changing that width reflows the paragraph instead of scaling
-the font. Use [fitting](../../gallery/text/Sizing.md#fitting) only when you intentionally want to scale a finished
+the font. Use [fitting](../../guides/text/sizing.md#fitting) only when you intentionally want to scale a finished
 text fragment.
 
 ## Content and formatting
@@ -28,7 +28,7 @@ inline item, aligned by its baseline or bottom edge. Give figures concrete sizes
 | `justify` | `"start"` | start, center, end, or a fraction from 0 to 1 within the allocated text width |
 
 Font and color props inherit through containers. wrap, whitespace, `tab-size`,
-and `justify` are local **Text** options. See [Fonts](../../gallery/text/Fonts.md) for the bundled
+and `justify` are local **Text** options. See [Fonts](../../guides/text/fonts.md) for the bundled
 families, weight matching, and host font loading.
 
 ## Wrapping and whitespace
@@ -43,7 +43,7 @@ so the following label measures exactly like `<Text>Revenue</Text>`:
 ```
 
 Internal text line breaks and spaces beside inline spans remain. Formatting-only
-multiline children between tags are ignored. See [JSX whitespace](../../gallery/text/JSX.md#jsx-whitespace)
+multiline children between tags are ignored. See [JSX whitespace](../../guides/text/jsx.md#jsx-whitespace)
 for the full rules and examples.
 
 In normal mode, horizontal spaces/tabs collapse and hard-line edges are trimmed.

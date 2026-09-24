@@ -9,7 +9,7 @@ general constraint solver.
 ## Element dimensions
 
 Common sizing props are width, height, `min-width`, `max-width`, `min-height`, and
-`max-height`. All accept [lengths](./Units.md); width and height also accept `"fill"`.
+`max-height`. All accept [lengths](./units.md); width and height also accept `"fill"`.
 Omitted dimensions use ordinary content measurement. Minima default to zero and maxima
 are unbounded. A preferred width or height is clamped to the element's own limits.
 An exact allocation from the parent takes precedence.
@@ -88,7 +88,7 @@ Hosts can also set `max_width` and `max_height` on the generated **Svg** to boun
 the SVG output. The figure reflows within the offers, then scales down
 uniformly if it is still too wide or too tall. A height limit can therefore reduce
 the rendered width, and a width limit can reduce the height. No height maximum
-means natural height remains available. The [rendering API](./Rendering.md)
+means natural height remains available. The [rendering API](./rendering.md)
 accepts these bounds through `wrap` without adding sizing boilerplate to examples.
 
 ### Relative compositions
@@ -114,8 +114,8 @@ before fitting. Small figures inside math likewise need intrinsic dimensions,
 such as an em width plus aspect. An ordinary content-sized box can simply measure
 its children, including rotated bounds, without becoming a fixed canvas.
 
-See [MathSlides](MathSlides.md), [two columns](two_column.md), and
-[Punk Rock](punk_rock.md) for these variants.
+See [MathSlides](../../gallery/text/MathSlides.md), [two columns](../../gallery/text/two_column.md), and
+[Punk Rock](../../gallery/text/punk_rock.md) for these variants.
 
 ## Fitting
 
@@ -142,7 +142,7 @@ parent offers and own maxima bound the scaled result. Minima reserve final space
 Shrink-only fitting hugs the result unless fill sizing or an exact parent allocation
 reserves a larger box. `fit-align` positions the drawing inside that box and defaults
 to center; the element's ordinary `align` still arranges its children. See
-[Fitting](Fitting.md) for examples and the full contract.
+[Fitting](fitting.md) for examples and the full contract.
 
 Migration: omit former content-sizing keywords (`width="hug"` or `width="fit"`).
 Move parent-fill opt-outs to `align-self`, and content-based growth to `basis="auto"`.
@@ -165,7 +165,7 @@ When neither dimension is established, content-sized elements measure normally
 and add space to reach the ratio. Available offers remain advisory; an aspect
 does not implicitly fill them or invent a percentage reference from measured
 content. Fonts, strokes, and child drawings are not scaled. Use
-[fitting](./Sizing.md#fitting) when uniform scaling is actually intended.
+[fitting](./sizing.md#fitting) when uniform scaling is actually intended.
 
 Shapes retain their own natural-size and offered-space measurement rules.
 **Square** and **Circle** supply an intrinsic ratio of 1 and still draw
@@ -201,12 +201,12 @@ container. Heights remain content-sized.
 
 **Box**, **Frame**, **VStack**, and **HStack** retain their content-sized defaults.
 Fill width adds no main-axis grow/shrink weights; flexible rows still need explicit
-flex props. See [Stack](./Stack.md) for fill versus hard stretch alignment.
+flex props. See [Stack](./stack.md) for fill versus hard stretch alignment.
 
 An unsized child with positive grow starts from a zero basis when its stack has
 a finite main-axis budget. Explicit dimensions still supply a basis, and
 `basis="auto"` requests a content-based fallback. Alignment does not select a
-flex basis. See [Growth bases](./stack_basis.md).
+flex basis. See [Growth bases](../../gallery/text/stack_basis.md).
 
 ## Layout requests
 
@@ -218,7 +218,7 @@ flex basis. See [Growth bases](./stack_basis.md).
 
 Length dimensions normally turn natural/available requests into exact local
 dimensions. An exact parent request wins even over source dimensions.
-The [rendering API](./Rendering.md) exposes these requests; the CLI's -W/-H flags
+The [rendering API](./rendering.md) exposes these requests; the CLI's -W/-H flags
 send exact viewport overrides.
 
 Unsized aspectless shapes fill offered axes independently. With no offer, a shape
@@ -240,4 +240,4 @@ of W + W/2. To obtain 500px with no gaps, the author can choose W = 1000/3.
 
 Likewise, independently growing aspect figures need not have the same cross-axis
 size. Fill alignment supplies a shared cross-axis allocation; it does not infer
-a composite aspect or add main-axis growth. See [Stack](./Stack.md) for the allocation controls.
+a composite aspect or add main-axis growth. See [Stack](./stack.md) for the allocation controls.

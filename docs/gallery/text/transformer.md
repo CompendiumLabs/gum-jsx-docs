@@ -27,7 +27,7 @@ The `radius`, `head-size`, and
 `head-curve` props control rounded corners and arrowheads. Color interpolation
 supplies pastel block fills.
 
-The root's [fit prop](./Sizing.md#fitting) scales the completed scene down to
+The root's [fit prop](../../guides/text/sizing.md#fitting) scales the completed scene down to
 the host's offer, preserving the relationships between blocks, arrows, and labels.
 No viewport size is required around the example.
 

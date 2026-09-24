@@ -17,6 +17,6 @@ Nonpositive TeX dimensions have no ink; negative width retains signed advance.
 The parsed rule is an ordinary atom. A direct `MathRule` defaults to no atom
 class and accepts `klass`, `left`, and `right` overrides.
 
-Common font, color, and sizing properties follow [Gum units](../../gallery/text/Units.md).
+Common font, color, and sizing properties follow [Gum units](../../guides/text/units.md).
 Math preserves separate logical advance, outline ink, baseline, and math-axis guides.
-See [math authoring](../../gallery/text/Math.md) for supported TeX and font setup.
+See [math authoring](../../guides/text/math.md) for supported TeX and font setup.
