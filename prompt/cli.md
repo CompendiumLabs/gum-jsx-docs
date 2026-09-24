@@ -1,7 +1,8 @@
 ## CLI setup
 
 Use an existing Gum CLI when available, or install the scoped prerelease CLI.
-Native support for this prerelease is Bun 1.4.2 or newer on Linux x64.
+Native rendering has been tested with Bun 1.4.2 or newer on Linux x64, macOS,
+and Windows.
 
 ```sh
 bun install -g @gum-jsx/cli@beta

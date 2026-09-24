@@ -116,6 +116,10 @@ The folder can be used by skill-aware coding agents; the `.skill` archive can be
 imported by clients that accept that format. Generated outputs are ignored by
 Git; maintain the source prompts and docs, then rebuild.
 
+The [Gum JSX plugin](./plugins/gum-jsx/README.md) lives in this repository. Its
+skill is identical to the standalone generated skill, with no MCP connection.
+Run `bun run plugin:pack` from the workspace root to build a ChatGPT upload ZIP.
+
 The entrypoint is assembled from [head](./prompt/head.md),
 [intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md),
 [gen](./prompt/gen.md), and [cli](./prompt/cli.md). It keeps the essential authoring rules together and links
