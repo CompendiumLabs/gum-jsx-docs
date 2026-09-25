@@ -6,8 +6,8 @@ const mapWidth = 850
 const mapHeight = 480
 const view = {
   projection: 'equalEarth',
-  fit_to: { ids: ['276', '616', '203', '040', '756'] }, // DE, PL, CZ, AT, CH
-  map_padding: 25,
+  fit_to: ['276', '616', '203', '040', '756'], // DE, PL, CZ, AT, CH
+  padding: 25,
 }
 const projection = create_geo_projection(prepared, view, mapWidth, mapHeight)
 const route = [
@@ -37,11 +37,10 @@ return (
         source={world}
         projection={view.projection}
         fit-to={view.fit_to}
-        map-padding={px(view.map_padding)}
+        padding={px(view.padding)}
         fill={interp(white, green, 0.3)}
         border-color={white}
         border-width={em(0.06)}
-        aria-label="Central Europe with a three-city route"
       />
       <Polyline
         width={1} height={1}

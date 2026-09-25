@@ -36,7 +36,7 @@ return (
       </Text>
       <Grid columns={2} gap={em(1.2)}>
         {views.map(({ title, note, ...options }) => {
-          const view = { ...options, fit_to: 'sphere', map_padding: 12 }
+          const view = { ...options, fit_to: 'sphere', padding: 12 }
 
           return (
             <TextCol gap={em(0.6)}>
@@ -44,11 +44,10 @@ return (
               <GeoMap
                 width={px(mapWidth)} height={px(mapHeight)} fit source={world}
                 projection={view.projection} rotate={view.rotate}
-                fit-to={view.fit_to} map-padding={px(view.map_padding)}
+                fit-to={view.fit_to} padding={px(view.padding)}
                 background={interp(white, blue, 0.15)}
                 fill={lightgray} styles={styles}
                 border-color={white} border-width={em(0.035)}
-                aria-label={title + ' with San Francisco and Tokyo marked'}
               >
                 {cities.map(city => (
                   <Circle

@@ -11,8 +11,8 @@ returns coordinates in the map's local pixel space, or `null` when the point is
 clipped. Filtering those null results keeps the markers and visible-city list
 in agreement.
 
-The shared `view.map_padding` value is a number of pixels for the helper. The
-[GeoMap](../../elements/text/GeoMap.md) receives the same value through `map-padding={px(view.map_padding)}`.
+The shared `view.padding` value is a number of pixels for the helper. The
+[GeoMap](../../elements/text/GeoMap.md) receives the same value through `padding={px(view.padding)}`.
 The map and its marker circles live in one fitted **Group**, with `mapSize` shared
 by the group and projection helper. Scaling the group keeps the geography and
 markers together. The map's `background` fills the projected globe with an ocean

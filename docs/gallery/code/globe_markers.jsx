@@ -6,7 +6,7 @@ const view = {
   projection: 'orthographic',
   rotate: [95, -20, 0],
   fit_to: 'sphere',
-  map_padding: 14,
+  padding: 14,
 }
 const places = [
   ['San Francisco', -122.42, 37.77],
@@ -40,12 +40,11 @@ return (
             projection={view.projection}
             rotate={view.rotate}
             fit-to={view.fit_to}
-            map-padding={px(view.map_padding)}
+            padding={px(view.padding)}
             background={interp(white, blue, 0.15)}
             fill={interp(blue, green, 0.6)}
             border-color={interp(white, blue, 0.06)}
             border-width={em(0.035)}
-            aria-label="Orthographic world map centered on the Americas"
           />
           {visible.map(place => (
             <Circle

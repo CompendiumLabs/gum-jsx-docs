@@ -5,7 +5,7 @@ description: "Fit five country IDs and reuse the projection for a Berlin–Pragu
 
 # Selected-region fit
 
-Set `fit_to: { ids: [...] }` to fit a stable set of features. This example fits
+Set `fit_to: [...]` to fit a stable set of features. This example fits
 Germany, Poland, Czechia, Austria, and Switzerland by their atlas IDs. Fitting
 sets the view; the map still draws the surrounding geography within its viewport.
 

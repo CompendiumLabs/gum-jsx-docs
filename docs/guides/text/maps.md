@@ -93,8 +93,8 @@ world-map outlines.
 |---|---|
 | `fit-to="sphere"` | Fits the whole projected globe; the default except for Albers USA |
 | `fit-to="data"` | Fits all source geometry; useful for a regional source |
-| `fit-to={{ ids: ['276', '040'] }}` | Fits selected features from a larger source; surrounding geography still draws |
-| `fit-to={{ bounds: [5, 45, 18, 56] }}` | Fits a longitude/latitude box independently of source features |
+| `fit-to={['276', '040']}` | Fits selected features from a larger source; surrounding geography still draws |
+| `bounds={[5, 45, 18, 56]}` | Fits and clips to a longitude/latitude box, overriding `fit-to` |
 | `center={[30, 20]}` | Pans 30° east, 20° north to the viewport midpoint after fitting the scale |
 | `rotate={[-30, -20, 0]}` | Turns the globe toward 30° east, 20° north before projection |
 
@@ -104,7 +104,7 @@ orthographic globe; use rotation to change which hemisphere faces the viewer.
 Omit `center` to keep the fit target centered automatically. Albers USA has fixed
 center and rotation and uses data fitting rather than sphere fitting.
 
-`map-padding` leaves space around the fitted geography. It is independent of
+`padding` defaults to `0`; set it to leave space around the fitted geography. It is independent of
 padding on an outer Box. Try [selected-region fit](../../gallery/text/selected_region.md)
 for a regional map and route.
 
@@ -113,17 +113,27 @@ Source filtering chooses what to draw; fitting chooses the view. Combine the two
 ```jsx
 <GeoMap
   source={world_countries({ ids: ['276', '040'] })}
-  fit-to={{ bounds: [5, 45, 18, 56] }}
+  bounds={[5, 45, 18, 56]}
   fill={green} background={lightgray}
 />
 ```
 
-Bounds are `[west, south, east, north]` in degrees. They frame a geographic
-rectangle without cutting source features to its edges. West greater than east
+Bounds are `[west, south, east, north]` in degrees and take precedence over
+`fit-to`, including when measuring the map's natural size. They fit a geographic
+rectangle and clip land, water, borders, and overlays to its projected edges.
+The projection keeps its proportions; if the region is narrower or shorter than
+the allocation, the extra space stays transparent. West greater than east
 means the box crosses the antimeridian; rotate the view if you want the region
 away from the projection seam. Bounds do not change globe visibility. See
 [Filtering and bounds](../../gallery/text/filtered_region.md) for matching views
 with different sources, and [GeoMap](../../elements/text/GeoMap.md) for validation rules.
+
+GeoMap derives its natural proportions from the projected fit target. For a
+tall, narrow region, set `height` and let it choose the width. For a horizontal
+map, set `width` and let it choose the height. Map padding is included in that
+measurement, so a surrounding Box or Frame hugs the result. An explicit `aspect`
+overrides the natural ratio; specifying both dimensions keeps that fixed box.
+See [Natural map sizes](../../gallery/text/map_aspect.md) for framed examples.
 
 ## Add markers and labels
 
@@ -153,7 +163,7 @@ and [Projections](./projections.md) for examples and seam-handling limitations.
 For overlays outside the GeoMap subtree,
 `project_geo_point(source, view, width, height, [longitude, latitude])` still
 returns local pixels or `null` for a hidden point. Use the same source, view, and
-actual size, and wrap returned coordinates in `px(...)`. Helper `map_padding`
+actual size, and wrap returned coordinates in `px(...)`. Helper `padding`
 is a number of pixels. See [projected city markers](../../gallery/text/globe_markers.md)
 for that pattern. Prepare a reused source with `prepare_geo_source` once;
 `create_geo_projection` returns a fitted D3 projection for lower-level work,

@@ -8,7 +8,7 @@ description: "Compare Equal Earth, Natural Earth, equirectangular, and Mercator 
 The four [GeoMap](../../elements/text/GeoMap.md) panels share one `world_countries()` source, equal column
 widths, and a common map aspect. Only `projection` changes, making the different shapes and
 distributions of area easy to compare. Each map fits the sphere within its panel
-using `map-padding`.
+using `padding`.
 
 The card list generates **Frame** panels in a two-column **Grid**. Each panel's
 **TextCol** measures the title above its map. Adding a projection creates another

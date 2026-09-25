@@ -17,8 +17,8 @@ return (
           <TextCol gap={em(0.6)}>
             <Text font-weight={bold}>{panel.title}</Text>
             <GeoMap
-              source={panel.source} fit-to={{ bounds }}
-              width={px(380)} height={px(280)} fit map-padding={px(12)}
+              source={panel.source} bounds={bounds}
+              width={px(380)} height={px(280)} fit padding={px(12)}
               background={interp(white, blue, 0.12)} fill={interp(white, green, 0.3)}
               border-color={white} border-width={px(0.8)}
             >

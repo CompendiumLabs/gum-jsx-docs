@@ -49,7 +49,6 @@ const panels = [
     source: donut,
     fill: interp(blue, green, 0.7),
     border_color: interp(slate, green, 0.3),
-    aria_label: 'GeoJSON island polygon with an empty lake',
   },
   {
     title: 'Antimeridian split',
@@ -57,7 +56,6 @@ const panels = [
     rotate: [180, 0, 0],
     fill: interp(red, yellow, 0.4),
     border_color: interp(slate, red, 0.45),
-    aria_label: 'Two GeoJSON polygons meeting at the antimeridian',
   },
 ]
 
@@ -85,7 +83,7 @@ return (
               aspect={1.4}
               projection="equirectangular"
               fit-to="data"
-              map-padding={em(0.8)}
+              padding={em(0.8)}
               border-width={em(0.075)}
               {...mapProps}
             />

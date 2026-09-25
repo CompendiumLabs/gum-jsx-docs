@@ -28,13 +28,12 @@ return (
       source={usStates}
       projection="albersUsa"
       fit-to="data"
-      map-padding={em(0.8)}
+      padding={em(0.8)}
       fill={interp(white, green, 0.3)}
       styles={regions}
       border-mode="interior"
       border-color={white}
       border-width={em(0.055)}
-      aria-label="US states with California, Texas, New York, Florida, and Washington highlighted"
     />
   </TextFigure>
 )

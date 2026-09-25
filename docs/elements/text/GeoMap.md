@@ -13,11 +13,12 @@ Start with [Making maps](../../guides/text/maps.md) for a source-to-annotation w
 |---|---|---|
 | `source` | — | A source returned by `geojson`, `topojson`, `world_countries`, or `us_states` |
 | `source-resource` | — | Name of a `GeoSource` or `PreparedSource` resource on the layout pass; supply exactly one of this and `source` |
-| `width` / `height` | Natural `720px` × `400px` | Allocated map size; finite offers and ordinary sizing props apply |
-| `aspect` | `1.8` | Preferred width divided by height when an axis is natural |
+| `width` / `height` | Natural view fits within `720px` × `400px` | Allocated map size; omit an axis to derive it from the projected fit target and padding |
+| `aspect` | Inferred from the projected fit target | Override the preferred outer width divided by height |
 | `projection` | `"naturalEarth1"` | Projection preset; see the table below |
-| `fit-to` | `"sphere"`; `"data"` for Albers USA | Fit the sphere, source geometry, `{ ids: [...] }`, or `{ bounds: [west, south, east, north] }` |
-| `map-padding` | `px(8)` | Inset around the fitted geography |
+| `fit-to` | `"sphere"`; `"data"` for Albers USA | `"sphere"`, `"data"`, or an array of feature IDs such as `['276', '040']` |
+| `bounds` | — | `[west, south, east, north]` in degrees; fits and clips to this box, overriding `fit-to` |
+| `padding` | `0` | Inset around the fitted geography |
 | `center` | Fit target centered automatically | `[longitude, latitude]` in degrees to pan to the viewport midpoint after fitting |
 | `rotate` | Projection preset | `[lambda, phi, gamma?]` spherical rotation in degrees; omitted gamma is zero |
 | `clip-angle` | Projection preset | Spherical clipping angle in degrees, greater than zero and at most 180; `null` uses antimeridian cutting |
@@ -29,7 +30,6 @@ Start with [Making maps](../../guides/text/maps.md) for a source-to-annotation w
 | `border-color` | `"#ffffff"` | Paint for borders and line features |
 | `border-width` | `px(0.7)` | Nonnegative border width |
 | `point-radius` | `px(3)` | Nonnegative radius for geographic point features |
-| `aria-label` | — | Accessible label for the map |
 
 ## Sources and feature IDs
 
@@ -111,37 +111,41 @@ adjacent feature strokes can overlap. See the
 | `orthographic` | Globe views, with the far side clipped by default |
 | `albersUsa` | Lower 48 states with Alaska and Hawaii insets |
 
-The projection fits its target into the allocated rectangle minus `map-padding`.
-Use `fit-to="data"` for a regional source, or `fit-to={{ ids: ['276', '040'] }}`
+The projection fits its target into the allocated rectangle minus `padding`.
+Use `fit-to="data"` for a regional source, or `fit-to={['276', '040']}`
 to fit selected features from a larger source. Selected IDs set the extent;
 they do not filter the drawn features. Fitting is independent of `styles`.
 Unknown selected IDs and fit targets without geometry are errors.
 
-For a coordinate box, use `fit-to={{ bounds: [-10, 35, 30, 60] }}`. Bounds are
+For a coordinate box, use `bounds={[-10, 35, 30, 60]}`. When supplied, `bounds`
+takes precedence over `fit-to` for both fitting and natural sizing; the unused
+fit target is not looked up. Bounds are
 `[west, south, east, north]` in degrees. Longitudes must be in `[-180, 180]`, and
 latitudes must satisfy `-90 <= south < north <= 90`. Longitude span must be
 positive; `[-180, south, 180, north]` spans all longitudes. A west value greater
 than east crosses the antimeridian, such as `[170, -20, -170, 20]`. Rotation is
 unchanged: use `rotate={[-180, 0, 0]}` for a continuous Pacific-facing view.
 
-Bounds fit a sampled geographic rectangle, including its curved projected edges.
-They set framing, not a geographic crop: source features remain intact, and
-surrounding geography can show within the rectangular viewport. Bounds fit the
+Bounds fit a sampled geographic rectangle and clip all map content to its
+projected outline, including curved edges. Water, features, borders, and children
+share this clip. The projection keeps its proportions, so a narrow longitude
+range in a wide allocation leaves transparent space on either side instead of
+showing extra geography. Source features themselves remain intact. Bounds fit the
 visible portion under the chosen projection; a fully hidden or degenerate target
-is an error. Choose either `ids` or `bounds` within `fit-to`.
+is an error.
 
 Source selection and bounds fitting combine independently:
 
 ```jsx
 <GeoMap
   source={world_countries({ ids: ['276', '040'] })}
-  fit-to={{ bounds: [5, 45, 18, 56] }}
+  bounds={[5, 45, 18, 56]}
   background={lightgray}
 />
 ```
 
-Only Germany and Austria draw, inside the requested frame. Use `fit-to="data"`
-instead to fit tightly around the filtered geography. See
+Only Germany and Austria draw, inside the requested frame. Omit `bounds` and
+use `fit-to="data"` to fit tightly around the filtered geography. See
 [Filtering and bounds](../../gallery/text/filtered_region.md).
 
 `center={[30, 20]}` places 30° east, 20° north at the viewport midpoint.
@@ -163,7 +167,31 @@ Alaska, and Hawaii. Compare the [projection gallery](../../gallery/text/projecti
 [selected-region fit](../../gallery/text/selected_region.md).
 
 Map dimensions use ordinary [Gum sizing](../../guides/text/sizing.md).
-`map-padding`, `border-width`, and `point-radius` accept px/em lengths or fractions
+The projected fit target supplies the map's natural proportions, including
+rotation and spherical clipping. Specify only `height` for a narrow region and
+the map derives its width; specify only `width` to derive its height. This also
+works for sphere, data, and selected-ID fits. Map padding adds space around that
+projected extent. [Box](./Box.md), [Frame](./Frame.md), and stacks can hug the
+result without a manually supplied aspect:
+
+```jsx
+<Frame padding={px(8)}>
+  <GeoMap
+    source={world_countries()}
+    bounds={[9, 40, 11, 60]}
+    height={px(240)}
+    background={lightgray}
+  />
+</Frame>
+```
+
+With neither dimension nor an offer, the view fits within `720px` × `400px`.
+An explicit `aspect` overrides these natural proportions for the outer map box.
+Two exact dimensions, including parent stretch allocations, take precedence;
+the map then fits inside that rectangle with any extra space transparent.
+See [Natural map sizes](../../gallery/text/map_aspect.md).
+
+`padding`, `border-width`, and `point-radius` accept px/em lengths or fractions
 of the shorter allocated axis. Padding must be nonnegative and leave a positive
 drawing area. Projection precision controls curve sampling, not source-data
 simplification. Geometry is always clipped to the map rectangle.
@@ -182,7 +210,7 @@ Set `background={interp(white, blue, 0.15)}` to color the water. The background
 is the projected sphere, drawn before feature fills and borders. It follows
 the same projection, rotation, clipping, and fitted extent as the geography,
 leaving the area outside the projection transparent. An orthographic globe gets
-a circular background; regional views crop the sphere to the map rectangle.
+a circular background; bounds fitting crops it to the projected geographic box.
 Albers USA uses the composite projection's clip regions. Background colors can
 also use theme paints such as `"theme:area"`; the default is `none`.
 
@@ -217,16 +245,18 @@ project their longitude/latitude endpoints or vertices; their default is local.
 
 For annotations outside the map subtree, the helper
 `project_geo_point(source, view, width, height, [longitude, latitude])` accepts a
-raw or prepared source and returns local pixel coordinates, or `null` if clipped.
+raw or prepared source and returns local pixel coordinates, or `null` if hidden
+by the projection's spherical clipping. The map's bounds and viewport clips
+apply to its subtree; external annotations need their own clipping.
 Use the same source, view, and allocated dimensions as the map. Helper
-`map_padding` is in pixels; element `map-padding` accepts Gum lengths. See
+`padding` is in pixels; element `padding` accepts Gum lengths. See
 [projected city markers](../../gallery/text/globe_markers.md) for this lower-level
 sibling-overlay pattern.
 
 For lower-level work, `create_geo_projection(prepared, view, width, height)`
 returns the fitted D3 projection. Prepare its source with `prepare_geo_source`.
 Directly calling that projection does not test spherical visibility; use
-`project_geo_point` when clipping must match the rendered geometry.
+`project_geo_point` to check that visibility.
 
 ## Host integration and shared sources
 

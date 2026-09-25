@@ -29,7 +29,7 @@ Useful starting points:
   nest markers and labels inside GeoMap, or see
   [map routes](references/gallery/map_routes.md) for a sampled Arrow.
   [Filtering and bounds](references/gallery/filtered_region.md) combines source
-  `ids` selection with `fit-to={{ bounds: [west, south, east, north] }}`.
+  `ids` selection with `bounds={[west, south, east, north]}`.
 - Diagrams: [Network](references/elements/Network.md) connects named
   [Node](references/elements/Node.md) frames, or any element with an `id`, using
   [Edge](references/elements/Edge.md).

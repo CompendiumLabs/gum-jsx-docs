@@ -15,8 +15,8 @@ return (
       </Text>
       <GeoMap
         source={world_countries()} aspect={1.65}
-        fit-to={{ ids: ['620', '724', '276', '380', '300'] }}
-        map-padding={em(1.8)}
+        fit-to={['620', '724', '276', '380', '300']}
+        padding={em(1.8)}
         background={interp(white, blue, 0.12)}
         fill={interp(white, green, 0.2)} border-color={white}
       >
