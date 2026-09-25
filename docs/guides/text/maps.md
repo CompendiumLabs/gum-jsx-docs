@@ -43,6 +43,13 @@ leading zeros such as Brazil's `"076"` and California's `"06"`. If IDs live in
 feature properties, use `geojson(data, { id_property: 'code' })` or the equivalent
 `topojson` option. Every feature needs an explicit, unique ID when styles are used.
 
+Pass `ids` to a source helper to draw only selected features:
+`world_countries({ ids: ['276', '040'] })` keeps Germany and Austria;
+`us_states({ ids: ['06', '32'] })` keeps California and Nevada. `geojson` and
+`topojson` accept the same option for your own data, including `id_property`
+matching. Source order and shared borders are preserved; unknown IDs are errors.
+Omitting `ids` retains everything, while `ids: []` selects nothing.
+
 ## Style features and water separately
 
 `fill` is the default land color. `styles` can be an ID-to-style dictionary:
@@ -87,6 +94,7 @@ world-map outlines.
 | `fit-to="sphere"` | Fits the whole projected globe; the default except for Albers USA |
 | `fit-to="data"` | Fits all source geometry; useful for a regional source |
 | `fit-to={{ ids: ['276', '040'] }}` | Fits selected features from a larger source; surrounding geography still draws |
+| `fit-to={{ bounds: [5, 45, 18, 56] }}` | Fits a longitude/latitude box independently of source features |
 | `center={[30, 20]}` | Pans 30° east, 20° north to the viewport midpoint after fitting the scale |
 | `rotate={[-30, -20, 0]}` | Turns the globe toward 30° east, 20° north before projection |
 
@@ -100,33 +108,58 @@ center and rotation and uses data fitting rather than sphere fitting.
 padding on an outer Box. Try [selected-region fit](../../gallery/text/selected_region.md)
 for a regional map and route.
 
+Source filtering chooses what to draw; fitting chooses the view. Combine the two:
+
+```jsx
+<GeoMap
+  source={world_countries({ ids: ['276', '040'] })}
+  fit-to={{ bounds: [5, 45, 18, 56] }}
+  fill={green} background={lightgray}
+/>
+```
+
+Bounds are `[west, south, east, north]` in degrees. They frame a geographic
+rectangle without cutting source features to its edges. West greater than east
+means the box crosses the antimeridian; rotate the view if you want the region
+away from the projection seam. Bounds do not change globe visibility. See
+[Filtering and bounds](../../gallery/text/filtered_region.md) for matching views
+with different sources, and [GeoMap](../../elements/text/GeoMap.md) for validation rules.
+
 ## Add markers and labels
 
-Place the map and its annotations as siblings in a
-[Group](../../elements/text/Group.md). A Group uses local layout coordinates;
-longitude and latitude must first pass through the map projection.
+Nest [Points](../../elements/text/Points.md), [Arrow](../../elements/text/Arrow.md),
+or other marks inside GeoMap. Their numeric pairs are longitude/latitude in
+degrees. For labels or individual shapes, put longitude in the direct child's
+`x` and latitude in `y`:
 
-`project_geo_point(source, view, width, height, [longitude, latitude])` returns
-local pixel coordinates or `null` when the projection clips the point.
-Use those coordinates as `x={px(point[0])}` and `y={px(point[1])}` on a
-[Circle](../../elements/text/Circle.md) or [Text](../../elements/text/Text.md).
-Skip null results so a far-side point does not appear on the visible globe.
+```jsx
+<GeoMap source={world_countries()}>
+  <Points points={[[-122.42, 37.77]]} point-size={px(8)} fill={red} />
+  <Text x={-122.42} y={37.77} anchor={['start', 'end']}>San Francisco</Text>
+</GeoMap>
+```
 
-The map and helper must share the source, view settings, and actual map size.
-In the helper's `view` object, use underscore keys and give `map_padding` as a
-number of pixels. On GeoMap, convert it with
-`map-padding={px(view.map_padding)}`. A fixed geographic canvas inside a fitted
-Group keeps the map and annotations aligned as the whole composition scales.
-Surrounding headings and captions can still use normal text layout.
+The map projects children using its current allocated size and view settings,
+including fitting, padding, center, rotation, and point visibility. Markers on
+the far side of an orthographic globe disappear automatically. Text stays upright,
+and marker sizes, fonts, and arrowheads use ordinary layout lengths.
 
-For many markers, call `prepare_geo_source(source)` once and reuse the prepared
-source with `project_geo_point`. The lower-level
-`create_geo_projection(prepared, view, width, height)` returns a fitted D3
-projection, but calling it directly does not test spherical visibility.
-See [projected city markers](../../gallery/text/globe_markers.md) for a larger
-annotation example, and [Rendering](./rendering.md) for embedding Gum in a host.
+For a curved route, provide sampled longitude/latitude pairs to Arrow. A
+projection maps existing points without adding samples, so a two-point Arrow
+remains straight between the projected endpoints. Set its stroke explicitly,
+since children inherit the map's style. See [Map routes](../../gallery/text/map_routes.md)
+and [Projections](./projections.md) for examples and seam-handling limitations.
+
+For overlays outside the GeoMap subtree,
+`project_geo_point(source, view, width, height, [longitude, latitude])` still
+returns local pixels or `null` for a hidden point. Use the same source, view, and
+actual size, and wrap returned coordinates in `px(...)`. Helper `map_padding`
+is a number of pixels. See [projected city markers](../../gallery/text/globe_markers.md)
+for that pattern. Prepare a reused source with `prepare_geo_source` once;
+`create_geo_projection` returns a fitted D3 projection for lower-level work,
+but directly calling it does not check visibility.
 
 The runnable example below draws the same source and two cities in a world map
 and a Pacific-facing globe. Both panels share country styles and marker data;
-each panel projects its markers with its own view. Only the geographic canvas
+each panel projects its marker children with its own view. Only the geographic canvas
 has fixed dimensions. Text, gaps, and panel placement use ordinary layout.

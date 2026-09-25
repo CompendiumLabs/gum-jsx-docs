@@ -21,10 +21,15 @@ Useful starting points:
   [SymLine](references/elements/SymLine.md), and [BarPlot](references/elements/BarPlot.md).
   Plot axes use linear scales. `bounds="frame"` sizes and aligns the data area;
   leave space for the labels and titles outside it.
+  [Projections](references/guides/projections.md) covers polar Graph callbacks
+  and geographic marks. Supply explicit output limits and sampled paths.
 - Maps: [Making maps](references/guides/maps.md) walks through sources, styles,
   views, and annotations. [GeoMap](references/elements/GeoMap.md) documents the
   element and its helpers. Start with `world_countries()` or `us_states()`;
-  see [projected city markers](references/gallery/globe_markers.md) for annotations.
+  nest markers and labels inside GeoMap, or see
+  [map routes](references/gallery/map_routes.md) for a sampled Arrow.
+  [Filtering and bounds](references/gallery/filtered_region.md) combines source
+  `ids` selection with `fit-to={{ bounds: [west, south, east, north] }}`.
 - Diagrams: [Network](references/elements/Network.md) connects named
   [Node](references/elements/Node.md) frames, or any element with an `id`, using
   [Edge](references/elements/Edge.md).

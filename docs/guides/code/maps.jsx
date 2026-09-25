@@ -1,6 +1,5 @@
-// One source and style dictionary, with markers projected separately for two views.
+// One source and style dictionary; each GeoMap projects its own marker children.
 const world = world_countries()
-const prepared = prepare_geo_source(world)
 const mapWidth = 400
 const mapHeight = 280
 const styles = {
@@ -38,34 +37,27 @@ return (
       <Grid columns={2} gap={em(1.2)}>
         {views.map(({ title, note, ...options }) => {
           const view = { ...options, fit_to: 'sphere', map_padding: 12 }
-          const markers = cities
-            .map(city => ({
-              ...city,
-              point: project_geo_point(prepared, view, mapWidth, mapHeight, city.coordinates),
-            }))
-            .filter(city => city.point !== null)
 
           return (
             <TextCol gap={em(0.6)}>
               <Text font-weight={bold}>{title}</Text>
-              <Group width={px(mapWidth)} height={px(mapHeight)} fit>
-                <GeoMap
-                  width={1} height={1} source={world}
-                  projection={view.projection} rotate={view.rotate}
-                  fit-to={view.fit_to} map-padding={px(view.map_padding)}
-                  background={interp(white, blue, 0.15)}
-                  fill={lightgray} styles={styles}
-                  border-color={white} border-width={em(0.035)}
-                  aria-label={title + ' with San Francisco and Tokyo marked'}
-                />
-                {markers.map(city => (
+              <GeoMap
+                width={px(mapWidth)} height={px(mapHeight)} fit source={world}
+                projection={view.projection} rotate={view.rotate}
+                fit-to={view.fit_to} map-padding={px(view.map_padding)}
+                background={interp(white, blue, 0.15)}
+                fill={lightgray} styles={styles}
+                border-color={white} border-width={em(0.035)}
+                aria-label={title + ' with San Francisco and Tokyo marked'}
+              >
+                {cities.map(city => (
                   <Circle
-                    x={px(city.point[0])} y={px(city.point[1])}
+                    x={city.coordinates[0]} y={city.coordinates[1]}
                     anchor="center" width={em(0.55)}
                     fill={city.color} stroke={white} stroke-width={em(0.1)}
                   />
                 ))}
-              </Group>
+              </GeoMap>
               <Text font-size={em(0.75)}>{note}</Text>
             </TextCol>
           )

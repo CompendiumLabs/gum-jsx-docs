@@ -210,13 +210,17 @@ rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unz
   [Units](./docs/guides/text/units.md), [Sizing](./docs/guides/text/sizing.md),
   [Style](./docs/guides/text/style.md), and [CLI](./docs/guides/text/cli.md).
 - Geometry and layout: [Point values](./docs/guides/text/point_values.md),
-  [Coordinates](./docs/guides/text/coordinates.md), and [Stack](./docs/guides/text/stack.md).
+  [Coordinates](./docs/guides/text/coordinates.md), [Projections](./docs/guides/text/projections.md),
+  and [Stack](./docs/guides/text/stack.md).
 - Embedding: [Rendering](./docs/guides/text/rendering.md),
   [Custom elements](./docs/guides/text/custom_elements.md), and [Fonts](./docs/guides/text/fonts.md).
 - Numeric helpers: [Math](./docs/guides/text/math_helpers.md), [Arrays](./docs/guides/text/arrays.md),
   [Vectors](./docs/guides/text/vectors.md), [Colors](./docs/guides/text/colors.md), [Random](./docs/guides/text/random.md).
 - Maps: [Making maps](./docs/guides/text/maps.md) covers sources, styles, views,
-  and projected annotations.
+  and projected annotations; [Map routes](./docs/gallery/text/map_routes.md) nests
+  a sampled Arrow inside GeoMap.
+  [Filtering and bounds](./docs/gallery/text/filtered_region.md) selects country
+  IDs while keeping a fixed longitude/latitude view.
 
 ### Showcases
 
