@@ -34,6 +34,29 @@ overrides evaluator bindings. It returns an **Element**, not an SVG string, and
 sources ending in a return statement may hand back a plain value instead.
 render_element below wraps bare elements in **Svg**; the core evaluator does not.
 
+To reuse package exports and shared bindings across figures, configure an
+**Evaluator** once:
+
+```ts
+import { Evaluator } from '@gum-jsx/core'
+import * as math from '@gum-jsx/math'
+
+const evaluator = new Evaluator({ scope: math, seed: 7 })
+const formula = evaluator.evaluate('<Latex>{expression}</Latex>', {
+  name: 'formula.jsx',
+  scope: { expression: 'a+b=c' },
+})
+```
+
+Every evaluator includes core bindings. Its configured scope overrides those
+bindings, and per-call scope takes precedence over both. The constructor copies
+the binding map, retaining the identity of supplied objects and functions.
+Each call starts fresh local bindings and a random stream; `name` and `seed`
+default to the constructor values and can be overridden per call.
+`evaluator.evaluate_prelude(code)` returns declarations for explicit reuse in
+another call's scope. It does not add them to the evaluator. Font resources
+still belong to layout and rendering; see [math setup](./math.md#library-setup).
+
 JSX is optional. **Element** exports are constructors, so ordinary TypeScript can
 build the same source graph directly:
 

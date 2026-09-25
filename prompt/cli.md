@@ -14,7 +14,8 @@ the root and use `bun run gum` (or `bun run gum-tex`) instead.
 
 ## Render with the CLI
 
-Save a draft `.jsx` file and render it with `gum`. See the
+Save a draft `.jsx` file and render it with `gum`. The command accepts one input
+file or deck directory; omit the input or use `-` to read stdin. See the
 [CLI guide](references/guides/cli.md) for the complete options.
 
 ```sh
@@ -26,8 +27,8 @@ gum figure.jsx -f tree --stats
 gum figure.jsx -f json -o figure.json
 ```
 
-Choose `-f svg` explicitly for SVG on stdout; the CLI defaults to kitty graphics
-even when redirected. Output extensions select SVG, PNG, or PDF when `-f` is
+For a file or stdin, choose `-f svg` explicitly for SVG on stdout; the CLI defaults
+to kitty graphics even when redirected. Output extensions select SVG, PNG, or PDF when `-f` is
 omitted. With neither `-W` nor `-H`, JSX gets a 640 × 480 offer; content can hug
 or exceed it, and authored dimensions still win. `--natural` removes that offer.
 `-W` and `-H` impose exact viewport dimensions; an unspecified axis uses source
@@ -44,19 +45,18 @@ visual inspection is unavailable, report the checks actually performed.
 
 ## Multipage PDFs and decks
 
-Pass multiple JSX files in page order, or a directory of slides:
+Pass one directory of slides to render a multipage PDF:
 
 ```sh
-gum intro.jsx results.jsx conclusion.jsx -o talk.pdf
 gum slides/ -o talk.pdf
-gum slides/ -f pdf > talk.pdf
+gum slides/ > talk.pdf
 ```
 
-Multiple files and directories require PDF output. Each source must return a Gum
-element and becomes one page with its own viewport size. Long content is not
-automatically split into pages. You can mix files and directories in argument
-order, and use `-` once to include a page from stdin. `-W` and `-H` apply to every
-page; `--stats` writes one JSON line per page to stderr.
+Directory input defaults to PDF; other output formats are rejected. Each slide
+must return a Gum element and becomes one page with its own viewport size. Long
+content is not automatically split into pages. Put multiple figures in a deck
+directory to combine them into a PDF. `-W` and `-H` apply to every page; `--stats`
+writes one JSON line per page to stderr.
 
 ### Deck manifest
 
@@ -74,8 +74,7 @@ All three fields are optional. Paths in the manifest are relative to its
 directory. `slides` sets the exact page order. When omitted, Gum uses that
 directory's `.jsx` files in natural filename order (`slide_2.jsx` before
 `slide_10.jsx`), excluding the named prelude. It does not recurse into
-subdirectories. When rendering a single directory, `title` supplies PDF document
-metadata; `--title` overrides it.
+subdirectories. `title` supplies PDF document metadata; `--title` overrides it.
 
 ### Shared preludes
 
@@ -108,14 +107,10 @@ with an explicit `return`:
 </Slide>
 ```
 
-An individual slide also loads the prelude named by the `index.json` beside it,
-including for SVG, PNG, tree, and terminal output. Use this to inspect and refine
-slides before exporting the complete deck:
-
-```sh
-gum slides/results.jsx -o results.png --ratio 2
-gum slides/results.jsx -f tree --stats
-```
+Manifest and prelude handling applies to directory input. A single file or stdin
+uses ordinary core and math bindings without loading neighboring `index.json`
+files. A slide rendered as an individual file must be self-contained. Pass the
+deck directory to use its prelude.
 
 The `gum-jsx-docs/decks/gum` sample deck demonstrates a shared page layout,
 reusable panels, and a five-page manifest.

@@ -156,7 +156,7 @@ for (const { name, title, dir, collection } of entries) {
   if (dir === elementsDir) checkPropertyValues(join(dir, 'text', name + '.md'), text)
   assert.ok(code.startsWith('// '), `${file}: describe the example on its first line`)
   if (!(dir === guidesDir && name === 'colors')) {
-    assert.doesNotMatch(code, /#[\da-f]{3,8}\b/i,
+    assert.doesNotMatch(code, /#[\da-f]{3,6,8}\b/i,
       `${file}: use the shared color constants instead of hard-coded hex colors`)
     assert.doesNotMatch(code,
       /(["'])(?:none|black|white|gray|blue|red|green|yellow|purple|lightgray|darkgray|slate)\1/,

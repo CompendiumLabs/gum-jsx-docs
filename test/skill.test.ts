@@ -126,7 +126,6 @@ test('documented gum commands render files from outside the workspace', () => {
   writeFileSync(join(slides, 'index.json'), JSON.stringify(deckManifest))
   writeFileSync(join(slides, deckManifest.prelude), deckPrelude)
   for (const file of deckManifest.slides) {
-    writeFileSync(join(output, file), source)
     writeFileSync(join(slides, file), deckSlide)
   }
   // Setup is documented separately; tests use installed workspace executables.
@@ -148,13 +147,11 @@ test('documented gum commands render files from outside the workspace', () => {
   expect(fragment.size.width).toBeGreaterThan(0)
   expect(fragment.size.height).toBeGreaterThan(0)
   const stats = result.stderr.trim().split('\n').map(line => JSON.parse(line))
-  expect(stats).toHaveLength(2)
+  expect(stats).toHaveLength(1)
   for (const entry of stats) expect(entry.layouts).toBeGreaterThan(0)
   for (const file of ['figure.pdf', 'talk.pdf']) {
     expect(readFileSync(join(output, file)).subarray(0, 5).toString()).toBe('%PDF-')
   }
-  expect([...readFileSync(join(output, 'results.png')).subarray(0, 8)])
-    .toEqual([137, 80, 78, 71, 13, 10, 26, 10])
 })
 
 test('rebuilds prune only obsolete generated pages and create a fresh portable ZIP', () => {

@@ -22,7 +22,7 @@ gum --help
 
 | Option | Meaning |
 |---|---|
-| [file] | Input JSX; omit or use - for stdin |
+| [file] | One JSX file or deck directory; omit or use - for stdin |
 | -f, --format | kitty, svg, png, pdf, tree, or json |
 | -o, --output | Output filename instead of stdout |
 | -W, --width | Exact viewport width in pixels |
@@ -38,8 +38,9 @@ gum --help
 | --stats | Layout counters on stderr |
 | -h, --help | Help |
 
-An explicit format wins. Otherwise a filename's extension chooses the format,
-and stdout defaults to **kitty**, even when piped or redirected. Choose `-f svg`
+An explicit format wins. Otherwise the output filename's extension chooses the
+format. For a file or stdin, stdout defaults to **kitty**, even when piped or
+redirected; directory input defaults to PDF. Choose `-f svg`
 when you want text on stdout, or `-f pdf` for binary PDF output. Kitty display
 requires a compatible terminal.
 
@@ -74,13 +75,19 @@ PNG and kitty use gum-jsx-png. **Text** is already encoded as SVG paths, so rast
 output does not need separate font registration. `--stats` writes machine-readable
 layout counters to stderr independently of the rendered output.
 
-PDF uses gum-jsx-pdf to write a single vector page at 96 pixels per inch, with
+PDF uses gum-jsx-pdf to write vector pages at 96 pixels per inch, with
 the same viewport, themes, and backgrounds. Text and math are outlines rather
 than selectable text; debug overlays are omitted. `--ratio` and `--id-prefix`
 do not affect PDF output. See the [PDF API](../../../../gum-jsx-pdf/README.md)
 for supported colors and page-size limits.
 
-Watch mode and deck commands are not implemented.
+The command accepts one input: a single JSX file or stdin for ordinary rendering,
+or a directory for a multipage PDF. Directory input loads its optional
+`index.json` manifest and shared prelude; other output formats are rejected.
+A single file or stdin uses ordinary core and math bindings without reading
+neighboring manifests. Pass a deck directory to evaluate slides with its prelude.
+
+Watch mode is not implemented.
 Only run trusted JSX; the evaluator executes JavaScript.
 
 ## TeX input

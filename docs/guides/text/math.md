@@ -87,13 +87,14 @@ See also [formula labels on plots](../../gallery/text/math_plot_labels.md) and [
 ## Library setup
 
 ```ts
-import { LayoutPass, Box, Svg, px, em, render_svg, evaluate } from '@gum-jsx/core'
+import { Evaluator, LayoutPass, Box, Svg, px, em, render_svg } from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
 
+const evaluator = new Evaluator({ scope: math })
 const fonts = math.createMathFonts()
 // Browser hosts preload before layout. Bun can also load local faces on demand.
 await fonts.load()
-const source = evaluate('<Latex>a+b=c</Latex>', { scope: math })
+const source = evaluator.evaluate('<Latex>a+b=c</Latex>')
 const viewport = new Svg({ font_size: px(36),
   children: new Box({ padding: em(0.5), children: source }) })
 const pass = new LayoutPass({ fonts: { value: fonts, version: fonts.version } })
