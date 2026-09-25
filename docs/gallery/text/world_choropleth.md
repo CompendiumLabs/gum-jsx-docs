@@ -6,11 +6,12 @@ description: "Color world countries by stable feature IDs on an Equal Earth map.
 # World countries
 
 `world_countries()` supplies the bundled 1:110m world atlas as a TopoJSON source.
-Pass it to **GeoMap** and use `fill-by-id` to highlight individual countries;
-unlisted features use the map's `fill`. IDs are strings, including leading zeros
+Pass it to [GeoMap](../../elements/text/GeoMap.md) and use
+`styles={id => ({ fill: highlights[id] })}` to highlight individual countries;
+an undefined fill inherits the map's `fill`. IDs are strings, including leading zeros
 such as `076` for Brazil and `036` for Australia.
 
-Every feature needs an explicit ID for these joins. The accessor supplies stable
+Every feature needs an explicit ID for this callback. The accessor supplies stable
 local IDs for the three atlas features that lack numeric IDs. It returns a fresh
 copy with the atlas version and URL recorded in `provenance`.
 

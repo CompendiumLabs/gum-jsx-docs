@@ -30,7 +30,7 @@ return (
       fit-to="sphere"
       map-padding={em(0.4)}
       fill={interp(white, green, 0.25)}
-      fill-by-id={highlights}
+      styles={id => ({ fill: highlights[id] })}
       border-color={white}
       border-width={em(0.03)}
       aria-label="World countries with five countries highlighted"

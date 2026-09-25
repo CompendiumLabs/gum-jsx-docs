@@ -32,6 +32,7 @@ return (
                 projection={card.projection}
                 fit-to="sphere"
                 map-padding={em(0.2)}
+                background={interp(white, blue, 0.15)}
                 fill={interp(blue, green, 0.5)}
                 border-color={white}
                 border-width={em(0.02)}

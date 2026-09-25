@@ -7,7 +7,7 @@ runnable JSX example.
 - [Guides](references/guides.md): the language, units, sizing, styles, helpers,
   fonts, math setup, and host rendering APIs.
 - [Elements by category](references/elements.md): layout, geometry, plotting,
-  networks, text, math, and special elements, including `PngImage`.
+  maps, networks, text, math, and special elements, including `PngImage`.
 - [Gallery](references/gallery.md): complete figures and focused examples,
   grouped by category. Start from a close example when it fits the request.
 
@@ -21,6 +21,10 @@ Useful starting points:
   [SymLine](references/elements/SymLine.md), and [BarPlot](references/elements/BarPlot.md).
   Plot axes use linear scales. `bounds="frame"` sizes and aligns the data area;
   leave space for the labels and titles outside it.
+- Maps: [Making maps](references/guides/maps.md) walks through sources, styles,
+  views, and annotations. [GeoMap](references/elements/GeoMap.md) documents the
+  element and its helpers. Start with `world_countries()` or `us_states()`;
+  see [projected city markers](references/gallery/globe_markers.md) for annotations.
 - Diagrams: [Network](references/elements/Network.md) connects named
   [Node](references/elements/Node.md) frames, or any element with an `id`, using
   [Edge](references/elements/Edge.md).

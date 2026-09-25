@@ -12,10 +12,11 @@ clipped. Filtering those null results keeps the markers and visible-city list
 in agreement.
 
 The shared `view.map_padding` value is a number of pixels for the helper. The
-**GeoMap** receives the same value through `map-padding={px(view.map_padding)}`.
+[GeoMap](../../elements/text/GeoMap.md) receives the same value through `map-padding={px(view.map_padding)}`.
 The map and its marker circles live in one fitted **Group**, with `mapSize` shared
 by the group and projection helper. Scaling the group keeps the geography and
-markers together. The ocean circle's diameter follows the same size and padding.
+markers together. The map's `background` fills the projected globe with an ocean
+color while leaving the surrounding canvas visible outside its circular outline.
 
 An **HStack** allocates space between that canvas and a **TextCol**. **Bullets**
 lays out the visible-city list, and the explanatory note follows it naturally;

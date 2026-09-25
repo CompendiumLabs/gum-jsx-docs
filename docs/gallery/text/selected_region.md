@@ -12,7 +12,7 @@ sets the view; the map still draws the surrounding geography within its viewport
 `prepare_geo_source()` prepares the atlas for the projection helper.
 `create_geo_projection(prepared, view, width, height)` returns the D3 projection
 used to transform the route's longitude/latitude positions into local pixels.
-The **GeoMap** receives matching projection, fit, padding, and viewport settings.
+The [GeoMap](../../elements/text/GeoMap.md) receives matching projection, fit, padding, and viewport settings.
 
 Only the geographic **Group** has fixed pixel dimensions, shared through
 `mapWidth` and `mapHeight`. Its `fit` scales the map, route, and markers together.

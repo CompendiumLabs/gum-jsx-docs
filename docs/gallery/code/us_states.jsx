@@ -1,11 +1,11 @@
 // Albers USA supplies the familiar Alaska and Hawaii insets; shared arcs draw interior lines once.
 const usStates = us_states()
 const regions = {
-  '06': red, // California
-  '48': yellow, // Texas
-  '36': green, // New York
-  '12': blue, // Florida
-  '53': purple, // Washington
+  '06': { fill: red }, // California
+  '48': { fill: yellow }, // Texas
+  '36': { fill: green }, // New York
+  '12': { fill: blue }, // Florida
+  '53': { fill: purple }, // Washington
 }
 
 return (
@@ -30,7 +30,7 @@ return (
       fit-to="data"
       map-padding={em(0.8)}
       fill={interp(white, green, 0.3)}
-      fill-by-id={regions}
+      styles={regions}
       border-mode="interior"
       border-color={white}
       border-width={em(0.055)}

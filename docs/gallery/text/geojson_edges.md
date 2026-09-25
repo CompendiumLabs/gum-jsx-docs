@@ -13,6 +13,7 @@ inner ring; the inner ring leaves a visible hole.
 The right source contains two polygons meeting at ±180° longitude. Rotating the
 equirectangular view by 180° puts their shared edge in the center. Both panels
 use `fit-to="data"` to fit their small sources instead of the whole sphere.
+See [GeoMap](../../elements/text/GeoMap.md) for the source and projection options.
 
 The panels share a two-column **Grid**. Each **Frame** contains a **TextCol**
 with a measured title and an aspect-sized map; **TextFigure** places the caption

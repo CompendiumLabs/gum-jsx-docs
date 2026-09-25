@@ -44,6 +44,10 @@ The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, PDF, an
 
 ## Maps gallery
 
+Start with [Making maps](./docs/guides/text/maps.md) for a source-to-annotation
+walkthrough, then use the [GeoMap reference](./docs/elements/text/GeoMap.md) for
+the full property list and helper details.
+
 The Maps category contains six standalone figures backed by `@gum-jsx/maps`:
 
 - [World countries](./docs/gallery/text/world_choropleth.md): ID-keyed country fills and shared borders.
@@ -193,6 +197,7 @@ rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unz
   [Bullets](./docs/elements/text/Bullets.md), and [Slide](./docs/elements/text/Slide.md).
 - Networks: [Network](./docs/elements/text/Network.md), [Node](./docs/elements/text/Node.md),
   and [Edge](./docs/elements/text/Edge.md).
+- Maps: [GeoMap](./docs/elements/text/GeoMap.md).
 - Math: [Latex](./docs/elements/text/Latex.md), [Tex](./docs/elements/text/Tex.md),
   [MathText](./docs/elements/text/MathText.md), [MathSymbol](./docs/elements/text/MathSymbol.md),
   [MathSpan](./docs/elements/text/MathSpan.md), [MathRow](./docs/elements/text/MathRow.md),
@@ -210,6 +215,8 @@ rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unz
   [Custom elements](./docs/guides/text/custom_elements.md), and [Fonts](./docs/guides/text/fonts.md).
 - Numeric helpers: [Math](./docs/guides/text/math_helpers.md), [Arrays](./docs/guides/text/arrays.md),
   [Vectors](./docs/guides/text/vectors.md), [Colors](./docs/guides/text/colors.md), [Random](./docs/guides/text/random.md).
+- Maps: [Making maps](./docs/guides/text/maps.md) covers sources, styles, views,
+  and projected annotations.
 
 ### Showcases
 
@@ -307,8 +314,8 @@ discover matching files each time; single-page reads do not load the rest of the
 collection. Text loaders remove optional machine-readable category lines. Page
 preparation appends a fenced JSX example and preserves relative Markdown links.
 
-Categories are core, layout, geometry, plotting, networks, text, math, and api. Every element page
-needs a `*Category*: ...` line directly below its title; topic pages may include one.
+Categories are core, layout, geometry, plotting, maps, networks, text, math, api,
+and special. Every page needs YAML front matter with `category` and `description`.
 A Markdown viewer should resolve relative links against the original text file and
 map them to its own routes, rather than requiring routes in the content. Raw files
 are exposed through the `./docs/elements/*`, `./docs/guides/*`, and

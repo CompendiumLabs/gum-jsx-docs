@@ -34,14 +34,6 @@ return (
       </TextCol>
       <HStack gap={em(1.5)} align="center">
         <Group width={px(mapSize)} height={px(mapSize)} grow={1.6} basis={0} fit>
-          <Circle
-            x={0.5} y={0.5}
-            anchor="center"
-            width={px(mapSize - 2 * view.map_padding)}
-            fill={interp(white, blue, 0.15)}
-            stroke={interp(white, blue, 0.3)}
-            stroke-width={em(0.05)}
-          />
           <GeoMap
             width={1} height={1}
             source={world}
@@ -49,6 +41,7 @@ return (
             rotate={view.rotate}
             fit-to={view.fit_to}
             map-padding={px(view.map_padding)}
+            background={interp(white, blue, 0.15)}
             fill={interp(blue, green, 0.6)}
             border-color={interp(white, blue, 0.06)}
             border-width={em(0.035)}

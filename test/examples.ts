@@ -29,7 +29,7 @@ const entries = [
   ...listGallery().map(entry => ({ ...entry, dir: galleryDir, collection: gallery })),
 ]
 const commonOnlyElements = new Set(['Spacer', 'Span'])
-const bindings = { ...core, ...math }
+const bindings = { ...core, ...math, ...maps }
 
 for (const [name, value] of Object.entries(bindings)) {
   if (name === 'MathElement') continue // Abstract base; documented with custom math sources.
