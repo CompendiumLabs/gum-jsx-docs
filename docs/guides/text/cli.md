@@ -23,6 +23,7 @@ gum --help
 | Option | Meaning |
 |---|---|
 | [file] | One JSX file or deck directory; omit or use - for stdin |
+| --plugin | Load extra bindings from a package or local module; repeat for more |
 | -f, --format | kitty, svg, png, pdf, tree, or json |
 | -o, --output | Output filename instead of stdout |
 | -W, --width | Exact viewport width in pixels |
@@ -66,6 +67,14 @@ Selection is supported for PNG and kitty in both CLI commands.
 SVG/tree/JSON allow zero-sized axes; PNG/PDF/kitty require positive dimensions.
 `--precision` applies to SVG, PDF, and tree numeric output, and to the SVG used for
 PNG and kitty. It does not change the laid-out geometry.
+
+Core bindings are mandatory and math is included by default. Add
+`--plugin @gum-jsx/maps` or `--plugin ./elements.ts` to load a module's named
+exports into the evaluator. Packages must be installed in the current project;
+package names and relative paths resolve from the current working directory.
+Repeat the option to load more modules. Later plugins override earlier bindings,
+and default exports are ignored. Plugin bindings are available in ordinary
+files, stdin, deck preludes, and slides.
 
 A bare element is wrapped in **Svg** by the CLI. The core evaluator itself does not
 add this wrapper. Input and output paths are relative to the current directory.

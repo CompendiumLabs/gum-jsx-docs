@@ -43,6 +43,19 @@ Inspect a rendered PNG when image viewing is available. Use `-f tree` or `-f jso
 to inspect allocations and overflow alongside temporary `debug` overlays. If
 visual inspection is unavailable, report the checks actually performed.
 
+## Plugins
+
+Core bindings are mandatory and math is the default bundled plugin. Add
+`--plugin @gum-jsx/maps` for an installed package or `--plugin ./elements.ts`
+for a local JavaScript/TypeScript module. Package names and relative module
+paths resolve from the current working directory, not the CLI installation or
+the input's directory. Packages must already be installed in that project.
+
+Named exports become available in the evaluated source; default exports are
+ignored. Repeat `--plugin` to load multiple modules. Later exports override
+earlier bindings, including math and core names. The same plugin bindings are
+available to a file, stdin, and every prelude and slide in a deck.
+
 ## Multipage PDFs and decks
 
 Pass one directory of slides to render a multipage PDF:
