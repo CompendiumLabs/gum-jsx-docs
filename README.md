@@ -42,6 +42,23 @@ The editor includes a Math category with element references and topics for
 [plot labels](./docs/gallery/text/math_plot_labels.md), and [slides](./docs/gallery/text/math_slides.md).
 The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, PDF, and kitty.
 
+## Maps gallery
+
+The Maps category contains six standalone figures backed by `@gum-jsx/maps`:
+
+- [World countries](./docs/gallery/text/world_choropleth.md): ID-keyed country fills and shared borders.
+- [Projection gallery](./docs/gallery/text/projection_gallery.md): four projections of the same atlas.
+- [US states](./docs/gallery/text/us_states.md): FIPS IDs and Albers USA insets.
+- [Projected city markers](./docs/gallery/text/globe_markers.md): matching overlays and globe clipping.
+- [Selected-region fit](./docs/gallery/text/selected_region.md): a regional view with a projected route.
+- [GeoJSON edge cases](./docs/gallery/text/geojson_edges.md): inline fixtures with holes and antimeridian cuts.
+
+The CLI includes maps by default. From the workspace root, render an example with:
+
+```sh
+bun run gum gum-jsx-docs/docs/gallery/code/world_choropleth.jsx -o /tmp/world.svg
+```
+
 ## Content structure
 
 The three reference collections use the same paired-file structure. Focused visual
@@ -71,7 +88,7 @@ scripts/skill.ts      Generate the portable skill folder and .skill archive
 There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
 `/docs` route consumes the catalogs to show SVG cards and editable, live-rendered
 code/figure popups. There are no runtime package dependencies;
-gum-jsx-core and gum-jsx-math are development dependencies for checking examples.
+gum-jsx-core, gum-jsx-math, and gum-jsx-maps are development dependencies for checking examples.
 
 Every reference Markdown file starts with YAML front matter containing a
 `category` and a one-sentence `description`. The catalog uses these fields for

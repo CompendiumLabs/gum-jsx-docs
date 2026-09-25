@@ -3,6 +3,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
+import * as maps from '@gum-jsx/maps'
 import { elementsDir, guidesDir, galleryDir, packageRoot, listElements, listGuides, listGallery,
   getElements, getTopics, getGuides, getGallery, prepareElementPage, prepareTopicPage } from '../src'
 
@@ -141,6 +142,7 @@ const canvas = { width: 640, height: 480 }
 checkLinks(join(packageRoot, 'README.md'))
 let drawings = 0
 const fonts = math.createMathFonts()
+const evaluator = new core.Evaluator({ scope: { ...math, ...maps } })
 const pass = new core.LayoutPass({ fonts: { value: fonts, version: fonts.version } })
 for (const { name, title, dir, collection } of entries) {
   const code = collection.code[name]!
@@ -163,7 +165,7 @@ for (const { name, title, dir, collection } of entries) {
       `${file}: use shared color constants without string quotes`)
   }
   checkLinks(join(dir, 'text', name + '.md'))
-  const element: unknown = core.evaluate(code, { name: file, scope: math })
+  const element: unknown = evaluator.evaluate(code, { name: file })
   assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
   // Match Studio: finite offers, with natural content height.
   const fragment = pass.layout(core.make_viewport(element), core.make_request({

@@ -45,15 +45,17 @@ visual inspection is unavailable, report the checks actually performed.
 
 ## Plugins
 
-Core bindings are mandatory and math is the default bundled plugin. Add
-`--plugin @gum-jsx/maps` for an installed package or `--plugin ./elements.ts`
+Core bindings are mandatory, and math and maps are bundled by default. Map
+elements and helpers, including `GeoMap`, `world_countries()`, and `us_states()`,
+are available without extra flags. Add `--plugin <package>` for another installed
+package or `--plugin ./elements.ts`
 for a local JavaScript/TypeScript module. Package names and relative module
 paths resolve from the current working directory, not the CLI installation or
 the input's directory. Packages must already be installed in that project.
 
 Named exports become available in the evaluated source; default exports are
 ignored. Repeat `--plugin` to load multiple modules. Later exports override
-earlier bindings, including math and core names. The same plugin bindings are
+earlier bindings, including math, maps, and core names. The same plugin bindings are
 available to a file, stdin, and every prelude and slide in a deck.
 
 ## Multipage PDFs and decks

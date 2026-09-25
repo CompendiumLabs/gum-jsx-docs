@@ -51,6 +51,7 @@ test('the skill includes every element, guide, and gallery page exactly once wit
   expect(files.has('references/elements/special.md')).toBe(true)
   expect(files.has('references/guides/sizing.md')).toBe(true)
   expect(files.has('references/gallery/math.md')).toBe(true)
+  expect(files.has('references/gallery/maps.md')).toBe(true)
 })
 
 test('all packaged references are reachable from SKILL.md without leaving the skill', () => {

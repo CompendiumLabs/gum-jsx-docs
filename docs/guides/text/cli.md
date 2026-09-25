@@ -68,9 +68,10 @@ SVG/tree/JSON allow zero-sized axes; PNG/PDF/kitty require positive dimensions.
 `--precision` applies to SVG, PDF, and tree numeric output, and to the SVG used for
 PNG and kitty. It does not change the laid-out geometry.
 
-Core bindings are mandatory and math is included by default. Add
-`--plugin @gum-jsx/maps` or `--plugin ./elements.ts` to load a module's named
-exports into the evaluator. Packages must be installed in the current project;
+Core bindings are mandatory, and math and maps are included by default.
+`GeoMap`, `world_countries()`, and `us_states()` are available without extra flags.
+Add `--plugin <package>` or `--plugin ./elements.ts` to load another module's named
+exports into the evaluator. Extra packages must be installed in the current project;
 package names and relative paths resolve from the current working directory.
 Repeat the option to load more modules. Later plugins override earlier bindings,
 and default exports are ignored. Plugin bindings are available in ordinary
