@@ -14,5 +14,9 @@ territories. It fits the data by default. `border-mode="interior"` draws only
 shared state boundaries; the filled shapes supply the coastlines. Interior
 borders require a TopoJSON source such as this atlas.
 
+**TextFigure** composes a measured heading, an aspect-sized **GeoMap**, and a
+wrapping caption. The outer width and base typography set the design scale;
+padding, gaps, and map details use ems, and the content determines the height.
+
 See [world countries](world_choropleth.md) for country-level fills and
 [GeoJSON edge cases](geojson_edges.md) for small sources defined directly in JSX.

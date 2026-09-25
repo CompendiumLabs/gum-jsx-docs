@@ -18,5 +18,10 @@ The `equalEarth` projection fits the whole sphere. Shared TopoJSON borders are
 drawn once, after the country fills. The CLI includes the map elements and data
 accessors by default, so this example runs without imports or plugin flags.
 
+**TextFigure** places the heading, aspect-sized map, and measured caption in a
+column. Only the outer design width and base typography are specified; text and
+spacing determine the remaining layout. `fit` scales the finished composition
+for a smaller preview without changing the map's proportions.
+
 Compare the [projection gallery](projection_gallery.md), try
 [US states](us_states.md), or zoom with a [selected-region fit](selected_region.md).

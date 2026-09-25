@@ -14,5 +14,10 @@ sets the view; the map still draws the surrounding geography within its viewport
 used to transform the route's longitude/latitude positions into local pixels.
 The **GeoMap** receives matching projection, fit, padding, and viewport settings.
 
+Only the geographic **Group** has fixed pixel dimensions, shared through
+`mapWidth` and `mapHeight`. Its `fit` scales the map, route, and markers together.
+**TextFigure** measures the heading, geographic canvas, and caption in order;
+changing the prose does not require shifting the map or moving the footer.
+
 A polyline and circles connect Berlin, Prague, and Vienna. For a point helper
 that also checks visibility on a globe, see [projected city markers](globe_markers.md).

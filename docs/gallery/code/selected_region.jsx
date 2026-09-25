@@ -1,12 +1,15 @@
 // Fit to stable IDs, then use the exact same projection to place a custom route.
 const world = world_countries()
 const prepared = prepare_geo_source(world)
+// Keep the projection and overlays in one local canvas, then fit it as a unit.
+const mapWidth = 850
+const mapHeight = 480
 const view = {
   projection: 'equalEarth',
   fit_to: { ids: ['276', '616', '203', '040', '756'] }, // DE, PL, CZ, AT, CH
   map_padding: 25,
 }
-const projection = create_geo_projection(prepared, view, 850, 480)
+const projection = create_geo_projection(prepared, view, mapWidth, mapHeight)
 const route = [
   ['Berlin', 13.405, 52.52],
   ['Prague', 14.421, 50.088],
@@ -14,52 +17,45 @@ const route = [
 ].map(([name, lon, lat]) => ({ name, xy: projection([lon, lat]) }))
 
 return (
-  <Svg width={px(1000)} height={px(640)}>
-    <Group width={px(1000)} height={px(640)}>
-      <Rect width={px(1000)} height={px(640)} fill={white} stroke={none} />
-      <Text x={px(40)} y={px(27)} font-size={px(30)} font-weight="bold" color={slate}>
+  <TextFigure
+    width={em(44)} font-size={px(20)} color={slate} fit
+    padding={em(1.5)} background={white} gap={em(1)}
+    caption="A selected fit is stable even if unrelated countries are later added to the source."
+    caption-font-size={em(0.75)} caption-color={interp(slate, white, 0.35)}
+  >
+    <TextCol gap={em(0.3)}>
+      <Text font-size={em(1.5)} font-weight={bold}>
         Selected-region fit
       </Text>
-      <Text x={px(40)} y={px(68)} font-size={px(15)} color={interp(slate, white, 0.35)}>
+      <Text font-size={em(0.75)} color={interp(slate, white, 0.35)}>
         Fit five country IDs · reuse the projection for a Berlin–Prague–Vienna route
       </Text>
-      <Group x={px(75)} y={px(108)} width={px(850)} height={px(480)}>
-        <GeoMap
-          width={px(850)}
-          height={px(480)}
-          source={world}
-          projection={view.projection}
-          fit-to={view.fit_to}
-          map-padding={px(view.map_padding)}
-          fill={interp(white, green, 0.3)}
-          border-color={white}
-          border-width={px(1.2)}
-          aria-label="Central Europe with a three-city route"
+    </TextCol>
+    <Group width={px(mapWidth)} height={px(mapHeight)} fit>
+      <GeoMap
+        width={1} height={1}
+        source={world}
+        projection={view.projection}
+        fit-to={view.fit_to}
+        map-padding={px(view.map_padding)}
+        fill={interp(white, green, 0.3)}
+        border-color={white}
+        border-width={em(0.06)}
+        aria-label="Central Europe with a three-city route"
+      />
+      <Polyline
+        width={1} height={1}
+        points={route.map(place => [px(place.xy[0]), px(place.xy[1])])}
+        fill={none} stroke={red} stroke-width={em(0.15)}
+      />
+      {route.map(place => (
+        <Circle
+          x={px(place.xy[0])} y={px(place.xy[1])}
+          anchor="center"
+          width={em(0.6)}
+          fill={red} stroke={white} stroke-width={em(0.1)}
         />
-        <Polyline
-          width={px(850)}
-          height={px(480)}
-          points={route.map(place => [px(place.xy[0]), px(place.xy[1])])}
-          fill={none}
-          stroke={red}
-          stroke-width={px(3)}
-        />
-        {route.map(place => (
-          <Circle
-            x={px(place.xy[0])}
-            y={px(place.xy[1])}
-            anchor="center"
-            width={px(12)}
-            height={px(12)}
-            fill={red}
-            stroke={white}
-            stroke-width={px(2)}
-          />
-        ))}
-      </Group>
-      <Text x={px(40)} y={px(606)} font-size={px(14)} color={interp(slate, white, 0.35)}>
-        A selected fit is stable even if unrelated countries are later added to the source.
-      </Text>
+      ))}
     </Group>
-  </Svg>
+  </TextFigure>
 )

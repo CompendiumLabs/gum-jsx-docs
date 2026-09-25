@@ -43,61 +43,55 @@ const dateline = geojson({
     },
   ],
 })
+const panels = [
+  {
+    title: 'Polygon with a hole',
+    source: donut,
+    fill: interp(blue, green, 0.7),
+    border_color: interp(slate, green, 0.3),
+    aria_label: 'GeoJSON island polygon with an empty lake',
+  },
+  {
+    title: 'Antimeridian split',
+    source: dateline,
+    rotate: [180, 0, 0],
+    fill: interp(red, yellow, 0.4),
+    border_color: interp(slate, red, 0.45),
+    aria_label: 'Two GeoJSON polygons meeting at the antimeridian',
+  },
+]
 
 return (
-  <Svg width={px(1100)} height={px(620)}>
-    <Group width={px(1100)} height={px(620)}>
-      <Rect width={px(1100)} height={px(620)} fill={white} stroke={none} />
-      <Text x={px(35)} y={px(24)} font-size={px(30)} font-weight="bold" color={slate}>
+  <TextFigure
+    width={em(48)} font-size={px(20)} color={slate} fit
+    padding={em(1.5)} background={white} gap={em(1)}
+    caption="The left ring uses RFC outer/inner winding; the right source cuts the shape at ±180°."
+    caption-font-size={em(0.75)} caption-color={interp(slate, white, 0.35)}
+  >
+    <TextCol gap={em(0.3)}>
+      <Text font-size={em(1.5)} font-weight={bold}>
         GeoJSON edge cases
       </Text>
-      <Text x={px(35)} y={px(66)} font-size={px(15)} color={interp(slate, white, 0.35)}>
+      <Text font-size={em(0.75)} color={interp(slate, white, 0.35)}>
         Local RFC 7946 fixtures · winding normalization · data fitting
       </Text>
-      <Group x={px(35)} y={px(117)} width={px(495)} height={px(430)}>
-        <Rect width={px(495)} height={px(430)} fill={interp(white, green, 0.06)} stroke={gray} />
-        <Text x={px(19)} y={px(16)} font-size={px(20)} font-weight="bold" color={interp(slate, green, 0.3)}>
-          Polygon with a hole
-        </Text>
-        <GeoMap
-          x={px(16)}
-          y={px(62)}
-          width={px(463)}
-          height={px(330)}
-          source={donut}
-          projection="equirectangular"
-          fit-to="data"
-          map-padding={px(16)}
-          fill={interp(blue, green, 0.7)}
-          border-color={interp(slate, green, 0.3)}
-          border-width={px(1.5)}
-          aria-label="GeoJSON island polygon with an empty lake"
-        />
-      </Group>
-      <Group x={px(570)} y={px(117)} width={px(495)} height={px(430)}>
-        <Rect width={px(495)} height={px(430)} fill={interp(white, green, 0.06)} stroke={gray} />
-        <Text x={px(19)} y={px(16)} font-size={px(20)} font-weight="bold" color={interp(slate, green, 0.3)}>
-          Antimeridian split
-        </Text>
-        <GeoMap
-          x={px(16)}
-          y={px(62)}
-          width={px(463)}
-          height={px(330)}
-          source={dateline}
-          projection="equirectangular"
-          rotate={[180, 0, 0]}
-          fit-to="data"
-          map-padding={px(16)}
-          fill={interp(red, yellow, 0.4)}
-          border-color={interp(slate, red, 0.45)}
-          border-width={px(1.5)}
-          aria-label="Two GeoJSON polygons meeting at the antimeridian"
-        />
-      </Group>
-      <Text x={px(35)} y={px(565)} font-size={px(14)} color={interp(slate, white, 0.35)}>
-        The left ring uses RFC outer/inner winding; the right source cuts the shape at ±180°.
-      </Text>
-    </Group>
-  </Svg>
+    </TextCol>
+    <Grid columns={2} gap={em(1)} align="fill">
+      {panels.map(({ title, ...mapProps }) => (
+        <Frame padding={em(0.9)} background={interp(white, green, 0.06)} border-color={gray}>
+          <TextCol gap={em(0.6)}>
+            <Text font-weight={bold} color={interp(slate, green, 0.3)}>{title}</Text>
+            <GeoMap
+              aspect={1.4}
+              projection="equirectangular"
+              fit-to="data"
+              map-padding={em(0.8)}
+              border-width={em(0.075)}
+              {...mapProps}
+            />
+          </TextCol>
+        </Frame>
+      ))}
+    </Grid>
+  </TextFigure>
 )

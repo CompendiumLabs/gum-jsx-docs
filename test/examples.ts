@@ -132,6 +132,7 @@ function checkComposition(fragment: core.Fragment, name: string, context: string
 
 // More available room must not add a blank strip to content-sized examples.
 const contentSizedExamples = new Set([
+  ...gallery.cats.maps!,
   ...Object.keys(comparisonRows), 'scenic_route', 'shape_algebra', 'fonts', 'gum',
   'math', 'math_arrays', 'math_boxes', 'math_decorations', 'math_expressions', 'math_fonts', 'aligned_math',
 ])
@@ -218,8 +219,12 @@ for (const { name, title, dir, collection } of entries) {
       const fitted = pass.layout(core.make_viewport(element), core.make_request({
         width: core.exact(width!), height: core.exact(height!),
       }))
-      assert.ok(Object.values(fitted.overflow).every(value => value <= 3),
-        `${file} at ${width} × ${height}: fitted scene overflow`)
+      // Check visible ink before the outer Svg clip. A regional map deliberately
+      // clips distant geography, which still appears in unclipped overflow data.
+      const ink = core.union_rects(...fitted.children.map(child =>
+        core.transform_rect(child.fragment.ink, child.offset, child.transform)))
+      assert.ok(Object.values(core.bounds_overflow(fitted.size, ink)).every(value => value <= 3),
+        `${file} at ${width} × ${height}: fitted scene ink exceeds the viewport`)
       checkPlotAreas(fitted, `${file} at ${width} × ${height}`)
     }
   }

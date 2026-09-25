@@ -9,33 +9,31 @@ const highlights = {
 }
 
 return (
-  <Svg width={px(1000)} height={px(600)}>
-    <Group width={px(1000)} height={px(600)}>
-      <Rect width={px(1000)} height={px(600)} fill={white} stroke={none} />
-      <Text x={px(40)} y={px(28)} font-size={px(30)} font-weight="bold" color={slate}>
+  <TextFigure
+    width={em(44)} font-size={px(20)} color={slate} fit
+    padding={em(1.5)} background={white} gap={em(1)}
+    caption="Country colors are keyed by the atlas IDs, independent of feature order."
+    caption-font-size={em(0.75)} caption-color={interp(slate, white, 0.35)}
+  >
+    <TextCol gap={em(0.3)}>
+      <Text font-size={em(1.5)} font-weight={bold}>
         World countries
       </Text>
-      <Text x={px(40)} y={px(69)} font-size={px(15)} color={interp(slate, white, 0.35)}>
+      <Text font-size={em(0.75)} color={interp(slate, white, 0.35)}>
         Equal Earth · 110m topology · country ID fills
       </Text>
-      <GeoMap
-        x={px(30)}
-        y={px(109)}
-        width={px(940)}
-        height={px(430)}
-        source={world}
-        projection="equalEarth"
-        fit-to="sphere"
-        map-padding={px(8)}
-        fill={interp(white, green, 0.25)}
-        fill-by-id={highlights}
-        border-color={white}
-        border-width={px(0.6)}
-        aria-label="World countries with five countries highlighted"
-      />
-      <Text x={px(40)} y={px(552)} font-size={px(14)} color={interp(slate, white, 0.35)}>
-        Country colors are keyed by the atlas IDs, independent of feature order.
-      </Text>
-    </Group>
-  </Svg>
+    </TextCol>
+    <GeoMap
+      aspect={2.2}
+      source={world}
+      projection="equalEarth"
+      fit-to="sphere"
+      map-padding={em(0.4)}
+      fill={interp(white, green, 0.25)}
+      fill-by-id={highlights}
+      border-color={white}
+      border-width={em(0.03)}
+      aria-label="World countries with five countries highlighted"
+    />
+  </TextFigure>
 )
