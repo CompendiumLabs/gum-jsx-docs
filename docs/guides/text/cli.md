@@ -22,13 +22,12 @@ gum --help
 
 | Option | Meaning |
 |---|---|
-| [file] | One JSX file or deck directory; omit or use - for stdin |
+| [files...] | JSX files or one deck directory; omit or use - for stdin |
 | --plugin | Load extra bindings from a package or local module; repeat for more |
 | -f, --format | kitty, svg, png, pdf, tree, or json |
 | -o, --output | Output filename instead of stdout |
 | -W, --width | Exact viewport width in pixels |
 | -H, --height | Exact viewport height in pixels |
-| --natural | Disable the default 640 × 480 offer for JSX |
 | --ratio | Positive PNG/kitty sampling ratio; default 1 |
 | --select | PNG/kitty crop as `x,y,width,height` in source-image pixels |
 | --background | Viewport background paint |
@@ -41,7 +40,7 @@ gum --help
 
 An explicit format wins. Otherwise the output filename's extension chooses the
 format. For a file or stdin, stdout defaults to **kitty**, even when piped or
-redirected; directory input defaults to PDF. Choose `-f svg`
+redirected; directories and multiple files default to PDF. Choose `-f svg`
 when you want text on stdout, or `-f pdf` for binary PDF output. Kitty display
 requires a compatible terminal.
 
@@ -54,7 +53,7 @@ See [Themes](./themes.md).
 
 With neither viewport override, `gum` offers 640 × 480 pixels. Unsized canvases
 use this budget, explicit source dimensions still win, and content may hug or
-grow beyond the offer. Use `--natural` for unbounded intrinsic measurement.
+grow beyond the offer.
 Viewport overrides are independent: when either is supplied, the other axis
 uses source dimensions or hugs content. `-W 320` reflows a document without
 fixing its height. Overriding width does not uniformly scale fonts and strokes.

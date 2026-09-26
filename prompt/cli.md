@@ -30,7 +30,7 @@ gum figure.jsx -f json -o figure.json
 For a file or stdin, choose `-f svg` explicitly for SVG on stdout; the CLI defaults
 to kitty graphics even when redirected. Output extensions select SVG, PNG, or PDF when `-f` is
 omitted. With neither `-W` nor `-H`, JSX gets a 640 × 480 offer; content can hug
-or exceed it, and authored dimensions still win. `--natural` removes that offer.
+or exceed it, and authored dimensions still win.
 `-W` and `-H` impose exact viewport dimensions; an unspecified axis uses source
 dimensions or hugs content. Use `fit` on the composition for uniform scaling.
 `--ratio` changes raster resolution without changing layout. For a detailed PNG
