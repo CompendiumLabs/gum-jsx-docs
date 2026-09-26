@@ -1,13 +1,11 @@
 import { afterAll, expect, test } from 'bun:test'
 import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync,
-  symlinkSync, writeFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { delimiter, dirname, join } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
-import { getElements, getGuides, getGallery, packageRoot, promptDir } from '../src'
-import { buildSkill, buildSkillFiles } from '../scripts/skill'
+import { buildSkillFiles, getElements, getGuides, getGallery, packageRoot, promptDir } from '../src'
 
 const scratch = mkdtempSync(join(tmpdir(), 'gum-jsx-skill-test-'))
 afterAll(() => rmSync(scratch, { recursive: true, force: true }))
@@ -153,83 +151,4 @@ test('documented gum commands render files from outside the workspace', () => {
   for (const file of ['figure.pdf', 'talk.pdf']) {
     expect(readFileSync(join(output, file)).subarray(0, 5).toString()).toBe('%PDF-')
   }
-})
-
-test('rebuilds prune only obsolete generated pages and create a fresh portable ZIP', () => {
-  const output = join(scratch, 'custom output')
-  buildSkill({ output, archive: false })
-  const manifest = join(output, '.gum-jsx-generated.json')
-  const prior = JSON.parse(readFileSync(manifest, 'utf8')) as string[]
-  writeFileSync(join(output, 'references', 'retired.md'), 'obsolete generated page')
-  writeFileSync(manifest, JSON.stringify([...prior, 'references/retired.md']))
-  writeFileSync(join(output, 'notes.txt'), 'local notes')
-
-  // An existing ZIP must be replaced, not updated with potentially stale entries.
-  const oldZip = spawnSync('zip', ['-q', `${output}.skill`, 'notes.txt'], { cwd: output })
-  expect(oldZip.status).toBe(0)
-  const result = buildSkill({ output })
-  expect(result.archive).toBe(`${output}.skill`)
-  expect(existsSync(join(output, 'references', 'retired.md'))).toBe(false)
-  expect(readFileSync(join(output, 'notes.txt'), 'utf8')).toBe('local notes')
-  const zipTest = spawnSync('unzip', ['-tq', result.archive!], { encoding: 'utf8' })
-  expect(zipTest.status).toBe(0)
-  const zipList = spawnSync('unzip', ['-Z1', result.archive!], { encoding: 'utf8' })
-  expect(zipList.status).toBe(0)
-  const entries = zipList.stdout.trim().split('\n').filter(file => !file.endsWith('/')).sort()
-  expect(entries).toEqual([...files.keys()].map(file => `gum-jsx/${file}`).sort())
-  for (const [file, content] of files) expect(readFileSync(join(output, file), 'utf8')).toBe(content)
-  const entrypoint = spawnSync('unzip', ['-p', result.archive!, 'gum-jsx/SKILL.md'], { encoding: 'utf8' })
-  expect(entrypoint.stdout).toBe(files.get('SKILL.md')!)
-})
-
-test('the generator refuses unrelated output directories, unsafe manifests, and symlinks', () => {
-  const unrelated = join(scratch, 'unrelated')
-  mkdirSync(unrelated)
-  writeFileSync(join(unrelated, 'keep.txt'), 'keep')
-  expect(() => buildSkill({ output: unrelated, archive: false })).toThrow('non-generated directory')
-  expect(readdirSync(unrelated)).toEqual(['keep.txt'])
-
-  const poisoned = join(scratch, 'poisoned')
-  mkdirSync(poisoned)
-  writeFileSync(join(poisoned, '.gum-jsx-generated.json'), JSON.stringify(['../unrelated/keep.txt']))
-  expect(() => buildSkill({ output: poisoned, archive: false })).toThrow('Invalid skill build manifest')
-  expect(readFileSync(join(unrelated, 'keep.txt'), 'utf8')).toBe('keep')
-
-  const linked = join(scratch, 'linked')
-  buildSkill({ output: linked, archive: false })
-  const destination = join(scratch, 'must-not-be-created')
-  rmSync(join(linked, 'SKILL.md'))
-  symlinkSync(destination, join(linked, 'SKILL.md'))
-  expect(() => buildSkill({ output: linked, archive: false })).toThrow('symlink')
-  expect(existsSync(destination)).toBe(false)
-})
-
-function cli(args: string[]) {
-  return spawnSync(process.execPath, [join(packageRoot, 'scripts', 'skill.ts'), ...args], {
-    cwd: scratch, encoding: 'utf8', env: { ...process.env, PATH: join(scratch, 'no-executables') },
-  })
-}
-
-test('CLI custom outputs are cwd-relative, sources are package-relative, and directory-only needs no zip', () => {
-  const result = cli(['--output', 'directory only', '--no-archive'])
-  expect(result.status).toBe(0)
-  const output = join(scratch, 'directory only')
-  expect(readFileSync(join(output, 'SKILL.md'), 'utf8')).toBe(files.get('SKILL.md')!)
-  expect(existsSync(`${output}.skill`)).toBe(false)
-  const help = cli(['--help'])
-  expect(help.status).toBe(0)
-  expect(help.stdout).toContain(join(packageRoot, 'skills', 'gum-jsx'))
-  expect(cli(['--unknown']).status).toBe(1)
-})
-
-test('a missing zip executable fails clearly before modifying an existing build', () => {
-  const output = join(scratch, 'zip unavailable')
-  buildSkill({ output, archive: false })
-  writeFileSync(join(output, 'SKILL.md'), 'previous build')
-  writeFileSync(`${output}.skill`, 'previous archive')
-  const result = cli(['-o', output])
-  expect(result.status).toBe(1)
-  expect(result.stderr).toContain('Install zip or use --no-archive')
-  expect(readFileSync(join(output, 'SKILL.md'), 'utf8')).toBe('previous build')
-  expect(readFileSync(`${output}.skill`, 'utf8')).toBe('previous archive')
 })

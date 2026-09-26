@@ -19,7 +19,6 @@
   },
   "scripts": {
     "test": "bun test/examples.ts && bun test ./test",
-    "skill": "bun scripts/skill.ts",
     "plugin:build": "bun scripts/plugin-build.ts",
     "plugin:pack": "bun scripts/plugin-pack.ts",
     "typecheck": "tsc --noEmit"
@@ -54,7 +53,6 @@
     "LICENSE",
     "docs",
     "prompt",
-    "visual-tests",
-    "scripts/skill.ts"
+    "visual-tests"
   ]
 }

@@ -82,11 +82,14 @@ docs/
 visual-tests/
   code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
-src/skill.ts          Shared prompt and reference assembly for CLI and MCP hosts
+src/skill.ts          Shared prompt and reference assembly for the plugin and MCP
 test/examples.ts      Validate links, coverage, and rendering at several widths
-test/skill.test.ts     Test skill packaging and CLI behavior
+test/skill.test.ts     Test skill content and documented Gum CLI commands
+test/plugin.test.ts    Test plugin builds and ZIP packaging
 prompt/               Maintained Gum authoring and skill prompt pieces
-scripts/skill.ts      Generate the portable skill folder and .skill archive
+scripts/plugin-build.ts Generate the skill inside the plugin
+scripts/plugin-pack.ts  Rebuild the plugin skill and package the plugin ZIP
+plugins/gum-jsx/      Plugin manifest, assets, and generated skill files
 ```
 
 There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
@@ -120,27 +123,28 @@ figures can set a design height, aspect, and font size; Studio scales the comple
 SVG for display. Compact content may hug its children, and adaptive layouts can
 use fill or wrapping when the composition calls for it.
 
-## Generate the skill package
+## Build the plugin
 
-The skill-generation tooling combines authoring prompts with the layout, units,
-JSX, CLI, and rendering references. The skill uses the `gum` commands directly
-when `@gum-jsx/cli` is on PATH, with workspace scripts as an alternative.
-Build the skill from the workspace root or this package directory:
+The [Gum JSX plugin](./plugins/gum-jsx/README.md) combines authoring prompts with
+the layout, units, JSX, CLI, and rendering references. Its skill uses the `gum`
+commands directly when `@gum-jsx/cli` is on PATH, with workspace scripts as an
+alternative. From this package directory:
 
 ```sh
-bun run skill
+bun run plugin:build
+bun run plugin:pack
 ```
 
-This writes `gum-jsx-docs/skills/gum-jsx/SKILL.md` and its references, plus
-`gum-jsx-docs/skills/gum-jsx.skill` (a ZIP with a `gum-jsx/` root folder).
-The folder can be used by skill-aware coding agents; the `.skill` archive can be
-imported by clients that accept that format. Generated outputs are ignored by
-Git; maintain the source prompts and docs, then rebuild.
+`plugin:build` writes `plugins/gum-jsx/skills/gum-jsx/SKILL.md` and its references.
+`plugin:pack` rebuilds that directory and creates `dist/gum-jsx-plugin.zip`, with
+the plugin manifest at the archive root. Packaging requires the `zip` executable;
+building the directory alone does not.
 
-The [Gum JSX plugin](./plugins/gum-jsx/README.md) lives in this repository. Its
-skill is identical to the standalone generated skill, with no MCP connection.
-Run `bun run plugin:pack` from this package directory to build a ChatGPT upload
-ZIP at `dist/gum-jsx-plugin.zip`.
+The plugin directory is the sole generated authoring-skill output. Commit its
+generated skill files alongside changes to the maintained prompts and docs so
+GitHub marketplace installations include the complete plugin. The ZIP remains
+ignored by Git and can be attached to a release. Rebuilds replace the generated
+skill directory, so make edits in `prompt/` and `docs/` rather than in that output.
 
 The entrypoint is assembled from [head](./prompt/head.md),
 [intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md),
@@ -152,27 +156,19 @@ is included, with local links rewritten to the relevant entry or embedded JSX
 example. The separate PDF package's API link points to its upstream README.
 The generated reference indexes include each page's description alongside its link.
 
-The script locates inputs and its default output relative to this package,
-independently of the caller's working directory. From the workspace root:
+The scripts locate inputs and outputs relative to this package, independently
+of the caller's working directory. From the workspace root:
 
 ```sh
-bun gum-jsx-docs/scripts/skill.ts -o /tmp/gum-skill/gum-jsx
-bun gum-jsx-docs/scripts/skill.ts -o /tmp/gum-skill/gum-jsx --no-archive
+bun gum-jsx-docs/scripts/plugin-build.ts
+bun gum-jsx-docs/scripts/plugin-pack.ts
 ```
-
-An explicit output path is relative to the caller's directory; its archive is
-`<output>.skill`. Archive generation requires the `zip` executable. Use
-`--no-archive` for a directory-only build without that dependency. Rebuilds track
-their generated files in `.gum-jsx-generated.json`, remove retired generated
-pages, and preserve unrelated local files. Archives contain only the current
-skill pages, never that manifest or local notes. A nonempty destination without
-a build manifest is rejected.
 
 `getSkillPrompt()` returns the shared authoring instructions without frontmatter
 or CLI setup; pass `{ cli: true }` to append the CLI workflow. `buildSkillFiles()`
 adds frontmatter and the linked reference pages, enabling CLI instructions by
-default. It only assembles content in memory; `scripts/skill.ts` writes the folder
-and archive. Tool-based hosts can use `buildSkillFiles({ cli: false })` and
+default. It only assembles content in memory; `scripts/plugin-build.ts` writes
+the plugin's skill directory. Tool-based hosts can use `buildSkillFiles({ cli: false })` and
 `mapSkillLinks()` to adapt reference links without rewriting fenced examples.
 The MCP server uses this shared assembly and appends its rendering-tool prompt.
 
@@ -181,7 +177,8 @@ Consumers can also read individual pieces through the exported `promptDir` or
 separate from this portable skill.
 
 `bun run test` also tests skill coverage, link reachability, prompt-example
-rendering, safe rebuilds, and CLI behavior. Archive tests require `zip` and `unzip`.
+rendering, plugin rebuilds and packaging, and CLI behavior. Archive tests require
+`zip` and `unzip`.
 
 ## Elements
 
