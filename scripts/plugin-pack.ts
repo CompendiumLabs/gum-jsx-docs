@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process'
 import { buildPluginSkill, pluginRoot } from './plugin-build'
 
 export function packPlugin(root = pluginRoot,
-  archive = join(import.meta.dir, '..', 'dist', 'gum-jsx-plugin.zip')): string {
+  archive = join(import.meta.dir, '..', '..', 'dist', 'gum-jsx-plugin.zip')): string {
   buildPluginSkill(root)
 
   mkdirSync(dirname(archive), { recursive: true })

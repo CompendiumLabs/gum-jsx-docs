@@ -89,7 +89,6 @@ test/plugin.test.ts    Test plugin builds and ZIP packaging
 prompt/               Maintained Gum authoring and skill prompt pieces
 scripts/plugin-build.ts Generate the skill inside the plugin
 scripts/plugin-pack.ts  Rebuild the plugin skill and package the plugin ZIP
-plugins/gum-jsx/      Plugin manifest, assets, and generated skill files
 ```
 
 There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
@@ -125,24 +124,27 @@ use fill or wrapping when the composition calls for it.
 
 ## Build the plugin
 
-The [Gum JSX plugin](./plugins/gum-jsx/README.md) combines authoring prompts with
+The [Gum JSX plugin](../plugins/gum-jsx/README.md) lives in the top-level `gum-jsx`
+repository and combines authoring prompts with
 the layout, units, JSX, CLI, and rendering references. Its skill uses the `gum`
 commands directly when `@gum-jsx/cli` is on PATH, with workspace scripts as an
-alternative. From this package directory:
+alternative. From the workspace root or this package directory:
 
 ```sh
 bun run plugin:build
 bun run plugin:pack
 ```
 
-`plugin:build` writes `plugins/gum-jsx/skills/gum-jsx/SKILL.md` and its references.
-`plugin:pack` rebuilds that directory and creates `dist/gum-jsx-plugin.zip`, with
-the plugin manifest at the archive root. Packaging requires the `zip` executable;
-building the directory alone does not.
+`plugin:build` writes `plugins/gum-jsx/skills/gum-jsx/SKILL.md` and its references
+in the top-level repository. `plugin:pack` rebuilds that directory and creates
+`dist/gum-jsx-plugin.zip` in the top-level repository, with the plugin manifest at
+the archive root. Packaging requires the `zip` executable; building the directory
+alone does not. The scripts remain in `gum-jsx-docs/scripts/`.
 
 The plugin directory is the sole generated authoring-skill output. Commit its
-generated skill files alongside changes to the maintained prompts and docs so
-GitHub marketplace installations include the complete plugin. The ZIP remains
+generated skill files in the top-level repository, and commit maintained prompt
+and documentation changes in `gum-jsx-docs`. This lets GitHub marketplace
+installations include the complete plugin. The ZIP remains
 ignored by Git and can be attached to a release. Rebuilds replace the generated
 skill directory, so make edits in `prompt/` and `docs/` rather than in that output.
 
@@ -156,8 +158,9 @@ is included, with local links rewritten to the relevant entry or embedded JSX
 example. The separate PDF package's API link points to its upstream README.
 The generated reference indexes include each page's description alongside its link.
 
-The scripts locate inputs and outputs relative to this package, independently
-of the caller's working directory. From the workspace root:
+The scripts read this package's inputs and write to the parent workspace,
+independently of the caller's working directory. Run them from a full `gum-jsx`
+checkout. From the workspace root:
 
 ```sh
 bun gum-jsx-docs/scripts/plugin-build.ts
