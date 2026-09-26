@@ -139,7 +139,8 @@ Git; maintain the source prompts and docs, then rebuild.
 
 The [Gum JSX plugin](./plugins/gum-jsx/README.md) lives in this repository. Its
 skill is identical to the standalone generated skill, with no MCP connection.
-Run `bun run plugin:pack` from the workspace root to build a ChatGPT upload ZIP.
+Run `bun run plugin:pack` from this package directory to build a ChatGPT upload
+ZIP at `dist/gum-jsx-plugin.zip`.
 
 The entrypoint is assembled from [head](./prompt/head.md),
 [intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md),
