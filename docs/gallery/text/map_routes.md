@@ -6,7 +6,7 @@ description: "Nest a sampled Arrow, Points, and city labels directly inside GeoM
 # Map routes
 
 The Arrow receives 81 longitude/latitude samples for an illustrative route from
-Lisbon to Athens. [GeoMap](../../elements/text/GeoMap.md) projects those pairs
+Lisbon to Athens. [GeoMap](../../elements/text/GeoMap.md) projects those `{lon, lat}` records
 with the same fitted view as the geography. Points and direct-child Text anchors
 use the same coordinate context, so no separate pixel projection is necessary.
 

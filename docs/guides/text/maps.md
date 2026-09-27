@@ -33,7 +33,7 @@ No file loading, imports, or network requests are needed in evaluated JSX.
 | `geojson(data, options?)` | Your own longitude/latitude geometry, feature, or feature collection |
 | `topojson(data, objectName, options?)` | A named Topology object with shared boundary arcs |
 
-Coordinates are always `[longitude, latitude]` in degrees. Load external files
+GeoJSON and TopoJSON source coordinates are `[longitude, latitude]` in degrees. Load external files
 in the host before constructing the figure. GeoJSON defaults to RFC 7946 polygon
 winding; see [GeoJSON edge cases](../../gallery/text/geojson_edges.md) for holes
 and antimeridian cuts.
@@ -138,14 +138,13 @@ See [Natural map sizes](../../gallery/text/map_aspect.md) for framed examples.
 ## Add markers and labels
 
 Nest [Points](../../elements/text/Points.md), [Arrow](../../elements/text/Arrow.md),
-or other marks inside GeoMap. Their numeric pairs are longitude/latitude in
-degrees. For labels or individual shapes, put longitude in the direct child's
-`x` and latitude in `y`:
+or other marks inside GeoMap. Use numeric `{lon, lat}` records in degrees.
+For labels or individual shapes, give the direct child `pos={{lon, lat}}`:
 
 ```jsx
 <GeoMap source={world_countries()}>
-  <Points points={[[-122.42, 37.77]]} point-size={px(8)} fill={red} />
-  <Text x={-122.42} y={37.77} anchor={['start', 'end']}>San Francisco</Text>
+  <Points points={[{lon: -122.42, lat: 37.77}]} point-size={px(8)} fill={red} />
+  <Text pos={{lon: -122.42, lat: 37.77}} anchor={['start', 'end']}>San Francisco</Text>
 </GeoMap>
 ```
 
@@ -154,7 +153,13 @@ including fitting, padding, center, rotation, and point visibility. Markers on
 the far side of an orthographic globe disappear automatically. Text stays upright,
 and marker sizes, fonts, and arrowheads use ordinary layout lengths.
 
-For a curved route, provide sampled longitude/latitude pairs to Arrow. A
+`[longitude, latitude]` and `{x: longitude, y: latitude}` remain aliases.
+Supply both components and use only one naming scheme in a record. Geographic
+components must be numeric; local positions use Cartesian lengths, such as
+`pos={[px(12), px(24)]}`. GeoJSON, TopoJSON, the map's `center`, and the projection
+helpers keep their array formats.
+
+For a curved route, provide sampled `{lon, lat}` records to Arrow. A
 projection maps existing points without adding samples, so a two-point Arrow
 remains straight between the projected endpoints. Set its stroke explicitly,
 since children inherit the map's style. See [Map routes](../../gallery/text/map_routes.md)

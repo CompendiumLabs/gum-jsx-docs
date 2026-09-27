@@ -29,26 +29,28 @@ Set `space="data"` to project each supplied vertex through the enclosing
 required. Numeric vertices contribute to ordinary Graph/Plot limit inference;
 custom projections still require explicit output limits. Tagged px/em/% pairs
 bypass data mapping, while a custom projection rejects mixed data/length pairs.
+Data inputs also accept named numeric records such as `{theta, r}` or `{x, y, z}`.
 
 ```jsx
 <Graph
   aspect={1} xlim={[-1, 1]} ylim={[-1, 1]}
-  projection={([theta, r]) => [r * cos(theta), r * sin(theta)]}
+  projection={({theta, r}) => ({x: r * cos(theta), y: r * sin(theta)})}
 >
   <Polyline
     space="data"
-    points={linspace(0, tau, 121).map(theta => [theta, 0.8])}
+    points={linspace(0, tau, 121).map(theta => ({theta, r: 0.8}))}
     fill={none} stroke={blue} stroke-width={px(2)}
   />
 </Graph>
 ```
 
 Only supplied vertices are projected; add enough samples for curved routes.
-A projection returning `null` breaks the path, so visible vertices on opposite
+A null sample, any nonfinite dimension, or a projection returning `null` breaks
+the path, so visible vertices on opposite
 sides of a hidden point are not joined. Stroke widths remain ordinary layout
 lengths. See [Projections](../../guides/text/projections.md).
-[CoordLine](./CoordLine.md) uses ambient data coordinates by default and also
-accepts explicit null gaps; [SymLine](./SymLine.md) supplies function sampling.
+[CoordLine](./CoordLine.md) uses ambient data coordinates by default;
+[SymLine](./SymLine.md) supplies function sampling.
 
 Paint is inherited. Set `fill={none}` for a line chart: if you supply a fill,
 SVG fills the area as though the last point were connected to the first even

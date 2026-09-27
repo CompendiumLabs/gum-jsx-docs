@@ -48,10 +48,10 @@ return (
               xlim={[0, 1]} samples={241}
               stroke={black} stroke-width={px(2.5)}
             />
-            <Tex x={-0.25} y={baseline(index)} anchor="center" font-size={em(1.3)} color={black}>
+            <Tex pos={[-0.25, baseline(index)]} anchor="center" font-size={em(1.3)} color={black}>
               {`n=${n}`}
             </Tex>
-            <Tex x={1.23} y={baseline(index)} anchor="center" font-size={em(1.3)} color={black}>
+            <Tex pos={[1.23, baseline(index)]} anchor="center" font-size={em(1.3)} color={black}>
               {`E_{${n}}`}
             </Tex>
           </>

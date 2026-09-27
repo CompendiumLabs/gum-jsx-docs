@@ -127,19 +127,17 @@ const SurfaceDiagram = (props) => (
     {normals.map(([base, tip]) => (
       <Arrow from={base} to={tip} stroke={purple} stroke-width={px(2)} head-size={px(12)} />
     ))}
-    <Latex x={0.48} y={0.5} anchor="center" font-size={em(1.6)} color={purple}>
+    <Latex pos={[0.48, 0.5]} anchor="center" font-size={em(1.6)} color={purple}>
       S
     </Latex>
     <Latex
-      x={0.05}
-      y={0.55}
+      pos={[0.05, 0.55]}
       anchor="center"
       font-size={em(1.25)}
       color={blue}
     >{String.raw`\partial S`}</Latex>
     <Latex
-      x={0.56}
-      y={0.17}
+      pos={[0.56, 0.17]}
       anchor="center"
       font-size={em(1.25)}
       color={purple}

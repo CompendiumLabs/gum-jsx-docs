@@ -3,7 +3,7 @@
   <Group>
     <Attach
       width={0.7}
-      x={0.5} y={0.5} anchor={[0.5, 0.5]}
+      pos={[0.5, 0.5]} anchor={[0.5, 0.5]}
       side="bottom" at={1} child-anchor={1}
       offset={em(0.625)}
       attachment={<Text>Attached caption</Text>}

@@ -56,13 +56,13 @@ return <Plot
     fill={red}
   />
   <Points points={[[0, 0]]} point-size={px(7)} fill={slate} />
-  <Text x={-2.6} y={1.1} anchor="center" color={blue} font-size={em(1.3)}>
+  <Text pos={[-2.6, 1.1]} anchor="center" color={blue} font-size={em(1.3)}>
     real
   </Text>
-  <Text x={1.6} y={-0.4} anchor="center" color={red} font-size={em(1.3)}>
+  <Text pos={[1.6, -0.4]} anchor="center" color={red} font-size={em(1.3)}>
     imag
   </Text>
-  <Tex x={2.1} y={1.6} anchor="center" font-size={em(1.4)}>
+  <Tex pos={[2.1, 1.6]} anchor="center" font-size={em(1.4)}>
     f(x)=x^2+2cx+1
   </Tex>
 </Plot>

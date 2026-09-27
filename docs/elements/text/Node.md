@@ -8,8 +8,8 @@ description: "A compact TextFrame with a centered placement anchor: the conventi
 | Property | Default | Meaning |
 |---|---|---|
 | `id` | — | Nonempty identifier used by edges, as on any other element |
-| `x` / `y` | `0` / `0` | Position in the parent coordinate system |
-| `anchor` | `"center"` | Point of the allocated node placed at x/y |
+| `pos` | `[0, 0]` | Position in the parent coordinate system |
+| `anchor` | `"center"` | Point of the allocated node placed at `pos` |
 | `width` | Content-sized | Measure the label; a length sets a wrapping width |
 | `children` | — | Text, inline content, or one existing layout element |
 | `padding` | `em(0.6)` | Space between the label and inside border |
@@ -31,8 +31,8 @@ piping: `text-justify` sets `justify`, and `text-font-size` sets `font-size`.
 
 The `id` is optional for a standalone node, and required to reference it from an
 [Edge](./Edge.md). IDs must be unique within the enclosing [Network](./Network.md).
-In Network, x/y are graph data coordinates; in **Group** they are layout lengths.
-When wrapping a Node in **Rotate** or another container, put x/y/anchor
+In Network, `pos` contains Cartesian data coordinates; in **Group** it contains local lengths.
+When wrapping a Node in **Rotate** or another container, put `pos` and `anchor`
 on the wrapper to position the whole result.
 
 Connections meet the outer frame, including padding and the inside border.

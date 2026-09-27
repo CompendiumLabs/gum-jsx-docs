@@ -24,6 +24,9 @@ Draw `vectors=[{point,vector},...]`, with either `{x,y}` or `[x,y]` for each
 point and vector. Each endpoint is point + scale ×
 vector. scale defaults to 1; normalize divides by magnitude before scaling.
 Zero/nonfinite vectors are omitted. Origins and endpoints both affect limits.
+Points and vectors require exactly two Cartesian coordinates; named or additional
+dimensions are rejected. The computed origins and endpoints can then pass
+through the graph's projection.
 
 Default glyphs are arrows, with `head-size` `px(5)`, `head-width` 1.3, and ordinary
 stroke style. Directions are computed after mapping, so flips and unequal axis

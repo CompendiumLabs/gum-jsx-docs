@@ -33,14 +33,14 @@ outside it. Set dimensions explicitly for a predictable rule or connector.
 Use [Arrow](./Arrow.md) for arrowheads or [Network](./Network.md) and
 [Edge](./Edge.md) for connections between named elements.
 
-Set `space="data"` to project both endpoint pairs through the enclosing
+Set `space="data"` to project both endpoints through the enclosing
 [Graph](./Graph.md), Plot, or [GeoMap](./GeoMap.md):
 
 ```jsx
 <GeoMap source={world_countries()}>
   <Line
     space="data"
-    from={[-9.14, 38.72]} to={[23.73, 37.98]}
+    from={{lon: -9.14, lat: 38.72}} to={{lon: 23.73, lat: 37.98}}
     stroke={blue} stroke-width={px(2)}
   />
 </GeoMap>
@@ -54,3 +54,6 @@ to ordinary Graph/Plot limit inference; custom projections still need explicit
 output limits. Tagged px/em/% pairs remain local, and a custom projection rejects
 pairs mixing a data number with a tagged length. Stroke lengths retain their
 ordinary layout meaning. See [Projections](../../guides/text/projections.md).
+
+Data inputs may use arbitrary numeric records, including `{theta, r}` and
+`{x, y, z}`, when the enclosing projection interprets those names.

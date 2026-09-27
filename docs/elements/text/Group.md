@@ -23,19 +23,19 @@ Children paint in source order, so put backgrounds and connectors before labels.
 
 | Direct child prop | Default | Meaning |
 |---|---|---|
-| `x` / `y` | `0` | **Anchor** location; fractions use the whole **Group** |
-| `anchor` | `"start"` | Point on the child's allocated rectangle placed at x/y |
+| `pos` | `[0, 0]` | Anchor location as `[x, y]` or `{x, y}` lengths; fractions use the whole **Group** |
+| `anchor` | `"start"` | Point on the child's allocated rectangle placed at `pos` |
 | `width` / `height` | — | Child's preferred size; fractions use the whole **Group** |
 
 **Anchor** accepts start, center, end, a fraction from 0 to 1, or independent x/y
 choices in an object or two-entry tuple. `anchor={[1, 0.5]}` and
 `anchor={['end', 'center']}` both place
-the right-edge midpoint at x/y. A missing object axis defaults to start.
+the right-edge midpoint at `pos`. A missing anchor object axis defaults to start.
 **Anchor** values are dimensionless; px/em and stretch are not anchor values.
 
 **Anchor** describes the element's attachment point for its parent. Its own
 `align` or `justify` describes how it arranges its children. For example, a
-**Box** can use `anchor={[0.5, 0.5]}` to center itself at x/y and `align="end"`
+**Box** can use `anchor={[0.5, 0.5]}` to center itself at `pos` and `align="end"`
 to place its content at the **Box**'s bottom-right corner.
 
 Every child receives an offer for the whole canvas, not only the space to the
@@ -48,10 +48,15 @@ width if needed. Give it a width for a narrower label or region. Position length
 in em use the child's font size.
 Nested **Group**s establish new local canvases.
 
+Supplied positions need both components. For example, use `pos={[0.5, 0]}`
+for a horizontal offset, or `pos={{x: em(1), y: px(20)}}` for local lengths.
+Legacy `x` and `y` placement props report a migration error. A `pos` override
+replaces the entire value, including when it comes from a prop spread.
+
 Set `clip` on **Group** to hide content outside its rectangle. Clipping defaults to
 false and does not erase reported overflow. **Svg** still clips at the outer viewport.
 
-**Group** uses local fractional x/y/anchor positions; **Graph** uses data positions and
+**Group** uses local fractional `pos` values and `anchor`; **Graph** uses data positions and
 **Overlay** places decorations relative to a measured base. **Box** and stacks use their
 own placement rules. Use [Graph](./Graph.md) for data limits and [Rotate](./Rotate.md)
 or [TransformBox](./TransformBox.md) for explicit transforms. **Group** does not infer

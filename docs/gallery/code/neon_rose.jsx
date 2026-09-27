@@ -125,8 +125,7 @@ return (
     <Frame background={bg} border-radius={em(1)} clip border-color={bg}>
       <Graph aspect={1 / 1.3} xlim={[-1, 1]} ylim={[-1.3, 1.3]}>
         <Circle
-          x={0}
-          y={0.5}
+          pos={[0, 0.5]}
           anchor="center"
           width={0.75}
           fill={pink}
@@ -134,8 +133,7 @@ return (
           stroke={none}
         />
         <Circle
-          x={0}
-          y={0.5}
+          pos={[0, 0.5]}
           anchor="center"
           width={0.5}
           fill={pink}
@@ -144,8 +142,7 @@ return (
         />
         {sparkles.map(([p, size]) => (
           <Sparkle
-            x={p[0]}
-            y={p[1]}
+            pos={[p[0], p[1]]}
             anchor="center"
             width={size / 2}
             color={pinkCore}

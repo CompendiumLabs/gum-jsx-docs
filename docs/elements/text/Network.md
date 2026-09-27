@@ -34,7 +34,9 @@ its label. Edges attach to the resulting frame after that wrapping finishes.
 
 Sizing and coordinate options follow [Graph](./Graph.md): a natural network is
 480×320, finite offers establish the canvas, and an aspect derives a missing axis.
-Inference includes the numeric x/y of each child, intermediate edge points, and graphable marks.
+Inference includes the numeric Cartesian components of each child's `pos`,
+intermediate edge points, and graphable marks. Positions accept `[x, y]` or
+`{x, y}`; tagged lengths stay local and do not contribute to limits.
 Inferred padding is a fraction of the data span, so it does not reserve a measured
 margin for every label. Use explicit limits or surrounding **Box** padding when
 you need a particular margin. Use explicit limits for nodes inside nested layouts.

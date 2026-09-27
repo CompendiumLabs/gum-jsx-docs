@@ -19,7 +19,7 @@ const Node = ({ title, detail, color, ...attr }) => (
 
 const ArrowBox = ({ text = "", color = white, ...attr }) => <Group {...attr}>
   <Arrow stroke={color} from={[0, 0.5]} to={[1, 0.5]} />
-  <Text x={0.5} y={1} anchor="center" color={color}>{text}</Text>
+  <Text pos={[0.5, 1]} anchor="center" color={color}>{text}</Text>
 </Group>
 
 const Diagram = ({ ...attr }) => <HStack align="center" {...attr}>

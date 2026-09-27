@@ -49,7 +49,7 @@ return (
       />
       {route.map(place => (
         <Circle
-          x={px(place.xy[0])} y={px(place.xy[1])}
+          pos={[px(place.xy[0]), px(place.xy[1])]}
           anchor="center"
           width={em(0.6)}
           fill={red} stroke={white} stroke-width={em(0.1)}

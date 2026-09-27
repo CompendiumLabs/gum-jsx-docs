@@ -15,9 +15,12 @@ description: "Fill the region between a series of points and a boundary."
 Fill a region between points and boundary, arrays of `{x,y}` records or `[x,y]` tuples. boundary
 may be a scalar baseline (default 0). Arrays must have matching lengths; a gap
 in either boundary splits the whole region.
+Both arrays may use arbitrary numeric records under a projection. A nonfinite
+dimension or a null projection on either side splits both boundaries together.
 
 direction defaults to vertical (horizontal for **HFill**). For vertical fills a
-scalar supplies y; for horizontal fills it supplies x. **VFill** is the vertical
+scalar supplies y; for horizontal fills it supplies x. Scalar boundaries require
+exactly Cartesian `{x,y}` or `[x,y]` inputs. **VFill** is the vertical
 convenience. Defaults: pale blue fill, no stroke.
 
 Numeric geometry follows [Graph](./Graph.md) and participates in limits, including

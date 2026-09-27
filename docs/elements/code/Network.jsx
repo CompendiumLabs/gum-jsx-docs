@@ -5,16 +5,16 @@
     <Edge start="parse" end="output" />
     <Edge start="parse" end="errors" />
     <Edge start="errors" end="source" start-side="left" end-side="bottom" />
-    <Node id="source" x={0} y={1} border-color={blue} background={white}>
+    <Node id="source" pos={[0, 1]} border-color={blue} background={white}>
       Source
     </Node>
-    <Node id="parse" x={1.4} y={1} width={em(7)} border-color={blue} background={white}>
+    <Node id="parse" pos={[1.4, 1]} width={em(7)} border-color={blue} background={white}>
       Build syntax tree
     </Node>
-    <Node id="output" x={2.8} y={1} border-color={blue} background={white}>
+    <Node id="output" pos={[2.8, 1]} border-color={blue} background={white}>
       Output
     </Node>
-    <Node id="errors" x={1.4} y={0} border-color={red} color={red} background={white}>
+    <Node id="errors" pos={[1.4, 0]} border-color={red} color={red} background={white}>
       Report errors
     </Node>
   </Network>

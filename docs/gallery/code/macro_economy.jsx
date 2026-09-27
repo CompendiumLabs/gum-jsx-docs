@@ -1,9 +1,8 @@
 // Four economic sectors connected by explicit, boundary-aware flows.
-const Sector = ({ id, x, y, color, children }) =>
+const Sector = ({ id, pos, color, children }) =>
   <Node
       id={id}
-      x={x}
-      y={y}
+      pos={pos}
       width={em(8)}
       height={em(3.5)}
       text-justify="center"
@@ -24,10 +23,9 @@ const Linkage = ({ start, end, start_side, end_side, ...attr }) =>
     {...attr}
   />
 
-const Label = ({ x, y, children }) =>
+const Label = ({ pos, children }) =>
   <TextBox
-    x={x}
-    y={y}
+    pos={pos}
     anchor="center"
     padding={em(0.35)}
     font-size={em(0.8)}
@@ -43,16 +41,16 @@ return <Box fit font-size={px(12)} padding={em(1.6)}>
       <Linkage start="govt" end="cons" start-side="right" end-side="bottom" radius={em(0.5)} points={[[1.6, 0.85]]} />
       <Linkage start="trade" end="prod" start-side="left" end-side="top" radius={em(0.5)} points={[[0.4, 0.15]]} />
       <Linkage start="trade" end="cons" start-side="right" end-side="top" radius={em(0.5)} points={[[1.6, 0.15]]} />
-      <Sector id="trade" x={1} y={0.15} color={yellow}>Foreign Trade</Sector>
-      <Sector id="prod" x={0.4} y={0.5} color={blue}>Producers (Firms)</Sector>
-      <Sector id="cons" x={1.6} y={0.5} color={green}>Consumers (Households)</Sector>
-      <Sector id="govt" x={1} y={0.85} color={red}>Government</Sector>
-      <Label x={1} y={0.42}>Goods + Services →</Label>
-      <Label x={1} y={0.58}>← Wages, Rent, Profit</Label>
-      <Label x={0.6} y={0.8}>Subsidies / Taxes</Label>
-      <Label x={1.4} y={0.8}>Transfers / Taxes</Label>
-      <Label x={0.6} y={0.2}>Imports / Exports</Label>
-      <Label x={1.4} y={0.2}>Transfers</Label>
+      <Sector id="trade" pos={[1, 0.15]} color={yellow}>Foreign Trade</Sector>
+      <Sector id="prod" pos={[0.4, 0.5]} color={blue}>Producers (Firms)</Sector>
+      <Sector id="cons" pos={[1.6, 0.5]} color={green}>Consumers (Households)</Sector>
+      <Sector id="govt" pos={[1, 0.85]} color={red}>Government</Sector>
+      <Label pos={[1, 0.42]}>Goods + Services →</Label>
+      <Label pos={[1, 0.58]}>← Wages, Rent, Profit</Label>
+      <Label pos={[0.6, 0.8]}>Subsidies / Taxes</Label>
+      <Label pos={[1.4, 0.8]}>Transfers / Taxes</Label>
+      <Label pos={[0.6, 0.2]}>Imports / Exports</Label>
+      <Label pos={[1.4, 0.2]}>Transfers</Label>
     </Network>
   </VStack>
 </Box>

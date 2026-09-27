@@ -11,18 +11,18 @@
   <Edge start="padded" end="turned" start-side="bottom" end-side="right" />
   <Edge start="turned" end="fitted" start-side="top" end-side="bottom" start-loc={0.3} />
   <Node
-    fit="contain" id="fitted" x={0.25} y={0.7} anchor="center"
+    fit="contain" id="fitted" pos={[0.25, 0.7]} anchor="center"
     width={em(5)} height={em(2)} max-width={0.4} max-height={0.35}
     border-color={blue} background={white} debug
   >
     Fitted
   </Node>
-  <Box x={0.72} y={0.7} anchor="center" padding={em(1)} debug>
+  <Box pos={[0.72, 0.7]} anchor="center" padding={em(1)} debug>
     <Node id="padded" border-color={blue} background={white}>
       Padded
     </Node>
   </Box>
-  <Rotate x={0.55} y={0.25} anchor="center" angle={-22} debug>
+  <Rotate pos={[0.55, 0.25]} anchor="center" angle={-22} debug>
     <Node id="turned" border-color={blue} background={white}>
       Rotated node
     </Node>

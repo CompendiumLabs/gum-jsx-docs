@@ -11,13 +11,13 @@
       start="loop" end="loop" stroke={blue} head-curve={0.7}
       points={[[1.9, 0.1], [1.8, 0.5], [1.5, 0.5]]}
     />
-    <Node id="a" x={0} y={1} background={white}>
+    <Node id="a" pos={[0, 1]} background={white}>
       Start
     </Node>
-    <Node id="b" x={2.8} y={1} background={white}>
+    <Node id="b" pos={[2.8, 1]} background={white}>
       Finish
     </Node>
-    <Node id="loop" x={1.4} y={0} background={white}>
+    <Node id="loop" pos={[1.4, 0]} background={white}>
       Retry
     </Node>
   </Network>

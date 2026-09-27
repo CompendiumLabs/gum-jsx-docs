@@ -17,8 +17,7 @@ return (
         <Group aspect={cols/rows}>
           {range(rows * cols).map((i) => (
             <RoundedRect
-              x={(i % cols) / cols}
-              y={floor(i / cols) / rows}
+              pos={[(i % cols) / cols, floor(i / cols) / rows]}
               width={1 / cols - 0.007}
               height={1 / rows - 0.012}
               border-radius={em(0.3)}

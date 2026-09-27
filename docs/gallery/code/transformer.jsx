@@ -55,7 +55,7 @@ return <Box fit
           head-size={em(0.5)} head-curve={0.5}
         />
       ))}
-      <VStack x={em(stackX)} width={em(stackWidth)} gap={em(gap)} align="center">
+      <VStack pos={[em(stackX), px(0)]} width={em(stackWidth)} gap={em(gap)} align="center">
         <Node id="output" height={em(terminalHeight)} padding={0} border-width={0}>Output Probabilities</Node>
         <Block id="softmax" label="Softmax" color={red} />
         <Block id="linear" label="Linear" color={red} />
@@ -81,7 +81,7 @@ return <Box fit
         head-size={em(0.5)} head-curve={0.5}
       />
       <TextBox
-        x={em(loopX)} y={em((loopTop + loopBottom) / 2)} anchor="center"
+        pos={[em(loopX), em((loopTop + loopBottom) / 2)]} anchor="center"
         padding={em(0.35)} background={white} border-width={px(1)}
         border-radius={em(0.25)} border-color={darkgray}
       >× N</TextBox>

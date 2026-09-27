@@ -15,6 +15,6 @@ visible child.
 |---|---|---|
 | `align` | `"center"` | Position the child within the **Anchor** frame on both axes |
 
-Use parent-owned x/y/anchor props to position the **Anchor** itself in **Group** or
+Use parent-owned `pos` and `anchor` props to position the **Anchor** itself in **Group** or
 **Graph**. `anchor` selects the wrapper's own attachment point; `align` positions
 its child within the wrapper's frame. Positioning and child sizes remain separate.

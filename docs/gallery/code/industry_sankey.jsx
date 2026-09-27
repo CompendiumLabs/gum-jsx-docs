@@ -118,7 +118,7 @@ function Ribbon({ x0, x1, sourceTop, targetTop, height, color }) {
   const sh = height / hh;
   return (
     <Path
-      x={px(x0)} y={px(top)} width={px(x1 - x0)} height={px(hh)}
+      pos={[px(x0), px(top)]} width={px(x1 - x0)} height={px(hh)}
       commands={[
         move_to(0, sy),
         curve_to(0.42, sy, 0.58, ty, 1, ty),
@@ -134,7 +134,7 @@ function Ribbon({ x0, x1, sourceTop, targetTop, height, color }) {
 function PlotLabel({ x, y, text, size = 20, weight = 400, color = palette.navy, anchor = 'start', width }) {
   return (
     <Text
-      x={px(x)} y={px(y)} anchor={[anchor, 'center']}
+      pos={[px(x), px(y)]} anchor={[anchor, 'center']}
       width={width === undefined ? undefined : px(width)}
       font-size={px(size)} font-weight={weight} color={color}
     >{text}</Text>
@@ -161,19 +161,19 @@ return (
         {groupFlows.map((f, i) => <Ribbon key={`g${i}`} x0={rootX + nodeW} x1={groupX} {...f} />)}
         {leafFlows.map((f, i) => <Ribbon key={`l${i}`} x0={groupX + nodeW} x1={leafX} {...f} />)}
 
-        <Rect x={px(rootX)} y={px(rootTop)} width={px(nodeW)} height={px(rootSpan)} fill={palette.navy} stroke={none} border-radius={px(3)} />
+        <Rect pos={[px(rootX), px(rootTop)]} width={px(nodeW)} height={px(rootSpan)} fill={palette.navy} stroke={none} border-radius={px(3)} />
         {groupNodes.map((g, i) => (
-          <Rect key={`gn${i}`} x={px(groupX)} y={px(g.top)} width={px(nodeW)} height={px(g.height)} fill={g.color} stroke={none} border-radius={px(3)} />
+          <Rect key={`gn${i}`} pos={[px(groupX), px(g.top)]} width={px(nodeW)} height={px(g.height)} fill={g.color} stroke={none} border-radius={px(3)} />
         ))}
         {leafNodes.map((d, i) => (
-          <Rect key={`ln${i}`} x={px(leafX)} y={px(d.top)} width={px(nodeW)} height={px(d.height)} fill={d.color} stroke={none} border-radius={px(3)} />
+          <Rect key={`ln${i}`} pos={[px(leafX), px(d.top)]} width={px(nodeW)} height={px(d.height)} fill={d.color} stroke={none} border-radius={px(3)} />
         ))}
 
         <PlotLabel x={rootX - 21} y={rootTop + rootSpan / 2} text="100%" size={30} weight={700} anchor="end" />
         {groupNodes.map((g, i) => (
           <VStack
             key={`glabel${i}`}
-            x={px(groupX + nodeW + 25)} y={px(g.top + g.height / 2)}
+            pos={[px(groupX + nodeW + 25), px(g.top + g.height / 2)]}
             anchor={['start', 'center']} gap={em(0.2)}
           >
             <Text font-size={px(22)} font-weight={700} color={palette.navy}>{g.name}</Text>
@@ -183,7 +183,7 @@ return (
         {leafNodes.flatMap((d, i) => [
           <VStack
             key={`lname${i}`}
-            x={px(leafX + nodeW + 22)} y={px(d.top + d.height / 2)}
+            pos={[px(leafX + nodeW + 22), px(d.top + d.height / 2)]}
             anchor={['start', 'center']} gap={0}
           >
             {(d.lines || [d.name]).map((line, j) => (

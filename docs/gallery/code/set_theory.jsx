@@ -9,8 +9,7 @@
       stroke-width={px(2)}
     />
     <Circle
-      x={0.6}
-      y={0.22}
+      pos={[0.6, 0.22]}
       anchor="center"
       width={0.22}
       height={0.22}
@@ -19,8 +18,7 @@
       stroke-width={px(2)}
     />
     <Circle
-      x={0.55}
-      y={0.73}
+      pos={[0.55, 0.73]}
       anchor="center"
       width={0.34}
       height={0.34}
@@ -28,13 +26,13 @@
       stroke={purple}
       stroke-width={px(2)}
     />
-    <Text x={0.2} y={0.7} anchor="center">
+    <Text pos={[0.2, 0.7]} anchor="center">
       A
     </Text>
-    <Text x={0.6} y={0.22} anchor="center">
+    <Text pos={[0.6, 0.22]} anchor="center">
       B
     </Text>
-    <Text x={0.55} y={0.73} anchor="center">
+    <Text pos={[0.55, 0.73]} anchor="center">
       C
     </Text>
   </Group>

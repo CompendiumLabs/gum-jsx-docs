@@ -23,7 +23,7 @@ return (
   >
     <SymLine fy={sin} xlim={[0, tau]} stroke={blue} stroke-width={px(2.5)} />
     <SymLine fy={cos} xlim={[0, tau]} stroke={red} stroke-width={px(2.5)} />
-    <Legend x={pi} y={1} anchor="start">
+    <Legend pos={[pi, 1]} anchor="start">
       <LegendItem badge-color={blue}><Tex>{String.raw`\sin x`}</Tex></LegendItem>
       <LegendItem badge-color={red}><Tex>{String.raw`\cos x`}</Tex></LegendItem>
     </Legend>

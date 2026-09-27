@@ -13,12 +13,13 @@ through data-axis mapping. Bare numeric points keep their data meaning.
 
 `infer_coordinates(children, options)` returns an immutable
 {xlim,ylim,flip_x,flip_y} record. An optional core `Projection` maps coordinate
-pairs before the axis mapping. `map_point(point, coordinates, size)` maps to
+records before the axis mapping. `map_point(point, coordinates, size)` maps to
 pixels, returning `null` if the projection omits the point. `unmap_point` reverses
 linear mapping; custom projections and zero-sized frames cannot be inverted.
 point_bounds, merge_bounds, and `data_bounds(element)` support inference.
 
-Point arguments accept `{x,y}` or `[x,y]`; point lists can mix the two.
+Source mapping accepts numeric records with any named dimensions, or `[x,y]`
+tuples. Cartesian bounds and inverse mapping require `{x,y}` or `[x,y]`.
 Non-null mapping results have named `{x,y}` coordinates. See [Point values](./point_values.md)
 for the shared input convention and examples using zip and length tuples.
 
@@ -51,7 +52,7 @@ query.prepare must stay independent of coordinates, requests, and references.
 The engine transports context; inference and mapping remain element policies.
 
 Use `coordinate_point(value, size, query.measure, query.coordinates)` when a
-custom element accepts either numeric data pairs or tagged local lengths.
-Pairwise mapping supports polar and geographic projections; mapping x and y
+custom element accepts either numeric data records or tagged local Cartesian lengths.
+Mapping complete records supports polar and geographic projections; mapping x and y
 separately with `coordinate_length` cannot do that. See [Projections](./projections.md)
 for the callback contract and examples.

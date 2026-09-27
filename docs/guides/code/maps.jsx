@@ -7,8 +7,8 @@ const styles = {
   '392': { fill: purple }, // Japan
 }
 const cities = [
-  { name: 'San Francisco', coordinates: [-122.42, 37.77], color: green },
-  { name: 'Tokyo', coordinates: [139.69, 35.68], color: purple },
+  { name: 'San Francisco', coordinates: {lon: -122.42, lat: 37.77}, color: green },
+  { name: 'Tokyo', coordinates: {lon: 139.69, lat: 35.68}, color: purple },
 ]
 const views = [
   {
@@ -51,7 +51,7 @@ return (
               >
                 {cities.map(city => (
                   <Circle
-                    x={city.coordinates[0]} y={city.coordinates[1]}
+                    pos={city.coordinates}
                     anchor="center" width={em(0.55)}
                     fill={city.color} stroke={white} stroke-width={em(0.1)}
                   />

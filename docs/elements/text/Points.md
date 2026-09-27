@@ -12,7 +12,8 @@ description: "Repeat a marker at each {x,y} or [x,y] in points."
 | `shape` | `Circle` | Marker **Element** or `(point, index) => Element` callback |
 | `space` | Automatic | Use ambient data coordinates or local geometry |
 
-Repeat a marker at each `{x,y}` or `[x,y]` in points. The forms can be mixed.
+Repeat a marker at each `{x,y}` or `[x,y]` in points. Projected graphs also accept
+named numeric records such as `{theta, r}` and `{x, y, z}`. The forms can be mixed.
 Null/nonfinite entries are omitted
 without changing callback indices. Positions use ambient [Graph](./Graph.md)
 coordinates or local fractions outside it.
@@ -22,8 +23,8 @@ shorter frame side; `{x,y}` or `[x,y]` sizes resolve per axis. It may be a (poin
 function returning a scalar or pair. shape is an **Element** or (point,index) function;
 the default is **Circle**.
 
-Callbacks always receive `{x,y}` records, including for tuple inputs, and execute
-once at construction. Shapes receive exact marker dimensions
+Callbacks receive complete frozen source records; tuples expand to `{x,y}`.
+They execute once at construction, retaining original indices. Shapes receive exact marker dimensions
 and a cleared data context, then are centered on their points. The same immutable
 shape can be reused everywhere. **Rotate** and **TransformBox** pass those dimensions
 through to their wrapped shape before transforming it. Defaults: black fill, no

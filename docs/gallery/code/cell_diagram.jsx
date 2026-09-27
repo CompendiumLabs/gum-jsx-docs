@@ -149,8 +149,7 @@ const Golgi = (attr) => (
 const Centrioles = (attr) => (
   <Group aspect={1} {...attr}>
     <Rect
-      x={0.35}
-      y={0.5}
+      pos={[0.35, 0.5]}
       anchor="center"
       width={0.22}
       height={0.8}
@@ -158,8 +157,7 @@ const Centrioles = (attr) => (
       stroke={col.centrioles.stroke}
     />
     <Rect
-      x={0.7}
-      y={0.72}
+      pos={[0.7, 0.72]}
       anchor="center"
       width={0.6}
       height={0.22}
@@ -241,8 +239,7 @@ return (
       <Graph aspect={1.73} xlim={[-0.2, 1.7]} ylim={[0, 1]} flip-y={false}>
         <Blob
           radii={membrane}
-          x={0.75}
-          y={0.5}
+          pos={[0.75, 0.5]}
           anchor="center"
           width={0.568}
           height={0.86}
@@ -252,8 +249,7 @@ return (
         />
         <Blob
           radii={membrane}
-          x={0.75}
-          y={0.5}
+          pos={[0.75, 0.5]}
           anchor="center"
           width={0.537}
           height={0.8}
@@ -272,8 +268,7 @@ return (
         <Blob
           radii={nucleusR}
           phase={0.4}
-          x={nc[0]}
-          y={nc[1]}
+          pos={[nc[0], nc[1]]}
           anchor="center"
           width={0.168}
           height={0.32}
@@ -284,8 +279,7 @@ return (
         <Blob
           radii={nucleusR}
           phase={0.4}
-          x={nc[0]}
-          y={nc[1]}
+          pos={[nc[0], nc[1]]}
           anchor="center"
           width={0.147}
           height={0.28}
@@ -297,8 +291,7 @@ return (
         <Blob
           radii={nucleolusR}
           phase={1}
-          x={0.88}
-          y={0.47}
+          pos={[0.88, 0.47]}
           anchor="center"
           width={0.058}
           height={0.11}
@@ -307,29 +300,26 @@ return (
           stroke-width={px(1)}
         />
         {mitos.map(([p, size, angle]) => (
-          <Rotate x={p[0]} y={p[1]} anchor="center" angle={angle}>
+          <Rotate pos={[p[0], p[1]]} anchor="center" angle={angle}>
             <Mito width={size / 1.9} />
           </Rotate>
         ))}
         <Golgi
-          x={1.01}
-          y={0.72}
+          pos={[1.01, 0.72]}
           anchor="center"
           width={0.095}
         />
         <Centrioles
-          x={1.11}
-          y={0.57}
+          pos={[1.11, 0.57]}
           anchor="center"
           width={0.042}
         />
-        <Lyso x={1.22} y={0.5} anchor="center" width={0.034} />
-        <Lyso x={0.68} y={0.79} anchor="center" width={0.029} />
+        <Lyso pos={[1.22, 0.5]} anchor="center" width={0.034} />
+        <Lyso pos={[0.68, 0.79]} anchor="center" width={0.029} />
         <Blob
           radii={vacuoleR}
           phase={0.7}
-          x={0.42}
-          y={0.55}
+          pos={[0.42, 0.55]}
           anchor="center"
           width={0.074}
           height={0.14}
@@ -347,8 +337,7 @@ return (
         ))}
         {labels.map(([label, side, y]) => (
           <Text
-            x={side === "l" ? xL : xR}
-            y={y}
+            pos={[side === "l" ? xL : xR, y]}
             anchor={[side === "l" ? 1 : 0, 0.5]}
             font-size={em(0.7)}
             color={col.label.text}

@@ -33,7 +33,7 @@ return <BarPlot
   fill={blue}
 >
   {values.map((value, index) => (
-    <Text x={index} y={value} anchor={["center", "end"]}>
+    <Text pos={[index, value]} anchor={["center", "end"]}>
       {value + "%"}
     </Text>
   ))}

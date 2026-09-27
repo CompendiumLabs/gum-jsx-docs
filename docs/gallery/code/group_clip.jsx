@@ -2,8 +2,8 @@
 // its fragment tree still records the full positioned allocations and overflow.
 const artwork = [
   <Rect fill={lightgray} stroke={none} />,
-  <Rect x={-0.1} y={0.3} width={0.45} height={0.45} fill={blue} stroke={none} />,
-  <Circle x={0.9} y={0.5} anchor="center" width={0.5} fill={red} stroke={none} />,
+  <Rect pos={[-0.1, 0.3]} width={0.45} height={0.45} fill={blue} stroke={none} />,
+  <Circle pos={[0.9, 0.5]} anchor="center" width={0.5} fill={red} stroke={none} />,
 ]
 
 return <Box fit color={slate} padding={em(2)}>

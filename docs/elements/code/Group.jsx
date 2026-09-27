@@ -8,21 +8,19 @@
     stroke-width={px(3)}
   />
   <Circle
-    x={0.2}
-    y={0.45}
+    pos={[0.2, 0.45]}
     anchor="center"
     width={px(64)}
     fill={blue}
     stroke={none}
   />
   <Square
-    x={0.8}
-    y={0.45}
+    pos={[0.8, 0.45]}
     anchor="center"
     width={px(64)}
     fill={red}
     stroke={none}
   />
-  <Text x={0.2} y={0.72} anchor={[0.5, 0.5]}>Source</Text>
-  <Text x={0.8} y={0.72} anchor={['center', 'center']}>Result</Text>
+  <Text pos={[0.2, 0.72]} anchor={[0.5, 0.5]}>Source</Text>
+  <Text pos={[0.8, 0.72]} anchor={['center', 'center']}>Result</Text>
 </Group>

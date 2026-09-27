@@ -4,7 +4,7 @@ const polarPair = (...args) => {
   return [p.x, p.y]
 }
 const Disc = ({ pos, rad, ...props }) => (
-  <Circle x={pos[0]} y={pos[1]} anchor="center" width={(2 * rad) / aspect} {...props} />
+  <Circle pos={[pos[0], pos[1]]} anchor="center" width={(2 * rad) / aspect} {...props} />
 )
 // vertices traced from the photo in its 1.18-aspect frame (sign bbox center ~[0.4415, 0.40]),
 // remapped into a frame of aspect `aspect`: shape preserved, centered, scaled by `scale`
@@ -323,7 +323,7 @@ return (
         />
 
         {/* rose: printed on the face, so every imperfection below sits on top of it */}
-        <Rotate x={trace([0.5, 0.41])[0]} y={trace([0.5, 0.41])[1]} anchor="center" angle={-15}>
+        <Rotate pos={[trace([0.5, 0.41])[0], trace([0.5, 0.41])[1]]} anchor="center" angle={-15}>
           <Rose
             width={(scale * 0.44) / aspect}
             aspect={1}

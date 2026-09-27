@@ -1,7 +1,7 @@
-// Input points are [angle in radians, radius]; Graph fits Cartesian output.
-const polar = ([theta, r]) => [r * cos(theta), r * sin(theta)]
+// Input records name angle and radius; Graph fits Cartesian output.
+const polar = ({theta, r}) => ({x: r * cos(theta), y: r * sin(theta)})
 const angles = linspace(0, tau, 121)
-const route = linspace(0.15 * pi, 2.35 * pi, 100).map((theta, i) => [theta, 0.2 + 0.65 * i / 99])
+const route = linspace(0.15 * pi, 2.35 * pi, 100).map((theta, i) => ({theta, r: 0.2 + 0.65 * i / 99}))
 
 return (
   <TextBox width={em(32)} font-size={px(20)} padding={em(1.3)} background={white} fit>
@@ -16,13 +16,13 @@ return (
       >
         {[0.25, 0.5, 0.75, 1].map(r => (
           <Polyline
-            space="data" points={angles.map(theta => [theta, r])}
+            space="data" points={angles.map(theta => ({theta, r}))}
             stroke={lightgray} fill={none}
           />
         ))}
         {linspace(0, tau, 9).slice(0, -1).map(theta => (
           <Line
-            space="data" from={[theta, 0]} to={[theta, 1]}
+            space="data" from={{theta, r: 0}} to={{theta, r: 1}}
             stroke={lightgray}
           />
         ))}
@@ -30,7 +30,7 @@ return (
         <Points points={[route[0]]} point-size={px(9)} fill={blue} />
         {[0, 90, 180, 270].map(degrees => (
           <Text
-            x={degrees * d2r} y={1.13} anchor="center"
+            pos={{theta: degrees * d2r, r: 1.13}} anchor="center"
             font-size={em(0.75)} color={slate}
           >
             {degrees + '°'}
