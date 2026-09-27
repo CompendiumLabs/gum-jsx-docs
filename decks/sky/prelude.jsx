@@ -33,7 +33,7 @@ function Sun({ paint = gold, ...props }) {
           to={[0.5 + 0.46 * Math.cos(a), 0.5 + 0.46 * Math.sin(a)]}
           stroke={paint} stroke-width={em(0.13)} stroke-linecap="round" />
       })}
-      <Circle pos={[0.23, 0.23]} width={0.54} fill={paint} stroke="none" />
+      <Circle pos={[0.23, 0.23]} anchor="start" width={0.54} fill={paint} stroke="none" />
     </Group>
   )
 }
@@ -47,9 +47,9 @@ function Eyes({ ...props }) {
   return (
     <Group aspect={2} {...props}>
       {[0.04, 0.55].map(x => (
-        <Group pos={[x, px(0)]} width={0.41} height={1}>
+        <Group pos={[x, px(0)]} anchor="start" width={0.41} height={1}>
           <Ellipse width={1} height={1} fill="white" stroke={ink} stroke-width={em(0.06)} />
-          <Circle pos={[0.24, 0.28]} width={0.46} fill={ink} stroke="none" />
+          <Circle pos={[0.24, 0.28]} anchor="start" width={0.46} fill={ink} stroke="none" />
         </Group>
       ))}
     </Group>
@@ -61,9 +61,9 @@ function Scene({ mode, ...props }) {
   return (
     <Group aspect={1.25} clip {...props}>
       <Rect width={1} height={1} fill={bg} stroke="none" />
-      {mode !== 'night' && <Sun pos={[0.55, mode === 'day' ? 0.07 : 0.51]} width={0.37} paint={mode === 'day' ? gold : coral} />}
+      {mode !== 'night' && <Sun pos={[0.55, mode === 'day' ? 0.07 : 0.51]} anchor="start" width={0.37} paint={mode === 'day' ? gold : coral} />}
       {mode === 'night' && [[0.16, 0.2], [0.4, 0.35], [0.78, 0.15], [0.65, 0.48], [0.3, 0.58]].map(([x,y]) => (
-        <Circle pos={[x, y]} width={0.018} fill={paper} stroke="none" />
+        <Circle pos={[x, y]} anchor="start" width={0.018} fill={paper} stroke="none" />
       ))}
       <Path width={1} height={1} fill={mode === 'night' ? '#274B50' : green} stroke="none"
         commands={[move_to(0,0.84), curve_to(0.35,0.62,0.60,0.94,1,0.76), line_to(1,1), line_to(0,1), close_path()]} />

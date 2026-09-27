@@ -9,7 +9,12 @@ The first child determines natural size. Other children are decorations:
 they receive that established canvas and use **Group**-style `pos` and `anchor` placement.
 They contribute ink and overflow without enlarging the allocation. Source order
 is paint order; clip hides outside ink. Unlike **Group**, **Overlay** can hug its base.
+Decorations with `pos` default to `anchor="center"`; those without `pos` default
+to `anchor="start"` at the base's local origin. Set an explicit anchor to override.
 
 | Property | Default | Meaning |
 |---|---|---|
 | `clip` | `false` | Clip every layer to the base child's frame |
+
+See [Positioning](../../guides/text/positioning.md) for `pos`, `anchor`, and
+the distinction between placement and content alignment.

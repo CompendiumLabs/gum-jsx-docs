@@ -15,6 +15,9 @@ describe the elements, layout rules, and rendering APIs.
 3. Arrange content with [TextCol](../../elements/text/TextCol.md), [HStack](../../elements/text/HStack.md), or [Group](../../elements/text/Group.md).
 4. Add [shapes](../../elements/text/Rect.md) and [Text](../../elements/text/Text.md).
 
+Use [Positioning](./positioning.md) to place labels, shapes, and containers with
+`pos` and `anchor` in local or data coordinates.
+
 **TextBox**, **TextFrame**, and **TextCol** are content-sized by default. Use
 `width="fill"` when a document should occupy the available width; established
 widths pass to automatically sized content, respecting explicit child sizes.

@@ -9,14 +9,12 @@
   />
   <Circle
     pos={[0.2, 0.45]}
-    anchor="center"
     width={px(64)}
     fill={blue}
     stroke={none}
   />
   <Square
     pos={[0.8, 0.45]}
-    anchor="center"
     width={px(64)}
     fill={red}
     stroke={none}

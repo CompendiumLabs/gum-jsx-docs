@@ -20,14 +20,14 @@ return (
   <Page title="Raindrops can show the colors" prompt="Light bends, bounces inside, and bends out again." background="#EAF5FC">
     <HStack width="fill" height="fill" align="center" gap={em(1.5)}>
       <Group width={em(21)} height={em(12)}>
-        <Circle pos={[center[0]-radius, center[1]-radius*aspect]} width={2*radius}
+        <Circle pos={center} width={2*radius}
           fill="#BCE3F4" stroke="#6DA6C7" stroke-width={em(0.1)} />
         <Ray from={[0.04,local(entry)[1]]} to={local(entry)} paint="#BDAC71" />
         {paths.map(({paint,points}) => <Arrow width={1} height={1} points={points}
           stroke={paint} stroke-width={em(0.07)} head-size={em(0.18)} />)}
-        <Text pos={[0.04, 0.14]} font-size={em(0.9)}>sunlight</Text>
-        <Text pos={[center[0], center[1]]} anchor="center" font-weight="bold">raindrop</Text>
-        <Text pos={[0.1, 0.81]} font-size={em(0.9)}>colors spread out</Text>
+        <Text pos={[0.04, 0.14]} anchor="start" font-size={em(0.9)}>sunlight</Text>
+        <Text pos={center} font-weight="bold">raindrop</Text>
+        <Text pos={[0.1, 0.81]} anchor="start" font-size={em(0.9)}>colors spread out</Text>
       </Group>
       <VStack grow={1} gap={em(0.65)}>
         <Text font-size={em(1.35)} font-weight="bold">Water bends light.</Text>

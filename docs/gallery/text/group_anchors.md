@@ -12,5 +12,5 @@ The three panels stay side by side. Their measured sizes and gaps determine the
 outer size; `fit` on the root preserves the comparison in smaller viewports.
 
 The child box includes its inside border when determining its anchor. See
-[Group](../../elements/text/Group.md) for positioning and reference rules and
+[Positioning](../../guides/text/positioning.md) for placement and coordinate rules and
 [Point values](../../guides/text/point_values.md) for coordinate and anchor forms.

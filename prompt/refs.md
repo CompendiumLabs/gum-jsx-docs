@@ -14,7 +14,8 @@ runnable JSX example.
 Useful starting points:
 
 - Layout: [Units](references/guides/units.md), [Sizing](references/guides/sizing.md),
-  [Fitting](references/guides/fitting.md), [Stacks](references/guides/stack.md),
+  [Positioning](references/guides/positioning.md), [Fitting](references/guides/fitting.md),
+  [Stacks](references/guides/stack.md),
   [Box](references/elements/Box.md), [Grid](references/elements/Grid.md), and
   [Group](references/elements/Group.md).
 - Plots: [Plot](references/elements/Plot.md), [Graph](references/elements/Graph.md),

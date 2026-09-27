@@ -23,5 +23,5 @@ column, while `second` still addresses the frame inside it. A nested Network is
 different: it keeps its node IDs private, so the outer network can reach the
 identified frame around it but not `a` or `b`.
 
-Only Node defaults to a centered anchor. Set `anchor="center"` on other elements
-to position them by their centers.
+All elements with `pos` default to a centered anchor. Use `anchor="start"`
+to position an element by its top-left corner.

@@ -24,16 +24,24 @@ Children paint in source order, so put backgrounds and connectors before labels.
 | Direct child prop | Default | Meaning |
 |---|---|---|
 | `pos` | `[0, 0]` | Anchor location as `[x, y]` or `{x, y}` lengths; fractions use the whole **Group** |
-| `anchor` | `"start"` | Point on the child's allocated rectangle placed at `pos` |
+| `anchor` | `"center"` with `pos`; `"start"` without | Point on the child's allocated rectangle placed at `pos` |
 | `width` / `height` | — | Child's preferred size; fractions use the whole **Group** |
 
-**Anchor** accepts start, center, end, a fraction from 0 to 1, or independent x/y
+The `anchor` prop accepts start, center, end, a fraction from 0 to 1, or independent x/y
 choices in an object or two-entry tuple. `anchor={[1, 0.5]}` and
 `anchor={['end', 'center']}` both place
 the right-edge midpoint at `pos`. A missing anchor object axis defaults to start.
-**Anchor** values are dimensionless; px/em and stretch are not anchor values.
+Anchor values are dimensionless; px/em and stretch are not anchor values.
 
-**Anchor** describes the element's attachment point for its parent. Its own
+Supplying `pos` centers the child at that point by default. Set `anchor="start"`
+to place its top-left corner there. Without `pos` (or with `pos={undefined}`),
+the default anchor is start at the local origin, so backgrounds and full-canvas
+geometry retain their placement. An explicit `anchor` always takes precedence.
+
+See [Positioning](../../guides/text/positioning.md) for anchor comparisons,
+coordinate systems, and placement of wrapped content.
+
+The `anchor` prop describes the element's attachment point for its parent. Its own
 `align` or `justify` describes how it arranges its children. For example, a
 **Box** can use `anchor={[0.5, 0.5]}` to center itself at `pos` and `align="end"`
 to place its content at the **Box**'s bottom-right corner.

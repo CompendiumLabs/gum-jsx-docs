@@ -11,9 +11,9 @@
   <Edge start="pill" end="stack" start-side="bottom" end-side="top" />
   <Edge start="circle" end="second" start-side="bottom" end-side="left" />
   <Edge start="first" end="inner" start-side="right" end-side="bottom" tension={1.3} />
-  <Circle id="circle" pos={[0.15, 0.75]} anchor="center" width={em(4)} fill={white} />
-  <Rect id="pill" pos={[0.5, 0.75]} anchor="center" width={em(8)} height={em(3)} border-radius={0.5} fill={white} />
-  <VStack id="stack" pos={[0.5, 0.28]} anchor="center" width={em(8)} gap={em(0.4)} align="fill">
+  <Circle id="circle" pos={[0.15, 0.75]} width={em(4)} fill={white} />
+  <Rect id="pill" pos={[0.5, 0.75]} width={em(8)} height={em(3)} border-radius={0.5} fill={white} />
+  <VStack id="stack" pos={[0.5, 0.28]} width={em(8)} gap={em(0.4)} align="fill">
     <TextFrame id="first" padding={em(0.4)} background={white}>
       First
     </TextFrame>
@@ -21,7 +21,7 @@
       Second
     </TextFrame>
   </VStack>
-  <Frame id="inner" pos={[0.81, 0.7]} anchor="center" width={0.25} height={0.4} border-radius={em(0.5)}>
+  <Frame id="inner" pos={[0.81, 0.7]} width={0.25} height={0.4} border-radius={em(0.5)}>
     <Network xlim={[0, 1]} ylim={[0, 1]} stroke={red} stroke-width={px(1)}>
       <Edge start="a" end="b" tension={1.6} head-open/>
       <Node id="a" pos={[0.3, 0.75]} width={em(4)} font-size={em(0.75)} border-color={red}>

@@ -55,7 +55,7 @@ return <Box fit
           head-size={em(0.5)} head-curve={0.5}
         />
       ))}
-      <VStack pos={[em(stackX), px(0)]} width={em(stackWidth)} gap={em(gap)} align="center">
+      <VStack pos={[em(stackX), px(0)]} anchor="start" width={em(stackWidth)} gap={em(gap)} align="center">
         <Node id="output" height={em(terminalHeight)} padding={0} border-width={0}>Output Probabilities</Node>
         <Block id="softmax" label="Softmax" color={red} />
         <Block id="linear" label="Linear" color={red} />

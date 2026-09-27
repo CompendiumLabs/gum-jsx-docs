@@ -1,11 +1,11 @@
 <Page title="Air is made of tiny pieces" prompt="These pieces are much too small for our eyes to see.">
   <HStack width="fill" height="fill" align="center" gap={em(1.6)}>
     <Group width={em(15)} aspect={1.2}>
-      <Circle pos={[0.1, 0.02]} width={0.76} fill={airBlue} stroke="none" />
+      <Circle pos={[0.1, 0.02]} anchor="start" width={0.76} fill={airBlue} stroke="none" />
       {[[0.28,0.22],[0.57,0.18],[0.41,0.39],[0.67,0.46],[0.25,0.60],[0.51,0.66]].map(([x,y]) => (
-        <Group pos={[x, y]} width={0.09} aspect={1.5}>
-          <Circle pos={[0, px(0)]} width={0.65} fill="#7EA6C3" stroke="none" />
-          <Circle pos={[0.4, px(0)]} width={0.65} fill="#A9C7D9" stroke="none" />
+        <Group pos={[x, y]} anchor="start" width={0.09} aspect={1.5}>
+          <Circle pos={[0, px(0)]} anchor="start" width={0.65} fill="#7EA6C3" stroke="none" />
+          <Circle pos={[0.4, px(0)]} anchor="start" width={0.65} fill="#A9C7D9" stroke="none" />
         </Group>
       ))}
       <Text pos={[0.48, 0.88]} anchor="center" font-size={em(0.85)}>Pretend we can zoom in!</Text>

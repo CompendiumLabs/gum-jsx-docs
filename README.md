@@ -17,6 +17,9 @@ getting started and the package overview.
 Start with [Gum](./docs/guides/text/gum.md), [units](./docs/guides/text/units.md), and
 [sizing](./docs/guides/text/sizing.md).
 
+[Positioning](./docs/guides/text/positioning.md) explains `pos`, `anchor`,
+coordinate systems, and placement of whole containers.
+
 [Grid](./docs/elements/text/Grid.md) shares column widths across rows;
 [TextGrid](./docs/elements/text/TextGrid.md) adds text conversion and spacing defaults.
 
@@ -210,7 +213,8 @@ rendering, plugin rebuilds and packaging, and CLI behavior. Archive tests requir
 - Getting started: [Gum](./docs/guides/text/gum.md), [JSX](./docs/guides/text/jsx.md),
   [Units](./docs/guides/text/units.md), [Sizing](./docs/guides/text/sizing.md),
   [Style](./docs/guides/text/style.md), and [CLI](./docs/guides/text/cli.md).
-- Geometry and layout: [Point values](./docs/guides/text/point_values.md),
+- Geometry and layout: [Positioning](./docs/guides/text/positioning.md),
+  [Point values](./docs/guides/text/point_values.md),
   [Coordinates](./docs/guides/text/coordinates.md), [Projections](./docs/guides/text/projections.md),
   and [Stack](./docs/guides/text/stack.md).
 - Embedding: [Rendering](./docs/guides/text/rendering.md),

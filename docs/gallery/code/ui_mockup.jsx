@@ -22,12 +22,12 @@ const Window = ({ title, children, padding = em(0.5), ...props }) => (
 return <Slide fit font-size={px(10)} aspect={1.5} padding={em(1.1)}>
   <Frame border-radius={em(0.85)} clip border-width={em(0.1)} background={lightgray}>
     <Group>
-      <Window title="Data Viz" pos={[0.06, 0.31]} width={0.67} padding={0}>
+      <Window title="Data Viz" pos={[0.06, 0.31]} anchor="start" width={0.67} padding={0}>
         <Plot aspect={1.9} xlim={[0, tau]} ylim={[-1.2, 1.2]}>
           <SymLine fy={sin} xlim={[0, tau]} stroke={blue} stroke-width={em(0.15)} />
         </Plot>
       </Window>
-      <VStack pos={[0.64, 0.05]} width={0.33} gap={em(0.75)}>
+      <VStack pos={[0.64, 0.05]} anchor="start" width={0.33} gap={em(0.75)}>
         {messages.map(({ title, body }) => (
           <Window title={title}>
             <Text>{body}</Text>

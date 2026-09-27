@@ -92,6 +92,8 @@ hand-tuned offsets.
 - `Group` is a finite positioning canvas, not a content-hugging box. Establish
   both axes with dimensions, finite offers, or one dimension plus aspect. Its
   children use `pos={[x, y]}` or `pos={{x, y}}` and `anchor`, with top-left origin and y pointing down.
+  With `pos`, the default anchor is `"center"`; use `anchor="start"` for top-left
+  placement. Without `pos`, children default to a start anchor at the local origin.
   In `Graph`, `Plot`, and `Network`, bare numeric positions are data coordinates,
   with y pointing up by default. Unit strings and `px`/`em` positions are local
   lengths; widths and font sizes also use layout units. Give positioned shapes

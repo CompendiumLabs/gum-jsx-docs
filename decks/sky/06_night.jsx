@@ -1,9 +1,9 @@
 <Page title="At night, our side faces away" prompt="Earth keeps turning. Daytime will come again!" background={night} color={paper}>
   <HStack width="fill" height="fill" align="center" gap={em(1.3)}>
     <Group width={em(22)} height={em(12)}>
-      <Sun pos={[0, 0.26]} width={0.24} />
+      <Sun pos={[0, 0.26]} anchor="start" width={0.24} />
       {[0.34,0.5,0.66].map(y => <Ray from={[0.24,y]} to={[0.46,y]} paint={gold} />)}
-      <Group pos={[0.46, 0.04]} width={0.45} aspect={1}>
+      <Group pos={[0.46, 0.04]} anchor="start" width={0.45} aspect={1}>
         <Circle width={1} fill="#6BB8DE" stroke="none" />
         <Path width={1} height={1} fill="#304263" stroke="none"
           commands={[move_to(0.5,0), curve_to(0.776,0,1,0.224,1,0.5), curve_to(1,0.776,0.776,1,0.5,1), close_path()]} />
