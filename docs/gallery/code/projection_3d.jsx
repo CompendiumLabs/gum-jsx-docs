@@ -1,8 +1,4 @@
 // A shared projection maps three-dimensional source records onto the page.
-const project = ({x, y, z}) => ({
-  x: (x - y) * sqrt(3) / 2,
-  y: z - (x + y) / 2,
-})
 const helix = t => ({x: cos(t), y: sin(t), z: 0.9 * t / tau})
 const origin = {x: 0, y: 0, z: 0}
 const axes = [
@@ -19,7 +15,7 @@ return (
         A helix, markers, axes, and labels share x, y, and z coordinates.
       </Text>
       <Graph
-        aspect={1} projection={project}
+        aspect={1} projection={isometric_projection()}
         xlim={[-1.9, 1.9]} ylim={[-1, 2.8]}
       >
         <SymLine

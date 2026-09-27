@@ -5,9 +5,10 @@ description: "Project a three-dimensional helix, markers, axes, and labels into 
 
 # Three-dimensional projection
 
-Each point in this figure carries `{x, y, z}`. One orthographic projection on
-[Graph](../../elements/text/Graph.md) maps these three dimensions to `{x, y}`
-on the page. The graph's limits describe that output space.
+Each point in this figure carries `{x, y, z}`. The core
+`isometric_projection()` helper on [Graph](../../elements/text/Graph.md) maps
+these three dimensions to `{x, y}` on the page, with equal scale along all three
+source axes. The graph's limits describe that output space.
 
 [SymLine](../../elements/text/SymLine.md) samples the helix in three dimensions.
 The axes use the same source records in Arrow's `from` and `to`, while Text
