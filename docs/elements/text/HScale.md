@@ -12,8 +12,9 @@ description: "HScale draws ticks only, without a baseline or labels."
 | `interval` | Automatic | Positive fixed tick step |
 | `side` | `"bottom"` | Edge and orientation |
 | `at` | Frame edge | Data location on the perpendicular axis |
-| `tick-size` | `px(5)` | Tick length |
+| `tick-size` | `em(5/16)` | Tick length |
 | `tick-side` | `"outer"` | `"inner"`, `"outer"`, `"top"`, or `"bottom"` |
+| `stroke-width` | `em(1/16)` | Tick thickness |
 | `tick-style` / `tick-*` | — | Nested or flat styles for ticks |
 
 **HScale** draws ticks only, without a baseline or labels. It defaults to `side="bottom"`.

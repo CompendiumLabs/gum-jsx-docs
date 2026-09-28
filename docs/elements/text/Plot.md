@@ -21,8 +21,8 @@ axis titles, an optional legend, and an optional background. Limits follow
 | `grid` | `true` | Draw grid lines at axis ticks |
 | `title` / `xlabel` / `ylabel` | — | String or **Element**; the y title rotates −90° |
 | `legend` | — | **Legend** **Element** or array of **Legend** entries |
-| `margin` | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
-| `label-gap` | `px(8)` | Space between titles and measured axis extents |
+| `margin` | `em(3/4)` | Extra outer space; accepts [Box padding forms](./Box.md) |
+| `label-gap` | `em(1/2)` | Space between titles and measured axis extents |
 | `bounds` | `"outer"` | `"frame"` makes the allocation the data area alone; see below |
 | `background` | — | Full-frame background paint |
 | `plot-background` | — | Data-area background paint |
@@ -39,8 +39,13 @@ axis titles, an optional legend, and an optional background. Limits follow
 Padding uses [Graph's side and axis forms](./Graph.md), with numeric fractions
 of inferred data spans. Explicit limits stay exact.
 
-Fonts inherit from the parent (16px at the root). Margins come from measured axis
-overflow and title sizes.
+Fonts inherit from the parent (16px at the root). Axis and grid strokes default to
+`em(1/16)`, tick lengths to `em(5/16)`, and tick-label offsets to `em(1/4)`.
+These details, `margin`, and `label-gap` scale with `font-size`; changing only the
+plot's width or height keeps them the same size. Label-specific font overrides
+leave axis geometry unchanged. Use `axis-stroke-width`, `tick-stroke-width`, or
+`grid-stroke-width` with `px(...)` for fixed thicknesses.
+Margins come from measured axis overflow and title sizes.
 Text uses `theme:text`, axes use `theme:muted`, and grid lines use `theme:grid`.
 These paints follow the inherited [theme](../../guides/text/themes.md).
 Title and x title wrap at the usable width. Explicit margin adds space to those

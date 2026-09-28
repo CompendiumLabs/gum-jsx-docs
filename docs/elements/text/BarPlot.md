@@ -24,8 +24,8 @@ description: "Combine bars, axes, labels, and other plot features in one chart."
 | `grid` | `true` | Draw grid lines at axis ticks |
 | `title` / `xlabel` / `ylabel` | — | String or **Element**; the y title rotates −90° |
 | `legend` | — | **Legend** **Element** or array of **Legend** entries |
-| `margin` | `px(12)` | Extra outer space; accepts [Box padding forms](./Box.md) |
-| `label-gap` | `px(8)` | Space between titles and measured axis extents |
+| `margin` | `em(3/4)` | Extra outer space; accepts [Box padding forms](./Box.md) |
+| `label-gap` | `em(1/2)` | Space between titles and measured axis extents |
 | `bounds` | `"outer"` | `"frame"` makes the allocation the data area alone; see below |
 | `background` | — | Full-frame background paint |
 | `plot-background` | — | Data-area background paint |

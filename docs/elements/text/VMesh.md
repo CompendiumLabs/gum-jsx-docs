@@ -10,6 +10,7 @@ description: "Draw vertical grid lines at generated or explicit tick values."
 | `lim` | `[0, 1]` | Directed domain used to place grid lines |
 | `ticks` | `5` | Target count or explicit values / labeled pairs |
 | `interval` | Automatic | Positive fixed tick step |
+| `stroke-width` | `em(1/16)` | Grid thickness, relative to inherited font size |
 | `direction` | `"y"` | Draw horizontal lines; may be overridden |
 
 Grid lines at ticks using the count/explicit/interval rules of [Axis](./Axis.md).

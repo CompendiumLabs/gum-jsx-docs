@@ -12,8 +12,9 @@ description: "VScale draws ticks only, without a baseline or labels."
 | `interval` | Automatic | Positive fixed tick step |
 | `side` | `"left"` | Edge and orientation |
 | `at` | Frame edge | Data location on the perpendicular axis |
-| `tick-size` | `px(5)` | Tick length |
+| `tick-size` | `em(5/16)` | Tick length |
 | `tick-side` | `"outer"` | `"inner"`, `"outer"`, `"left"`, or `"right"` |
+| `stroke-width` | `em(1/16)` | Tick thickness |
 | `tick-style` / `tick-*` | — | Nested or flat styles for ticks |
 
 **VScale** draws ticks only, without a baseline or labels. It defaults to `side="left"`.

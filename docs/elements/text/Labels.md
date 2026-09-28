@@ -12,9 +12,9 @@ description: "Labels draws labels only, without a baseline or ticks."
 | `interval` | Automatic | Positive fixed tick step |
 | `side` | `"bottom"` | Edge and orientation |
 | `at` | Frame edge | Data location on the perpendicular axis |
-| `tick-size` | `px(5)` | Invisible tick length included in label placement |
+| `tick-size` | `em(5/16)` | Invisible tick length included in label placement |
 | `tick-side` | `"outer"` | Tick direction used to position labels |
-| `label-offset` | `px(4)` | Gap after the tick position |
+| `label-offset` | `em(1/4)` | Gap after the tick position |
 | `format` | `format_tick` | `(value, index) => string` for numeric ticks |
 | `rotate` | `0` | Label rotation in degrees |
 | `label-style` / `label-*` | — | Nested or flat styles for generated labels |

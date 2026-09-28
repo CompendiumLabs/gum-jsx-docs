@@ -10,6 +10,10 @@ description: "Draw a unit-length horizontal line in a local frame."
 | `from` | `[0, 0.5]` | Segment start in the local rectangle |
 | `to` | `[1, 0.5]` | Segment end in the local rectangle |
 
-**UnitLine** is a local **Line** convenience. **HLine** and **UnitLine** span `x=0` to `x=1` at `y=0.5`;
-**VLine** spans `y=0` to `y=1` at `x=0.5`. `from/to` props can override these defaults. Use
-**CoordLine** for data geometry.
+**UnitLine** is a [Line](./Line.md) convenience that defaults to a horizontal
+segment from `x=0` to `x=1` at `y=0.5` in its local rectangle. `from` and `to`
+can override these defaults, and `space="data"` opts into the enclosing coordinate
+context, as on **Line**.
+
+Use [HLine](./HLine.md) or [VLine](./VLine.md) to specify a fixed position and
+`lim` span instead of arbitrary endpoints.

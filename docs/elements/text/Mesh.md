@@ -11,6 +11,7 @@ description: "Draw grid lines at generated or explicit tick values."
 | `ticks` | `5` | Target count or explicit values / labeled pairs |
 | `interval` | Automatic | Positive fixed tick step |
 | `direction` | `"x"` | `"x"` draws vertical lines; `"y"` draws horizontal lines |
+| `stroke-width` | `em(1/16)` | Grid thickness, relative to inherited font size |
 
 Grid lines at ticks using the count/explicit/interval rules of [Axis](./Axis.md).
 lim supplies the generation domain (default [0,1]).

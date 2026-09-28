@@ -24,4 +24,5 @@ Graph projects them. Any nonfinite dimension creates a gap. `fx`, `fy`,
 `xvals`, and `yvals` retain their Cartesian meanings.
 
 All **CoordLine** styling options are available.
+Use [SymArrow](./SymArrow.md) for the same sampling options with optional arrowheads.
 Construction stores immutable sampled data; resizing never executes callbacks.

@@ -7,6 +7,7 @@ description: "Draw a straight, curved, or rounded shaft with optional arrowheads
 
 A shaft from from/to or through points. curve makes a spline; radius rounds a
 polyline. Both heads follow the original route's endpoint directions.
+Use [SymArrow](./SymArrow.md) to sample a function into an arrow path.
 
 | Property | Default | Meaning |
 | --- | --- | --- |

@@ -14,23 +14,22 @@ return (
   <Box padding={em(1.5)}>
     <Frame padding={em(0.75)} background={darkgray} border-radius={em(1.25)} border-width={px(2)}>
       <Box padding={em(0.75)} background={black} border-radius={em(0.75)}>
-        <Group aspect={cols/rows}>
-          {range(rows * cols).map((i) => (
-            <RoundedRect
-              pos={[(i % cols) / cols, floor(i / cols) / rows]} anchor="start"
-              width={1 / cols - 0.007}
-              height={1 / rows - 0.012}
-              border-radius={em(0.3)}
-              fill={paint(i % cols)}
-              stroke={none}
-              opacity={0.7}
-            />
-          ))}
+        <Overlay>
+          <Grid columns={cols} gap={em(0.3)}>
+            {range(rows * cols).map((i) => (
+              <RoundedRect aspect={1}
+                border-radius={em(0.3)}
+                fill={paint(i % cols)}
+                stroke={none}
+                opacity={0.7}
+              />
+            ))}
+          </Grid>
           <Spline
             points={points}
             tension={1.2}
             stroke={white}
-            stroke-width={px(15)}
+            stroke-width={em(1)}
             opacity={0.25}
             stroke-linecap="round"
           />
@@ -38,10 +37,10 @@ return (
             points={points}
             tension={1.2}
             stroke={white}
-            stroke-width={px(5)}
+            stroke-width={em(0.35)}
             stroke-linecap="round"
           />
-        </Group>
+        </Overlay>
       </Box>
     </Frame>
   </Box>

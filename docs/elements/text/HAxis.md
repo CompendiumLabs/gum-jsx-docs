@@ -12,17 +12,18 @@ description: "HAxis draws a baseline, ticks, and labels."
 | `interval` | Automatic | Positive fixed tick step |
 | `side` | `"bottom"` | Axis edge and orientation |
 | `at` | Frame edge | Data location on the perpendicular axis |
-| `tick-size` | `px(5)` | Tick length |
+| `tick-size` | `em(5/16)` | Tick length |
 | `tick-side` | `"outer"` | `"inner"`, `"outer"`, `"top"`, or `"bottom"` |
-| `label-offset` | `px(4)` | Gap between ticks and labels |
+| `label-offset` | `em(1/4)` | Gap between ticks and labels |
 | `format` | `format_tick` | `(value, index) => string` for numeric ticks |
 | `rotate` | `0` | Label rotation in degrees |
 | `labels` | `true` | Draw tick labels |
 | `line` | `true` | Draw the baseline |
 | `arrow` | `false` | Draw a head at the directed endpoint |
-| `arrow-size` | `px(7)` | Arrowhead length |
+| `arrow-size` | `em(7/16)` | Arrowhead length |
 | `arrow-width` | `1.3` | Full arrowhead width divided by its length |
 | `arrow-style` / `arrow-*` | — | Arrowhead shape and paint options |
+| `stroke-width` | `em(1/16)` | Shared baseline and tick thickness |
 | `line-style` / `tick-style` / `label-style` | — | Nested styles for generated parts |
 | `line-*` / `tick-*` / `label-*` | — | Flat overrides for generated-part styles |
 

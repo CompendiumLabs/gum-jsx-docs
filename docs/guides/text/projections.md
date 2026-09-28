@@ -1,6 +1,6 @@
 ---
 category: plotting
-description: "Project coordinates for polar plots, map annotations, and custom elements."
+description: "Project coordinates for polar and logarithmic plots, maps, and custom elements."
 ---
 
 # Projections
@@ -12,17 +12,18 @@ can use Cartesian, polar, or geographic coordinates.
 
 ## Polar coordinates in Graph
 
-Give [Graph](../../elements/text/Graph.md) a pure function that maps coordinate
-records. Tuple inputs expand to `{x, y}` before reaching the callback:
+Give [Graph](../../elements/text/Graph.md) a `polar_projection()` to map named
+angle/radius records into Cartesian coordinates:
 
 ```jsx
 <Graph
   aspect={1}
   xlim={[-1.2, 1.2]} ylim={[-1.2, 1.2]}
-  projection={({theta, r}) => ({x: r * cos(theta), y: r * sin(theta)})}
+  projection={polar_projection()}
 >
-  <CoordLine
-    points={linspace(0, tau, 121).map(theta => ({theta, r: 0.8}))}
+  <SymLine
+    f={theta => ({theta, r: 0.8})}
+    tlim={[0, tau]} samples={121}
     stroke={blue} fill={none}
   />
   <Points points={[{theta: pi / 4, r: 0.8}]} point-size={px(8)} fill={red} />
@@ -30,15 +31,115 @@ records. Tuple inputs expand to `{x, y}` before reaching the callback:
 </Graph>
 ```
 
-Each record supplies `theta` in radians and `r` as its radius. The callback
-receives those names and returns Cartesian coordinates.
+Each record supplies `theta` in radians and `r` as its radius. The helper
+returns `{x: r * cos(theta), y: r * sin(theta)}` by default.
 Graph maps those through its limits and flips into pixels.
-Limits describe the callback's output space. Both limits must be explicit, or
+Limits describe the projection's output space. Both limits must be explicit, or
 provided with `coord`; inferring nonlinear bounds would require additional
 sampling. Equal axis spans and a square frame preserve the polar disk's shape.
 
-The runnable example draws its rings, spokes, and spiral with ordinary marks.
-The arrow's supplied samples follow the same projection as the points.
+`polar_projection({degrees, offset, clockwise})` defaults to radians, an offset
+of `0`, and counterclockwise angles from positive x. `degrees: true` makes both
+`theta` and `offset` use degrees. The angle is `offset + theta`, or
+`offset - theta` with `clockwise: true`. For compass bearings, use
+`polar_projection({degrees: true, offset: 90, clockwise: true})`: zero points up
+and 90° points right with Graph's default flips. Signed radii are supported.
+
+Inputs require finite `theta` and `r`; extra finite numeric dimensions are
+allowed. Tuples always expand to `{x, y}`, so use named records for polar input.
+Custom projections can still be supplied as pure coordinate-record functions.
+
+## Parametric paths in source coordinates
+
+[SymLine](../../elements/text/SymLine.md),
+[SymSpline](../../elements/text/SymSpline.md),
+[SymPoly](../../elements/text/SymPoly.md),
+[SymPoints](../../elements/text/SymPoints.md), and
+[SymArrow](../../elements/text/SymArrow.md) accept `f(t)` returning any numeric
+coordinate record. Sampling produces source coordinates; the enclosing Graph
+projects them into its Cartesian view. For example, put this spiral inside the
+polar Graph above:
+
+```jsx
+<SymArrow
+  f={t => ({theta: (0.15 + 2.2 * t) * pi, r: 0.2 + 0.65 * t})}
+  tlim={[0, 1]}
+  samples={100}
+  stroke={blue}
+  stroke-width={px(3)}
+  head-size={px(12)}
+/>
+```
+
+`tlim` sets the parameter range, while Graph's `xlim` and `ylim` describe the
+projected output. Use `tvals` for explicit parameter samples. `fx` and `fy` remain
+Cartesian conveniences; `f` lets the curve use the projection's own dimension
+names, including `{lon, lat}` or `{x, y, z}`.
+
+SymArrow uses the same sampling options as SymLine and the head controls of
+[Arrow](../../elements/text/Arrow.md). It draws an end head by default; add
+`start-head` for both ends or set `end-head={false}` to omit the end head.
+Directions follow the projected path, while `head-size` stays in layout units.
+
+The runnable example uses SymLine for the polar rings and SymArrow for the spiral,
+alongside ordinary lines, points, and labels sharing the same projection. Samples
+are stored at construction; resizing does not call `f` again. Projection does not
+add samples, so increase `samples` when a curve needs more detail. Null/nonfinite
+samples and hidden projected points break the path, without adding heads at cuts.
+
+## Logarithmic coordinates and manual axes
+
+`log_projection({axes, base})` takes `{x, y}` records and returns logarithms on
+the selected axes. Defaults are `axes: 'both'` and `base: 10`. Use `axes: 'x'`
+or `axes: 'y'` for a semilog view; the other coordinate passes through unchanged.
+The base must be finite, positive, and different from `1`. Bases below `1`
+reverse the logarithmic direction. Extra finite numeric dimensions are allowed;
+mark inputs can also use `[x, y]` tuples.
+
+On a logged axis, values at or below zero return `null`, hiding the point and
+splitting paths. An unlogged axis can still contain zero or negative values.
+Nonfinite samples follow the usual gap rules.
+
+Graph limits are **projected values**: `[0, 3]` covers data values from `1` to
+`1000` at base 10. [HAxis](../../elements/text/HAxis.md),
+[VAxis](../../elements/text/VAxis.md), and meshes already use output coordinates
+and do not apply the projection again. Supply explicit `[position, label]` ticks
+to display the original data values:
+
+```jsx
+const ticks = [[0, '1'], [1, '10'], [2, '100'], [3, '1000']]
+return (
+  <Box padding={em(2)}>
+    <Graph
+      aspect={1}
+      xlim={[0, 3]} ylim={[0, 3]}
+      projection={log_projection()}
+    >
+      <HMesh lim={[0, 3]} ticks={ticks} />
+      <VMesh lim={[0, 3]} ticks={ticks} />
+      <SymLine
+        f={t => ({x: 10 ** t, y: 10 ** t})}
+        tlim={[0, 3]} stroke={blue}
+      />
+      <HAxis lim={[0, 3]} ticks={ticks} />
+      <VAxis lim={[0, 3]} ticks={ticks} />
+    </Graph>
+  </Box>
+)
+```
+
+Equal data ratios now occupy equal distances. You choose the tick labels and
+positions; the projection carries no axis or tick metadata. Minor ticks can use
+`log10(value)` positions between decades. The
+[logarithmic projection example](../../gallery/text/log_projection.md) includes
+minor grid lines, two curves, and markers. Its `f(t)` samples uniformly in the
+exponent, giving even detail across decades.
+
+Both 2D helpers return immutable `Projection` objects and are available in JSX
+and as imports from `@gum-jsx/core`. Their exported option types are
+`PolarProjectionOptions` and `LogProjectionOptions`. Options are captured when
+the helper is created. Use Graph for these views; Plot keeps its existing
+Cartesian axes and does not accept a projection prop.
 
 ## More than two input dimensions
 
