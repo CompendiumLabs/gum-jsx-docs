@@ -297,6 +297,14 @@ Core behavior tests and synthetic layout fixtures remain in gum-jsx-core.
 The former core examples are consolidated into these collections; equivalent
 examples share one docs source, and previews are generated on demand.
 
+## Performance demos
+
+Run `bun run perf:demos` from this repository or the workspace root to benchmark
+every JSX file under `demos/`. The suite measures evaluation, layout, SVG
+serialization, and complete renders separately. Use `--smoke` for a quick check,
+`--filter '^demos/render/'` for complete renders, and `--json` for saved results.
+See the [workload notes](test/perf/README.md) for timing boundaries.
+
 ## Load the content
 
 Use these filesystem loaders in Bun, not
