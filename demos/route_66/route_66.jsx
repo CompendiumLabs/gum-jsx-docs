@@ -82,7 +82,7 @@ const Shield = (props) => (
 const mapW = 1352;
 const mapH = 553;
 const source = us_states();
-const view = { projection:'mercator', bounds:[-122.5,31.4,-84.0,43.8], padding:0 };
+const view = { projection:'mercator', bounds:[-124.5,30.75,-82.0,44.5], padding:0 };
 const project = p => project_geo_point(source, view, mapW, mapH, p);
 const local = p => p.map(px);
 

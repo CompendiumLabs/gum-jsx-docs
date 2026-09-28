@@ -1,5 +1,5 @@
 // A boxed title centered across the top border.
-<Box background={white} padding={em(2)}>
+<Box padding={em(1)}>
   <TitleFrame
     title="A titled figure"
     border-color={blue}
