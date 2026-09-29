@@ -1,4 +1,4 @@
-// Xuanzang's travels, 629–645 CE. Render with Gum JSX CLI 2.0.0-beta.2.
+// Xuanzang's travels, 629–645 CE. Render with Gum JSX CLI 2.0.0-beta.3.
 // This installed Gum CLI uses pos={[x,y]} for positioned elements.
 // Routes connect selected historical stops; intermediate coordinates are schematic.
 // Historical sources and geographic conventions: xuanzang-map-notes.md.

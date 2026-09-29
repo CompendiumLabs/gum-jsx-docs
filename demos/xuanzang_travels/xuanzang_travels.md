@@ -13,7 +13,7 @@ An annotated map of Xuanzang’s journey from China to India and back, **629–6
 
 ## Render
 
-Requires **Bun** and **Gum CLI**. The source was rendered with `@gum-jsx/cli@2.0.0-beta.2`, which uses `pos={[x, y]}` for positioned elements. The base map is bundled with Gum.
+Requires **Bun** and **Gum CLI**. The source was rendered with `@gum-jsx/cli@2.0.0-beta.3`, which uses `pos={[x, y]}` for positioned elements. The base map is bundled with Gum.
 
 Run these commands from this folder:
 
