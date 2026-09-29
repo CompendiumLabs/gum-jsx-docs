@@ -80,7 +80,7 @@ accepts an explicit `fill`.
 Outlines retain ink beyond the logical advance, including italic glyphs and
 negative kerns. An explicit `Svg` viewport clips at its edges, so leave padding
 for overhang. The comparison script expands to the union of logical size and
-ink before rendering. [Standalone helpers and gum-tex](math_export.md) now
+ink before rendering. [Standalone math helpers](math_export.md)
 provide that viewport directly, with synchronous and asynchronous SVG export.
 See also [formula labels on plots](../../gallery/text/math_plot_labels.md) and [math in slides](../../gallery/text/math_slides.md).
 
