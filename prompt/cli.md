@@ -99,13 +99,13 @@ gum --help
 | Option | Meaning |
 |---|---|
 | `[files...]` | JSX files or one deck directory; omit or use `-` for stdin |
-| `-f, --format <format>` | `kitty`, `svg`, `png`, `pdf`, `tree`, or `json` |
+| `-f, --format <format>` | Image output: `kitty`, `svg`, `png`, `pdf`; layout inspection: `tree` or `json` |
 | `-o, --output <file>` | Write to a file instead of stdout |
 | `-W, --width <pixels>` | Exact viewport width in pixels |
 | `-H, --height <pixels>` | Exact viewport height in pixels |
 | `-r, --ratio <number>` | Positive PNG/kitty sampling ratio; default `1` |
 | `--png-encoding <preset>` | Lossless PNG/kitty encoding: `fast` (default) or `standard` |
-| `--select <x,y,width,height>` | PNG/kitty crop in source-image pixels |
+| `--select <x,y,width,height>` | Inspect a PNG/kitty region in source pixels; combine with `--ratio` to magnify |
 | `-b, --background <color>` | Paint the viewport background |
 | `-t, --theme <theme>` | `light` or `dark`; override the source root theme |
 | `--title <text>` | SVG or PDF document title |
@@ -116,6 +116,51 @@ gum --help
 | `--stats` | Machine-readable layout counters on stderr |
 | `-V, --version` | Print the CLI version |
 | `-h, --help` | Show help |
+
+#### Inspect a region with `--select`
+
+Use `--select` to examine fine details and alignment without shrinking the whole
+figure to fit the viewer. Supply `x,y,width,height` in source pixels, with the
+origin at the viewport's top-left. The CLI lays out the full figure, then crops
+before rasterization; selecting a region does not reflow its contents.
+
+```sh
+gum figure.jsx --select 100,50,200,100 --ratio 3 -o detail.png
+```
+
+This produces a 600 × 300 PNG of the 200 × 100 region starting at `(100, 50)`.
+`--ratio` increases sampling resolution, preserving sharp vector edges rather
+than enlarging an existing bitmap. Use `-f kitty` instead of `-o detail.png` to
+view the crop in a compatible terminal.
+
+Selection works only with PNG and kitty. Width and height must be positive;
+fractional coordinates and regions extending outside the viewport are allowed.
+Outside areas are transparent unless `--background` supplies a paint. Compare
+magnified crops with the full image to check both detail and composition.
+
+#### Inspect layout with `-f tree` and `-f json`
+
+These formats expose the fragments produced by layout:
+
+- **`tree`** gives an indented view of fragment names, measured sizes, child
+  offsets and transforms, ink and content bounds, overflow, guides, and clipping.
+  Use it to trace unexpected spacing, alignment, or content extending beyond a box.
+  `--precision full` preserves full numeric precision in this report.
+- **`json`** serializes the fragment data, including drawing commands and nested
+  child placements, for structured inspection or further processing. JSON retains
+  full numeric precision regardless of `--precision`.
+
+```sh
+gum figure.jsx -f tree --precision full
+gum figure.jsx -f json -o fragments.json
+```
+
+Both formats describe the result after layout. To inspect the source element
+tree before layout, use the host APIs in the
+[rendering guide](references/guides/rendering.md). Combine fragment inspection
+with temporary `debug` props and a rendered image to connect numeric bounds to
+visible geometry. `--stats` adds layout counters on stderr without mixing them
+into the tree or JSON output.
 
 ### Output, sizing, and backgrounds
 
@@ -132,12 +177,7 @@ document without fixing its height; it does not uniformly scale fonts or strokes
 Use `fit` on the composition for uniform scaling. SVG/tree/JSON allow zero-sized
 axes; PNG/PDF/kitty require positive dimensions.
 
-`--ratio` changes raster resolution without changing layout. For example,
-`--select 100,50,200,100 --ratio 3` renders a 200 × 100 region starting at
-`(100, 50)` as a 600 × 300 PNG. Coordinates start at the source viewport's
-top-left; selection width and height must be positive. Cropping happens before
-rasterization, preserving sharp vector edges when magnified. Selection applies
-only to PNG and kitty.
+`--ratio` changes raster resolution without changing layout.
 
 `--precision` controls SVG, PDF, and tree numbers without changing layout.
 PNG and kitty use full geometry precision. Both PNG encoding presets preserve

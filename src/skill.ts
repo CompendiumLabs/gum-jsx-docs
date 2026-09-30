@@ -17,8 +17,8 @@ function readPrompt(name: string): string {
 // CLI workflows are opt-in; the portable package enables them by default.
 export function getSkillPrompt({ gen = true, cli = false }: SkillPromptOptions = {}): string {
   const names = ['intro', 'docs', 'refs']
-  if (gen) names.push('gen')
   if (cli) names.push('cli')
+  if (gen) names.push('gen')
   return names.map(readPrompt).join('\n\n') + '\n'
 }
 
