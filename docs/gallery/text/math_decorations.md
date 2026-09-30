@@ -60,6 +60,6 @@ All generated paths inherit color and opacity, including on dark backgrounds.
 These are Gum's own shapes, so their curves can differ from KaTeX and LaTeX.
 No font glyph is stretched horizontally to simulate a wide hat or tilde.
 
-Run `bun run compare --suite 6 -S 48 -o /tmp/typography.png` for the common
+Run `bun gum-jsx-math/scripts/compare.ts --suite 6 -S 48 -o /tmp/typography.png` for the common
 Gum/KaTeX/LaTeX gallery; add `--inline` for text style. The extended gallery is
 `--suite 6-extra --no-latex`, covering the additional KaTeX command names.

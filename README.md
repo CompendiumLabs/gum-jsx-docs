@@ -43,7 +43,8 @@ host code. The examples use these helpers directly.
 The editor includes a Math category with element references and topics for
 [standalone exports](./docs/guides/text/math_export.md),
 [plot labels](./docs/gallery/text/math_plot_labels.md), and [slides](./docs/gallery/text/math_slides.md).
-The `gum-tex` CLI renders literal formulas, files, or stdin to SVG, PNG, PDF, and kitty.
+Render formulas through `Tex`/`Latex` in a JSX file with `gum`, or use the
+math export library helpers. The `gum-tex` executable has been retired.
 
 ## Maps gallery
 
@@ -63,7 +64,7 @@ The Maps category contains six standalone figures backed by `@gum-jsx/maps`:
 The CLI includes maps by default. From the workspace root, render an example with:
 
 ```sh
-bun run gum gum-jsx-docs/docs/gallery/code/world_choropleth.jsx -o /tmp/world.svg
+bun gum-jsx-cli/src/cli.ts gum-jsx-docs/docs/gallery/code/world_choropleth.jsx -o /tmp/world.svg
 ```
 
 ## Content structure

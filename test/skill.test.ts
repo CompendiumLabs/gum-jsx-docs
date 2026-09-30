@@ -1,6 +1,6 @@
 import { afterAll, expect, test } from 'bun:test'
 import { spawnSync } from 'node:child_process'
-import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { closeSync, mkdirSync, mkdtempSync, openSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { delimiter, dirname, join } from 'node:path'
 import * as core from '@gum-jsx/core'
@@ -77,8 +77,6 @@ test('all packaged references are reachable from SKILL.md without leaving the sk
   expect([...visited].sort()).toEqual([...files.keys()].sort())
   // Former links into gala/code now lead to the source embedded in each page.
   expect(links(files.get('references/gallery/networks.md')!)).toContain('networks.md#transformer-example')
-  expect(links(files.get('references/guides/cli.md')!)).toContain(
-    'https://github.com/CompendiumLabs/gum-jsx-pdf/blob/master/README.md')
 })
 
 test('every complete JSX example in the maintained prompts renders with the current API', () => {
@@ -127,28 +125,44 @@ test('documented gum commands render files from outside the workspace', () => {
   for (const file of deckManifest.slides) {
     writeFileSync(join(slides, file), deckSlide)
   }
-  // Setup is documented separately; tests use installed workspace executables.
+  // Build this checkout's candidate, never a renderer from the user's PATH.
+  const bin = join(scratch, 'bin')
+  mkdirSync(bin)
+  const executable = join(bin, process.platform === 'win32' ? 'gum.exe' : 'gum')
+  const build = spawnSync(process.execPath, ['scripts/standalone.ts', '--target', 'native',
+    '--outfile', executable], {
+    cwd: join(packageRoot, '../gum-jsx-cli'), encoding: 'utf8', timeout: 30_000,
+  })
+  expect(build.status, build.stderr).toBe(0)
+  // Setup is documented separately; exercise the rendering command blocks.
   const commands = [...cliPrompt.matchAll(/^```sh\n([\s\S]*?)^```/gm)]
     .map(match => match[1]).filter(code => !code.includes('bun install'))
   expect(commands.length).toBeGreaterThan(0)
-  // Use the workspace's installed executables without changing the user's
-  // global installation. The documented commands run with only PATH setup.
-  const result = spawnSync('sh', ['-eu', '-c', commands.join('\n')], {
-    cwd: output, encoding: 'utf8', env: { ...process.env,
-      PATH: [join(packageRoot, '../node_modules/.bin'), dirname(process.execPath), process.env.PATH]
+  // File capture also avoids Node/Bun pipe interoperability differences.
+  const stderrPath = join(output, 'stderr.log')
+  const stderrFile = openSync(stderrPath, 'w')
+  let result
+  try {
+    result = spawnSync('sh', ['-eu', '-c', commands.join('\n')], {
+      cwd: output, encoding: 'utf8', stdio: ['ignore', 'ignore', stderrFile],
+      env: { ...process.env, PATH: [bin, dirname(process.execPath), process.env.PATH]
         .filter(Boolean).join(delimiter) },
-  })
-  expect(result.status, result.stderr).toBe(0)
+    })
+  } finally {
+    closeSync(stderrFile)
+  }
+  const stderr = readFileSync(stderrPath, 'utf8')
+  expect(result.status, stderr).toBe(0)
   expect(readFileSync(join(output, 'figure.svg'), 'utf8')).toStartWith('<svg ')
   expect([...readFileSync(join(output, 'figure.png')).subarray(0, 8)])
     .toEqual([137, 80, 78, 71, 13, 10, 26, 10])
   const fragment = JSON.parse(readFileSync(join(output, 'figure.json'), 'utf8'))
   expect(fragment.size.width).toBeGreaterThan(0)
   expect(fragment.size.height).toBeGreaterThan(0)
-  const stats = result.stderr.trim().split('\n').map(line => JSON.parse(line))
+  const stats = stderr.trim().split('\n').map(line => JSON.parse(line))
   expect(stats).toHaveLength(1)
   for (const entry of stats) expect(entry.layouts).toBeGreaterThan(0)
   for (const file of ['figure.pdf', 'talk.pdf']) {
     expect(readFileSync(join(output, file)).subarray(0, 5).toString()).toBe('%PDF-')
   }
-})
+}, 30_000)

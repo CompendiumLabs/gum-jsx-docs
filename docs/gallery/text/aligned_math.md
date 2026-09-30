@@ -59,5 +59,5 @@ group automatically.
 See [matrices and arrays](math_arrays.md) for rules, cases, and small tables.
 `\substack` and `subarray` make script-style multiline content for limits and
 scripts. Phase 5 comparison galleries are available through
-`bun run compare --suite 5`; `--inline` covers the embeddable environments and
+`bun gum-jsx-math/scripts/compare.ts --suite 5`; `--inline` covers the embeddable environments and
 omits display-only cases.
