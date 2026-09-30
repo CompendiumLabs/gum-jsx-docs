@@ -14,6 +14,7 @@ export function packPlugin(root = pluginRoot,
   const pack = spawnSync('zip', [
     '-q', '-r', '-X', archive,
     'plugin.json', 'skills/gum-jsx', 'assets', 'README.md',
+    '-x', 'assets/*.jsx',
   ], { cwd: root, encoding: 'utf8' })
   if (pack.error || pack.status !== 0) {
     throw new Error(`Could not package plugin: ${pack.error?.message ?? pack.stderr}`)

@@ -55,7 +55,8 @@ test('packing rebuilds the skill and creates a fresh installable plugin ZIP', ()
   const zipList = spawnSync('unzip', ['-Z1', archive], { encoding: 'utf8' })
   expect(zipList.status).toBe(0)
   const entries = zipList.stdout.trim().split('\n').filter(file => !file.endsWith('/')).sort()
-  const assets = readdirSync(join(root, 'assets')).map(file => `assets/${file}`)
+  const assets = readdirSync(join(root, 'assets'))
+    .filter(file => !file.endsWith('.jsx')).map(file => `assets/${file}`)
   expect(entries).toEqual(['plugin.json', 'README.md', ...assets,
     ...[...files.keys()].map(file => `skills/gum-jsx/${file}`)].sort())
 
