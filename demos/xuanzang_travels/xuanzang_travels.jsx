@@ -1,4 +1,4 @@
-// Xuanzang's travels, 629–645 CE. Render with Gum JSX CLI 2.0.0-beta.3.
+// Xuanzang's travels, 629–645 CE. Render with Gum CLI 2.0.0-beta.3.
 // This installed Gum CLI uses pos={[x,y]} for positioned elements.
 // Routes connect selected historical stops; intermediate coordinates are schematic.
 // Historical sources and geographic conventions: xuanzang-map-notes.md.
@@ -252,7 +252,7 @@ return (
       </HStack>
       <VStack gap={em(0.25)}>
         <Text font-size={em(0.7)} color={C.muted}>Selected stops and approximate routes; some visits and dates are debated. Connections are schematic. Faint lines show modern country boundaries.</Text>
-        <Text font-size={em(0.7)} color={C.muted}>Sources: Xuanzang Memorial / Nava Nalanda Mahavihara; World History Commons; OLLI–American University. Geography: Natural Earth via Gum JSX.</Text>
+        <Text font-size={em(0.7)} color={C.muted}>Sources: Xuanzang Memorial / Nava Nalanda Mahavihara; World History Commons; OLLI–American University. Geography: Natural Earth via Gum.</Text>
       </VStack>
     </VStack>
   </Box>

@@ -1,4 +1,4 @@
-# Gum JSX
+# Gum
 
 Gum describes figures with JavaScript and JSX, then measures and renders them as
 SVG. It is not React, HTML, or a browser DOM. For environment setup, follow

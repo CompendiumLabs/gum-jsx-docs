@@ -1,6 +1,6 @@
 # The travels of Xuanzang
 
-An annotated map of Xuanzang’s journey from China to India and back, **629–645 CE**, made with Gum JSX. It includes rounded routes, direction arrows, a detail map of Buddhist pilgrimage sites, and thin white modern country boundaries.
+An annotated map of Xuanzang’s journey from China to India and back, **629–645 CE**, made with Gum. It includes rounded routes, direction arrows, a detail map of Buddhist pilgrimage sites, and thin white modern country boundaries.
 
 ## Files
 

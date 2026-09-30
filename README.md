@@ -128,7 +128,7 @@ use fill or wrapping when the composition calls for it.
 
 ## Build the plugin
 
-The [Gum JSX plugin](../plugins/gum-jsx/README.md) lives in the top-level `gum-jsx`
+The [Gum plugin](../plugins/gum-jsx/README.md) lives in the top-level `gum-jsx`
 repository and combines authoring prompts with
 the layout, units, JSX, CLI, and rendering references. Its skill uses the `gum`
 commands directly when `@gum-jsx/cli` is on PATH, with workspace scripts as an

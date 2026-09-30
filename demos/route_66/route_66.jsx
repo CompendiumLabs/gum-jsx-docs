@@ -1,4 +1,4 @@
-// Route 66: a simplified historic corridor, rendered entirely with Gum JSX.
+// Route 66: a simplified historic corridor, rendered entirely with Gum.
 // Geography: Gum's bundled US-atlas states. City coordinates are approximate.
 // Historical context: https://www.nps.gov/articles/000/route-66-national.htm
 // State sequence: https://npgallery.nps.gov/ROSI/About

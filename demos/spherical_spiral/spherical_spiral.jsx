@@ -149,7 +149,7 @@ function Equation({ children }) {
 return (
   <Box width={px(1160)} font-size={px(20)} padding={em(1.8)} background={paper} color={ink}>
     <VStack gap={em(0.75)} align="fill">
-      <Text font-size={em(0.7)} font-weight="bold" color={accent}>GUM JSX / SPHERICAL PROJECTION</Text>
+      <Text font-size={em(0.7)} font-weight="bold" color={accent}>GUM / SPHERICAL PROJECTION</Text>
       <Text font-size={em(2)} font-weight="bold">An infinite spiral, two limiting poles</Text>
       <Text font-size={em(0.95)} color={muted}>
         Let longitude keep turning while height approaches the ends of a unit sphere.

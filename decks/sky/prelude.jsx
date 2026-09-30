@@ -1,4 +1,4 @@
-// Gum JSX: measured slide layout, reusable diagrams, and local geometric canvases.
+// Gum: measured slide layout, reusable diagrams, and local geometric canvases.
 const ink = '#24324B'
 const paper = '#FFF8E9'
 const blueLight = '#338BD0'

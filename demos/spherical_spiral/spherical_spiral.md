@@ -1,4 +1,4 @@
-# Spherical spiral in Gum JSX
+# Spherical spiral in Gum
 
 The figure uses Gum’s `Graph` projection callback to turn sampled longitude/height pairs into an orthographic view of a sphere.
 

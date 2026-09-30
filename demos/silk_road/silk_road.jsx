@@ -1,4 +1,4 @@
-// Historical overview, authored with Gum JSX and its bundled map data.
+// Historical overview, authored with Gum and its bundled map data.
 // References:
 // https://www.unesco.org/en/silk-roads/about-silk-roads
 // https://whc.unesco.org/en/list/1442/
@@ -153,7 +153,7 @@ return (
       <HStack gap={em(2)} align="end">
         <Text grow={1} font-size={em(0.63)} line-height={em(1.35)} color={C.muted}>Historical references: UNESCO Silk Roads Programme &amp; World Heritage Centre. Geography: Natural Earth / world-atlas.
         Modern names appear beneath selected historic names. Coastlines provide orientation; political borders and maritime routes are omitted.</Text>
-        <Text font-size={em(0.65)} color={C.muted}>DRAWN WITH GUM JSX</Text>
+        <Text font-size={em(0.65)} color={C.muted}>DRAWN WITH GUM</Text>
       </HStack>
     </VStack>
   </Box>

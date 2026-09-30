@@ -21,5 +21,5 @@ export function buildPluginSkill(root = pluginRoot): string {
 }
 
 if (import.meta.main) {
-  console.log(`Bundled Gum JSX plugin skill in ${buildPluginSkill()}`)
+  console.log(`Bundled Gum plugin skill in ${buildPluginSkill()}`)
 }

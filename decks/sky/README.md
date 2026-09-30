@@ -1,6 +1,6 @@
 # The sky's color story
 
-An eight-slide Gum JSX deck to read with a five-year-old, with two rainbow slides at the end.
+An eight-slide Gum deck to read with a five-year-old, with two rainbow slides at the end.
 
 Open **sky-colors.pdf**. The numbered JSX files, `prelude.jsx`, and `index.json` are the editable sources. There is no HTML output.
 
@@ -29,7 +29,7 @@ Blue scatters more strongly than red. The full explanation of why we see blue ra
 - Slide 6: [NASA StarChild — Why is there day and night?](https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question31.html)
 - Slides 7–8: [National Weather Service — How Do Rainbows Form?](https://www.weather.gov/fgz/Rainbow)
 
-All diagrams were authored in Gum JSX for this deck.
+All diagrams were authored in Gum for this deck.
 
 ## Rebuild the PDF
 

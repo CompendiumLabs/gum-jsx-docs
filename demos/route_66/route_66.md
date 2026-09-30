@@ -1,12 +1,12 @@
 # Route 66 — The Mother Road
 
-A vintage-style map of historic U.S. Route 66, created with Gum JSX. It follows the corridor from Chicago to Santa Monica, highlighting eight states and 15 selected stops.
+A vintage-style map of historic U.S. Route 66, created with Gum. It follows the corridor from Chicago to Santa Monica, highlighting eight states and 15 selected stops.
 
 The map uses a Mercator projection, approximate city coordinates, and state boundaries bundled with Gum. Local turns and alternate historic alignments are omitted, so it is intended as an overview rather than a navigation map.
 
 ## Files
 
-- `route_66.jsx` — editable Gum JSX source.
+- `route_66.jsx` — editable Gum source.
 - `route_66.svg` — scalable vector image.
 - `route_66.png` — image exported at 2× resolution.
 - `route_66.pdf` — PDF for printing or sharing.

@@ -1,6 +1,6 @@
 # Gum: figures are programs
 
-A five-slide introduction to Gum, written in Gum JSX:
+A five-slide introduction to Gum, written in Gum:
 
 1. The language: a JSX element tree becomes a drawing.
 2. Layout: stacks, frames, pixel lengths, and font-relative units.

@@ -4,7 +4,7 @@ A map of 23 major historic waypoints, made with the gum-jsx plugin and Gum's `Ge
 
 - **silk_road.png** — high-resolution image, suitable for sharing.
 - **silk_road.svg** — scalable vector artwork with self-contained font outlines.
-- **silk_road.jsx** — editable Gum JSX source, including the waypoint and route data.
+- **silk_road.jsx** — editable Gum source, including the waypoint and route data.
 
 ## Reading the map
 
