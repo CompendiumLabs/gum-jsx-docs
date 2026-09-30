@@ -213,7 +213,7 @@ rendering, plugin rebuilds and packaging, and CLI behavior. Archive tests requir
 
 - Getting started: [Gum](./docs/guides/text/gum.md), [JSX](./docs/guides/text/jsx.md),
   [Units](./docs/guides/text/units.md), [Sizing](./docs/guides/text/sizing.md),
-  [Style](./docs/guides/text/style.md), and [CLI](./docs/guides/text/cli.md).
+  [Style](./docs/guides/text/style.md), and [CLI](./prompt/cli.md#render-with-the-cli).
 - Geometry and layout: [Positioning](./docs/guides/text/positioning.md),
   [Point values](./docs/guides/text/point_values.md),
   [Coordinates](./docs/guides/text/coordinates.md), [Projections](./docs/guides/text/projections.md),

@@ -135,8 +135,10 @@ test('documented gum commands render files from outside the workspace', () => {
   })
   expect(build.status, build.stderr).toBe(0)
   // Setup is documented separately; exercise the rendering command blocks.
-  const commands = [...cliPrompt.matchAll(/^```sh\n([\s\S]*?)^```/gm)]
-    .map(match => match[1]).filter(code => !code.includes('bun install'))
+  const renderSection = cliPrompt.indexOf('## Render with the CLI')
+  expect(renderSection).toBeGreaterThanOrEqual(0)
+  const commands = [...cliPrompt.slice(renderSection).matchAll(/^```sh\n([\s\S]*?)^```/gm)]
+    .map(match => match[1])
   expect(commands.length).toBeGreaterThan(0)
   // File capture also avoids Node/Bun pipe interoperability differences.
   const stderrPath = join(output, 'stderr.log')
