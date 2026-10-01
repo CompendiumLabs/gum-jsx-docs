@@ -6,7 +6,7 @@ const samples = [
   [8, 7],
 ]
 return (
-  <Box padding={em(1.75)}>
+  <Box padding={em(3)}>
     <Graph xlim={[10, 0]} ylim={[0, 8]}>
       <Mesh2D xlim={[0, 10]} ylim={[0, 8]} />
       <Spline points={samples} stroke={blue} stroke-width={px(2)} />
