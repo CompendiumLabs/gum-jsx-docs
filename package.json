@@ -21,6 +21,8 @@
     "perf": "bun test/perf/run.ts",
     "perf:demos": "bun test/perf/run.ts",
     "test": "bun test/examples.ts && bun test ./test",
+    "skill:build": "bun scripts/skill-build.ts",
+    "skill:pack": "bun scripts/skill-pack.ts",
     "plugin:build": "bun scripts/plugin-build.ts",
     "plugin:pack": "bun scripts/plugin-pack.ts",
     "typecheck": "tsc --noEmit"

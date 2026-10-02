@@ -126,6 +126,21 @@ figures can set a design height, aspect, and font size; Studio scales the comple
 SVG for display. Compact content may hug its children, and adaptive layouts can
 use fill or wrapping when the composition calls for it.
 
+## Build the skill
+
+From this package directory:
+
+```sh
+bun run skill:build
+bun run skill:pack
+```
+
+`skill:build` generates `dist/gum-jsx/SKILL.md` and its references in the
+top-level repository. `skill:pack` rebuilds that directory and creates
+`dist/gum-jsx-skill.zip`, containing the `gum-jsx/` skill directory.
+These commands generate only the skill. Packaging requires the `zip` executable.
+Both outputs are ignored by Git.
+
 ## Build the plugin
 
 The [Gum plugin](../plugins/gum-jsx/README.md) lives in the top-level `gum-jsx`
@@ -145,7 +160,7 @@ in the top-level repository. `plugin:pack` rebuilds that directory and creates
 the archive root. Packaging requires the `zip` executable; building the directory
 alone does not. The scripts remain in `gum-jsx-docs/scripts/`.
 
-The plugin directory is the sole generated authoring-skill output. Commit its
+Commit the plugin directory's
 generated skill files in the top-level repository, and commit maintained prompt
 and documentation changes in `gum-jsx-docs`. This lets GitHub marketplace
 installations include the complete plugin. The ZIP remains
