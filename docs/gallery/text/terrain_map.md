@@ -9,7 +9,7 @@ A 24-by-24 field of square tiles forms a terraced landscape, with teal lowlands,
 green slopes, and pale summits. Gaussian hills and a small sinusoidal ripple
 define the elevation, rounded to steps of `0.3` to create the terraces.
 
-Each tile uses closed [CoordLine](../../elements/text/CoordLine.md) paths for its
+Each tile uses closed [Polyline](../../elements/text/Polyline.md) paths for its
 top and exposed sides. Their corners carry `{x, y, z}` coordinates; a custom
 `projection` on [Graph](../../elements/text/Graph.md) maps them into an isometric
 view. The example sorts tiles by `i + j` to draw distant cells first and adds

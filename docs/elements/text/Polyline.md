@@ -8,11 +8,14 @@ description: "Polyline connects points in order with straight segments."
 | Property | Default | Meaning |
 |---|---|---|
 | `points` | `[]` | Ordered points in the selected coordinate space |
-| `space` | `"local"` | `"data"` uses the enclosing Graph, Plot, or GeoMap coordinate context |
+| `closed` | `false` | Close each finite run back to its first point |
+| `space` | Automatic | Use ambient data coordinates when available; otherwise local geometry |
 
 **Polyline** connects `points` in order with straight segments. Each point is an
-object `{ x, y }` or tuple `[x, y]`; both forms can be mixed. An empty list draws nothing. The path remains
-open; use [Polygon](./Polygon.md) to close the final edge.
+object `{ x, y }` or tuple `[x, y]`; both forms can be mixed. An empty list draws
+nothing. The path remains open unless `closed` is set. With gaps, each finite
+run is closed independently. [Polygon](./Polygon.md) provides a closed shape
+that always uses local coordinates.
 
 ```jsx
 <Polyline width={px(240)} height={px(100)}
@@ -20,13 +23,15 @@ open; use [Polygon](./Polygon.md) to close the final edge.
   fill={none} stroke={green} stroke-width={px(3)} />
 ```
 
-By default, fractions map to the polyline's own allocated axes, with y increasing
-downward. Pixels and em are also accepted. Point bounds do not set its layout
-size or aspect. This local behavior remains the default inside Graph or GeoMap.
+Outside a coordinate context, fractions map to the polyline's own allocated
+axes, with y increasing downward. Pixels and em are also accepted. Point bounds
+do not set its layout size or aspect.
 
-Set `space="data"` to project each supplied vertex through the enclosing
-[Graph](./Graph.md), Plot, or [GeoMap](./GeoMap.md). A coordinate context is
-required. Numeric vertices contribute to ordinary Graph/Plot limit inference;
+Inside [Graph](./Graph.md), [Plot](./Plot.md), or [GeoMap](./GeoMap.md), each
+numeric vertex uses the ambient coordinate context automatically, just like
+[Points](./Points.md). Set `space="local"` to opt out, or `space="data"` to
+require a coordinate context (and throw when none is available).
+Numeric vertices contribute to ordinary Graph/Plot limit inference;
 custom projections still require explicit output limits. Tagged px/em/% pairs
 bypass data mapping, while a custom projection rejects mixed data/length pairs.
 Data inputs also accept named numeric records such as `{theta, r}` or `{x, y, z}`.
@@ -37,8 +42,8 @@ Data inputs also accept named numeric records such as `{theta, r}` or `{x, y, z}
   projection={({theta, r}) => ({x: r * cos(theta), y: r * sin(theta)})}
 >
   <Polyline
-    space="data"
-    points={linspace(0, tau, 121).map(theta => ({theta, r: 0.8}))}
+    points={linspace(0, tau, 120, false).map(theta => ({theta, r: 0.8}))}
+    closed
     fill={none} stroke={blue} stroke-width={px(2)}
   />
 </Graph>
@@ -49,7 +54,6 @@ A null sample, any nonfinite dimension, or a projection returning `null` breaks
 the path, so visible vertices on opposite
 sides of a hidden point are not joined. Stroke widths remain ordinary layout
 lengths. See [Projections](../../guides/text/projections.md).
-[CoordLine](./CoordLine.md) uses ambient data coordinates by default;
 [SymLine](./SymLine.md) supplies function sampling.
 
 Paint is inherited. Set `fill={none}` for a line chart: if you supply a fill,

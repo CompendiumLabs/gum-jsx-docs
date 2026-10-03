@@ -35,7 +35,7 @@ Two projection callbacks render the same route:
 - **Front:** keep points with `depth >= 0`; draw a solid teal line.
 - **Back:** keep points with `depth <= 0`; draw a pale dashed line.
 
-Each callback returns `null` for the other hemisphere. Gum’s `CoordLine` breaks the path at those samples, avoiding connections across hidden sections. This is sampled visibility; the code does not calculate exact intersections with the sphere’s visible boundary.
+Each callback returns `null` for the other hemisphere. Gum’s `Polyline` breaks the path at those samples, avoiding connections across hidden sections. This is sampled visibility; the code does not calculate exact intersections with the sphere’s visible boundary.
 
 All layers share explicit output limits of `[-1.22, 1.22]` on both axes. A square `Group` preserves the sphere’s circular outline. Latitude and longitude grid lines use the same projections. Paint order is background disk, back grid, front grid, back spiral, front spiral, then pole markers.
 

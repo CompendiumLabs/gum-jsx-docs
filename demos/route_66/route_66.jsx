@@ -149,8 +149,8 @@ return (
           {states.map(s => (
             <Text pos={s.label} font-size={em(.62)} font-weight="bold" color={C.state}>{s.name.toUpperCase()}</Text>
           ))}
-          <Polyline space="data" points={route} fill={none} stroke={C.white} stroke-width={em(.45)} stroke-linecap="round" stroke-linejoin="round" />
-          <Polyline space="data" points={route} fill={none} stroke={C.route} stroke-width={em(.23)} stroke-linecap="round" stroke-linejoin="round" />
+          <Polyline points={route} fill={none} stroke={C.white} stroke-width={em(.45)} stroke-linecap="round" stroke-linejoin="round" />
+          <Polyline points={route} fill={none} stroke={C.route} stroke-width={em(.23)} stroke-linecap="round" stroke-linejoin="round" />
         </GeoMap>
         {stops.map(s => <Stop {...s} />)}
 

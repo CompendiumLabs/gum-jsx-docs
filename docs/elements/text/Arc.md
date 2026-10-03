@@ -17,7 +17,7 @@ An ellipse segment with center, scalar or paired radius, and start/end angles in
 
 Center and paired radii accept `{x,y}` or `[x,y]`.
 Under projection, the center also accepts arbitrary numeric records. Projected
-radii must be local lengths, such as `px(20)`; use sampled CoordLine points for
+radii must be local lengths, such as `px(20)`; use sampled Polyline points for
 a curve defined in the source coordinate space.
 
 Inside [Graph](./Graph.md), numeric geometry uses data coordinates; outside it,

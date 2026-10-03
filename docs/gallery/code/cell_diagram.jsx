@@ -329,7 +329,7 @@ return (
         />
         <Points points={ribosomes} point-size={px(3.5)} fill={col.ribosomes.fill} />
         {labels.map(([label, side, y, target]) => (
-          <CoordLine
+          <Polyline
             points={[[side === "l" ? xL + 0.01 : xR - 0.01, y], target]}
             stroke={col.label.line}
             stroke-width={px(1)}

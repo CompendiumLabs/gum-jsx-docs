@@ -42,7 +42,7 @@ const front = hemisphere(true);
 const back = hemisphere(false);
 
 // Supply dense samples: projections transform points, not entire curves.
-// Returning null from a projection breaks CoordLine at the limb.
+// Returning null from a projection breaks Polyline at the limb.
 const route = linspace(-extent, extent, 11001)
   .map(t => [t, Math.tanh(a * t)]);
 const meridians = linspace(0, tau, 12, false)
@@ -75,22 +75,22 @@ function Globe(props) {
       />
       <Layer projection={back}>
         {graticule.map(points => (
-          <CoordLine points={points} stroke="#DEE7E2" stroke-width={em(0.035)} />
+          <Polyline points={points} stroke="#DEE7E2" stroke-width={em(0.035)} />
         ))}
       </Layer>
       <Layer projection={front}>
         {graticule.map(points => (
-          <CoordLine points={points} stroke="#C4D5CE" stroke-width={em(0.045)} />
+          <Polyline points={points} stroke="#C4D5CE" stroke-width={em(0.045)} />
         ))}
       </Layer>
       <Layer projection={back}>
-        <CoordLine
+        <Polyline
           points={route} stroke={ghost} stroke-width={em(0.085)}
           stroke-dasharray={[em(0.2), em(0.2)]}
         />
       </Layer>
       <Layer projection={front}>
-        <CoordLine points={route} stroke={accent} stroke-width={em(0.16)} />
+        <Polyline points={route} stroke={accent} stroke-width={em(0.16)} />
       </Layer>
       <Layer projection={project}>
         <Points
@@ -187,7 +187,7 @@ return (
       </HStack>
       <Box padding={em(0.8)} background="#E9F0EB" border-radius={em(0.35)}>
         <Text font-size={em(0.77)} color={ink}>
-          In Gum, pass sampled [θ, z] pairs to CoordLine. Graph’s projection lifts each pair to the sphere, then maps it into the camera view.
+          In Gum, pass sampled [θ, z] pairs to Polyline. Graph’s projection lifts each pair to the sphere, then maps it into the camera view.
         </Text>
       </Box>
       <Text font-size={em(0.65)} color={muted}>

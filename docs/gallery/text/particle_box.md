@@ -12,7 +12,7 @@ and energy labels. The vertical offsets are for comparison, not an energy scale.
 `baseline(index)` supplies the same offset to the curve, guide, and labels.
 [SymLine](../../elements/text/SymLine.md) samples each sine curve over the well;
 241 samples provide smooth traces without interpolating a separate spline.
-[CoordLine](../../elements/text/CoordLine.md) draws the diagonal hatching in data
+[Polyline](../../elements/text/Polyline.md) draws the diagonal hatching in data
 coordinates, as well as the well walls and baselines. Ordinary **Line**, **HLine**,
 and **VLine** geometry is local to its allocation rather than mapped through
 the graph's data coordinates.

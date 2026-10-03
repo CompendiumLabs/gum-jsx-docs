@@ -126,7 +126,7 @@ return (
           fill={C.land} border-mode="none">
           {[30,40,50].map(lat=><Line space="data" from={[20,lat]} to={[118,lat]} stroke={C.grid} stroke-width={px(0.6)} opacity={0.27} />)}
           {[30,50,70,90,110].map(lon=><Line space="data" from={[lon,20]} to={[lon,51]} stroke={C.grid} stroke-width={px(0.6)} opacity={0.27} />)}
-          {mountainPoints.map(([lon,lat],i)=><Polyline space="data" points={[[lon-0.42,lat-0.26],[lon,lat+0.48],[lon+0.42,lat-0.26]]} stroke={C.terrain} stroke-width={px(1.3)} fill="none"/>)}
+          {mountainPoints.map(([lon,lat],i)=><Polyline points={[[lon-0.42,lat-0.26],[lon,lat+0.48],[lon+0.42,lat-0.26]]} stroke={C.terrain} stroke-width={px(1.3)} fill="none"/>)}
           {regions.map(r=><Text pos={r.p} font-size={em(r.size)} color={C.muted} opacity={0.65} wrap={false}>{r.text}</Text>)}
           {waters.map(w=><Text pos={w.p} font-size={em(0.85)} color="#628787" font-style="italic" justify="center" wrap={false}>{w.text}</Text>)}
           <Text pos={[82.5, 39.05]} font-size={em(0.72)} color={C.gold} wrap={false}>T A K L A M A K A N</Text>

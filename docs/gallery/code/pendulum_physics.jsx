@@ -54,7 +54,7 @@ return (
           <Label pos={[pivot[0] + 23, pivot[1] + 118]} color={gravity}>
             {String.raw`\theta`}
           </Label>
-          <CoordLine
+          <Polyline
             points={[pivot, [pivot[0], pivot[1] + length]]}
             stroke={darkgray} stroke-width={px(2)} stroke-dasharray={[px(5), px(5)]}
           />
@@ -62,7 +62,7 @@ return (
             pos={[pivot[0], pivot[1] + length]} anchor="center"
             width={0.016} fill={darkgray} stroke={none}
           />
-          <CoordLine points={[pivot, bob]} stroke={ink} stroke-width={px(3)} />
+          <Polyline points={[pivot, bob]} stroke={ink} stroke-width={px(3)} />
           <Label pos={[mid[0] - 22, mid[1] + 12]}>
             {String.raw`\ell`}
           </Label>

@@ -34,7 +34,7 @@ return (
         aspect={halfWidth / halfHeight}
       >
         {[...meridians, ...parallels].map(points => (
-          <CoordLine points={points} fill={none}
+          <Polyline points={points} fill={none}
             stroke="#68959D" stroke-width={em(0.045)} />
         ))}
         <Points points={[[0, 0]]} point-size={em(0.4)} fill="#F4B66B" />

@@ -14,14 +14,14 @@ return <Plot
   xticks={range(-4, 5)}
   yticks={linspace(-2, 2, 9)}
 >
-  <CoordLine
+  <Polyline
     points={[
       [-4, 0],
       [4, 0],
     ]}
     stroke={darkgray}
   />
-  <CoordLine
+  <Polyline
     points={[
       [0, -2],
       [0, 2],

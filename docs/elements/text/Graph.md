@@ -39,9 +39,9 @@ These forms also work in **Plot**, **BarPlot**, and `infer_coordinates`.
 derive a missing axis. An explicit aspect applies the ordinary shape sizing policy.
 Nested **Graph**/**Plot** limits are independent and do not affect outer inference.
 
-[CoordLine](./CoordLine.md), [Points](./Points.md), new geometry marks, bars, and
-symbolic marks use data coordinates. **Line** and **Polyline** default to local
-fractional geometry; set `space="data"` to use the graph's coordinate mapping.
+[Polyline](./Polyline.md), [Points](./Points.md), new geometry marks, bars, and
+symbolic marks use data coordinates. **Line** defaults to local fractional
+geometry; set `space="data"` to use the graph's coordinate mapping.
 **Path** retains local geometry. For marks that use data coordinates by default,
 `space="local"` opts out; `space="data"` requires a coordinate context.
 px/em geometry stays local.
@@ -89,7 +89,7 @@ arithmetic stay Cartesian.
 
 Callbacks must be pure and stable for the lifetime of the element. They run
 during layout, unlike construction-time style callbacks. Elements project only
-the points they already have: supply a sampled route to **Arrow** or **CoordLine**
+the points they already have: supply a sampled route to **Arrow** or **Polyline**
 when a nonlinear projection should bend it. Text and marker shapes stay upright;
 paths are not automatically resampled. See [Projections](../../guides/text/projections.md)
 for a polar plot, the core API, and geometry limitations.

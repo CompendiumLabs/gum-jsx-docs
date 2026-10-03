@@ -190,10 +190,10 @@ return (
         <GeoMap width={px(mw)} height={px(mh)} source={world} {...view}
           background={C.water} fill={C.land} {...countryBorders}>
           {[60,70,80,90,100,110].map(lon=>(
-            <Polyline points={[[lon,7.5],[lon,46]]} space="data" stroke={C.muted} opacity={0.09} stroke-width={px(1)} fill={none}/>
+            <Polyline points={[[lon,7.5],[lon,46]]} stroke={C.muted} opacity={0.09} stroke-width={px(1)} fill={none}/>
           ))}
           {[10,20,30,40].map(lat=>(
-            <Polyline points={[[59,lat],[114,lat]]} space="data" stroke={C.muted} opacity={0.09} stroke-width={px(1)} fill={none}/>
+            <Polyline points={[[59,lat],[114,lat]]} stroke={C.muted} opacity={0.09} stroke-width={px(1)} fill={none}/>
           ))}
           {terrainLines.map(line=>(<Arrow points={line} curve end-head={false} stroke={C.terrain} opacity={0.28} stroke-width={px(21)} fill={none}/>))}
           {terrainNames.map(([x,y,label,size])=>(<Text pos={[x,y]} anchor="center" color={C.muted} opacity={0.78} font-size={px(size)} wrap={false}>{label}</Text>))}

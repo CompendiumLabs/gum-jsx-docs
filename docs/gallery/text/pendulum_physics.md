@@ -11,7 +11,7 @@ equilibrium line, bob, force arrows, and equation of motion. Change `angle` or
 
 The drawing uses a downward-facing [Graph](../../elements/text/Graph.md) so its
 data coordinates match the diagram's pixel proportions. `alongRod` derives
-positions from the pivot and angle. [CoordLine](../../elements/text/CoordLine.md)
+positions from the pivot and angle. [Polyline](../../elements/text/Polyline.md)
 draws the rod and equilibrium line in that coordinate system; [Arc](../../elements/text/Arc.md)
 uses the same center and screen-space angles.
 

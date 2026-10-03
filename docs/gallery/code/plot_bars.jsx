@@ -15,5 +15,5 @@
     border_radius: value < 0 ? {'b': em(0.25)} : {'t': em(0.25)},
   })}
 >
-  <CoordLine points={[[-0.5, 0], [4.5, 0]]} stroke={darkgray} />
+  <Polyline points={[[-0.5, 0], [4.5, 0]]} stroke={darkgray} />
 </BarPlot>

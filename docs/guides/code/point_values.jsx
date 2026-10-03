@@ -7,7 +7,7 @@ return <TextBox width="fill" font-size={px(20)} padding={em(1.5)} background={li
   <TextCol gap={em(0.75)}>
     <Text font-size={em(1.625)} font-weight={bold}>Points as coordinate pairs</Text>
     <Plot font-size={em(0.75)} aspect={2} xlabel="x" ylabel="sin(x)">
-      <CoordLine points={points} stroke={blue} stroke-width={px(2)} />
+      <Polyline points={points} stroke={blue} stroke-width={px(2)} />
       <Points points={markers} point-size={px(10)} shape={shape} />
     </Plot>
     <Text font-size={em(0.75)}>

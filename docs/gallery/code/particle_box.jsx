@@ -24,22 +24,22 @@ return (
         xaxis-tick-side="outer" xaxis-label-color={black}
       >
         {linspace(ymin, ymax - 0.5, 24).map(y => (
-          <CoordLine
+          <Polyline
             points={[[-0.065, y], [0, y + 0.5]]}
             stroke={black} stroke-width={px(0.7)}
           />
         ))}
         {linspace(ymin, ymax - 0.5, 24).map(y => (
-          <CoordLine
+          <Polyline
             points={[[1, y], [1.065, y + 0.5]]}
             stroke={black} stroke-width={px(0.7)}
           />
         ))}
-        <CoordLine points={[[0, ymin], [0, ymax]]} stroke={black} stroke-width={px(2.5)} />
-        <CoordLine points={[[1, ymin], [1, ymax]]} stroke={black} stroke-width={px(2.5)} />
+        <Polyline points={[[0, ymin], [0, ymax]]} stroke={black} stroke-width={px(2.5)} />
+        <Polyline points={[[1, ymin], [1, ymax]]} stroke={black} stroke-width={px(2.5)} />
         {levels.map((n, index) => (
           <>
-            <CoordLine
+            <Polyline
               points={[[0, baseline(index)], [1, baseline(index)]]}
               stroke={black} opacity={0.25} stroke-width={px(1)}
             />

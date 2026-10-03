@@ -14,6 +14,6 @@
       border_radius: value < 0 ? {b: em(0.3)} : {t: em(0.3)},
     })}
   >
-    <CoordLine points={[[-1, 0], [5, 0]]} stroke={darkgray} />
+    <Polyline points={[[-1, 0], [5, 0]]} stroke={darkgray} />
   </BarPlot>
 </Svg>

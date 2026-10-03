@@ -40,13 +40,13 @@ uses its limit of 1 to avoid division by zero.
   ylim={[-Math.PI / 2, Math.PI / 2]}
   aspect={(Math.PI + 2) / Math.PI}
 >
-  <CoordLine points={longitudeLatitudeSamples} fill={none} stroke={blue} />
+  <Polyline points={longitudeLatitudeSamples} fill={none} stroke={blue} />
 </Graph>
 ```
 
 - `xlim` and `ylim` describe **projected output**, not degrees. Matching the
   graph aspect to those spans preserves the projection's proportions.
-- `CoordLine`, `Arrow`, `Points`, and direct-child numeric `pos` labels all
+- `Polyline`, `Arrow`, `Points`, and direct-child numeric `pos` labels all
   use the same projection. Labels stay upright; strokes and markers use em sizes.
 - Curves need samples: the callback transforms supplied vertices, so two
   endpoints alone produce a straight segment. The route uses 121 spherical samples.

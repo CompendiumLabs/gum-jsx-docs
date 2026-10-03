@@ -111,17 +111,17 @@ function MapFrame({ project, halfWidth, detail = false, ...props }) {
       aspect={halfWidth / halfPi}
       {...props}
     >
-      <CoordLine points={outline} closed fill={palette.water}
+      <Polyline points={outline} closed fill={palette.water}
         stroke={palette.outline} stroke-width={em(0.055)} />
       {graticule.map(points => (
-        <CoordLine points={points} fill={none}
+        <Polyline points={points} fill={none}
           stroke={palette.grid} stroke-width={em(detail ? 0.045 : 0.035)} />
       ))}
       {detail && borders.map(points => (
-        <CoordLine points={points} fill={none} stroke={palette.land}
+        <Polyline points={points} fill={none} stroke={palette.land}
           stroke-width={em(0.05)} stroke-linejoin="round" />
       ))}
-      <CoordLine points={longitudeSamples.map(lon => [lon, 0])}
+      <Polyline points={longitudeSamples.map(lon => [lon, 0])}
         fill={none} stroke={palette.outline} stroke-width={em(0.055)} />
       {detail && <Arrow points={route} stroke={palette.accent}
         stroke-width={em(0.14)} head-size={em(0.6)} head-open />}

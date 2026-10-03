@@ -83,7 +83,7 @@ const MarkerBadge = ({ label, ...props }) =>
 const RouteMarker = ({ km, label, dy }) => {
   const [x, y] = routeAtKm(km)
   return <>
-    <CoordLine points={[[x, y], [x, y + dy]]} stroke-width={em(0.06)} />
+    <Polyline points={[[x, y], [x, y + dy]]} stroke-width={em(0.06)} />
     <MarkerBadge pos={[x, y + dy]} label={label} />
   </>
 }
@@ -106,7 +106,7 @@ const ClimbFlag = ({ km, name, cat, grade, dx }) => {
   const py = Math.min(y + 350, maxElev - 250)
   const labelKm = Math.max(24, Math.min(totalKm - 18, x + dx))
   return <>
-    <CoordLine points={[[x, y], [labelKm, py]]} stroke-width={em(0.06)} />
+    <Polyline points={[[x, y], [labelKm, py]]} stroke-width={em(0.06)} />
     <FlagBox pos={[labelKm, py]} name={name} cat={cat} grade={grade} />
   </>
 }
@@ -141,7 +141,7 @@ return <Box width={px(1100)} font-size={px(16)} padding={em(1.5)} background={li
       clip={false}
     >
       <VFill points={profileLine} boundary={0} fill={accent} stroke={none} />
-      <CoordLine points={profileLine} stroke-width={em(0.09)} />
+      <Polyline points={profileLine} stroke-width={em(0.09)} />
       {markers.map((marker, i) => <RouteMarker key={i} {...marker} />)}
       {climbs.map((climb, i) => <ClimbFlag key={i} {...climb} />)}
       <Text pos={[0, -350]} font-size={em(0.65)} font-family={mono}>START</Text>

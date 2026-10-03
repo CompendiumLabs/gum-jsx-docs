@@ -34,8 +34,8 @@ const levels = Array.from({ length: N }, (_, i) =>
 const at = (i, j) => levels[i][j]
 
 // Facets now carry world-space corners; their Graph parent projects them together.
-const Facet = ({ points, fill, stroke = 'none', line = 0, ...props }) => (
-  <CoordLine
+const Facet = ({ points, fill, stroke = none, line = 0, ...props }) => (
+  <Polyline
     points={points} closed
     fill={fill} stroke={stroke} stroke-width={px(line)}
     stroke-linejoin="round" {...props}
