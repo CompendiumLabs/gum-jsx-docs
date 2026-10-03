@@ -9,15 +9,15 @@ description: "Draw a line segment in local coordinates or an enclosing data proj
 |---|---|---|
 | `from` | `[0, 0]` | Segment start in the selected coordinate space |
 | `to` | `[1, 1]` | Segment end in the selected coordinate space |
-| `space` | `"local"` | `"data"` uses the enclosing Graph, Plot, or GeoMap coordinate context |
+| `space` | Automatic | Use ambient data coordinates when available; otherwise local geometry |
 
 **Line** draws one segment from `from` to `to`, each an `{ x, y }` or `[x, y]` pair of lengths.
-The defaults are `[0, 0]` and `[1, 1]`: the diagonal of its own
-allocated rectangle. Fractions use that rectangle's width and height, not the
-parent's size. This local behavior remains the default inside a Graph or GeoMap.
+The defaults are `[0, 0]` and `[1, 1]` in the selected coordinate space.
+Outside a coordinate context, these describe the diagonal of its own allocated
+rectangle. Local fractions use that rectangle's width and height.
 
 ```jsx
-<Line width={px(200)} height={px(40)}
+<Line space="local" width={px(200)} height={px(40)}
   from={[0, 0.5]} to={[1, 0.5]}
   stroke={green} stroke-width={px(4)} stroke-linecap="round" />
 ```
@@ -33,13 +33,14 @@ outside it. Set dimensions explicitly for a predictable rule or connector.
 Use [Arrow](./Arrow.md) for arrowheads or [Network](./Network.md) and
 [Edge](./Edge.md) for connections between named elements.
 
-Set `space="data"` to project both endpoints through the enclosing
-[Graph](./Graph.md), Plot, or [GeoMap](./GeoMap.md):
+Inside [Graph](./Graph.md), [Plot](./Plot.md), or [GeoMap](./GeoMap.md), both
+numeric endpoints use the ambient coordinates automatically. Set `space="local"`
+for a local decoration, or `space="data"` to require a coordinate context.
+Existing graph drawings that relied on the old local default need `space="local"`.
 
 ```jsx
 <GeoMap source={world_countries()}>
   <Line
-    space="data"
     from={{lon: -9.14, lat: 38.72}} to={{lon: 23.73, lat: 37.98}}
     stroke={blue} stroke-width={px(2)}
   />

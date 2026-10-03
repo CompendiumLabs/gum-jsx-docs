@@ -8,6 +8,6 @@
         border_radius: v < 0 ? {b: em(0.25)} : {t: em(0.25)}
       })}
     />
-    <HLine space="data" y={0} lim={[-0.75, 3.75]} />
+    <HLine y={0} lim={[-0.75, 3.75]} />
   </Plot>
 </Box>

@@ -244,9 +244,9 @@ helpers retain their array formats. Children inherit the map's ordinary styles, 
 `stroke` explicitly on route arrows. See [Map routes](../../gallery/text/map_routes.md)
 and [Projections](../../guides/text/projections.md).
 
-[Polyline](./Polyline.md) uses the map projection by default, just like Points.
-[Line](./Line.md) defaults to local geometry; set `space="data"` to project its
-longitude/latitude endpoints.
+[Line](./Line.md), [HLine](./HLine.md), [VLine](./VLine.md),
+[Polyline](./Polyline.md), and [Polygon](./Polygon.md) use the map projection
+by default, just like Points. Use `space="local"` for local decorations.
 
 For annotations outside the map subtree, the helper
 `project_geo_point(source, view, width, height, [longitude, latitude])` accepts a

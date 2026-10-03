@@ -14,8 +14,8 @@ description: "Polyline connects points in order with straight segments."
 **Polyline** connects `points` in order with straight segments. Each point is an
 object `{ x, y }` or tuple `[x, y]`; both forms can be mixed. An empty list draws
 nothing. The path remains open unless `closed` is set. With gaps, each finite
-run is closed independently. [Polygon](./Polygon.md) provides a closed shape
-that always uses local coordinates.
+run is closed independently. [Polygon](./Polygon.md) is the convenience form
+with closing always enabled and the same coordinate behavior.
 
 ```jsx
 <Polyline width={px(240)} height={px(100)}

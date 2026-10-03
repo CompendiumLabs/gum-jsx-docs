@@ -124,8 +124,8 @@ return (
         <GeoMap source={world_countries()} projection="mercator" bounds={bounds}
           width={px(mapWidth)} height={px(mapHeight)} background={C.sea}
           fill={C.land} border-mode="none">
-          {[30,40,50].map(lat=><Line space="data" from={[20,lat]} to={[118,lat]} stroke={C.grid} stroke-width={px(0.6)} opacity={0.27} />)}
-          {[30,50,70,90,110].map(lon=><Line space="data" from={[lon,20]} to={[lon,51]} stroke={C.grid} stroke-width={px(0.6)} opacity={0.27} />)}
+          {[30,40,50].map(lat=><Line from={[20,lat]} to={[118,lat]} stroke={C.grid} stroke-width={px(0.6)} opacity={0.27} />)}
+          {[30,50,70,90,110].map(lon=><Line from={[lon,20]} to={[lon,51]} stroke={C.grid} stroke-width={px(0.6)} opacity={0.27} />)}
           {mountainPoints.map(([lon,lat],i)=><Polyline points={[[lon-0.42,lat-0.26],[lon,lat+0.48],[lon+0.42,lat-0.26]]} stroke={C.terrain} stroke-width={px(1.3)} fill="none"/>)}
           {regions.map(r=><Text pos={r.p} font-size={em(r.size)} color={C.muted} opacity={0.65} wrap={false}>{r.text}</Text>)}
           {waters.map(w=><Text pos={w.p} font-size={em(0.85)} color="#628787" font-style="italic" justify="center" wrap={false}>{w.text}</Text>)}
@@ -135,7 +135,7 @@ return (
           <Text pos={[82.2, 29.3]} font-size={em(0.75)} color={C.gold} wrap={false}>H I M A L A Y A S</Text>
           {routes.map(r=><Arrow points={r.points} curve tension={0.3} end-head={false} stroke={C.white} stroke-width={em(r.kind==='main'?0.34:0.25)} fill="none" opacity={0.9}/>)}
           {routes.map(r=><Arrow points={r.points} curve tension={0.3} end-head={false} stroke={r.kind==='main'?C.route:C.branch} stroke-width={em(r.kind==='main'?0.17:0.12)} stroke-dasharray={r.kind==='branch'?[em(0.31),em(0.23)]:undefined} stroke-linecap="round" fill="none"/>)}
-          {places.map(p=><Line space="data" from={p.p} to={p.l} stroke={C.muted} opacity={0.6} stroke-width={px(0.9)} />)}
+          {places.map(p=><Line from={p.p} to={p.l} stroke={C.muted} opacity={0.6} stroke-width={px(0.9)} />)}
           {places.map(p=><Circle pos={p.p} width={em(p.major?0.55:0.42)} fill={C.white} stroke={C.route} stroke-width={em(0.12)}/>)}
           {places.map(p=><Label place={p}/>)}
           <Text pos={[23.0, 48.8]} anchor="start" font-size={em(0.75)} font-weight="bold" color={C.ink}>N</Text>

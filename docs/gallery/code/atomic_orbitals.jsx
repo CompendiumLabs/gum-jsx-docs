@@ -61,11 +61,11 @@ const Cell = ({ profile }) => (
         xlim={[-0.8, 0.8]} ylim={[-0.8, 0.8]}
         projection={projection}
       >
-        <HLine
+        <HLine space="local"
           stroke={darkgray}
           stroke-dasharray={[px(4), px(4)]}
         />
-        <VLine
+        <VLine space="local"
           stroke={darkgray}
           stroke-dasharray={[px(4), px(4)]}
         />

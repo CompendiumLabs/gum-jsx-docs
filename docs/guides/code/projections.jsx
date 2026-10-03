@@ -17,7 +17,7 @@ return (
             stroke={gray} />
         ))}
         {linspace(0, tau, 9).slice(0, -1).map(theta => (
-          <Line space="data" from={{ theta, r: 0 }} to={{ theta, r: 1 }}
+          <Line from={{ theta, r: 0 }} to={{ theta, r: 1 }}
             stroke={gray} />
         ))}
         <SymArrow f={spiral} tlim={[0, 1]} stroke={blue}
