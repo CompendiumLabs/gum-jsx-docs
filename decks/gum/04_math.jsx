@@ -7,6 +7,7 @@
   <HStack grow={1} gap={em(1)} align="fill">
     <Panel title="A FUNCTION BECOMES A CURVE">
       <Plot
+        clip={false}
         grow={1}
         font-size={em(0.75)}
         margin={em(0.5)}
