@@ -216,6 +216,7 @@ PPTX defaults to `mixed`: editable prose with fixed line breaks and styled runs,
 plus outlined math. It references installed prose fonts without embedding them.
 Use `--text-mode live` to make math glyphs editable too; this requires matching math fonts.
 Use `--text-mode path` for outlines or for reflected/skewed/nonuniformly scaled text.
+PPTX ignores fragment clips and exports their content in full.
 
 Watch mode is not implemented. Only run trusted JSX; evaluation executes JavaScript.
 
