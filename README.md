@@ -71,7 +71,7 @@ The Maps category contains six standalone figures backed by `@gum-jsx/maps`:
 The CLI includes maps by default. From the workspace root, render an example with:
 
 ```sh
-bun gum-jsx-cli/src/cli.ts gum-jsx-docs/docs/gallery/code/world_choropleth.jsx -o /tmp/world.svg
+bun gum-jsx/src/cli.ts gum-jsx-docs/docs/gallery/code/world_choropleth.jsx -o /tmp/world.svg
 ```
 
 ## Content structure
@@ -157,7 +157,7 @@ Both outputs are ignored by Git.
 The [Gum plugin](../plugins/gum-jsx/README.md) lives in the top-level `gum-jsx`
 repository and combines authoring prompts with
 the layout, units, JSX, CLI, and rendering references. Its skill uses the `gum`
-commands directly when `@gum-jsx/cli` is on PATH, with workspace scripts as an
+commands directly when `gum-jsx` is on PATH, with workspace scripts as an
 alternative. From the workspace root or this package directory:
 
 ```sh

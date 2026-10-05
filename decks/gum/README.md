@@ -27,4 +27,4 @@ gum gum-jsx-docs/decks/gum/04_math.jsx -o /tmp/gum-math.svg
 ```
 
 The individual-slide command loads the same prelude automatically. With the
-CLI's development checkout, use `bun gum-jsx-cli/src/cli.ts` in place of `gum`.
+CLI's development checkout, use `bun gum-jsx/src/cli.ts` in place of `gum`.

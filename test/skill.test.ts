@@ -131,7 +131,7 @@ test('documented gum commands render files from outside the workspace', () => {
   const executable = join(bin, process.platform === 'win32' ? 'gum.exe' : 'gum')
   const build = spawnSync(process.execPath, ['scripts/standalone.ts', '--target', 'native',
     '--outfile', executable], {
-    cwd: join(packageRoot, '../gum-jsx-cli'), encoding: 'utf8', timeout: 30_000,
+    cwd: join(packageRoot, '../gum-jsx'), encoding: 'utf8', timeout: 30_000,
   })
   expect(build.status, build.stderr).toBe(0)
   // Setup is documented separately; exercise the rendering command blocks.
