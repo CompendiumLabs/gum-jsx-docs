@@ -106,7 +106,10 @@ scripts/plugin-pack.ts  Rebuild the plugin skill and package the plugin ZIP
 There is no viewer, server, or Markdown renderer in this package. gum-jsx-edit's
 `/docs` route consumes the catalogs to show SVG cards and editable, live-rendered
 code/figure popups. There are no runtime package dependencies;
-gum-jsx-core, gum-jsx-math, and gum-jsx-maps are development dependencies for checking examples.
+gum-jsx-core, gum-jsx-math, gum-jsx-maps, and gum-jsx-mp4 are development dependencies
+for checking examples. Video examples play in Gum Studio or render through the
+CLI; their start, middle, and final frames are checked before applying the
+ordinary preview checks.
 
 Every reference Markdown file starts with YAML front matter containing a
 `category` and a one-sentence `description`. The catalog uses these fields for
@@ -226,6 +229,8 @@ rendering, plugin rebuilds and packaging, and CLI behavior. Archive tests requir
 - Networks: [Network](./docs/elements/text/Network.md), [Node](./docs/elements/text/Node.md),
   and [Edge](./docs/elements/text/Edge.md).
 - Maps: [GeoMap](./docs/elements/text/GeoMap.md).
+- Video: [Video](./docs/elements/text/Video.md) creates animations from frame
+  children or a generator, with MP4 export and individual frame previews.
 - Math: [Latex](./docs/elements/text/Latex.md), [Tex](./docs/elements/text/Tex.md),
   [MathText](./docs/elements/text/MathText.md), [MathSymbol](./docs/elements/text/MathSymbol.md),
   [MathSpan](./docs/elements/text/MathSpan.md), [MathRow](./docs/elements/text/MathRow.md),
@@ -356,7 +361,7 @@ discover matching files each time; single-page reads do not load the rest of the
 collection. Text loaders remove optional machine-readable category lines. Page
 preparation appends a fenced JSX example and preserves relative Markdown links.
 
-Categories are core, layout, geometry, plotting, maps, networks, text, math, api,
+Categories are core, layout, geometry, plotting, maps, networks, text, math, video, api,
 external, and special. Every page needs YAML front matter with `category` and `description`.
 A Markdown viewer should resolve relative links against the original text file and
 map them to its own routes, rather than requiring routes in the content. Raw files

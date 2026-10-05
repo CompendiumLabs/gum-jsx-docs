@@ -4,6 +4,7 @@ import { dirname, join, resolve } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
 import * as maps from '@gum-jsx/maps'
+import { Video, create_renderer } from '@gum-jsx/mp4'
 import { file_loaders } from '../../gum-jsx-cli/src/files'
 import { elementsDir, guidesDir, galleryDir, packageRoot, listElements, listGuides, listGallery,
   getElements, getTopics, getGuides, getGallery, prepareElementPage, prepareTopicPage } from '../src'
@@ -30,23 +31,26 @@ const entries = [
   ...listGallery().map(entry => ({ ...entry, dir: galleryDir, collection: gallery })),
 ]
 const commonOnlyElements = new Set(['Spacer', 'Span'])
-const bindings = { ...core, ...math, ...maps }
+const bindings = { ...core, ...math, ...maps, Video }
+
+// Video is a top-level component whose frames participate in ordinary layout.
+function is_component(value: unknown): boolean {
+  return value === Video || (typeof value === 'function' && value.prototype instanceof core.Element)
+}
 
 for (const [name, value] of Object.entries(bindings)) {
   if (name === 'MathElement') continue // Abstract base; documented with custom math sources.
-  if (typeof value === 'function' && value.prototype instanceof core.Element) {
+  if (is_component(value)) {
     assert.ok(elements.tags.includes(name), `Missing element reference for ${name}`)
   }
 }
 for (const name of elements.tags) {
   const value = bindings[name as keyof typeof bindings]
-  assert.ok(typeof value === 'function' && value.prototype instanceof core.Element,
-    `${name} belongs in topics because it is not an Element`)
+  assert.ok(is_component(value), `${name} belongs in topics because it is not a component`)
 }
 for (const name of topics.tags) {
   const value = bindings[name as keyof typeof bindings]
-  assert.ok(!(typeof value === 'function' && value.prototype instanceof core.Element),
-    `${name} belongs in elements because it is an Element`)
+  assert.ok(!is_component(value), `${name} belongs in elements because it is a component`)
 }
 
 function checkLinks(file: string): void {
@@ -142,7 +146,7 @@ const canvas = { width: 640, height: 480 }
 checkLinks(join(packageRoot, 'README.md'))
 let drawings = 0
 const fonts = math.createMathFonts()
-const evaluator = new core.Evaluator({ scope: { ...math, ...maps } })
+const evaluator = new core.Evaluator({ scope: { ...math, ...maps, Video } })
 const pass = new core.LayoutPass({ fonts: { value: fonts, version: fonts.version } })
 for (const { name, title, dir, collection } of entries) {
   const code = collection.code[name]!
@@ -167,7 +171,20 @@ for (const { name, title, dir, collection } of entries) {
   checkLinks(join(dir, 'text', name + '.md'))
   // Expose fixtures by filename, matching the browser docs shims.
   const scope = file_loaders(join(guidesDir, 'data', name + '.jsx'))
-  const element: unknown = evaluator.evaluate(code, { name: file, scope })
+  let element: unknown = evaluator.evaluate(code, { name: file, scope })
+  // Check the timeline at its start, middle, and end, then resize its first frame.
+  if (element instanceof Video) {
+    const video = element
+    const renderer = create_renderer(video)
+    for (const frame of [0, Math.floor(video.frame_count / 2), video.frame_count - 1]) {
+      checkGeometry(renderer.fragment(frame), `${file} frame ${frame}`)
+    }
+    element = new core.Svg({
+      width: core.px(video.size[0]), height: core.px(video.size[1]),
+      background: video.background ?? core.white,
+      children: video.frame({ time: 0, frame: 0, fps: video.fps }),
+    })
+  }
   assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
   // Match Studio: finite offers, with natural content height.
   const fragment = pass.layout(core.make_viewport(element), core.make_request({

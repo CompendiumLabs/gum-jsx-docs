@@ -7,7 +7,7 @@ runnable JSX example.
 - [Guides](references/guides.md): the language, units, sizing, styles, helpers,
   fonts, math setup, and host rendering APIs.
 - [Elements by category](references/elements.md): layout, geometry, plotting,
-  maps, networks, text, math, and external images, including `PngImage`.
+  maps, networks, text, math, video, and external images, including `PngImage`.
 - [Gallery](references/gallery.md): complete figures and focused examples,
   grouped by category. Start from a close example when it fits the request.
 
@@ -39,6 +39,8 @@ Useful starting points:
 - Text and math: [Text](references/elements/Text.md),
   [TitleFrame](references/elements/TitleFrame.md), [math authoring](references/guides/math.md),
   and [Shape Algebra](references/gallery/shape_algebra.md).
+- Video: [Video](references/elements/Video.md) accepts frame children or a frame
+  generator; use the CLI for MP4 export and individual frame previews.
 - Complete compositions: [Transformer](references/gallery/transformer.md),
   [Pendulum Physics](references/gallery/pendulum_physics.md), and
   [Two columns](references/gallery/two_columns.md).

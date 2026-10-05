@@ -9,7 +9,7 @@ type ElementsInfo = CollectionInfo & { cats: Record<string, string[]> }
 type TopicsInfo = CollectionInfo & { cats: Record<string, string[]> }
 
 const categories = ['core', 'layout', 'geometry', 'plotting', 'maps', 'networks',
-  'text', 'math', 'api', 'external', 'special']
+  'text', 'math', 'video', 'api', 'external', 'special']
 
 function pageName(name: string): string {
   if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) throw new Error('Invalid documentation page name')
