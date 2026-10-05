@@ -29,14 +29,14 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@gum-jsx/core": "2.0.0",
-    "@gum-jsx/math": "2.0.0",
-    "@gum-jsx/maps": "2.0.0",
-    "@gum-jsx/mp4": "2.0.0",
+    "@gum-jsx/core": "2.1.0-beta.0",
+    "@gum-jsx/math": "2.1.0-beta.0",
+    "@gum-jsx/maps": "2.1.0-beta.0",
+    "@gum-jsx/mp4": "2.1.0-beta.0",
     "mitata": "1.0.34",
     "typescript": "^7"
   },
-  "version": "2.0.0",
+  "version": "2.1.0-beta.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "latest"
+    "tag": "beta"
   },
   "engines": {
     "bun": ">=1.4.2"
