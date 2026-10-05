@@ -24,15 +24,43 @@ inline item, aligned by its baseline or bottom edge. Give figures concrete sizes
 | `font-weight` | `regular` | Numeric 1–1000, or `"light"`, `"regular"`/`"normal"`, `"bold"` (300, 400, 700) |
 | `font-style` | `"normal"` | normal or italic |
 | `color` | `black` | Glyph fill; the shape fill prop does not color text |
+| `halo-color` | `none` | Rounded outline behind the glyphs |
+| `halo-width` | `em(0.08)` | Visible outward extent; px is fixed, em/fractions use the local font size |
 | `line-height` | `em(1.2)` | Prose line strut; inline elements may enlarge the line |
 | `wrap` | `true` | Permit wrapping at legal word-break positions |
 | `whitespace` | `"normal"` | normal or pre |
 | `tab-size` | `4` | Positive integer tab-stop interval in pre mode |
 | `justify` | `"start"` | start, center, end, or a fraction from 0 to 1 within the allocated text width |
 
-Font and color props inherit through containers. wrap, whitespace, `tab-size`,
+Font, color, and halo props inherit through containers. wrap, whitespace, `tab-size`,
 and `justify` are local **Text** options. See [Fonts](../../guides/text/fonts.md) for the bundled
 families, weight matching, and host font loading.
+
+## Halos
+
+Use a halo to keep labels readable over lines, grids, and colored regions:
+
+```jsx
+<Text halo-color={white} halo-width={em(0.08)}>
+  River Thames
+</Text>
+```
+
+Setting `halo-color` enables the default width. Width is the distance outside the
+glyph: `px(2)` adds a two-pixel rim. Fractions and percentages refer to the local
+font size, so `0.08`, `"8%"`, and `em(0.08)` are equivalent. Set `halo-color={none}`
+or `halo-width={0}` to disable an inherited halo, including on a **Span**.
+
+All halo outlines paint before the paragraph's foreground, including across span
+boundaries and overlapping lines. Halos expand ink and overflow without changing
+wrapping, advances, baselines, or label placement. Leave enough padding at clipped
+viewport edges. As with other drawings, translucent paints can accumulate alpha.
+
+Live and mixed text modes keep the foreground selectable and draw the halo with
+glyph paths. Color emoji have no outline and remain unchanged. Math glyphs and
+rules do not yet support halos. Generated labels accept the same options through
+scoped props such as `label-halo-color` and `title-halo-width`.
+See the [text halo example](../../gallery/text/text_halos.md).
 
 ## Wrapping and whitespace
 

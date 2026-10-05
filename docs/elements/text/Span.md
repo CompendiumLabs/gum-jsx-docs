@@ -16,10 +16,13 @@ inline badge or a separately positioned run.
 </Text>
 ```
 
-Font family, size, weight, style, color, and line height may be overridden. em or
+Font family, size, weight, style, color, halo color/width, and line height may be overridden. em or
 fractional `font-size` is relative to the surrounding font size. Nested **Span**s
 inherit the resolved style of their containing **Span**. Use `color`, not fill,
 for glyph color.
+
+Use `halo-color={none}` or `halo-width={0}` to disable an inherited text halo for
+one span. Halo widths in em or fractions use the span's local font size.
 
 Styled runs share line breaking and baselines. A **Span** boundary inside a word
 does not create a new break opportunity, and a style-equivalent **Span** does not
