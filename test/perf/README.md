@@ -1,7 +1,7 @@
 # Demo performance
 
 From this repository, run `bun run perf` or `bun run perf:demos`. From the
-workspace root, run `bun run perf:demos`; `bun run perf` includes this suite too.
+workspace root, run `bun run --cwd gum-jsx-docs perf`; `bun run perf` includes this suite too.
 
 ```sh
 bun run perf:demos --list
