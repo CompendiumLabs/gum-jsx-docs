@@ -6,9 +6,9 @@ description: "Gum JSX and TeX flow through a compact rendering core into SVG, PN
 # Gum Rendering Core
 
 A circuit-board view of the bundled Gum CLI: Gum JSX, including TeX math,
-flows into a compact rendering engine and out to SVG, PNG, and PDF.
-The size callout describes the Gum 2.0 bundle: approximately 3 MB of code
-and 1.6 MB of fonts.
+flows into a compact rendering engine and out to SVG, PNG, MP4, PDF, and PPTX.
+The size callout describes the gzipped Gum 2.0 bundle: approximately 0.9 MB of code
+and 0.7 MB of fonts.
 
 [Stacks](../../guides/text/stack.md) arrange the title, diagram, footer,
 and card contents. A [Group](../../elements/text/Group.md) supplies the local

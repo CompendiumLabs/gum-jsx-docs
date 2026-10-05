@@ -144,7 +144,11 @@ export function buildSkillFiles(opts: SkillPromptOptions = {}): SkillFiles {
     return `references/${match[1]}/${category}.md#${match[2]}`
   }))
   files.set('references/elements.md', indexPage('Element reference', 'elements', elements, elements.cats, true))
-  files.set('references/guides.md', indexPage('Guides', 'guides', guides, { guides: guides.tags }))
+  // External helpers get their own section while retaining their existing page paths.
+  const external = guides.cats.external ?? []
+  const guide_groups = { guides: guides.tags.filter(name => !external.includes(name)),
+    ...(external.length ? { external } : {}) }
+  files.set('references/guides.md', indexPage('Guides', 'guides', guides, guide_groups))
   files.set('references/gallery.md', indexPage('Gallery', 'gallery', gallery, gallery.cats, true))
   for (const page of pages.filter(page => page.target.startsWith('references/guides/'))) {
     files.set(page.target, prepareElementPage(rewriteLinks(page, sources), page.code))

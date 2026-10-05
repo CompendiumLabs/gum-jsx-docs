@@ -39,6 +39,13 @@ The editor's Networks category includes runnable examples of each.
 [seeded random data](./docs/guides/text/random.md) are built into JSX and exported for
 host code. The examples use these helpers directly.
 
+The CLI's [loadJSON](./docs/guides/text/load_json.md),
+[loadCSV](./docs/guides/text/load_csv.md), and [loadPNG](./docs/guides/text/load_png.md)
+guides read checked-in files from `docs/guides/data`. They appear beside
+[PngImage](./docs/elements/text/PngImage.md) in Studio's **External** section.
+Studio's docs previews expose the fixtures by filename. For CLI use, place the
+sample inputs beside the saved JSX script.
+
 [Math authoring](./docs/guides/text/math.md) covers TeX and composable math elements.
 The editor includes a Math category with element references and topics for
 [standalone exports](./docs/guides/text/math_export.md),
@@ -80,6 +87,7 @@ docs/
   guides/
     text/<name>.md     Conceptual guide; snake_case filename
     code/<name>.jsx    Self-contained, runnable guide example
+    data/               Sample inputs for the file-loading guides
   gallery/
     text/<name>.md     Visual example explanation
     code/<name>.jsx    Self-contained, runnable gallery example
@@ -271,14 +279,15 @@ rendering, plugin rebuilds and packaging, and CLI behavior. Archive tests requir
 
 ## Old gallery ports
 
-All 25 examples from the old `gum-jsx-docs/gala` collection now have runnable
+The retained examples from the old `gum-jsx-docs/gala` collection have runnable
 sources and explanatory pages here. Alongside Pendulum Physics, Particle in a
 Box, and Transformer Architecture, the remaining ports are:
 
 - Plotting: [Axes with Arrows](./docs/gallery/text/axis_arrows.md), [Flux Capacitance](./docs/gallery/text/flux_capacitance.md), [Complex Roots](./docs/gallery/text/complex_plot.md), [Slick Bars](./docs/gallery/text/slick_bars.md), [The Nexus](./docs/gallery/text/the_nexus.md), [Manual Plot](./docs/gallery/text/plot_manual.md), [Atomic Orbitals](./docs/gallery/text/atomic_orbitals.md).
 - Geometry: [Spline Star](./docs/gallery/text/spline_star.md), [Metal Grid](./docs/gallery/text/metal_grid.md), [Set Theory](./docs/gallery/text/set_theory.md), [Regular Polygons](./docs/gallery/text/polygon_slide.md), [Neon Rose](./docs/gallery/text/neon_rose.md), [Space Rose](./docs/gallery/text/space_rose.md), [Anatomy of a Cell](./docs/gallery/text/cell_diagram.md).
 - Text: [Punk Rock](./docs/gallery/text/punk_rock.md).
-- Layout: [Two Columns](./docs/gallery/text/two_column.md), [UI Mockup](./docs/gallery/text/ui_mockup.md).
+- Layout: [UI Mockup](./docs/gallery/text/ui_mockup.md). The shared
+  [Two columns](./docs/gallery/text/two_columns.md) example covers side-by-side layout.
 - Networks: [Macroeconomic Flows](./docs/gallery/text/macro_economy.md), [Unit Distance](./docs/gallery/text/unit_distance.md),
   [Any element as a node](./docs/gallery/text/network_shapes.md).
 - Math: [Shape Algebra](./docs/gallery/text/shape_algebra.md), [The Scenic Route](./docs/gallery/text/scenic_route.md), [Stokes’ Theorem](./docs/gallery/text/stokes_theorem.md).
@@ -348,7 +357,7 @@ collection. Text loaders remove optional machine-readable category lines. Page
 preparation appends a fenced JSX example and preserves relative Markdown links.
 
 Categories are core, layout, geometry, plotting, maps, networks, text, math, api,
-and special. Every page needs YAML front matter with `category` and `description`.
+external, and special. Every page needs YAML front matter with `category` and `description`.
 A Markdown viewer should resolve relative links against the original text file and
 map them to its own routes, rather than requiring routes in the content. Raw files
 are exposed through the `./docs/elements/*`, `./docs/guides/*`, and

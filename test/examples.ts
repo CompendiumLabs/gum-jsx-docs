@@ -4,6 +4,7 @@ import { dirname, join, resolve } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
 import * as maps from '@gum-jsx/maps'
+import { file_loaders } from '../../gum-jsx-cli/src/files'
 import { elementsDir, guidesDir, galleryDir, packageRoot, listElements, listGuides, listGallery,
   getElements, getTopics, getGuides, getGallery, prepareElementPage, prepareTopicPage } from '../src'
 
@@ -100,7 +101,6 @@ const comparisonRows: Record<string, readonly string[]> = {
   group_clip: ['VStack', 'VStack'],
   arrow_caps: ['VStack', 'VStack', 'VStack'],
   two_columns: ['TextFrame', 'TextCol'],
-  two_column: ['VStack', 'TextCol'],
   stokes_theorem: ['Group', 'TextCol'],
   polygon_slide: ['Frame', 'Frame', 'Frame'],
   math_slides: ['VStack', 'Plot'],
@@ -108,7 +108,6 @@ const comparisonRows: Record<string, readonly string[]> = {
 }
 const columnGrow: Record<string, readonly number[]> = {
   math_slides: [1, 1.1],
-  two_column: [1.15, 1],
   two_columns: [1, 1],
   positioned_diagram: [1, 0.65, 1, 0.65, 1],
 }
@@ -166,7 +165,9 @@ for (const { name, title, dir, collection } of entries) {
       `${file}: use shared color constants without string quotes`)
   }
   checkLinks(join(dir, 'text', name + '.md'))
-  const element: unknown = evaluator.evaluate(code, { name: file })
+  // Expose fixtures by filename, matching the browser docs shims.
+  const scope = file_loaders(join(guidesDir, 'data', name + '.jsx'))
+  const element: unknown = evaluator.evaluate(code, { name: file, scope })
   assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
   // Match Studio: finite offers, with natural content height.
   const fragment = pass.layout(core.make_viewport(element), core.make_request({

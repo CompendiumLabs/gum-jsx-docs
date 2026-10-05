@@ -1,0 +1,10 @@
+{
+  "title": "Forest survey",
+  "unit": "Trees counted",
+  "sites": [
+    { "name": "North", "count": 24 },
+    { "name": "East", "count": 36 },
+    { "name": "South", "count": 18 },
+    { "name": "West", "count": 29 }
+  ]
+}

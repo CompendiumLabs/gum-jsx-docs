@@ -8,7 +8,8 @@ type CollectionInfo = { tags: string[]; text: Record<string, string>; code: Reco
 type ElementsInfo = CollectionInfo & { cats: Record<string, string[]> }
 type TopicsInfo = CollectionInfo & { cats: Record<string, string[]> }
 
-const categories = ['core', 'layout', 'geometry', 'plotting', 'maps', 'networks', 'text', 'math', 'api', 'special']
+const categories = ['core', 'layout', 'geometry', 'plotting', 'maps', 'networks',
+  'text', 'math', 'api', 'external', 'special']
 
 function pageName(name: string): string {
   if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) throw new Error('Invalid documentation page name')
