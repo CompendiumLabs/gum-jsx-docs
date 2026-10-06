@@ -4,7 +4,7 @@ import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { buildSkillFiles } from '../src'
 
-export const skillRoot = join(import.meta.dir, '..', '..', 'skills', 'gum-jsx')
+export const skillRoot = join(import.meta.dir, '..', '..', 'gum-jsx', 'skills', 'gum-jsx')
 
 export function buildSkill(output = skillRoot): string {
   const files = buildSkillFiles()

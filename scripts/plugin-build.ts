@@ -4,7 +4,7 @@
 import { join } from 'node:path'
 import { buildSkill } from './skill-build'
 
-export const pluginRoot = join(import.meta.dir, '..', '..', 'plugins', 'gum-jsx')
+export const pluginRoot = join(import.meta.dir, '..', '..', 'gum-jsx', 'plugins', 'gum-jsx')
 
 export function buildPluginSkill(root = pluginRoot): string {
   return buildSkill(join(root, 'skills', 'gum-jsx'))
