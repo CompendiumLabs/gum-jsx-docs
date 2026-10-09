@@ -7,6 +7,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./dirs": "./src/dirs.ts",
+    "./docs": "./src/docs.ts",
+    "./catalog": "./src/data.ts",
     "./prompt/*": "./prompt/*",
     "./docs/elements/*": "./docs/elements/*",
     "./docs/guides/*": "./docs/guides/*",

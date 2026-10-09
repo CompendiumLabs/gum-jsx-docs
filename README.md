@@ -11,6 +11,11 @@ legacy `topics/*` package subpath maps to gallery files; guide files use the new
 `docs/guides` subpath and snake_case names. Content lives under `docs/elements`,
 `docs/guides`, and `docs/gallery`.
 
+The installed `gum` command includes this documentation offline. Start with
+`gum docs`, search with `gum docs search "axis labels"`, and retrieve a page with
+`gum docs get elements/Plot`. `gum docs example <page-id>` prints its original JSX;
+`--output <directory>` exports the JSX and any required sample files together.
+
 ## Content structure
 
 The three reference collections use the same paired-file structure. Focused visual
@@ -31,6 +36,8 @@ docs/
 visual-tests/
   code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
+src/docs.ts           Portable retrieval, listing, search, and page formatting
+src/catalog.ts        Build the serializable documentation snapshot
 src/skill.ts          Shared prompt and reference assembly for the plugin and MCP
 test/examples.ts      Validate links, coverage, and rendering at several widths
 test/skill.test.ts     Test skill content and documented Gum CLI commands
@@ -73,6 +80,31 @@ space. Whole-scene `fit` examples are checked in fixed rectangles. Standalone
 figures can set a design height, aspect, and font size; Studio scales the completed
 SVG for display. Compact content may hug its children, and adaptive layouts can
 use fill or wrapping when the composition calls for it.
+
+## Portable documentation
+
+`build_catalog()` assembles the maintained pages, the orientation in
+`prompt/start.md`, and base64-encoded example fixtures. Page IDs are
+`elements/<Name>`, `guides/<name>`, and `gallery/<name>`. Internal links resolve
+to these IDs; links to example source resolve to the page's `#example` section.
+
+The `gum-jsx` build embeds this snapshot in its npm bundle and standalone
+executables. Retrieval and search have no filesystem or network dependency:
+
+```ts
+import { build_catalog } from '@gum-jsx/docs'
+import { get_doc, search_docs, format_doc } from '@gum-jsx/docs/docs'
+
+const catalog = build_catalog()
+const matches = search_docs(catalog, 'axis labels', 5)
+const markdown = format_doc(get_doc(catalog, 'elements/Plot'))
+```
+
+`list_docs(catalog, collection?)` lists all pages or one collection. Search
+requires every query term and weights page names, titles, and descriptions above
+body text and JSX. Exact names rank first. `get_doc` accepts an optional anchor
+and returns the complete page. `@gum-jsx/docs/catalog` supplies a ready catalog
+for source hosts; distribution builds replace that import with the snapshot.
 
 ## Load the content
 
@@ -141,8 +173,8 @@ Both outputs are ignored by Git.
 
 ## Build the plugin
 
-The [Gum plugin](../plugins/gum-jsx/README.md) lives in the top-level `gum-jsx-meta`
-workspace and combines authoring prompts with
+The [Gum plugin](../gum-jsx/plugins/gum-jsx/README.md) lives in the `gum-jsx`
+repository and combines authoring prompts with
 the layout, units, JSX, CLI, and rendering references. Its skill uses the `gum`
 commands directly when `gum` is on PATH, with workspace scripts as an
 alternative. From the workspace root or this package directory:

@@ -8,6 +8,11 @@ description: "Gum describes diagrams with JSX and renders them as SVG."
 Gum describes diagrams with JSX and renders them as SVG. The reference pages
 describe the elements, layout rules, and rendering APIs.
 
+With the CLI installed, start with `gum docs` for an authoring walkthrough.
+The command includes this reference corpus offline: search with
+`gum docs search "axis labels"`, retrieve a page with `gum docs get elements/Plot`,
+or print runnable source with `gum docs example elements/Plot`.
+
 ## Start here
 
 1. Use [TextBox](../../elements/text/TextBox.md) or [TextFrame](../../elements/text/TextFrame.md) for padded document content.

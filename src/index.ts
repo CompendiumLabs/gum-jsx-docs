@@ -2,3 +2,5 @@
 export * from './dirs'
 export * from './meta'
 export * from './skill'
+export * from './docs'
+export * from './catalog'
