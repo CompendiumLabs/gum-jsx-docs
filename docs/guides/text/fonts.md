@@ -53,6 +53,45 @@ pass can simply receive the latest value/version. A custom FontProvider may be
 injected through the same resource slot if the host supplies its own shaping
 and outline implementation.
 
+Omit the family argument to infer the family, weight, and style from the font's
+metadata. This form returns the registered family name; optional settings can
+override the metadata or provide an alias:
+
+```ts
+const family = fonts.register(bytes)
+fonts.register(bytes, { family: 'My Alias', weight: 400 })
+const result = render_element(figure, {
+  fonts,
+  defaults: { font_family: family },
+})
+```
+
+The preferred typographic family groups extended weights with their regular and
+bold faces. The explicit `register('My Font', bytes, options)` form retains its
+400/normal defaults. Defaults in `render_element` or `layout_element` are
+inherited; explicit font choices in the source take precedence.
+
+The CLI can load extra faces and set the same inherited default:
+
+```sh
+gum figure.jsx --font ./Inter-Regular.ttf --font ./Inter-Bold.ttf \
+  --default-font Inter -o figure.svg
+```
+
+Repeat `--font` for individual faces; paths resolve from the invoking directory.
+The family comes from the file metadata, not its filename. Font collections are
+not supported, and variable fonts use their default instance. Loading fonts
+alone leaves Plex Sans as the default. `--default-font` also accepts bundled
+families such as `"IBM Plex Mono"`. Figures, decks, and video share these options.
+
+Math font selection is separate from prose. Load a font with `--font` and select
+its family with `--math-font "My Math"`. The KaTeX provider uses its ordinary
+glyphs and Unicode italic/double-struck alphabets where covered, with bundled
+fallbacks for missing glyphs, other styles, and large size-font symbols. It
+retains KaTeX layout parameters and stretchy constructions; OpenType MATH tables
+are not read. Library hosts pass `new KatexMathFontProvider('My Math')` as the
+layout pass's `math_fonts` resource, alongside the ordinary font registry.
+
 ## Fallback faces and emoji
 
 Emoji work in ordinary text with no setup. Color fonts are not outlined, because

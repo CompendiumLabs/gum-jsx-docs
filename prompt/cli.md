@@ -109,6 +109,9 @@ gum --help
 | `--select <x,y,width,height>` | Inspect a PNG/kitty region in source pixels; combine with `--ratio` to magnify |
 | `-b, --background <color>` | Paint the viewport background |
 | `-t, --theme <theme>` | `light` or `dark`; override the source root theme |
+| `--font <file>` | Load a font face using its family, weight, and style metadata; repeatable, paths relative to the invoking directory |
+| `--default-font <family>` | Inherited text family; explicit JSX choices win, default `IBM Plex Sans` |
+| `--math-font <family>` | Loaded family for ordinary math glyphs and supported Unicode alphabets; KaTeX layout and size fonts remain active |
 | `--title <text>` | SVG or PDF document title |
 | `--id-prefix <name>` | SVG definition prefix; default `gum` |
 | `--precision <digits\|full>` | Output decimal places, 0–100 or `full`; default `10` |
