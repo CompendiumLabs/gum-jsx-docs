@@ -71,21 +71,40 @@ bold faces. The explicit `register('My Font', bytes, options)` form retains its
 400/normal defaults. Defaults in `render_element` or `layout_element` are
 inherited; explicit font choices in the source take precedence.
 
-The CLI can load extra faces and set the same inherited default:
+The CLI loads extra faces; select the inherited family in JSX:
 
 ```sh
-gum figure.jsx --font ./Inter-Regular.ttf --font ./Inter-Bold.ttf \
-  --default-font Inter -o figure.svg
+gum figure.jsx --font ./Inter-Regular.ttf --font ./Inter-Bold.ttf -o figure.svg
+```
+
+```jsx
+<Svg font-family="Inter">
+  <Text>Text inherits the document's font.</Text>
+</Svg>
 ```
 
 Repeat `--font` for individual faces; paths resolve from the invoking directory.
 The family comes from the file metadata, not its filename. Font collections are
 not supported, and variable fonts use their default instance. Loading fonts
-alone leaves Plex Sans as the default. `--default-font` also accepts bundled
-families such as `"IBM Plex Mono"`. Figures, decks, and video share these options.
+alone leaves Plex Sans as the default. `font-family` also accepts bundled
+families such as `"IBM Plex Mono"`. These props work in figures, decks, and video.
 
 Math font selection is separate from prose. Load a font with `--font` and select
-its family with `--math-font "My Math"`. The KaTeX provider uses its ordinary
+its family with the inherited `math-font` prop:
+
+```jsx
+<Svg font-family="IBM Plex Sans" math-font="My Math">
+  <Text>
+    A formula: <Tex>x^2 + y^2</Tex>
+  </Text>
+</Svg>
+```
+
+Nested elements and spans can override `math-font`.
+In library calls the prop is `math_font`, including
+`mathToSvg(tex, { fonts, math_font: 'My Math' })`.
+
+The KaTeX provider uses the selected font's ordinary
 glyphs and Unicode italic/double-struck alphabets where covered, with bundled
 fallbacks for missing glyphs, other styles, and large size-font symbols. It
 retains KaTeX layout parameters and stretchy constructions; OpenType MATH tables
