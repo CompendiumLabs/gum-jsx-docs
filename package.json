@@ -16,7 +16,6 @@
     "./elements/*": "./docs/elements/*",
     "./guides/*": "./docs/guides/*",
     "./topics/*": "./docs/gallery/*",
-    "./visual-tests/*": "./visual-tests/*",
     "./package.json": "./package.json"
   },
   "scripts": {
@@ -61,7 +60,6 @@
     "README.md",
     "LICENSE",
     "docs",
-    "prompt",
-    "visual-tests"
+    "prompt"
   ]
 }

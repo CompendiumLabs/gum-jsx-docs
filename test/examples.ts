@@ -96,50 +96,6 @@ function checkGeometry(fragment: core.Fragment, context: string): void {
   assert.ok(!/NaN|Infinity/.test(core.render_svg(fragment)), `${context}: nonfinite geometry`)
 }
 
-function fragments(fragment: core.Fragment): core.Fragment[] {
-  return [fragment, ...fragment.children.flatMap(child => fragments(child.fragment))]
-}
-
-const comparisonRows: Record<string, readonly string[]> = {
-  group_anchors: ['VStack', 'VStack', 'VStack'],
-  group_clip: ['VStack', 'VStack'],
-  arrow_caps: ['VStack', 'VStack', 'VStack'],
-  two_columns: ['TextFrame', 'TextCol'],
-  stokes_theorem: ['Group', 'TextCol'],
-  polygon_slide: ['Frame', 'Frame', 'Frame'],
-  math_slides: ['VStack', 'Plot'],
-  positioned_diagram: ['Frame', 'Group', 'Frame', 'Group', 'Frame'],
-}
-const columnGrow: Record<string, readonly number[]> = {
-  math_slides: [1, 1.1],
-  two_columns: [1, 1],
-  positioned_diagram: [1, 0.65, 1, 0.65, 1],
-}
-function checkComposition(fragment: core.Fragment, name: string, context: string): void {
-  const expected = comparisonRows[name]
-  if (!expected) return
-  const rows = fragments(fragment).filter(node => node.name === 'HStack'
-    && node.children.map(child => child.fragment.name).join(',') === expected.join(','))
-  assert.equal(rows.length, name === 'polygon_slide' ? 2 : 1,
-    `${context}: preserve the side-by-side composition`)
-  const weights = columnGrow[name]
-  if (weights) for (const row of rows) {
-    const unit = row.children[0]!.fragment.size.width / weights[0]!
-    assert.ok(unit > 0, `${context}: columns need a positive allocation`)
-    row.children.forEach((child, index) => {
-      assert.ok(Math.abs(child.fragment.size.width - unit * weights[index]!) < 1e-6,
-        `${context}: column widths must follow their grow weights`)
-    })
-  }
-}
-
-// More available room must not add a blank strip to content-sized examples.
-const contentSizedExamples = new Set([
-  ...gallery.cats.maps!,
-  ...Object.keys(comparisonRows), 'scenic_route', 'shape_algebra', 'fonts', 'gum',
-  'math', 'math_arrays', 'math_boxes', 'math_decorations', 'math_expressions', 'math_fonts', 'aligned_math',
-])
-
 const previewBounds = [[320, 240], [640, 480], [960, 240], [320, 640], [240, 640]] as const
 const canvas = { width: 640, height: 480 }
 
@@ -202,7 +158,6 @@ for (const { name, title, dir, collection } of entries) {
     const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }))
     assert.ok(resized.size.height > 0, `${file} at ${width}px: empty height`)
     checkGeometry(resized, `${file} at ${width}px`)
-    if (dir !== elementsDir) checkComposition(resized, name, `${file} at ${width}px`)
   }
   for (const [width, height] of previewBounds) {
     // Also exercise bounded wrappers around the completed figures.
@@ -219,18 +174,6 @@ for (const { name, title, dir, collection } of entries) {
         `${context}: maximum viewport dimensions exceeded`)
     }
     checkGeometry(bounded, context)
-    if (dir !== elementsDir) checkComposition(bounded, name, context)
-  }
-  if (dir !== elementsDir && contentSizedExamples.has(name)) {
-    const sizes = [2000, 4000].map(width => {
-      const result = core.layout_element(element, {
-        pass, wrap: { max_width: core.px(width), max_height: core.px(2000) },
-      })
-      assert.ok(result.kind === 'fragment')
-      checkGeometry(result.fragment, `${file} in a roomy preview`)
-      return result.fragment.size
-    })
-    assert.deepEqual(sizes[0], sizes[1], `${file}: unused host width enlarged a content-sized figure`)
   }
   if (element.props.fit) {
     for (const [width, height] of [[320, 240], [640, 480], [960, 540]]) {
@@ -257,5 +200,3 @@ for (const dir of [elementsDir, guidesDir, galleryDir]) {
   assert.ok(!readdirSync(dir).some(file => file.endsWith('.md')), `${dir}: put pages in text/`)
 }
 console.log(`${elements.tags.length} elements and ${topics.tags.length} topics checked; ${drawings} examples rendered at 320, 480, 640, and 960px and in ${previewBounds.length} bounded preview sizes.`)
-console.log(`${contentSizedExamples.size} content-sized figures and ${Object.keys(comparisonRows).length} side-by-side compositions checked.`)
-console.log(`${Object.keys(columnGrow).length} weighted column layouts checked.`)

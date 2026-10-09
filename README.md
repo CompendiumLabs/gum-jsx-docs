@@ -18,8 +18,7 @@ The installed `gum` command includes this documentation offline. Start with
 
 ## Content structure
 
-The three reference collections use the same paired-file structure. Focused visual
-regressions live beside them and need code only:
+The three reference collections use the same paired-file structure:
 
 ```text
 docs/
@@ -33,8 +32,6 @@ docs/
   gallery/
     text/<name>.md     Visual example explanation
     code/<name>.jsx    Self-contained, runnable gallery example
-visual-tests/
-  code/<name>.jsx      Focused visual regression case
 src/                  Read-only catalog and page loaders
 src/docs.ts           Portable retrieval, listing, search, and page formatting
 src/catalog.ts        Build the serializable documentation snapshot
@@ -74,9 +71,8 @@ CLI and previews, then checks 320, 480, 640, and 960px widths with natural heigh
 It also exercises `max_width` / `max_height` wrapper props at five
 landscape and portrait sizes, including 240px-wide and 240px-high previews.
 It checks finite geometry and nonempty plot data areas at the default offer.
-Small previews may clip or crowd content. Regression checks also preserve comparison
-rows and verify that larger hosts do not widen content-sized figures with empty
-space. Whole-scene `fit` examples are checked in fixed rectangles. Standalone
+Small previews may clip or crowd content. Whole-scene `fit` examples are checked
+in fixed rectangles. Standalone
 figures can set a design height, aspect, and font size; Studio scales the completed
 SVG for display. Compact content may hug its children, and adaptive layouts can
 use fill or wrapping when the composition calls for it.
@@ -242,7 +238,7 @@ gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.svg
 gum gum-jsx-docs/docs/gallery/code/two_columns.jsx -o /tmp/two-columns.png --ratio 2
 gum gum-jsx-docs/docs/elements/code/VStack.jsx -f tree --stats
 bun --filter @gum-jsx/docs test
-bun run visual-test
+bun run visual-report
 bun run typecheck
 ```
 
@@ -252,8 +248,8 @@ figure itself or on an explicit **Svg** wrapper. Hosts add an **Svg** viewport
 when the example returns a bare element and preserve an explicit **Svg** root.
 No legacy packages, image files, custom fonts, network fetches, or generated assets
 are required. The test command renders SVG in memory and leaves the checkout unchanged.
-The workspace visual-test command renders every element example, every topic example,
-and every focused regression into a searchable standalone HTML report at
+The workspace visual-report command renders element and gallery examples
+into a searchable standalone HTML report at
 `gum-jsx-cli/visual-report/dist/index.html`.
 Core behavior tests and synthetic layout fixtures remain in gum-jsx-core.
 The former core examples are consolidated into these collections; equivalent
