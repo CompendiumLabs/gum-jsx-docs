@@ -199,8 +199,15 @@ The allocated rectangle is the element's final layout size. Containers such as
 **Box** expose a separate content rectangle inside their insets; elements without
 one show only the allocated rectangle. The overlays follow rotations and fitting,
 appear above the artwork, and bypass content clipping within the viewport.
-They leave layout, ink bounds, and overflow unchanged. SVG, PNG, and terminal
-output include the overlays; the PDF and PPTX renderers omit them.
+They leave layout, ink bounds, and overflow unchanged. SVG, PNG, terminal, PDF,
+PPTX, and MP4 output all include the overlays.
+
+Before rendering, the shared `prepare_render(fragment)` step converts debug flags
+into ordinary path drawings in a final overlay fragment. It resolves placements
+into viewport coordinates so fitting does not scale the outline strokes. The
+exporters call this step automatically; a custom renderer can call it too.
+The original layout fragment retains its metadata, and preparing an already
+prepared fragment does not add another overlay.
 
 Inline **Span** styling is folded into its owning **Text**; mark the **Text** to
 inspect its allocation.

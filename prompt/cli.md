@@ -214,7 +214,7 @@ SVG for a browser with suitable fonts.
 PDF uses `@gum-jsx/pdf` to write vector pages at 96 pixels per inch with the
 same viewport, themes, and backgrounds. Text and math glyphs default to selectable
 native text with embedded font subsets shared across pages. Use `--text-mode path`
-for outlines. Math decorations remain vector geometry; debug overlays are omitted.
+for outlines. Math decorations and debug overlays remain vector geometry.
 `--ratio` and `--id-prefix` do not affect PDF output.
 
 PPTX defaults to `mixed`: editable prose with fixed line breaks and styled runs,
