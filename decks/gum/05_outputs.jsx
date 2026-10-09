@@ -1,4 +1,4 @@
-<Page
+<DeckPage
   number={5}
   topic="FROM SOURCE TO OUTPUT"
   title="One source. Many outputs."
@@ -30,4 +30,4 @@ slides/
   ...`}</Code>
     </Panel>
   </HStack>
-</Page>
+</DeckPage>

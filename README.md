@@ -140,7 +140,7 @@ are exposed through the `./docs/elements/*`, `./docs/guides/*`, and
 Add a Markdown page and same-named JSX file together. Begin the JSX with a short
 comment describing what it demonstrates. Prefer explicit sizes where allocation
 would otherwise be ambiguous and keep text readable. For examples with text, set
-the base `font-size` in pixels on **Svg**, then use `em(...)` for descendant font
+the base `font-size` in pixels on **Page**, then use `em(...)` for descendant font
 sizes, gaps, and padding. Elements with their own font defaults, such as **Plot**
 and **Slide**, need an explicit relative `font-size` to follow that base. Strokes,
 borders, corner radii, and fixed geometry can use pixels. Plot domain padding
@@ -244,8 +244,8 @@ bun run typecheck
 
 The CLI defaults to kitty graphics; use SVG or PNG output on other terminals.
 Examples use the current evaluator's bindings. Set size and font props on the
-figure itself or on an explicit **Svg** wrapper. Hosts add an **Svg** viewport
-when the example returns a bare element and preserve an explicit **Svg** root.
+figure itself or on an explicit **Page** wrapper. Hosts add an **Page** viewport
+when the example returns a bare element and preserve an explicit **Page** root.
 No legacy packages, image files, custom fonts, network fetches, or generated assets
 are required. The test command renders SVG in memory and leaves the checkout unchanged.
 The workspace visual-report command renders element and gallery examples

@@ -8,9 +8,9 @@ const teal = '#167C73'
 const mint = '#DDECE4'
 const peach = '#F6E4D7'
 
-function Page({ number, topic, title, subtitle, children }) {
+function DeckPage({ number, topic, title, subtitle, children }) {
   return (
-    <Svg width={px(1280)} height={px(720)} font-size={px(24)} color={ink} background={paper}>
+    <Page width={px(1280)} height={px(720)} font-size={px(24)} color={ink} background={paper}>
       <Slide
         width="fill"
         height="fill"
@@ -30,7 +30,7 @@ function Page({ number, topic, title, subtitle, children }) {
           </HStack>
         </TextCol>
       </Slide>
-    </Svg>
+    </Page>
   )
 }
 

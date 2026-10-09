@@ -33,9 +33,9 @@ const entries = [
 const commonOnlyElements = new Set(['Spacer', 'Span'])
 const bindings = { ...core, ...math, ...maps, Video }
 
-// Video is a top-level component whose frames participate in ordinary layout.
+// Documents and videos are top-level collections of ordinary layout elements.
 function is_component(value: unknown): boolean {
-  return value === Video || (typeof value === 'function' && value.prototype instanceof core.Element)
+  return value === Video || value === core.Document || (typeof value === 'function' && value.prototype instanceof core.Element)
 }
 
 for (const [name, value] of Object.entries(bindings)) {
@@ -135,64 +135,69 @@ for (const { name, title, dir, collection } of entries) {
     for (const frame of [0, Math.floor(video.frame_count / 2), video.frame_count - 1]) {
       checkGeometry(renderer.fragment(frame), `${file} frame ${frame}`)
     }
-    element = new core.Svg({
+    element = new core.Page({
       width: core.px(video.size[0]), height: core.px(video.size[1]),
       background: video.background ?? core.white,
       children: video.frame({ time: 0, frame: 0, fps: video.fps }),
     })
   }
-  assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
-  // Match Studio: finite offers, with natural content height.
-  const fragment = pass.layout(core.make_viewport(element), core.make_request({
-    width: core.available(canvas.width), height: core.available(canvas.height),
-  }))
-  assert.ok(fragment.size.width > 0 && fragment.size.height > 0, `${file}: empty viewport`)
-  const svg = core.render_svg(fragment, { title, id_prefix: name })
-  assert.ok(svg.startsWith('<svg ') && svg.endsWith('</svg>'), `${file}: invalid SVG envelope`)
-  assert.ok(!/NaN|Infinity/.test(svg), `${file}: nonfinite geometry`)
-  assert.ok(/<(?:path|rect|ellipse|image)\b/.test(svg), `${file}: no drawing`)
-  checkPlotAreas(fragment, file)
-  // Small or unusually shaped canvases can legitimately clip or crowd content.
-  // Require finite output there; explicit fitting is checked separately below.
-  for (const width of [320, 480, 640, 960]) {
-    const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }))
-    assert.ok(resized.size.height > 0, `${file} at ${width}px: empty height`)
-    checkGeometry(resized, `${file} at ${width}px`)
-  }
-  for (const [width, height] of previewBounds) {
-    // Also exercise bounded wrappers around the completed figures.
-    const result = core.layout_element(element, {
-      pass, wrap: { max_width: core.px(width), max_height: core.px(height) },
-    })
-    assert.ok(result.kind === 'fragment')
-    const bounded = result.fragment
-    const context = `${file} bounded by ${width} × ${height}`
-    assert.ok(bounded.size.width > 0 && bounded.size.height > 0, `${context}: empty viewport`)
-    // An explicit source viewport opts out of generated-wrapper props.
-    if (!(element instanceof core.Svg)) {
-      assert.ok(bounded.size.width <= width + 1e-6 && bounded.size.height <= height + 1e-6,
-        `${context}: maximum viewport dimensions exceeded`)
+  const source = element
+  const pages = source instanceof core.Document
+    ? source.pages.map(page => core.make_viewport(page, { defaults: source.defaults })) : [source]
+  for (const element of pages) {
+    assert.ok(element instanceof core.Element, `${file}: examples should return an element`)
+    // Match Studio: finite offers, with natural content height.
+    const fragment = pass.layout(core.make_viewport(element), core.make_request({
+      width: core.available(canvas.width), height: core.available(canvas.height),
+    }))
+    assert.ok(fragment.size.width > 0 && fragment.size.height > 0, `${file}: empty viewport`)
+    const svg = core.render_svg(fragment, { title, id_prefix: name })
+    assert.ok(svg.startsWith('<svg ') && svg.endsWith('</svg>'), `${file}: invalid SVG envelope`)
+    assert.ok(!/NaN|Infinity/.test(svg), `${file}: nonfinite geometry`)
+    assert.ok(/<(?:path|rect|ellipse|image)\b/.test(svg), `${file}: no drawing`)
+    checkPlotAreas(fragment, file)
+    // Small or unusually shaped canvases can legitimately clip or crowd content.
+    // Require finite output there; explicit fitting is checked separately below.
+    for (const width of [320, 480, 640, 960]) {
+      const resized = pass.layout(core.make_viewport(element), core.make_request({ width: core.exact(width) }))
+      assert.ok(resized.size.height > 0, `${file} at ${width}px: empty height`)
+      checkGeometry(resized, `${file} at ${width}px`)
     }
-    checkGeometry(bounded, context)
-  }
-  if (element.props.fit) {
-    for (const [width, height] of [[320, 240], [640, 480], [960, 540]]) {
-      const fitted = pass.layout(core.make_viewport(element), core.make_request({
-        width: core.exact(width!), height: core.exact(height!),
-      }))
-      // Check visible ink before the outer Svg clip. A regional map deliberately
-      // clips distant geography, which still appears in unclipped overflow data.
-      const ink = core.union_rects(...fitted.children.map(child =>
-        core.transform_rect(child.fragment.ink, child.offset, child.transform)))
-      assert.ok(Object.values(core.bounds_overflow(fitted.size, ink)).every(value => value <= 3),
-        `${file} at ${width} × ${height}: fitted scene ink exceeds the viewport`)
-      checkPlotAreas(fitted, `${file} at ${width} × ${height}`)
+    for (const [width, height] of previewBounds) {
+      // Also exercise bounded wrappers around the completed figures.
+      const result = core.layout_element(element, {
+        pass, wrap: { max_width: core.px(width), max_height: core.px(height) },
+      })
+      assert.ok(result.kind === 'fragment')
+      const bounded = result.fragment
+      const context = `${file} bounded by ${width} × ${height}`
+      assert.ok(bounded.size.width > 0 && bounded.size.height > 0, `${context}: empty viewport`)
+      // An explicit source viewport opts out of generated-wrapper props.
+      if (!(element instanceof core.Page)) {
+        assert.ok(bounded.size.width <= width + 1e-6 && bounded.size.height <= height + 1e-6,
+          `${context}: maximum viewport dimensions exceeded`)
+      }
+      checkGeometry(bounded, context)
     }
+    if (element.props.fit) {
+      for (const [width, height] of [[320, 240], [640, 480], [960, 540]]) {
+        const fitted = pass.layout(core.make_viewport(element), core.make_request({
+          width: core.exact(width!), height: core.exact(height!),
+        }))
+        // Check visible ink before the outer Page clip. A regional map deliberately
+        // clips distant geography, which still appears in unclipped overflow data.
+        const ink = core.union_rects(...fitted.children.map(child =>
+          core.transform_rect(child.fragment.ink, child.offset, child.transform)))
+        assert.ok(Object.values(core.bounds_overflow(fitted.size, ink)).every(value => value <= 3),
+          `${file} at ${width} × ${height}: fitted scene ink exceeds the viewport`)
+        checkPlotAreas(fitted, `${file} at ${width} × ${height}`)
+      }
+    }
+    const page = dir === elementsDir ? prepareElementPage(text, code) : prepareTopicPage(text, code)
+    assert.ok(page.includes(code) && page.includes('# ' + title), `${file}: incomplete prepared page`)
+    drawings++
+    console.log(`ok - ${dir === elementsDir ? 'elements' : dir === guidesDir ? 'guides' : 'gallery'}/${name}: ${fragment.size.width} × ${fragment.size.height}`)
   }
-  const page = dir === elementsDir ? prepareElementPage(text, code) : prepareTopicPage(text, code)
-  assert.ok(page.includes(code) && page.includes('# ' + title), `${file}: incomplete prepared page`)
-  drawings++
-  console.log(`ok - ${dir === elementsDir ? 'elements' : dir === guidesDir ? 'guides' : 'gallery'}/${name}: ${fragment.size.width} × ${fragment.size.height}`)
 }
 
 // Notice unindexed Markdown at the collection root rather than silently omitting it.

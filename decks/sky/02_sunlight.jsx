@@ -1,4 +1,4 @@
-<Page title="Sunlight holds many colors" prompt="Mixed together, these colors look white.">
+<DeckPage title="Sunlight holds many colors" prompt="Mixed together, these colors look white.">
   <VStack width="fill" height="fill" align="fill" justify="center" gap={em(0.4)}>
     <Group width="fill" height={em(10)}>
       <Sun pos={[0.01, 0.16]} anchor="start" width={0.2} />
@@ -14,4 +14,4 @@
       <Text>sunlight</Text><Text>a glass prism</Text><Text>colors!</Text>
     </HStack>
   </VStack>
-</Page>
+</DeckPage>

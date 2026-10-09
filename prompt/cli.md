@@ -102,6 +102,7 @@ gum --help
 | `[files...]` | JSX files or one deck directory; omit or use `-` for stdin |
 | `-f, --format <format>` | Image output: `kitty`, `svg`, `png`, `pdf`; layout inspection: `tree` or `json` |
 | `-o, --output <file>` | Write to a file instead of stdout |
+| `--page <number>` | Select one document page, starting at `1`; required for multi-page SVG, PNG, or kitty output |
 | `-W, --width <pixels>` | Exact viewport width in pixels |
 | `-H, --height <pixels>` | Exact viewport height in pixels |
 | `-r, --ratio <number>` | Positive PNG/kitty sampling ratio; default `1` |
@@ -119,7 +120,7 @@ gum --help
 | `-V, --version` | Print the CLI version |
 | `-h, --help` | Show help |
 
-Select loaded families in JSX with `<Svg font-family="My Text" math-font="My Math">`.
+Select loaded families in JSX with `<Page font-family="My Text" math-font="My Math">`.
 Both props inherit through descendants and allow nested overrides.
 
 #### Inspect a region with `--select`
@@ -173,7 +174,14 @@ An explicit format wins; otherwise the output extension selects SVG, PNG, or
 PDF. For a file or stdin, stdout defaults to kitty graphics even when piped or
 redirected. Choose `-f svg` for SVG text on stdout or `-f pdf` for binary PDF.
 Kitty display requires a compatible terminal. Directories and multiple files
-require PDF output.
+require PDF or PPTX output.
+
+A single JSX file can return [Document](references/elements/Document.md) with
+explicit Page children. Its dimensions and style props provide defaults for
+every page, and its title supplies export metadata. PDF and PPTX include all
+pages; use `--page` to select one page. Tree output inspects every page, and JSON
+contains `{ title, pages }`. Pages lay out independently; Document does not
+automatically paginate overflowing content. PPTX pages must have matching sizes.
 
 With neither `-W` nor `-H`, JSX gets a 640 × 480 offer; content can hug or exceed
 it, and authored dimensions still win. Viewport overrides are independent: an
@@ -189,7 +197,7 @@ PNG and kitty use full geometry precision. Both PNG encoding presets preserve
 the same decoded pixels; they differ in compression policy.
 
 Kitty defaults to a dark theme; other formats default to light. A source root
-`<Svg theme="light">` or `<Svg theme="dark">` overrides that default, and
+`<Page theme="light">` or `<Page theme="dark">` overrides that default, and
 `--theme` overrides the root selection. Explicit paints and nested themes still
 apply. Themes leave backgrounds transparent; `--background` paints behind
 explicit source backgrounds. See [Themes](references/guides/themes.md).
@@ -201,7 +209,7 @@ dimensions round up to whole pixels.
 
 Core, math, and map bindings are included by default; `GeoMap`,
 `world_countries()`, and `us_states()` need no extra flags. The CLI wraps a bare
-element in `Svg`; the core evaluator itself does not add this wrapper.
+element in `Page`; the core evaluator itself does not add this wrapper.
 Errors go to stderr and exit with status 1. `--stats` writes layout counters
 independently of the rendered output.
 

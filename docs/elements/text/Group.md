@@ -62,7 +62,7 @@ A `pos` override replaces the entire value, including when it comes from a prop
 spread.
 
 Set `clip` on **Group** to hide content outside its rectangle. Clipping defaults to
-false and does not erase reported overflow. **Svg** still clips at the outer viewport.
+false and does not erase reported overflow. **Page** still clips at the outer viewport.
 
 **Group** uses local fractional `pos` values and `anchor`; **Graph** uses data positions and
 **Overlay** places decorations relative to a measured base. **Box** and stacks use their

@@ -9,7 +9,7 @@ A five-slide introduction to Gum, written in Gum:
 5. Output: SVG, PNG, PDF, and manifest-based decks.
 
 `index.json` defines the page order and loads `prelude.jsx`, which supplies the
-palette and shared components. `Page` puts a `Slide` inside a 1280 × 720 `Svg`
+palette and shared components. `DeckPage` puts a `Slide` inside a 1280 × 720 `Page`
 with a base font size of 24. These are the only pixel dimensions in the layout;
 the outer viewport can also be overridden by the CLI.
 

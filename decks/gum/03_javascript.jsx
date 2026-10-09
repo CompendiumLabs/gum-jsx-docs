@@ -4,7 +4,7 @@ const metrics = [
   { value: '1', label: 'figure' },
 ]
 return (
-  <Page
+  <DeckPage
     number={3}
     topic="FUNCTIONS + DATA"
     title="JavaScript is the glue."
@@ -40,5 +40,5 @@ return (
         </Box>
       </Panel>
     </HStack>
-  </Page>
+  </DeckPage>
 )

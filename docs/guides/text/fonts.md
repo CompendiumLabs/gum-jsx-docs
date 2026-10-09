@@ -78,9 +78,9 @@ gum figure.jsx --font ./Inter-Regular.ttf --font ./Inter-Bold.ttf -o figure.svg
 ```
 
 ```jsx
-<Svg font-family="Inter">
+<Page font-family="Inter">
   <Text>Text inherits the document's font.</Text>
-</Svg>
+</Page>
 ```
 
 Repeat `--font` for individual faces; paths resolve from the invoking directory.
@@ -93,11 +93,11 @@ Math font selection is separate from prose. Load a font with `--font` and select
 its family with the inherited `math-font` prop:
 
 ```jsx
-<Svg font-family="IBM Plex Sans" math-font="My Math">
+<Page font-family="IBM Plex Sans" math-font="My Math">
   <Text>
     A formula: <Tex>x^2 + y^2</Tex>
   </Text>
-</Svg>
+</Page>
 ```
 
 Nested elements and spans can override `math-font`.

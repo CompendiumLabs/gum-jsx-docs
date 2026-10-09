@@ -1,4 +1,4 @@
-<Page
+<DeckPage
   number={4}
   topic="PLOTS + MATHEMATICS"
   title="Math belongs in the picture."
@@ -46,4 +46,4 @@
       }</Code>
     </Panel>
   </HStack>
-</Page>
+</DeckPage>

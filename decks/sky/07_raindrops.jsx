@@ -17,7 +17,7 @@ const paths = spectrum.map((paint,i) => {
   return {paint, points:[entry,back,out,end].map(local)}
 })
 return (
-  <Page title="Raindrops can show the colors" prompt="Light bends, bounces inside, and bends out again." background="#EAF5FC">
+  <DeckPage title="Raindrops can show the colors" prompt="Light bends, bounces inside, and bends out again." background="#EAF5FC">
     <HStack width="fill" height="fill" align="center" gap={em(1.5)}>
       <Group width={em(21)} height={em(12)}>
         <Circle pos={center} width={2*radius}
@@ -35,5 +35,5 @@ return (
         <Text font-size={em(1.3)}>The colors spread out!</Text>
       </VStack>
     </HStack>
-  </Page>
+  </DeckPage>
 )

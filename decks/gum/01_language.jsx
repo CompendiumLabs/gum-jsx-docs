@@ -1,4 +1,4 @@
-<Page
+<DeckPage
   number={1}
   topic="THE LANGUAGE"
   title="Figures are programs."
@@ -31,4 +31,4 @@
       </Box>
     </Panel>
   </HStack>
-</Page>
+</DeckPage>

@@ -1,4 +1,4 @@
-<Page title="At night, our side faces away" prompt="Earth keeps turning. Daytime will come again!" background={night} color={paper}>
+<DeckPage title="At night, our side faces away" prompt="Earth keeps turning. Daytime will come again!" background={night} color={paper}>
   <HStack width="fill" height="fill" align="center" gap={em(1.3)}>
     <Group width={em(22)} height={em(12)}>
       <Sun pos={[0, 0.26]} anchor="start" width={0.24} />
@@ -18,4 +18,4 @@
       <Text font-size={em(1.35)}>The sky grows dark.</Text>
     </VStack>
   </HStack>
-</Page>
+</DeckPage>

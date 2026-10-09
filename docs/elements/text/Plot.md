@@ -75,7 +75,7 @@ Stacked plots then align their data areas whatever their tick labels measure, an
 an identified plot connects at its frame. Containers do not make room for those
 decorations, so leave a large enough `gap` or `padding` around the plot. The space
 they need, including `margin`, is reported as the fragment's outset, and a hugging
-[Svg](./Svg.md) viewport grows to include it.
+[Page](./Page.md) viewport grows to include it.
 
 This first version has linear scales. Log/date scales, minor ticks, label
 collision avoidance, automatic legend extraction, and legend placement

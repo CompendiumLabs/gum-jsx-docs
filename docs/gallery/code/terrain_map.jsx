@@ -118,7 +118,7 @@ const Compass = props => (
   </VStack>
 )
 
-return <Svg background={paper} font-size={px(20)}>
+return <Page background={paper} font-size={px(20)}>
   <Box padding={em(2)}>
     <VStack align="stretch">
       <HStack>
@@ -185,4 +185,4 @@ return <Svg background={paper} font-size={px(20)}>
       </HStack>
     </VStack>
   </Box>
-</Svg>
+</Page>

@@ -1,4 +1,4 @@
-<Page title="Sunset: a longer trip through air" prompt="More blue spreads away. We see more reds and oranges." background="#FFF0E6">
+<DeckPage title="Sunset: a longer trip through air" prompt="More blue spreads away. We see more reds and oranges." background="#FFF0E6">
   <VStack width="fill" height="fill" align="fill" justify="center" gap={em(0.5)}>
     <Group width="fill" height={em(10)}>
       <Rect pos={[0.18, 0.16]} anchor="start" width={0.77} height={0.70} fill="#F4D6C9" stroke="none" />
@@ -11,4 +11,4 @@
     </Group>
     <Text font-size={em(1.17)} width="fill" justify="center">These colors happen around sunset, before night.</Text>
   </VStack>
-</Page>
+</DeckPage>

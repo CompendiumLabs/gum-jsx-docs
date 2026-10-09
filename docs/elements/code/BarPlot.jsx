@@ -1,5 +1,5 @@
 // Categorical ticks, positive and negative bars, and functional bar colors.
-<Svg width={px(640)} height={px(380)} font-size={px(16)}>
+<Page width={px(640)} height={px(380)} font-size={px(16)}>
   <BarPlot ygrid
     values={[28, 43, -17, 56, 34]}
     title="Change by region"
@@ -16,4 +16,4 @@
   >
     <Polyline points={[[-1, 0], [5, 0]]} stroke={darkgray} />
   </BarPlot>
-</Svg>
+</Page>

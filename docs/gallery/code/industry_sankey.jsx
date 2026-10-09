@@ -142,7 +142,7 @@ function PlotLabel({ x, y, text, size = 20, weight = 400, color = palette.navy, 
 }
 
 return (
-  <Svg width={px(pageWidth)} background={palette.paper} font-family={sans} font-size={px(20)}>
+  <Page width={px(pageWidth)} background={palette.paper} font-family={sans} font-size={px(20)}>
     <Box width={1} padding={[em(2), em(1.9), px(pageInset), px(pageInset)]}>
       <VStack width="fill" gap={em(1.2)} align="stretch">
       <VStack gap={em(0.4)}>
@@ -201,5 +201,5 @@ return (
       </VStack>
       </VStack>
     </Box>
-  </Svg>
+  </Page>
 );

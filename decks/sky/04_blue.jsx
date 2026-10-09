@@ -1,4 +1,4 @@
-<Page title="Air spreads blue light around" prompt="Blue light reaches our eyes from all across the sky." background="#EAF5FC">
+<DeckPage title="Air spreads blue light around" prompt="Blue light reaches our eyes from all across the sky." background="#EAF5FC">
   <HStack width="fill" height="fill" gap={em(1)} align="center">
     <Group width={em(22)} height={em(12)}>
       <Sun pos={[0, 0.19]} anchor="start" width={0.24} />
@@ -13,4 +13,4 @@
     </Group>
     <Text grow={1} font-size={em(1.4)} font-weight="bold">Air spreads blue light more than red light.</Text>
   </HStack>
-</Page>
+</DeckPage>

@@ -1,4 +1,4 @@
-<Page title="Air is made of tiny pieces" prompt="These pieces are much too small for our eyes to see.">
+<DeckPage title="Air is made of tiny pieces" prompt="These pieces are much too small for our eyes to see.">
   <HStack width="fill" height="fill" align="center" gap={em(1.6)}>
     <Group width={em(15)} aspect={1.2}>
       <Circle pos={[0.1, 0.02]} anchor="start" width={0.76} fill={airBlue} stroke="none" />
@@ -15,4 +15,4 @@
       <Text font-size={em(1.45)}>Sunlight meets the tiny pieces of air.</Text>
     </VStack>
   </HStack>
-</Page>
+</DeckPage>

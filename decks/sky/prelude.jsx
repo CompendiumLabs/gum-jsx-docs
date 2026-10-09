@@ -9,9 +9,9 @@ const green = '#4DAE91'
 const night = '#17263F'
 const spectrum = ['#ED665E', '#F39942', '#F4CB48', '#61B77B', '#419BDD', '#6474C5', '#A37AC8']
 
-function Page({ title, prompt, children, background = paper, color = ink }) {
+function DeckPage({ title, prompt, children, background = paper, color = ink }) {
   return (
-    <Svg width={px(1280)} height={px(720)} font-size={px(32)} color={color}>
+    <Page width={px(1280)} height={px(720)} font-size={px(32)} color={color}>
       <Slide width="fill" height="fill" background={background} padding={em(1.5)} gap={em(0.6)}
         title={<Text font-size={em(1.85)} font-weight="bold">{title}</Text>}>
         <VStack height="fill" width="fill" gap={em(0.55)} align="fill">
@@ -19,7 +19,7 @@ function Page({ title, prompt, children, background = paper, color = ink }) {
           <Text font-size={em(1.08)} font-weight="bold">{prompt}</Text>
         </VStack>
       </Slide>
-    </Svg>
+    </Page>
   )
 }
 

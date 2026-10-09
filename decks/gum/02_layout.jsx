@@ -1,4 +1,4 @@
-<Page
+<DeckPage
   number={2}
   topic="LAYOUT + UNITS"
   title="Compose, then measure."
@@ -40,4 +40,4 @@
       <Text><Span font-weight="bold">em(1.5)</Span> follows the font size.</Text>
     </Panel>
   </HStack>
-</Page>
+</DeckPage>

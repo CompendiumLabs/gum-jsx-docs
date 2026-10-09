@@ -16,7 +16,7 @@ or print runnable source with `gum docs example elements/Plot`.
 ## Start here
 
 1. Use [TextBox](../../elements/text/TextBox.md) or [TextFrame](../../elements/text/TextFrame.md) for padded document content.
-2. Set its `width`, `height`, and `font-size` directly; hosts add the [Svg](../../elements/text/Svg.md) viewport around a bare root.
+2. Set its `width`, `height`, and `font-size` directly; hosts add the [Page](../../elements/text/Page.md) viewport around a bare root.
 3. Arrange content with [TextCol](../../elements/text/TextCol.md), [HStack](../../elements/text/HStack.md), or [Group](../../elements/text/Group.md).
 4. Add [shapes](../../elements/text/Rect.md) and [Text](../../elements/text/Text.md).
 

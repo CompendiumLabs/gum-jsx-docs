@@ -1,29 +1,17 @@
 ---
 category: layout
-description: "Set the document viewport and contain its root element."
+description: "Define one output page with explicit or content-based dimensions, independent of format."
 ---
 
-# Svg
+# Page
 
-The document viewport. **Svg** accepts zero or one content element, along with the
+One output page, for an image, PDF page, or presentation slide. **Page** accepts
+zero or one content element, along with the
 common [sizing](../../guides/text/sizing.md) and inherited [style](../../guides/text/style.md) props. Put multiple
 elements inside a stack or **Group**.
 
-An explicit width or height establishes that viewport axis. Unspecified axes
-hug the child's measured size. There is no implicit 500px or 1000px canvas:
-a completely natural **Square** produces a small natural viewport.
-
-Some elements reserve an outset outside their own box, such as a
-[Plot](./Plot.md) with `bounds="frame"`. A hugging axis grows to include it; an
-established axis keeps its size and clips it like any other overflow.
-
-**Svg** gives its content advisory offers on its established axes, rather than
-forcing every child to occupy the whole viewport. Consequently, a tall **Svg**
-does not make a **VStack**'s children grow. Use explicit [stack sizing](../../guides/text/stack.md).
-
-The viewport establishes percentage references for its direct content. Its
-fragment has a rectangular clip, and serialized SVG hides viewport overflow.
-Overflow is still retained in the fragment for inspection.
+Use Page on its own, or put several Pages inside a [Document](./Document.md).
+Its layout is independent of the output format. Page replaces the former Svg element.
 
 | Property | Default | Meaning |
 |---|---|---|
@@ -36,15 +24,31 @@ Overflow is still retained in the fragment for inspection.
 | `max-width` / `max-height` | — | Maximum viewport dimensions; uniformly shrink overflowing content on hugging axes |
 | Typography and paint | Inherited | Style inherited by content |
 
+An explicit width or height establishes that viewport axis. Unspecified axes
+hug the child's measured size. There is no implicit 500px or 1000px canvas:
+a completely natural **Square** produces a small natural viewport.
+
+Some elements reserve an outset outside their own box, such as a
+[Plot](./Plot.md) with `bounds="frame"`. A hugging axis grows to include it; an
+established axis keeps its size and clips it like any other overflow.
+
+**Page** gives its content advisory offers on its established axes, rather than
+forcing every child to occupy the whole viewport. Consequently, a tall **Page**
+does not make a **VStack**'s children grow. Use explicit [stack sizing](../../guides/text/stack.md).
+
+The viewport establishes percentage references for its direct content. Its
+fragment has a rectangular clip, and serialized SVG hides viewport overflow.
+Overflow is still retained in the fragment for inspection.
+
 On an unspecified axis, a maximum first provides a layout offer. Text reflows at
-the offered width; if the resulting figure exceeds either maximum, **Svg** scales
+the offered width; if the resulting figure exceeds either maximum, **Page** scales
 the complete figure down uniformly. Width and height shrink together, including
 fonts, strokes, and reserved outsets. Smaller figures keep their natural sizes.
 Max props on ordinary elements retain their allocation-only meaning.
 
 An explicit width or height, including an exact parent request, keeps that axis's
 allocation and clipping behavior. Advisory `available(...)` requests without max
-props do not scale anything. A width-only document therefore reflows and grows
+props do not scale anything. A width-only page therefore reflows and grows
 naturally in height.
 
 An explicit `aspect` uses the common sizing rules. `width={px(320)} aspect={2}`
@@ -58,5 +62,6 @@ Explicit paint props override the defaults. See [Themes](../../guides/text/theme
 
 Title remains a [render_svg option](../../guides/text/rendering.md). Its background
 option paints behind the entire fragment. Themes do not paint backgrounds;
-**Svg**'s `background` prop can supply an explicit viewport background in source.
-The CLI wraps a bare non-**Svg** root automatically; `evaluate` does not.
+**Page**'s `background` prop can supply an explicit viewport background in source.
+The CLI wraps a bare layout element in Page automatically; `evaluate` does not.
+Document already contains its own explicit Pages.

@@ -12,11 +12,17 @@ elements are the simplest way to make reusable components.
 
 A single bare JSX element is returned automatically. With declarations or other
 statements, finish with an explicit `return`. Return one element for a figure;
-rendering hosts wrap a bare root in `Svg`. Put design dimensions and base
-font props on that root. Use an explicit `Svg` when you need viewport control;
+rendering hosts wrap a bare root in `Page`. Put design dimensions and base
+font props on that root. Use an explicit `Page` when you need viewport control;
 its width and height accept pixels only (`px(640)` or `"640px"`), or can be omitted
 to hug content. The evaluator supplies elements, `px`, `em`, palette constants,
 and numeric helpers. Math bindings are supplied by the rendering host as well.
+
+For multiple pages, return a [Document](references/elements/Document.md) containing
+explicit [Page](references/elements/Page.md) children. Document props supply shared
+page defaults; individual pages can override them. Put Slide inside Page for a
+title/body composition. Export the complete document to PDF or PPTX, or select
+a page for an image with `--page 2`. Page replaces the former Svg element.
 
 Gum source runs as a function body, not an imported module. Do not put static
 imports in an evaluated `.jsx` file. JSX attribute dashes become underscores:
