@@ -11,15 +11,16 @@ const spectrum = ['#ED665E', '#F39942', '#F4CB48', '#61B77B', '#419BDD', '#6474C
 
 function DeckPage({ title, prompt, children, background = paper, color = ink }) {
   return (
-    <Page width={px(1280)} height={px(720)} font-size={px(32)} color={color}>
-      <Slide width="fill" height="fill" background={background} padding={em(1.5)} gap={em(0.6)}
-        title={<Text font-size={em(1.85)} font-weight="bold">{title}</Text>}>
-        <VStack height="fill" width="fill" gap={em(0.55)} align="fill">
-          <Box grow={1} width="fill" align="center">{children}</Box>
-          <Text font-size={em(1.08)} font-weight="bold">{prompt}</Text>
-        </VStack>
-      </Slide>
-    </Page>
+    <Slide
+      width={px(1280)} height={px(720)} font-size={px(32)} color={color}
+      background={background} padding={em(1.5)} gap={em(0.6)}
+      title={<Text font-size={em(1.85)} font-weight="bold">{title}</Text>}
+    >
+      <VStack height="fill" width="fill" gap={em(0.55)} align="fill">
+        <Box grow={1} width="fill" align="center">{children}</Box>
+        <Text font-size={em(1.08)} font-weight="bold">{prompt}</Text>
+      </VStack>
+    </Slide>
   )
 }
 

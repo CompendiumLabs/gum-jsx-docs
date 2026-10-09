@@ -19,9 +19,10 @@ to hug content. The evaluator supplies elements, `px`, `em`, palette constants,
 and numeric helpers. Math bindings are supplied by the rendering host as well.
 
 For multiple pages, return a [Document](references/elements/Document.md) containing
-explicit [Page](references/elements/Page.md) children. Document props supply shared
-page defaults; individual pages can override them. Put Slide inside Page for a
-title/body composition. Export the complete document to PDF or PPTX, or select
+[Page](references/elements/Page.md) or [Slide](references/elements/Slide.md)
+children. Slide extends Page with a title/body composition and needs no wrapper.
+Document props supply shared page defaults; individual pages can override them.
+Export the complete document to PDF or PPTX, or select
 a page for an image with `--page 2`. Page replaces the former Svg element.
 
 Gum source runs as a function body, not an imported module. Do not put static

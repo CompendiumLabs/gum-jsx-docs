@@ -12,6 +12,8 @@ elements inside a stack or **Group**.
 
 Use Page on its own, or put several Pages inside a [Document](./Document.md).
 Its layout is independent of the output format. Page replaces the former Svg element.
+[Slide](./Slide.md) extends Page with a title and body layout, so it can be used
+directly inside Document without an additional Page wrapper.
 
 | Property | Default | Meaning |
 |---|---|---|

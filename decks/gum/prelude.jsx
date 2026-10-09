@@ -10,27 +10,24 @@ const peach = '#F6E4D7'
 
 function DeckPage({ number, topic, title, subtitle, children }) {
   return (
-    <Page width={px(1280)} height={px(720)} font-size={px(24)} color={ink} background={paper}>
-      <Slide
-        width="fill"
-        height="fill"
-        title={
-          <VStack gap={em(0.4)}>
-            <Label>GUM / {topic}</Label>
-            <Text font-size={em(2)} font-weight="bold">{title}</Text>
-          </VStack>
-        }
-      >
-        <TextCol gap={em(1)}>
-          <Text color={muted}>{subtitle}</Text>
-          {children}
-          <HStack font-size={em(0.65)} color={muted}>
-            <Text grow={1}>GUM / A LANGUAGE FOR FIGURES</Text>
-            <Text>{number} / 5</Text>
-          </HStack>
-        </TextCol>
-      </Slide>
-    </Page>
+    <Slide
+      width={px(1280)} height={px(720)} font-size={px(24)} color={ink} background={paper}
+      title={
+        <VStack gap={em(0.4)}>
+          <Label>GUM / {topic}</Label>
+          <Text font-size={em(2)} font-weight="bold">{title}</Text>
+        </VStack>
+      }
+    >
+      <TextCol gap={em(1)}>
+        <Text color={muted}>{subtitle}</Text>
+        {children}
+        <HStack font-size={em(0.65)} color={muted}>
+          <Text grow={1}>GUM / A LANGUAGE FOR FIGURES</Text>
+          <Text>{number} / 5</Text>
+        </HStack>
+      </TextCol>
+    </Slide>
   )
 }
 
