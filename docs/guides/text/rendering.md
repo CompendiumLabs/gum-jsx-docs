@@ -198,9 +198,9 @@ option works in TypeScript, for example `new Box({ debug: true, padding: em(1) }
 The allocated rectangle is the element's final layout size. Containers such as
 **Box** expose a separate content rectangle inside their insets; elements without
 one show only the allocated rectangle. The overlays follow rotations and fitting,
-appear above the artwork, and bypass content clipping within the SVG viewport.
-They leave layout, ink bounds, and overflow unchanged. SVG includes the overlays;
-the PNG, terminal, and PDF renderers omit them.
+appear above the artwork, and bypass content clipping within the viewport.
+They leave layout, ink bounds, and overflow unchanged. SVG, PNG, and terminal
+output include the overlays; the PDF and PPTX renderers omit them.
 
 Inline **Span** styling is folded into its owning **Text**; mark the **Text** to
 inspect its allocation.
