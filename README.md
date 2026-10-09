@@ -161,11 +161,11 @@ bun run skill:build
 bun run skill:pack
 ```
 
-`skill:build` generates `dist/gum-jsx/SKILL.md` and its references in the
-top-level repository. `skill:pack` rebuilds that directory and creates
-`dist/gum-jsx-skill.zip`, containing the `gum-jsx/` skill directory.
+`skill:build` generates `gum-jsx/skills/gum-jsx/SKILL.md` and its references,
+relative to the workspace root. `skill:pack` rebuilds that directory and creates
+`gum-jsx/skills/gum-jsx-skill.zip`, containing the `gum-jsx/` skill directory.
 These commands generate only the skill. Packaging requires the `zip` executable.
-Both outputs are ignored by Git.
+Both outputs are tracked in `gum-jsx`; commit regenerated files there.
 
 ## Build the plugin
 
@@ -180,14 +180,14 @@ bun run plugin:build
 bun run plugin:pack
 ```
 
-`plugin:build` writes `plugins/gum-jsx/skills/gum-jsx/SKILL.md` and its references
-in the top-level repository. `plugin:pack` rebuilds that directory and creates
-`dist/gum-jsx-plugin.zip` in the top-level repository, with the plugin manifest at
+`plugin:build` writes `gum-jsx/plugins/gum-jsx/skills/gum-jsx/SKILL.md` and its references,
+relative to the workspace root. `plugin:pack` rebuilds that directory and creates
+`gum-jsx/dist/gum-jsx-plugin.zip`, with the plugin manifest at
 the archive root. Packaging requires the `zip` executable; building the directory
 alone does not. The scripts remain in `gum-jsx-docs/scripts/`.
 
 Commit the plugin directory's
-generated skill files in the top-level repository, and commit maintained prompt
+generated skill files in the `gum-jsx` repository, and commit maintained prompt
 and documentation changes in `gum-jsx-docs`. This lets GitHub marketplace
 installations include the complete plugin. The ZIP remains
 ignored by Git and can be attached to a release. Rebuilds replace the generated

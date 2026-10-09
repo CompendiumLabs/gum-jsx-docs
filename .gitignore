@@ -1,2 +1,4 @@
 node_modules
+# The parent workspace owns dependency resolution.
+bun.lock
 demos/demos.pdf
