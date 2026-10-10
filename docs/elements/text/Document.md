@@ -5,7 +5,8 @@ description: "Collect independently laid-out pages with shared defaults and docu
 
 # Document
 
-An ordered collection of [Page](./Page.md) elements, including [Slide](./Slide.md).
+An ordered collection of [Page](./Page.md) elements, including [Slide](./Slide.md)
+and components that adopt either through `define_component`.
 Each page has its own dimensions and layout; the document supplies shared page
 defaults and a title.
 A standalone Page remains sufficient for a single figure.
