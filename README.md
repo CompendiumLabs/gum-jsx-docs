@@ -54,7 +54,7 @@ ordinary preview checks.
 
 Every reference Markdown file starts with YAML front matter containing a
 `category` and a one-sentence `description`. The catalog uses these fields for
-grouping and skill reference indexes; neither appears in the rendered page body.
+grouping and descriptions in skill reference indexes; neither appears in the rendered page body.
 For example:
 
 ```md
@@ -196,12 +196,47 @@ skill directory, so make edits in `prompt/` and `docs/` rather than in that outp
 The entrypoint is assembled from [head](./prompt/head.md),
 [intro](./prompt/intro.md), [docs](./prompt/docs.md), [refs](./prompt/refs.md),
 [gen](./prompt/gen.md), and [cli](./prompt/cli.md). It keeps the essential authoring rules together and links
-to generated indexes for guides, elements by category, and gallery figures.
-Element and gallery text and code are combined into one reference file per
-category; guides keep their own files. Every current page and runnable example
+to generated indexes for guides, element blocks, and gallery figures.
+Element and gallery text and code are arranged into authored reference blocks;
+guides keep their own files. Every current page and runnable example
 is included, with local links rewritten to the relevant entry or embedded JSX
 example. The separate PDF package's API link points to its upstream README.
 The generated reference indexes include each page's description alongside its link.
+
+Maintain blocks in `prompt/elements/*.md` and `prompt/gallery/*.md`. Each file
+becomes `references/elements/<file>.md` or `references/gallery/<file>.md` in the
+skill. Use ordinary Markdown for introductory and intermediate text, and a
+standalone `{{{Name}}}` line to include that collection entry and its runnable
+example in place:
+
+```md
+# Plots and charts
+
+Use Plot for a chart with measured axes and labels.
+
+{{{Plot}}}
+
+For a function curve, put SymLine inside Plot.
+
+{{{SymLine}}}
+```
+
+Each element and gallery entry belongs in exactly one block. The builder reports
+unknown, duplicate, or missing entries. Includes inside fenced code remain literal.
+Block titles and include order drive the reference indexes; documentation
+categories still drive the general catalog. A block may combine entries from
+different categories or split a large category across smaller files.
+
+Write prose links relative to the block source file, for example
+`../../docs/elements/text/Plot.md` or another block such as `graph.md`.
+The builder rewrites these links and all existing entry/example links to their
+assigned blocks, preserving entry anchors. Moving an include therefore updates
+links from the entry point, indexes, and other references automatically.
+
+`get_reference_blocks('elements' | 'gallery')` exposes these same definitions to
+documentation viewers. Each block has a `name`, its authored `title`, and ordered
+entry `names`, alongside its source text and packaged reference path. Use those
+memberships for navigation while linking to individual documentation entries.
 
 The scripts read this package's inputs and write to the parent workspace,
 independently of the caller's working directory. Run them from a full `gum-jsx-meta`

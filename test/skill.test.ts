@@ -2,7 +2,7 @@ import { afterAll, expect, test } from 'bun:test'
 import { spawnSync } from 'node:child_process'
 import { closeSync, mkdirSync, mkdtempSync, openSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { delimiter, dirname, join } from 'node:path'
+import { delimiter, dirname, join, relative } from 'node:path'
 import * as core from '@gum-jsx/core'
 import * as math from '@gum-jsx/math'
 import { buildSkillFiles, getElements, getGuides, getGallery, packageRoot, promptDir } from '../src'
@@ -24,21 +24,23 @@ function links(markdown: string): string[] {
 
 test('the skill includes every element, guide, and gallery page exactly once with unmodified JSX', () => {
   const elements = getElements(), guides = getGuides(), gallery = getGallery()
-  expect(files.size).toBe(4 + guides.tags.length
-    + Object.keys(elements.cats).length + Object.keys(gallery.cats).length)
   expect(files.size).toBeLessThanOrEqual(200)
   for (const [kind, collection] of [['elements', elements], ['guides', guides], ['gallery', gallery]] as const) {
     const index = files.get(`references/${kind}.md`)
     expect(index).toBeDefined()
     for (const name of collection.tags) {
-      const category = kind === 'guides' ? name
-        : Object.entries(collection.cats).find(([, names]) => names.includes(name))![0]
-      const page = files.get(`references/${kind}/${category}.md`)
-      expect(page).toBeDefined()
+      // Block placement is authored independently of catalog categories.
+      const matches = [...files].filter(([path, text]) => kind === 'guides'
+        ? path === `references/guides/${name}.md`
+        : path.startsWith(`references/${kind}/`) && text.includes(`<a id="${name}"></a>`))
+      expect(matches).toHaveLength(1)
+      const [path, page] = matches[0]
       expect(page).toContain('```jsx\n' + collection.code[name] + '\n```')
       expect(page).not.toContain('*Category*:')
       expect(page).not.toContain('description:')
       expect(index).toContain(` — ${collection.descriptions[name]}`)
+      expect(links(index!)).toContain(relative('references', path)
+        + (kind === 'guides' ? '' : `#${name}`))
       if (kind !== 'guides') {
         expect(page).toContain(`<a id="${name}"></a>`)
         expect(page).toContain(`<a id="${name}-example"></a>`)

@@ -6,10 +6,10 @@ runnable JSX example.
 
 - [Guides](references/guides.md): the language, units, sizing, styles, helpers,
   fonts, math setup, and host rendering APIs.
-- [Elements by category](references/elements.md): layout, geometry, plotting,
+- [Element references](references/elements.md): layout, geometry, plotting,
   maps, networks, text, math, video, and external images, including `PngImage`.
 - [Gallery](references/gallery.md): complete figures and focused examples,
-  grouped by category. Start from a close example when it fits the request.
+  grouped by topic. Start from a close example when it fits the request.
 
 Useful starting points:
 
@@ -18,10 +18,12 @@ Useful starting points:
   [Stacks](references/guides/stack.md),
   [Box](references/elements/Box.md), [Grid](references/elements/Grid.md), and
   [Group](references/elements/Group.md).
-- Plots: [Plot](references/elements/Plot.md), [Graph](references/elements/Graph.md),
+- Plots: start with [Plot](references/elements/Plot.md),
   [SymLine](references/elements/SymLine.md), and [BarPlot](references/elements/BarPlot.md).
-  Plot axes use linear scales. `bounds="frame"` sizes and aligns the data area;
+  Plot supplies linear axes, grids, and measured labels; `xaxis-at` and `yaxis-at`
+  place axes inside the frame. `bounds="frame"` sizes and aligns the data area;
   leave space for the labels and titles outside it.
+  Use [Graph](references/elements/Graph.md) for custom coordinate compositions.
   [Projections](references/guides/projections.md) covers polar Graph callbacks
   and geographic marks. Supply explicit output limits and sampled paths.
 - Maps: [Making maps](references/guides/maps.md) walks through sources, styles,

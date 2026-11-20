@@ -10,7 +10,7 @@ description: "Combine bars, axes, labels, and other plot features in one chart."
 | `coord` | Inferred | `[xmin, ymin, xmax, ymax]` shorthand for both limits |
 | `xlim` / `ylim` | Inferred | Directed data limits |
 | `flip-x` / `flip-y` | `false` / `true` | Reverse horizontal or vertical screen mapping |
-| `padding` | `0.05` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
+| `padding` | `0` | Inferred-limit fractions: scalar, side/axis object, `[h, v]`, or `[t, b, l, r]` |
 | `values` | `[]` | Bar endpoints |
 | `positions` | Indices | Bar centers |
 | `bases` | `0` | Scalar, array, or callback for bar baselines |
@@ -21,7 +21,8 @@ description: "Combine bars, axes, labels, and other plot features in one chart."
 | `axis` | `true` | Enable or disable both axes by default |
 | `xaxis` / `yaxis` | `axis` | Boolean or **Axis** props for one axis |
 | `xticks` / `yticks` | `5` | Target count or explicit values / labeled pairs |
-| `grid` | `true` | Draw grid lines at axis ticks |
+| `grid` | Unset | Enable or disable both grid directions; overrides `xgrid` / `ygrid` |
+| `xgrid` / `ygrid` | `false` | Draw lines at x / y ticks when `grid` is unset |
 | `title` / `xlabel` / `ylabel` | — | String or **Element**; the y title rotates −90° |
 | `legend` | — | **Legend** **Element** or array of **Legend** entries |
 | `margin` | `em(3/4)` | Extra outer space; accepts [Box padding forms](./Box.md) |
@@ -42,6 +43,10 @@ description: "Combine bars, axes, labels, and other plot features in one chart."
 Compose [Bars](./Bars.md) and [Plot](./Plot.md). Accepts values, positions, bases,
 `bar-width`, direction, border radius, and styles along with **Plot** props. Additional
 children overlay bars and participate in limit inference.
+
+Grid lines are off by default. Set `grid` for both directions, or use
+`xgrid` / `ygrid` with `grid` unset to choose directions separately, as on
+[Plot](./Plot.md). Grid style props alone do not enable grid lines.
 
 For rounded tops with square baselines on positive vertical bars, use
 `border-radius={{ t: em(0.5) }}`. Horizontal bars can use `border-radius={{ r: em(0.5) }}`.

@@ -1,0 +1,3 @@
+# External elements
+
+{{{PngImage}}}

@@ -12,6 +12,7 @@ return (
     ylabel="Amplitude"
     xlim={[0, 12]}
     ylim={[-1.3, 1.3]}
+    grid
     legend={[
       { label: "Model", color: blue },
       { label: "Observations", kind: "point", color: red },
