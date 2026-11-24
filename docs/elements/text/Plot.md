@@ -83,7 +83,11 @@ decorations, so leave a large enough `gap` or `padding` around the plot. The spa
 they need, including `margin`, is reported as the fragment's outset, and a hugging
 [Page](./Page.md) viewport grows to include it.
 
-This first version has linear scales. Log/date scales, minor ticks, label
+For date axes, use numeric `timestamp` coordinates, `time_ticks` or `time_range`
+for positions, and `format_time` through `xaxis-format` / `yaxis-format` for labels.
+See [Dates and times](../../guides/text/time.md) for calendar ranges and examples.
+
+This first version has linear scales. Automatic scale selection, minor ticks, label
 collision avoidance, automatic legend extraction, and legend placement
 optimization are deferred. Use fewer ticks, shorter labels, or an axis rotate
 option for crowded categories.

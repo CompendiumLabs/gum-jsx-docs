@@ -59,3 +59,4 @@ an omitted stop with a negative step includes index zero.
 
 [Math helpers](./math_helpers.md) supplies reductions such as sum, mean, cumsum,
 and norm. [SymLine](../../elements/text/SymLine.md) describes generated graph geometry.
+[Dates and times](./time.md) provides calendar ranges and date/time axis labels.

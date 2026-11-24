@@ -58,6 +58,11 @@ directional, labels-only, and scale-only variants. See
 Automatic 1/2/5 intervals need not include every endpoint; public linear_ticks
 and format_tick expose the helpers. Work is bounded to 10000 ticks.
 
+For date and clock axes, pass `time_ticks(lim)` or `time_range(...)` to ticks
+and use `format={value => format_time(value, "%b %Y")}` for labels.
+Limits and data coordinates use numeric milliseconds; see
+[Dates and times](../../guides/text/time.md).
+
 Ticks and label descriptions are fixed at construction. A standalone **Axis** uses
 lim for generation and the ambient graph for mapping; provide matching limits,
 or let [Plot](./Plot.md) construct it. Minor ticks and collision avoidance are
